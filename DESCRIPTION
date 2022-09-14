@@ -1,0 +1,25 @@
+Package: vivainsights
+Type: Package
+Title: Tools for Analysing and Visualising Data from Viva Insights
+Version: 0.1.0
+Author: c(
+    person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
+    person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
+	)
+Description: Opinionated functions that enable easier and faster
+    analysis of Viva Insights data.  
+RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.1.2)
+Imports: 
+    dplyr,
+    stats,
+    utils,
+    tidyr,
+    tidyselect (>= 1.0.0),
+    magrittr,
+    ggplot2
