@@ -24,7 +24,7 @@ names. Defaults to \code{FALSE}.}
 Copies a data frame to the clipboard with no return value.
 }
 \description{
-This is a pipe-optimised function, that feeds into \code{wpa::export()},
+This is a pipe-optimised function, that feeds into \code{vivainsights::export()},
 but can be used as a stand-alone function.
 
 Based on the original function from

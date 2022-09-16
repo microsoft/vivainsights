@@ -144,7 +144,7 @@ create_stacked <- function(data,
   plot_table <-
     myTable %>%
     select(PersonId, group, metrics, Total) %>%
-    gather(Metric, Value, -PersonId, -group)
+    tidyr::gather(Metric, Value, -PersonId, -group)
 
   totalTable <-
     plot_table %>%

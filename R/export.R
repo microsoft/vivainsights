@@ -54,7 +54,7 @@ export <- function(x,
   ## Create timestamped path (if applicable)
 
   if(timestamp == TRUE){
-    newpath <- paste(path, wpa::tstamp())
+    newpath <- paste(path, vivainsights::tstamp())
   } else {
     newpath <- path
   }

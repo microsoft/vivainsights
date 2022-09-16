@@ -44,10 +44,12 @@ Other Support:
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},
 \code{\link{extract_hr}()},
+\code{\link{is_date_format}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
 \code{\link{tstamp}()},
+\code{\link{us_to_space}()},
 \code{\link{wrap}()}
 }
 \concept{Support}

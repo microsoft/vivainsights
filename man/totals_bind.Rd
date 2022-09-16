@@ -29,7 +29,7 @@ row. See example below on usage.
 \examples{
 sq_data \%>\%
   totals_bind(target_col = "LevelDesignation", target_value = "Total") \%>\%
-  collab_sum(hrvar = "LevelDesignation", return = "table")
+  create_bar(hrvar = "LevelDesignation", metric = "Email_hours", return = "table")
 
 }
 \seealso{
@@ -39,9 +39,11 @@ Other Support:
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},
 \code{\link{extract_hr}()},
+\code{\link{is_date_format}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_col}()},
 \code{\link{tstamp}()},
+\code{\link{us_to_space}()},
 \code{\link{wrap}()}
 }
 \concept{Support}

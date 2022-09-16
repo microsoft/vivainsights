@@ -6,6 +6,7 @@ Author: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
 	)
+Maintainer: Martin Chan <martin.chan@microsoft.com>
 Description: Opinionated functions that enable easier and faster
     analysis of Viva Insights data.  
 RoxygenNote: 7.2.1
@@ -22,4 +23,10 @@ Imports:
     tidyr,
     tidyselect (>= 1.0.0),
     magrittr,
-    ggplot2
+    ggplot2,
+    DT,
+    reshape2,
+    scales,
+    ggrepel,
+    purrr,
+    data.table

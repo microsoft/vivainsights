@@ -14,7 +14,7 @@
 #' # Create a visual without HR attribute breaks
 #' sq_data %>%
 #'   totals_col() %>%
-#'   collab_fizz(hrvar = "Total")
+#'   create_fizz(hrvar = "Total", metric = "Email_hours")
 #'
 #' @param data data frame
 #' @param total_value Character value defining the name and the value of the

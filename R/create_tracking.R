@@ -69,10 +69,10 @@ create_tracking <- function(data,
              apply(1, function(x) mean(x, na.rm = TRUE))) %>% # Use all available data
     select(-paste0("lag", 0:3)) %>%
     rename(`Weekly average` = metric) %>%
-    pivot_longer(cols = c(`Weekly average`, `4 week rolling average`),
+    tidyr::pivot_longer(cols = c(`Weekly average`, `4 week rolling average`),
                  names_to = "metrics",
                  values_to = "value") %>%
-    drop_na(value) %>%
+    tidyr::drop_na(value) %>%
     ggplot(aes(x = Date,
                y = value,
                colour = metrics)) +

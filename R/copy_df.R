@@ -6,7 +6,7 @@
 #' @title Copy a data frame to clipboard for pasting in Excel
 #'
 #' @description
-#' This is a pipe-optimised function, that feeds into `wpa::export()`,
+#' This is a pipe-optimised function, that feeds into `vivainsights::export()`,
 #' but can be used as a stand-alone function.
 #'
 #' Based on the original function from

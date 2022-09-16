@@ -13,7 +13,7 @@
 #' @examples
 #' sq_data %>%
 #'   totals_bind(target_col = "LevelDesignation", target_value = "Total") %>%
-#'   collab_sum(hrvar = "LevelDesignation", return = "table")
+#'   create_bar(hrvar = "LevelDesignation", metric = "Email_hours", return = "table")
 #'
 #' @param data data frame
 #' @param target_col Character value of the column in which to impute `"Total"`.

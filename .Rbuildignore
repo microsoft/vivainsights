@@ -1,2 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^.github$
+^CODE_OF_CONDUCT.md$
+^LICENSE.txt$
+^SECURITY.md$
+^SUPPORT.md$
+man-roxygen
