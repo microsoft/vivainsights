@@ -107,7 +107,7 @@ jitter_metrics <- function(data, cols = NULL, ...){
     data %>%
       mutate(
         across(
-          .cols = where(~is.numeric(.)),
+          .cols = tidyselect:::where(~is.numeric(.)),
           .fns = ~abs(jitter(., ...))
         )
       )

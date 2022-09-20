@@ -32,7 +32,7 @@
 #' @param sort_by String to specify the bucket label to sort by. Defaults to
 #'  `NULL` (no sorting).
 #' @param labels Character vector to override labels for the created
-#' categorical variables. Must be a named vector - see examples. 
+#' categorical variables. Must be a named vector - see examples.
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -263,7 +263,7 @@ create_dist <- function(data,
 
       # # Match with values, replace with names
       # # Flip names and values to be used for `scale_fill_manual()`
-      flip <- function(x){ setNames(object = names(x), nm = x)}
+      flip <- function(x){ stats::setNames(object = names(x), nm = x)}
 
       scale_fill_manual(name = "",
                         labels = flip(labels),
