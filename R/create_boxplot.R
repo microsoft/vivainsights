@@ -40,23 +40,15 @@
 #' @family Flexible
 #'
 #' @examples
-#' # Create a fizzy plot for Work Week Span by Level Designation
-#' create_boxplot(pq_data,
-#'                metric = "Workweek_span",
-#'                hrvar = "LevelDesignation",
-#'                return = "plot")
+#' # Create a box plot t for Collaboration_hours by Level Designation
+#' create_boxplot(pq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 #'
-#' # Create a summary statistics table for Work Week Span by Organization
-#' create_boxplot(pq_data,
-#'                metric = "Workweek_span",
-#'                hrvar = "Organization",
-#'                return = "table")
+#' # Create a box plot t for Collaboration_hours by Organization
+#' create_boxplot(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "plot")
 #'
-#' # Create a fizzy plot for Collaboration Hours by Level Designation
-#' create_boxplot(pq_data,
-#'                metric = "Collaboration_hours",
-#'                hrvar = "LevelDesignation",
-#'                return = "plot")
+#' # Create a summary statistics table for Collaboration_hoursby Organization
+#' create_boxplot(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+#'
 #' @export
 
 create_boxplot <- function(data,
