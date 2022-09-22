@@ -90,5 +90,9 @@ data frame.
 \description{
 A dataset generated from a Standard Person Query from Workplace Analytics.
 }
+\seealso{
+Other Data: 
+\code{\link{pq_data}}
+}
 \concept{Data}
 \keyword{datasets}
