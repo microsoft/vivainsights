@@ -59,7 +59,7 @@
 #'
 #' # Summarise Non-person-average median `Emails_sent`
 #' med_df <-
-#'   sq_data %>%
+#'   pq_data %>%
 #'   group_by(Organization) %>%
 #'   summarise(Emails_sent_median = median(Emails_sent))
 #'
@@ -67,8 +67,8 @@
 #'   create_bar_asis(
 #'     group_var = "Organization",
 #'     bar_var = "Emails_sent_median",
-#'     title = "Median Emails Sent by Organization",
-#'     subtitle = "Person Averaging Not Applied",
+#'     title = "Emails sent by organization",
+#'     subtitle = "Median values",
 #'     bar_colour = "darkblue",
 #'     caption = extract_date_range(sq_data, return = "text")
 #'   )
