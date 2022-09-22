@@ -58,6 +58,8 @@ create_scatter(sq_data,
 }
 \seealso{
 Other Visualization: 
+\code{\link{afterhours_summary}()},
+\code{\link{collaboration_sum}()},
 \code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
 \code{\link{create_boxplot}()},
@@ -72,7 +74,12 @@ Other Visualization:
 \code{\link{create_stacked}()},
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()},
-\code{\link{hrvar_count}()}
+\code{\link{email_summary}()},
+\code{\link{external_sum}()},
+\code{\link{hrvar_count}()},
+\code{\link{meeting_summary}()},
+\code{\link{one2one_sum}()},
+\code{\link{workloads_summary}()}
 
 Other Flexible: 
 \code{\link{create_bar_asis}()},
