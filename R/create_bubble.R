@@ -36,15 +36,8 @@
 #' @family Flexible
 #'
 #' @examples
-#' create_bubble(sq_data,
-#' "Internal_network_size",
-#' "External_network_size",
-#' "Organization")
+#' create_bubble(pq_data, "Collaboration_hours", "Multitasking_hours", hrvar ="Organization")
 #'
-#' create_bubble(sq_data,
-#' "Generated_workload_call_hours",
-#' "Generated_workload_email_hours",
-#' "Organization", mingroup = 100, return = "plot")
 #'
 #' @return A different output is returned depending on the value passed to the
 #' `return` argument:
