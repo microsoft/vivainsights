@@ -92,7 +92,7 @@ create_dist <- function(data,
                         labels = NULL) {
 
   ## Check inputs -----------------------------------------------------------
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           metric,
                           "PersonId")
 
