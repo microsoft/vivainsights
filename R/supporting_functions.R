@@ -146,6 +146,10 @@ extract_date_range <- function(data, return = "table"){
 
     date_var <- as.Date(data$Date, "%m/%d/%Y")
 
+  } else if("MetricDate" %in% names(data)){
+
+    date_var <- as.Date(data$MetricDate, "%m/%d/%Y")
+
   } else if(all(c("StartDate", "EndDate") %in% names(data))){
 
     ## meeting query
