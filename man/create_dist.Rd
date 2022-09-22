@@ -14,7 +14,7 @@ create_dist(
   dist_colours = c("#facebc", "#fcf0eb", "#b4d5dd", "#bfe5ee"),
   unit = "hours",
   lbound = 0,
-  ubound = 100,
+  ubound = 200,
   sort_by = NULL,
   labels = NULL
 )
@@ -90,7 +90,7 @@ eh_labels <- c(
   "More than twenty-five" = "25+ hours"
 )
 
-pq_data \%>\%  create_dist(metric = "Meeting_hours", labels = eh_labels, return = "plot")
+pq_data \%>\% create_dist(metric = "Meeting_hours", labels = eh_labels, return = "plot")
 
 # Sort by a category
 pq_data \%>\%  create_dist(metric = "Collaboration_hours", sort_by = "25+ hours")
