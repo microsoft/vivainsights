@@ -27,6 +27,7 @@ utils::globalVariables(
     "xmin",
     "xmax",
     "Date",
+    "MetricDate", # New `Date`
     "top_group",
     "OrgGroup",
     "var1",
