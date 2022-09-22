@@ -50,10 +50,10 @@ This is a general purpose function that powers all the functions
 in the package that produce box plots.
 }
 \examples{
-# Create a box plot t for Collaboration_hours by Level Designation
+# Create a box plot for Collaboration_hours by Level Designation
 create_boxplot(pq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 
-# Create a box plot t for Collaboration_hours by Organization
+# Create a box plot for Collaboration_hours by Organization
 create_boxplot(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "plot")
 
 # Create a summary statistics table for Collaboration_hoursby Organization
