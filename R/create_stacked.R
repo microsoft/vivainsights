@@ -6,10 +6,10 @@
 #' @title Horizontal stacked bar plot for any metric
 #'
 #' @description
-#' Creates a sum total calculation using selected metrics,
-#' where the typical use case is to create different definitions of
-#' collaboration hours.
-#' Returns a stacked bar plot by default.
+#' Creates either a single bar plot, of a stacked bar using selected metrics 
+#' (where the typical use case is to create different definitions of
+#' collaboration hours).
+#' Returns a plot by default.
 #' Additional options available to return a summary table.
 #'
 #' @template spq-params
@@ -62,7 +62,7 @@
 #'                  metrics = c("Meeting_hours",
 #'                              "Email_hours",
 #'                              "Call_hours",
-#'                              "Instant_Message_hours"),
+#'                              "Chat_hours"),
 #'                  return = "plot",
 #'                  rank = "ascending")
 #'
@@ -71,7 +71,7 @@
 #'                  metrics = c("Meeting_hours",
 #'                              "Email_hours",
 #'                              "Call_hours",
-#'                              "Instant_Message_hours"),
+#'                              "Chat_hours"),
 #'                  return = "table")
 #'
 #' @export

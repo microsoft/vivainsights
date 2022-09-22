@@ -63,15 +63,15 @@
 #'
 #' @examples
 #' # Return a ggplot bar chart
-#' create_bar(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+#' create_bar(pq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 #'
 #' # Change bar colour
-#' create_bar(sq_data,
+#' create_bar(pq_data,
 #'            metric = "After_hours_collaboration_hours",
 #'            bar_colour = "alert")
 #'
 #' # Custom data label positions and formatting
-#' sq_data %>%
+#' pq_data %>%
 #'   create_bar(
 #'     metric = "Meetings",
 #'     text_just = 1.1,
@@ -79,7 +79,7 @@
 #'     xlim = 20)
 #'
 #' # Return a summary table
-#' create_bar(sq_data,
+#' create_bar(pq_data,
 #'            metric = "Collaboration_hours",
 #'            hrvar = "LevelDesignation",
 #'            return = "table")
@@ -101,7 +101,7 @@ create_bar <- function(data,
                        text_colour = "#FFFFFF"){
 
   ## Check inputs
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           metric,
                           "PersonId")
 
