@@ -65,7 +65,7 @@
 #'   "More than twenty-five" = "25+ hours"
 #' )
 #'
-#' pq_data %>%  create_dist(metric = "Meeting_hours", labels = eh_labels, return = "plot")
+#' pq_data %>% create_dist(metric = "Meeting_hours", labels = eh_labels, return = "plot")
 #'
 #' # Sort by a category
 #' pq_data %>%  create_dist(metric = "Collaboration_hours", sort_by = "25+ hours")
@@ -83,7 +83,7 @@ create_dist <- function(data,
                                          "#bfe5ee"),
                         unit = "hours",
                         lbound = 0,
-                        ubound = 100,
+                        ubound = 200,
                         sort_by = NULL,
                         labels = NULL) {
 
