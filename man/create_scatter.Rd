@@ -45,15 +45,21 @@ This is a general purpose function that powers all the functions
 in the package that produce scatter plots.
 }
 \examples{
-create_scatter(sq_data,
-"Internal_network_size",
-"External_network_size",
-"Organization")
+create_scatter(
+  pq_data,
+  metric_x = "Collaboration_hours",
+  metric_y = "Multitasking_hours",
+  hrvar = "Organization"
+  )
 
-create_scatter(sq_data,
-"Generated_workload_call_hours",
-"Generated_workload_email_hours",
-"Organization", mingroup = 100, return = "plot")
+create_scatter(
+  pq_data,
+  metric_x = "Collaboration_hours",
+  metric_y = "Multitasking_hours",
+  hrvar = "Organization",
+  mingroup = 100,
+  return = "plot"
+)
 
 }
 \seealso{

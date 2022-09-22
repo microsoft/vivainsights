@@ -35,9 +35,21 @@
 #' @family Flexible
 #'
 #' @examples
-#' create_scatter(pq_data,"Collaboration_hours", "Multitasking_hours", hrvar="Organization")
+#' create_scatter(
+#'   pq_data,
+#'   metric_x = "Collaboration_hours",
+#'   metric_y = "Multitasking_hours",
+#'   hrvar = "Organization"
+#'   )
 #'
-#' create_scatter(pq_data,"Collaboration_hours", "Multitasking_hours", hrvar="Organization", mingroup = 100, return = "plot")
+#' create_scatter(
+#'   pq_data,
+#'   metric_x = "Collaboration_hours",
+#'   metric_y = "Multitasking_hours",
+#'   hrvar = "Organization",
+#'   mingroup = 100,
+#'   return = "plot"
+#' )
 #'
 #' @return
 #' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
