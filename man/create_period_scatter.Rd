@@ -65,7 +65,7 @@ in the package that produce faceted scatter plots.
 }
 \examples{
 # Return plot
-create_period_scatter(sq_data,
+create_period_scatter(pq_data,
                       hrvar = "LevelDesignation",
                       before_start = "2019-11-03",
                       before_end = "2019-12-31",
@@ -73,7 +73,7 @@ create_period_scatter(sq_data,
                       after_end = "2020-01-26")
 
 # Return a summary table
-create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
+create_period_scatter(pq_data, before_end = "2019-12-31", return = "table")
 
 
 }

@@ -35,9 +35,9 @@
 #' @family Data Validation
 #'
 #' @examples
-#' sq_data %>% extract_hr(return = "names")
+#' pq_data %>% extract_hr(return = "names")
 #'
-#' sq_data %>% extract_hr(return = "vars")
+#' pq_data %>% extract_hr(return = "vars")
 #'
 #' @export
 extract_hr <- function(data,

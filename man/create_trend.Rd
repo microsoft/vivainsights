@@ -49,11 +49,11 @@ time with most activity. Additional options available to return a summary
 table.
 }
 \examples{
-create_trend(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
+create_trend(pq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation")
 
 # custom colours
 create_trend(
-  sq_data,
+  pq_data,
   metric = "Collaboration_hours",
   hrvar = "LevelDesignation",
   palette = c(

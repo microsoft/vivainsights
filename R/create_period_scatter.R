@@ -46,7 +46,7 @@
 #'
 #' @examples
 #' # Return plot
-#' create_period_scatter(sq_data,
+#' create_period_scatter(pq_data,
 #'                       hrvar = "LevelDesignation",
 #'                       before_start = "2019-11-03",
 #'                       before_end = "2019-12-31",
@@ -54,7 +54,7 @@
 #'                       after_end = "2020-01-26")
 #'
 #' # Return a summary table
-#' create_period_scatter(sq_data, before_end = "2019-12-31", return = "table")
+#' create_period_scatter(pq_data, before_end = "2019-12-31", return = "table")
 #'
 #'
 #' @export
@@ -167,7 +167,7 @@ create_period_scatter <- function(data,
     facet_wrap(.~Period) +
     guides(size = FALSE) +
 	theme_wpa_basic() +
-    theme(legend.position = "bottom", 
+    theme(legend.position = "bottom",
 	strip.background = element_rect(color = "#1d627e",
                                           fill = "#1d627e"),
           strip.text = element_text(size = 10,
@@ -177,9 +177,9 @@ create_period_scatter <- function(data,
             subtitle = paste("Comparison of weekly averages by ", tolower(camel_clean(hrvar)))) +
     ylab(clean_y) +
     xlab(clean_x) +
-    labs(caption = date_range_str) 
-	
-	
+    labs(caption = date_range_str)
+
+
   if(return == "table"){
 
     # return(myTable_return)

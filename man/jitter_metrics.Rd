@@ -20,10 +20,10 @@ anonymity to a query. This can be used in combination with \code{anonymise()} to
 produce a demo dataset from real data.
 }
 \examples{
-jittered <- jitter_metrics(sq_data, cols = "Collaboration_hours")
+jittered <- jitter_metrics(pq_data, cols = "Collaboration_hours")
 head(
   data.frame(
-    original = sq_data$Collaboration_hours,
+    original = pq_data$Collaboration_hours,
     jittered = jittered$Collaboration_hours
   )
 )

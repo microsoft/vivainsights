@@ -40,9 +40,9 @@ number of unique values, and regular expression matching
 to extract HR / organisational attributes from a data frame.
 }
 \examples{
-sq_data \%>\% extract_hr(return = "names")
+pq_data \%>\% extract_hr(return = "names")
 
-sq_data \%>\% extract_hr(return = "vars")
+pq_data \%>\% extract_hr(return = "vars")
 
 }
 \seealso{

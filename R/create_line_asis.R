@@ -49,7 +49,7 @@
 #'     metric = "Emails_sent_median",
 #'     title = "Median Emails Sent",
 #'     subtitle = "Person Averaging Not Applied",
-#'     caption = extract_date_range(sq_data, return = "text")
+#'     caption = extract_date_range(pq_data, return = "text")
 #'   )
 #'
 #' @export

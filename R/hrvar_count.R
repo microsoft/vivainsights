@@ -37,10 +37,10 @@
 #'
 #' @examples
 #' # Return a bar plot
-#' hrvar_count(sq_data, hrvar = "LevelDesignation")
+#' hrvar_count(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return a summary table
-#' hrvar_count(sq_data, hrvar = "LevelDesignation", return = "table")
+#' hrvar_count(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #'@export
 

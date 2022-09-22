@@ -21,10 +21,10 @@
 #'   `"Team B"`, etc.
 #'
 #' @examples
-#' unique(anonymise(sq_data$Organization))
+#' unique(anonymise(pq_data$Organization))
 #'
 #' rep <- c("Manager+", "Manager", "IC")
-#' unique(anonymise(sq_data$Layer), replacement = rep)
+#' unique(anonymise(pq_data$Layer), replacement = rep)
 #'
 #' @seealso jitter
 #' @export
@@ -80,10 +80,10 @@ anonymize <- anonymise
 #' @import tidyselect
 #'
 #' @examples
-#' jittered <- jitter_metrics(sq_data, cols = "Collaboration_hours")
+#' jittered <- jitter_metrics(pq_data, cols = "Collaboration_hours")
 #' head(
 #'   data.frame(
-#'     original = sq_data$Collaboration_hours,
+#'     original = pq_data$Collaboration_hours,
 #'     jittered = jittered$Collaboration_hours
 #'   )
 #' )

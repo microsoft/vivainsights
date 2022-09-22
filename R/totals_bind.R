@@ -11,7 +11,7 @@
 #' row. See example below on usage.
 #'
 #' @examples
-#' sq_data %>%
+#' pq_data %>%
 #'   totals_bind(target_col = "LevelDesignation", target_value = "Total") %>%
 #'   create_bar(hrvar = "LevelDesignation", metric = "Email_hours", return = "table")
 #'

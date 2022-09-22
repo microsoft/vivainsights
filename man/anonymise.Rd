@@ -28,10 +28,10 @@ replacements by default, but there is an option to completely randomise
 values in the categorical variable.
 }
 \examples{
-unique(anonymise(sq_data$Organization))
+unique(anonymise(pq_data$Organization))
 
 rep <- c("Manager+", "Manager", "IC")
-unique(anonymise(sq_data$Layer), replacement = rep)
+unique(anonymise(pq_data$Layer), replacement = rep)
 
 }
 \seealso{

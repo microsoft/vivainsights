@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' # Create a visual without HR attribute breaks
-#' sq_data %>%
+#' pq_data %>%
 #'   totals_col() %>%
 #'   create_fizz(hrvar = "Total", metric = "Email_hours")
 #'

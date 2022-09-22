@@ -36,7 +36,7 @@
 #' # Creating a custom bar plot without mean aggregation
 #' library(dplyr)
 #'
-#' sq_data %>%
+#' pq_data %>%
 #'   group_by(Organization) %>%
 #'   summarise(across(.cols = Meeting_hours,
 #'                    .fns = ~sum(., na.rm = TRUE))) %>%
@@ -44,7 +44,7 @@
 #'                   bar_var = "Meeting_hours",
 #'                   title = "Total Meeting Hours over period",
 #'                   subtitle = "By Organization",
-#'                   caption = extract_date_range(sq_data, return = "text"),
+#'                   caption = extract_date_range(pq_data, return = "text"),
 #'                   bar_colour = "darkblue",
 #'                   rounding = 0)
 #'
@@ -70,7 +70,7 @@
 #'     title = "Emails sent by organization",
 #'     subtitle = "Median values",
 #'     bar_colour = "darkblue",
-#'     caption = extract_date_range(sq_data, return = "text")
+#'     caption = extract_date_range(pq_data, return = "text")
 #'   )
 #'
 #'
