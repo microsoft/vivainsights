@@ -28,6 +28,7 @@ for more.
 \seealso{
 Other Import and Export: 
 \code{\link{copy_df}()},
-\code{\link{export}()}
+\code{\link{export}()},
+\code{\link{import_query}()}
 }
 \concept{Import and Export}

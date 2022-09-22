@@ -33,6 +33,7 @@ Based on the original function from
 \seealso{
 Other Import and Export: 
 \code{\link{create_dt}()},
-\code{\link{export}()}
+\code{\link{export}()},
+\code{\link{import_query}()}
 }
 \concept{Import and Export}
