@@ -46,6 +46,14 @@ Additional options available to return a summary table.
 Uses the metrics \code{Meeting_hours}, \code{Email_hours}, \code{Unscheduled_Call_hours},
 and \code{Instant_Message_hours}.
 }
+\examples{
+# Return a ggplot bar chart
+collaboration_sum(pq_data, hrvar = "LevelDesignation")
+
+# Return a summary table
+collaboration_sum(pq_data, hrvar = "LevelDesignation", return = "table")
+
+}
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_summary}()},
@@ -65,11 +73,8 @@ Other Visualization:
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()},
 \code{\link{email_summary}()},
-\code{\link{external_sum}()},
 \code{\link{hrvar_count}()},
-\code{\link{meeting_summary}()},
-\code{\link{one2one_sum}()},
-\code{\link{workloads_summary}()}
+\code{\link{meeting_summary}()}
 }
 \concept{Collaboration}
 \concept{Visualization}

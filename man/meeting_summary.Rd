@@ -42,10 +42,10 @@ Additional options available to return a summary table.
 }
 \examples{
 # Return a ggplot bar chart
-meeting_summary(sq_data, hrvar = "LevelDesignation")
+meeting_summary(pq_data, hrvar = "LevelDesignation")
 
 # Return a summary table
-meeting_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+meeting_summary(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{
@@ -68,10 +68,7 @@ Other Visualization:
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()},
 \code{\link{email_summary}()},
-\code{\link{external_sum}()},
-\code{\link{hrvar_count}()},
-\code{\link{one2one_sum}()},
-\code{\link{workloads_summary}()}
+\code{\link{hrvar_count}()}
 }
 \concept{Meetings}
 \concept{Visualization}

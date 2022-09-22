@@ -27,6 +27,13 @@
 #' @family Visualization
 #' @family Collaboration
 #'
+#' @examples
+#' # Return a ggplot bar chart
+#' collaboration_sum(pq_data, hrvar = "LevelDesignation")
+#'
+#' # Return a summary table
+#' collaboration_sum(pq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @return
 #' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.

@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' # Return a ggplot bar chart
-#' email_summary(sq_data, hrvar = "LevelDesignation")
+#' email_summary(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return a summary table
-#' email_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+#' email_summary(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 

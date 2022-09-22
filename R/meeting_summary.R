@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' # Return a ggplot bar chart
-#' meeting_summary(sq_data, hrvar = "LevelDesignation")
+#' meeting_summary(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return a summary table
-#' meeting_summary(sq_data, hrvar = "LevelDesignation", return = "table")
+#' meeting_summary(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 meeting_summary <- function(data,
