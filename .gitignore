@@ -1,4 +1,7 @@
 *.Rproj.user/
 *.Rproj
 .Rproj.user
-.Rhistory
+^.Rhistory$
+_data
+_dev
+
