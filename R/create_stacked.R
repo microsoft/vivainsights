@@ -52,12 +52,12 @@
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
 #' @examples
-#' sq_data %>%
+#' pq_data %>%
 #'   create_stacked(hrvar = "LevelDesignation",
 #'                  metrics = c("Meeting_hours", "Email_hours"),
 #'                  return = "plot")
 #'
-#' sq_data %>%
+#' pq_data %>%
 #'   create_stacked(hrvar = "FunctionType",
 #'                  metrics = c("Meeting_hours",
 #'                              "Email_hours",
@@ -66,7 +66,7 @@
 #'                  return = "plot",
 #'                  rank = "ascending")
 #'
-#' sq_data %>%
+#' pq_data %>%
 #'   create_stacked(hrvar = "FunctionType",
 #'                  metrics = c("Meeting_hours",
 #'                              "Email_hours",
@@ -96,7 +96,7 @@ create_stacked <- function(data,
                            ){
 
   ## Check inputs
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           metrics,
                           "PersonId")
 
