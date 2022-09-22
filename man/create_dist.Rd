@@ -77,10 +77,10 @@ Additional options available to return a table with distribution elements.
 }
 \examples{
 # Return plot
-create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+create_dist(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
 
 # Return summary table
-create_dist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
+create_dist(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 
 # Use custom labels by providing a label vector
 eh_labels <- c(
@@ -90,14 +90,10 @@ eh_labels <- c(
   "More than twenty-five" = "25+ hours"
 )
 
-sq_data \%>\%
-  create_dist(metric = "Email_hours",
-              labels = eh_labels, return = "plot")
+pq_data \%>\%  create_dist(metric = "Meeting_hours", labels = eh_labels, return = "plot")
 
 # Sort by a category
-sq_data \%>\%
-  create_dist(metric = "Collaboration_hours",
-              sort_by = "25+ hours")
+pq_data \%>\%  create_dist(metric = "Collaboration_hours", sort_by = "25+ hours")
 }
 \seealso{
 Other Visualization: 
