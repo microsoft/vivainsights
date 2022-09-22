@@ -72,7 +72,7 @@ which a bar plot is generated, or two \code{hrvar} values where an incidence tab
 \examples{
 # Only a single HR attribute
 create_inc(
-  data = sq_data,
+  data = pq_data,
   metric = "After_hours_collaboration_hours",
   hrvar = "Organization",
   threshold = 4,
@@ -81,7 +81,7 @@ create_inc(
 
 # Two HR attributes
 create_inc(
-  data = sq_data,
+  data = pq_data,
   metric = "Collaboration_hours",
   hrvar = c("LevelDesignation", "Organization"),
   threshold = 20,
