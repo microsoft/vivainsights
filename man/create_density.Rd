@@ -58,19 +58,16 @@ Additional options available to return the underlying frequency table.
 }
 \examples{
 # Return plot for whole organization
-create_density(sq_data, metric = "Collaboration_hours", hrvar = NULL)
+create_density(pq_data, metric = "Collaboration_hours", hrvar = NULL)
 
 # Return plot
-create_density(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+create_density(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
 
-# Return plot but coerce plot to two columns
-create_density(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
+# Return plot but coerce plot to three columns
+create_density(pq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 3)
 
 # Return summary table
-create_density(sq_data,
-            metric = "Collaboration_hours",
-            hrvar = "Organization",
-            return = "table")
+create_density(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Flexible: 
