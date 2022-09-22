@@ -46,11 +46,11 @@
 #'
 #' @examples
 # Use a small sample for faster runtime
-#' sq_data_small <- dplyr::slice_sample(sq_data, prop = 0.1)
+#' pq_data_small <- dplyr::slice_sample(pq_data, prop = 0.1)
 #'
 #' # Plot mode 1 - show top and bottom five groups
 #' create_rank(
-#'   data = sq_data_small,
+#'   data = pq_data_small,
 #'   hrvar = c("FunctionType", "LevelDesignation"),
 #'   metric = "Emails_sent",
 #'   return = "plot",
@@ -59,7 +59,7 @@
 #'
 #' # Plot mode 2 - show top and bottom groups per HR variable
 #' create_rank(
-#'   data = sq_data_small,
+#'   data = pq_data_small,
 #'   hrvar = c("FunctionType", "LevelDesignation"),
 #'   metric = "Emails_sent",
 #'   return = "plot",
@@ -68,7 +68,7 @@
 #'
 #' # Return a table
 #' create_rank(
-#'   data = sq_data_small,
+#'   data = pq_data_small,
 #'   metric = "Emails_sent",
 #'   return = "table"
 #' )
@@ -76,7 +76,7 @@
 #' \donttest{
 #' # Return a table - combination mode
 #' create_rank(
-#'   data = sq_data_small,
+#'   data = pq_data_small,
 #'   metric = "Emails_sent",
 #'   mode = "combine",
 #'   return = "table"
