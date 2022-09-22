@@ -23,7 +23,7 @@
 #'   percentage signs. Defaults to `FALSE`.
 #'
 #' @examples
-#' sq_data %>%
+#' pq_data %>%
 #'   create_tracking(
 #'     metric = "Collaboration_hours",
 #'     percent = FALSE
@@ -44,7 +44,7 @@ create_tracking <- function(data,
                             plot_subtitle = "Measure over time",
                             percent = FALSE){
 
-  data$Date <- as.Date(data$Date, "%m/%d/%Y")
+  data$Date <- as.Date(data$MetricDate, "%m/%d/%Y")
 
   min_date <- data %>% extract_date_range() %>% pull(Start)
   max_date <- data %>% extract_date_range() %>% pull(End)
@@ -55,7 +55,7 @@ create_tracking <- function(data,
   `Weekly average` <- NULL
 
   data %>%
-    group_by(Date) %>%
+    group_by(MetricDate) %>%
     summarise(across(.cols = metric,
                      .fns = ~mean(., na.rm = TRUE)),
               .groups = "drop") %>%
@@ -73,7 +73,7 @@ create_tracking <- function(data,
                  names_to = "metrics",
                  values_to = "value") %>%
     tidyr::drop_na(value) %>%
-    ggplot(aes(x = Date,
+    ggplot(aes(x = MetricDate,
                y = value,
                colour = metrics)) +
     geom_line(size = 1) +

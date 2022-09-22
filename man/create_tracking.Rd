@@ -35,7 +35,7 @@ the selected population, with one of the series being a four-week rolling
 average.
 }
 \examples{
-sq_data \%>\%
+pq_data \%>\%
   create_tracking(
     metric = "Collaboration_hours",
     percent = FALSE
