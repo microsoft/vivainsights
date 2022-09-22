@@ -53,8 +53,8 @@
 #'     ncol = 2
 #'     )
 #'
-#' # Return plot of Work week span and cut by `LevelDesignation`
-#' pq_data %>% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
+#' # Return plot of email hours and cut by `LevelDesignation`
+#' pq_data %>% create_line(metric = "Email_hours", hrvar = "LevelDesignation")
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -106,8 +106,8 @@ create_line <- function(data,
   ## Data frame to return
   myTable_return <-
     myTable %>%
-    select(Date, group, all_of(metric)) %>%
-    spread(Date, !!sym(metric))
+    select(MetricDate, group, all_of(metric)) %>%
+    spread(MetricDate, !!sym(metric))
 
   ## Data frame for creating plot
   myTable_plot <-

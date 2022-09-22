@@ -69,8 +69,8 @@ pq_data \%>\%
     ncol = 2
     )
 
-# Return plot of Work week span and cut by `LevelDesignation`
-pq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
+# Return plot of email hours and cut by `LevelDesignation`
+pq_data \%>\% create_line(metric = "Email_hours", hrvar = "LevelDesignation")
 
 }
 \seealso{
