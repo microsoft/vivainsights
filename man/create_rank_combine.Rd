@@ -39,10 +39,10 @@ specified as \code{"combine"}.
 }
 \examples{
 # Use a small sample for faster runtime
-sq_data_small <- dplyr::slice_sample(sq_data, prop = 0.1)
+pq_data_small <- dplyr::slice_sample(pq_data, prop = 0.1)
 
 create_rank_combine(
-  data = sq_data_small,
+  data = pq_data_small,
   metric = "Email_hours"
 )
 
