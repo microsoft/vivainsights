@@ -49,16 +49,16 @@ into the function. The only requirement is that a \code{date_var} is provided fo
 \examples{
 library(dplyr)
 
-# Median `Emails_sent` grouped by `Date`
+# Median `Emails_sent` grouped by `MetricDate`
 # Without Person Averaging
 med_df <-
-  sq_data \%>\%
-  group_by(Date) \%>\%
+  pq_data \%>\%
+  group_by(MetricDate) \%>\%
   summarise(Emails_sent_median = median(Emails_sent))
 
 med_df \%>\%
   create_line_asis(
-    date_var = "Date",
+    date_var = "MetricDate",
     metric = "Emails_sent_median",
     title = "Median Emails Sent",
     subtitle = "Person Averaging Not Applied",

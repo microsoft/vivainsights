@@ -49,14 +49,12 @@ This is a general purpose function that powers all the functions
 in the package that produce 'fizzy drink' / jittered scatter plots.
 }
 \examples{
-# Create a fizzy plot for Work Week Span by Level Designation
-create_fizz(sq_data, metric = "Workweek_span", hrvar = "LevelDesignation", return = "plot")
+# Create a fizzy plot for Collaboration hours by Level Designation
+create_fizz(pq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 
-# Create a summary statistics table for Work Week Span by Organization
-create_fizz(sq_data, metric = "Workweek_span", hrvar = "Organization", return = "table")
+# Create a summary statistics table for Collaboration hours by Organization
+create_fizz(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 
-# Create a fizzy plot for Collaboration Hours by Level Designation
-create_fizz(sq_data, metric = "Collaboration_hours", hrvar = "LevelDesignation", return = "plot")
 }
 \seealso{
 Other Visualization: 
