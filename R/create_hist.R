@@ -50,19 +50,16 @@
 #'
 #' @examples
 #' # Return plot for whole organization
-#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = NULL)
+#' create_hist(pq_data, metric = "Collaboration_hours", hrvar = NULL)
 #'
 #' # Return plot
-#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization")
+#' create_hist(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
 #'
-#' # Return plot but coerce plot to two columns
-#' create_hist(sq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 2)
+#' # Return plot but coerce plot to 3 columns
+#' create_hist(pq_data, metric = "Collaboration_hours", hrvar = "Organization", ncol = 3)
 #'
 #' # Return summary table
-#' create_hist(sq_data,
-#'             metric = "Collaboration_hours",
-#'             hrvar = "Organization",
-#'             return = "table")
+#' create_hist(pq_data,  metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 #' @export
 
 create_hist <- function(data,
@@ -74,7 +71,7 @@ create_hist <- function(data,
                         return = "plot") {
 
   ## Check inputs
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           metric,
                           "PersonId")
 
