@@ -77,6 +77,7 @@ anonymize <- anonymise
 #'
 #' @importFrom dplyr mutate
 #' @importFrom dplyr across
+#' @import tidyselect
 #'
 #' @examples
 #' jittered <- jitter_metrics(sq_data, cols = "Collaboration_hours")
@@ -107,7 +108,7 @@ jitter_metrics <- function(data, cols = NULL, ...){
     data %>%
       mutate(
         across(
-          .cols = tidyselect:::where(~is.numeric(.)),
+          .cols = where(~is.numeric(.)),
           .fns = ~abs(jitter(., ...))
         )
       )
