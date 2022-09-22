@@ -56,13 +56,13 @@ in the package that produce faceted line plots.
 }
 \examples{
 # Return plot of Email Hours
-sq_data \%>\% create_line(metric = "Email_hours", return = "plot")
+pq_data \%>\% create_line(metric = "Email_hours", return = "plot")
 
 # Return plot of Collaboration Hours
-sq_data \%>\% create_line(metric = "Collaboration_hours", return = "plot")
+pq_data \%>\% create_line(metric = "Collaboration_hours", return = "plot")
 
 # Return plot but coerce plot to two columns
-sq_data \%>\%
+pq_data \%>\%
   create_line(
     metric = "Collaboration_hours",
     hrvar = "Organization",
@@ -70,7 +70,7 @@ sq_data \%>\%
     )
 
 # Return plot of Work week span and cut by `LevelDesignation`
-sq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
+pq_data \%>\% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
 
 }
 \seealso{

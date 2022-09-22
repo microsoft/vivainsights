@@ -40,13 +40,13 @@
 #'
 #' @examples
 #' # Return plot of Email Hours
-#' sq_data %>% create_line(metric = "Email_hours", return = "plot")
+#' pq_data %>% create_line(metric = "Email_hours", return = "plot")
 #'
 #' # Return plot of Collaboration Hours
-#' sq_data %>% create_line(metric = "Collaboration_hours", return = "plot")
+#' pq_data %>% create_line(metric = "Collaboration_hours", return = "plot")
 #'
 #' # Return plot but coerce plot to two columns
-#' sq_data %>%
+#' pq_data %>%
 #'   create_line(
 #'     metric = "Collaboration_hours",
 #'     hrvar = "Organization",
@@ -54,7 +54,7 @@
 #'     )
 #'
 #' # Return plot of Work week span and cut by `LevelDesignation`
-#' sq_data %>% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
+#' pq_data %>% create_line(metric = "Workweek_span", hrvar = "LevelDesignation")
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -70,7 +70,7 @@ create_line <- function(data,
                         return = "plot"){
 
   ## Check inputs
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           metric,
                           "PersonId")
 
@@ -90,16 +90,16 @@ create_line <- function(data,
 
   myTable <-
     data %>%
-    mutate(Date = as.Date(Date, "%m/%d/%Y")) %>%
+    mutate(MetricDate = as.Date(MetricDate, "%m/%d/%Y")) %>%
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
-    select(PersonId, Date, group, all_of(metric)) %>%
+    select(PersonId, MetricDate, group, all_of(metric)) %>%
     group_by(group) %>%
     mutate(Employee_Count = n_distinct(PersonId)) %>%
     filter(Employee_Count >= mingroup)  # Keep only groups above privacy threshold
 
   myTable <-
     myTable %>%
-    group_by(Date, group) %>%
+    group_by(MetricDate, group) %>%
     summarize(Employee_Count = mean(Employee_Count),
               !!sym(metric) := mean(!!sym(metric)))
 
@@ -112,8 +112,8 @@ create_line <- function(data,
   ## Data frame for creating plot
   myTable_plot <-
     myTable %>%
-    select(Date, group, all_of(metric)) %>%
-    group_by(Date, group) %>%
+    select(MetricDate, group, all_of(metric)) %>%
+    group_by(MetricDate, group) %>%
     summarise_at(vars(all_of(metric)), ~mean(., na.rm = TRUE)) %>%
     ungroup()
 
@@ -121,7 +121,7 @@ create_line <- function(data,
   return_plot <- function(){
 
     myTable_plot %>%
-      ggplot(aes(x = Date, y = !!sym(metric))) +
+      ggplot(aes(x = MetricDate, y = !!sym(metric))) +
       geom_line(colour = "#1d627e") +
       facet_wrap(.~group, ncol = ncol) +
       scale_fill_gradient(name="Hours", low = "white", high = "red") +
@@ -136,7 +136,7 @@ create_line <- function(data,
                             tolower(clean_nm),
                             "by",
                             tolower(camel_clean(hrvar))),
-           x = "Date",
+           x = "MetricDate",
            y = "Weekly hours",
            caption = extract_date_range(data, return = "text")) +
       ylim(0, NA) # Set origin to zero
