@@ -1,33 +1,37 @@
-# Project
+## Analyze and Visualize Viva Leader Insights data
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
 
-As the maintainer of this project, please make a few updates:
+## With the **vivainsights** package, you can...
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+1. **Run prebuilt analysis and visualizations** off advanced insights data with settings for HR variables, privacy threshold, etc.
 
-## Contributing
+2. **Generate prebuilt interactive HTML reports**, which cover specific areas e.g. collaboration, connectivity 
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+3. Leverage **advanced analytics functions**, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+4. Integrate analysis of Leader Insights data with your R workflow seamlessly
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Related repositories
 
-## Trademarks
+- [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace)
+- [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
+- [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)
+- [Viva Insights OData Query Download](https://github.com/microsoft/vivainsights-odatadl)
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+---
+
+## Code of Conduct
+
+We would ask you to please read the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) prior to engaging with this package.
+
+
+**Trademarks** 
+
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/). Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.
+
+---
+
+## Finding this project useful? 
+
+:star: Please star this repository to keep us going! 
