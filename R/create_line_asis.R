@@ -54,7 +54,7 @@
 #'
 #' @export
 create_line_asis <- function(data,
-                            date_var = "Date",
+                            date_var = "MetricDate",
                             metric,
                             title = NULL,
                             subtitle = NULL,

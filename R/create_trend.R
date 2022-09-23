@@ -67,7 +67,7 @@ create_trend <- function(data,
                          legend_title = "Hours"){
 
   ## Check inputs
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           metric,
                           "PersonId")
 
@@ -89,24 +89,24 @@ create_trend <- function(data,
     data %>%
     mutate(Date = as.Date(Date, "%m/%d/%Y")) %>%
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
-    select(PersonId, Date, group, !!sym(metric)) %>%
+    select(PersonId, MetricDate, group, !!sym(metric)) %>%
     group_by(group) %>%
     mutate(Employee_Count = n_distinct(PersonId)) %>%
     filter(Employee_Count >= mingroup)  # Keep only groups above privacy threshold
 
   myTable <-
     myTable %>%
-    group_by(Date, group) %>%
+    group_by(MetricDate, group) %>%
     summarize(Employee_Count = mean(Employee_Count, na.rm = TRUE),
               !!sym(metric) := mean(!!sym(metric), na.rm = TRUE))
 
-  myTable_plot <- myTable %>% select(Date, group, !!sym(metric))
+  myTable_plot <- myTable %>% select(MetricDate, group, !!sym(metric))
 
-  myTable_return <-  myTable_plot %>% tidyr::spread(Date, !!sym(metric))
+  myTable_return <-  myTable_plot %>% tidyr::spread(MetricDate, !!sym(metric))
 
   plot_object <-
     myTable_plot %>%
-    ggplot(aes(x = Date , y = group , fill = !!sym(metric))) +
+    ggplot(aes(x = MetricDate , y = group , fill = !!sym(metric))) +
     geom_tile(height=.5) +
     scale_x_date(position = "top") +
     scale_fill_gradientn(name = legend_title,
@@ -115,7 +115,7 @@ create_trend <- function(data,
     theme(axis.line.y = element_blank(), axis.title.y = element_blank()) +
     labs(title = clean_nm,
          subtitle = paste("Hotspots by", tolower(camel_clean(hrvar)))) +
-    xlab("Date") +
+    xlab("MetricDate") +
     ylab(hrvar) +
     labs(caption = extract_date_range(data, return = "text"))
 

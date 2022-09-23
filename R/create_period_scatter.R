@@ -62,10 +62,10 @@ create_period_scatter <- function(data,
                                   hrvar = "Organization",
                                   metric_x = "Multitasking_meeting_hours",
                                   metric_y = "Meeting_hours",
-                                  before_start = min(as.Date(data$Date, "%m/%d/%Y")),
+                                  before_start = min(as.Date(data$MetricDate, "%m/%d/%Y")),
                                   before_end,
                                   after_start = as.Date(before_end) + 1,
-                                  after_end = max(as.Date(data$Date, "%m/%d/%Y")),
+                                  after_end = max(as.Date(data$MetricDate, "%m/%d/%Y")),
                                   before_label = "Period 1",
                                   after_label = "Period 2",
                                   mingroup = 5,
@@ -73,7 +73,7 @@ create_period_scatter <- function(data,
 
   ## Check inputs
   ## Update these column names as per appropriate
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           hrvar,
                           "PersonId")
 
@@ -89,7 +89,7 @@ create_period_scatter <- function(data,
   daterange_2_end <- as.Date(after_end)
 
   # Fix dates format for WpA Queries
-  WpA_dataset <- data %>% mutate(Date = as.Date(Date, "%m/%d/%Y"))
+  WpA_dataset <- data %>% mutate(Date = as.Date(MetricDate, "%m/%d/%Y"))
 
   # Check for dates in data file
   if (daterange_1_start < min(WpA_dataset$Date) |
