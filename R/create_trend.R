@@ -87,7 +87,7 @@ create_trend <- function(data,
 
   myTable <-
     data %>%
-    mutate(Date = as.Date(Date, "%m/%d/%Y")) %>%
+    mutate(MetricDate = as.Date(MetricDate, "%m/%d/%Y")) %>%
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
     select(PersonId, MetricDate, group, !!sym(metric)) %>%
     group_by(group) %>%
@@ -115,7 +115,7 @@ create_trend <- function(data,
     theme(axis.line.y = element_blank(), axis.title.y = element_blank()) +
     labs(title = clean_nm,
          subtitle = paste("Hotspots by", tolower(camel_clean(hrvar)))) +
-    xlab("MetricDate") +
+    xlab("Date") +
     ylab(hrvar) +
     labs(caption = extract_date_range(data, return = "text"))
 
