@@ -1,3 +1,5 @@
+# vivainsights <img src="https://raw.githubusercontent.com/microsoft/vivainsights/main/man/figures/logo.png" align="right" width=15% />
+
 ## Analyze and Visualize Viva Leader Insights data
 
 This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
