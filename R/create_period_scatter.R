@@ -48,10 +48,10 @@
 #' # Return plot
 #' create_period_scatter(pq_data,
 #'                       hrvar = "LevelDesignation",
-#'                       before_start = "2019-11-03",
-#'                       before_end = "2019-12-31",
-#'                       after_start = "2020-01-01",
-#'                       after_end = "2020-01-26")
+#'                       before_start = "2022-01-01",
+#'                       before_end = "2022-02-28",
+#'                       after_start = "2022-03-01",
+#'                       after_end = "2022-05-31")
 #'
 #' # Return a summary table
 #' create_period_scatter(pq_data, before_end = "2019-12-31", return = "table")
