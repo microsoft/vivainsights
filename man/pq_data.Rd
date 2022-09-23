@@ -200,9 +200,5 @@ data frame.
 \description{
 A dataset generated from a Person Query from Viva Insights.
 }
-\seealso{
-Other Data: 
-\code{\link{sq_data}}
-}
 \concept{Data}
 \keyword{datasets}
