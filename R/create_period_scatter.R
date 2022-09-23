@@ -54,7 +54,7 @@
 #'                       after_end = "2022-09-04")
 #'
 #' # Return a summary table
-#' create_period_scatter(pq_data, before_end = "2019-12-31", return = "table")
+#' create_period_scatter(pq_data, before_end = "2022-01-01", return = "table")
 #'
 #'
 #' @export
