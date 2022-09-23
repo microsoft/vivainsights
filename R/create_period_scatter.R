@@ -60,7 +60,7 @@
 #' @export
 create_period_scatter <- function(data,
                                   hrvar = "Organization",
-                                  metric_x = "Multitasking_meeting_hours",
+                                  metric_x = "Large_and_long_meeting_hours",
                                   metric_y = "Meeting_hours",
                                   before_start = min(as.Date(data$MetricDate, "%m/%d/%Y")),
                                   before_end,
@@ -165,7 +165,7 @@ create_period_scatter <- function(data,
     geom_point(alpha = 0.5) +
     scale_size(range = c(1, 20)) +
     facet_wrap(.~Period) +
-    guides(size = FALSE) +
+    guides(size = "none") +
 	theme_wpa_basic() +
     theme(legend.position = "bottom",
 	strip.background = element_rect(color = "#1d627e",
