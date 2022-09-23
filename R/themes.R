@@ -3,10 +3,10 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Main theme for 'wpa' visualisations
+#' @title Main theme for 'vivainsights' visualisations
 #'
 #' @description
-#' A theme function applied to 'ggplot' visualisations in 'wpa'.
+#' A theme function applied to 'ggplot' visualisations in 'vivainsights'.
 #' Install and load 'extrafont' to use custom fonts for plotting.
 #'
 #' @param font_size Numeric value that prescribes the base font size
@@ -65,10 +65,10 @@ theme_wpa <- function(font_size = 12, font_family = "Segoe UI"){
           strip.text = text_small_dark)
 }
 
-#' @title Basic theme for 'wpa' visualisations
+#' @title Basic theme for 'vivainsights' visualisations
 #'
 #' @description
-#' A theme function applied to 'ggplot' visualisations in 'wpa'.
+#' A theme function applied to 'ggplot' visualisations in 'vivainsights'.
 #' Based on `theme_wpa()` but has no font requirements.
 #'
 #' @param font_size Numeric value that prescribes the base font size

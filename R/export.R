@@ -3,10 +3,10 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Export 'wpa' outputs to CSV, clipboard, or save as images
+#' @title Export 'vivainsights' outputs to CSV, clipboard, or save as images
 #'
 #' @description
-#' A general use function to export 'wpa' outputs to CSV, clipboard, or save as
+#' A general use function to export 'vivainsights' outputs to CSV, clipboard, or save as
 #' images. By default, `export()` copies a data frame to the clipboard. If the
 #' input is a 'ggplot' object, the default behaviour is to export a PNG.
 #'
@@ -46,7 +46,7 @@
 
 export <- function(x,
                    method = "clipboard",
-                   path = "wpa export",
+                   path = "insights export",
                    timestamp = TRUE,
                    width = 12,
                    height = 9){
