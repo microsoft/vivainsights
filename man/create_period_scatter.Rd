@@ -7,7 +7,7 @@
 create_period_scatter(
   data,
   hrvar = "Organization",
-  metric_x = "Multitasking_meeting_hours",
+  metric_x = "Large_and_long_meeting_hours",
   metric_y = "Meeting_hours",
   before_start = min(as.Date(data$MetricDate, "\%m/\%d/\%Y")),
   before_end,
