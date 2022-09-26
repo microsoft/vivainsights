@@ -8,11 +8,12 @@ This is an R package for analyzing and visualizing data from [Microsoft Viva Adv
 
 1. **Run prebuilt analysis and visualizations** off advanced insights data with settings for HR variables, privacy threshold, etc.
 
-2. **Generate prebuilt interactive HTML reports**, which cover specific areas e.g. collaboration, connectivity 
+2. Leverage **advanced analytics functions** which are built for Viva Insights metrics
 
-3. Leverage **advanced analytics functions**, such as text mining and hierarchical clustering, which are built for Workplace Analytics metrics
+43 Integrate analysis of Viva Insights data with your R workflow seamlessly
 
-4. Integrate analysis of Leader Insights data with your R workflow seamlessly
+This library is compatible with the latest implementation of the Viva Insights Analyst Workbench. For the R library compatible with the legacy implementation, please visit <https://microsoft.github.io/wpa/> or <https://github.com/microsoft/wpa/> for the GitHub repository. 
+
 
 ## Related repositories
 
