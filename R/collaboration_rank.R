@@ -24,18 +24,16 @@
 #' @examples
 #' # Return rank table
 #' collaboration_rank(
-#'   data = sq_data,
+#'   data = pq_data,
 #'   return = "table"
 #' )
 #'
 #' # Return plot
 #' collaboration_rank(
-#'   data = sq_data,
+#'   data = pq_data,
 #'   return = "plot"
 #' )
 #'
-#'
-#' @examples
 #' # Return plot
 #' collaboration_rank(pq_data, return = "plot")
 #'
