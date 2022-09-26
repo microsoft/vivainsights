@@ -37,10 +37,10 @@
 #'
 #' @examples
 #' # Return a bar plot
-#' hrvar_trend(sq_data, hrvar = "LevelDesignation")
+#' hrvar_trend(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return a summary table
-#' hrvar_trend(sq_data, hrvar = "LevelDesignation", return = "table")
+#' hrvar_trend(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #'@export
 
@@ -54,10 +54,10 @@ hrvar_trend <- function(data,
 
     summary_table <-
       data %>%
-      select(PersonId, Date, all_of(hrvar)) %>%
+      select(PersonId, MetricDate, all_of(hrvar)) %>%
       mutate(!!sym(hrvar_flat) := select(., hrvar) %>%
                apply(1, paste, collapse = ", ")) %>%
-      group_by(Date, !!sym(hrvar_flat)) %>%
+      group_by(MetricDate, !!sym(hrvar_flat)) %>%
       summarise(n = n_distinct(PersonId)) %>%
       arrange(desc(n))
 
@@ -68,8 +68,8 @@ hrvar_trend <- function(data,
 
     summary_table <-
       data %>%
-      select(PersonId, Date, all_of(hrvar)) %>%
-      group_by(Date, !!sym(hrvar)) %>%
+      select(PersonId, MetricDate, all_of(hrvar)) %>%
+      group_by(MetricDate, !!sym(hrvar)) %>%
       summarise(n = n_distinct(PersonId)) %>%
       arrange(desc(n))
 

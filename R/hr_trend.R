@@ -28,10 +28,10 @@
 #'
 #' @examples
 #' # Return plot
-#' hr_trend(dv_data)
+#' hr_trend(pq_data)
 #'
 #' # Return summary table
-#' hr_trend(dv_data, return = "table")
+#' hr_trend(pq_data, return = "table")
 #'
 #' @family Visualization
 #' @family Data Validation
@@ -39,7 +39,7 @@
 #' @export
 hr_trend <- function(data, return = "plot"){
 
-  data$Date <- as.Date(data$Date, format = "%m/%d/%Y")
+  data$Date <- as.Date(data$MetricDate, format = "%m/%d/%Y")
 
   ## Date range data frame
   myPeriod <- extract_date_range(data)
