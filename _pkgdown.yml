@@ -15,9 +15,9 @@ navbar:
         text: Analyst Guide
         menu:
          - text: Introduction
-           href: guide/intro.html
+           href: analyst_guide_intro.html
          - text: Getting Started
-           href: guide/getting_started.html
+           href: analyst_guide_getting_started.html
 
 footer:
   structure:
