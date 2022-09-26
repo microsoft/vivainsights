@@ -1,4 +1,14 @@
 url: https://microsoft.github.io/vivainsights/
 template:
   bootstrap: 5
+  bootswatch: quartz
 
+navbar:
+  structure:
+    left:  [reference, news]
+    right: [search, github]
+
+footer:
+  structure:
+    left: developed_by
+    right: [authors, built_with]
