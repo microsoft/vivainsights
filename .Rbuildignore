@@ -12,4 +12,3 @@ man-roxygen
 ^docs$
 ^pkgdown$
 ^\.github$
-^guide$
