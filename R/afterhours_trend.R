@@ -20,10 +20,10 @@
 #'
 #' @examples
 #' # Run plot
-#' afterhours_trend(sq_data)
+#' afterhours_trend(pq_data)
 #'
 #' # Run table
-#' afterhours_trend(sq_data, hrvar = "LevelDesignation", return = "table")
+#' afterhours_trend(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @return
 #' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.

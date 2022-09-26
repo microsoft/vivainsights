@@ -22,10 +22,10 @@
 #'
 #' @examples
 #' # Return plot
-#' afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
+#' afterhours_fizz(pq_data, hrvar = "LevelDesignation", return = "plot")
 #'
 #' # Return summary table
-#' afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
+#' afterhours_fizz(pq_data, hrvar = "Organization", return = "table")
 #' @export
 
 afterhours_fizz <- function(data,

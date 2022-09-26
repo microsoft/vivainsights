@@ -34,13 +34,13 @@
 #'
 #' @examples
 #' # Return plot
-#' afterhours_dist(sq_data, hrvar = "Organization")
+#' afterhours_dist(pq_data, hrvar = "Organization")
 #'
 #' # Return summary table
-#' afterhours_dist(sq_data, hrvar = "Organization", return = "table")
+#' afterhours_dist(pq_data, hrvar = "Organization", return = "table")
 #'
 #' # Return result with a custom specified breaks
-#' afterhours_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
+#' afterhours_dist(pq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 #' @export
 afterhours_dist <- function(data,
                             hrvar = "Organization",

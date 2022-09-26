@@ -29,7 +29,14 @@
 #' @return
 #' When 'table' is passed in `return`, a summary table is returned as a data frame.
 #'
+#' @examples
+#' # Return plot
+#' afterhours_rank(pq_data, return = "plot")
+#'
+#' # Return summary table
+#' afterhours_fizz(pq_data, return = "table")
 #' @export
+
 
 afterhours_rank <- function(data,
                             hrvar = extract_hr(data),
