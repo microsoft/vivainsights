@@ -61,7 +61,7 @@ one2one_freq <- function(data,
                          mingroup = 5,
                          return = "plot",
                          mode = "dist",
-                         sort_by = "Quarterly or less\n(>10 weeks)") {
+                         sort_by = NULL) {
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){

@@ -10,7 +10,7 @@ one2one_freq(
   mingroup = 5,
   return = "plot",
   mode = "dist",
-  sort_by = "Quarterly or less\\n(>10 weeks)"
+  sort_by = NULL
 )
 }
 \arguments{
