@@ -33,10 +33,10 @@ for unusual license growth / declines over time.
 }
 \examples{
 # Return plot
-hr_trend(dv_data)
+hr_trend(pq_data)
 
 # Return summary table
-hr_trend(dv_data, return = "table")
+hr_trend(pq_data, return = "table")
 
 }
 \seealso{

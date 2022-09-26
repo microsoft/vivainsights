@@ -49,7 +49,7 @@ function for more detail on the specific HR attribute of interest.
 }
 \examples{
 # Return a summary table of all HR attributes
-hrvar_count_all(sq_data, return = "table")
+hrvar_count_all(pq_data, return = "table")
 
 }
 \seealso{

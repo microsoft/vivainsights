@@ -38,10 +38,10 @@ week by week heatmap bar plot.
 }
 \examples{
 # Return a bar plot
-hrvar_trend(sq_data, hrvar = "LevelDesignation")
+hrvar_trend(pq_data, hrvar = "LevelDesignation")
 
 # Return a summary table
-hrvar_trend(sq_data, hrvar = "LevelDesignation", return = "table")
+hrvar_trend(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{
