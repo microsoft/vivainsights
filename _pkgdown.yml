@@ -9,7 +9,7 @@ navbar:
     right: [search, github]
   components:
       home:
-        icon: fas fa-home fa-lg
+        icon: fa-regular fa-house
         href: index.html
       guide:
         text: Analyst Guide
