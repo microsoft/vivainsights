@@ -19,7 +19,15 @@
 #' @family Emails
 #'
 #'
+#' @examples
+#' # Run plot
+#' email_trend(pq_data)
+#'
+#' # Run table
+#' email_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @export
+
 
 email_trend <- function(data,
                         hrvar = "Organization",

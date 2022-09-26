@@ -34,7 +34,7 @@
 #' afterhours_rank(pq_data, return = "plot")
 #'
 #' # Return summary table
-#' afterhours_fizz(pq_data, return = "table")
+#' afterhours_rank(pq_data, return = "table")
 #' @export
 
 

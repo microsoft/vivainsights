@@ -9,7 +9,7 @@ email_dist(
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",
-  cut = c(5, 10, 15)
+  cut = c(0.5, 1, 1.5)
 )
 }
 \arguments{
@@ -49,13 +49,13 @@ Additional options available to return a table with distribution elements.
 }
 \examples{
 # Return plot
-email_dist(sq_data, hrvar = "Organization")
+email_dist(pq_data, hrvar = "Organization")
 
 # Return summary table
-email_dist(sq_data, hrvar = "Organization", return = "table")
+email_dist(pq_data, hrvar = "Organization", return = "table")
 
 # Return result with a custom specified breaks
-email_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
+email_dist(pq_data, hrvar = "LevelDesignation", cut = c(1, 2, 3))
 
 }
 \seealso{

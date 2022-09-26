@@ -32,6 +32,14 @@ Additional options available to return a summary table.
 \details{
 Uses the metric \code{Email_hours}.
 }
+\examples{
+# Run plot
+email_trend(pq_data)
+
+# Run table
+email_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+
+}
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_dist}()},

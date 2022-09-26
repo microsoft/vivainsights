@@ -39,10 +39,10 @@ Additional options available to return a table with distribution elements.
 \examples{
 
 # Return plot
-email_fizz(sq_data, hrvar = "Organization", return = "plot")
+email_fizz(pq_data, hrvar = "Organization", return = "plot")
 
 # Return summary table
-email_fizz(sq_data, hrvar = "Organization", return = "table")
+email_fizz(pq_data, hrvar = "Organization", return = "table")
 
 }
 \seealso{

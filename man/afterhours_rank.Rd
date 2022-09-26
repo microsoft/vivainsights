@@ -63,7 +63,7 @@ See \code{create_rank()} for applying the same analysis to a different metric.
 afterhours_rank(pq_data, return = "plot")
 
 # Return summary table
-afterhours_fizz(pq_data, return = "table")
+afterhours_rank(pq_data, return = "table")
 }
 \seealso{
 Other Visualization: 

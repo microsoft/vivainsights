@@ -19,10 +19,10 @@
 #'
 #' @examples
 #' # Return a line plot
-#' email_line(sq_data, hrvar = "LevelDesignation")
+#' email_line(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return summary table
-#' email_line(sq_data, hrvar = "LevelDesignation", return = "table")
+#' email_line(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 email_line <- function(data,

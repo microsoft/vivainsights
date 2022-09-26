@@ -34,6 +34,13 @@
 #'   return = "plot"
 #' )
 #'
+#' @examples
+#' # Return plot
+#' email_rank(pq_data, return = "plot")
+#'
+#' # Return summary table
+#' email_rank(pq_data, return = "table")
+#'
 #' @export
 
 email_rank <- function(data,
