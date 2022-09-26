@@ -34,13 +34,13 @@
 #'
 #' @examples
 #' # Heatmap plot is returned by default
-#' keymetrics_scan(sq_data)
+#' keymetrics_scan(pq_data)
 #'
 #' # Heatmap plot with custom colours
-#' keymetrics_scan(sq_data, low = "purple", high = "yellow")
+#' keymetrics_scan(pq_data, low = "purple", high = "yellow")
 #'
 #' # Return summary table
-#' keymetrics_scan(sq_data, hrvar = "LevelDesignation", return = "table")
+#' keymetrics_scan(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 

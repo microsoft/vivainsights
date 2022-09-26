@@ -46,12 +46,12 @@
 #'
 #' # Compute summary table
 #' out_df <-
-#'   sq_data %>%
+#'   pq_data %>%
 #'   group_by(Organization) %>%
 #'   summarise(
 #'     across(
 #'       .cols = c(
-#'         Workweek_span,
+#'         Email_hours,
 #'         Collaboration_hours
 #'         ),
 #'       .fns = ~median(., na.rm = TRUE)
@@ -59,7 +59,7 @@
 #'       .groups = "drop"
 #'     ) %>%
 #' tidyr::pivot_longer(
-#'   cols = c("Workweek_span", "Collaboration_hours"),
+#'   cols = c("Email_hours", "Collaboration_hours"),
 #'   names_to = "metrics"
 #' )
 #'
