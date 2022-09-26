@@ -20,10 +20,10 @@
 #'
 #' @examples
 #' # Return plot
-#' collaboration_fizz(sq_data, hrvar = "Organization", return = "plot")
+#' collaboration_fizz(pq_data, hrvar = "Organization", return = "plot")
 #'
 #' # Return summary table
-#' collaboration_fizz(sq_data, hrvar = "Organization", return = "table")
+#' collaboration_fizz(pq_data, hrvar = "Organization", return = "table")
 #'
 #' @export
 
@@ -31,9 +31,6 @@ collaboration_fizz <- function(data,
                        hrvar = "Organization",
                        mingroup = 5,
                        return = "plot"){
-
-  ## Handle variable name consistency
-  data <- qui_stan_c(data)
 
   create_fizz(data = data,
               metric = "Collaboration_hours",

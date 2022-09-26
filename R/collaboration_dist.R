@@ -20,10 +20,10 @@
 #'
 #' @examples
 #' # Return plot
-#' collaboration_dist(sq_data, hrvar = "Organization")
+#' collaboration_dist(pq_data, hrvar = "Organization")
 #'
 #' # Return summary table
-#' collaboration_dist(sq_data, hrvar = "Organization", return = "table")
+#' collaboration_dist(pq_data, hrvar = "Organization", return = "table")
 #' @export
 
 collaboration_dist <- function(data,
@@ -31,9 +31,6 @@ collaboration_dist <- function(data,
                                mingroup = 5,
                                return = "plot",
                                cut = c(15, 20, 25)) {
-
-  ## Handle variable name consistency
-  data <- qui_stan_c(data)
 
   create_dist(data = data,
               metric = "Collaboration_hours",

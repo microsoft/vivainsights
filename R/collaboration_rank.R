@@ -35,7 +35,14 @@
 #' )
 #'
 #'
+#' @examples
+#' # Return plot
+#' collaboration_rank(pq_data, return = "plot")
+#'
+#' # Return summary table
+#' collaboration_rank(pq_data, return = "table")
 #' @export
+
 
 collaboration_rank <- function(data,
                                hrvar = extract_hr(data),
@@ -43,9 +50,6 @@ collaboration_rank <- function(data,
                                mode = "simple",
                                plot_mode = 1,
                                return = "plot"){
-
-  ## Handle variable name consistency
-  data <- qui_stan_c(data)
 
   create_rank(data,
               metric = "Collaboration_hours",

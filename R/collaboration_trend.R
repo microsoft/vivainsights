@@ -21,15 +21,19 @@
 #' Returns a 'ggplot' object by default, where 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #'
+#' @examples
+#' # Run plot
+#' collaboration_trend(pq_data)
+#'
+#' # Run table
+#' collaboration_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @export
 
 collaboration_trend <- function(data,
                                 hrvar = "Organization",
                                 mingroup = 5,
                                 return = "plot"){
-
-  ## Handle variable name consistency
-  data <- qui_stan_c(data)
 
   create_trend(data,
                metric = "Collaboration_hours",

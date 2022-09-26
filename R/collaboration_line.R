@@ -21,10 +21,10 @@
 #'
 #' @examples
 #' # Return a line plot
-#' collaboration_line(sq_data, hrvar = "LevelDesignation")
+#' collaboration_line(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return summary table
-#' collaboration_line(sq_data, hrvar = "LevelDesignation", return = "table")
+#' collaboration_line(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 
@@ -32,9 +32,6 @@ collaboration_line <- function(data,
                                 hrvar = "Organization",
                                 mingroup = 5,
                                 return = "plot"){
-
-  ## Handle variable name consistency
-  data <- qui_stan_c(data)
 
   ## Inherit arguments
   create_line(data = data,

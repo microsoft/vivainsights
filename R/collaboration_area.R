@@ -39,13 +39,13 @@
 #'
 #' @examples
 #' # Return plot with total (default)
-#' collaboration_area(sq_data)
+#' collaboration_area(pq_data)
 #'
 #' # Return plot with hrvar split
-#' collaboration_area(sq_data, hrvar = "Organization")
+#' collaboration_area(pq_data, hrvar = "Organization")
 #'
 #' # Return summary table
-#' collaboration_area(sq_data, return = "table")
+#' collaboration_area(pq_data, return = "table")
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
@@ -59,9 +59,8 @@ collaboration_area <- function(data,
                                mingroup=5,
                                return = "plot"){
 
-  ## Handle variable name consistency
-  data <- qui_stan_c(data)
-  data <- qui_stan_im(data)
+  ## Handle date name
+  data <- data %>% rename(Date = MetricDate)
 
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
@@ -120,7 +119,7 @@ collaboration_area <- function(data,
   myTable_long <-
     myTable %>%
     select(Date, group, ends_with("_hours")) %>%
-    gather(Metric, Hours, -Date, -group) %>%
+    tidyr::gather(Metric, Hours, -Date, -group) %>%
     mutate(Metric = sub(pattern = "_hours", replacement = "", x = Metric))
 
   ## Levels
