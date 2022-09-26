@@ -37,7 +37,7 @@ external_line <- function(data,
 
 
   ## Inherit arguments
-  create_line(data = plot_data,
+  create_line(data = data,
               metric = "External_collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,

@@ -38,10 +38,10 @@ Additional options available to return a table with distribution elements.
 }
 \examples{
 # Return plot
-one2one_fizz(sq_data, hrvar = "Organization", return = "plot")
+one2one_fizz(pq_data, hrvar = "Organization", return = "plot")
 
 # Return a summary table
-one2one_fizz(sq_data, hrvar = "Organization", return = "table")
+one2one_fizz(pq_data, hrvar = "Organization", return = "table")
 
 }
 \seealso{

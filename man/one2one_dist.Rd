@@ -53,10 +53,10 @@ Additional options available to return a table with distribution elements.
 }
 \examples{
 # Return plot
-one2one_dist(sq_data, hrvar = "Organization", return = "plot")
+one2one_dist(pq_data, hrvar = "Organization", return = "plot")
 
 # Return summary table
-one2one_dist(sq_data, hrvar = "Organization", return = "table")
+one2one_dist(pq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Visualization: 

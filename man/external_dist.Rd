@@ -59,7 +59,7 @@ external_dist(pq_data, hrvar = "Organization")
 external_dist(pq_data, hrvar = "Organization", return = "table")
 
 # Return result with a custom specified breaks
-external_dist(pq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
+external_dist(pq_data, hrvar = "LevelDesignation", cut = c(2, 4, 6))
 
 }
 \seealso{

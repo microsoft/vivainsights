@@ -75,7 +75,7 @@ one2one_freq <- function(data,
   expanded_data <-
     data %>%
     mutate(
-      Meetings_with_manager_1_on_1 = Meetings_with_manager_1_on_1 > 0
+      Meetings_with_manager_1_on_1 = Meeting_hours_with_manager_1_1 > 0
       ) %>%
     group_by(PersonId)  %>%
     mutate(

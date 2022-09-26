@@ -42,10 +42,10 @@ available to return a summary table.
 }
 \examples{
 # Return a ggplot bar chart
-one2one_sum(sq_data, hrvar = "LevelDesignation")
+one2one_sum(pq_data, hrvar = "LevelDesignation")
 
 # Return a summary table
-one2one_sum(sq_data, hrvar = "LevelDesignation", return = "table")
+one2one_sum(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{

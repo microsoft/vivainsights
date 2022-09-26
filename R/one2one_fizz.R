@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' # Return plot
-#' one2one_fizz(sq_data, hrvar = "Organization", return = "plot")
+#' one2one_fizz(pq_data, hrvar = "Organization", return = "plot")
 #'
 #' # Return a summary table
-#' one2one_fizz(sq_data, hrvar = "Organization", return = "table")
+#' one2one_fizz(pq_data, hrvar = "Organization", return = "table")
 #'
 #' @export
 
@@ -32,7 +32,7 @@ one2one_fizz <- function(data,
 
   cleaned_data <-
     data %>%
-    mutate(`Scheduled 1:1 meeting minutes with manager` = Meeting_hours_with_manager_1_on_1 * 60)
+    mutate(`Scheduled 1:1 meeting minutes with manager` = Meeting_hours_with_manager_1_1 * 60)
 
   create_fizz(data = cleaned_data,
               metric = "Scheduled 1:1 meeting minutes with manager",

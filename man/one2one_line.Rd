@@ -38,14 +38,14 @@ with a separate panel per value in the HR attribute.
 Additional options available to return a summary table.
 }
 \details{
-Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
+Uses the metric \code{Meeting_hours_with_manager_1_1}.
 }
 \examples{
 # Return a line plot
-one2one_line(sq_data, hrvar = "LevelDesignation")
+one2one_line(pq_data, hrvar = "LevelDesignation")
 
 # Return summary table
-one2one_line(sq_data, hrvar = "LevelDesignation", return = "table")
+one2one_line(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{

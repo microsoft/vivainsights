@@ -46,7 +46,7 @@ external_rank <- function(data,
                             return = "plot"){
 
  
-  plot_data %>%
+  data %>%
     create_rank(metric = "External_collaboration_hours",
                 hrvar = hrvar,
                 mingroup = mingroup,

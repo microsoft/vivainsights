@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' # Return a ggplot bar chart
-#' one2one_sum(sq_data, hrvar = "LevelDesignation")
+#' one2one_sum(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return a summary table
-#' one2one_sum(sq_data, hrvar = "LevelDesignation", return = "table")
+#' one2one_sum(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 
@@ -32,7 +32,7 @@ one2one_sum <- function(data,
 
   cleaned_data <-
     data %>%
-    mutate(`Scheduled 1:1 meeting minutes with manager` = Meeting_hours_with_manager_1_on_1 * 60)
+    mutate(`Scheduled 1:1 meeting minutes with manager` = Meeting_hours_with_manager_1_1 * 60)
 
 
   create_bar(data = cleaned_data,

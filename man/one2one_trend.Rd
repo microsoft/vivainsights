@@ -30,7 +30,7 @@ returns a week by week heatmap, highlighting the points in time with most
 activity. Additional options available to return a summary table.
 }
 \details{
-Uses the metric \code{Meeting_hours_with_manager_1_on_1}.
+Uses the metric \code{Meeting_hours_with_manager_1_1}.
 }
 \seealso{
 Other Visualization: 

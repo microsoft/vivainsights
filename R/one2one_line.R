@@ -12,7 +12,7 @@
 #' Additional options available to return a summary table.
 #'
 #' @details
-#' Uses the metric `Meeting_hours_with_manager_1_on_1`.
+#' Uses the metric `Meeting_hours_with_manager_1_1`.
 #'
 #' @inheritParams create_line
 #' @inherit create_line return
@@ -22,10 +22,10 @@
 #'
 #' @examples
 #' # Return a line plot
-#' one2one_line(sq_data, hrvar = "LevelDesignation")
+#' one2one_line(pq_data, hrvar = "LevelDesignation")
 #'
 #' # Return summary table
-#' one2one_line(sq_data, hrvar = "LevelDesignation", return = "table")
+#' one2one_line(pq_data, hrvar = "LevelDesignation", return = "table")
 #'
 #' @export
 one2one_line <- function(data,
@@ -34,7 +34,7 @@ one2one_line <- function(data,
                          return = "plot"){
   ## Inherit arguments
   create_line(data = data,
-              metric = "Meeting_hours_with_manager_1_on_1",
+              metric = "Meeting_hours_with_manager_1_1",
               hrvar = hrvar,
               mingroup = mingroup,
               return = return)
