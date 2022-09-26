@@ -12,7 +12,7 @@ This is an R package for analyzing and visualizing data from [Microsoft Viva Adv
 
 43 Integrate analysis of Viva Insights data with your R workflow seamlessly
 
-This library is compatible with the latest implementation of the Viva Insights Analyst Workbench. For the R library compatible with the legacy implementation, please visit <https://microsoft.github.io/wpa/> or <https://github.com/microsoft/wpa/> for the GitHub repository. 
+This library is compatible with the latest implementation of the Viva Insights Analyst Workbench. For the R library compatible with the legacy implementation, please visit the **wpa** package [website](https://microsoft.github.io/wpa/) or [GitHub repository](https://github.com/microsoft/wpa/) . 
 
 
 ## Related repositories
@@ -21,6 +21,7 @@ This library is compatible with the latest implementation of the Viva Insights A
 - [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
 - [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)
 - [Viva Insights OData Query Download](https://github.com/microsoft/vivainsights-odatadl)
+- [Viva Insights R library (legacy)](https://microsoft.github.io/wpa)
 
 ---
 
