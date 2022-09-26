@@ -1,14 +1,27 @@
 url: https://microsoft.github.io/vivainsights/
 template:
   bootstrap: 5
-  bootswatch: quartz
+  bootswatch: zephyr
 
 navbar:
   structure:
-    left:  [reference, news]
+    left:  [home, reference, guide, news]
     right: [search, github]
 
 footer:
   structure:
     left: developed_by
     right: [authors, built_with]
+
+navbar:
+  home:
+      icon: fas fa-home fa-lg
+      href: index.html
+  components:
+      guide:
+       text: Analyst Guide
+       menu:
+       - text: Introduction
+         href: guide/intro.html
+       - text: Getting Started
+         href: guide/getting_started.html
