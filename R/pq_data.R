@@ -191,7 +191,6 @@
 #' \item{FunctionType}{ }
 #' \item{WeekendDays}{ }
 #' \item{IsActive}{ }
-#'
 #'   ...
 #' }
 #' @source \url{https://www.microsoft.com/en-us/microsoft-viva/insights}

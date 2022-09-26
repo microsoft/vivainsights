@@ -184,7 +184,6 @@ A data frame with 15933 rows and 177 variables:
 \item{FunctionType}{ }
 \item{WeekendDays}{ }
 \item{IsActive}{ }
-
 ...
 }
 }

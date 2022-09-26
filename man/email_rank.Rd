@@ -69,21 +69,15 @@ See \code{create_rank()} for applying the same analysis to a different metric.
 \examples{
 # Return rank table
 email_rank(
-  data = sq_data,
+  data = pq_data,
   return = "table"
 )
 
 # Return plot
 email_rank(
-  data = sq_data,
+  data = pq_data,
   return = "plot"
 )
-
-# Return plot
-email_rank(pq_data, return = "plot")
-
-# Return summary table
-email_rank(pq_data, return = "table")
 
 }
 \seealso{

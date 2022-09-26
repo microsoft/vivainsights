@@ -24,22 +24,15 @@
 #' @examples
 #' # Return rank table
 #' email_rank(
-#'   data = sq_data,
+#'   data = pq_data,
 #'   return = "table"
 #' )
 #'
 #' # Return plot
 #' email_rank(
-#'   data = sq_data,
+#'   data = pq_data,
 #'   return = "plot"
 #' )
-#'
-#' @examples
-#' # Return plot
-#' email_rank(pq_data, return = "plot")
-#'
-#' # Return summary table
-#' email_rank(pq_data, return = "table")
 #'
 #' @export
 
