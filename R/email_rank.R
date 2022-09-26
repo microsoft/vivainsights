@@ -21,13 +21,18 @@
 #' @family Visualization
 #' @family Emails
 #'
-#'
 #' @examples
-#' # Return plot
-#' email_rank(pq_data, return = "plot")
+#' # Return rank table
+#' email_rank(
+#'   data = pq_data,
+#'   return = "table"
+#' )
 #'
-#' # Return summary table
-#' email_rank(pq_data, return = "table")
+#' # Return plot
+#' email_rank(
+#'   data = pq_data,
+#'   return = "plot"
+#' )
 #'
 #' @export
 
