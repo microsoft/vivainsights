@@ -21,18 +21,6 @@
 #' @family Visualization
 #' @family Emails
 #'
-#' @examples
-#' # Return rank table
-#' email_rank(
-#'   data = sq_data,
-#'   return = "table"
-#' )
-#'
-#' # Return plot
-#' email_rank(
-#'   data = sq_data,
-#'   return = "plot"
-#' )
 #'
 #' @examples
 #' # Return plot
