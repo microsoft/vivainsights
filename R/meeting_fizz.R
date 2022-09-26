@@ -21,10 +21,10 @@
 #'
 #' @examples
 #' # Return plot
-#' meeting_fizz(sq_data, hrvar = "Organization", return = "plot")
+#' meeting_fizz(pq_data, hrvar = "Organization", return = "plot")
 #'
 #' # Return summary table
-#' meeting_fizz(sq_data, hrvar = "Organization", return = "table")
+#' meeting_fizz(pq_data, hrvar = "Organization", return = "table")
 #' @export
 
 meeting_fizz <- function(data,

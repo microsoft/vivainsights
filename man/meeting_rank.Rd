@@ -68,16 +68,10 @@ See \code{create_rank()} for applying the same analysis to a different metric.
 }
 \examples{
 # Return rank table
-meeting_rank(
-  data = sq_data,
-  return = "table"
-)
+meeting_rank(data = pq_data, return = "table")
 
 # Return plot
-meeting_rank(
-  data = sq_data,
-  return = "plot"
-)
+meeting_rank(data = pq_data, return = "plot")
 
 }
 \seealso{

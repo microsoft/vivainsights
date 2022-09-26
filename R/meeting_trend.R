@@ -14,6 +14,13 @@
 #' @family Visualization
 #' @family Meetings
 #'
+#'
+#' @examples
+#' # Run plot
+#' meeting_trend(pq_data)
+#'
+#' # Run table
+#' meeting_trend(pq_data, hrvar = "LevelDesignation", return = "table")
 #' @export
 
 meeting_trend <- function(data,

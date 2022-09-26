@@ -18,13 +18,13 @@
 #'
 #' @examples
 #' # Return plot
-#' meeting_dist(sq_data, hrvar = "Organization")
+#' meeting_dist(pq_data, hrvar = "Organization")
 #'
 #' # Return summary table
-#' meeting_dist(sq_data, hrvar = "Organization", return = "table")
+#' meeting_dist(pq_data, hrvar = "Organization", return = "table")
 #'
 #' # Return result with a custom specified breaks
-#' meeting_dist(sq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
+#' meeting_dist(pq_data, hrvar = "LevelDesignation", cut = c(4, 7, 9))
 #'
 #' @export
 

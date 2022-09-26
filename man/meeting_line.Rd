@@ -39,10 +39,10 @@ Additional options available to return a summary table.
 }
 \examples{
 # Return a line plot
-meeting_line(sq_data, hrvar = "LevelDesignation")
+meeting_line(pq_data, hrvar = "LevelDesignation")
 
 # Return summary table
-meeting_line(sq_data, hrvar = "LevelDesignation", return = "table")
+meeting_line(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{

@@ -32,6 +32,13 @@ options available to return a summary table.
 \details{
 Uses the metric \code{Meeting_hours}.
 }
+\examples{
+# Run plot
+meeting_trend(pq_data)
+
+# Run table
+meeting_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+}
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_dist}()},
