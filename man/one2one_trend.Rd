@@ -32,6 +32,14 @@ activity. Additional options available to return a summary table.
 \details{
 Uses the metric \code{Meeting_hours_with_manager_1_1}.
 }
+\examples{
+# Run plot
+one2one_trend(pq_data)
+
+# Run table
+one2one_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+
+}
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_dist}()},

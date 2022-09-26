@@ -73,19 +73,16 @@ set to \code{"sum"}, these rows are simply excluded from the calculation.
 
 \examples{
 # Return plot, mode dist
-one2one_freq(sq_data,
-             hrvar = "Organization",
-             return = "plot",
-             mode = "dist")
+one2one_freq(pq_data, hrvar = "Organization", return = "plot", mode = "dist")
 
 # Return plot, mode sum
-one2one_freq(sq_data,
+one2one_freq(pq_data,
              hrvar = "Organization",
              return = "plot",
              mode = "sum")
 
 # Return summary table
-one2one_freq(sq_data, hrvar = "Organization", return = "table")
+one2one_freq(pq_data, hrvar = "Organization", return = "table")
 
 }
 \seealso{

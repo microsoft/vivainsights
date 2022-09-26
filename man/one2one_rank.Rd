@@ -68,16 +68,10 @@ See \code{create_rank()} for applying the same analysis to a different metric.
 }
 \examples{
 # Return rank table
-one2one_rank(
-  data = pq_data,
-  return = "table"
-)
+one2one_rank(data = pq_data, return = "table")
 
 # Return plot
-one2one_rank(
-  data = pq_data,
-  return = "plot"
-)
+one2one_rank(data = pq_data, return = "plot")
 
 }
 \seealso{

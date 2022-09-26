@@ -20,6 +20,13 @@
 #' @family Managerial Relations
 #'
 #'
+#' @examples
+#' # Run plot
+#' one2one_trend(pq_data)
+#'
+#' # Run table
+#' one2one_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+#'
 #' @export
 
 one2one_trend <- function(data,
