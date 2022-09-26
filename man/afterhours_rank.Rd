@@ -58,6 +58,13 @@ hours of After-Hours Collaboration Hours.
 Uses the metric \code{After_hours_collaboration_hours}.
 See \code{create_rank()} for applying the same analysis to a different metric.
 }
+\examples{
+# Return plot
+afterhours_rank(pq_data, return = "plot")
+
+# Return summary table
+afterhours_fizz(pq_data, return = "table")
+}
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_dist}()},

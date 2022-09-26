@@ -48,10 +48,10 @@ that your query contains a metric with the exact same name.
 
 \examples{
 # Return a line plot
-collaboration_line(sq_data, hrvar = "LevelDesignation")
+collaboration_line(pq_data, hrvar = "LevelDesignation")
 
 # Return summary table
-collaboration_line(sq_data, hrvar = "LevelDesignation", return = "table")
+collaboration_line(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{

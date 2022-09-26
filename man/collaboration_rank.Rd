@@ -90,6 +90,11 @@ collaboration_rank(
 )
 
 
+# Return plot
+collaboration_rank(pq_data, return = "plot")
+
+# Return summary table
+collaboration_rank(pq_data, return = "table")
 }
 \seealso{
 Other Visualization: 

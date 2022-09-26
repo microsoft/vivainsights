@@ -34,10 +34,10 @@ Uses the metric \code{After_hours_collaboration_hours}.
 }
 \examples{
 # Run plot
-afterhours_trend(sq_data)
+afterhours_trend(pq_data)
 
 # Run table
-afterhours_trend(sq_data, hrvar = "LevelDesignation", return = "table")
+afterhours_trend(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{

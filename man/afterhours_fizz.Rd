@@ -42,10 +42,10 @@ See \code{create_fizz()} for applying the same analysis to a different metric.
 }
 \examples{
 # Return plot
-afterhours_fizz(sq_data, hrvar = "LevelDesignation", return = "plot")
+afterhours_fizz(pq_data, hrvar = "LevelDesignation", return = "plot")
 
 # Return summary table
-afterhours_fizz(sq_data, hrvar = "Organization", return = "table")
+afterhours_fizz(pq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Visualization: 

@@ -48,13 +48,13 @@ and \code{Instant_Message_hours}.
 }
 \examples{
 # Return plot with total (default)
-collaboration_area(sq_data)
+collaboration_area(pq_data)
 
 # Return plot with hrvar split
-collaboration_area(sq_data, hrvar = "Organization")
+collaboration_area(pq_data, hrvar = "Organization")
 
 # Return summary table
-collaboration_area(sq_data, return = "table")
+collaboration_area(pq_data, return = "table")
 
 }
 \seealso{

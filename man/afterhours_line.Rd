@@ -42,10 +42,10 @@ Uses the metric \code{After_hours_collaboration_hours}.
 }
 \examples{
 # Return a line plot
-afterhours_line(sq_data, hrvar = "LevelDesignation")
+afterhours_line(pq_data, hrvar = "LevelDesignation")
 
 # Return summary table
-afterhours_line(sq_data, hrvar = "LevelDesignation", return = "table")
+afterhours_line(pq_data, hrvar = "LevelDesignation", return = "table")
 
 }
 \seealso{

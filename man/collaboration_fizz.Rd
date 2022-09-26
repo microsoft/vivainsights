@@ -47,10 +47,10 @@ that your query contains a metric with the exact same name.
 
 \examples{
 # Return plot
-collaboration_fizz(sq_data, hrvar = "Organization", return = "plot")
+collaboration_fizz(pq_data, hrvar = "Organization", return = "plot")
 
 # Return summary table
-collaboration_fizz(sq_data, hrvar = "Organization", return = "table")
+collaboration_fizz(pq_data, hrvar = "Organization", return = "table")
 
 }
 \seealso{

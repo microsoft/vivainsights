@@ -40,6 +40,14 @@ The metric \code{Collaboration_hours} is used in the calculations. Please ensure
 that your query contains a metric with the exact same name.
 }
 
+\examples{
+# Run plot
+collaboration_trend(pq_data)
+
+# Run table
+collaboration_trend(pq_data, hrvar = "LevelDesignation", return = "table")
+
+}
 \seealso{
 Other Visualization: 
 \code{\link{afterhours_dist}()},

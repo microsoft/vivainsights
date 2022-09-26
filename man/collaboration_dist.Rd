@@ -64,10 +64,10 @@ that your query contains a metric with the exact same name.
 
 \examples{
 # Return plot
-collaboration_dist(sq_data, hrvar = "Organization")
+collaboration_dist(pq_data, hrvar = "Organization")
 
 # Return summary table
-collaboration_dist(sq_data, hrvar = "Organization", return = "table")
+collaboration_dist(pq_data, hrvar = "Organization", return = "table")
 }
 \seealso{
 Other Visualization: 
