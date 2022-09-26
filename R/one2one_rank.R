@@ -23,16 +23,10 @@
 #'
 #' @examples
 #' # Return rank table
-#' one2one_rank(
-#'   data = pq_data,
-#'   return = "table"
-#' )
+#' one2one_rank(data = pq_data, return = "table")
 #'
 #' # Return plot
-#' one2one_rank(
-#'   data = pq_data,
-#'   return = "plot"
-#' )
+#' one2one_rank(data = pq_data, return = "plot")
 #'
 #' @export
 
