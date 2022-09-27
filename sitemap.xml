@@ -37,7 +37,22 @@
     <loc>https://microsoft.github.io/vivainsights/pull_request_template.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_rank.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/afterhours_summary.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_trend.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/anonymise.html</loc>
@@ -49,7 +64,25 @@
     <loc>https://microsoft.github.io/vivainsights/reference/check_inputs.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_area.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_rank.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/collaboration_sum.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_trend.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/comma.html</loc>
@@ -118,10 +151,40 @@
     <loc>https://microsoft.github.io/vivainsights/reference/cut_hour.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/email_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/email_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/email_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/email_rank.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/email_summary.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/email_trend.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/export.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/external_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/external_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/external_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/external_rank.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/external_sum.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/extract_date_range.html</loc>
@@ -130,7 +193,19 @@
     <loc>https://microsoft.github.io/vivainsights/reference/extract_hr.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/heat_colours.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/hr_trend.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/hrvar_count.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/hrvar_count_all.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/hrvar_trend.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/import_query.html</loc>
@@ -145,7 +220,52 @@
     <loc>https://microsoft.github.io/vivainsights/reference/jitter_metrics.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/keymetrics_scan.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/keymetrics_scan_asis.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/maxmin.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/meeting_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/meeting_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/meeting_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/meeting_rank.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/meeting_summary.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/meeting_trend.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_fizz.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_freq.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_line.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_rank.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_sum.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/one2one_trend.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/pad2.html</loc>
