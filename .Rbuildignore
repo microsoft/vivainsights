@@ -8,3 +8,7 @@
 man-roxygen
 ^_data$
 ^_dev$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

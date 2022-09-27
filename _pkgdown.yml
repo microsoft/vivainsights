@@ -1,0 +1,25 @@
+url: https://microsoft.github.io/vivainsights/
+template:
+  bootstrap: 5
+  bootswatch: cosmo
+
+navbar:
+  structure:
+    left:  [home, reference, guide, news]
+    right: [search, github]
+  components:
+      home:
+        text: Home
+        href: index.html
+      guide:
+        text: Analyst Guide
+        menu:
+         - text: Introduction
+           href: analyst_guide_intro.html
+         - text: Getting Started
+           href: analyst_guide_getting_started.html
+
+footer:
+  structure:
+    left: developed_by
+    right: [authors, built_with]
