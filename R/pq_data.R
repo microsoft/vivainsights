@@ -12,7 +12,7 @@
 #'
 #' @return data frame.
 #'
-#' @format A data frame with 15933 rows and 177 variables:
+#' @format A data frame with 15933 rows and 154 variables:
 #' \describe{
 #' \item{PersonId}{ }
 #' \item{MetricDate}{ }
@@ -36,6 +36,8 @@
 #' \item{Multitasking_hours}{ }
 #' \item{Scheduled_call_hours}{ }
 #' \item{Unscheduled_call_hours}{ }
+#' \item{Urgent_email_hours}{ }
+#' \item{Urgent_meeting_hours}{ }
 #' \item{Collaboration_hours_on_Friday}{ }
 #' \item{Collaboration_hours_on_Monday}{ }
 #' \item{Collaboration_hours_on_Saturday}{ }
@@ -104,65 +106,37 @@
 #' \item{Emails_sent_23_24}{ }
 #' \item{Meetings_00_01}{ }
 #' \item{Meetings_01_02}{ }
-#' \item{Meetings_02_03}{ }
-#' \item{Meetings_03_04}{ }
-#' \item{Meetings_04_05}{ }
-#' \item{Meetings_05_06}{ }
-#' \item{Meetings_06_07}{ }
-#' \item{Meetings_07_08}{ }
-#' \item{Meetings_08_09}{ }
-#' \item{Meetings_09_10}{ }
-#' \item{Meetings_10_11}{ }
-#' \item{Meetings_11_12}{ }
-#' \item{Meetings_12_13}{ }
-#' \item{Meetings_13_14}{ }
-#' \item{Meetings_14_15}{ }
-#' \item{Meetings_15_16}{ }
-#' \item{Meetings_16_17}{ }
-#' \item{Meetings_17_18}{ }
-#' \item{Meetings_18_19}{ }
-#' \item{Meetings_19_20}{ }
-#' \item{Meetings_20_21}{ }
-#' \item{Meetings_21_22}{ }
-#' \item{Meetings_22_23}{ }
-#' \item{Meetings_23_24}{ }
-#' \item{Unscheduled_calls_00_01}{ }
-#' \item{Unscheduled_calls_01_02}{ }
-#' \item{Unscheduled_calls_02_03}{ }
-#' \item{Unscheduled_calls_03_04}{ }
-#' \item{Unscheduled_calls_04_05}{ }
-#' \item{Unscheduled_calls_05_06}{ }
-#' \item{Unscheduled_calls_06_07}{ }
-#' \item{Unscheduled_calls_07_08}{ }
-#' \item{Unscheduled_calls_08_09}{ }
-#' \item{Unscheduled_calls_09_10}{ }
-#' \item{Unscheduled_calls_10_11}{ }
-#' \item{Unscheduled_calls_11_12}{ }
-#' \item{Unscheduled_calls_12_13}{ }
-#' \item{Unscheduled_calls_13_14}{ }
-#' \item{Unscheduled_calls_14_15}{ }
-#' \item{Unscheduled_calls_15_16}{ }
-#' \item{Unscheduled_calls_16_17}{ }
-#' \item{Unscheduled_calls_17_18}{ }
-#' \item{Unscheduled_calls_18_19}{ }
-#' \item{Unscheduled_calls_19_20}{ }
-#' \item{Unscheduled_calls_20_21}{ }
-#' \item{Unscheduled_calls_21_22}{ }
-#' \item{Unscheduled_calls_22_23}{ }
-#' \item{Unscheduled_calls_23_24}{ }
 #' \item{Internal_meeting_hours_with_3_to_8_attendees}{ }
 #' \item{Internal_meeting_hours_without_manager_1_1}{ }
 #' \item{Small_group_chats_sent__excluding_manager}{ }
 #' \item{Small_group_emails_sent__excluding_manager}{ }
 #' \item{Small_group_meeting__call__and_chat_hours}{ }
+#' \item{Collaboration_hours_with_direct_reports}{ }
+#' \item{Manager_coaching_hours_1_1}{ }
+#' \item{Meeting_and_call_hours_with_manager}{ }
+#' \item{Meeting_and_call_hours_with_manager_1_1}{ }
+#' \item{Meeting_and_call_hours_with_skip_level}{ }
+#' \item{Meeting_hours_with_manager}{ }
+#' \item{Meeting_hours_with_manager_1_1}{ }
+#' \item{Meeting_hours_with_skip_level}{ }
 #' \item{Meetings_with_manager}{ }
+#' \item{Meetings_with_manager_1_1}{ }
+#' \item{Meetings_with_skip_level}{ }
+#' \item{Small_group_chats_sent__including_manager}{ }
+#' \item{Small_group_emails_sent__including_manager}{ }
+#' \item{Unscheduled_call_hours_with_manager}{ }
+#' \item{Unscheduled_call_hours_with_manager_1_1}{ }
+#' \item{Unscheduled_call_hours_with_skip_level}{ }
 #' \item{Internal_network_size}{ }
-#' \item{Available_to_focus_hours}{ }
-#' \item{Interrupted_hours}{ }
-#' \item{Uninterrupted_hours}{ }
 #' \item{Conflicting_meeting_hours}{ }
 #' \item{Large_and_long_meeting_hours}{ }
+#' \item{Large_and_long_recurring_meeting_hours}{ }
 #' \item{Large_and_short_meeting_hours}{ }
+#' \item{Large_and_short_recurring_meeting_hours}{ }
+#' \item{Meeting_hours_ended_on_time}{ }
+#' \item{Meeting_hours_joined_on_time}{ }
+#' \item{Meeting_hours_not_ended_on_time}{ }
+#' \item{Meeting_hours_not_joined_on_time}{ }
 #' \item{Meeting_hours_with_12_to_24_hours_of_advanced_notice}{ }
 #' \item{Meeting_hours_with_24_or_more_hours_of_advanced_notice}{ }
 #' \item{Meeting_hours_with_six_or_fewer_hours_of_advanced_notice}{ }
@@ -172,6 +146,14 @@
 #' \item{Small_and_long_recurring_meeting_hours}{ }
 #' \item{Small_and_short_meeting_hours}{ }
 #' \item{Small_and_short_recurring_meeting_hours}{ }
+#' \item{Available_to_focus_hours}{ }
+#' \item{Interrupted_hours}{ }
+#' \item{Uninterrupted_hours}{ }
+#' \item{External_chat_hours}{ }
+#' \item{External_collaboration_hours}{ }
+#' \item{External_email_hours}{ }
+#' \item{External_meeting_hours}{ }
+#' \item{External_unscheduled_call_hours}{ }
 #' \item{Working_hours_call_hours}{ }
 #' \item{Working_hours_chat_hours}{ }
 #' \item{Working_hours_collaboration_hours}{ }
@@ -179,11 +161,6 @@
 #' \item{Working_hours_meeting_hours}{ }
 #' \item{Working_hours_scheduled_call_hours}{ }
 #' \item{Working_hours_unscheduled_call_hours}{ }
-#' \item{Meeting_hours_ended_on_time}{ }
-#' \item{Meeting_hours_joined_on_time}{ }
-#' \item{Meeting_hours_not_ended_on_time}{ }
-#' \item{Meeting_hours_not_joined_on_time}{ }
-#' \item{Meeting_and_call_hours_with_skip_level}{ }
 #' \item{LevelDesignation}{ }
 #' \item{Layer}{ }
 #' \item{SupervisorIndicator}{ }
@@ -192,7 +169,6 @@
 #' \item{WeekendDays}{ }
 #' \item{IsActive}{ }
 #'
-#'   ...
 #' }
 #' @source \url{https://www.microsoft.com/en-us/microsoft-viva/insights}
 "pq_data"

@@ -2,7 +2,7 @@ Package: vivainsights
 Type: Package
 Title: Tools for Analysing and Visualising Data from Viva Insights
 Version: 0.1.0
-Author: c(
+Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
 	)

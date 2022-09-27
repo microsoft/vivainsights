@@ -51,7 +51,9 @@ Other Support:
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},
+\code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
+\code{\link{maxmin}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
@@ -60,7 +62,10 @@ Other Support:
 \code{\link{wrap}()}
 
 Other Data Validation: 
-\code{\link{hrvar_count}()}
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count_all}()},
+\code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()}
 }
 \concept{Data Validation}
 \concept{Support}

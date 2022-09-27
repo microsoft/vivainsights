@@ -22,4 +22,4 @@ navbar:
 footer:
   structure:
     left: developed_by
-    right: [authors, built_with]
+    right: [aut, built_with]
