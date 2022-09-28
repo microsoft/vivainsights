@@ -7,8 +7,7 @@ Authors@R: c(
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
 	)
 Maintainer: Martin Chan <martin.chan@microsoft.com>
-Description: Opinionated functions that enable easier and faster
-    analysis of Viva Insights data.  
+Description: Tools for Analyzing and Visualizing data from Microsoft Viva Insights. 'vivainsights' provides a versatile range of functions including exploratory data analysis and data validation, whilst at the same time implements a set of best practices in analyzing and visualizing data specific to Viva Insights.
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 License: MIT + file LICENSE
