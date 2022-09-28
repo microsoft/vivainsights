@@ -14,6 +14,7 @@ Roxygen: list(markdown = TRUE)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Language: en-US
 Depends:
     R (>= 3.1.2)
 Imports: 
