@@ -288,7 +288,8 @@ create_rank <- function(data,
 #'
 #' create_rank_combine(
 #'   data = pq_data_small,
-#'   metric = "Email_hours"
+#'   metric = "Email_hours",
+#'   hrvar = c("Organization", "FunctionType", "LevelDesignation")
 #' )
 #'
 #' @return Data frame containing the following variables:

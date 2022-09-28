@@ -34,11 +34,6 @@
 #'   return = "plot"
 #' )
 #'
-#' # Return plot
-#' collaboration_rank(pq_data, return = "plot")
-#'
-#' # Return summary table
-#' collaboration_rank(pq_data, return = "table")
 #' @export
 
 

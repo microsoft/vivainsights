@@ -43,7 +43,8 @@ pq_data_small <- dplyr::slice_sample(pq_data, prop = 0.1)
 
 create_rank_combine(
   data = pq_data_small,
-  metric = "Email_hours"
+  metric = "Email_hours",
+  hrvar = c("Organization", "FunctionType", "LevelDesignation")
 )
 
 }
