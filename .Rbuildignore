@@ -12,3 +12,4 @@ man-roxygen
 ^docs$
 ^pkgdown$
 ^\.github$
+^cran-comments\.md$
