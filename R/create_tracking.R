@@ -36,6 +36,11 @@
 #' @import ggplot2
 #' @import reshape2
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return` argument:
+#'   - `"plot"`: 'ggplot' object. A time-series plot for the metric.
+#'   - `"table"`: data frame. A summary table for the metric.
+#'
 #' @export
 
 create_tracking <- function(data,

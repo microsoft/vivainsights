@@ -27,6 +27,13 @@ percentage signs. Defaults to \code{FALSE}.}
 \item{percent}{Logical value to determine whether to show labels as
 percentage signs. Defaults to \code{FALSE}.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A time-series plot for the metric.
+\item \code{"table"}: data frame. A summary table for the metric.
+}
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 

@@ -14,6 +14,10 @@ jitter_metrics(data, cols = NULL, ...)
 
 \item{...}{Additional arguments to pass to \code{jitter()}.}
 }
+\value{
+data frame where numeric columns specified by \code{cols} are jittered using the
+function \code{jitter()}.
+}
 \description{
 Convenience wrapper around \code{jitter()} to add a layer of
 anonymity to a query. This can be used in combination with \code{anonymise()} to
@@ -21,6 +25,8 @@ produce a demo dataset from real data.
 }
 \examples{
 jittered <- jitter_metrics(pq_data, cols = "Collaboration_hours")
+
+# compare jittered vs original results of top rows
 head(
   data.frame(
     original = pq_data$Collaboration_hours,

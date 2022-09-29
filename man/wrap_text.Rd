@@ -12,6 +12,10 @@ wrap_text(x, threshold = 15)
 \item{threshold}{Numeric, defaults to 15. Number of character units by which
 the next space would be replaced with \verb{\\n} to move text to next line.}
 }
+\value{
+String output representing a processed version of \code{x}, with spaces replaced
+by \verb{\\n.}
+}
 \description{
 Wrap text in visualizations according to a preset character
 threshold. The next space in the string is replaced with \verb{\\n}, which will
