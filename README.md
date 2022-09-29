@@ -2,7 +2,7 @@
 
 ## Analyze and Visualize Viva Leader Insights data
 
-This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://docs.microsoft.com/en-us/workplace-analytics/) (previously Microsoft Workplace Analytics). 
+This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://www.microsoft.com/en-gb/microsoft-viva/insights/) (previously Microsoft Workplace Analytics). 
 
 ## With the **vivainsights** package, you can...
 
@@ -10,18 +10,18 @@ This is an R package for analyzing and visualizing data from [Microsoft Viva Adv
 
 2. Leverage **advanced analytics functions** which are built for Viva Insights metrics
 
-43 Integrate analysis of Viva Insights data with your R workflow seamlessly
+3. Integrate analysis of Viva Insights data with your R workflow seamlessly
 
 This library is compatible with the latest implementation of the Viva Insights Analyst Workbench. For the R library compatible with the legacy implementation, please visit the **wpa** package [website](https://microsoft.github.io/wpa/) or [GitHub repository](https://github.com/microsoft/wpa/) . 
 
 
 ## Related repositories
 
-- [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace)
-- [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code)
-- [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int)
-- [Viva Insights OData Query Download](https://github.com/microsoft/vivainsights-odatadl)
-- [Viva Insights R library (legacy)](https://microsoft.github.io/wpa)
+- [Viva RMarkdown Report Marketplace](https://github.com/microsoft/VivaRMDReportMarketplace/)
+- [Viva Insights Sample Code](https://github.com/microsoft/viva-insights-sample-code/)
+- [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int/)
+- [Viva Insights OData Query Download](https://github.com/microsoft/vivainsights-odatadl/)
+- [Viva Insights R library (legacy)](https://microsoft.github.io/wpa/)
 
 ---
 
