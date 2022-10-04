@@ -6,7 +6,7 @@ template:
 navbar:
   bg: dark
   structure:
-    left:  [home, reference, guide, news]
+    left:  [home, reference, guide, news, contributing]
     right: [search, github]
   components:
       home:
@@ -30,6 +30,19 @@ navbar:
           href: about.html
         - text: FAQ
           href: faq.html
+      contributing:
+        text: Contribute
+        menu:
+        - text: Contributor Guide
+          href: CONTRIBUTING.html
+        - text: Developer Guide
+          href: developer_guide.html
+        - text: Reporting Security Issues
+          href: reporting_security_issues.html
+        - text: Package Structure
+          href: package_structure.html
+        - text: Contributors
+          href: contributors.html
 
 
 footer:
