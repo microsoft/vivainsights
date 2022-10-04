@@ -19,6 +19,18 @@ navbar:
            href: analyst_guide_intro.html
          - text: Getting Started
            href: analyst_guide_getting_started.html
+      reference:
+        text: Reference
+        menu:
+        - text: Functions
+          href: reference/index.html
+        - text: Changelog
+          href: news/index.html
+        - text: About
+          href: about.html
+        - text: FAQ
+          href: faq.html
+
 
 footer:
   structure:
