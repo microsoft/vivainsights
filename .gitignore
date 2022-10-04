@@ -4,6 +4,6 @@
 ^.Rhistory$
 _data
 _dev
-
+pkgdown
 .Rhistory
 docs

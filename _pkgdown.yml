@@ -4,6 +4,7 @@ template:
   bootswatch: cosmo
 
 navbar:
+  bg: dark
   structure:
     left:  [home, reference, guide, news]
     right: [search, github]
