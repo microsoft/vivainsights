@@ -24,9 +24,9 @@ There are multiple reasons:
 
 This guide is organized in the following key sections:
 
-1. [**Getting Started**](guide/getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
+1. [**Getting Started**](analyst_guide_getting_started.html): This section contains the detailed installation instructions, and a general overview of how functions work. 
 
 ## Ready to go?
 
-Let's begin with the [**Getting Started**](guide/getting_started.html) section.
+Let's begin with the [**Getting Started**](analyst_guide_getting_started.html) section.
 
