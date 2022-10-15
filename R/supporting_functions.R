@@ -25,7 +25,7 @@
 #' @examples
 #'
 #' # Return error message
-#' \dontrun{
+#' \donttest{
 #' check_inputs(iris, c("Sepal.Length", "mpg"))
 #' }
 #'
@@ -239,6 +239,10 @@ check_pkg_installed <- function(pkgname) {
 #'   "The total entropy of an isolated system can never decrease."
 #'   )
 #' message(wrapped)
+#'
+#' @return
+#' String output representing a processed version of `x`, with spaces replaced
+#' by `\n.`
 #'
 #' @export
 wrap_text <- function(x, threshold = 15){
