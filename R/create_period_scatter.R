@@ -51,7 +51,7 @@
 #'                       before_start = "2021-12-26",
 #'                       before_end = "2022-01-01",
 #'                       after_start = "2022-01-02",
-#'                       after_end = "2022-09-04")
+#'                       after_end = "2022-07-03")
 #'
 #' # Return a summary table
 #' create_period_scatter(pq_data, before_end = "2022-01-01", return = "table")

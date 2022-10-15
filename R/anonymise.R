@@ -27,6 +27,11 @@
 #' unique(anonymise(pq_data$Layer), replacement = rep)
 #'
 #' @seealso jitter
+#'
+#' @return
+#' Character vector with the same length as input `x`, replaced with values
+#' provided in `replacement`.
+#'
 #' @export
 
 anonymise <- function(x,
@@ -81,6 +86,8 @@ anonymize <- anonymise
 #'
 #' @examples
 #' jittered <- jitter_metrics(pq_data, cols = "Collaboration_hours")
+#'
+#' # compare jittered vs original results of top rows
 #' head(
 #'   data.frame(
 #'     original = pq_data$Collaboration_hours,
@@ -89,6 +96,11 @@ anonymize <- anonymise
 #' )
 #'
 #' @seealso anonymise
+#'
+#' @return
+#' data frame where numeric columns specified by `cols` are jittered using the
+#' function `jitter()`.
+#'
 #' @export
 
 jitter_metrics <- function(data, cols = NULL, ...){
