@@ -167,23 +167,23 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return a summary table</span></span></span>
 <span class="r-in"><span><span class="fu">hrvar_trend</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 38</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 29</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group  2021-…¹ 2022-…² 2022-…³ 2022-…⁴ 2022-…⁵ 2022-…⁶ 2022-…⁷ 2022-…⁸ 2022-…⁹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…      32      32      32      32      32      32      32      32      32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Execu…       4       4       4       4       4       4       4       4       4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Junio…      55      55      55      55      55      55      55      55      55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Manag…      64      64      64      64      64      64      64      64      64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…      14      14      14      14      14      14      14      14      14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Execu…       1       1       1       1       1       1       1       1       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Junio…      22      22      22      22      22      22      22      22      22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Manag…      23      23      23      23      23      23      23      23      23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Senio…       1       1       1       1       1       1       1       1       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Senio…      94      94      94      94      94      94      94      94      94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Suppo…     298     298     298     298     299     299     299     299     299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 28 more variables: `2022-02-27` &lt;dbl&gt;, `2022-03-06` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Senio…      33      33      33      33      33      33      33      33      33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Suppo…     105     105     105     105     106     106     106     106     106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 19 more variables: `2022-02-27` &lt;dbl&gt;, `2022-03-06` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-03-13` &lt;dbl&gt;, `2022-03-20` &lt;dbl&gt;, `2022-03-27` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-04-03` &lt;dbl&gt;, `2022-04-10` &lt;dbl&gt;, `2022-04-17` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-04-24` &lt;dbl&gt;, `2022-05-01` &lt;dbl&gt;, `2022-05-08` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-05-15` &lt;dbl&gt;, `2022-05-22` &lt;dbl&gt;, `2022-05-29` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-05` &lt;dbl&gt;, `2022-06-12` &lt;dbl&gt;, `2022-06-19` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-26` &lt;dbl&gt;, `2022-07-03` &lt;dbl&gt;, `2022-07-10` &lt;dbl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-26` &lt;dbl&gt;, `2022-07-03` &lt;dbl&gt;, and abbreviated variable names …</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

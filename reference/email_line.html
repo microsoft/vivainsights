@@ -171,21 +171,21 @@ size. Defaults to 5.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">email_line</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 38</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 29</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group  2021-…¹ 2022-…² 2022-…³ 2022-…⁴ 2022-…⁵ 2022-…⁶ 2022-…⁷ 2022-…⁸ 2022-…⁹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…   1.46    1.85     2.57    2.99    2.71    3.13    3.09    3.01    2.36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Junio…   0.655   0.995    1.13    1.31    1.08    1.24    1.15    1.23    1.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Manag…   0.955   1.39     1.71    1.80    1.60    1.86    1.71    1.79    1.56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Senio…   0.648   1.05     1.24    1.29    1.16    1.35    1.27    1.25    1.14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Suppo…   0.655   1.06     1.22    1.35    1.15    1.31    1.27    1.29    1.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 28 more variables: `2022-02-27` &lt;dbl&gt;, `2022-03-06` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…   1.52    1.83     2.59    2.99   2.86     3.17    3.24    3.02    2.41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Junio…   0.569   0.930    1.05    1.32   0.999    1.19    1.12    1.12    1.07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Manag…   0.971   1.40     1.94    1.69   1.68     1.91    1.86    1.77    1.69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Senio…   0.679   1.14     1.35    1.26   1.18     1.38    1.30    1.25    1.21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Suppo…   0.659   1.07     1.20    1.32   1.15     1.29    1.23    1.31    1.07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 19 more variables: `2022-02-27` &lt;dbl&gt;, `2022-03-06` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-03-13` &lt;dbl&gt;, `2022-03-20` &lt;dbl&gt;, `2022-03-27` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-04-03` &lt;dbl&gt;, `2022-04-10` &lt;dbl&gt;, `2022-04-17` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-04-24` &lt;dbl&gt;, `2022-05-01` &lt;dbl&gt;, `2022-05-08` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-05-15` &lt;dbl&gt;, `2022-05-22` &lt;dbl&gt;, `2022-05-29` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-05` &lt;dbl&gt;, `2022-06-12` &lt;dbl&gt;, `2022-06-19` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-26` &lt;dbl&gt;, `2022-07-03` &lt;dbl&gt;, `2022-07-10` &lt;dbl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-26` &lt;dbl&gt;, `2022-07-03` &lt;dbl&gt;, and abbreviated variable names …</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

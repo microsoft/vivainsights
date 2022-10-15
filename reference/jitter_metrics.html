@@ -80,6 +80,13 @@ produce a demo dataset from real data.</p>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    
+
+<p>data frame where numeric columns specified by <code>cols</code> are jittered using the
+function <code><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter()</a></code>.</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>anonymise</p></div>
     </div>
@@ -87,6 +94,8 @@ produce a demo dataset from real data.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">jittered</span> <span class="op">&lt;-</span> <span class="fu">jitter_metrics</span><span class="op">(</span><span class="va">pq_data</span>, cols <span class="op">=</span> <span class="st">"Collaboration_hours"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># compare jittered vs original results of top rows</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    original <span class="op">=</span> <span class="va">pq_data</span><span class="op">$</span><span class="va">Collaboration_hours</span>,</span></span>
@@ -94,12 +103,12 @@ produce a demo dataset from real data.</p>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    original  jittered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  8.292500  8.301264</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 10.038588 10.025121</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 13.640142 13.628077</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  6.500109  6.492361</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 10.672503 10.692463</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 15.055809 15.059072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  8.292500  8.290506</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 12.784614 12.777309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  6.025776  6.041510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 12.660004 12.641932</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 48.445915 48.445725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 11.238281 11.218942</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

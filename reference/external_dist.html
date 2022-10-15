@@ -187,10 +187,10 @@ See <code><a href="create_dist.html">create_dist()</a></code> for applying the s
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group               `&lt; 5 hours` `5 - 10 hours` Employee_Count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance                   0.883        0.117              137</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                        0.905        0.094<span style="text-decoration: underline;">9</span>             137</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product                   0.993        0.007<span style="text-decoration: underline;">30</span>            137</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing       0.861        0.139              137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance                   0.849         0.151              53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                        0.918         0.081<span style="text-decoration: underline;">6</span>             49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product                   1            <span style="color: #BB0000;">NA</span>                  45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing       0.904         0.096<span style="text-decoration: underline;">2</span>             52</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return result with a custom specified breaks</span></span></span>
 <span class="r-in"><span><span class="fu">external_dist</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, cut <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>

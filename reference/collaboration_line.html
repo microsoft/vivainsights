@@ -181,21 +181,21 @@ that your query contains a metric with the exact same name.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">collaboration_line</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 38</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 29</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group  2021-…¹ 2022-…² 2022-…³ 2022-…⁴ 2022-…⁵ 2022-…⁶ 2022-…⁷ 2022-…⁸ 2022-…⁹</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…   49.8     46.3    55.8    55.9    61.7    59.8    64.0    59.7    61.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Junio…    9.85    10.0    11.1    13.9    15.2    15.0    14.0    14.4    15.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Manag…   16.3     16.9    19.5    22.1    23.9    24.8    23.2    25.2    25.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Senio…   10.7     10.3    11.7    12.6    14.2    13.7    13.0    13.1    13.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Suppo…   10.5     10.6    11.7    13.0    14.3    13.5    13.1    13.1    13.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 28 more variables: `2022-02-27` &lt;dbl&gt;, `2022-03-06` &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Direc…   48.6    44.5     57.0    56.2    62.2    59.7    63.5    58.9    61.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Junio…    9.28    9.10    10.3    13.2    14.2    14.1    14.2    14.1    15.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Manag…   14.4    14.7     19.0    19.7    21.6    22.9    20.9    23.8    22.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Senio…   11.0    10.9     13.0    12.8    15.4    14.1    13.2    12.5    13.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Suppo…   10.4    10.6     11.5    12.2    14.2    13.5    12.4    12.6    13.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 19 more variables: `2022-02-27` &lt;dbl&gt;, `2022-03-06` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-03-13` &lt;dbl&gt;, `2022-03-20` &lt;dbl&gt;, `2022-03-27` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-04-03` &lt;dbl&gt;, `2022-04-10` &lt;dbl&gt;, `2022-04-17` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-04-24` &lt;dbl&gt;, `2022-05-01` &lt;dbl&gt;, `2022-05-08` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-05-15` &lt;dbl&gt;, `2022-05-22` &lt;dbl&gt;, `2022-05-29` &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-05` &lt;dbl&gt;, `2022-06-12` &lt;dbl&gt;, `2022-06-19` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-26` &lt;dbl&gt;, `2022-07-03` &lt;dbl&gt;, `2022-07-10` &lt;dbl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2022-06-26` &lt;dbl&gt;, `2022-07-03` &lt;dbl&gt;, and abbreviated variable names …</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
