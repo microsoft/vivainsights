@@ -27,8 +27,8 @@
 heat_colours <- function (n, alpha, rev = FALSE) {
 
   ## Move from red to green
-  pre_h <- seq(from = 0, to = 0.3, length.out = n - 1)
-  h <- c(1, pre_h)
+  h <- seq(from = 0, to = 0.3, length.out = n)
+  #h <- c(1, pre_h)
 
   ## Less bright
   s <- rep(0.69, length(h))
