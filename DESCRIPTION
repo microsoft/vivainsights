@@ -29,5 +29,6 @@ Imports:
     scales,
     ggrepel,
     purrr,
-    data.table
+    data.table,
+    methods
 URL: https://microsoft.github.io/vivainsights/
