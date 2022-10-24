@@ -31,7 +31,7 @@
 #'
 #' @export
 identify_outlier <- function(data,
-                             group_var = "Date",
+                             group_var = "MetricDate",
                              metric = "Collaboration_hours"){
 
   ## Check inputs

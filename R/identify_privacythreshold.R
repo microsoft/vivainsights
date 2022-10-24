@@ -31,10 +31,10 @@
 #'
 #' @examples
 #' # Return a summary table
-#' dv_data %>% identify_privacythreshold(return = "table")
+#' pq_data %>% identify_privacythreshold(return = "table")
 #'
 #' # Return a diagnostic message
-#' dv_data %>% identify_privacythreshold(return = "text")
+#' pq_data %>% identify_privacythreshold(return = "text")
 #'
 #' @import dplyr
 #' @import ggplot2

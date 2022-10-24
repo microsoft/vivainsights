@@ -68,7 +68,7 @@ identify_holidayweeks <- function(data, sd = 1, return = "message"){
   } else if(is(data$MetricDate, "Date")){
   # Do nothing
   } else {
-    stop("`Date` appears not to be properly formatted.\n
+    stop("`MetricDate` appears not to be properly formatted.\n
          It needs to be in the format MM/DD/YYYY.\n
          Also check for missing values or stray values with inconsistent formats.")
   }
@@ -79,7 +79,7 @@ identify_holidayweeks <- function(data, sd = 1, return = "message"){
     summarize(mean_collab = mean(Collaboration_hours, na.rm = TRUE),.groups = 'drop') %>%
     mutate(z_score = (mean_collab - mean(mean_collab, na.rm = TRUE))/ sd(mean_collab, na.rm = TRUE))
 
-  Outliers = (Calc$Date[Calc$z_score < -sd])
+  Outliers <- (Calc$MetricDate[Calc$z_score < -sd])
 
   mean_collab_hrs <- mean(Calc$mean_collab, na.rm = TRUE)
 
@@ -93,8 +93,8 @@ identify_holidayweeks <- function(data, sd = 1, return = "message"){
   myTable_plot <-
     data %>%
     mutate(holidayweek = (MetricDate %in% Outliers)) %>%
-    select("Date", "holidayweek", "Collaboration_hours") %>%
-    group_by(Date) %>%
+    select("MetricDate", "holidayweek", "Collaboration_hours") %>%
+    group_by(MetricDate) %>%
     summarise(
       Collaboration_hours = mean(Collaboration_hours),
       holidayweek = first(holidayweek)) %>%
@@ -134,15 +134,15 @@ identify_holidayweeks <- function(data, sd = 1, return = "message"){
 
   } else if(return %in% c("data_clean", "data_cleaned")){
 
-    return(data %>% filter(!(Date %in% Outliers)) %>% data.frame())
+    data %>% filter(!(MetricDate %in% Outliers))
 
   } else if(return == "data_dirty"){
 
-    return(data %>% filter((Date %in% Outliers)) %>% data.frame())
+    data %>% filter((MetricDate %in% Outliers))
 
   } else if(return == "data"){
 
-    return(data %>% mutate(holidayweek = (Date %in% Outliers)) %>% data.frame())
+    data %>% mutate(holidayweek = (MetricDate %in% Outliers))
 
   } else if(return == "plot"){
 

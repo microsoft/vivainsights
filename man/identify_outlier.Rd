@@ -4,7 +4,11 @@
 \alias{identify_outlier}
 \title{Identify metric outliers over a date interval}
 \usage{
-identify_outlier(data, group_var = "Date", metric = "Collaboration_hours")
+identify_outlier(
+  data,
+  group_var = "MetricDate",
+  metric = "Collaboration_hours"
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
