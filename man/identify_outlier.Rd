@@ -38,6 +38,10 @@ identify_outlier(pq_data, metric = "Collaboration_hours")
 \seealso{
 Other Data Validation: 
 \code{\link{extract_hr}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
