@@ -40,20 +40,19 @@
 #'
 #' @examples
 #' # The threshold values are intentionally set low to trigger messages.
-#' flag_extreme(sq_data, "Email_hours", threshold = 15)
+#' flag_extreme(pq_data, "Email_hours", threshold = 15)
 #'
 #' # Return a summary table
-#' flag_extreme(sq_data, "Email_hours", threshold = 15, return = "table")
+#' flag_extreme(pq_data, "Email_hours", threshold = 15, return = "table")
 #'
 #' # Person-week level
-#' flag_extreme(sq_data, "Email_hours", person = FALSE, threshold = 15)
+#' flag_extreme(pq_data, "Email_hours", person = FALSE, threshold = 15)
 #'
 #' # Check for values equal to threshold
-#' flag_extreme(sq_data, "Email_hours", person = TRUE, mode = "equal", threshold = 0)
+#' flag_extreme(pq_data, "Email_hours", person = TRUE, mode = "equal", threshold = 0)
 #'
 #' # Check for values below threshold
-#' flag_extreme(sq_data, "Email_hours", person = TRUE, mode = "below", threshold = 5)
-#'
+#' flag_extreme(pq_data, "Email_hours", person = TRUE, mode = "below", threshold = 5)
 #'
 #' @export
 flag_extreme <- function(data,

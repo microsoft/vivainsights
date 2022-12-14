@@ -40,7 +40,7 @@ start and end time of work day.
 flag_outlooktime(dv_data)
 
 # Example where Outlook Start and End times are imputed
-spq_df <- sq_data
+spq_df <- pq_data
 
 spq_df$WorkingStartTimeSetInOutlook <- "6:30"
 

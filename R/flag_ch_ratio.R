@@ -33,7 +33,7 @@
 #' @family Data Validation
 #'
 #' @examples
-#' flag_ch_ratio(sq_data)
+#' flag_ch_ratio(pq_data)
 #'
 #'
 #' data.frame(PersonId = c("Alice", "Bob"),

@@ -37,7 +37,7 @@ Emails Sent is greater than the threshold, then observations tied to
 a \code{PersonId} is flagged as unusual.
 }
 \examples{
-flag_em_ratio(sq_data)
+flag_em_ratio(pq_data)
 
 }
 \seealso{

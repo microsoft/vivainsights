@@ -33,7 +33,7 @@
 #'   ratios.
 #'
 #' @examples
-#' flag_em_ratio(sq_data)
+#' flag_em_ratio(pq_data)
 #'
 #' @export
 flag_em_ratio <- function(data, threshold = 1, return = "text"){

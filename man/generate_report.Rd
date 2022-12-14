@@ -62,8 +62,8 @@ the outputs to a list.
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{# Step 1: Define Content
 output_list <-
-  list(sq_data \%>\% workloads_summary(return = "plot"),
-       sq_data \%>\% workloads_summary(return = "table")) \%>\%
+  list(pq_data \%>\% workloads_summary(return = "plot"),
+       pq_data \%>\% workloads_summary(return = "table")) \%>\%
   purrr::map_if(is.data.frame, create_dt)
 }\if{html}{\out{</div>}}
 
