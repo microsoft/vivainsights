@@ -48,12 +48,12 @@
 #'
 #' @examples
 #' library(dplyr)
-#' # Add HireDate to sq_data
-#' sq_data2 <-
-#'   sq_data %>%
+#' # Add HireDate to `pq_data`
+#' pq_data2 <-
+#'   pq_data %>%
 #'   mutate(HireDate = as.Date("1/1/2015", format = "%m/%d/%Y"))
 #'
-#' identify_tenure(sq_data2)
+#' identify_tenure(pq_data2)
 #'
 #' @export
 identify_tenure <- function(data,

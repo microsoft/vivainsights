@@ -47,7 +47,7 @@ person query, Ways of Working assessment query, and the hourly collaboration
 query. When run, this prints diagnostic data to the R console.
 }
 \examples{
-check_query(sq_data)
+check_query(pq_data)
 
 }
 \seealso{

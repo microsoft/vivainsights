@@ -37,7 +37,7 @@
 #'   - `"text"`: string containing the diagnostic message.
 #'
 #' @examples
-#' check_query(sq_data)
+#' check_query(pq_data)
 #'
 #' @family Data Validation
 #'
