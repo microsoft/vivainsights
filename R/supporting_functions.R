@@ -25,7 +25,7 @@
 #' @examples
 #'
 #' # Return error message
-#' \donttest{
+#' \dontrun{
 #' check_inputs(iris, c("Sepal.Length", "mpg"))
 #' }
 #'

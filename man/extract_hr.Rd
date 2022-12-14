@@ -54,6 +54,7 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
+\code{\link{read_preamble}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
@@ -71,7 +72,8 @@ Other Data Validation:
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
-\code{\link{identify_privacythreshold}()}
+\code{\link{identify_privacythreshold}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}
 \concept{Support}

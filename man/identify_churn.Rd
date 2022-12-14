@@ -77,6 +77,7 @@ Other Data Validation:
 \code{\link{identify_inactiveweeks}()},
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
-\code{\link{identify_privacythreshold}()}
+\code{\link{identify_privacythreshold}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}
