@@ -79,8 +79,9 @@ check_query <- function(data, return = "message", validation = FALSE){
 #'
 check_person_query <- function(data, return){
 
-  ## Query Type - Uses `identify_query()`
-    main_chunk <- paste0("The data used is a ", identify_query(data))
+  ## Query Type - In {wpa}, this uses `identify_query()`
+  ## Set as blank for initiation
+  main_chunk <- ""
 
   ## PersonId
   if(!("PersonId" %in% names(data))){
