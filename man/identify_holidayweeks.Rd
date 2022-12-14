@@ -66,6 +66,7 @@ identify_holidayweeks(pq_data, return = "plot")
 }
 \seealso{
 Other Data Validation: 
+\code{\link{check_query}()},
 \code{\link{extract_hr}()},
 \code{\link{flag_ch_ratio}()},
 \code{\link{flag_em_ratio}()},
@@ -80,6 +81,9 @@ Other Data Validation:
 \code{\link{identify_nkw}()},
 \code{\link{identify_outlier}()},
 \code{\link{identify_privacythreshold}()},
+\code{\link{identify_shifts}()},
+\code{\link{identify_tenure}()},
+\code{\link{track_HR_change}()},
 \code{\link{validation_report}()}
 }
 \concept{Data Validation}
