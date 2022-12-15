@@ -42,7 +42,7 @@
 #'
 #' @examples
 #'
-#' dv_data %>% track_HR_change()
+#' pq_data %>% track_HR_change()
 #'
 #' @export
 track_HR_change <- function(data,

@@ -36,10 +36,10 @@ day to identify work shifts. The relevant variables are
 }
 \examples{
 # Return plot
-dv_data \%>\% identify_shifts()
+pq_data \%>\% identify_shifts()
 
 # Return summary table
-dv_data \%>\% identify_shifts(return = "table")
+pq_data \%>\% identify_shifts(return = "table")
 
 }
 \seealso{

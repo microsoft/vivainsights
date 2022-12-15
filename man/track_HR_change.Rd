@@ -54,7 +54,7 @@ longer in the system
 }
 \examples{
 
-dv_data \%>\% track_HR_change()
+pq_data \%>\% track_HR_change()
 
 }
 \seealso{

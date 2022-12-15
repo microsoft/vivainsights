@@ -37,10 +37,10 @@
 #'
 #' @examples
 #' # Return plot
-#' dv_data %>% identify_shifts()
+#' pq_data %>% identify_shifts()
 #'
 #' # Return summary table
-#' dv_data %>% identify_shifts(return = "table")
+#' pq_data %>% identify_shifts(return = "table")
 #'
 #' @export
 identify_shifts <- function(data, return = "plot"){

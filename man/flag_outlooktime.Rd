@@ -36,8 +36,8 @@ This function flags unusual outlook calendar settings for
 start and end time of work day.
 }
 \examples{
-# Demo with `dv_data`
-flag_outlooktime(dv_data)
+# Demo with `pq_data`
+flag_outlooktime(pq_data)
 
 # Example where Outlook Start and End times are imputed
 spq_df <- pq_data
