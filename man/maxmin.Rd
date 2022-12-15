@@ -36,6 +36,7 @@ Other Support:
 \code{\link{extract_hr}()},
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
+\code{\link{read_preamble}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
