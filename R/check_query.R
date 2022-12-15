@@ -18,7 +18,7 @@
 #'   - Ways of Working Assessment Query
 #'   - Hourly Collaboration Query
 #'
-#' All person-level query have a `PersonId` column and a `Date` column.
+#' All person-level query have a `PersonId` column and a `MetricDate` column.
 #'
 #' @param return String specifying what to return. This must be one of the
 #'   following strings:
@@ -92,20 +92,20 @@ check_person_query <- function(data, return){
   }
 
   ## Date
-  if(!("Date" %in% names(data))){
+  if(!("MetricDate" %in% names(data))){
 
-    stop("There is no `Date` variable in the input.")
+    stop("There is no `MetricDate` variable in the input.")
 
   } else if("Influence_rank" %in% names(data)){
 
     # Omit date conversion
-    new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
+    new_chunk <- paste0("Date ranges from ", min(data$MetricDate), " to ", max(data$MetricDate), ".")
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
 
   } else {
 
-    data$Date <- as.Date(data$Date, "%m/%d/%Y")
-    new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
+    data$MetricDate <- as.Date(data$MetricDate, "%m/%d/%Y")
+    new_chunk <- paste0("Date ranges from ", min(data$MetricDate), " to ", max(data$MetricDate), ".")
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
 
   }
@@ -115,7 +115,7 @@ check_person_query <- function(data, return){
 	extracted_chr <-
 	  data %>%
 	  hrvar_count_all(return = "table") %>%
-	  filter(`Unique values`==1) %>%
+	  filter(`Unique values`== 1) %>%
 	  pull(Attributes)
 
 	if (length(extracted_chr)>1) {
@@ -231,11 +231,11 @@ check_query_validation <- function(data, return){
   }
 
   ## Date
-  if(!("Date" %in% names(data))){
-    stop("There is no `Date` variable in the input.")
+  if(!("MetricDate" %in% names(data))){
+    stop("There is no `MetricDate` variable in the input.")
   } else {
-    data$Date <- as.Date(data$Date, "%m/%d/%Y")
-    new_chunk <- paste0("Date ranges from ", min(data$Date), " to ", max(data$Date), ".")
+    data$MetricDate <- as.Date(data$MetricDate, "%m/%d/%Y")
+    new_chunk <- paste0("Date ranges from ", min(data$MetricDate), " to ", max(data$MetricDate), ".")
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
 

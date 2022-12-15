@@ -14,7 +14,7 @@ check_query(data, return = "message", validation = FALSE)
 \item Hourly Collaboration Query
 }
 
-All person-level query have a \code{PersonId} column and a \code{Date} column.}
+All person-level query have a \code{PersonId} column and a \code{MetricDate} column.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:
