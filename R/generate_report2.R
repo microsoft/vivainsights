@@ -32,7 +32,7 @@ generate_report2 <- function(output_format = rmarkdown::html_document(toc = TRUE
                              output_file = "report.html",
                              output_dir = getwd(),
                              report_title = "Report",
-                             rmd_dir = system.file("rmd_template/minimal.rmd", package = "wpa"),
+                             rmd_dir = system.file("rmd_template/minimal.rmd", package = "vivainsights"),
                              ...) {
 
   ## Render report into html
