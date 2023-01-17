@@ -8,14 +8,14 @@
 #'
 #' @description
 #' This function calculates employee tenure based on different input dates.
-#' `identify_tenure` uses the latest Date available if user selects "Date",
+#' `identify_tenure` uses the latest Date available if user selects "MetricDate",
 #'  but also have flexibility to select a specific date, e.g. "1/1/2020".
 #'
 #' @family Data Validation
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param end_date A string specifying the name of the date variable
-#'   representing the latest date. Defaults to "Date".
+#'   representing the latest date. Defaults to "MetricDate".
 #' @param beg_date A string specifying the name of the date variable
 #'   representing the hire date. Defaults to "HireDate".
 #' @param maxten A numeric value representing the maximum tenure.
@@ -57,7 +57,7 @@
 #'
 #' @export
 identify_tenure <- function(data,
-                            end_date = "Date",
+                            end_date = "MetricDate",
                             beg_date = "HireDate",
                             maxten = 40,
                             return = "message"){
@@ -70,7 +70,7 @@ identify_tenure <- function(data,
 
   data_prep <-
     data %>%
-    mutate(Date = as.Date(Date, format= "%m/%d/%Y"), # Re-format `Date`
+    mutate(MetricDate = as.Date(MetricDate, format = "%m/%d/%Y"), # Re-format `MetricDate`
            end_date = as.Date(!!sym(end_date), format= "%m/%d/%Y"), # Access a symbol, not a string
            beg_date = as.Date(!!sym(beg_date), format= "%m/%d/%Y")) %>% # Access a symbol, not a string
     arrange(end_date) %>%
@@ -81,8 +81,8 @@ identify_tenure <- function(data,
   # graphing data
   tenure_summary <-
     data_prep %>%
-    filter(Date == last_date) %>%
-    mutate(tenure_years = (Date - beg_date)/365) %>%
+    filter(MetricDate == last_date) %>%
+    mutate(tenure_years = (MetricDate - beg_date)/365) %>%
     group_by(tenure_years)%>%
     summarise(n = n(),.groups = 'drop')
 
@@ -90,8 +90,8 @@ identify_tenure <- function(data,
   # off person IDs
   oddpeople <-
     data_prep %>%
-    filter(Date == last_date) %>%
-    mutate(tenure_years = (Date - beg_date)/365) %>%
+    filter(MetricDate == last_date) %>%
+    mutate(tenure_years = (MetricDate - beg_date)/365) %>%
     filter(tenure_years >= maxten) %>%
     select(PersonId)
 
@@ -129,8 +129,8 @@ identify_tenure <- function(data,
   } else if(return == "data"){
 
     data_prep %>%
-      filter(Date == last_date) %>%
-      mutate(TenureYear = as.numeric((Date - beg_date)/365)) %>%
+      filter(MetricDate == last_date) %>%
+      mutate(TenureYear = as.numeric((MetricDate - beg_date)/365)) %>%
       select(PersonId, TenureYear)
 
   } else {

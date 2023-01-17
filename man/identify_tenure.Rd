@@ -7,7 +7,7 @@ summary table or histogram}
 \usage{
 identify_tenure(
   data,
-  end_date = "Date",
+  end_date = "MetricDate",
   beg_date = "HireDate",
   maxten = 40,
   return = "message"
@@ -17,7 +17,7 @@ identify_tenure(
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
 
 \item{end_date}{A string specifying the name of the date variable
-representing the latest date. Defaults to "Date".}
+representing the latest date. Defaults to "MetricDate".}
 
 \item{beg_date}{A string specifying the name of the date variable
 representing the hire date. Defaults to "HireDate".}
@@ -55,7 +55,7 @@ lying outside the threshold.
 }
 \description{
 This function calculates employee tenure based on different input dates.
-\code{identify_tenure} uses the latest Date available if user selects "Date",
+\code{identify_tenure} uses the latest Date available if user selects "MetricDate",
 but also have flexibility to select a specific date, e.g. "1/1/2020".
 }
 \examples{
