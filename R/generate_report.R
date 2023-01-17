@@ -201,7 +201,7 @@ read_preamble <- function(path){
 
   full_path <- paste0("/preamble/", path)
 
-  complete_path <- paste0(path.package("wpa"), full_path)
+  complete_path <- paste0(path.package("vivainsights"), full_path)
 
   text <- suppressWarnings(readLines(complete_path))
 
