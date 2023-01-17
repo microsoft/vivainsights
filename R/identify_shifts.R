@@ -36,11 +36,18 @@
 #' @family Working Patterns
 #'
 #' @examples
+#' # Demo with `pq_data` example where Outlook Start and End times are imputed
+#' spq_df <- pq_data
+#'
+#' spq_df$WorkingStartTimeSetInOutlook <- "6:30"
+#'
+#' spq_df$WorkingEndTimeSetInOutlook <- "23:30"
+#'
 #' # Return plot
-#' pq_data %>% identify_shifts()
+#' spq_df %>% identify_shifts()
 #'
 #' # Return summary table
-#' pq_data %>% identify_shifts(return = "table")
+#' spq_df %>% identify_shifts(return = "table")
 #'
 #' @export
 identify_shifts <- function(data, return = "plot"){
