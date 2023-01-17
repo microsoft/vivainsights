@@ -34,5 +34,6 @@ Imports:
     htmltools,
     markdown,
     networkD3,
-    rmarkdown
+    rmarkdown,
+    wpa
 URL: https://microsoft.github.io/vivainsights/
