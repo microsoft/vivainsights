@@ -78,7 +78,7 @@ utils::globalVariables(
     "Email_ratio",
     "PersonCount",
     "WorkdayFlag",
-    "WorkdayRange"
+    "WorkdayRange",
     "identifier",
     "pre_group",
     "Emails_sent",
