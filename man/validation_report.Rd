@@ -64,7 +64,7 @@ is not available.
 \item \code{identify_privacythreshold()}
 \item \code{identify_nkw()}
 \item \code{identify_holidayweeks()}
-\item \code{subject_validate()}
+\item \code{subject_validate()} (available in 'wpa')
 \item \code{identify_tenure()}
 \item \code{flag_outlooktime()}
 \item \code{identify_shifts()}

@@ -30,7 +30,7 @@
 #'   - `identify_privacythreshold()`
 #'   - `identify_nkw()`
 #'   - `identify_holidayweeks()`
-#'   - `subject_validate()`
+#'   - `subject_validate()` (available in 'wpa')
 #'   - `identify_tenure()`
 #'   - `flag_outlooktime()`
 #'   - `identify_shifts()`
@@ -93,8 +93,8 @@ validation_report <- function(data,
     subline_obj <- "[Note] Subject line analysis is unavailable as no meeting query is supplied."
     subline_obj2 <- ""
   } else {
-    subline_obj <- meeting_data %>% subject_validate(return = "text")
-    subline_obj2 <- meeting_data %>% subject_validate(return = "table")
+    subline_obj <- meeting_data %>% wpa::subject_validate(return = "text")
+    subline_obj2 <- meeting_data %>% wpa::subject_validate(return = "table")
   }
 
   ## Dynamic: if `HireDate` is not available
