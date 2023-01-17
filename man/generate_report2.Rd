@@ -9,7 +9,7 @@ generate_report2(
   output_file = "report.html",
   output_dir = getwd(),
   report_title = "Report",
-  rmd_dir = system.file("rmd_template/minimal.rmd", package = "wpa"),
+  rmd_dir = system.file("rmd_template/minimal.rmd", package = "vivainsights"),
   ...
 )
 }
