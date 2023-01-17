@@ -7,8 +7,8 @@ missing values (outside company move) (Data Overview)}
 \usage{
 track_HR_change(
   data,
-  start_date = min(data$Date),
-  end_date = max(data$Date),
+  start_date = min(data$MetricDate),
+  end_date = max(data$MetricDate),
   hrvar = "Organization",
   mingroup = 5,
   return = "plot",

@@ -46,15 +46,15 @@
 #'
 #' @export
 track_HR_change <- function(data,
-                            start_date = min(data$Date),
-                            end_date = max(data$Date),
+                            start_date = min(data$MetricDate),
+                            end_date = max(data$MetricDate),
                             hrvar = "Organization",
                             mingroup = 5,
                             return = "plot",
                             NA_replacement = "Out of Company"){
 
   ## Check inputs
-  required_variables <- c("Date",
+  required_variables <- c("MetricDate",
                           "PersonId",
                           hrvar)
 
@@ -64,8 +64,8 @@ track_HR_change <- function(data,
     check_inputs(requirements = required_variables)
 
   ## Define Start and End Dates
-  data_start_date <- min(as.Date(data$Date,"%m/%d/%Y"))
-  data_end_date <- max(as.Date(data$Date,"%m/%d/%Y"))
+  data_start_date <- min(as.Date(data$MetricDate,"%m/%d/%Y"))
+  data_end_date <- max(as.Date(data$MetricDate,"%m/%d/%Y"))
 
   ## Validate dates
 
@@ -78,13 +78,13 @@ track_HR_change <- function(data,
 
   ## filter data to starting point
   start_data <- data %>%
-    filter(Date == start_date) %>%
+    filter(MetricDate == start_date) %>%
     select("PersonId", hrvar) %>%
     rename(group := !!sym(hrvar))
 
   ## filter data to end point
   end_data <- data %>%
-    filter(Date == end_date) %>%
+    filter(MetricDate == end_date) %>%
     select("PersonId", hrvar) %>%
     rename(pre_group := !!sym(hrvar))
 
