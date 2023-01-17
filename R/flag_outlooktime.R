@@ -31,10 +31,7 @@
 #' @family Data Validation
 #'
 #' @examples
-#' # Demo with `pq_data`
-#' flag_outlooktime(pq_data)
-#'
-#' # Example where Outlook Start and End times are imputed
+#' # Demo with `pq_data` example where Outlook Start and End times are imputed
 #' spq_df <- pq_data
 #'
 #' spq_df$WorkingStartTimeSetInOutlook <- "6:30"
