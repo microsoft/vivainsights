@@ -67,7 +67,7 @@ utils::globalVariables(
     "CH_ratio",
     "Collaboration_hrs",
     "HRAttribute",
-    "Unique",
+    "Unique values",
     "WorkingEndTimeSetInOutlook",
     "name",
     "Email_hours",
@@ -78,6 +78,7 @@ utils::globalVariables(
     "Email_ratio",
     "PersonCount",
     "WorkdayFlag",
+    "WorkdayRange"
     "identifier",
     "pre_group",
     "Emails_sent",
