@@ -64,6 +64,9 @@
     <loc>https://microsoft.github.io/vivainsights/reference/check_inputs.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/check_query.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/collaboration_area.html</loc>
   </url>
   <url>
@@ -193,6 +196,24 @@
     <loc>https://microsoft.github.io/vivainsights/reference/extract_hr.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/flag_ch_ratio.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/flag_em_ratio.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/flag_extreme.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/flag_outlooktime.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/generate_report.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/generate_report2.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/heat_colours.html</loc>
   </url>
   <url>
@@ -206,6 +227,33 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/hrvar_trend.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_churn.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_datefreq.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_holidayweeks.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_inactiveweeks.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_nkw.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_outlier.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_privacythreshold.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_shifts.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/identify_tenure.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/import_query.html</loc>
@@ -277,6 +325,9 @@
     <loc>https://microsoft.github.io/vivainsights/reference/pq_data.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/read_preamble.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/rgb2hex.html</loc>
   </url>
   <url>
@@ -292,10 +343,16 @@
     <loc>https://microsoft.github.io/vivainsights/reference/totals_col.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/track_HR_change.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/tstamp.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/us_to_space.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/validation_report.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/wrap.html</loc>
