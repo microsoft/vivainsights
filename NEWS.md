@@ -1,6 +1,8 @@
-# vivainsights (development version)
+# vivainsights 0.2.0
 
 - colour contrast improved for `create_dist()` family functions
+- added data validation family of functions, including `validation_report()`
+- adds 'wpa' as a package dependency 
 
 # vivainsights 0.1.0
 
