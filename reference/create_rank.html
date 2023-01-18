@@ -242,29 +242,20 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Emails_sent"</span>,</span></span>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar               group                  Emails_sent     n</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> LevelDesignation    Director                     104.     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> SupervisorIndicator Manager+                     102.     15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> FunctionType        Sales                         70.2    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> LevelDesignation    Manager                       67.2    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SupervisorIndicator Manager                       67.2    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> FunctionType        Marketing                     50.7    25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Organization        Finance                       49.5    50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> FunctionType        Analytics                     49.4    25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Organization        Sales and Marketing           46.9    50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Organization        HR                            46.6    47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> FunctionType        Customer_Service              45.9    22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> FunctionType        IT                            43.1    30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Organization        Product                       42.5    41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> FunctionType        G_and_A                       42.1    11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> FunctionType        Engineering                   40.7    31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> LevelDesignation    Senior IC                     40.1    31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> LevelDesignation    Support                       38.6   102</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> FunctionType        R_and_D                       38.5    27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> SupervisorIndicator Individual Contributor        38.5   153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> LevelDesignation    Junior IC                     35.6    20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 21 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar               group               Emails_sent     n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> LevelDesignation    Director                  112.     14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> SupervisorIndicator Manager+                  110.     16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> FunctionType        Sales                      67.6    19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> LevelDesignation    Manager                    63.2    23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> SupervisorIndicator Manager                    63.2    23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> FunctionType        Marketing                  53.7    26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Organization        Finance                    51.1    51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> FunctionType        Analytics                  48.1    25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> WeekendDays         [SUNDAY, SATURDAY]         46.8   194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Organization        Sales and Marketing        46.2    51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 11 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Return a table - combination mode</span></span></span>
@@ -274,20 +265,20 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <span class="r-in"><span>  mode <span class="op">=</span> <span class="st">"combine"</span>,</span></span>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 130 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 174 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                                  Email…¹     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [LevelDesignation] Director [SupervisorIndicator] Man…   104.     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [LevelDesignation] Manager [SupervisorIndicator] Mana…    67.2    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [LevelDesignation] Senior IC [SupervisorIndicator] In…    40.1    31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [LevelDesignation] Support [SupervisorIndicator] Indi…    38.6   102</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [LevelDesignation] Junior IC [SupervisorIndicator] In…    35.6    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [LevelDesignation] Manager [Organization] Sales and M…    73.8     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [LevelDesignation] Manager [Organization] HR              66.2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [LevelDesignation] Manager [Organization] Finance         65.8     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [LevelDesignation] Senior IC [Organization] Finance       45.0    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [LevelDesignation] Support [Organization] Finance         43.9    26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 120 more rows, and abbreviated variable name ¹​Emails_sent</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [LevelDesignation] Director [SupervisorIndicator] Man…   112.     14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [LevelDesignation] Manager [SupervisorIndicator] Mana…    63.2    23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [LevelDesignation] Senior IC [SupervisorIndicator] In…    39.5    31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [LevelDesignation] Support [SupervisorIndicator] Indi…    38.0   103</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [LevelDesignation] Junior IC [SupervisorIndicator] In…    34.5    21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [LevelDesignation] Manager [Organization] Finance         71.3     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [LevelDesignation] Manager [Organization] Sales and M…    66.4     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [LevelDesignation] Manager [Organization] HR              59.1     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [LevelDesignation] Senior IC [Organization] Finance       46.8    10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [LevelDesignation] Support [Organization] Finance         40.9    27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 164 more rows, and abbreviated variable name ¹​Emails_sent</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
