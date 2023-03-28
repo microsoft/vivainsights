@@ -35,5 +35,8 @@ Imports:
     markdown,
     networkD3,
     rmarkdown,
-    wpa
+    wpa,
+    ggraph,
+    igraph,
+    tidytext
 URL: https://microsoft.github.io/vivainsights/
