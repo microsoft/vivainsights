@@ -52,6 +52,7 @@ Other Support:
 \code{\link{wrap}()}
 
 Other Text-mining: 
+\code{\link{meeting_tm_report}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()},

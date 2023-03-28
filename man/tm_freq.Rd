@@ -51,6 +51,7 @@ tm_freq(mt_data, token = "ngrams")
 }
 \seealso{
 Other Text-mining: 
+\code{\link{meeting_tm_report}()},
 \code{\link{pairwise_count}()},
 \code{\link{tm_clean}()},
 \code{\link{tm_cooc}()},

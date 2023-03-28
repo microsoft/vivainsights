@@ -42,6 +42,7 @@ tm_clean(mt_data, token = "ngrams")
 }
 \seealso{
 Other Text-mining: 
+\code{\link{meeting_tm_report}()},
 \code{\link{pairwise_count}()},
 \code{\link{tm_cooc}()},
 \code{\link{tm_freq}()},
