@@ -38,5 +38,6 @@ Imports:
     wpa,
     ggraph,
     igraph,
-    tidytext
+    tidytext,
+    ggwordcloud
 URL: https://microsoft.github.io/vivainsights/
