@@ -115,6 +115,9 @@ data %>%
   create_dt()
 ```
 
+<!-- Removed as `subject_scan()` cannot run --> 
+
+<!--
 Top terms
 ===============================================
 
@@ -136,4 +139,4 @@ Column {data-width=50%}
 data %>% subject_scan(mode = "hours", stopwords = stopwords)
 ```
 
-
+-->
