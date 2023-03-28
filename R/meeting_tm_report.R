@@ -43,7 +43,7 @@ meeting_tm_report <- function(data,
     seed = seed,
     output_file = paste0(path, ".html"),
     report_title = "Analysis of Meeting Subject Lines",
-    rmd_dir = system.file("rmd_template/meeting_tm/meeting_tm_report.rmd", package = "wpa"),
+    rmd_dir = system.file("rmd_template/meeting_tm/meeting_tm_report.rmd", package = "vivainsights"),
     output_format =
       flexdashboard::flex_dashboard(orientation = "columns",
                                     vertical_layout = "fill",
