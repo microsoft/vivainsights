@@ -1,4 +1,4 @@
-# vivainsights (development version)
+# vivainsights 0.3.0
 
 # vivainsights 0.2.0
 
