@@ -1,3 +1,5 @@
+# vivainsights (development version)
+
 # vivainsights 0.2.0
 
 - colour contrast improved for `create_dist()` family functions
