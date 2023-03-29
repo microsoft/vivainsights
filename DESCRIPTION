@@ -40,4 +40,6 @@ Imports:
     igraph,
     tidytext,
     ggwordcloud
+Suggests:    
+    flexdashboard
 URL: https://microsoft.github.io/vivainsights/
