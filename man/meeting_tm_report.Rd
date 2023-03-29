@@ -37,6 +37,10 @@ function.
 \description{
 Create a text mining report in HTML based on Meeting Subject Lines
 }
+\details{
+Note that the column \code{Subject} must be available within the input data frame
+in order to run.d
+}
 \section{How to run}{
 
 
