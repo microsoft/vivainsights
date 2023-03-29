@@ -3,6 +3,10 @@
 #' @description
 #' Create a text mining report in HTML based on Meeting Subject Lines
 #'
+#' @details
+#' Note that the column `Subject` must be available within the input data frame
+#' in order to run.d
+#'
 #' @param data A Meeting Query dataset in the form of a data frame.
 #' @param path Pass the file path and the desired file name, _excluding the file
 #'   extension_. For example, `"meeting text mining report"`.
