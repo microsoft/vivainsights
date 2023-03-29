@@ -37,6 +37,15 @@ function.
 \description{
 Create a text mining report in HTML based on Meeting Subject Lines
 }
+\section{How to run}{
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{meeting_tm_report(mt_data)
+}\if{html}{\out{</div>}}
+
+This will generate a HTML report as specified in \code{path}.
+}
+
 \seealso{
 Other Reports: 
 \code{\link{generate_report}()},

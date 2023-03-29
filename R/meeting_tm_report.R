@@ -19,6 +19,12 @@
 #'
 #' @inherit generate_report return
 #'
+#' @section How to run:
+#'  ```
+#'  meeting_tm_report(mt_data)
+#'  ```
+#'  This will generate a HTML report as specified in `path`.
+#'
 #' @export
 meeting_tm_report <- function(data,
                               path = "meeting text mining report",
