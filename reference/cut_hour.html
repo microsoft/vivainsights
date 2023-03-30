@@ -12,7 +12,7 @@ vector."><meta property="og:image" content="https://microsoft.github.io/vivainsi
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,6 +108,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <code><a href="heat_colours.html">heat_colours</a>()</code>,
 <code><a href="is_date_format.html">is_date_format</a>()</code>,
 <code><a href="maxmin.html">maxmin</a>()</code>,
+<code><a href="pairwise_count.html">pairwise_count</a>()</code>,
 <code><a href="read_preamble.html">read_preamble</a>()</code>,
 <code><a href="rgb2hex.html">rgb2hex</a>()</code>,
 <code><a href="totals_bind.html">totals_bind</a>()</code>,
@@ -132,1125 +133,206 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-in"><span><span class="co"># Use on a query</span></span></span>
 <span class="r-in"><span><span class="fu">cut_hour</span><span class="op">(</span><span class="va">pq_data</span><span class="op">$</span><span class="va">Collaboration_hours</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`ubound` does not capture the largest value in `metric`. Values larger than `ubound` will be classified as NA. Adjusting `ubound` is recommended.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    [1] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    [6] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [11] &lt; 10 hours    10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [16] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [21] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [26] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [31] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [36] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [41] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [46] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [51] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [56] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [61] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [66] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [71] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [76] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [81] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [86] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [91] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [96] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [101] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [106] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [111] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [116] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [121] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [126] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [131] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [136] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [141] 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [146] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [151] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [156] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [161] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [166] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [171] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [176] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [181] 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [186] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [191] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [196] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [201] 15 - 20 hours &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [206] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [211] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [216] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [221] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [226] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [231] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [236] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [241] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [246] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [251] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [256] &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [261] 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [266] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [271] 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [276] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [281] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [286] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [291] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [296] 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [301] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [306] &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [311] &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [316] &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [321] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [326] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [331] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [336] &lt; 10 hours    15 - 20 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [341] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [346] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [351] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [356] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [361] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [366] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [371] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [376] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [381] 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [386] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [391] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [396] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [401] &lt; 10 hours    10 - 15 hours 20+ hours     15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [406] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [411] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [416] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [421] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [426] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [431] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [436] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [441] 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [446] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [451] &lt; 10 hours    20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [456] &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [461] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [466] 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [471] 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [476] 10 - 15 hours 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [481] &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [486] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [491] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [496] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [501] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [506] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [511] 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [516] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [521] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [526] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [531] &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [536] 20+ hours     &lt; 10 hours    15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [541] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [546] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [551] &lt; 10 hours    20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [556] 15 - 20 hours 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [561] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [566] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [571] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [576] 15 - 20 hours 20+ hours     10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [581] &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [586] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [591] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    [1] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    [6] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [11] 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [16] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [21] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [26] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [31] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [36] 15 - 20 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [41] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [46] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [51] &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [56] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [61] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [66] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [71] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [76] 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [81] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [86] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [91] 10 - 15 hours 20+ hours     15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [96] 20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [101] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [106] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [111] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [116] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [121] &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [126] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [131] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [136] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [141] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [146] 20+ hours     20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [151] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [156] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [161] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [166] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [171] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [176] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [181] &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [186] &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [191] &lt; 10 hours    20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [196] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [201] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [206] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [211] 10 - 15 hours 15 - 20 hours 20+ hours     15 - 20 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [216] 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [221] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [226] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [231] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [236] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [241] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [246] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [251] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [256] 10 - 15 hours 15 - 20 hours 15 - 20 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [261] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [266] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [271] 15 - 20 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [276] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [281] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [286] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [291] 10 - 15 hours 20+ hours     10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [296] 15 - 20 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [301] 20+ hours     10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [306] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [311] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [316] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [321] &lt; 10 hours    15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [326] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [331] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [336] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [341] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [346] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [351] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [356] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [361] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [366] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [371] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [376] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [381] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [386] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [391] &lt; 10 hours    20+ hours     20+ hours     20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [396] 15 - 20 hours &lt; 10 hours    15 - 20 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [401] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [406] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [411] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [416] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [421] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [426] &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [431] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [436] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [441] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [446] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [451] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [456] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [461] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [466] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [471] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [476] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [481] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [486] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [491] 10 - 15 hours 20+ hours     15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [496] 15 - 20 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [501] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [506] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [511] 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [516] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [521] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [526] &lt; 10 hours    20+ hours     20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [531] &lt; 10 hours    15 - 20 hours &lt; 10 hours    20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [536] 20+ hours     &lt; 10 hours    10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [541] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [546] 20+ hours     20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [551] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [556] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [561] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [566] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [571] &lt; 10 hours    15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [576] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [581] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [586] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [591] 15 - 20 hours 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [596] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [601] 15 - 20 hours 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [606] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [611] 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [616] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [621] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [626] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [631] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [636] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [641] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [646] &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [651] 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [656] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [661] &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [666] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [671] &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [676] 15 - 20 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [681] 15 - 20 hours 15 - 20 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [686] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [691] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [696] 20+ hours     &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [701] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [706] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [711] &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [716] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [721] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [726] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [731] 20+ hours     &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [736] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [741] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [746] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [751] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [756] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [761] &lt; 10 hours    15 - 20 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [766] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [771] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [776] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [781] 20+ hours     20+ hours     &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [786] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [791] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [796] &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [801] 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [806] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [811] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [816] 15 - 20 hours 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [821] 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [826] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [831] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [836] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [841] 15 - 20 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [846] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [851] 10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [856] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [861] &lt; 10 hours    15 - 20 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [866] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [871] 20+ hours     20+ hours     15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [876] 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [881] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [886] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [891] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [896] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [901] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [906] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [911] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [916] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [921] 10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [926] 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [931] 20+ hours     15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [936] 15 - 20 hours 15 - 20 hours 15 - 20 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [941] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [946] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [951] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [956] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [961] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [966] 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [971] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [976] 20+ hours     15 - 20 hours 20+ hours     15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [981] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [986] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [991] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [996] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1001] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1006] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1011] 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1016] 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1021] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1026] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1031] 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1036] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1041] 15 - 20 hours 15 - 20 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1046] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1051] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1056] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1061] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1066] 10 - 15 hours 20+ hours     15 - 20 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1071] 15 - 20 hours 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1076] 15 - 20 hours 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1081] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1086] 15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1091] &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1096] 20+ hours     &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1101] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1106] &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1111] 15 - 20 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1116] 15 - 20 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1121] 15 - 20 hours 20+ hours     15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1126] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1131] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1136] 15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1141] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1146] &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1151] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1156] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1161] 15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1166] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1171] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1176] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1181] 20+ hours     15 - 20 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1186] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1191] &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1196] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1201] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1206] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1211] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1216] 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1221] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1226] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1231] 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1236] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1241] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1246] &lt; 10 hours    20+ hours     10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1251] 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1256] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1261] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1266] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1271] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1276] 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1281] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1286] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1291] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1296] 20+ hours     15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1301] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1306] &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1311] 15 - 20 hours &lt;NA&gt;          10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1316] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1321] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1326] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1331] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1336] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1341] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1346] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1351] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1356] 20+ hours     10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1361] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1366] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1371] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1376] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1381] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1386] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1391] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1396] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1401] 20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1406] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1411] 15 - 20 hours 20+ hours     15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1416] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1421] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1426] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1431] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1436] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1441] 15 - 20 hours &lt; 10 hours    20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1446] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1451] 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1456] &lt; 10 hours    15 - 20 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1461] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1466] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1471] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1476] 20+ hours     20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1481] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1486] &lt; 10 hours    15 - 20 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1491] &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1496] 20+ hours     &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1501] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1506] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1511] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1516] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1521] 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1526] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1531] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1536] &lt; 10 hours    15 - 20 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1541] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1546] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1551] 20+ hours     15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1556] 20+ hours     &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1561] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1566] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1571] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1576] 20+ hours     10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1581] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1586] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1591] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1596] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1601] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1606] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1611] 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1616] 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1621] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1626] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1631] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1636] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1641] 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1646] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1651] &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1656] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1661] &lt; 10 hours    10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1666] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1671] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1676] 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1681] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1686] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1691] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1696] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1701] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1706] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1711] 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1716] &lt; 10 hours    10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1721] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1726] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1731] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1736] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1741] &lt; 10 hours    10 - 15 hours 15 - 20 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1746] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1751] 20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1756] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1761] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1766] 15 - 20 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1771] 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1776] 20+ hours     &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1781] 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1786] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1791] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1796] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1801] 20+ hours     &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1806] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1811] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1816] 15 - 20 hours 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1821] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1826] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1831] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1836] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1841] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1846] &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1851] &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1856] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1861] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1866] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1871] 20+ hours     15 - 20 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1876] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1881] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1886] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1891] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1896] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1901] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1906] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1911] &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1916] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1921] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1926] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1931] 20+ hours     20+ hours     20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1936] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1941] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1946] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1951] 20+ hours     &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1956] 20+ hours     &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1961] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1966] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1971] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1976] 20+ hours     &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1981] 20+ hours     &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1986] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1991] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1996] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2001] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2006] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2011] 10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2016] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2021] 15 - 20 hours 20+ hours     &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2026] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2031] 15 - 20 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2036] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2041] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2046] &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2051] &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2056] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2061] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2066] 10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2071] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2076] 20+ hours     &lt;NA&gt;          10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2081] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2086] &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2091] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2096] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2101] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2106] &lt; 10 hours    10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2111] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2116] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2121] 15 - 20 hours 20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2126] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2131] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2136] &lt; 10 hours    15 - 20 hours &lt; 10 hours    20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2141] &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2146] 15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2151] 20+ hours     15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2156] &lt;NA&gt;          &lt; 10 hours    15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2161] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2166] 15 - 20 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2171] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2176] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2181] 20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2186] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2191] &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2196] &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2201] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2206] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2211] 15 - 20 hours 20+ hours     &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2216] 15 - 20 hours 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2221] 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2226] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2231] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2236] 15 - 20 hours &lt; 10 hours    20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2241] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2246] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2251] 15 - 20 hours 15 - 20 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2256] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2261] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2266] &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2271] &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2276] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2281] 15 - 20 hours 15 - 20 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2286] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2291] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2296] 20+ hours     20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2301] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2306] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2311] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2316] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2321] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2326] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2331] 20+ hours     &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2336] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2341] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2346] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2351] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2356] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2361] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2366] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2371] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2376] 20+ hours     &lt; 10 hours    20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2381] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2386] 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2391] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2396] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2401] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2406] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2411] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2416] 15 - 20 hours 20+ hours     20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2421] 10 - 15 hours 20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2426] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2431] 15 - 20 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2436] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2441] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2446] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2451] &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2456] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2461] 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2466] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2471] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2476] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2481] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2486] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2491] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2496] 20+ hours     20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2501] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2506] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2511] 15 - 20 hours &lt;NA&gt;          10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2516] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2521] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2526] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2531] 20+ hours     10 - 15 hours 15 - 20 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2536] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2541] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2546] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2551] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2556] &lt;NA&gt;          15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2561] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2566] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2571] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2576] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2581] 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2586] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2591] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2596] 15 - 20 hours &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2601] &lt;NA&gt;          10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2606] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2611] 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2616] 10 - 15 hours 20+ hours     20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2621] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2626] 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2631] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2636] 15 - 20 hours &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2641] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2646] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2651] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2656] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2661] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2666] 15 - 20 hours 20+ hours     15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2671] 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2676] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2681] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2686] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2691] &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2696] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2701] &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2706] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2711] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2716] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2721] 10 - 15 hours 20+ hours     15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2726] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2731] 20+ hours     20+ hours     20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2736] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2741] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2746] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2751] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2756] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2761] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2766] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2771] &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2776] 20+ hours     10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2781] 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2786] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2791] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2796] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2801] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2806] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2811] 15 - 20 hours 20+ hours     15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2816] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2821] 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2826] &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2831] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2836] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2841] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2846] &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2851] &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2856] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2861] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2866] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2871] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2876] 20+ hours     &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2881] 15 - 20 hours &lt; 10 hours    10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2886] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2891] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2896] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2901] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2906] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2911] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2916] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2921] &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2926] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2931] 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2936] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2941] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2946] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2951] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2956] &lt;NA&gt;          10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2961] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2966] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2971] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2976] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2981] &lt;NA&gt;          10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2986] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2991] &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2996] 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3001] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3006] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3011] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3016] 15 - 20 hours 15 - 20 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3021] 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3026] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3031] 15 - 20 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3036] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3041] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3046] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3051] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3056] 10 - 15 hours &lt; 10 hours    15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3061] &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3066] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3071] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3076] 20+ hours     &lt;NA&gt;          10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3081] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3086] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3091] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3096] 20+ hours     20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3101] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3106] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3111] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3116] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3121] 10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3126] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3131] 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3136] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3141] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3146] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3151] 20+ hours     15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3156] 20+ hours     15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3161] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3166] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3171] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3176] 20+ hours     &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3181] 20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3186] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3191] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3196] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3201] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3206] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3211] 15 - 20 hours 20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3216] 10 - 15 hours 15 - 20 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3221] 15 - 20 hours 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3226] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3231] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3236] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3241] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3246] 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3251] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3256] 15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3261] 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3266] 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3271] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3276] 15 - 20 hours &lt;NA&gt;          10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3281] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3286] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3291] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3296] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3301] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3306] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3311] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3316] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3321] 10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3326] 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3331] 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3336] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3341] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3346] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3351] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3356] &lt;NA&gt;          15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3361] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3366] 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3371] 20+ hours     10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3376] 20+ hours     10 - 15 hours 20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3381] &lt;NA&gt;          15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3386] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3391] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3396] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3401] &lt;NA&gt;          &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3406] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3411] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3416] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3421] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3426] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3431] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3436] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3441] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3446] &lt; 10 hours    &lt;NA&gt;          10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3451] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3456] &lt; 10 hours    10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3461] &lt; 10 hours    15 - 20 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3466] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3471] 20+ hours     10 - 15 hours 20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3476] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3481] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3486] 10 - 15 hours 15 - 20 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3491] &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt;NA&gt;          15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3496] 20+ hours     20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3501] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3506] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3511] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3516] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3521] 10 - 15 hours 20+ hours     20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3526] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3531] 20+ hours     20+ hours     20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3536] 15 - 20 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3541] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3546] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3551] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3556] 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3561] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3566] 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3571] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3576] 20+ hours     10 - 15 hours 20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3581] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3586] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3591] 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3596] 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3601] &lt;NA&gt;          10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3606] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3611] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3616] 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3621] 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3626] &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3631] 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3636] 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3641] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3646] &lt; 10 hours    20+ hours     15 - 20 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3651] &lt; 10 hours    15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3656] &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3661] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3666] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3671] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3676] 15 - 20 hours &lt;NA&gt;          15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3681] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3686] 15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3691] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3696] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3701] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3706] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3711] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3716] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3721] 15 - 20 hours 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3726] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3731] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3736] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3741] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3746] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3751] 20+ hours     15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3756] &lt;NA&gt;          10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3761] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3766] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3771] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3776] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3781] &lt;NA&gt;          10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3786] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3791] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3796] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3801] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3806] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3811] 15 - 20 hours 20+ hours     &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3816] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3821] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3826] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3831] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3836] &lt; 10 hours    15 - 20 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3841] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3846] &lt; 10 hours    &lt;NA&gt;          &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3851] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3856] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3861] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3866] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3871] 15 - 20 hours 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3876] 15 - 20 hours &lt;NA&gt;          10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3881] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3886] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3891] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3896] 20+ hours     20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3901] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3906] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3911] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3916] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3921] 15 - 20 hours 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3926] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3931] 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3936] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3941] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3946] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3951] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3956] 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3961] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3966] 20+ hours     10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3971] 20+ hours     10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3976] 20+ hours     &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3981] 20+ hours     15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3986] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3991] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3996] 20+ hours     &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4001] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4006] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4011] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4016] 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4021] 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4026] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4031] 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4036] 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4041] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4046] 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4051] &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4056] &lt; 10 hours    15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4061] 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4066] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4071] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4076] 15 - 20 hours &lt;NA&gt;          10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4081] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4086] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4091] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4096] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4101] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4106] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4111] 15 - 20 hours &lt;NA&gt;          10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4116] 15 - 20 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4121] 20+ hours     20+ hours     20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4126] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4131] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4136] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4141] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4146] 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4151] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4156] &lt;NA&gt;          10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4161] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4166] 20+ hours     &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4171] 20+ hours     10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4176] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4181] &lt;NA&gt;          10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4186] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4191] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4196] 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4201] &lt;NA&gt;          15 - 20 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4206] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4211] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4216] &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4221] 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4226] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4231] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4236] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4241] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4246] &lt; 10 hours    &lt;NA&gt;          10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4251] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4256] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4261] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4266] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4271] 20+ hours     &lt; 10 hours    20+ hours     20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4276] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4281] &lt; 10 hours    10 - 15 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4286] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4291] &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4296] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4301] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4306] 10 - 15 hours &lt; 10 hours    15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4311] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4316] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4321] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4326] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4331] 20+ hours     20+ hours     20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4336] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4341] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4346] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4351] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4356] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4361] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4366] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4371] 20+ hours     &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4376] 20+ hours     &lt; 10 hours    20+ hours     20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4381] 20+ hours     &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4386] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4391] &lt; 10 hours    20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4396] 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4401] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4406] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4411] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4416] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4421] 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4426] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4431] 15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4436] 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4441] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4446] &lt; 10 hours    &lt;NA&gt;          10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4451] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4456] 10 - 15 hours &lt; 10 hours    15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4461] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4466] &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4471] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4476] 10 - 15 hours &lt;NA&gt;          10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4481] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4486] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4491] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4496] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4501] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4506] &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4511] 15 - 20 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4516] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4521] 10 - 15 hours 20+ hours     20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4526] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4531] 20+ hours     &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4536] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4541] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4546] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4551] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4556] &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4561] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4566] 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4571] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4576] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4581] &lt;NA&gt;          10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4586] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4591] &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4596] 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4601] &lt;NA&gt;          10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4606] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4611] 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4616] &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4621] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4626] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4631] 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4636] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4641] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4646] &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4651] &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4656] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4661] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4666] 10 - 15 hours 20+ hours     15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4671] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4676] 20+ hours     &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4681] 15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4686] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4691] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4696] 20+ hours     20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4701] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4706] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4711] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4716] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4721] 10 - 15 hours 20+ hours     20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4726] 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4731] 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4736] 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4741] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4746] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4751] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4756] 20+ hours     10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4761] &lt; 10 hours    10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4766] 20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4771] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4776] 20+ hours     15 - 20 hours 20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4781] 20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4786] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4791] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4796] 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4801] &lt;NA&gt;          15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4806] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4811] 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4816] 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4821] 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4826] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4831] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4836] 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4841] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4846] &lt;NA&gt;          10 - 15 hours 20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4851] 15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4856] 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4861] 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4866] 20+ hours     15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4871] 20+ hours     10 - 15 hours 20+ hours     15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4876] &lt;NA&gt;          10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4881] 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4886] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4891] 10 - 15 hours 10 - 15 hours &lt;NA&gt;          15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4896] 20+ hours     20+ hours     20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4901] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4906] 10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4911] &lt;NA&gt;          &lt; 10 hours    10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4916] 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4921] 20+ hours     20+ hours     15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4926] 10 - 15 hours 15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4931] 10 - 15 hours 15 - 20 hours 15 - 20 hours 20+ hours     15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4936] 10 - 15 hours 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4941] 10 - 15 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4946] 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4951] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4956] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4961] 15 - 20 hours 15 - 20 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4966] &lt; 10 hours    15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4971] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4976] 10 - 15 hours 20+ hours     15 - 20 hours 10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4981] 15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4986] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4991] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4996] 10 - 15 hours 20+ hours     &lt; 10 hours    15 - 20 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5001] &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5006] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5011] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5016] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5021] &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5026] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5031] 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5036] 20+ hours     &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5041] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5046] 10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5051] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5056] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5061] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5066] 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5071] 20+ hours     20+ hours     &lt; 10 hours    15 - 20 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5076] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5081] &lt; 10 hours    20+ hours     20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5086] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5091] 10 - 15 hours &lt;NA&gt;          &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5096] 10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5101] &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5106] 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours &lt;NA&gt;         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5111] &lt; 10 hours    &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5116] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5121] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5126] 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5131] 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5136] 10 - 15 hours 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5141] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5146] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5151] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5156] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5161] &lt; 10 hours    10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5166] 15 - 20 hours 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5171] &lt; 10 hours    15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5176] 20+ hours     15 - 20 hours &lt; 10 hours    &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5181] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5186] &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5191] &lt; 10 hours    20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5196] 20+ hours     &lt; 10 hours    10 - 15 hours &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5201] 20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5206] 10 - 15 hours &lt; 10 hours    &lt;NA&gt;          10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5211] &lt; 10 hours    10 - 15 hours &lt; 10 hours    15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5216] 10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5221] 20+ hours     10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5226] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5231] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5236] 15 - 20 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5241] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5246] 20+ hours     20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5251] &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5256] &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5261] &lt; 10 hours    10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5266] &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5271] 20+ hours     10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5276] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5281] 20+ hours     20+ hours     10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5286] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5291] &lt;NA&gt;          10 - 15 hours 20+ hours     20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5296] 20+ hours     20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5301] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5306] 20+ hours     &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5311] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5316] 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5321] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5326] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5331] &lt; 10 hours    15 - 20 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5336] 20+ hours     10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5341] &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5346] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5351] &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;          &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5356] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5361] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5366] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5371] 15 - 20 hours &lt; 10 hours    20+ hours     15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5376] 10 - 15 hours &lt; 10 hours    &lt;NA&gt;          10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5381] &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5386] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5391] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5396] 10 - 15 hours 10 - 15 hours &lt;NA&gt;          15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5401] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5406] &lt; 10 hours    &lt;NA&gt;          10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5411] &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5416] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5421] 20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5426] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5431] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5436] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5441] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt;NA&gt;          10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5446] 20+ hours     20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5451] &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5456] 20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5461] 10 - 15 hours 15 - 20 hours &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5466] &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5471] 20+ hours     10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5476] &lt; 10 hours    15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5481] 20+ hours     20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5486] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5491] &lt;NA&gt;          10 - 15 hours 20+ hours     20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5496] 20+ hours     20+ hours     &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5501] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5506] 20+ hours     &lt; 10 hours    15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5511] &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5516] &lt; 10 hours    20+ hours     &lt; 10 hours    20+ hours     20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5521] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5526] 10 - 15 hours &lt; 10 hours    20+ hours     10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5531] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5536] 10 - 15 hours 20+ hours     &lt; 10 hours    &lt; 10 hours    15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5541] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5546] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5551] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5556] &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5561] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours 15 - 20 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5566] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5571] 15 - 20 hours 10 - 15 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5576] 15 - 20 hours &lt; 10 hours    &lt;NA&gt;          10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5581] &lt; 10 hours    &lt; 10 hours    20+ hours     10 - 15 hours &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5586] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5591] 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [601] 20+ hours     15 - 20 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [606] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [611] 15 - 20 hours 20+ hours     20+ hours     10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [616] 10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [621] 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [626] 10 - 15 hours 20+ hours     15 - 20 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [631] 15 - 20 hours 15 - 20 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [636] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [641] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [646] 20+ hours     20+ hours     20+ hours     20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [651] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [656] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [661] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [666] 15 - 20 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [671] 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [676] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [681] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [686] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [691] 10 - 15 hours 20+ hours     15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [696] 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [701] 20+ hours     15 - 20 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [706] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [711] &lt; 10 hours    15 - 20 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [716] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [721] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [726] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [731] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [736] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [741] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [746] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [751] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [756] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [761] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [766] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [771] 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [776] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [781] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [786] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [791] &lt; 10 hours    20+ hours     15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [796] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [801] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [806] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [811] 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [816] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [821] &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [826] &lt; 10 hours    20+ hours     15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [831] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [836] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [841] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [846] 20+ hours     20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [851] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [856] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [861] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [866] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [871] 10 - 15 hours &lt; 10 hours    20+ hours     &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [876] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [881] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [886] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [891] 15 - 20 hours 20+ hours     10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [896] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [901] 20+ hours     10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [906] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [911] &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [916] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [921] 15 - 20 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [926] &lt; 10 hours    20+ hours     15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [931] 15 - 20 hours 20+ hours     &lt; 10 hours    20+ hours     20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [936] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [941] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [946] 20+ hours     20+ hours     20+ hours     20+ hours     10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [951] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [956] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [961] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [966] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [971] 15 - 20 hours 10 - 15 hours 20+ hours     10 - 15 hours 10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [976] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [981] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [986] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [991] &lt; 10 hours    20+ hours     15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [996] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: &lt; 10 hours 10 - 15 hours 15 - 20 hours 20+ hours</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

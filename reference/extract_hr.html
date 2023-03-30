@@ -14,7 +14,7 @@ to extract HR / organisational attributes from a data frame."><meta property="og
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,6 +109,7 @@ in the data.</p></li>
 <code><a href="heat_colours.html">heat_colours</a>()</code>,
 <code><a href="is_date_format.html">is_date_format</a>()</code>,
 <code><a href="maxmin.html">maxmin</a>()</code>,
+<code><a href="pairwise_count.html">pairwise_count</a>()</code>,
 <code><a href="read_preamble.html">read_preamble</a>()</code>,
 <code><a href="rgb2hex.html">rgb2hex</a>()</code>,
 <code><a href="totals_bind.html">totals_bind</a>()</code>,
@@ -145,21 +146,20 @@ in the data.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "FunctionType"        "WeekendDays"        </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">pq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"vars"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,593 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    LevelDesignation SupervisorIndicator    Organization        Functio…¹ Weeke…²</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Junior IC        Individual Contributor Product             G_and_A   [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Manager          Manager                Sales and Marketing G_and_A   [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Support          Individual Contributor Finance             Engineer… [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Support          Individual Contributor Finance             Sales     [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Director         Manager+               Sales and Marketing Customer… [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Support          Individual Contributor Product             IT        [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Director         Manager+               Sales and Marketing Analytics [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Support          Individual Contributor Sales and Marketing IT        [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Support          Individual Contributor Finance             IT        [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Support          Individual Contributor HR                  Engineer… [SUNDA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 5,583 more rows, and abbreviated variable names ¹​FunctionType,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​WeekendDays</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,000 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    LevelDesignation SupervisorIndicator    Organization FunctionType WeekendDays</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Manager          Manager                Sales and M… G_and_A      [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Support          Individual Contributor Finance      Sales        [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Support          Individual Contributor Product      IT           [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Director         Manager+               Sales and M… Analytics    [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Support          Individual Contributor Sales and M… IT           [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Support          Individual Contributor HR           Engineering  [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Support          Individual Contributor Finance      Engineering  [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Support          Individual Contributor HR           Analytics    [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Senior IC        Individual Contributor Product      Analytics    [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Support          Individual Contributor Finance      Sales        [SUNDAY, S…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 990 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

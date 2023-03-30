@@ -292,7 +292,13 @@
     <loc>https://microsoft.github.io/vivainsights/reference/meeting_summary.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/meeting_tm_report.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/meeting_trend.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/mt_data.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/one2one_dist.html</loc>
@@ -319,6 +325,9 @@
     <loc>https://microsoft.github.io/vivainsights/reference/pad2.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/pairwise_count.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/pipe.html</loc>
   </url>
   <url>
@@ -335,6 +344,18 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/theme_wpa_basic.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/tm_clean.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/tm_cooc.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/tm_freq.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/tm_wordcloud.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/totals_bind.html</loc>

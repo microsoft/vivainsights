@@ -12,7 +12,7 @@ start and end time of work day."><meta property="og:image" content="https://micr
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,26 +127,25 @@ following strings:</p><ul><li><p><code>"text"</code> (default)</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return a message</span></span></span>
 <span class="r-in"><span><span class="fu">flag_outlooktime</span><span class="op">(</span><span class="va">spq_df</span>, threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> [Warning]  100% (5593) of the person-date rows in the data have extreme Outlook settings.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 0% (0)  have an Outlook workday shorter than 5 hours, while 100% (5593) have a workday longer than 13 hours.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> [Warning]  100% (1000) of the person-date rows in the data have extreme Outlook settings.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 0% (0)  have an Outlook workday shorter than 5 hours, while 100% (1000) have a workday longer than 13 hours.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return data</span></span></span>
 <span class="r-in"><span><span class="fu">flag_outlooktime</span><span class="op">(</span><span class="va">spq_df</span>, threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">13</span><span class="op">)</span>, return <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,593 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    PersonId                             WorkdayRange WorkdayFlag Workd…¹ Workd…²</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2b625906-1f36-3273-8d0d-13e714c5f646           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> a6afe34c-8524-32d3-a368-1517b29b68cd           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> bed0d545-9952-344a-aee9-e4f1329a8f6a           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> d6368140-9312-380b-bbc9-9a32bcef4b83           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 5faa2ff3-0ca2-37fd-a414-16703d7bfffb           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 60bf99b0-65fd-3c3f-94fb-8ceb451d59e7           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 93fddd74-3667-392b-ba5a-92d855772cb0           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 53183116-2cb2-32ee-9042-d62eb7061407           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 85408f35-0574-3a87-ac65-19bd05670b15           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0a83c097-8796-3b8b-b15f-e68952170e25           17 TRUE        FALSE   TRUE   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 5,583 more rows, and abbreviated variable names ¹​WorkdayFlag1,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​WorkdayFlag2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,000 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    PersonId                   WorkdayRange WorkdayFlag WorkdayFlag1 WorkdayFlag2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> a6afe34c-8524-32d3-a368-1…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> d6368140-9312-380b-bbc9-9…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 60bf99b0-65fd-3c3f-94fb-8…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 93fddd74-3667-392b-ba5a-9…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 53183116-2cb2-32ee-9042-d…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 0a83c097-8796-3b8b-b15f-e…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 17ac6cbf-1b86-3c01-a7c1-3…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 48cfb0e6-05da-31c9-b0a0-c…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1f907ab1-f3de-3472-acef-a…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 5538a778-326b-3efe-92f1-8…           17 TRUE        FALSE        TRUE        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 990 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

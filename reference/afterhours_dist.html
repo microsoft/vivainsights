@@ -14,7 +14,7 @@ Additional options available to return a table with distribution elements."><met
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,13 +187,13 @@ See <code><a href="create_dist.html">create_dist()</a></code> for applying the s
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return summary table</span></span></span>
 <span class="r-in"><span><span class="fu">afterhours_dist</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group               `1 - 2 hours` `2 - 3 hours` `3+ hours` Employee_Count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance                     0.340        0.094<span style="text-decoration: underline;">3</span>      0.566             53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                          0.224        0.224       0.551             49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product                     0.467        0.088<span style="text-decoration: underline;">9</span>      0.444             45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing         0.173        0.212       0.615             52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   group        `&lt; 1 hours` `1 - 2 hours` `2 - 3 hours` `3+ hours` Employee_Count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance          <span style="color: #BB0000;">NA</span>              0.370        0.111       0.519             27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR               <span style="color: #BB0000;">NA</span>              0.286        0.190       0.524             21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product           0.047<span style="text-decoration: underline;">6</span>         0.476        0.047<span style="text-decoration: underline;">6</span>      0.429             21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and M…     <span style="color: #BB0000;">NA</span>              0.161        0.258       0.581             31</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return result with a custom specified breaks</span></span></span>
 <span class="r-in"><span><span class="fu">afterhours_dist</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, cut <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span></span>

@@ -14,7 +14,7 @@ Additional options available to return a table with distribution elements."><met
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,6 +170,7 @@ e.g. c(10, 15, 20)</p></dd>
 <code><a href="meeting_line.html">meeting_line</a>()</code>,
 <code><a href="meeting_rank.html">meeting_rank</a>()</code>,
 <code><a href="meeting_summary.html">meeting_summary</a>()</code>,
+<code><a href="meeting_tm_report.html">meeting_tm_report</a>()</code>,
 <code><a href="meeting_trend.html">meeting_trend</a>()</code></p></div>
     </div>
 
@@ -184,10 +185,10 @@ e.g. c(10, 15, 20)</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group               `5 - 10 hours` `10 - 15 hours` `15+ hours` Employee_Count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance                      0.132           0.566       0.302             53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                           0.224           0.551       0.224             49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product                      0.444           0.444       0.111             45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing          0.231           0.462       0.308             52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance                      0.148           0.593      0.259              27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                           0.190           0.667      0.143              21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product                      0.476           0.476      0.047<span style="text-decoration: underline;">6</span>             21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing          0.258           0.419      0.323              31</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return result with a custom specified breaks</span></span></span>
 <span class="r-in"><span><span class="fu">meeting_dist</span><span class="op">(</span><span class="va">pq_data</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, cut <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span></span>
