@@ -5,7 +5,7 @@
 \alias{pq_data}
 \title{Sample Person Query dataset}
 \format{
-A data frame with 2236 rows and 154 variables:
+A data frame with 1000 rows and 154 variables:
 \describe{
 \item{PersonId}{ }
 \item{MetricDate}{ }
