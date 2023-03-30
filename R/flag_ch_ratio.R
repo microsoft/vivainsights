@@ -26,7 +26,7 @@
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
 #'   - `"message"`: message in the console containing diagnostic summary
-#'   - `"text"`: string containing diagnotic summary
+#'   - `"text"`: string containing diagnostic summary
 #'   - `"data"`: data frame. Person-level data with flags on unusually high or
 #'   low ratios
 #'

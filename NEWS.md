@@ -1,3 +1,7 @@
+# vivainsights 0.3.0
+
+- Added new text analytics functions relating to the meeting query
+
 # vivainsights 0.2.0
 
 - colour contrast improved for `create_dist()` family functions

@@ -26,6 +26,7 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
+\code{\link{pairwise_count}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
@@ -35,6 +36,7 @@ Other Support:
 
 Other Reports: 
 \code{\link{generate_report}()},
+\code{\link{meeting_tm_report}()},
 \code{\link{validation_report}()}
 }
 \concept{Reports}

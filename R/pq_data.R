@@ -12,7 +12,7 @@
 #'
 #' @return data frame.
 #'
-#' @format A data frame with 5593 rows and 154 variables:
+#' @format A data frame with 1000 rows and 154 variables:
 #' \describe{
 #' \item{PersonId}{ }
 #' \item{MetricDate}{ }
@@ -170,5 +170,5 @@
 #' \item{IsActive}{ }
 #'
 #' }
-#' @source \url{https://www.microsoft.com/en-us/microsoft-viva/insights}
+#' @source \url{https://learn.microsoft.com/en-us/viva/insights/advanced/analyst/person-query/}
 "pq_data"

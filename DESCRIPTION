@@ -1,14 +1,14 @@
 Package: vivainsights
 Type: Package
 Title: Analyze and Visualize Data from 'Microsoft Viva Insights'
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
 	)
 Maintainer: Martin Chan <martin.chan@microsoft.com>
 Description: Provides a versatile range of functions, including exploratory data analysis, time-series analysis, and data validation, whilst at the same time implements a set of best practices in analyzing and visualizing data specific to 'Microsoft Viva Insights'.
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -35,5 +35,11 @@ Imports:
     markdown,
     networkD3,
     rmarkdown,
-    wpa
+    wpa,
+    ggraph,
+    igraph,
+    tidytext,
+    ggwordcloud
+Suggests: 
+    flexdashboard
 URL: https://microsoft.github.io/vivainsights/

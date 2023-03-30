@@ -42,6 +42,7 @@ Other Support:
 \code{\link{extract_hr}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
+\code{\link{pairwise_count}()},
 \code{\link{read_preamble}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},

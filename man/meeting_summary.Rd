@@ -111,6 +111,7 @@ Other Meetings:
 \code{\link{meeting_fizz}()},
 \code{\link{meeting_line}()},
 \code{\link{meeting_rank}()},
+\code{\link{meeting_tm_report}()},
 \code{\link{meeting_trend}()}
 }
 \concept{Meetings}

@@ -3,4 +3,4 @@
 0 errors | 0 warnings | 0 notes
 
 * This is a minor update release.
-* Added new functions relating to data validation to the package.
+* Added new text analytics functions relating to the meeting query.

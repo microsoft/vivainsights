@@ -88,6 +88,14 @@ utils::globalVariables(
     "FirstValue",
     "TenureYear",
     "WorkdayFlag2",
-    "tenure_years"
+    "tenure_years",
+    "N",
+    "V1",
+    "V2",
+    "Subject",
+    "line",
+    "text",
+    "word",
+    "freq"
     )
 )

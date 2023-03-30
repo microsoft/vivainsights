@@ -89,6 +89,7 @@ generate_report(title = "My First Report",
 
 \seealso{
 Other Reports: 
+\code{\link{meeting_tm_report}()},
 \code{\link{read_preamble}()},
 \code{\link{validation_report}()}
 }
