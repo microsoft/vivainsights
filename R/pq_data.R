@@ -12,7 +12,7 @@
 #'
 #' @return data frame.
 #'
-#' @format A data frame with 5593 rows and 154 variables:
+#' @format A data frame with 2236 rows and 154 variables:
 #' \describe{
 #' \item{PersonId}{ }
 #' \item{MetricDate}{ }
