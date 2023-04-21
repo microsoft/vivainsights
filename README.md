@@ -1,5 +1,7 @@
 # vivainsights <img src="https://raw.githubusercontent.com/microsoft/vivainsights/main/man/figures/logo.png" align="right" width=15% />
 
+[![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/vivainsights?color=green/)](https://cran.r-project.org/package=vivainsights/)
+
 ## Analyze and Visualize Viva Leader Insights data
 
 This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://www.microsoft.com/en-gb/microsoft-viva/insights/) (previously Microsoft Workplace Analytics). 
