@@ -7,3 +7,4 @@ _dev
 pkgdown
 .Rhistory
 docs
+*.html
