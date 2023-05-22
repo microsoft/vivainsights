@@ -236,8 +236,8 @@ validation_report <- function(data,
          callthres_p,
          callthres,
 
-         paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Instant_Message_hours", threshold = 40, person = FALSE, return = "text")),
+         paste(">",data %>% flag_extreme(metric = "Chat_hours", threshold = 40, person = TRUE, return = "text")),
+         paste(">",data %>% flag_extreme(metric = "Chat_hours", threshold = 40, person = FALSE, return = "text")),
 
          paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = TRUE, return = "text")),
          paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = FALSE, return = "text")),
