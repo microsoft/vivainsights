@@ -2,5 +2,4 @@
 
 0 errors | 0 warnings | 0 notes
 
-* This is a minor update release.
-* Added new text analytics functions relating to the meeting query.
+* This is a patch release 0.3.1 to fix a bug with the validation report.
