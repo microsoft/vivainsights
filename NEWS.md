@@ -1,3 +1,5 @@
+# vivainsights 0.3.1
+
 # vivainsights 0.3.0
 
 - Added new text analytics functions relating to the meeting query
