@@ -19,6 +19,9 @@ navbar:
            href: analyst_guide_intro.html
          - text: Getting Started
            href: analyst_guide_getting_started.html
+      github:
+        icon: fab fa-github fa-lg
+        href: https://github.com/microsoft/vivainsights/
 
 footer:
   structure:
