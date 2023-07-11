@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-05-22T13:38Z
+last_built: 2023-07-11T12:35Z
 urls:
   reference: https://microsoft.github.io/vivainsights/reference
   article: https://microsoft.github.io/vivainsights/articles
