@@ -27,6 +27,7 @@ This library is compatible with the latest implementation of the Viva Insights A
 - [Viva Insights Zoom Integration](https://github.com/microsoft/vivainsights_zoom_int/)
 - [Viva Insights OData Query Download](https://github.com/microsoft/vivainsights-odatadl/)
 - [Viva Insights R library (legacy)](https://microsoft.github.io/wpa/)
+- [Viva Insights Python library](https://github.com/microsoft/vivainsights-py/)
 
 ---
 
