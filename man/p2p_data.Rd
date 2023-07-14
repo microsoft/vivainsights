@@ -42,7 +42,8 @@ Other Data:
 \code{\link{pq_data}}
 
 Other Network: 
-\code{\link{g2g_data}}
+\code{\link{g2g_data}},
+\code{\link{network_g2g}()}
 }
 \concept{Data}
 \concept{Network}
