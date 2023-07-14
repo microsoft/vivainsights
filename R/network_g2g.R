@@ -15,14 +15,15 @@
 #'   Collaborator column.
 #' @param secondary String containing the variable name for the Secondary
 #'   Collaborator column.
-#' @param metric String containing the variable name for metric.
+#' @param metric String containing the variable name for metric. Defaults to
+#'   `Meeting_Count`.
 #' @param algorithm String to specify the node placement algorithm to be used.
 #'   Defaults to `"fr"` for the force-directed algorithm of Fruchterman and
 #'   Reingold. See
 #'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
 #'   list of options.
-#' @param node_colour String or named vector to specify the colour to be used for displaying
-#' nodes. Defaults to `"lightblue"`.
+#' @param node_colour String or named vector to specify the colour to be used
+#'   for displaying nodes. Defaults to `"lightblue"`.
 #'   - If `"vary"` is supplied, a different colour is shown for each node at
 #' random.
 #'   - If a named vector is supplied, the names must match the values of the
@@ -71,6 +72,42 @@
 #'   exc_threshold = 0.05
 #' )
 #'
+#' # Return a network plot - custom-specific colours
+#' # Get labels of orgs and assign random colours
+#' org_str <- unique(g2g_data$PrimaryCollaborator_Organization)
+#'
+#' col_str <-
+#'   sample(
+#'     x = c("red", "green", "blue"),
+#'     size = length(org_str),
+#'     replace = TRUE
+#'   )
+#'
+#' # Create and supply a named vector to `node_colour`
+#' names(col_str) <- org_str
+#'
+#' g2g_data %>%
+#'   network_g2g(node_colour = col_str)
+#'
+#'
+#' # Return a network plot with circle layout
+#' # Vary node colours and add org sizes
+#' org_tb <- hrvar_count(
+#'   pq_data,
+#'   hrvar = "Organization",
+#'   return = "table"
+#' )
+#'
+#' g2g_data %>%
+#'   network_g2g(algorithm = "circle",
+#'               node_colour = "vary",
+#'               org_count = org_tb)
+#'
+#' # Return an interaction matrix
+#' # Minimum arguments specified
+#' g2g_data %>%
+#'   network_g2g(return = "table")
+#'
 #' @import ggplot2
 #' @import dplyr
 #'
@@ -81,7 +118,7 @@
 network_g2g <- function(data,
                         primary = NULL,
                         secondary = NULL,
-                        metric,
+                        metric = "Meeting_Count",
                         algorithm = "fr",
                         node_colour = "lightblue",
                         exc_threshold = 0.1,
