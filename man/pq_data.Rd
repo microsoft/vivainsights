@@ -178,7 +178,9 @@ A dataset generated from a Person Query from Viva Insights.
 }
 \seealso{
 Other Data: 
-\code{\link{mt_data}}
+\code{\link{g2g_data}},
+\code{\link{mt_data}},
+\code{\link{p2p_data}}
 }
 \concept{Data}
 \keyword{datasets}
