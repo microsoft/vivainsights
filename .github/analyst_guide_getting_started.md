@@ -154,3 +154,7 @@ person_data %>%
 	export()
 
 ```
+
+## Ready to learn more?
+
+Let's go to the [**Data Validation**](analyst_guide_data_validation.html) section to explore options for validating data.
