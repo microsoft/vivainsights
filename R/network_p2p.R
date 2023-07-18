@@ -1,0 +1,215 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+#' @title Perform network analysis with the person-to-person query
+#'
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
+#' Analyse a person-to-person (P2P) network query, with multiple visualisation
+#' and analysis output options. Pass a data frame containing a person-to-person
+#' query and return a network visualization. Options are available for community
+#' detection using either the Louvain or the Leiden algorithms.
+#'
+#' @param data Data frame containing a person-to-person query.
+#' @param hrvar String containing the label for the HR attribute.
+#' @param return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#' @param centrality String determining whether centrality measures are calculated
+#' and reflected in the plot. Valid values include:
+#'   - `betweenness`
+#'   - `closeness`
+#'   - `degree`
+#'   - `eigenvector`
+#'   - `pagerank`
+#' @param community String determining what output to return. Valid values
+#'   include:
+#'   - `NULL` (default): compute analysis or visuals without computing
+#'   communities.
+#'   - `"louvain"`: compute analysis or visuals with community detection, using
+#'   the Louvain algorithm.
+#'   - `"leiden"`: compute analysis or visuals with community detection, using
+#'   the Leiden algorithm. This requires all the pre-requisites of the
+#'   **leiden** package installed, which includes Python and **reticulate**.
+#' @param weight String to specify which column to use as weights for the
+#'   network. To create a graph without weights, supply `NULL` to this argument.
+#' @param algorithm String to specify the node placement algorithm to be used.
+#'   Defaults to `"mds"` for the deterministic multi-dimensional scaling of
+#'   nodes. See
+#'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
+#'   list of options.
+#' @param path File path for saving the PDF output. Defaults to a timestamped
+#'   path based on current parameters.
+#'
+#' @family Network
+#'
+#' @examples
+#' network_p2p(data = p2p_data)
+#'
+#' @import ggplot2
+#' @import dplyr
+#'
+#' @export
+
+network_p2p <-
+  function(
+    data,
+    hrvar = "Organization",
+    return = "plot",
+    centrality = NULL,
+    community = NULL,
+    weight = NULL,
+    algorithm = "mds",
+    path = NULL
+    ){
+
+    ## Set data frame for edges
+    if(is.null(weight)){
+
+      edges <-
+        data %>%
+        mutate(NoWeight = 1) %>% # No weight
+        select(from = "PrimaryCollaborator_PersonId",
+               to = "SecondaryCollaborator_PersonId",
+               weight = "NoWeight")
+
+    } else {
+
+      edges <-
+        data %>%
+        select(from = "PrimaryCollaborator_PersonId",
+               to = "SecondaryCollaborator_PersonId",
+               weight = weight)
+
+    }
+
+    ## Set output file `path` based on parameters
+    if(is.null(path)){
+      if(!is.null(community)){
+        path <- "p2p"
+      } else {
+        path <- paste0("p2p_", community)
+      }
+    }
+
+
+    ## Set variables
+    # TieOrigin = PrimaryCollaborator
+    # TieDestination = SecondaryCollaborator
+    pc_hrvar <- paste0("PrimaryCollaborator_", hrvar)
+    sc_hrvar <- paste0("SecondaryCollaborator_", hrvar)
+
+    ## Vertices data frame to provide meta-data
+    vert_ft <-
+      rbind(
+        # TieOrigin
+        edges %>%
+          select(from) %>% # Single column
+          unique() %>% # Remove duplications
+          left_join(select(data, PrimaryCollaborator_PersonId, pc_hrvar),
+                    by = c("from"  = "PrimaryCollaborator_PersonId")) %>%
+          select(node = "from", !!sym(hrvar) := pc_hrvar),
+
+        # TieDestination
+        edges %>%
+          select(to) %>% # Single column
+          unique() %>% # Remove duplications
+          left_join(select(data, SecondaryCollaborator_PersonId, sc_hrvar),
+                    by = c("to"  = "SecondaryCollaborator_PersonId")) %>%
+          select(node = "to", !!sym(hrvar) := sc_hrvar)
+      )
+
+
+
+    ## Create 'igraph' object
+    g_raw <-
+      igraph::graph_from_data_frame(edges,
+                                    directed = TRUE, # Directed, but FALSE for visualization
+                                    vertices = unique(vert_ft)) # remove duplicates
+
+    ## Assign weights
+    g_raw$weight <- edges$weight
+
+    ## Finalise `g` object
+    ## If community detection is selected, this is where the communities are appended
+    if(is.null(community)){ # no community detection
+
+      g <- igraph::simplify(g_raw)
+      v_attr <- hrvar # Name of vertex attribute
+
+    } else if(community == "louvain"){
+
+      set.seed(seed = seed)
+      g_ud <- igraph::as.undirected(g_raw) # Convert to undirected
+
+      ## Return a numeric vector of partitions / clusters / modules
+      ## Set a low resolution parameter to have fewer groups
+      ## weights = NULL means that if the graph as a `weight` edge attribute,
+      ## the present attribute will be used by default.
+      lc <- igraph::cluster_louvain(g_ud, weights = NULL)
+
+      ## Add cluster
+      g <-
+        g_ud %>%
+        # Add louvain partitions to graph object
+        # Return membership - diff from Leiden
+        igraph::set_vertex_attr(
+          "cluster",
+          value = as.character(igraph::membership(lc))) %>%
+        igraph::simplify()
+
+      ## Name of vertex attribute
+      v_attr <- "cluster"
+
+    } else if(display == "leiden"){
+
+      # Check package installation
+      check_pkg_installed(pkgname = "leiden")
+
+      ## Return a numeric vector of partitions / clusters / modules
+      ## Set a low resolution parameter to have fewer groups
+      ld <- leiden::leiden(
+        g_raw,
+        resolution_parameter = res,
+        seed = seed,
+        weights = g_raw$weight) # create partitions
+
+      ## Add cluster
+      g <-
+        g_raw %>%
+        # Add leiden partitions to graph object
+        igraph::set_vertex_attr("cluster", value = as.character(ld)) %>%
+        igraph::simplify()
+
+      ## Name of vertex attribute
+      v_attr <- "cluster"
+
+    } else {
+
+      stop("Please enter a valid input for `display`.")
+
+    }
+
+    # Common area -------------------------------------------------------------
+
+    ## Create vertex table
+    vertex_tb <-
+      g %>%
+      igraph::get.vertex.attribute() %>%
+      as_tibble()
+
+    ## Set layout for graph
+    g_layout <-
+      g %>%
+      ggraph::ggraph(layout = "igraph", algorithm = algorithm)
+
+    ## Timestamped File Path
+    out_path <- paste0(path, "_", tstamp(), ".pdf")
+
+    # Return outputs ----------------------------------------------------------
+
+    g
+}

@@ -43,7 +43,8 @@ Other Data:
 
 Other Network: 
 \code{\link{g2g_data}},
-\code{\link{network_g2g}()}
+\code{\link{network_g2g}()},
+\code{\link{network_p2p}()}
 }
 \concept{Data}
 \concept{Network}
