@@ -12,7 +12,16 @@ network_p2p(
   community = NULL,
   weight = NULL,
   algorithm = "mds",
-  path = NULL
+  path = paste("p2p", NULL, sep = "_"),
+  style = "igraph",
+  bg_fill = "#FFFFFF",
+  font_col = "grey20",
+  legend_pos = "bottom",
+  palette = "rainbow",
+  node_alpha = 0.7,
+  edge_alpha = 1,
+  res = 0.5,
+  seed = 1
 )
 }
 \arguments{
@@ -56,6 +65,13 @@ list of options.}
 
 \item{path}{File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.}
+
+\item{style}{String to specify which plotting style to use for the network
+plot. Valid values include:
+\itemize{
+\item \code{"igraph"}
+\item \code{"ggraph"}
+}}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -73,6 +89,7 @@ network_p2p(data = p2p_data)
 Other Network: 
 \code{\link{g2g_data}},
 \code{\link{network_g2g}()},
+\code{\link{p2p_data_sim}()},
 \code{\link{p2p_data}}
 }
 \concept{Network}

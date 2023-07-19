@@ -43,6 +43,10 @@
 #'   list of options.
 #' @param path File path for saving the PDF output. Defaults to a timestamped
 #'   path based on current parameters.
+#' @param style String to specify which plotting style to use for the network
+#' plot. Valid values include:
+#'   - `"igraph"`
+#'   - `"ggraph"`
 #'
 #' @family Network
 #'
@@ -63,7 +67,16 @@ network_p2p <-
     community = NULL,
     weight = NULL,
     algorithm = "mds",
-    path = NULL
+    path = paste("p2p", NULL, sep = "_"),
+    style = "igraph",
+    bg_fill = "#FFFFFF",
+    font_col = "grey20",
+    legend_pos = "bottom",
+    palette = "rainbow",
+    node_alpha = 0.7,
+    edge_alpha = 1,
+    res = 0.5,
+    seed = 1
     ){
 
     ## Set data frame for edges
@@ -85,16 +98,6 @@ network_p2p <-
                weight = weight)
 
     }
-
-    ## Set output file `path` based on parameters
-    if(is.null(path)){
-      if(!is.null(community)){
-        path <- "p2p"
-      } else {
-        path <- paste0("p2p_", community)
-      }
-    }
-
 
     ## Set variables
     # TieOrigin = PrimaryCollaborator
@@ -211,5 +214,169 @@ network_p2p <-
 
     # Return outputs ----------------------------------------------------------
 
-    g
+    ## Use fast plotting method
+    if(return == "plot"){
+
+      if(style == "igraph"){
+
+        message("Using fast plot method due to large network size...")
+
+        ## Set colours
+        colour_tb <-
+          tibble(!!sym(v_attr) := unique(igraph::get.vertex.attribute(g, name = v_attr))) %>%
+          mutate(colour = rainbow(nrow(.))) # No palette choice
+
+        ## Colour vector
+        colour_v <-
+          tibble(!!sym(v_attr) := igraph::get.vertex.attribute(g, name = v_attr)) %>%
+          left_join(colour_tb, by = v_attr) %>%
+          pull(colour)
+
+        ## Set graph plot colours
+        igraph::V(g)$color <- grDevices::adjustcolor(colour_v, alpha.f = node_alpha)
+        igraph::V(g)$frame.color <- NA
+        igraph::E(g)$width <- 1
+
+        ## Internal basic plotting function used inside `network_p2p()`
+        plot_basic_graph <- function(lpos = legend_pos){
+
+          old_par <- par(no.readonly = TRUE)
+          on.exit(par(old_par))
+
+          par(bg = bg_fill)
+
+          layout_text <- paste0("igraph::layout_with_", algorithm)
+
+          ## Legend position
+
+          if(lpos == "left"){
+
+            leg_x <- -1.5
+            leg_y <- 0.5
+
+          } else if(lpos == "right"){
+
+            leg_x <- 1.5
+            leg_y <- 0.5
+
+          } else if(lpos == "top"){
+
+            leg_x <- 0
+            leg_y <- 1.5
+
+          } else if(lpos == "bottom"){
+
+            leg_x <- 0
+            leg_y <- -1.0
+
+          } else {
+
+            stop("Invalid `legend_pos` input.")
+
+          }
+
+          graphics::plot(g,
+                         layout = eval(parse(text = layout_text)),
+                         vertex.label = NA,
+                         vertex.size = 3,
+                         edge.arrow.mode = "-",
+                         edge.color = "#adadad")
+
+          graphics::legend(x = leg_x,
+                           y = leg_y,
+                           legend = colour_tb[[v_attr]], # vertex attribute
+                           pch = 21,
+                           text.col = font_col,
+                           col = "#777777",
+                           pt.bg = colour_tb$colour,
+                           pt.cex = 2,
+                           cex = .8,
+                           bty = "n",
+                           ncol = 1)
+        }
+
+        ## Default PDF output unless NULL supplied to path
+        if(is.null(path)){
+
+          plot_basic_graph()
+
+        } else {
+
+          grDevices::pdf(out_path)
+
+          plot_basic_graph()
+
+          grDevices::dev.off()
+
+          message(paste0("Saved to ", out_path, "."))
+
+        }
+      } else if(style == "ggraph"){
+
+        plot_output <-
+          g_layout +
+          ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = edge_alpha) +
+          ggraph::geom_node_point(aes(colour = !!sym(v_attr)),
+                                  alpha = node_alpha,
+                                  pch = 16) +
+          theme_void() +
+          theme(
+            legend.position = legend_pos,
+            legend.background = element_rect(fill = bg_fill, colour = bg_fill),
+
+            text = element_text(colour = font_col),
+            axis.line = element_blank(),
+            panel.grid = element_blank()
+          ) +
+          labs(caption = paste0("Person to person collaboration showing ", v_attr, ".  "), # spaces intentional
+               y = "",
+               x = "")
+
+        # Default PDF output unless NULL supplied to path
+        if(is.null(path)){
+
+          plot_output
+
+        } else {
+
+          ggsave(out_path,
+                 plot = plot_output,
+                 width = 16,
+                 height = 9)
+
+          message(paste0("Saved to ", out_path, "."))
+
+        }
+
+      } else {
+
+        stop("invalid input for `style`")
+
+      }
+
+    } else if (return == "data"){
+
+      vertex_tb
+
+    } else if(return == "network"){
+
+      g
+
+    } else if(return == "table"){
+
+      if(is.null(community)){
+
+        vertex_tb %>% count(!!sym(hrvar))
+
+      } else if(community %in% c("louvain", "leiden")){
+
+        vertex_tb %>% count(!!sym(hrvar), cluster)
+
+      }
+
+    } else {
+
+      stop("invalid input for `return`")
+
+    }
 }
