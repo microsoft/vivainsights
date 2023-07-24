@@ -48,10 +48,10 @@ include:
 \item \code{NULL} (default): compute analysis or visuals without computing
 communities.
 \item \code{"louvain"}: compute analysis or visuals with community detection, using
-the Louvain algorithm.
+the Louvain algorithm. This is a wrapper around
+\code{igraph::cluster_louvain()}.
 \item \code{"leiden"}: compute analysis or visuals with community detection, using
-the Leiden algorithm. This requires all the pre-requisites of the
-\strong{leiden} package installed, which includes Python and \strong{reticulate}.
+the Leiden algorithm. This is a wrapper around \code{igraph::cluster_leiden()}.
 }}
 
 \item{weight}{String to specify which column to use as weights for the
@@ -72,6 +72,37 @@ plot. Valid values include:
 \item \code{"igraph"}
 \item \code{"ggraph"}
 }}
+
+\item{bg_fill}{String to specify background fill colour.}
+
+\item{font_col}{String to specify font and link colour.}
+
+\item{legend_pos}{String to specify position of legend. Defaults to
+\code{"bottom"}. See \code{ggplot2::theme()}. This is applicable for both the
+'ggraph' and the fast plotting method. Valid inputs include:
+\itemize{
+\item \code{"bottom"}
+\item \code{"top"}
+\item \code{"left"}
+-\code{"right"}
+}}
+
+\item{palette}{Function for generating a colour palette with a single
+argument \code{n}. Uses "rainbow" by default.}
+
+\item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
+of the nodes. Defaults to 0.7.}
+
+\item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
+of the edges (only for 'ggraph' mode). Defaults to 1.}
+
+\item{res}{Resolution parameter to be passed to \code{igraph::cluster_leiden()}.
+Defaults to 0.5.}
+
+\item{seed}{Seed for the random number generator passed to either
+\code{set.seed()} when the louvain or leiden community detection algorithm is
+used, to ensure consistency. Only applicable when \code{community} is set to
+\code{"louvain"} or \code{"leiden"}.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -82,7 +113,20 @@ query and return a network visualization. Options are available for community
 detection using either the Louvain or the Leiden algorithms.
 }
 \examples{
-network_p2p(data = p2p_data)
+p2p_df <- p2p_data_sim(dim = 1, size = 100)
+
+
+# default - ggraph visual
+network_p2p(data = p2p_df, style = "ggraph", path = NULL)
+
+# return vertex table
+network_p2p(data = p2p_df, return = "table")
+
+# louvain - igraph style
+network_p2p(data = p2p_df, community = "louvain", path = NULL)
+
+# leiden - igraph style
+network_p2p(data = p2p_df, community = "leiden", path = NULL)
 
 }
 \seealso{

@@ -30,10 +30,10 @@
 #'   - `NULL` (default): compute analysis or visuals without computing
 #'   communities.
 #'   - `"louvain"`: compute analysis or visuals with community detection, using
-#'   the Louvain algorithm.
+#'   the Louvain algorithm. This is a wrapper around
+#'   `igraph::cluster_louvain()`.
 #'   - `"leiden"`: compute analysis or visuals with community detection, using
-#'   the Leiden algorithm. This requires all the pre-requisites of the
-#'   **leiden** package installed, which includes Python and **reticulate**.
+#'   the Leiden algorithm. This is a wrapper around `igraph::cluster_leiden()`.
 #' @param weight String to specify which column to use as weights for the
 #'   network. To create a graph without weights, supply `NULL` to this argument.
 #' @param algorithm String to specify the node placement algorithm to be used.
@@ -47,11 +47,46 @@
 #' plot. Valid values include:
 #'   - `"igraph"`
 #'   - `"ggraph"`
+#' @param bg_fill String to specify background fill colour.
+#' @param font_col String to specify font and link colour.
+#' @param legend_pos String to specify position of legend. Defaults to
+#'   `"bottom"`. See `ggplot2::theme()`. This is applicable for both the
+#'   'ggraph' and the fast plotting method. Valid inputs include:
+#'   - `"bottom"`
+#'   - `"top"`
+#'   - `"left"`
+#'   -`"right"`
+#'
+#' @param palette Function for generating a colour palette with a single
+#'   argument `n`. Uses "rainbow" by default.
+#' @param node_alpha A numeric value between 0 and 1 to specify the transparency
+#'   of the nodes. Defaults to 0.7.
+#' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
+#'   of the edges (only for 'ggraph' mode). Defaults to 1.
+#' @param res Resolution parameter to be passed to `igraph::cluster_leiden()`.
+#'   Defaults to 0.5.
+#' @param seed Seed for the random number generator passed to either
+#'   `set.seed()` when the louvain or leiden community detection algorithm is
+#'   used, to ensure consistency. Only applicable when `community` is set to
+#'   `"louvain"` or `"leiden"`.
 #'
 #' @family Network
 #'
 #' @examples
-#' network_p2p(data = p2p_data)
+#' p2p_df <- p2p_data_sim(dim = 1, size = 100)
+#'
+#'
+#' # default - ggraph visual
+#' network_p2p(data = p2p_df, style = "ggraph", path = NULL)
+#'
+#' # return vertex table
+#' network_p2p(data = p2p_df, return = "table")
+#'
+#' # louvain - igraph style
+#' network_p2p(data = p2p_df, community = "louvain", path = NULL)
+#'
+#' # leiden - igraph style
+#' network_p2p(data = p2p_df, community = "leiden", path = NULL)
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -149,9 +184,13 @@ network_p2p <-
       g_ud <- igraph::as.undirected(g_raw) # Convert to undirected
 
       ## Return a numeric vector of partitions / clusters / modules
-      ## Set a low resolution parameter to have fewer groups
+      ## Set a low resolution parameter to have fewer groups for leiden method
       ## weights = NULL means that if the graph as a `weight` edge attribute,
       ## the present attribute will be used by default.
+      if(res != 0.5){
+        warning("`res` parameter is only applicable to the 'leiden' method.")
+      }
+
       lc <- igraph::cluster_louvain(g_ud, weights = NULL)
 
       ## Add cluster
@@ -167,24 +206,27 @@ network_p2p <-
       ## Name of vertex attribute
       v_attr <- "cluster"
 
-    } else if(display == "leiden"){
+    } else if(community == "leiden"){
 
-      # Check package installation
-      check_pkg_installed(pkgname = "leiden")
+      set.seed(seed = seed)
+      ## Using `g` because Leiden algorithm is only implemented for undirected
+      ## graphs.
+      g_ud <- igraph::as.undirected(g_raw) # Convert to undirected
 
       ## Return a numeric vector of partitions / clusters / modules
       ## Set a low resolution parameter to have fewer groups
-      ld <- leiden::leiden(
-        g_raw,
+      ld <- igraph::cluster_leiden(
+        graph = g_ud,
         resolution_parameter = res,
-        seed = seed,
-        weights = g_raw$weight) # create partitions
+        weights = g_ud$weight # create partitions
+      )
 
       ## Add cluster
       g <-
-        g_raw %>%
+        g_ud %>%
         # Add leiden partitions to graph object
-        igraph::set_vertex_attr("cluster", value = as.character(ld)) %>%
+        set_vertex_attr("cluster",
+                        value = as.character(clusts_obj$membership)) %>%
         igraph::simplify()
 
       ## Name of vertex attribute
@@ -192,7 +234,7 @@ network_p2p <-
 
     } else {
 
-      stop("Please enter a valid input for `display`.")
+      stop("Please enter a valid input for `community`.")
 
     }
 
