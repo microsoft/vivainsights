@@ -133,6 +133,7 @@ network_p2p(data = p2p_df, community = "leiden", path = NULL)
 Other Network: 
 \code{\link{g2g_data}},
 \code{\link{network_g2g}()},
+\code{\link{network_summary}()},
 \code{\link{p2p_data_sim}()},
 \code{\link{p2p_data}}
 }

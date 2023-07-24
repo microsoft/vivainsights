@@ -227,7 +227,7 @@ network_p2p <-
         # Add leiden partitions to graph object
         igraph::set_vertex_attr(
           "cluster",
-          value = as.character(clusts_obj$membership)
+          value = as.character(ld$membership)
           ) %>%
         igraph::simplify()
 
