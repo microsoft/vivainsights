@@ -18,6 +18,12 @@
 #' @param return
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
+#'   - `'plot'` (default)
+#'   - `'plot-pdf'`
+#'   - `'sankey'`
+#'   - `'table'`
+#'   - `'data'`
+#'   - `'network'`
 #' @param centrality String determining whether centrality measures are calculated
 #' and reflected in the plot. Valid values include:
 #'   - `betweenness`
@@ -78,12 +84,10 @@
 #'   of the nodes. Defaults to 0.7.
 #' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
 #'   of the edges (only for 'ggraph' mode). Defaults to 1.
-#' @param res Resolution parameter to be passed to `igraph::cluster_leiden()`.
-#'   Defaults to 0.5.
 #' @param seed Seed for the random number generator passed to either
 #'   `set.seed()` when the louvain or leiden community detection algorithm is
 #'   used, to ensure consistency. Only applicable when `community` is set to
-#'   `"louvain"` or `"leiden"`.
+#'   one of the valid non-null values.
 #'
 #' @family Network
 #'
@@ -267,7 +271,7 @@ network_p2p <-
     # Return outputs ----------------------------------------------------------
 
     ## Use fast plotting method
-    if(return == "plot"){
+    if(return %in% c("plot", "plot-pdf")){
 
       if(style == "igraph"){
 
@@ -348,11 +352,11 @@ network_p2p <-
         }
 
         ## Default PDF output unless NULL supplied to path
-        if(is.null(path)){
+        if(return == "plot"){
 
           plot_basic_graph()
 
-        } else {
+        } else if(return == "plot-pdf"){
 
           grDevices::pdf(out_path)
 
@@ -385,11 +389,11 @@ network_p2p <-
                x = "")
 
         # Default PDF output unless NULL supplied to path
-        if(is.null(path)){
+        if(return == "plot"){
 
           plot_output
 
-        } else {
+        } else if(return == "plot-pdf"){
 
           ggsave(out_path,
                  plot = plot_output,
@@ -414,13 +418,31 @@ network_p2p <-
 
       g
 
+    } else if(return == "sankey"){
+
+      if(is.null(community)){
+
+        message("Note: no sankey return option is available if `display` is set to 'hrvar'.
+      Please specify either 'louvain' or 'leiden'")
+
+      } else if(community %in% valid_comm){
+
+        create_sankey(
+          data = vertex_tb %>% count(!!sym(hrvar), cluster),
+          var1 = hrvar,
+          var2 = "cluster",
+          count = "n"
+        )
+
+      }
+
     } else if(return == "table"){
 
       if(is.null(community)){
 
         vertex_tb %>% count(!!sym(hrvar))
 
-      } else if(community %in% c("louvain", "leiden")){
+      } else if(community %in% valid_comm){
 
         vertex_tb %>% count(!!sym(hrvar), cluster)
 

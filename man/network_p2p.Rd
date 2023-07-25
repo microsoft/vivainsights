@@ -30,7 +30,15 @@ network_p2p(
 \item{hrvar}{String containing the label for the HR attribute.}
 
 \item{return}{A different output is returned depending on the value passed to the \code{return}
-argument:}
+argument:
+\itemize{
+\item \code{'plot'} (default)
+\item \code{'plot-pdf'}
+\item \code{'sankey'}
+\item \code{'table'}
+\item \code{'data'}
+\item \code{'network'}
+}}
 
 \item{centrality}{String determining whether centrality measures are calculated
 and reflected in the plot. Valid values include:
@@ -115,10 +123,7 @@ of the edges (only for 'ggraph' mode). Defaults to 1.}
 \item{seed}{Seed for the random number generator passed to either
 \code{set.seed()} when the louvain or leiden community detection algorithm is
 used, to ensure consistency. Only applicable when \code{community} is set to
-\code{"louvain"} or \code{"leiden"}.}
-
-\item{res}{Resolution parameter to be passed to \code{igraph::cluster_leiden()}.
-Defaults to 0.5.}
+one of the valid non-null values.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
