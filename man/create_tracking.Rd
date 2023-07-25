@@ -75,6 +75,7 @@ Other Visualization:
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
 \code{\link{create_trend}()},
@@ -121,6 +122,7 @@ Other Flexible:
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
 \code{\link{create_trend}()}
