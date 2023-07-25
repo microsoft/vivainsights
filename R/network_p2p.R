@@ -25,17 +25,32 @@
 #'   - `degree`
 #'   - `eigenvector`
 #'   - `pagerank`
-#' @param community String determining what output to return. Valid values
-#'   include:
+#' @param community String determining which community detection algorithms to
+#'   apply. Valid values include:
 #'   - `NULL` (default): compute analysis or visuals without computing
 #'   communities.
-#'   - `"louvain"`: compute analysis or visuals with community detection, using
-#'   the Louvain algorithm. This is a wrapper around
-#'   `igraph::cluster_louvain()`.
-#'   - `"leiden"`: compute analysis or visuals with community detection, using
-#'   the Leiden algorithm. This is a wrapper around `igraph::cluster_leiden()`.
+#'   - `"louvain"`
+#'   - `"leiden"`
+#'   - `"edge_betweenness"`
+#'   - `"fast_greedy"`
+#'   - `"fluid_communities"`
+#'   - `"infomap"`
+#'   - `"label_prop"`
+#'   - `"leading_eigen"`
+#'   - `"optimal"`
+#'   - `"spinglass"`
+#'   - `"walk_trap`
+#'
+#'  These values map to the community detection algorithms offered by `igraph`.
+#'  For instance, `"leiden"` is based on `igraph::cluster_leiden()`. Please see
+#'  the bottom of <https://igraph.org/r/html/1.3.0/cluster_leiden.html> on all
+#'  applications and parameters of these algorithms.
+#'   .
 #' @param weight String to specify which column to use as weights for the
 #'   network. To create a graph without weights, supply `NULL` to this argument.
+#' @param comm_args list containing the arguments to be passed through to
+#'   igraph's clustering algorithms. Arguments must be named. See examples
+#'   section on how to supply arguments in a named list.
 #' @param algorithm String to specify the node placement algorithm to be used.
 #'   Defaults to `"mds"` for the deterministic multi-dimensional scaling of
 #'   nodes. See
@@ -88,6 +103,14 @@
 #' # leiden - igraph style
 #' network_p2p(data = p2p_df, community = "leiden", path = NULL)
 #'
+#' # using `fluid_communities` algorithm with custom parameters
+#' network_p2p(
+#'   data = p2p_df,
+#'   community = "fluid_communities",
+#'   path = NULL,
+#'   comm_args = list("no.of.communities" = 5)
+#' )
+#'
 #' @import ggplot2
 #' @import dplyr
 #'
@@ -101,6 +124,7 @@ network_p2p <-
     centrality = NULL,
     community = NULL,
     weight = NULL,
+    comm_args = NULL,
     algorithm = "mds",
     path = paste("p2p", NULL, sep = "_"),
     style = "igraph",
@@ -110,7 +134,6 @@ network_p2p <-
     palette = "rainbow",
     node_alpha = 0.7,
     edge_alpha = 1,
-    res = 0.5,
     seed = 1
     ){
 
@@ -171,6 +194,21 @@ network_p2p <-
     ## Assign weights
     g_raw$weight <- edges$weight
 
+    ## allowed `community` values
+    valid_comm <- c(
+      "leiden",
+      "louvain",
+      "edge_betweenness",
+      "fast_greedy",
+      "fluid_communities",
+      "infomap",
+      "label_prop",
+      "leading_eigen",
+      "optimal",
+      "spinglass",
+      "walk_trap"
+    )
+
     ## Finalise `g` object
     ## If community detection is selected, this is where the communities are appended
     if(is.null(community)){ # no community detection
@@ -178,57 +216,27 @@ network_p2p <-
       g <- igraph::simplify(g_raw)
       v_attr <- hrvar # Name of vertex attribute
 
-    } else if(community == "louvain"){
+    } else if(community %in% valid_comm){
 
       set.seed(seed = seed)
       g_ud <- igraph::as.undirected(g_raw) # Convert to undirected
 
-      ## Return a numeric vector of partitions / clusters / modules
-      ## Set a low resolution parameter to have fewer groups for leiden method
-      ## weights = NULL means that if the graph as a `weight` edge attribute,
-      ## the present attribute will be used by default.
-      if(res != 0.5){
-        warning("`res` parameter is only applicable to the 'leiden' method.")
-      }
+      alg_label <- paste0("igraph::cluster_", community)
 
-      lc <- igraph::cluster_louvain(g_ud, weights = NULL)
+      # combine arguments to clustering algorithm
+      c_comm_args <- c(list("graph" = g_ud), comm_args)
+
+      # output `communities` object
+      comm_out <- do.call(eval(parse(text = alg_label)), c_comm_args)
 
       ## Add cluster
       g <-
         g_ud %>%
-        # Add louvain partitions to graph object
-        # Return membership - diff from Leiden
+        # Add partitions to graph object
+        # Return membership
         igraph::set_vertex_attr(
           "cluster",
-          value = as.character(igraph::membership(lc))) %>%
-        igraph::simplify()
-
-      ## Name of vertex attribute
-      v_attr <- "cluster"
-
-    } else if(community == "leiden"){
-
-      set.seed(seed = seed)
-      ## Using `g` because Leiden algorithm is only implemented for undirected
-      ## graphs.
-      g_ud <- igraph::as.undirected(g_raw) # Convert to undirected
-
-      ## Return a numeric vector of partitions / clusters / modules
-      ## Set a low resolution parameter to have fewer groups
-      ld <- igraph::cluster_leiden(
-        graph = g_ud,
-        resolution_parameter = res,
-        weights = g_ud$weight # create partitions
-      )
-
-      ## Add cluster
-      g <-
-        g_ud %>%
-        # Add leiden partitions to graph object
-        igraph::set_vertex_attr(
-          "cluster",
-          value = as.character(ld$membership)
-          ) %>%
+          value = as.character(igraph::membership(comm_out))) %>%
         igraph::simplify()
 
       ## Name of vertex attribute

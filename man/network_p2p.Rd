@@ -11,6 +11,7 @@ network_p2p(
   centrality = NULL,
   community = NULL,
   weight = NULL,
+  comm_args = NULL,
   algorithm = "mds",
   path = paste("p2p", NULL, sep = "_"),
   style = "igraph",
@@ -20,7 +21,6 @@ network_p2p(
   palette = "rainbow",
   node_alpha = 0.7,
   edge_alpha = 1,
-  res = 0.5,
   seed = 1
 )
 }
@@ -42,20 +42,36 @@ and reflected in the plot. Valid values include:
 \item \code{pagerank}
 }}
 
-\item{community}{String determining what output to return. Valid values
-include:
+\item{community}{String determining which community detection algorithms to
+apply. Valid values include:
 \itemize{
 \item \code{NULL} (default): compute analysis or visuals without computing
 communities.
-\item \code{"louvain"}: compute analysis or visuals with community detection, using
-the Louvain algorithm. This is a wrapper around
-\code{igraph::cluster_louvain()}.
-\item \code{"leiden"}: compute analysis or visuals with community detection, using
-the Leiden algorithm. This is a wrapper around \code{igraph::cluster_leiden()}.
-}}
+\item \code{"louvain"}
+\item \code{"leiden"}
+\item \code{"edge_betweenness"}
+\item \code{"fast_greedy"}
+\item \code{"fluid_communities"}
+\item \code{"infomap"}
+\item \code{"label_prop"}
+\item \code{"leading_eigen"}
+\item \code{"optimal"}
+\item \code{"spinglass"}
+\item \verb{"walk_trap}
+}
+
+These values map to the community detection algorithms offered by \code{igraph}.
+For instance, \code{"leiden"} is based on \code{igraph::cluster_leiden()}. Please see
+the bottom of \url{https://igraph.org/r/html/1.3.0/cluster_leiden.html} on all
+applications and parameters of these algorithms.
+.}
 
 \item{weight}{String to specify which column to use as weights for the
 network. To create a graph without weights, supply \code{NULL} to this argument.}
+
+\item{comm_args}{list containing the arguments to be passed through to
+igraph's clustering algorithms. Arguments must be named. See examples
+section on how to supply arguments in a named list.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
 Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
@@ -96,13 +112,13 @@ of the nodes. Defaults to 0.7.}
 \item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the edges (only for 'ggraph' mode). Defaults to 1.}
 
-\item{res}{Resolution parameter to be passed to \code{igraph::cluster_leiden()}.
-Defaults to 0.5.}
-
 \item{seed}{Seed for the random number generator passed to either
 \code{set.seed()} when the louvain or leiden community detection algorithm is
 used, to ensure consistency. Only applicable when \code{community} is set to
 \code{"louvain"} or \code{"leiden"}.}
+
+\item{res}{Resolution parameter to be passed to \code{igraph::cluster_leiden()}.
+Defaults to 0.5.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -127,6 +143,14 @@ network_p2p(data = p2p_df, community = "louvain", path = NULL)
 
 # leiden - igraph style
 network_p2p(data = p2p_df, community = "leiden", path = NULL)
+
+# using `fluid_communities` algorithm with custom parameters
+network_p2p(
+  data = p2p_df,
+  community = "fluid_communities",
+  path = NULL,
+  comm_args = list("no.of.communities" = 5)
+)
 
 }
 \seealso{
