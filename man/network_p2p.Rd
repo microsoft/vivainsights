@@ -8,7 +8,7 @@ network_p2p(
   data,
   hrvar = "Organization",
   return = "plot",
-  centrality = NULL,
+  centrality = TRUE,
   community = NULL,
   weight = NULL,
   comm_args = NULL,
@@ -40,8 +40,9 @@ argument:
 \item \code{'network'}
 }}
 
-\item{centrality}{String determining whether centrality measures are calculated
-and reflected in the plot. Valid values include:
+\item{centrality}{logical. Determines whether centrality measures are
+calculated and reflected in the \code{'network'} and \code{'data'} outputs. Measures
+include:
 \itemize{
 \item \code{betweenness}
 \item \code{closeness}
@@ -183,6 +184,15 @@ network_p2p(
   community = "fluid_communities",
   comm_args = list("no.of.communities" = 5)
 )
+
+# Calculate centrality measures and leiden communities, return at node level
+network_p2p(
+  data = p2p_df,
+  centrality = TRUE,
+  community = "leiden",
+  return = "data"
+) \%>\%
+  dplyr::glimpse()
 
 }
 \seealso{

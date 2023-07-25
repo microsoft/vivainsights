@@ -24,8 +24,9 @@
 #'   - `'table'`
 #'   - `'data'`
 #'   - `'network'`
-#' @param centrality String determining whether centrality measures are calculated
-#' and reflected in the plot. Valid values include:
+#' @param centrality logical. Determines whether centrality measures are
+#'   calculated and reflected in the `'network'` and `'data'` outputs. Measures
+#'   include:
 #'   - `betweenness`
 #'   - `closeness`
 #'   - `degree`
@@ -140,6 +141,15 @@
 #'   comm_args = list("no.of.communities" = 5)
 #' )
 #'
+#' # Calculate centrality measures and leiden communities, return at node level
+#' network_p2p(
+#'   data = p2p_df,
+#'   centrality = TRUE,
+#'   community = "leiden",
+#'   return = "data"
+#' ) %>%
+#'   dplyr::glimpse()
+#'
 #' @import ggplot2
 #' @import dplyr
 #'
@@ -150,7 +160,7 @@ network_p2p <-
     data,
     hrvar = "Organization",
     return = "plot",
-    centrality = NULL,
+    centrality = TRUE,
     community = NULL,
     weight = NULL,
     comm_args = NULL,
@@ -274,6 +284,16 @@ network_p2p <-
     } else {
 
       stop("Please enter a valid input for `community`.")
+
+    }
+
+
+    # centrality calculations -------------------------------------------------
+    # attach centrality calculations if `centrality == TRUE`
+
+    if(centrality == TRUE){
+
+      g <- network_summary(g, return = "network")
 
     }
 
