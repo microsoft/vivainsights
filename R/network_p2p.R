@@ -318,8 +318,13 @@ network_p2p <-
     } else {
 
       # all nodes with the same size if centrality is not calculated
-      igraph::V(g)$node_size <- rep(min(node_sizes), igraph::vcount(g))
-
+      # adjust for plotting formats
+      if(style == "igraph"){
+        igraph::V(g)$node_size <- rep(3, igraph::vcount(g))
+      } else if(style == "ggraph"){
+        igraph::V(g)$node_size <- rep(2.5, igraph::vcount(g))
+        node_sizes <- c(3, 3) # arbitrarily fix the node size
+      }
     }
 
     # Common area -------------------------------------------------------------
@@ -451,7 +456,7 @@ network_p2p <-
           ggraph::geom_node_point(aes(colour = !!sym(v_attr),
                                       size = node_size),
                                   alpha = node_alpha,
-                                  pch = 16)+
+                                  pch = 16) +
           scale_size_continuous(range = node_sizes) +
           theme_void() +
           theme(
