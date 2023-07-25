@@ -24,14 +24,20 @@
 #'   - `'table'`
 #'   - `'data'`
 #'   - `'network'`
-#' @param centrality logical. Determines whether centrality measures are
-#'   calculated and reflected in the `'network'` and `'data'` outputs. Measures
-#'   include:
+#' @param centrality string to determines which centrality measure is used to
+#'   scale the size of the nodes. All centrality measures are automatically
+#'   calculated when it is set to one of the below values, and reflected in the
+#'   `'network'` and `'data'` outputs.
+#' Measures include:
 #'   - `betweenness`
 #'   - `closeness`
 #'   - `degree`
 #'   - `eigenvector`
 #'   - `pagerank`
+#'
+#' When `centrality` is set to NULL, no centrality is calculated in the outputs
+#' and all the nodes would have the same size.
+#'
 #' @param community String determining which community detection algorithms to
 #'   apply. Valid values include:
 #'   - `NULL` (default): compute analysis or visuals without computing
@@ -85,6 +91,8 @@
 #'   of the nodes. Defaults to 0.7.
 #' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
 #'   of the edges (only for 'ggraph' mode). Defaults to 1.
+#' @param node_sizes Numeric vector of length two to specify the range of node
+#' sizes to rescale to, when `centrality` is set to a non-null value.
 #' @param seed Seed for the random number generator passed to either
 #'   `set.seed()` when the louvain or leiden community detection algorithm is
 #'   used, to ensure consistency. Only applicable when `community` is set to
@@ -160,7 +168,7 @@ network_p2p <-
     data,
     hrvar = "Organization",
     return = "plot",
-    centrality = TRUE,
+    centrality = NULL,
     community = NULL,
     weight = NULL,
     comm_args = NULL,
@@ -173,8 +181,13 @@ network_p2p <-
     palette = "rainbow",
     node_alpha = 0.7,
     edge_alpha = 1,
+    node_sizes = c(1, 20),
     seed = 1
     ){
+
+    if(length(node_sizes) != 2){
+      stop("`node_sizes` must be of length 2")
+    }
 
     ## Set data frame for edges
     if(is.null(weight)){
@@ -289,11 +302,23 @@ network_p2p <-
 
 
     # centrality calculations -------------------------------------------------
-    # attach centrality calculations if `centrality == TRUE`
+    # attach centrality calculations if `centrality` == TRUE`` is not NULL
 
-    if(centrality == TRUE){
+    if(!is.null(centrality)){
 
       g <- network_summary(g, return = "network")
+
+      igraph::V(g)$node_size <-
+        igraph::get.vertex.attribute(
+          g,
+          name = centrality # from argument
+          ) %>%
+        scales::rescale(to = node_sizes) # min and max value
+
+    } else {
+
+      # all nodes with the same size if centrality is not calculated
+      igraph::V(g)$node_size <- rep(min(node_sizes), igraph::vcount(g))
 
     }
 
@@ -380,7 +405,8 @@ network_p2p <-
             g,
             layout = eval(parse(text = layout_text)),
             vertex.label = NA,
-            vertex.size = 3,
+            # vertex.size = 3,
+            vertex.size = igraph::V(g)$node_size,
             edge.arrow.mode = "-",
             edge.color = "#adadad"
           )
@@ -422,9 +448,11 @@ network_p2p <-
           ggraph::geom_edge_link(colour = "lightgrey",
                                  edge_width = 0.05,
                                  alpha = edge_alpha)+
-          ggraph::geom_node_point(aes(colour = !!sym(v_attr)),
+          ggraph::geom_node_point(aes(colour = !!sym(v_attr),
+                                      size = node_size),
                                   alpha = node_alpha,
-                                  pch = 16) +
+                                  pch = 16)+
+          scale_size_continuous(range = node_sizes) +
           theme_void() +
           theme(
             legend.position = legend_pos,
@@ -436,7 +464,8 @@ network_p2p <-
           ) +
           labs(caption = paste0("Person to person collaboration showing ", v_attr, ".  "), # spaces intentional
                y = "",
-               x = "")
+               x = "") +
+          guides(size = "none")
 
         # Default PDF output unless NULL supplied to path
         if(return == "plot"){

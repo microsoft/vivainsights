@@ -8,7 +8,7 @@ network_p2p(
   data,
   hrvar = "Organization",
   return = "plot",
-  centrality = TRUE,
+  centrality = NULL,
   community = NULL,
   weight = NULL,
   comm_args = NULL,
@@ -21,6 +21,7 @@ network_p2p(
   palette = "rainbow",
   node_alpha = 0.7,
   edge_alpha = 1,
+  node_sizes = c(1, 20),
   seed = 1
 )
 }
@@ -40,16 +41,21 @@ argument:
 \item \code{'network'}
 }}
 
-\item{centrality}{logical. Determines whether centrality measures are
-calculated and reflected in the \code{'network'} and \code{'data'} outputs. Measures
-include:
+\item{centrality}{string to determines which centrality measure is used to
+scale the size of the nodes. All centrality measures are automatically
+calculated when it is set to one of the below values, and reflected in the
+\code{'network'} and \code{'data'} outputs.
+Measures include:
 \itemize{
 \item \code{betweenness}
 \item \code{closeness}
 \item \code{degree}
 \item \code{eigenvector}
 \item \code{pagerank}
-}}
+}
+
+When \code{centrality} is set to NULL, no centrality is calculated in the outputs
+and all the nodes would have the same size.}
 
 \item{community}{String determining which community detection algorithms to
 apply. Valid values include:
@@ -120,6 +126,9 @@ of the nodes. Defaults to 0.7.}
 
 \item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the edges (only for 'ggraph' mode). Defaults to 1.}
+
+\item{node_sizes}{Numeric vector of length two to specify the range of node
+sizes to rescale to, when \code{centrality} is set to a non-null value.}
 
 \item{seed}{Seed for the random number generator passed to either
 \code{set.seed()} when the louvain or leiden community detection algorithm is
