@@ -110,24 +110,33 @@
 #' @examples
 #' p2p_df <- p2p_data_sim(dim = 1, size = 100)
 #'
-#'
 #' # default - ggraph visual
-#' network_p2p(data = p2p_df, style = "ggraph", path = NULL)
+#' network_p2p(data = p2p_df, style = "ggraph")
 #'
 #' # return vertex table
 #' network_p2p(data = p2p_df, return = "table")
 #'
-#' # louvain - igraph style
-#' network_p2p(data = p2p_df, community = "louvain", path = NULL)
+#' # return vertex table with community detection
+#' network_p2p(data = p2p_df, community = "leiden", return = "table")
 #'
 #' # leiden - igraph style
-#' network_p2p(data = p2p_df, community = "leiden", path = NULL)
+#' network_p2p(data = p2p_df, community = "leiden")
+#'
+#' # louvain - ggraph style
+#' network_p2p(data = p2p_df, style = "ggraph", community = "louvain")
+#'
+#' # leiden - return a sankey visual with custom resolution parameters
+#' network_p2p(
+#'   data = p2p_df,
+#'   community = "leiden",
+#'   return = "sankey",
+#'   comm_args = list("resolution" = 0.3)
+#' )
 #'
 #' # using `fluid_communities` algorithm with custom parameters
 #' network_p2p(
 #'   data = p2p_df,
 #'   community = "fluid_communities",
-#'   path = NULL,
 #'   comm_args = list("no.of.communities" = 5)
 #' )
 #'
@@ -347,12 +356,14 @@ network_p2p <-
 
           }
 
-          graphics::plot(g,
-                         layout = eval(parse(text = layout_text)),
-                         vertex.label = NA,
-                         vertex.size = 3,
-                         edge.arrow.mode = "-",
-                         edge.color = "#adadad")
+          graphics::plot(
+            g,
+            layout = eval(parse(text = layout_text)),
+            vertex.label = NA,
+            vertex.size = 3,
+            edge.arrow.mode = "-",
+            edge.color = "#adadad"
+          )
 
           graphics::legend(x = leg_x,
                            y = leg_y,
@@ -383,6 +394,7 @@ network_p2p <-
           message(paste0("Saved to ", out_path, "."))
 
         }
+
       } else if(style == "ggraph"){
 
         plot_output <-
