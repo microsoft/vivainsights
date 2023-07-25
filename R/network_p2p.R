@@ -89,6 +89,22 @@
 #'   used, to ensure consistency. Only applicable when `community` is set to
 #'   one of the valid non-null values.
 #'
+#' @return
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
+#'   - `'plot'`: return a network plot, interactively within R.
+#'   - `'plot-pdf'`: save a network plot as PDF. This option is recommended when
+#'   the graph is large, which make take a long time to run if `return = 'plot'`
+#'   is selected. Use this together with `path` to control the save location.
+#'   - `'sankey'`: return a sankey plot combining communities and HR attribute.
+#'   This is only valid if a community detection method is selected at
+#'   `community`.
+#'   - `'table'`: return a vertex summary table with counts in communities and
+#'   HR attribute.
+#'   - `'data'`: return a vertex data file that matches vertices with
+#'   communities and HR attributes.
+#'   - `'network'`: return 'igraph' object.
+#'
 #' @family Network
 #'
 #' @examples
@@ -371,7 +387,9 @@ network_p2p <-
 
         plot_output <-
           g_layout +
-          ggraph::geom_edge_link(colour = "lightgrey", edge_width = 0.05, alpha = edge_alpha) +
+          ggraph::geom_edge_link(colour = "lightgrey",
+                                 edge_width = 0.05,
+                                 alpha = edge_alpha)+
           ggraph::geom_node_point(aes(colour = !!sym(v_attr)),
                                   alpha = node_alpha,
                                   pch = 16) +
@@ -422,8 +440,8 @@ network_p2p <-
 
       if(is.null(community)){
 
-        message("Note: no sankey return option is available if `display` is set to 'hrvar'.
-      Please specify either 'louvain' or 'leiden'")
+        message("Note: no sankey return option is available if `NULL` is selected at `community`.
+      Please specify a valid community detection algorithm.")
 
       } else if(community %in% valid_comm){
 

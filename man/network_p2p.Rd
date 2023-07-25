@@ -125,6 +125,24 @@ of the edges (only for 'ggraph' mode). Defaults to 1.}
 used, to ensure consistency. Only applicable when \code{community} is set to
 one of the valid non-null values.}
 }
+\value{
+A different output is returned depending on the value passed to the \code{return}
+argument:
+\itemize{
+\item \code{'plot'}: return a network plot, interactively within R.
+\item \code{'plot-pdf'}: save a network plot as PDF. This option is recommended when
+the graph is large, which make take a long time to run if \code{return = 'plot'}
+is selected. Use this together with \code{path} to control the save location.
+\item \code{'sankey'}: return a sankey plot combining communities and HR attribute.
+This is only valid if a community detection method is selected at
+\code{community}.
+\item \code{'table'}: return a vertex summary table with counts in communities and
+HR attribute.
+\item \code{'data'}: return a vertex data file that matches vertices with
+communities and HR attributes.
+\item \code{'network'}: return 'igraph' object.
+}
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
