@@ -12,7 +12,7 @@ network_p2p(
   community = NULL,
   weight = NULL,
   comm_args = NULL,
-  algorithm = "mds",
+  layout = "mds",
   path = paste("p2p", NULL, sep = "_"),
   style = "igraph",
   bg_fill = "#FFFFFF",
@@ -89,7 +89,7 @@ network. To create a graph without weights, supply \code{NULL} to this argument.
 igraph's clustering algorithms. Arguments must be named. See examples
 section on how to supply arguments in a named list.}
 
-\item{algorithm}{String to specify the node placement algorithm to be used.
+\item{layout}{String to specify the node placement algorithm to be used.
 Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
 nodes. See
 \url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full

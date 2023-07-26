@@ -64,7 +64,7 @@
 #' @param comm_args list containing the arguments to be passed through to
 #'   igraph's clustering algorithms. Arguments must be named. See examples
 #'   section on how to supply arguments in a named list.
-#' @param algorithm String to specify the node placement algorithm to be used.
+#' @param layout String to specify the node placement algorithm to be used.
 #'   Defaults to `"mds"` for the deterministic multi-dimensional scaling of
 #'   nodes. See
 #'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
@@ -173,7 +173,7 @@ network_p2p <-
     community = NULL,
     weight = NULL,
     comm_args = NULL,
-    algorithm = "mds",
+    layout = "mds",
     path = paste("p2p", NULL, sep = "_"),
     style = "igraph",
     bg_fill = "#FFFFFF",
@@ -340,7 +340,7 @@ network_p2p <-
     ## Set layout for graph
     g_layout <-
       g %>%
-      ggraph::ggraph(layout = "igraph", algorithm = algorithm)
+      ggraph::ggraph(layout = "igraph", algorithm = layout)
 
     ## Timestamped File Path
     out_path <- paste0(path, "_", tstamp(), ".pdf")
@@ -378,7 +378,7 @@ network_p2p <-
 
           par(bg = bg_fill)
 
-          layout_text <- paste0("igraph::layout_with_", algorithm)
+          layout_text <- paste0("igraph::layout_with_", layout)
 
           ## Legend position
 
