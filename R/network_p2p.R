@@ -76,7 +76,7 @@
 #'   - `"igraph"`
 #'   - `"ggraph"`
 #' @param bg_fill String to specify background fill colour.
-#' @param font_col String to specify font and link colour.
+#' @param font_col String to specify font colour.
 #' @param legend_pos String to specify position of legend. Defaults to
 #'   `"bottom"`. See `ggplot2::theme()`. This is applicable for both the
 #'   'ggraph' and the fast plotting method. Valid inputs include:
@@ -91,6 +91,7 @@
 #'   of the nodes. Defaults to 0.7.
 #' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
 #'   of the edges (only for 'ggraph' mode). Defaults to 1.
+#' @param edge_col String to specify edge link colour.
 #' @param node_sizes Numeric vector of length two to specify the range of node
 #' sizes to rescale to, when `centrality` is set to a non-null value.
 #' @param seed Seed for the random number generator passed to either
@@ -152,7 +153,7 @@
 #' # Calculate centrality measures and leiden communities, return at node level
 #' network_p2p(
 #'   data = p2p_df,
-#'   centrality = TRUE,
+#'   centrality = "betweenness",
 #'   community = "leiden",
 #'   return = "data"
 #' ) %>%
@@ -181,6 +182,7 @@ network_p2p <-
     palette = "rainbow",
     node_alpha = 0.7,
     edge_alpha = 1,
+    edge_col = "#777777",
     node_sizes = c(1, 20),
     seed = 1
     ){
@@ -302,7 +304,7 @@ network_p2p <-
 
 
     # centrality calculations -------------------------------------------------
-    # attach centrality calculations if `centrality` == TRUE`` is not NULL
+    # attach centrality calculations if `centrality` is not NULL
 
     if(!is.null(centrality)){
 
@@ -421,7 +423,7 @@ network_p2p <-
                            legend = colour_tb[[v_attr]], # vertex attribute
                            pch = 21,
                            text.col = font_col,
-                           col = "#777777",
+                           col = edge_col,
                            pt.bg = colour_tb$colour,
                            pt.cex = 2,
                            cex = .8,
@@ -450,7 +452,7 @@ network_p2p <-
 
         plot_output <-
           g_layout +
-          ggraph::geom_edge_link(colour = "lightgrey",
+          ggraph::geom_edge_link(colour = edge_col,
                                  edge_width = 0.05,
                                  alpha = edge_alpha)+
           ggraph::geom_node_point(aes(colour = !!sym(v_attr),

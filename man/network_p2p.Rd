@@ -21,6 +21,7 @@ network_p2p(
   palette = "rainbow",
   node_alpha = 0.7,
   edge_alpha = 1,
+  edge_col = "#777777",
   node_sizes = c(1, 20),
   seed = 1
 )
@@ -106,7 +107,7 @@ plot. Valid values include:
 
 \item{bg_fill}{String to specify background fill colour.}
 
-\item{font_col}{String to specify font and link colour.}
+\item{font_col}{String to specify font colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to
 \code{"bottom"}. See \code{ggplot2::theme()}. This is applicable for both the
@@ -126,6 +127,8 @@ of the nodes. Defaults to 0.7.}
 
 \item{edge_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the edges (only for 'ggraph' mode). Defaults to 1.}
+
+\item{edge_col}{String to specify edge link colour.}
 
 \item{node_sizes}{Numeric vector of length two to specify the range of node
 sizes to rescale to, when \code{centrality} is set to a non-null value.}
@@ -197,7 +200,7 @@ network_p2p(
 # Calculate centrality measures and leiden communities, return at node level
 network_p2p(
   data = p2p_df,
-  centrality = TRUE,
+  centrality = "betweenness",
   community = "leiden",
   return = "data"
 ) \%>\%
