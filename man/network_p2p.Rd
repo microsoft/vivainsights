@@ -73,7 +73,7 @@ communities.
 \item \code{"leading_eigen"}
 \item \code{"optimal"}
 \item \code{"spinglass"}
-\item \verb{"walk_trap}
+\item \code{"walk_trap"}
 }
 
 These values map to the community detection algorithms offered by \code{igraph}.

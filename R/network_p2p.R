@@ -52,7 +52,7 @@
 #'   - `"leading_eigen"`
 #'   - `"optimal"`
 #'   - `"spinglass"`
-#'   - `"walk_trap`
+#'   - `"walk_trap"`
 #'
 #'  These values map to the community detection algorithms offered by `igraph`.
 #'  For instance, `"leiden"` is based on `igraph::cluster_leiden()`. Please see
@@ -335,7 +335,8 @@ network_p2p <-
     vertex_tb <-
       g %>%
       igraph::get.vertex.attribute() %>%
-      as_tibble()
+      as_tibble() %>%
+      select(-node_size) # never show `node_size` in data output
 
     ## Set layout for graph
     g_layout <-
