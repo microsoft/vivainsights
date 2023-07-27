@@ -110,7 +110,8 @@
 #'   This is only valid if a community detection method is selected at
 #'   `community`.
 #'   - `'table'`: return a vertex summary table with counts in communities and
-#'   HR attribute.
+#'   HR attribute. When `centrality` is non-NULL, the average centrality values
+#'   are calculated per group.
 #'   - `'data'`: return a vertex data file that matches vertices with
 #'   communities and HR attributes.
 #'   - `'network'`: return 'igraph' object.
@@ -527,11 +528,45 @@ network_p2p <-
 
       if(is.null(community)){
 
-        vertex_tb %>% count(!!sym(hrvar))
+        if(is.null(centrality)){
+
+          vertex_tb %>% count(!!sym(hrvar))
+
+        } else {
+
+          # average centrality by group
+          vertex_tb %>%
+            group_by(!!sym(hrvar)) %>%
+            summarise(
+              n = n(),
+              betweenness = mean(betweenness, na.rm = TRUE),
+              closeness = mean(closeness, na.rm = TRUE),
+              degree = mean(degree, na.rm = TRUE),
+              eigenvector = mean(eigenvector, na.rm = TRUE),
+              pagerank = mean(pagerank, na.rm = TRUE)
+            )
+        }
 
       } else if(community %in% valid_comm){
 
-        vertex_tb %>% count(!!sym(hrvar), cluster)
+        if(is.null(centrality)){
+
+          vertex_tb %>% count(!!sym(hrvar), cluster)
+
+        } else {
+
+          # average centrality by group
+          vertex_tb %>%
+            group_by(!!sym(hrvar), cluster) %>%
+            summarise(
+              n = n(),
+              betweenness = mean(betweenness, na.rm = TRUE),
+              closeness = mean(closeness, na.rm = TRUE),
+              degree = mean(degree, na.rm = TRUE),
+              eigenvector = mean(eigenvector, na.rm = TRUE),
+              pagerank = mean(pagerank, na.rm = TRUE)
+            )
+        }
 
       }
 

@@ -150,7 +150,8 @@ is selected. Use this together with \code{path} to control the save location.
 This is only valid if a community detection method is selected at
 \code{community}.
 \item \code{'table'}: return a vertex summary table with counts in communities and
-HR attribute.
+HR attribute. When \code{centrality} is non-NULL, the average centrality values
+are calculated per group.
 \item \code{'data'}: return a vertex data file that matches vertices with
 communities and HR attributes.
 \item \code{'network'}: return 'igraph' object.
