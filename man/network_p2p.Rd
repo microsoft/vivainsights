@@ -17,7 +17,7 @@ network_p2p(
   style = "igraph",
   bg_fill = "#FFFFFF",
   font_col = "grey20",
-  legend_pos = "bottom",
+  legend_pos = "right",
   palette = "rainbow",
   node_alpha = 0.7,
   edge_alpha = 1,
@@ -110,7 +110,7 @@ plot. Valid values include:
 \item{font_col}{String to specify font colour.}
 
 \item{legend_pos}{String to specify position of legend. Defaults to
-\code{"bottom"}. See \code{ggplot2::theme()}. This is applicable for both the
+\code{"right"}. See \code{ggplot2::theme()}. This is applicable for both the
 'ggraph' and the fast plotting method. Valid inputs include:
 \itemize{
 \item \code{"bottom"}

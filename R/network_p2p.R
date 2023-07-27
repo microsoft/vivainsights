@@ -78,7 +78,7 @@
 #' @param bg_fill String to specify background fill colour.
 #' @param font_col String to specify font colour.
 #' @param legend_pos String to specify position of legend. Defaults to
-#'   `"bottom"`. See `ggplot2::theme()`. This is applicable for both the
+#'   `"right"`. See `ggplot2::theme()`. This is applicable for both the
 #'   'ggraph' and the fast plotting method. Valid inputs include:
 #'   - `"bottom"`
 #'   - `"top"`
@@ -178,7 +178,7 @@ network_p2p <-
     style = "igraph",
     bg_fill = "#FFFFFF",
     font_col = "grey20",
-    legend_pos = "bottom",
+    legend_pos = "right",
     palette = "rainbow",
     node_alpha = 0.7,
     edge_alpha = 1,
