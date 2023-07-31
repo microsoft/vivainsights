@@ -85,8 +85,8 @@
 #'   - `"left"`
 #'   -`"right"`
 #'
-#' @param palette Function for generating a colour palette with a single
-#'   argument `n`. Uses "rainbow" by default.
+#' @param palette String specifying the function to generate a colour palette
+#'   with a single argument `n`. Uses `"rainbow"` by default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency
 #'   of the nodes. Defaults to 0.7.
 #' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
@@ -133,8 +133,13 @@
 #' # leiden - igraph style
 #' network_p2p(data = p2p_df, community = "leiden")
 #'
-#' # louvain - ggraph style
-#' network_p2p(data = p2p_df, style = "ggraph", community = "louvain")
+#' # louvain - ggraph style, using custom palette
+#' network_p2p(
+#'   data = p2p_df,
+#'   style = "ggraph",
+#'   community = "louvain",
+#'   palette = "heat_colors"
+#' )
 #'
 #' # leiden - return a sankey visual with custom resolution parameters
 #' network_p2p(
@@ -352,20 +357,20 @@ network_p2p <-
     ## Use fast plotting method
     if(return %in% c("plot", "plot-pdf")){
 
+      ## Set colours
+      colour_tb <-
+        tibble(!!sym(v_attr) := unique(igraph::get.vertex.attribute(g, name = v_attr))) %>%
+        mutate(colour = eval(parse(text = paste0(palette,"(nrow(.))")))) # palette choice
+
+      ## Colour vector
+      colour_v <-
+        tibble(!!sym(v_attr) := igraph::get.vertex.attribute(g, name = v_attr)) %>%
+        left_join(colour_tb, by = v_attr) %>%
+        pull(colour)
+
       if(style == "igraph"){
 
-        message("Using fast plot method due to large network size...")
-
-        ## Set colours
-        colour_tb <-
-          tibble(!!sym(v_attr) := unique(igraph::get.vertex.attribute(g, name = v_attr))) %>%
-          mutate(colour = eval(parse(text = paste0(palette,"(nrow(.))")))) # palette choice
-
-        ## Colour vector
-        colour_v <-
-          tibble(!!sym(v_attr) := igraph::get.vertex.attribute(g, name = v_attr)) %>%
-          left_join(colour_tb, by = v_attr) %>%
-          pull(colour)
+        # message("Using fast plot method due to large network size...")
 
         ## Set graph plot colours
         igraph::V(g)$color <- grDevices::adjustcolor(colour_v, alpha.f = node_alpha)
@@ -462,6 +467,7 @@ network_p2p <-
                                   alpha = node_alpha,
                                   pch = 16) +
           scale_size_continuous(range = node_sizes) +
+          scale_color_manual(values = colour_v) +
           theme_void() +
           theme(
             legend.position = legend_pos,

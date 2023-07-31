@@ -119,8 +119,8 @@ plot. Valid values include:
 -\code{"right"}
 }}
 
-\item{palette}{Function for generating a colour palette with a single
-argument \code{n}. Uses "rainbow" by default.}
+\item{palette}{String specifying the function to generate a colour palette
+with a single argument \code{n}. Uses \code{"rainbow"} by default.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the nodes. Defaults to 0.7.}
@@ -180,8 +180,13 @@ network_p2p(data = p2p_df, community = "leiden", return = "table")
 # leiden - igraph style
 network_p2p(data = p2p_df, community = "leiden")
 
-# louvain - ggraph style
-network_p2p(data = p2p_df, style = "ggraph", community = "louvain")
+# louvain - ggraph style, using custom palette
+network_p2p(
+  data = p2p_df,
+  style = "ggraph",
+  community = "louvain",
+  palette = "heat_colors"
+)
 
 # leiden - return a sankey visual with custom resolution parameters
 network_p2p(
