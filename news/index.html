@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,6 +55,21 @@
       
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="vivainsights-development-version">vivainsights (development version)<a class="anchor" aria-label="anchor" href="#vivainsights-development-version"></a></h2>
+<ul><li>Added new functionality for organizational network analysis (ONA) on Viva Insights data</li>
+<li>Introduced <code>p2p_data</code> and <code>g2g_data</code> sample datasets, with an option to simulate a person-to-person dataset using <code><a href="../reference/p2p_data_sim.html">p2p_data_sim()</a></code>
+</li>
+<li>Added <code><a href="../reference/network_g2g.html">network_g2g()</a></code>, <code><a href="../reference/network_p2p.html">network_p2p()</a></code>, <code><a href="../reference/network_summary.html">network_summary()</a></code>, and <code><a href="../reference/create_sankey.html">create_sankey()</a></code> functions</li>
+<li>
+<code><a href="../reference/network_p2p.html">network_p2p()</a></code> now has a <code>centrality</code> argument for computing and visualizing centrality as node sizes in the network plot</li>
+<li>For <code><a href="../reference/network_p2p.html">network_p2p()</a></code>:
+<ul><li>the <code>algorithm</code> argument is renamed to <code>layout</code> for better intuitiveness</li>
+<li>Improved consistency and intuitiveness of the API, with <code>style</code> argument now controlling the network plotting mechanism and <code>return</code> argument controlling whether plots are generated interactively or saved as PDF</li>
+<li>Added a large number of community detection algorithms from <code>igraph</code>
+</li>
+</ul></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="vivainsights-031">vivainsights 0.3.1<a class="anchor" aria-label="anchor" href="#vivainsights-031"></a></h2><p class="text-muted">CRAN release: 2023-05-22</p>
 <ul><li>Fixed bug in running validation report (#11)</li>

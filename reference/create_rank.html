@@ -16,7 +16,7 @@ ranked by the specified metric."><meta property="og:image" content="https://micr
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,6 +163,7 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <code><a href="create_line_asis.html">create_line_asis</a>()</code>,
 <code><a href="create_line.html">create_line</a>()</code>,
 <code><a href="create_period_scatter.html">create_period_scatter</a>()</code>,
+<code><a href="create_sankey.html">create_sankey</a>()</code>,
 <code><a href="create_scatter.html">create_scatter</a>()</code>,
 <code><a href="create_stacked.html">create_stacked</a>()</code>,
 <code><a href="create_tracking.html">create_tracking</a>()</code>,
@@ -208,6 +209,7 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <code><a href="create_line_asis.html">create_line_asis</a>()</code>,
 <code><a href="create_line.html">create_line</a>()</code>,
 <code><a href="create_period_scatter.html">create_period_scatter</a>()</code>,
+<code><a href="create_sankey.html">create_sankey</a>()</code>,
 <code><a href="create_scatter.html">create_scatter</a>()</code>,
 <code><a href="create_stacked.html">create_stacked</a>()</code>,
 <code><a href="create_tracking.html">create_tracking</a>()</code>,
@@ -249,27 +251,26 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Emails_sent"</span>,</span></span>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar               group                  Emails_sent     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> FunctionType        Sales                         68.8     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> LevelDesignation    Manager                       60.8     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> SupervisorIndicator Manager                       60.8     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> FunctionType        Customer_Service              50.1     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Organization        Sales and Marketing           48.3    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Organization        Finance                       46.3    17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> FunctionType        Marketing                     44.8    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> WeekendDays         [SUNDAY, SATURDAY]            42.0    65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> FunctionType        Engineering                   41.2    11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> LevelDesignation    Support                       36.5    32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Organization        Product                       35.8    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> SupervisorIndicator Individual Contributor        35.2    54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> LevelDesignation    Senior IC                     33.9    14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> FunctionType        R_and_D                       33.5    11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> FunctionType        IT                            33.2     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> LevelDesignation    Junior IC                     32.6     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> Organization        HR                            31.5     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> FunctionType        Analytics                     31.5     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> FunctionType        Sales                         74.9     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> LevelDesignation    Manager                       57.3     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> SupervisorIndicator Manager                       57.3     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Organization        Sales and Marketing           54.9    20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> FunctionType        Marketing                     49.9     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Organization        Finance                       44.5    19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> WeekendDays         [SUNDAY, SATURDAY]            44.1    63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> FunctionType        IT                            44.0     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> FunctionType        Customer_Service              41.1     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> LevelDesignation    Support                       39.1    33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> FunctionType        Analytics                     39       9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> FunctionType        R_and_D                       38.2     9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> SupervisorIndicator Individual Contributor        37.0    51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Organization        HR                            36.1    11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> FunctionType        Engineering                   35.7    14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> LevelDesignation    Senior IC                     34.4    14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> Organization        Product                       32.8    13</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Return a table - combination mode</span></span></span>
@@ -279,20 +280,20 @@ plot output if <code>mode</code> is set to <code>"combine"</code>.</p></li>
 <span class="r-in"><span>  mode <span class="op">=</span> <span class="st">"combine"</span>,</span></span>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 86 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 76 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                              Emails_sent     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [LevelDesignation] Manager [SupervisorIndicator] …        60.8     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [LevelDesignation] Support [SupervisorIndicator] …        36.5    32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [LevelDesignation] Senior IC [SupervisorIndicator…        33.9    14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [LevelDesignation] Junior IC [SupervisorIndicator…        32.6     8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [LevelDesignation] Support [Organization] Sales a…        40.6    10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [LevelDesignation] Support [Organization] Finance         36.7     7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [LevelDesignation] Support [Organization] Product         34.4     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [LevelDesignation] Senior IC [Organization] Produ…        33.2     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [LevelDesignation] Support [Organization] HR              32.4     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [LevelDesignation] Support [FunctionType] R_and_D         36.9     7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 76 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [LevelDesignation] Manager [SupervisorIndicator] …        57.3     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [LevelDesignation] Support [SupervisorIndicator] …        39.1    33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [LevelDesignation] Senior IC [SupervisorIndicator…        34.4    14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [LevelDesignation] Support [Organization] Sales a…        42.7    12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [LevelDesignation] Support [Organization] Finance         40.9     9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [LevelDesignation] Support [Organization] HR              35.2     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [LevelDesignation] Support [Organization] Product         32.7     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [LevelDesignation] Senior IC [Organization] Produ…        29.8     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [LevelDesignation] Support [FunctionType] IT              38.7     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [LevelDesignation] Support [FunctionType] Enginee…        33.8     8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 66 more rows</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
