@@ -359,7 +359,7 @@ network_p2p <-
         ## Set colours
         colour_tb <-
           tibble(!!sym(v_attr) := unique(igraph::get.vertex.attribute(g, name = v_attr))) %>%
-          mutate(colour = rainbow(nrow(.))) # No palette choice
+          mutate(colour = eval(parse(text = paste0(palette,"(nrow(.))")))) # palette choice
 
         ## Colour vector
         colour_v <-
@@ -375,10 +375,10 @@ network_p2p <-
         ## Internal basic plotting function used inside `network_p2p()`
         plot_basic_graph <- function(lpos = legend_pos){
 
-          old_par <- par(no.readonly = TRUE)
-          on.exit(par(old_par))
+          old_par <- graphics::par(no.readonly = TRUE)
+          on.exit(graphics::par(old_par))
 
-          par(bg = bg_fill)
+          graphics::par(bg = bg_fill)
 
           layout_text <- paste0("igraph::layout_with_", layout)
 
