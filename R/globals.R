@@ -96,6 +96,22 @@ utils::globalVariables(
     "line",
     "text",
     "word",
-    "freq"
+    "freq",
+    "PrimaryCollaborator_PersonId",
+    "PrimaryOrg",
+    "SecondaryCollaborator_PersonId",
+    "SecondaryOrg",
+    "betweenness",
+    "closeness",
+    "cluster",
+    "colour",
+    "degree",
+    "eigenvector",
+    "from",
+    "metric_prop",
+    "node_size",
+    "org_size",
+    "pagerank",
+    "to"
     )
 )
