@@ -1,4 +1,4 @@
-# vivainsights (development version)
+# vivainsights 0.4.0
 
 - Added new functionality for organizational network analysis (ONA) on Viva Insights data
 - Introduced `p2p_data` and `g2g_data` sample datasets, with an option to simulate a person-to-person dataset using `p2p_data_sim()`
