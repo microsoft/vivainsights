@@ -39,8 +39,8 @@ Imports:
     ggraph,
     igraph,
     tidytext,
-    ggwordcloud,
-    lifecycle
+    ggwordcloud
 Suggests: 
-    flexdashboard
+    flexdashboard,
+    lifecycle
 URL: https://microsoft.github.io/vivainsights/
