@@ -78,7 +78,7 @@
 #'
 #' col_str <-
 #'   sample(
-#'     x = c("red", "green", "blue"),
+#'     x = heat_colours(n = length(org_str)), # generate colour codes for each one
 #'     size = length(org_str),
 #'     replace = TRUE
 #'   )
@@ -92,11 +92,18 @@
 #'
 #' # Return a network plot with circle layout
 #' # Vary node colours and add org sizes
-#' org_tb <- hrvar_count(
-#'   pq_data,
-#'   hrvar = "Organization",
-#'   return = "table"
-#' )
+#' org_tb <-
+#'   data.frame(
+#'     Organization = c(
+#'       "G&A East",
+#'       "G&A West",
+#'       "G&A North",
+#'       "South Sales",
+#'       "North Sales",
+#'       "G&A South"
+#'     ),
+#'     n = sample(30:1000, size = 6)
+#'   )
 #'
 #' g2g_data %>%
 #'   network_g2g(algorithm = "circle",
