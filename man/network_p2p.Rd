@@ -177,8 +177,8 @@ network_p2p(data = p2p_df, return = "table")
 # return vertex table with community detection
 network_p2p(data = p2p_df, community = "leiden", return = "table")
 
-# leiden - igraph style
-network_p2p(data = p2p_df, community = "leiden")
+# leiden - igraph style with custom resolution parameters
+network_p2p(data = p2p_df, community = "leiden", comm_args = list("resolution" = 0.1))
 
 # louvain - ggraph style, using custom palette
 network_p2p(
@@ -193,7 +193,7 @@ network_p2p(
   data = p2p_df,
   community = "leiden",
   return = "sankey",
-  comm_args = list("resolution" = 0.3)
+  comm_args = list("resolution" = 0.1)
 )
 
 # using `fluid_communities` algorithm with custom parameters

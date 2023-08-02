@@ -1,7 +1,7 @@
 Package: vivainsights
 Type: Package
 Title: Analyze and Visualize Data from 'Microsoft Viva Insights'
-Version: 0.3.1.9000
+Version: 0.4.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
@@ -39,7 +39,8 @@ Imports:
     ggraph,
     igraph,
     tidytext,
-    ggwordcloud
+    ggwordcloud,
+    lifecycle
 Suggests: 
     flexdashboard
 URL: https://microsoft.github.io/vivainsights/

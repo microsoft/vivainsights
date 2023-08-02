@@ -1,13 +1,13 @@
-# vivainsights (development version)
+# vivainsights 0.4.0
 
-- Added new functionality for organizational network analysis (ONA) on Viva Insights data
-- Introduced `p2p_data` and `g2g_data` sample datasets, with an option to simulate a person-to-person dataset using `p2p_data_sim()`
-- Added `network_g2g()`, `network_p2p()`, `network_summary()`, and `create_sankey()` functions
-- `network_p2p()` now has a `centrality` argument for computing and visualizing centrality as node sizes in the network plot
-- For `network_p2p()`:
-  - the `algorithm` argument is renamed to `layout` for better intuitiveness
-  - Improved consistency and intuitiveness of the API, with `style` argument now controlling the network plotting mechanism and `return` argument controlling whether plots are generated interactively or saved as PDF
-  - Added a large number of community detection algorithms from `igraph`
+Added new functionality for organizational network analysis (ONA):
+  - Introduced `p2p_data` and `g2g_data` sample datasets, with an option to simulate a person-to-person dataset using `p2p_data_sim()`
+  - Added `network_g2g()`, `network_p2p()`, `network_summary()`, and `create_sankey()` functions
+  - `network_p2p()` now has a `centrality` argument for computing and visualizing centrality as node sizes in the network plot
+  - For `network_p2p()`:
+    - the `algorithm` argument is renamed to `layout` for better intuitiveness
+    - Improved consistency and intuitiveness of the API, with `style` argument now controlling the network plotting mechanism and `return` argument controlling whether plots are generated interactively or saved as PDF
+    - Added a large number of community detection algorithms from `igraph`
 
 # vivainsights 0.3.1
 
