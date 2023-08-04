@@ -180,7 +180,7 @@ network_p2p <-
     weight = NULL,
     comm_args = NULL,
     layout = "mds",
-    path = paste("p2p", NULL, sep = "_"),
+    path = paste("p2p", community, sep = "_"),
     style = "igraph",
     bg_fill = "#FFFFFF",
     font_col = "grey20",
