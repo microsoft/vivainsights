@@ -10,6 +10,9 @@
 #' <https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/>
 #' for more.
 #'
+#' @details
+#' This is exported from `wpa::create_dt()`.
+#'
 #' @param x Data frame to be passed through.
 #' @param rounding Numeric vector to specify the number of decimal points to display
 #' @param freeze Number of columns from the left to 'freeze'. Defaults to 2,
@@ -17,56 +20,16 @@
 #' @param percent Logical value specifying whether to display numeric columns
 #' as percentages.
 #'
-#' @import DT
-#' @importFrom dplyr mutate_if
+#' @importFrom wpa create_dt
 #'
 #' @family Import and Export
+#'
+#' @examples
+#' output <- hrvar_count(pq_data, return = "table")
+#' create_dt(output)
 #'
 #' @return
 #' Returns an HTML widget displaying rectangular data.
 #'
 #' @export
-create_dt <- function(x, rounding = 1, freeze = 2, percent = FALSE){
-
-  # Round all numeric to "rounding" number of dp
-  num_cols <- dplyr::select_if(x, is.numeric) %>% names()
-
-  if(length(num_cols) == 0){ # No numeric columns
-
-    out <-
-      DT::datatable(x,
-                  extensions = c('Buttons',
-                                 'FixedColumns'),
-                  options = list(dom = 'Blfrtip',
-                                 fixedColumns = list(leftColumns = freeze),
-                                 scrollX = TRUE,
-                                 buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
-                                 lengthMenu = list(c(10,25,50,-1),
-                                                   c(10,25,50,"All"))))
-
-  } else {
-
-    out <-
-      DT::datatable(x,
-                  extensions = c('Buttons',
-                                 'FixedColumns'),
-                  options = list(dom = 'Blfrtip',
-                                 fixedColumns = list(leftColumns = freeze),
-                                 scrollX = TRUE,
-                                 buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
-                                 lengthMenu = list(c(10,25,50,-1),
-                                                   c(10,25,50,"All")))) %>%
-      DT::formatRound(columns = num_cols, rounding)
-
-    if(percent == TRUE){
-
-      out <-
-        out %>%
-        DT::formatPercentage(columns = num_cols, rounding)
-
-    }
-  }
-
-
-  out
-}
+create_dt <- wpa::create_dt

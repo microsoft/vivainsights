@@ -25,6 +25,14 @@ See
 \url{https://martinctc.github.io/blog/vignette-downloadable-tables-in-rmarkdown-with-the-dt-package/}
 for more.
 }
+\details{
+This is exported from \code{wpa::create_dt()}.
+}
+\examples{
+output <- hrvar_count(pq_data, return = "table")
+create_dt(output)
+
+}
 \seealso{
 Other Import and Export: 
 \code{\link{copy_df}()},
