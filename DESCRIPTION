@@ -24,7 +24,6 @@ Imports:
     tidyselect (>= 1.0.0),
     magrittr,
     ggplot2,
-    DT,
     reshape2,
     scales,
     ggrepel,
@@ -40,7 +39,8 @@ Imports:
     igraph,
     tidytext,
     ggwordcloud,
-    lifecycle
+    lifecycle,
+    DT
 Suggests: 
     flexdashboard
 URL: https://microsoft.github.io/vivainsights/

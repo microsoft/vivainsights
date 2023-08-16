@@ -43,13 +43,16 @@ This function uses \code{tm_clean()} as the underlying data wrangling function.
 There is an option to remove stopwords by passing a data frame into the
 \code{stopwords} argument.
 }
-\examples{
-# Demo using a subset of `mt_data`
-mt_data \%>\%
-  dplyr::slice(1:20) \%>\%
-  tm_cooc(lmult = 0.01)
+\section{Example}{
 
+The function can be run with subject lines from \code{mt_data}, as per below.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mt_data \%>\%
+  tm_cooc(lmult = 0.01)
+\}
+}\if{html}{\out{</div>}}
 }
+
 \seealso{
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},

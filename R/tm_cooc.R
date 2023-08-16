@@ -45,11 +45,13 @@
 #'
 #' @family Text-mining
 #'
-#' @examples
-#' # Demo using a subset of `mt_data`
+#' @section Example:
+#' The function can be run with subject lines from `mt_data`, as per below.
+#' ```
 #' mt_data %>%
-#'   dplyr::slice(1:20) %>%
 #'   tm_cooc(lmult = 0.01)
+#' }
+#' ```
 #'
 #' @export
 tm_cooc <- function(data,
