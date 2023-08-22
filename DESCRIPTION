@@ -39,7 +39,7 @@ Imports:
     ggraph,
     igraph,
     tidytext,
-    ggwordcloud,
+    ggwordcloud, 
     lifecycle
 Suggests: 
     flexdashboard
