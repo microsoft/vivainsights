@@ -174,6 +174,7 @@ network_p2p(data = p2p_df, style = "ggraph")
 # return vertex table
 network_p2p(data = p2p_df, return = "table")
 
+\donttest{
 # return vertex table with community detection
 network_p2p(data = p2p_df, community = "leiden", return = "table")
 
@@ -211,6 +212,7 @@ network_p2p(
   return = "data"
 ) \%>\%
   dplyr::glimpse()
+}
 
 }
 \seealso{
