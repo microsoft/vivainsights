@@ -1,3 +1,5 @@
+# vivainsights 0.4.1
+
 # vivainsights 0.4.0
 
 Added new functionality for organizational network analysis (ONA):
