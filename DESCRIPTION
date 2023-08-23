@@ -24,7 +24,6 @@ Imports:
     tidyselect (>= 1.0.0),
     magrittr,
     ggplot2,
-    DT,
     reshape2,
     scales,
     ggrepel,
