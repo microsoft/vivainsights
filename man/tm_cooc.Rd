@@ -49,10 +49,12 @@ The function can be run with subject lines from \code{mt_data}, as per below.
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{mt_data \%>\%
   tm_cooc(lmult = 0.01)
-\}
 }\if{html}{\out{</div>}}
 }
 
+\examples{
+# Demo using a subset of `mt_data`
+}
 \seealso{
 Other Text-mining: 
 \code{\link{meeting_tm_report}()},
