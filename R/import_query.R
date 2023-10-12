@@ -22,7 +22,7 @@
 #'   compatible with other functions in the package. Defaults to `NULL`, where
 #'   no action is taken.
 #' @param dateid String specifying the date variable. `import_query` renames
-#'   this to `Date` so that this is compatible with other functions in the
+#'   this to `MetricDate` so that this is compatible with other functions in the
 #'   package. Defaults to `NULL`, where no action is taken.
 #' @param date_format String specifying the date format for converting any
 #' variable that may be a date to a Date variable. Defaults to `"%m/%d/%Y"`.
@@ -54,13 +54,31 @@ import_query <- function(x,
                       encoding = encoding) %>%
     as.data.frame()
 
+  if(convert_date == TRUE){
+
+    # Columns which are Dates
+    dateCols <- sapply(return_data, function(x) all(is_date_format(x) | any_idate(x)))
+
+    dateCols <- names(return_data)[dateCols == TRUE]
+
+    # Format any date columns
+    return_data <-
+      return_data %>%
+      dplyr::mutate_at(dplyr::vars(dateCols), ~as.Date(., format = date_format))
+
+    if(length(dateCols) >= 1){
+      message("Converted the following Date variables:\n",
+              paste(dateCols, collapse = ", "))
+    }
+  }
+
   # rename specified names
   if(!is.null(pid)){
     names(return_data)[names(return_data) == pid] <- "PersonId"
   }
 
   if(!is.null(dateid)){
-    names(return_data)[names(return_data) == dateid] <- "Date"
+    names(return_data)[names(return_data) == dateid] <- "MetricDate"
   }
 
   # clean names
@@ -69,19 +87,6 @@ import_query <- function(x,
     gsub(pattern = " ", replacement = "_", x = .) %>% # replace spaces
     gsub(pattern = "-", replacement = "_", x = .) %>% # replace hyphens
     gsub(pattern = "[:|,]", replacement = "_", x = .) # replace : and ,
-
-  if(convert_date == TRUE){
-    # Columns which are Dates
-    dateCols <- sapply(return_data, function(x) all(is_date_format(x)))
-    dateCols <- dateCols[dateCols == TRUE]
-
-    # Format any date columns
-    return_data <-
-      return_data %>%
-      dplyr::mutate_at(dplyr::vars(names(dateCols)), ~as.Date(., format = date_format))
-
-    message("Converted the following Date variables:\n", paste(names(dateCols), collapse = ", "))
-  }
 
   message("Query has been imported successfully!")
 

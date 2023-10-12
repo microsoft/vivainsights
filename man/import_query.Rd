@@ -24,7 +24,7 @@ compatible with other functions in the package. Defaults to \code{NULL}, where
 no action is taken.}
 
 \item{dateid}{String specifying the date variable. \code{import_query} renames
-this to \code{Date} so that this is compatible with other functions in the
+this to \code{MetricDate} so that this is compatible with other functions in the
 package. Defaults to \code{NULL}, where no action is taken.}
 
 \item{date_format}{String specifying the date format for converting any

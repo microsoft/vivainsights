@@ -23,6 +23,7 @@ is_date_format("1/5/2020")
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},

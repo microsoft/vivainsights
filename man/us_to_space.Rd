@@ -21,6 +21,7 @@ us_to_space("Meeting_hours_with_manager_1_on_1")
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},
