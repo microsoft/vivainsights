@@ -32,6 +32,7 @@ pq_data \%>\%
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},

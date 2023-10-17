@@ -1,3 +1,9 @@
+# vivainsights 0.4.2
+
+- Improved versatility to `identify_query()`
+- Added `any_idate()`
+- Bug fixes
+
 # vivainsights 0.4.1
 
 - Removed the DT dependency

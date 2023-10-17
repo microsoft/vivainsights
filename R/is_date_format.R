@@ -21,6 +21,26 @@
 #'
 #' @export
 is_date_format <- function(string){
-  grepl("^\\d{1,2}[- /.]\\d{1,2}[- /.]\\d{1,4}$",
-        string)
+
+  grepl("^\\d{1,2}[- /.]\\d{1,2}[- /.]\\d{1,4}$", string)
+}
+
+#' @title Identify whether variable is an IDate class.
+#'
+#' @description
+#' This function checks whether the variable is an IDate class.
+#'
+#' @param x Variable to test whether an IDate class.
+#'
+#' @return logical value indicating whether the string is of an IDate class.
+#'
+#' @examples
+#' any_idate("2023-12-15")
+#'
+#' @family Support
+#'
+#' @export
+
+any_idate <- function(x){
+  any(class(x) %in% "IDate")
 }

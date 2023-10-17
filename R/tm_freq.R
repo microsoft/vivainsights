@@ -41,8 +41,14 @@
 #'
 #'
 #' @examples
+#' # circular network plot with words
 #' tm_freq(mt_data, token = "words")
+#'
+#' # circular network plot with ngrams
 #' tm_freq(mt_data, token = "ngrams")
+#'
+#' # summary table of text frequency
+#' tm_freq(mt_data, token = "words", return = "table")
 #'
 #' @family Text-mining
 #'
@@ -93,7 +99,9 @@ tm_freq <- function(data,
       fontface = "bold",
       alpha = 0.6,
       size = 2.5,
-      inherit.aes = FALSE)
+      inherit.aes = FALSE,
+      max.overlaps = getOption("ggrepel.max.overlaps", default = 50)
+      )
 
   if(return == "table"){
 

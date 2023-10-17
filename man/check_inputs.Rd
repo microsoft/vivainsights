@@ -40,6 +40,7 @@ check_inputs(iris, c("Sepal.Length", "Sepal.Width", "RandomVariable"), return = 
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},

@@ -24,6 +24,7 @@ camel_clean("NoteHowTheStringIsFormatted")
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},

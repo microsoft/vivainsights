@@ -37,11 +37,12 @@ This is used within \code{create_dist()} for numeric to categorical conversion.
 cut_hour(1:30, cuts = c(15, 20, 25))
 
 # Use on a query
-cut_hour(pq_data$Collaboration_hours, cuts = c(10, 15, 20))
+cut_hour(pq_data$Collaboration_hours, cuts = c(10, 15, 20), ubound = 150)
 
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{check_inputs}()},
 \code{\link{extract_date_range}()},
