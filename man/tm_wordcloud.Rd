@@ -58,10 +58,12 @@ There is an option to remove stopwords by passing a data frame into the
 \code{stopwords} argument.
 }
 \examples{
+\dontrun{
 tm_wordcloud(mt_data, keep = 30)
 
 # Removing stopwords
 tm_wordcloud(mt_data, keep = 30, stopwords = c("weekly", "update"))
+}
 
 }
 \seealso{
