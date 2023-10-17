@@ -33,7 +33,7 @@
 #' cut_hour(1:30, cuts = c(15, 20, 25))
 #'
 #' # Use on a query
-#' cut_hour(pq_data$Collaboration_hours, cuts = c(10, 15, 20))
+#' cut_hour(pq_data$Collaboration_hours, cuts = c(10, 15, 20), ubound = 150)
 #'
 #' @export
 
