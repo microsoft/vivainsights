@@ -12,7 +12,7 @@ vector."><meta property="og:image" content="https://microsoft.github.io/vivainsi
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,6 +108,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Support: 
+<code><a href="any_idate.html">any_idate</a>()</code>,
 <code><a href="camel_clean.html">camel_clean</a>()</code>,
 <code><a href="check_inputs.html">check_inputs</a>()</code>,
 <code><a href="extract_date_range.html">extract_date_range</a>()</code>,
@@ -138,8 +139,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: &lt; 15 hours 15 - 20 hours 20 - 25 hours 25+ hours</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use on a query</span></span></span>
-<span class="r-in"><span><span class="fu">cut_hour</span><span class="op">(</span><span class="va">pq_data</span><span class="op">$</span><span class="va">Collaboration_hours</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`ubound` does not capture the largest value in `metric`. Values larger than `ubound` will be classified as NA. Adjusting `ubound` is recommended.</span>
+<span class="r-in"><span><span class="fu">cut_hour</span><span class="op">(</span><span class="va">pq_data</span><span class="op">$</span><span class="va">Collaboration_hours</span>, cuts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span>, ubound <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [1] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [6] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [11] 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours    20+ hours    </span>
@@ -150,7 +150,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [36] 15 - 20 hours 15 - 20 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [41] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [46] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [51] &lt; 10 hours    15 - 20 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [51] &lt; 10 hours    15 - 20 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [56] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [61] 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [66] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
@@ -158,7 +158,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [76] 10 - 15 hours 15 - 20 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [81] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [86] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [91] 10 - 15 hours 20+ hours     15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [91] 10 - 15 hours 20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [96] 20+ hours     10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [101] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [106] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours</span>
@@ -170,7 +170,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [136] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [141] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [146] 20+ hours     20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [151] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [151] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [156] &lt; 10 hours    10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [161] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [166] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
@@ -190,7 +190,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [236] 15 - 20 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [241] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [246] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [251] 10 - 15 hours &lt; 10 hours    15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [251] 10 - 15 hours &lt; 10 hours    15 - 20 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [256] 10 - 15 hours 15 - 20 hours 15 - 20 hours 20+ hours     20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [261] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [266] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
@@ -198,7 +198,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [276] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [281] 10 - 15 hours 10 - 15 hours &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [286] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [291] 10 - 15 hours 20+ hours     10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [291] 10 - 15 hours 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [296] 15 - 20 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [301] 20+ hours     10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [306] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
@@ -210,7 +210,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [336] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [341] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [346] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [351] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [351] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [356] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [361] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [366] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
@@ -230,7 +230,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [436] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [441] &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [446] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [451] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [451] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [456] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [461] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [466] 15 - 20 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
@@ -238,7 +238,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [476] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [481] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [486] 10 - 15 hours &lt; 10 hours    10 - 15 hours 15 - 20 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [491] 10 - 15 hours 20+ hours     15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [491] 10 - 15 hours 20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [496] 15 - 20 hours &lt; 10 hours    15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [501] 20+ hours     20+ hours     10 - 15 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [506] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
@@ -250,7 +250,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [536] 20+ hours     &lt; 10 hours    10 - 15 hours 15 - 20 hours 15 - 20 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [541] 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [546] 20+ hours     20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [551] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [551] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [556] 10 - 15 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [561] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    15 - 20 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [566] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
@@ -270,7 +270,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [636] 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [641] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [646] 20+ hours     20+ hours     20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [651] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [651] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [656] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [661] 15 - 20 hours 10 - 15 hours 15 - 20 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [666] 15 - 20 hours 15 - 20 hours 10 - 15 hours 15 - 20 hours 10 - 15 hours</span>
@@ -278,7 +278,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [676] 10 - 15 hours 15 - 20 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [681] 10 - 15 hours 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [686] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [691] 10 - 15 hours 20+ hours     15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [691] 10 - 15 hours 20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [696] 20+ hours     &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [701] 20+ hours     15 - 20 hours &lt; 10 hours    20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [706] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
@@ -290,7 +290,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [736] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [741] 10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [746] 20+ hours     20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [751] &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [751] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [756] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [761] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [766] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
@@ -298,7 +298,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [776] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [781] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [786] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [791] &lt; 10 hours    20+ hours     15 - 20 hours &lt;NA&gt;          10 - 15 hours</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [791] &lt; 10 hours    20+ hours     15 - 20 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [796] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [801] 20+ hours     10 - 15 hours 10 - 15 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [806] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
@@ -310,7 +310,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [836] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [841] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [846] 20+ hours     20+ hours     &lt; 10 hours    20+ hours     &lt; 10 hours   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [851] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [851] 10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [856] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [861] &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours    &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [866] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours &lt; 10 hours   </span>
@@ -318,7 +318,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [876] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [881] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [886] 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours    20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [891] 15 - 20 hours 20+ hours     10 - 15 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [891] 15 - 20 hours 20+ hours     10 - 15 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [896] 10 - 15 hours &lt; 10 hours    15 - 20 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [901] 20+ hours     10 - 15 hours 15 - 20 hours 20+ hours     10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [906] &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    &lt; 10 hours    10 - 15 hours</span>
@@ -330,7 +330,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [936] 10 - 15 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [941] 15 - 20 hours &lt; 10 hours    &lt; 10 hours    15 - 20 hours 15 - 20 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [946] 20+ hours     20+ hours     20+ hours     20+ hours     10 - 15 hours</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [951] 10 - 15 hours 10 - 15 hours 15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [951] 10 - 15 hours 10 - 15 hours 15 - 20 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [956] &lt; 10 hours    10 - 15 hours &lt; 10 hours    &lt; 10 hours    20+ hours    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [961] 10 - 15 hours &lt; 10 hours    10 - 15 hours &lt; 10 hours    10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [966] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 20+ hours     &lt; 10 hours   </span>
@@ -338,7 +338,7 @@ with the label of the unit. See <code>examples</code> for more information.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [976] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [981] 10 - 15 hours 10 - 15 hours 10 - 15 hours 10 - 15 hours &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [986] &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours 20+ hours    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [991] &lt; 10 hours    20+ hours     15 - 20 hours &lt;NA&gt;          &lt; 10 hours   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [991] &lt; 10 hours    20+ hours     15 - 20 hours 20+ hours     &lt; 10 hours   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [996] &lt; 10 hours    &lt; 10 hours    10 - 15 hours 10 - 15 hours 10 - 15 hours</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: &lt; 10 hours 10 - 15 hours 15 - 20 hours 20+ hours</span>
 <span class="r-in"><span></span></span>
