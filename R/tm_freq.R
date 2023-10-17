@@ -41,7 +41,7 @@
 #'
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # circular network plot with words
 #' tm_freq(mt_data, token = "words")
 #'
