@@ -45,7 +45,6 @@ There is an option to remove stopwords by passing a data frame into the
 \code{stopwords} argument.
 }
 \examples{
-\dontrun{
 # circular network plot with words
 tm_freq(mt_data, token = "words")
 
@@ -54,7 +53,6 @@ tm_freq(mt_data, token = "ngrams")
 
 # summary table of text frequency
 tm_freq(mt_data, token = "words", return = "table")
-}
 
 }
 \seealso{
