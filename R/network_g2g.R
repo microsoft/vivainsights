@@ -125,7 +125,7 @@
 network_g2g <- function(data,
                         primary = NULL,
                         secondary = NULL,
-                        metric = "Meeting_Count",
+                        metric = "Group_collaboration_time_invested",
                         algorithm = "fr",
                         node_colour = "lightblue",
                         exc_threshold = 0.1,
