@@ -41,5 +41,7 @@ Imports:
     ggwordcloud, 
     lifecycle
 Suggests: 
-    flexdashboard
+    flexdashboard,
+    testthat (>= 3.0.0)
 URL: https://microsoft.github.io/vivainsights/
+Config/testthat/edition: 3

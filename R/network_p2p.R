@@ -232,17 +232,17 @@ network_p2p <-
         edges %>%
           select(from) %>% # Single column
           unique() %>% # Remove duplications
-          left_join(select(data, PrimaryCollaborator_PersonId, pc_hrvar),
+          left_join(select(data, PrimaryCollaborator_PersonId, all_of(pc_hrvar)),
                     by = c("from"  = "PrimaryCollaborator_PersonId")) %>%
-          select(node = "from", !!sym(hrvar) := pc_hrvar),
+          select(node = "from", !!sym(hrvar) := all_of(pc_hrvar)),
 
         # TieDestination
         edges %>%
           select(to) %>% # Single column
           unique() %>% # Remove duplications
-          left_join(select(data, SecondaryCollaborator_PersonId, sc_hrvar),
+          left_join(select(data, SecondaryCollaborator_PersonId, all_of(sc_hrvar)),
                     by = c("to"  = "SecondaryCollaborator_PersonId")) %>%
-          select(node = "to", !!sym(hrvar) := sc_hrvar)
+          select(node = "to", !!sym(hrvar) := all_of(sc_hrvar))
       )
 
 
