@@ -1,3 +1,5 @@
+# vivainsights 0.4.3
+
 # vivainsights 0.4.2
 
 - Improved versatility to `identify_query()`
