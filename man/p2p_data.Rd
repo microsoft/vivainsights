@@ -5,7 +5,7 @@
 \alias{p2p_data}
 \title{Sample person-to-person dataset}
 \format{
-A data frame with 2014 rows and 9 variables:
+A data frame with 11550 rows and 13 variables:
 \describe{
 \item{PrimaryCollaborator_PersonId}{ }
 \item{SecondaryCollaborator_PersonId}{ }
@@ -16,6 +16,10 @@ A data frame with 2014 rows and 9 variables:
 \item{Strong_tie_type}{ }
 \item{PrimaryCollaborator_Organization}{ }
 \item{SecondaryCollaborator_Organization}{ }
+\item{PrimaryCollaborator_LevelDesignation}{ }
+\item{SecondaryCollaborator_LevelDesignation}{ }
+\item{PrimaryCollaborator_FunctionType}{ }
+\item{SecondaryCollaborator_FunctionType}{ }
 
 ...
 }
