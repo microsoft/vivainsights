@@ -16,14 +16,19 @@
 #'
 #' @return data frame.
 #'
-#' @format A data frame with 126 rows and 5 variables:
+#' @format A data frame with 150 rows and 11 variables:
 #' \describe{
 #'   \item{PrimaryCollaborator_Organization}{ }
+#'   \item{PrimaryCollaborator_GroupSize}{ }
 #'   \item{SecondaryCollaborator_Organization}{ }
+#'   \item{SecondaryCollaborator_GroupSize}{ }
 #'   \item{MetricDate}{ }
-#'   \item{Meeting_Count}{ }
-#'   \item{Group_Meeting_Time_Invested}{ }
-#'
+#'   \item{Percent_Group_collaboration_time_invested}{ }
+#'   \item{Group_collaboration_time_invested}{ }
+#'   \item{Group_email_sent_count}{ }
+#'   \item{Group_email_time_invested}{ }
+#'   \item{Group_meeting_count}{ }
+#'   \item{Group_meeting_time_invested}{ }
 #'   ...
 #' }
 #' @source \url{https://analysis.insights.viva.office.com/analyst/analysis/}

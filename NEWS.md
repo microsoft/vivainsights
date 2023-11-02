@@ -1,3 +1,8 @@
+# vivainsights 0.4.3
+
+- Updated datasets for `g2g_data` and `p2p_data`
+- Improve test coverage
+
 # vivainsights 0.4.2
 
 - Improved versatility to `identify_query()`

@@ -16,7 +16,7 @@
 #' @param secondary String containing the variable name for the Secondary
 #'   Collaborator column.
 #' @param metric String containing the variable name for metric. Defaults to
-#'   `Meeting_Count`.
+#'   `Group_collaboration_time_invested`.
 #' @param algorithm String to specify the node placement algorithm to be used.
 #'   Defaults to `"fr"` for the force-directed algorithm of Fruchterman and
 #'   Reingold. See
@@ -61,12 +61,11 @@
 #'
 #' @examples
 #' # Return a network plot
-#' g2g_data %>% network_g2g(metric = "Meeting_Count")
+#' g2g_data %>% network_g2g()
 #'
 #' # Return a network plot - Meeting hours and 5% threshold
 #' network_g2g(
 #'   data = g2g_data,
-#'   metric = "Meeting_Count",
 #'   primary = "PrimaryCollaborator_Organization",
 #'   secondary = "SecondaryCollaborator_Organization",
 #'   exc_threshold = 0.05
@@ -125,7 +124,7 @@
 network_g2g <- function(data,
                         primary = NULL,
                         secondary = NULL,
-                        metric = "Meeting_Count",
+                        metric = "Group_collaboration_time_invested",
                         algorithm = "fr",
                         node_colour = "lightblue",
                         exc_threshold = 0.1,
