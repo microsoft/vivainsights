@@ -14,3 +14,7 @@ man-roxygen
 ^\.github$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+
+# Ignore vignettes
+^vignettes/best-practices.Rmd$
+^vignettes/network-analysis.Rmd$

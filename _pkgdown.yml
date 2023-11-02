@@ -6,7 +6,7 @@ template:
 navbar:
   bg: dark
   structure:
-    left:  [home, reference, guide, news]
+    left:  [home, reference, guide, news, articles]
     right: [search, github]
   components:
       home:
@@ -24,6 +24,13 @@ navbar:
       github:
         icon: fab fa-github fa-lg
         href: https://github.com/microsoft/vivainsights/
+      articles:
+        text: Articles
+        menu:
+        - text: Best Practices when using vivainsights
+          href: articles/best-practices.html
+        - text: Introduction to Organizational Network Analysis with vivainsights in R
+          href: articles/network-analysis.html
 
 footer:
   structure:
