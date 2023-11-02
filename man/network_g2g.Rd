@@ -8,7 +8,7 @@ network_g2g(
   data,
   primary = NULL,
   secondary = NULL,
-  metric = "Meeting_Count",
+  metric = "Group_collaboration_time_invested",
   algorithm = "fr",
   node_colour = "lightblue",
   exc_threshold = 0.1,
@@ -27,7 +27,7 @@ Collaborator column.}
 Collaborator column.}
 
 \item{metric}{String containing the variable name for metric. Defaults to
-\code{Meeting_Count}.}
+\code{Group_collaboration_time_invested}.}
 
 \item{algorithm}{String to specify the node placement algorithm to be used.
 Defaults to \code{"fr"} for the force-directed algorithm of Fruchterman and
@@ -90,12 +90,11 @@ values within query data.
 }
 \examples{
 # Return a network plot
-g2g_data \%>\% network_g2g(metric = "Meeting_Count")
+g2g_data \%>\% network_g2g()
 
 # Return a network plot - Meeting hours and 5\% threshold
 network_g2g(
   data = g2g_data,
-  metric = "Meeting_Count",
   primary = "PrimaryCollaborator_Organization",
   secondary = "SecondaryCollaborator_Organization",
   exc_threshold = 0.05
