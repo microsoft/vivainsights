@@ -16,4 +16,5 @@ man-roxygen
 ^CRAN-SUBMISSION$
 
 # Ignore vignettes
-^vignettes/*.Rmd$
+^vignettes/best-practices.Rmd$
+^vignettes/network-analysis.Rmd$
