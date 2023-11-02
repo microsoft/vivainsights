@@ -71,7 +71,6 @@ pq_df %>% collaboration_sum(hrvar = "Organization", return = "table")
 # Or
 
 pq_df %>% create_bar(metric = "Collaboration_hours", hrvar = "Organization", return = "table")
-
 ```
 
 
