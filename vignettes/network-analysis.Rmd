@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-library(wpa)
+library(vivainsights)
 library(dplyr)
 ```
 
@@ -108,6 +108,8 @@ p2p_data %>% network_p2p(hrvar = 'Organization', return = "plot")
 
 Each node represents an individual, and the colour of the nodes correspond to the HR attribute specified in the arguments ('Organization'). An edge represents there being a reciprocal interaction between two individuals. By default, multi-dimensionality scaling (`layout = 'mds'`) is used for determining the layout of the network. 
 
+### Centrality
+
 One additional functionality of `network_p2p()` is the ability to generate centrality statistics. Centrality statistics are a set of metrics that are used to identify the most important nodes in a network. The following code generates a centrality table, which is a table of centrality statistics for each node in the network. 
 
 ```{r message=FALSE, warning=FALSE}
@@ -135,6 +137,67 @@ The definition of the centrality metrics are as follows:
 - **eigenvector**: a measure of the influence a node has on a network.
 - **pagerank**: calculates the PageRank for the specified vertices. Please refer to the igraph package documentation for the detailed technical definition.
 
+### Communities
+
+In the context of ONA, **community detection** refers to the process of identifying groups of nodes (in this case, individuals within an organization) that are more densely connected with each other than with the rest of the network. These groups, or communities, often reveal substructures within the organization, such as informal groups or teams that collaborate across department, job roles, or geographical boundaries.  
+
+Community detection can provide valuable insights into the structure and dynamics of an organization. For example, it can help identify silos within the organization, where information or resources might not be flowing efficiently. It can also help identify key individuals who serve as bridges between different communities, who could be leveraged to improve communication and collaboration across the organization.
+
+You can use the `community` and the `comm_args` argument in `network_p2p()` to perform community detection. Here is an example where we also specify the function to use the "ggraph" style: 
+   
+```{r message=FALSE, warning=FALSE}
+network_p2p(
+   data = p2p_data,
+   community = "leiden",
+   style = "ggraph",
+   comm_args = list("resolution" = 0.1)
+   )
+``` 
+
+Here, we are using the [Leiden algorithm](https://igraph.org/r/doc/cluster_leiden.html) to detect communities. The `resolution` parameter is a tuning parameter that controls the size of the communities. A higher value of `resolution` will result in smaller (and more) communities. `network_p2p()` operates on top of the community detection algorithms offered by [igraph](https://igraph.org/r/) package, with the following algorithms supported:
+
+- **leiden** (`igraph::cluster_leiden()`): Leiden algorithm of Traag, van Eck, & Waltman
+- **walktrap** (`igraph::cluster_walktrap()`): Walktrap community finding algorithm using short random walks, of Pons and Latapy
+- **fast_greedy** (`igraph::cluster_fast_greedy()`): Fast greedy modularity optimization, of Clauset, Newman, & Moore
+- **edge_betweenness** (`igraph::cluster_edge_betweenness()`): Edge betweenness community finding algorithm, of Girvan & Newman
+- **infomap** (`igraph::cluster_infomap()`): Infomap community finding algorithm, of Rosvall & Bergstrom
+- **label_prop** (`igraph::cluster_label_prop()`): Label propagation community finding algorithm, of Raghavan, Albert, & Kumara
+- **leading_eigen** (`igraph::cluster_leading_eigen()`): Leading eigenvector community finding algorithm, of Newman
+- **multilevel** (`igraph::cluster_multilevel()`): Multilevel community finding algorithm, of Blondel et al.
+- **spinglass** (`igraph::cluster_spinglass()`): Spinglass community finding algorithm, of Reichardt & Bornholdt
+
+Here is another example of how to use a different community detection algorithm: 
+```{r message=FALSE, warning=FALSE}
+network_p2p(
+  data = p2p_data,
+  style = "ggraph",
+  community = "fluid_communities",
+  comm_args = list("no.of.communities" = 5)
+)
+``` 
+
+Please see the [original igraph documentation](https://igraph.org/r/doc/) for more details on the community detection parameters to pass into `comm_args`. 
+
+You can also choose to visualize and explore the communities using other options available in `return`. For instance, you can return a sankey visual: 
+```{r message=FALSE, warning=FALSE}
+network_p2p(
+  data = p2p_data,
+  community = "leiden",
+  return = "sankey",
+  comm_args = list("resolution" = 0.1)
+)
+```
+
+Or a table of the communities, and how they group together with the HR attribute specified in `hrvar`:
+```{r message=FALSE, warning=FALSE}
+network_p2p(
+  data = p2p_data,
+  community = "leiden",
+  return = "table",
+  comm_args = list("resolution" = 0.1)
+)
+```
+
 ## Analysis Approach
 
 > The best practice towards network analysis is always to first establish and validate hypotheses with the data, and *then* visualize the result. The reason why one should not start an analysis by interpreting a network visual is that network visualizations are critically affected by inputs such as layout algorithms (of which many are non-deterministic), inputs to those layout algorithms, and visual elements such as the colours and transparencies of the nodes and edges. 
@@ -151,10 +214,7 @@ The above point on best practice is particularly pertinent for person-to-person 
 
 ## End Note & Reference
 
-This article is a first introduction to the topic of Organizational Network Analysis but there is more to come. At this point you should know the basic building blocks of network analysis and how to run the relevant functions in the wpa R library. Here are some more references on how to use the wpa R package and the topic of networks:
+This article is a first introduction to the topic of Organizational Network Analysis but there is more to come. At this point you should know the basic building blocks of network analysis and how to run the relevant functions in the **vivainsights** R library. Here are some more references on how to use the **vivainsights** R package and the topic of networks:
 
-- [Overview of functions of the wpa R package](https://microsoft.github.io/vivainsights/reference/index.html)
+- [Overview of functions of the vivainsights R package](https://microsoft.github.io/vivainsights/reference/index.html)
 - [Handbook of Graphs and Networks in People Analytics](https://ona-book.org/index.html)
-
-
-
