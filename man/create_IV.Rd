@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_IV.R
 \name{create_IV}
 \alias{create_IV}
-\title{Calculate Information Value for a selected outcome variable}
+\title{Compute Information Value for Predictive Variables}
 \usage{
 create_IV(
   data,
@@ -60,8 +60,11 @@ in \code{Information::create_infotables()}.
 }
 }
 \description{
-Specify an outcome variable and return IV outputs.
-All numeric variables in the dataset are used as predictor variables.
+This function calculates the Information Value (IV) for the
+selected numeric predictor variables in the dataset, given a specified
+outcome variable. The Information Value provides a measure of the predictive
+power of each variable in relation to the outcome variable, which can be
+useful in feature selection for predictive modeling.
 }
 \examples{
 # Return a summary table of IV

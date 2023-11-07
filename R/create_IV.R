@@ -3,11 +3,13 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Calculate Information Value for a selected outcome variable
+#' @title Compute Information Value for Predictive Variables
 #'
-#' @description
-#' Specify an outcome variable and return IV outputs.
-#' All numeric variables in the dataset are used as predictor variables.
+#' @description This function calculates the Information Value (IV) for the
+#' selected numeric predictor variables in the dataset, given a specified
+#' outcome variable. The Information Value provides a measure of the predictive
+#' power of each variable in relation to the outcome variable, which can be
+#' useful in feature selection for predictive modeling.
 #'
 #' @param data A Person Query dataset in the form of a data frame.
 #' @param predictors A character vector specifying the columns to be used as
