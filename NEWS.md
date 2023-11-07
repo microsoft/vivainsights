@@ -1,3 +1,5 @@
+# vivainsights 0.5.0
+
 # vivainsights 0.4.3
 
 - Updated datasets for `g2g_data` and `p2p_data`
