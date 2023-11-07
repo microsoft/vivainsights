@@ -44,6 +44,7 @@
 #'   in `Information::create_infotables()`.
 #'
 #' @import dplyr
+#' @import wpa
 #'
 #' @family Variable Association
 #' @family Information Value
@@ -146,10 +147,12 @@ create_IV <- function(data,
   ## Following section is equivalent to:
   # IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
 
-  IV <- map_IV(data = train,
-               predictors = predictors$Variable, # filtered set
-               outcome = "outcome", # string not variable
-               bins = bins)
+  IV <- wpa:::map_IV(
+    data = train,
+    predictors = predictors$Variable, # filtered set
+    outcome = "outcome", # string not variable
+    bins = bins
+  )
 
 
   IV_names <- names(IV$Tables)
