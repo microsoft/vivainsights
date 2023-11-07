@@ -40,9 +40,11 @@ Other Support:
 \code{\link{wrap}()}
 
 Other Variable Association: 
+\code{\link{IV_report}()},
 \code{\link{create_IV}()}
 
 Other Information Value: 
+\code{\link{IV_report}()},
 \code{\link{create_IV}()}
 }
 \concept{Information Value}

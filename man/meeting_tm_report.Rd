@@ -52,6 +52,7 @@ This will generate a HTML report as specified in \code{path}.
 
 \seealso{
 Other Reports: 
+\code{\link{IV_report}()},
 \code{\link{generate_report}()},
 \code{\link{read_preamble}()},
 \code{\link{validation_report}()}
