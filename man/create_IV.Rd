@@ -66,7 +66,7 @@ All numeric variables in the dataset are used as predictor variables.
 \examples{
 # Return a summary table of IV
 pq_data \%>\%
-  dplyr::mutate(X = ifelse(Workweek_span > 40, 1, 0)) \%>\%
+  dplyr::mutate(X = ifelse(Internal_network_size > 40, 1, 0)) \%>\%
   create_IV(outcome = "X",
             predictors = c("Email_hours",
                            "Meeting_hours",
@@ -76,7 +76,7 @@ pq_data \%>\%
 
 # Return summary
 pq_data \%>\%
-  dplyr::mutate(X = ifelse(Collaboration_hours > 10, 1, 0)) \%>\%
+  dplyr::mutate(X = ifelse(Internal_network_size > 40, 1, 0)) \%>\%
   create_IV(outcome = "X",
             predictors = c("Email_hours", "Meeting_hours"),
             return = "summary")
