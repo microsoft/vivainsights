@@ -11,6 +11,9 @@
 #' power of each variable in relation to the outcome variable, which can be
 #' useful in feature selection for predictive modeling.
 #'
+#' @details
+#' This is a wrapper around `wpa::create_IV()`.
+#'
 #' @param data A Person Query dataset in the form of a data frame.
 #' @param predictors A character vector specifying the columns to be used as
 #'   predictors. Defaults to NULL, where all numeric vectors in the data will be
@@ -46,7 +49,6 @@
 #'   in `Information::create_infotables()`.
 #'
 #' @import dplyr
-#' @import wpa
 #'
 #' @family Variable Association
 #' @family Information Value
@@ -78,200 +80,14 @@ create_IV <- function(data,
                       exc_sig = FALSE,
                       return = "plot"){
 
-  # Preserve string ----------------------------------------------------------
-  pred_chr <- NULL
-  pred_chr <- predictors
-
-  # Select training dataset --------------------------------------------------
-
-  if(is.null(tidyselect::all_of(predictors))){
-
-    train <-
-      data %>%
-      rename(outcome = outcome) %>%
-      select_if(is.numeric) %>%
-      tidyr::drop_na()
-
-  } else {
-
-    train <-
-      data %>%
-      rename(outcome = outcome) %>%
-      select(tidyselect::all_of(predictors), outcome) %>%
-      tidyr::drop_na()
-
-  }
-
-  # Calculate odds -----------------------------------------------------------
-
-  odds <- sum(train$outcome) / (length(train$outcome) - sum(train$outcome))
-  lnodds <- log(odds)
-
-  # Assert -------------------------------------------------------------------
-  # Must be logical for `exc_sig`
-
-  if(!(is.logical(exc_sig))){
-
-    stop("invalid input to `exc_sig`")
-
-  }
-
-  # Calculate p-value --------------------------------------------------------
-
-  predictors <-
-    data.frame(Variable = unlist(names(train))) %>%
-    dplyr::filter(Variable != "outcome") %>%
-    mutate(Variable = as.character(Variable)) # Ensure not factor
-
-  if(exc_sig == TRUE){
-
-    for (i in 1:(nrow(predictors))){
-
-      predictors$pval[i] <-
-        p_test(train,
-               outcome = "outcome",
-               behavior = predictors$Variable[i])
-
-    }
-
-    # Filter out variables whose p-value is above the significance level ------
-    predictors <- predictors %>% dplyr::filter(pval <= siglevel)
-    if(nrow(predictors) == 0){
-      stop("There are no predictors where the p-value lies below the significance level.",
-           "You may set `exc_sig == FALSE` or increase the threshold on `siglevel`.")
-    }
-  }
-
-  train <- train %>% select(predictors$Variable, outcome)
-
-  # IV Analysis -------------------------------------------------------------
-
-  ## Following section is equivalent to:
-  # IV <- Information::create_infotables(data = train, y = "outcome", bins = bins)
-
-  IV <- wpa:::map_IV(
-    data = train,
-    predictors = predictors$Variable, # filtered set
-    outcome = "outcome", # string not variable
-    bins = bins
+  wpa::create_IV(
+    data = data,
+    predictors = predictors,
+    outcome = outcome,
+    bins = bins,
+    siglevel = siglevel,
+    exc_sig = exc_sig,
+    return = return
   )
 
-
-  IV_names <- names(IV$Tables)
-
-  IV_summary <- inner_join(IV$Summary, predictors, by = c("Variable"))
-
-  if(return == "summary"){
-
-    IV_summary
-
-  } else if(return == "IV"){
-
-    c(
-      IV,
-      list("lnodds" = lnodds)
-    )
-
-  } else if(return == "plot"){
-
-    top_n <-
-      min(
-        c(12, nrow(IV_summary))
-      )
-
-    IV_summary %>%
-      utils::head(top_n) %>%
-      create_bar_asis(group_var = "Variable",
-                      bar_var = "IV",
-                      title = "Information Value (IV)",
-                      subtitle =
-                        paste("Showing top",
-                              top_n,
-                              "predictors"))
-
-  } else if(return == "plot-WOE"){
-
-    ## Return list of ggplots
-
-    IV$Summary$Variable %>%
-      as.character() %>%
-      purrr::map(~plot_WOE(IV = IV, predictor = .))
-
-  } else if(return == "list"){
-
-    # Output list
-    output_list <-
-      IV_names %>%
-      purrr::map(function(x){
-        IV$Tables[[x]] %>%
-          mutate(ODDS = exp(WOE + lnodds),
-                 PROB = ODDS / (ODDS + 1))
-      }) %>%
-      purrr::set_names(IV_names)
-
-    output_list
-
-  } else {
-
-    stop("Please enter a valid input for `return`.")
-
-  }
-}
-
-#' @title Plot WOE graphs with an IV object
-#'
-#' @description
-#' Internal function within `create_IV()` that plots WOE graphs using an IV
-#' object. Can also be used for plotting individual WOE graphs.
-#'
-#' @param IV IV object created with 'Information'.
-#' @param predictor String with the name of the predictor variable.
-#'
-#' @return
-#' 'ggplot' object. Bar plot with 'WOE' as the y-axis and bins of the predictor
-#' variable as the horizontal axis.
-#'
-#' @family Support
-#' @family Variable Association
-#' @family Information Value
-#'
-#' @import dplyr
-#' @import ggplot2
-#'
-#' @export
-plot_WOE <- function(IV, predictor){
-
-  # Identify right table
-  plot_table <-
-    IV$Tables[[predictor]] %>%
-    mutate(labelpos = ifelse(WOE <= 0, 1.2, -1))
-
-  # Get range
-  WOE_range <-
-    IV$Tables %>%
-    purrr::map(~pull(., WOE)) %>%
-    unlist() %>%
-    range()
-
-  # Plot
-  plot_table %>%
-    mutate(!!sym(predictor) :=
-             factor(!!sym(predictor),
-                    levels =
-                      pull(
-                        plot_table,
-                        predictor
-                      )
-             )) %>%
-    ggplot(aes(x = !!sym(predictor),
-               y = WOE)) +
-    geom_col(fill = rgb2hex(49,97,124)) +
-    geom_text(aes(label = round(WOE, 1),
-                  vjust = labelpos)) +
-    labs(title = us_to_space(predictor),
-         subtitle = "Weight of Evidence",
-         x = us_to_space(predictor),
-         y = "Weight of Evidence (WOE)") +
-    theme_wpa_basic() +
-    ylim(WOE_range[1] * 1.1, WOE_range[2] * 1.1)
 }

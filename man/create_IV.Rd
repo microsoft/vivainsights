@@ -66,6 +66,9 @@ outcome variable. The Information Value provides a measure of the predictive
 power of each variable in relation to the outcome variable, which can be
 useful in feature selection for predictive modeling.
 }
+\details{
+This is a wrapper around \code{wpa::create_IV()}.
+}
 \examples{
 # Return a summary table of IV
 pq_data \%>\%
@@ -87,12 +90,10 @@ pq_data \%>\%
 }
 \seealso{
 Other Variable Association: 
-\code{\link{IV_report}()},
-\code{\link{plot_WOE}()}
+\code{\link{IV_report}()}
 
 Other Information Value: 
-\code{\link{IV_report}()},
-\code{\link{plot_WOE}()}
+\code{\link{IV_report}()}
 }
 \concept{Information Value}
 \concept{Variable Association}

@@ -28,7 +28,6 @@ Other Support:
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
 \code{\link{pairwise_count}()},
-\code{\link{plot_WOE}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},

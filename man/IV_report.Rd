@@ -70,12 +70,10 @@ Other Reports:
 \code{\link{validation_report}()}
 
 Other Variable Association: 
-\code{\link{create_IV}()},
-\code{\link{plot_WOE}()}
+\code{\link{create_IV}()}
 
 Other Information Value: 
-\code{\link{create_IV}()},
-\code{\link{plot_WOE}()}
+\code{\link{create_IV}()}
 }
 \concept{Information Value}
 \concept{Reports}
