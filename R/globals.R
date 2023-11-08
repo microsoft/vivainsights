@@ -112,6 +112,11 @@ utils::globalVariables(
     "node_size",
     "org_size",
     "pagerank",
-    "to"
+    "to",
+    "Variable",
+    "pval",
+    "WOE",
+    "ODDS",
+    "labelpos"
     )
 )
