@@ -49,6 +49,9 @@
     <loc>https://microsoft.github.io/vivainsights/pull_request_template.html</loc>
   </url>
   <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/IV_report.html</loc>
+  </url>
+  <url>
     <loc>https://microsoft.github.io/vivainsights/reference/afterhours_dist.html</loc>
   </url>
   <url>
@@ -107,6 +110,9 @@
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/copy_df.html</loc>
+  </url>
+  <url>
+    <loc>https://microsoft.github.io/vivainsights/reference/create_IV.html</loc>
   </url>
   <url>
     <loc>https://microsoft.github.io/vivainsights/reference/create_bar.html</loc>
