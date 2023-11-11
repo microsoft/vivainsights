@@ -1,3 +1,7 @@
+# vivainsights 0.5.0
+
+Added new functionality to calculate information value: `create_IV()` and `IV_report()` 
+
 # vivainsights 0.4.3
 
 - Updated datasets for `g2g_data` and `p2p_data`
