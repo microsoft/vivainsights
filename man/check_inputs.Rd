@@ -40,6 +40,7 @@ check_inputs(iris, c("Sepal.Length", "Sepal.Width", "RandomVariable"), return = 
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{cut_hour}()},
 \code{\link{extract_date_range}()},
@@ -47,6 +48,8 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
+\code{\link{pairwise_count}()},
+\code{\link{read_preamble}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},

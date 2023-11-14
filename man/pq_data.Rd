@@ -5,7 +5,7 @@
 \alias{pq_data}
 \title{Sample Person Query dataset}
 \format{
-A data frame with 15933 rows and 154 variables:
+A data frame with 1000 rows and 154 variables:
 \describe{
 \item{PersonId}{ }
 \item{MetricDate}{ }
@@ -165,7 +165,7 @@ A data frame with 15933 rows and 154 variables:
 }
 }
 \source{
-\url{https://www.microsoft.com/en-us/microsoft-viva/insights}
+\url{https://learn.microsoft.com/en-us/viva/insights/advanced/analyst/person-query/}
 }
 \usage{
 pq_data
@@ -175,6 +175,13 @@ data frame.
 }
 \description{
 A dataset generated from a Person Query from Viva Insights.
+}
+\seealso{
+Other Data: 
+\code{\link{g2g_data}},
+\code{\link{mt_data}},
+\code{\link{p2p_data_sim}()},
+\code{\link{p2p_data}}
 }
 \concept{Data}
 \keyword{datasets}

@@ -4,12 +4,35 @@
 \alias{import_query}
 \title{Import a query from Viva Insights Analyst Experience}
 \usage{
-import_query(x, encoding = "UTF-8")
+import_query(
+  x,
+  pid = NULL,
+  dateid = NULL,
+  date_format = "\%m/\%d/\%Y",
+  convert_date = TRUE,
+  encoding = "UTF-8"
+)
 }
 \arguments{
 \item{x}{String containing the path to the Viva Insights query to be
 imported. The input file must be a .csv file, and the file extension must
 be explicitly entered, e.g. \code{"/files/standard query.csv"}}
+
+\item{pid}{String specifying the unique person or individual identifier
+variable. \code{import_query} renames this to \code{PersonId} so that this is
+compatible with other functions in the package. Defaults to \code{NULL}, where
+no action is taken.}
+
+\item{dateid}{String specifying the date variable. \code{import_query} renames
+this to \code{MetricDate} so that this is compatible with other functions in the
+package. Defaults to \code{NULL}, where no action is taken.}
+
+\item{date_format}{String specifying the date format for converting any
+variable that may be a date to a Date variable. Defaults to \code{"\%m/\%d/\%Y"}.}
+
+\item{convert_date}{Logical. Defaults to \code{TRUE}. When set to \code{TRUE}, any
+variable that matches true with \code{is_date_format()} gets converted to a Date
+variable. When set to \code{FALSE}, this step is skipped.}
 
 \item{encoding}{String to specify encoding to be used within
 \code{data.table::fread()}. See \code{data.table::fread()} documentation for more

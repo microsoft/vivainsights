@@ -67,13 +67,13 @@ in the package that produce faceted scatter plots.
 # Return plot
 create_period_scatter(pq_data,
                       hrvar = "LevelDesignation",
-                      before_start = "2021-12-26",
-                      before_end = "2022-01-01",
-                      after_start = "2022-01-02",
-                      after_end = "2022-09-04")
+                      before_start = "2022-05-01",
+                      before_end = "2022-05-31",
+                      after_start = "2022-06-01",
+                      after_end = "2022-07-03")
 
 # Return a summary table
-create_period_scatter(pq_data, before_end = "2022-01-01", return = "table")
+create_period_scatter(pq_data, before_end = "2022-05-31", return = "table")
 
 
 }
@@ -102,6 +102,7 @@ Other Visualization:
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
 \code{\link{create_tracking}()},
@@ -148,6 +149,7 @@ Other Flexible:
 \code{\link{create_line_asis}()},
 \code{\link{create_line}()},
 \code{\link{create_rank}()},
+\code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
 \code{\link{create_tracking}()},

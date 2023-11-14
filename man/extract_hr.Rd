@@ -47,6 +47,7 @@ pq_data \%>\% extract_hr(return = "vars")
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},
@@ -54,6 +55,8 @@ Other Support:
 \code{\link{heat_colours}()},
 \code{\link{is_date_format}()},
 \code{\link{maxmin}()},
+\code{\link{pairwise_count}()},
+\code{\link{read_preamble}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
@@ -62,10 +65,25 @@ Other Support:
 \code{\link{wrap}()}
 
 Other Data Validation: 
+\code{\link{check_query}()},
+\code{\link{flag_ch_ratio}()},
+\code{\link{flag_em_ratio}()},
+\code{\link{flag_extreme}()},
+\code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
 \code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
-\code{\link{hrvar_trend}()}
+\code{\link{hrvar_trend}()},
+\code{\link{identify_churn}()},
+\code{\link{identify_holidayweeks}()},
+\code{\link{identify_inactiveweeks}()},
+\code{\link{identify_nkw}()},
+\code{\link{identify_outlier}()},
+\code{\link{identify_privacythreshold}()},
+\code{\link{identify_shifts}()},
+\code{\link{identify_tenure}()},
+\code{\link{track_HR_change}()},
+\code{\link{validation_report}()}
 }
 \concept{Data Validation}
 \concept{Support}

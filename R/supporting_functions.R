@@ -240,6 +240,10 @@ check_pkg_installed <- function(pkgname) {
 #'   )
 #' message(wrapped)
 #'
+#' @return
+#' String output representing a processed version of `x`, with spaces replaced
+#' by `\n.`
+#'
 #' @export
 wrap_text <- function(x, threshold = 15){
 

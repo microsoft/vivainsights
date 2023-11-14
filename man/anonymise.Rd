@@ -21,6 +21,10 @@ least as great as the number of unique values in the original variable.
 Defaults to \code{NULL}, where the replacement would consist of \code{"Team A"},
 \code{"Team B"}, etc.}
 }
+\value{
+Character vector with the same length as input \code{x}, replaced with values
+provided in \code{replacement}.
+}
 \description{
 Anonymize categorical variables such as HR variables by replacing values with
 dummy team names such as 'Team A'. The behaviour is to make 1 to 1

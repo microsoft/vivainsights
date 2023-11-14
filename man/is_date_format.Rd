@@ -23,6 +23,7 @@ is_date_format("1/5/2020")
 }
 \seealso{
 Other Support: 
+\code{\link{any_idate}()},
 \code{\link{camel_clean}()},
 \code{\link{check_inputs}()},
 \code{\link{cut_hour}()},
@@ -30,6 +31,8 @@ Other Support:
 \code{\link{extract_hr}()},
 \code{\link{heat_colours}()},
 \code{\link{maxmin}()},
+\code{\link{pairwise_count}()},
+\code{\link{read_preamble}()},
 \code{\link{rgb2hex}()},
 \code{\link{totals_bind}()},
 \code{\link{totals_col}()},
