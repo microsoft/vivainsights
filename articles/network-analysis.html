@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to Organizational Network Analysis with vivainsights in R">
 <meta property="og:description" content="vivainsights">
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,7 @@
     <a class="dropdown-item" href="../analyst_guide_intro.html">Introduction</a>
     <a class="dropdown-item" href="../analyst_guide_getting_started.html">Getting Started</a>
     <a class="dropdown-item" href="../analyst_guide_data_validation.html">Data Validation</a>
+    <a class="dropdown-item" href="../analyst_guide_reports.html">Reports</a>
   </div>
 </li>
 <li class="nav-item">
@@ -87,7 +88,7 @@
 
 
 
-<script src="network-analysis_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="network-analysis_files/d3-4.5.0/d3.min.js"></script><script src="network-analysis_files/sankey-1/sankey.js"></script><script src="network-analysis_files/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><div class="row">
+<script src="network-analysis_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="network-analysis_files/d3-4.5.0/d3.min.js"></script><script src="network-analysis_files/sankey-1/sankey.js"></script><script src="network-analysis_files/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Introduction to Organizational Network Analysis with vivainsights in R</h1>
                         <h4 data-toc-skip class="author">Julia
@@ -341,12 +342,12 @@ table of centrality statistics for each node in the network.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
 <span><span class="co">#&gt;   name     Organization betweenness closeness degree eigenvector pagerank</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SIM_ID_1 Org F               0        0.412     10       0.764  0.004<span style="text-decoration: underline;">46</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SIM_ID_2 Org F               1.14     0.369     10       0.779  0.004<span style="text-decoration: underline;">84</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SIM_ID_3 Org E               3.36     0.376      9       0.722  0.005<span style="text-decoration: underline;">30</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SIM_ID_4 Org D               9.82     0.390     10       0.766  0.005<span style="text-decoration: underline;">56</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> SIM_ID_6 Org B              37.5      0.393     11       0.901  0.006<span style="text-decoration: underline;">53</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> SIM_ID_7 Org A              35.1      0.394     11       0.865  0.008<span style="text-decoration: underline;">06</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SIM_ID_1 Org F               0        0.377      9       0.684  0.004<span style="text-decoration: underline;">54</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SIM_ID_2 Org F               1.20     0.316     10       0.746  0.004<span style="text-decoration: underline;">97</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SIM_ID_3 Org E               5.30     0.338     11       0.799  0.005<span style="text-decoration: underline;">44</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SIM_ID_4 Org D               3.38     0.305      9       0.647  0.005<span style="text-decoration: underline;">95</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> SIM_ID_5 Org C              10.4      0.321     10       0.710  0.006<span style="text-decoration: underline;">80</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> SIM_ID_6 Org B              14.7      0.321     10       0.717  0.007<span style="text-decoration: underline;">76</span></span></span></code></pre></div>
 <p>It is also possible to run the above, averaged by an attribute
 specified with the <code>hrvar</code> argument:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -354,12 +355,12 @@ specified with the <code>hrvar</code> argument:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
 <span><span class="co">#&gt;   Organization     n betweenness closeness degree eigenvector pagerank</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Org A            7        30.2     0.517   9.86       0.735   0.021<span style="text-decoration: underline;">9</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Org B            7        36.0     0.470   9.71       0.721   0.019<span style="text-decoration: underline;">2</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Org C            8        47.9     0.515  10.4        0.785   0.024<span style="text-decoration: underline;">1</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Org D            5        39.5     0.495  10.6        0.809   0.014<span style="text-decoration: underline;">8</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Org E            5        37.3     0.446   9.8        0.747   0.017<span style="text-decoration: underline;">4</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Org F           18        42.7     0.488   9.89       0.738   0.019<span style="text-decoration: underline;">9</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Org A            7        63.8     0.556  10.4        0.814   0.023<span style="text-decoration: underline;">5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Org B            7        30.7     0.499  10.1        0.792   0.020<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Org C            8        29.8     0.474   9.62       0.755   0.025<span style="text-decoration: underline;">8</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Org D            5        20.7     0.466   9.4        0.729   0.014<span style="text-decoration: underline;">6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Org E            5        34.2     0.447  10.2        0.775   0.016<span style="text-decoration: underline;">0</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Org F           18        40.6     0.534  10.1        0.792   0.018<span style="text-decoration: underline;">6</span></span></span></code></pre></div>
 <p>The definition of the centrality metrics are as follows:</p>
 <ul>
 <li>
@@ -474,8 +475,8 @@ return a sankey visual:</p>
 <span>  return <span class="op">=</span> <span class="st">"sankey"</span>,</span>
 <span>  comm_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"resolution"</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="sankeyNetwork html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1a280eb8253d8583227c" style="width:768px;height:768px;"></div>
-<script type="application/json" data-for="htmlwidget-1a280eb8253d8583227c">{"x":{"links":{"source":[0,0,0,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5],"target":[6,7,8,6,7,8,6,7,8,6,7,8,6,7,8,6,7,8],"value":[1,3,3,2,3,2,3,3,2,2,1,2,2,1,2,4,7,7]},"nodes":{"name":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 "],"group":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"count","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><p>Or a table of the communities, and how they group together with the
+<div class="sankeyNetwork html-widget html-fill-item" id="htmlwidget-280eb8253d8583227c62" style="width:768px;height:768px;"></div>
+<script type="application/json" data-for="htmlwidget-280eb8253d8583227c62">{"x":{"links":{"source":[0,0,0,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5],"target":[6,7,8,6,7,8,6,7,8,6,7,8,6,7,8,6,7,8],"value":[2,2,3,2,3,2,3,2,3,3,1,1,2,2,1,4,7,7]},"nodes":{"name":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 "],"group":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"count","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}</script><p>Or a table of the communities, and how they group together with the
 HR attribute specified in <code>hrvar</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span></span>
@@ -487,21 +488,21 @@ HR attribute specified in <code>hrvar</code>:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 18 × 3</span></span></span>
 <span><span class="co">#&gt;    Organization cluster     n</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Org A        1           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Org A        2           3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Org A        1           2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Org A        2           2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Org A        3           3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Org B        1           2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Org B        2           3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Org B        3           2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Org C        1           3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Org C        2           3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Org C        3           2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Org D        1           2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Org C        2           2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Org C        3           3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Org D        1           3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Org D        2           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Org D        3           2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Org D        3           1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Org E        1           2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Org E        2           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Org E        3           2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Org E        2           2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Org E        3           1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Org F        1           4</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Org F        2           7</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Org F        3           7</span></span></code></pre></div>
