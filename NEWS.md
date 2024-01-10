@@ -1,3 +1,5 @@
+# vivainsights 0.5.1
+
 # vivainsights 0.5.0
 
 Added new functionality to calculate information value: `create_IV()` and `IV_report()` 
