@@ -40,7 +40,7 @@ function.
 \description{
 The function generates an interactive HTML report using
 Standard Person Query data as an input. The report contains checks on
-Workplace Analytics query outputs to provide diagnostic information
+Viva Insights query outputs to provide diagnostic information
 for the Analyst prior to analysis.
 
 An additional Standard Meeting Query can be provided to perform meeting
