@@ -124,20 +124,20 @@ specified as <code>"combine"</code>.</p>
 <span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Email_hours"</span>,</span></span>
 <span class="r-in"><span>  hrvar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Organization"</span>, <span class="st">"FunctionType"</span>, <span class="st">"LevelDesignation"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 28 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 22 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    hrvar    group                                              Email_hours     n</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [Organization] Finance [FunctionType] Engineering        1.17      6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [Organization] Product [FunctionType] Engineering        1.08      6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [Organization] Product [FunctionType] R_and_D            1.04      5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [Organization] Sales and Marketing [FunctionType]…       0.937     6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [Organization] HR [FunctionType] Engineering             0.926     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [Organization] Finance [LevelDesignation] Support        1.12      9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [Organization] Product [LevelDesignation] Senior …       1.12      5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [Organization] Sales and Marketing [LevelDesignat…       1.08      9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [Organization] HR [LevelDesignation] Support             1.08     10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [Organization] Product [LevelDesignation] Support        0.980     7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 18 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Combined [Organization] Sales and Marketing [FunctionType]…        1.18     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Combined [Organization] Finance [FunctionType] Engineering         1.16     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Combined [Organization] Sales and Marketing [FunctionType]…        1.09     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Combined [Organization] Sales and Marketing [LevelDesignat…        1.09    15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Combined [Organization] HR [LevelDesignation] Support              1.07    10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Combined [Organization] Finance [LevelDesignation] Support         1.06    10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Combined [FunctionType] Analytics [Organization] Sales and…        1.18     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Combined [FunctionType] Engineering [Organization] Finance         1.16     6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Combined [FunctionType] IT [Organization] Sales and Market…        1.09     7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Combined [FunctionType] Sales [LevelDesignation] Support           1.44     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
