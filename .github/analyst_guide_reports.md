@@ -9,9 +9,9 @@ Text in _italics_ indicate the required flexible query to run the report:
 
 ### Reports for Data Validation
 
-- Automated Data Validation Report - `validation_report()` - [Demo](https://microsoft.github.io/wpa/report-demo/validation-report-demo.html) - _PQ_ + _MQ_ (Optional)
+- Automated Data Validation Report - `validation_report()` - [Demo](https://microsoft.github.io/vivainsights/report-demo/validation-report-demo.html) - _PQ_ + _MQ_ (Optional)
 
-- Meeting Text Mining Report - `meeting_tm_report()` - [Demo](https://microsoft.github.io/wpa/report-demo/meeting-text-mining-report.html) - _MQ_
+- Meeting Text Mining Report - `meeting_tm_report()` - [Demo](https://microsoft.github.io/wpa/vivainsights/meeting-text-mining-report.html) - _MQ_
 
 
 ## Example Code
