@@ -44,4 +44,5 @@ Suggests:
     flexdashboard,
     testthat (>= 3.0.0)
 URL: https://microsoft.github.io/vivainsights/
+BugReports: https://github.com/microsoft/vivainsights/issues/
 Config/testthat/edition: 3
