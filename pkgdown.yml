@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   best-practices: best-practices.html
   network-analysis: network-analysis.html
-last_built: 2024-01-19T10:17Z
+last_built: 2024-01-23T15:02Z
 urls:
   reference: https://microsoft.github.io/vivainsights/reference
   article: https://microsoft.github.io/vivainsights/articles
