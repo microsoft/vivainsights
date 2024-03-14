@@ -79,14 +79,21 @@ create_line <- function(data,
   data %>%
     check_inputs(requirements = required_variables)
 
+  ## Clean metric name
+  clean_nm <- us_to_space(metric)
+  
   ## Handling NULL values passed to hrvar
   if(is.null(hrvar)){
     data <- totals_col(data)
     hrvar <- "Total"
-  }
-
-  ## Clean metric name
-  clean_nm <- us_to_space(metric)
+    subtitle_nm <- paste("Total",
+                         tolower(clean_nm),"over time")
+    } else{
+    subtitle_nm <- paste("Total",
+                         tolower(clean_nm),
+                         "by",
+                         tolower(camel_clean(hrvar)))
+    }
 
   myTable <-
     data %>%
@@ -101,7 +108,7 @@ create_line <- function(data,
     myTable %>%
     group_by(MetricDate, group) %>%
     summarize(Employee_Count = mean(Employee_Count),
-              !!sym(metric) := mean(!!sym(metric)))
+              !!sym(metric) := mean(!!sym(metric)),.groups = "drop")
 
   ## Data frame to return
   myTable_return <-
@@ -132,12 +139,9 @@ create_line <- function(data,
                                       colour = "#FFFFFF",
                                       face = "bold")) +
       labs(title = clean_nm,
-           subtitle = paste("Total",
-                            tolower(clean_nm),
-                            "by",
-                            tolower(camel_clean(hrvar))),
-           x = "MetricDate",
-           y = "Weekly hours",
+           subtitle = subtitle_nm,
+           x = "Metric Date",
+           y = clean_nm,
            caption = extract_date_range(data, return = "text")) +
       ylim(0, NA) # Set origin to zero
 
