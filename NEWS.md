@@ -1,3 +1,7 @@
+# vivainsights 0.5.2
+
+Minor bugfix on `create_line()`. 
+
 # vivainsights 0.5.1
 
 Minor changes to documentation on static report outputs.

@@ -8,9 +8,10 @@ The changes made in this PR are:
 
 
 # Checks
-- [ ] All R CMD checks pass 
+- [ ] All R CMD checks pass.
 - [ ] `roxygen2::roxygenise()` has been run prior to merging to ensure that `.Rd` and `NAMESPACE` files are up to date.
 - [ ] `NEWS.md` has been updated.
+- [ ] If a new version is required, create a new version with `usethis::use_version()`.
 
 # Notes
 This fixes #<issue_number>
