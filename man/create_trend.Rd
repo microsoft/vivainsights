@@ -80,15 +80,15 @@ Other Visualization:
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
 \code{\link{collaboration_trend}()},
-\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
 \code{\link{create_dist}()},
 \code{\link{create_fizz}()},
 \code{\link{create_inc}()},
-\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
 \code{\link{create_sankey}()},
@@ -125,8 +125,8 @@ Other Visualization:
 \code{\link{one2one_trend}()}
 
 Other Flexible: 
-\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
 \code{\link{create_density}()},
@@ -134,8 +134,8 @@ Other Flexible:
 \code{\link{create_fizz}()},
 \code{\link{create_hist}()},
 \code{\link{create_inc}()},
-\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
 \code{\link{create_sankey}()},
@@ -144,8 +144,8 @@ Other Flexible:
 \code{\link{create_tracking}()}
 
 Other Time-series: 
-\code{\link{create_line_asis}()},
 \code{\link{create_line}()},
+\code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()}
 }
 \concept{Flexible}

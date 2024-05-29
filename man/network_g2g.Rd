@@ -149,7 +149,7 @@ Other Network:
 \code{\link{g2g_data}},
 \code{\link{network_p2p}()},
 \code{\link{network_summary}()},
-\code{\link{p2p_data_sim}()},
-\code{\link{p2p_data}}
+\code{\link{p2p_data}},
+\code{\link{p2p_data_sim}()}
 }
 \concept{Network}

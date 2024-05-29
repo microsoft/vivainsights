@@ -180,8 +180,8 @@ A dataset generated from a Person Query from Viva Insights.
 Other Data: 
 \code{\link{g2g_data}},
 \code{\link{mt_data}},
-\code{\link{p2p_data_sim}()},
-\code{\link{p2p_data}}
+\code{\link{p2p_data}},
+\code{\link{p2p_data_sim}()}
 }
 \concept{Data}
 \keyword{datasets}
