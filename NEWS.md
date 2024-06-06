@@ -1,3 +1,7 @@
+# vivainsights 0.5.3
+
+Minor bug fixes and visual improvements.
+
 # vivainsights 0.5.2
 
 Minor bugfix on `create_line()`. 
