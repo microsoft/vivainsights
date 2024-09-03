@@ -20,6 +20,11 @@
 #'
 #' @examples
 #' create_lorenz(data = pq_data, metric = "Emails_sent", return = "gini")
+#' --------------------------------------------------------------------------------------------
+#' Note: 
+#' - This function can be integrated into a larger analysis pipeline to assess inequality in metric distribution.
+#' - Ensure to have the required packages (`dplyr`, `ggplot2`, etc.) installed and loaded before running this function.
+#' --------------------------------------------------------------------------------------------
 #'
 #' @export
 create_lorenz <- function(data, metric, return) {
@@ -117,9 +122,3 @@ create_lorenz <- function(data, metric, return) {
     stop("Invalid return type specified. Choose 'gini', 'table', or 'plot'.")
   }
 }
-
-# --------------------------------------------------------------------------------------------
-# Note: 
-# - This function can be integrated into a larger analysis pipeline to assess inequality in metric distribution.
-# - Ensure to have the required packages (`dplyr`, `ggplot2`, etc.) installed and loaded before running this function.
-# --------------------------------------------------------------------------------------------
