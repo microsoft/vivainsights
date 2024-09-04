@@ -20,6 +20,9 @@
 #'   - `"table"` - Data frame containing a summary table of population share and value share.
 #'   - `"plot"` (default) - `ggplot` object representing a plot of the Lorenz curve.
 #'
+#' @import dplyr
+#' @import ggplot2
+#'
 #' @examples
 #' create_lorenz(data = pq_data, metric = "Emails_sent", return = "gini")
 #' 
@@ -87,20 +90,18 @@ create_lorenz <- function(data, metric, return = "plot") {
   
   if (return == "table") {
     # Return a summary table of population share and value share
-    return(
       seq(0, 1, by = 0.1) %>%
-      map_dfr(function(x) {
+      purrr::map_dfr(function(x) {
         tibble(
           population_share = x,
           value_share = get_value_proportion(lorenz_df, population_share = x)
         )
       })
-    )
+    
   } else if (return == "plot") {
     # Plot the Lorenz curve
     gini_coef <- compute_gini(data[[metric]])
     
-    return(
       lorenz_df %>%
       ggplot(aes(x = cum_population, y = cum_values_prop)) +
       geom_line(color = "#C75B7A") +
@@ -115,7 +116,7 @@ create_lorenz <- function(data, metric, return = "plot") {
       theme_wpa_basic() +
       scale_x_continuous(limits = c(0, 1)) +
       scale_y_continuous(limits = c(0, 1))
-    )
+      
   } else {
     stop("Invalid return type specified. Choose 'gini', 'table', or 'plot'.")
   }
