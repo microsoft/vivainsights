@@ -30,4 +30,6 @@ metric distribution.
 create_lorenz(data = pq_data, metric = "Emails_sent", return = "gini")
 
 create_lorenz(data = pq_data, metric = "Emails_sent", return = "plot")
+
+create_lorenz(data = pq_data, metric = "Emails_sent", return = "table")
 }

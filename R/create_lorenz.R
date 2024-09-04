@@ -27,6 +27,8 @@
 #' create_lorenz(data = pq_data, metric = "Emails_sent", return = "gini")
 #' 
 #' create_lorenz(data = pq_data, metric = "Emails_sent", return = "plot")
+#'
+#' create_lorenz(data = pq_data, metric = "Emails_sent", return = "table")
 #' @export
 create_lorenz <- function(data, metric, return = "plot") {
   # Ensure the input data frame and metric are valid
