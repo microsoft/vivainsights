@@ -6,28 +6,26 @@
 #' @title Calculate the Lorenz Curve and Gini Coefficient in a Person Query
 #'
 #' @description
-#' This function computes the Gini coefficient and plots the Lorenz curve based on a selected metric
-#' from a Person Query data frame. It provides a way to measure inequality in the distribution of 
-#' the selected metric.
+#' This function computes the Gini coefficient and plots the Lorenz curve based
+#' on a selected metric from a Person Query data frame. It provides a way to
+#' measure inequality in the distribution of the selected metric.This function
+#' can be integrated into a larger analysis pipeline to assess inequality in
+#' metric distribution.
 #'
 #' @param data Data frame containing a Person Query.
 #' @param metric Character string identifying the metric to be used for the
 #'   Lorenz curve and Gini coefficient calculation.
 #' @param return Character string identifying the return type. Options are:
-#'   - `"gini"` (default) - Numeric value representing the Gini coefficient.
+#'   - `"gini"` - Numeric value representing the Gini coefficient.
 #'   - `"table"` - Data frame containing a summary table of population share and value share.
-#'   - `"plot"` - `ggplot` object representing a plot of the Lorenz curve.
+#'   - `"plot"` (default) - `ggplot` object representing a plot of the Lorenz curve.
 #'
 #' @examples
 #' create_lorenz(data = pq_data, metric = "Emails_sent", return = "gini")
-#' --------------------------------------------------------------------------------------------
-#' Note: 
-#' - This function can be integrated into a larger analysis pipeline to assess inequality in metric distribution.
-#' - Ensure to have the required packages (`dplyr`, `ggplot2`, etc.) installed and loaded before running this function.
-#' --------------------------------------------------------------------------------------------
-#'
+#' 
+#' create_lorenz(data = pq_data, metric = "Emails_sent", return = "plot")
 #' @export
-create_lorenz <- function(data, metric, return) {
+create_lorenz <- function(data, metric, return = "plot") {
   # Ensure the input data frame and metric are valid
   if (!is.data.frame(data)) {
     stop("Input must be a data frame")
