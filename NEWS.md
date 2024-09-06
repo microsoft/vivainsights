@@ -1,3 +1,5 @@
+# vivainsights 0.5.4
+
 # vivainsights 0.5.3
 
 Minor bug fixes and visual improvements.
