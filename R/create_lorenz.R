@@ -109,8 +109,8 @@ create_lorenz <- function(data, metric, return = "plot") {
       geom_line(color = "#C75B7A") +
       geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "darkgrey") +
       labs(
-        title = "% of Population Sharing % of Emails Sent",
-        subtitle = "Lorenz Curve for Emails Sent",
+        title = paste("% of Population Sharing % of", us_to_space(metric)),
+        subtitle = paste("Lorenz Curve for", us_to_space(metric)),
         caption = paste0("Gini Coefficient: ", round(gini_coef, 2)),
         x = "Cumulative Share of Population",
         y = "Cumulative Share of Values"
