@@ -1,3 +1,7 @@
+# vivainsights 0.5.4
+
+Added new functionality to calculate Gini coefficient and Lorenz curve.
+
 # vivainsights 0.5.3
 
 Minor bug fixes and visual improvements.

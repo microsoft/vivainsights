@@ -117,6 +117,9 @@ utils::globalVariables(
     "pval",
     "WOE",
     "ODDS",
-    "labelpos"
+    "labelpos",
+    "cum_population",
+    "cum_values",
+    "cum_values_prop"
     )
 )
