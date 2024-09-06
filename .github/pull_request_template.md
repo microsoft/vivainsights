@@ -12,6 +12,7 @@ The changes made in this PR are:
 - [ ] `roxygen2::roxygenise()` has been run prior to merging to ensure that `.Rd` and `NAMESPACE` files are up to date.
 - [ ] `NEWS.md` has been updated.
 - [ ] If a new version is required, create a new version with `usethis::use_version()`.
+- [ ] When adding a new function, run `devtools::load_all()` and test new functions, especially on visualisations that are not covered by tests.
 
 # Notes
 This fixes #<issue_number>
