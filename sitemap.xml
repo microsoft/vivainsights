@@ -1,435 +1,147 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/404.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/SECURITY.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/SUPPORT.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/analyst_guide_data_validation.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/analyst_guide_getting_started.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/analyst_guide_intro.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/analyst_guide_reports.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/articles/best-practices.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/articles/network-analysis.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/contributors.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/index.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/pull_request_template.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/IV_report.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_summary.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/afterhours_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/anonymise.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/any_idate.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/camel_clean.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/check_inputs.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/check_query.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_area.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_sum.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/collaboration_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/comma.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/copy_df.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_IV.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_bar.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_bar_asis.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_boxplot.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_bubble.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_density.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_dt.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_hist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_inc.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_line_asis.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_period_scatter.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_rank_combine.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_sankey.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_scatter.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_stacked.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_tracking.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/create_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/cut_hour.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/email_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/email_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/email_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/email_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/email_summary.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/email_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/export.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/external_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/external_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/external_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/external_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/external_sum.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/extract_date_range.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/extract_hr.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/flag_ch_ratio.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/flag_em_ratio.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/flag_extreme.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/flag_outlooktime.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/g2g_data.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/generate_report.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/generate_report2.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/heat_colours.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/hr_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/hrvar_count.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/hrvar_count_all.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/hrvar_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_churn.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_datefreq.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_holidayweeks.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_inactiveweeks.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_nkw.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_outlier.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_privacythreshold.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_shifts.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/identify_tenure.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/import_query.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/is_date_format.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/jitter_metrics.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/keymetrics_scan.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/keymetrics_scan_asis.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/maxmin.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_summary.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_tm_report.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/meeting_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/mt_data.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/network_g2g.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/network_p2p.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/network_summary.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_dist.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_fizz.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_freq.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_line.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_sum.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/one2one_trend.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/p2p_data.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/p2p_data_sim.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/pad2.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/pairwise_count.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/pq_data.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/read_preamble.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/rgb2hex.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/theme_wpa.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/theme_wpa_basic.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/tm_clean.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/tm_cooc.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/tm_freq.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/tm_wordcloud.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/totals_bind.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/totals_col.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/track_HR_change.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/tstamp.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/us_to_space.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/validation_report.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/vivainsights-package.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/wrap.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reference/wrap_text.html</loc>
-  </url>
-  <url>
-    <loc>https://microsoft.github.io/vivainsights/reporting_security_issues.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://microsoft.github.io/vivainsights/404.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/LICENSE-text.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/SECURITY.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/SUPPORT.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/analyst_guide_data_validation.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/analyst_guide_getting_started.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/analyst_guide_intro.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/analyst_guide_reports.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/articles/best-practices.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/articles/index.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/articles/network-analysis.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/authors.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/contributors.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/index.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/news/index.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/IV_report.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_summary.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/anonymise.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/any_idate.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/camel_clean.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/check_inputs.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/check_query.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_area.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_sum.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/collaboration_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/comma.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/copy_df.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_IV.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_bar.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_bar_asis.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_boxplot.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_bubble.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_density.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_dt.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_hist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_inc.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_line_asis.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_lorenz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_period_scatter.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_rank_combine.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_sankey.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_scatter.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_stacked.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_tracking.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/cut_hour.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/email_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/email_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/email_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/email_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/email_summary.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/email_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/export.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/external_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/external_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/external_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/external_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/external_sum.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/extract_date_range.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/extract_hr.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/flag_ch_ratio.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/flag_em_ratio.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/flag_extreme.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/flag_outlooktime.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/g2g_data.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/generate_report.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/generate_report2.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/heat_colours.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/hr_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/hrvar_count.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/hrvar_count_all.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/hrvar_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_churn.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_datefreq.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_holidayweeks.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_inactiveweeks.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_nkw.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_outlier.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_privacythreshold.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_shifts.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_tenure.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/import_query.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/index.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/is_date_format.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/jitter_metrics.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/keymetrics_scan.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/keymetrics_scan_asis.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/maxmin.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_summary.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_tm_report.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/meeting_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/mt_data.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/network_g2g.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/network_p2p.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/network_summary.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_dist.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_fizz.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_freq.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_line.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_rank.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_sum.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/one2one_trend.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/p2p_data.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/p2p_data_sim.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/pad2.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/pairwise_count.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/pipe.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/pq_data.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/read_preamble.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/rgb2hex.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/theme_wpa.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/theme_wpa_basic.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/tm_clean.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/tm_cooc.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/tm_freq.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/tm_wordcloud.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/totals_bind.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/totals_col.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/track_HR_change.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/tstamp.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/us_to_space.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/validation_report.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/vivainsights-package.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/wrap.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/wrap_text.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reporting_security_issues.html</loc></url>
 </urlset>
+

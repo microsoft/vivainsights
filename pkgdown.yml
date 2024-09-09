@@ -1,11 +1,10 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   best-practices: best-practices.html
   network-analysis: network-analysis.html
-last_built: 2024-01-23T15:02Z
+last_built: 2024-09-09T11:19Z
 urls:
   reference: https://microsoft.github.io/vivainsights/reference
   article: https://microsoft.github.io/vivainsights/articles
-
