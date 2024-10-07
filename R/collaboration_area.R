@@ -112,7 +112,7 @@ collaboration_area <- function(data,
     left_join(hrvar_count(data, hrvar, return = "table"),
               by = c("group" = hrvar)) %>%
     rename(Employee_Count = "n") %>%
-    filter(Employee_Count >= mingroup) %>%
+    dplyr::filter(Employee_Count >= mingroup) %>%
     ungroup()
 
 

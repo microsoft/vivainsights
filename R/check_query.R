@@ -40,6 +40,7 @@
 #' check_query(pq_data)
 #'
 #' @family Data Validation
+#' @import dplyr
 #'
 #' @export
 check_query <- function(data, return = "message", validation = FALSE){
