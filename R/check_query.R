@@ -40,6 +40,7 @@
 #' check_query(pq_data)
 #'
 #' @family Data Validation
+#' @import dplyr
 #'
 #' @export
 check_query <- function(data, return = "message", validation = FALSE){
@@ -158,38 +159,6 @@ check_person_query <- function(data, return){
     data$IsActive <- as.logical(data$IsActive) # Force to logical
     active_n <- dplyr::n_distinct(data[data$IsActive == TRUE, "PersonId"])
     new_chunk <- paste0("There are ", active_n, " active employees out of all in the dataset.")
-    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-  }
-
-  ## Variable check header
-  new_chunk <- "Variable name check:"
-  main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-
-  ## Collaboration_hours
-  if(!("Collaboration_hours" %in% names(data)) &
-     ("Collaboration_hrs" %in% names(data))){
-    new_chunk <- "`Collaboration_hrs` is used instead of `Collaboration_hours` in the data."
-    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-  } else if(!("Collaboration_hrs" %in% names(data)) &
-            ("Collaboration_hours" %in% names(data))){
-    new_chunk <- "`Collaboration_hours` is used instead of `Collaboration_hrs` in the data."
-    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-  } else {
-    new_chunk <- "No collaboration hour metric exists in the data."
-    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-  }
-
-  ## Instant_Message_hours
-  if(!("Instant_message_hours" %in% names(data)) &
-     ("Instant_Message_hours" %in% names(data))){
-    new_chunk <- "`Instant_Message_hours` is used instead of `Instant_message_hours` in the data."
-    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-  } else if(!("Instant_Message_hours" %in% names(data)) &
-            ("Instant_message_hours" %in% names(data))){
-    new_chunk <- "`Instant_message_hours` is used instead of `Instant_Message_hours` in the data."
-    main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
-  } else {
-    new_chunk <- "No instant message hour metric exists in the data."
     main_chunk <- paste(main_chunk, new_chunk, sep = "\n\n")
   }
 

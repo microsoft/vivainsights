@@ -102,7 +102,7 @@ create_line <- function(data,
     select(PersonId, MetricDate, group, all_of(metric)) %>%
     group_by(group) %>%
     mutate(Employee_Count = n_distinct(PersonId)) %>%
-    filter(Employee_Count >= mingroup)  # Keep only groups above privacy threshold
+    dplyr::filter(Employee_Count >= mingroup)  # Keep only groups above privacy threshold
 
   myTable <-
     myTable %>%

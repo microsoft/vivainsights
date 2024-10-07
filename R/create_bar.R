@@ -129,14 +129,11 @@ create_bar <- function(data,
     data %>%
     rename(group = !!sym(hrvar)) %>%
     group_by(PersonId, group) %>%
-    summarise(!!sym(metric) := mean(!!sym(metric), na.rm = na.rm)) %>%
-    ungroup() %>%
-    left_join(data %>%
-                rename(group = !!sym(hrvar)) %>%
-                group_by(group) %>%
-                summarise(Employee_Count = n_distinct(PersonId)),
-              by = "group") %>%
-    filter(Employee_Count >= mingroup)
+    summarise(!!sym(metric) := mean(!!sym(metric)), .groups = "drop") %>%
+    group_by(group) %>%
+    mutate(Employee_Count = n_distinct(PersonId)) %>%
+    dplyr::filter(Employee_Count >= mingroup) %>%
+    ungroup() 
 
   ## Colour bar override
   if(bar_colour == "default"){
