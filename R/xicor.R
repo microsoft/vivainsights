@@ -16,32 +16,30 @@
 #' This makes it a valuable alternative to Spearman's and Kendall's correlations, especially 
 #' when the data may not meet the assumptions required by these methods.
 #'
-#' @param X A numeric vector representing the independent variable.
-#' @param Y A numeric vector representing the dependent variable.
+#' @param x A numeric vector representing the independent variable.
+#' @param y A numeric vector representing the dependent variable.
 #' @param ties A logical value indicating whether to handle ties in the data. Default is TRUE.
 #'
 #' @return A numeric value representing Chatterjee's rank correlation coefficient.
 #'
 #' @examples
-#' X <- c(1, 2, 3, 4, 5)
-#' Y <- c(2, 1, 4, 3, 5)
-#' xicor(X, Y)
+#' xicor(x = pq_data$Collaboration_hours, y = pq_data$Internal_network_size)
 #'
 #' 
 #' @export
 
-xicor <- function(X, Y, ties = TRUE){
-  n <- length(X)
+xicor <- function(x, y, ties = TRUE){
+  n <- length(x)
   
   # Sort Y based on the order of X
-  ordered_Y <- Y[order(X)]
+  ordered_y <- y[order(x)]
   
   # Get the ranks of Y after sorting by X
-  r <- rank(ordered_Y, ties.method = ifelse(ties, "max", "first"))
+  r <- rank(ordered_y, ties.method = ifelse(ties, "max", "first"))
   
   if(ties){
     # Handling ties: Use maximum rank for tied values
-    l <- rank(ordered_Y, ties.method = "max")
+    l <- rank(ordered_y, ties.method = "max")
     
     # Calculate Chatterjee's coefficient with ties
     return( 1 - n * sum(abs(r[-1] - r[-n])) / (2 * sum(l * (n - l))) )
