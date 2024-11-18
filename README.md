@@ -19,6 +19,13 @@ This is an R package for analyzing and visualizing data from [Microsoft Viva Adv
 
 This library is compatible with the latest implementation of the Viva Insights Analyst Workbench. For the R library compatible with the legacy implementation, please visit the **wpa** package [website](https://microsoft.github.io/wpa/) or [GitHub repository](https://github.com/microsoft/wpa/) . 
 
+---
+
+Also check out our package cheat sheet for a quick glimpse of what **vivainsights** offers:
+
+<a href="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/vivainsights_r.pdf"><img src="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/pngs/vivainsights_r_p1.png" align="center" width=50% /></a>
+
+<a href="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/vivainsights_r.pdf"><img src="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/pngs/vivainsights_r_p2.png" align="center" width=50% /></a>
 
 ## Related repositories
 
