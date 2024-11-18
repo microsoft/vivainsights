@@ -18,17 +18,31 @@
 #'
 #' @param x A numeric vector representing the independent variable.
 #' @param y A numeric vector representing the dependent variable.
-#' @param ties A logical value indicating whether to handle ties in the data. Default is TRUE.
+#' @param ties A logical value indicating whether to handle ties in the data. Default is FALSE.
+#' 
+#' If `ties = TRUE`, the function adjusts for tied ranks (repeated values in the data). 
+#' This is important when there are many tied values in either `x` or `y`, as it ensures
+#' accurate calculation by considering the maximum rank for tied observations.
+#' 
+#' If `ties = FALSE`, the function assumes that there are no ties, or that ties can be 
+#' handled without additional computational effort. This option can offer better performance
+#' when ties are rare or absent.
+#' 
+#' @details
+#' By default, `ties = FALSE` is set to prioritize computational efficiency, as handling ties 
+#' requires additional processing. In cases where ties are present or likely (such as when working 
+#' with ordinal or categorical data), it is recommended to set `ties = TRUE`.
 #'
 #' @return A numeric value representing Chatterjee's rank correlation coefficient.
 #'
 #' @examples
-#' xicor(x = pq_data$Collaboration_hours, y = pq_data$Internal_network_size)
+#' xicor(x = pq_data$Collaboration_hours, y = pq_data$Internal_network_size, ties = TRUE)
+#' xicor(x = pq_data$Collaboration_hours, y = pq_data$Internal_network_size, ties = FALSE)
 #'
 #' 
 #' @export
 
-xicor <- function(x, y, ties = TRUE){
+xicor <- function(x, y, ties = FALSE){  # Default is now FALSE
   n <- length(x)
   
   # Sort Y based on the order of X

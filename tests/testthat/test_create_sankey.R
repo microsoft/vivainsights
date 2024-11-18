@@ -4,12 +4,14 @@
 # --------------------------------------------------------------------------------------------
 library(testthat)
 library(vivainsights)
+library(dplyr)
 
-# Define the unit test
-test_that("network_p2p returns a data frame when return = 'table'", {
+test_that("create_sankey returns a sankeyNetwork object.", {
 
-    result <- network_p2p(p2p_data, return = "table")
+  result <-pq_data %>%
+		   dplyr::count(Organization, FunctionType) %>%
+		   create_sankey(var1 = "Organization", var2 = "FunctionType")
 
-    # Check if the result is a data frame
-    expect_s3_class(result, "data.frame")
+  # Check if the result is a sankeyNetwork object
+  expect_s3_class(result, "sankeyNetwork")
 })

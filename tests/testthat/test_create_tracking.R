@@ -5,11 +5,14 @@
 library(testthat)
 library(vivainsights)
 
-# Define the unit test
-test_that("network_p2p returns a data frame when return = 'table'", {
+test_that("create_tracking returns a ggplot.", {
 
-    result <- network_p2p(p2p_data, return = "table")
+  result <- pq_data %>%
+            create_tracking(
+             metric = "Collaboration_hours",
+             percent = FALSE
+            )
 
-    # Check if the result is a data frame
-    expect_s3_class(result, "data.frame")
+  # Check if the result is a ggplot object
+  expect_s3_class(result, "ggplot")
 })
