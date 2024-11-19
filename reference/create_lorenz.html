@@ -15,7 +15,7 @@ metric distribution."><meta property="og:image" content="https://microsoft.githu
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,11 +81,25 @@ Lorenz curve and Gini coefficient calculation.</p></dd>
 
 <dt id="arg-return">return<a class="anchor" aria-label="anchor" href="#arg-return"></a></dt>
 <dd><p>Character string identifying the return type. Options are:</p><ul><li><p><code>"gini"</code> - Numeric value representing the Gini coefficient.</p></li>
-<li><p><code>"table"</code> - Data frame containing a summary table of population share and value share.</p></li>
-<li><p><code>"plot"</code> (default) - <code>ggplot</code> object representing a plot of the Lorenz curve.</p></li>
+<li><p><code>"table"</code> - Data frame containing a summary table of population share and
+value share.</p></li>
+<li><p><code>"plot"</code> (default) - <code>ggplot</code> object representing a plot of the Lorenz
+curve.</p></li>
 </ul></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="gini-coefficient">Gini coefficient<a class="anchor" aria-label="anchor" href="#gini-coefficient"></a></h2>
+
+
+<p>The Gini coefficient is a measure of statistical dispersion most commonly
+used to represent income inequality within a population. It is calculated as
+the ratio of the area between the Lorenz curve and the line of perfect
+equality (the 45-degree line) to the total area under the line of perfect
+equality. It has a range of 0 to 1, where 0 represents perfect equality and
+1 represents perfect inequality. It can be applied to any Viva Insights
+metric where inequality is of interest.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
