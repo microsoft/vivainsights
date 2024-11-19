@@ -4,14 +4,22 @@
 \alias{xicor}
 \title{Calculate Chatterjee's Rank Correlation Coefficient}
 \usage{
-xicor(X, Y, ties = TRUE)
+xicor(x, y, ties = FALSE)
 }
 \arguments{
-\item{X}{A numeric vector representing the independent variable.}
+\item{x}{A numeric vector representing the independent variable.}
 
-\item{Y}{A numeric vector representing the dependent variable.}
+\item{y}{A numeric vector representing the dependent variable.}
 
-\item{ties}{A logical value indicating whether to handle ties in the data. Default is TRUE.}
+\item{ties}{A logical value indicating whether to handle ties in the data. Default is FALSE.
+
+If \code{ties = TRUE}, the function adjusts for tied ranks (repeated values in the data).
+This is important when there are many tied values in either \code{x} or \code{y}, as it ensures
+accurate calculation by considering the maximum rank for tied observations.
+
+If \code{ties = FALSE}, the function assumes that there are no ties, or that ties can be
+handled without additional computational effort. This option can offer better performance
+when ties are rare or absent.}
 }
 \value{
 A numeric value representing Chatterjee's rank correlation coefficient.
@@ -27,10 +35,14 @@ and can handle tied ranks, making it versatile for datasets with ordinal data or
 This makes it a valuable alternative to Spearman's and Kendall's correlations, especially
 when the data may not meet the assumptions required by these methods.
 }
+\details{
+By default, \code{ties = FALSE} is set to prioritize computational efficiency, as handling ties
+requires additional processing. In cases where ties are present or likely (such as when working
+with ordinal or categorical data), it is recommended to set \code{ties = TRUE}.
+}
 \examples{
-X <- c(1, 2, 3, 4, 5)
-Y <- c(2, 1, 4, 3, 5)
-xicor(X, Y)
+xicor(x = pq_data$Collaboration_hours, y = pq_data$Internal_network_size, ties = TRUE)
+xicor(x = pq_data$Collaboration_hours, y = pq_data$Internal_network_size, ties = FALSE)
 
 
 }

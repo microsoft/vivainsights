@@ -15,8 +15,10 @@ Lorenz curve and Gini coefficient calculation.}
 \item{return}{Character string identifying the return type. Options are:
 \itemize{
 \item \code{"gini"} - Numeric value representing the Gini coefficient.
-\item \code{"table"} - Data frame containing a summary table of population share and value share.
-\item \code{"plot"} (default) - \code{ggplot} object representing a plot of the Lorenz curve.
+\item \code{"table"} - Data frame containing a summary table of population share and
+value share.
+\item \code{"plot"} (default) - \code{ggplot} object representing a plot of the Lorenz
+curve.
 }}
 }
 \description{
@@ -26,6 +28,17 @@ measure inequality in the distribution of the selected metric.This function
 can be integrated into a larger analysis pipeline to assess inequality in
 metric distribution.
 }
+\section{Gini coefficient}{
+
+The Gini coefficient is a measure of statistical dispersion most commonly
+used to represent income inequality within a population. It is calculated as
+the ratio of the area between the Lorenz curve and the line of perfect
+equality (the 45-degree line) to the total area under the line of perfect
+equality. It has a range of 0 to 1, where 0 represents perfect equality and
+1 represents perfect inequality. It can be applied to any Viva Insights
+metric where inequality is of interest.
+}
+
 \examples{
 create_lorenz(data = pq_data, metric = "Emails_sent", return = "gini")
 

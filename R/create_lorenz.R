@@ -11,14 +11,25 @@
 #' measure inequality in the distribution of the selected metric.This function
 #' can be integrated into a larger analysis pipeline to assess inequality in
 #' metric distribution.
+#' 
+#' @section Gini coefficient:
+#'  The Gini coefficient is a measure of statistical dispersion most commonly
+#'  used to represent income inequality within a population. It is calculated as
+#'  the ratio of the area between the Lorenz curve and the line of perfect
+#'  equality (the 45-degree line) to the total area under the line of perfect
+#'  equality. It has a range of 0 to 1, where 0 represents perfect equality and
+#'  1 represents perfect inequality. It can be applied to any Viva Insights
+#'  metric where inequality is of interest.
 #'
 #' @param data Data frame containing a Person Query.
 #' @param metric Character string identifying the metric to be used for the
 #'   Lorenz curve and Gini coefficient calculation.
 #' @param return Character string identifying the return type. Options are:
 #'   - `"gini"` - Numeric value representing the Gini coefficient.
-#'   - `"table"` - Data frame containing a summary table of population share and value share.
-#'   - `"plot"` (default) - `ggplot` object representing a plot of the Lorenz curve.
+#'   - `"table"` - Data frame containing a summary table of population share and 
+#'   value share.
+#'   - `"plot"` (default) - `ggplot` object representing a plot of the Lorenz 
+#'   curve.
 #'
 #' @import dplyr
 #' @import ggplot2
