@@ -1,3 +1,8 @@
+# vivainsights 0.5.5
+
+* Add new functionality on calculating Chatterjee's coefficient
+* Improved test coverage
+
 # vivainsights 0.5.4
 
 Added new functionality to calculate Gini coefficient and Lorenz curve.
