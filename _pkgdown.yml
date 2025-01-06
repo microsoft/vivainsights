@@ -1,8 +1,12 @@
+# The URL of the site
 url: https://microsoft.github.io/vivainsights/
+
+# Template settings
 template:
   bootstrap: 5
   bootswatch: cosmo
 
+# Navbar settings
 navbar:
   bg: dark
   structure:
@@ -15,12 +19,12 @@ navbar:
       guide:
         text: Analyst Guide
         menu:
-         - text: Introduction
-           href: analyst_guide_intro.html
-         - text: Getting Started
-           href: analyst_guide_getting_started.html
+        - text: Introduction
+          href: analyst_guide_intro.html
+        - text: Getting Started
+          href: analyst_guide_getting_started.html
         - text: Data Validation
-           href: analyst_guide_data_validation.html
+          href: analyst_guide_data_validation.html
       reference:
         text: Reference
         menu:
@@ -53,11 +57,12 @@ navbar:
           href: developer_guide.html
         - text: Reporting Security Issues
           href: reporting_security_issues.html
-        - text: Package Structure
-          href: package_structure.html
+        # - text: Package Structure
+        #  href: package_structure.html
         - text: Contributors
           href: contributors.html
 
+# Footer settings
 footer:
   structure:
     left: developed_by
