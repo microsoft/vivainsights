@@ -1,4 +1,23 @@
-# vivainsights (development version)
+# vivainsights 0.5.5
+
+* Add new functionality on calculating Chatterjee's coefficient
+* Improved test coverage
+
+# vivainsights 0.5.4
+
+Added new functionality to calculate Gini coefficient and Lorenz curve.
+
+# vivainsights 0.5.3
+
+Minor bug fixes and visual improvements.
+
+# vivainsights 0.5.2
+
+Minor bugfix on `create_line()`. 
+
+# vivainsights 0.5.1
+
+Minor changes to documentation on static report outputs.
 
 # vivainsights 0.5.0
 

@@ -81,8 +81,8 @@ Other Visualization:
 \code{\link{collaboration_rank}()},
 \code{\link{collaboration_sum}()},
 \code{\link{collaboration_trend}()},
-\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
 \code{\link{create_dist}()},
@@ -126,8 +126,8 @@ Other Visualization:
 \code{\link{one2one_trend}()}
 
 Other Flexible: 
-\code{\link{create_bar_asis}()},
 \code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
 \code{\link{create_boxplot}()},
 \code{\link{create_bubble}()},
 \code{\link{create_density}()},

@@ -105,6 +105,14 @@ create_stacked <- function(data,
   data %>%
     check_inputs(requirements = required_variables)
 
+  ## Plot Title Handling
+  if(is(object = metrics, class2 = "character") & length(metrics) == 1){
+    plot_title <- us_to_space(metrics)
+  }
+  else{   #vector of strings
+    plot_title <- paste(plot_title, collapse = ", ")
+  }
+
   ## Handle `legend_lab`
   if(is.null(legend_lab)){
     legend_lab <- gsub("_", " ", metrics)
@@ -128,12 +136,12 @@ create_stacked <- function(data,
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
     select(PersonId, group, metrics) %>%
     group_by(PersonId, group) %>%
-    summarise_at(vars(metrics), ~mean(.)) %>%
-    ungroup() %>%
+    summarise(across(.cols = all_of(metrics), .fns = ~mean(.)),
+      .groups = "drop") %>%
     mutate(Total = select(., metrics) %>% apply(1, sum)) %>%
     left_join(n_count, by = "group") %>%
     # Keep only groups above privacy threshold
-    filter(Employee_Count >= mingroup)
+    dplyr::filter(Employee_Count >= mingroup)
 
   myTableReturn <-
     myTable %>%
@@ -148,7 +156,7 @@ create_stacked <- function(data,
 
   totalTable <-
     plot_table %>%
-    filter(Metric == "Total") %>%
+    dplyr::filter(Metric == "Total") %>%
     group_by(group) %>%
     summarise(Total = mean(Value))
 

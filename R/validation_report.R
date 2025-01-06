@@ -8,7 +8,7 @@
 #' @description
 #' The function generates an interactive HTML report using
 #' Standard Person Query data as an input. The report contains checks on
-#' Workplace Analytics query outputs to provide diagnostic information
+#' Viva Insights query outputs to provide diagnostic information
 #' for the Analyst prior to analysis.
 #'
 #' An additional Standard Meeting Query can be provided to perform meeting
@@ -172,7 +172,7 @@ validation_report <- function(data,
     list(read_preamble("blank.md"), # Header - Data Available
          data %>% check_query(return = "text", validation = TRUE),
 
-         read_preamble("blank.md"), # Header - 1.1 Workplace Analytics Settings
+         read_preamble("blank.md"), # Header - 1.1 Viva Insights Settings
          read_preamble("outlook_settings_1.md"),
 
          shift_obj, # See `identify_shifts()` dynamic treatment above
@@ -254,7 +254,7 @@ validation_report <- function(data,
     c("Data Available",
       "Query Check",
 
-      "1. Workplace Analytics Settings",
+      "1. Viva Insights Settings",
       "1.1 Outlook Settings",
       "",
       "",

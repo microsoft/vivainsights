@@ -1,4 +1,4 @@
-This report contains a full **Information Value (IV)** Analysis. IV is a data exploration technique that helps identify which columns in a data set have predictive power or influence on the value of a specified dependent variable. This approach is useful to determine which Workplace Analytics Metrics are correlated to a specific outcome variable.
+This report contains a full **Information Value (IV)** Analysis. IV is a data exploration technique that helps identify which columns in a data set have predictive power or influence on the value of a specified dependent variable. This approach is useful to determine which Viva Insights metrics are correlated to a specific outcome variable.
 
 Among other things, this report should allow analysts to answer:
 

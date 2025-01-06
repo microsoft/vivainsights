@@ -1,0 +1,31 @@
+# --------------------------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# --------------------------------------------------------------------------------------------
+
+library(testthat)
+library(vivainsights)
+
+test_that("create_bar returns a data frame when return = 'table'", {
+
+  result <-
+    pq_data %>%
+    create_bar(metric = "Collaboration_hours",
+               hrvar = "LevelDesignation",
+               return = "table")
+
+  # Check if the result is a data frame
+  expect_s3_class(result, "data.frame")
+})
+
+test_that("create_bar returns a ggplot when return = 'plot'", {
+
+  result <-
+    pq_data %>%
+    create_bar(metric = "Collaboration_hours",
+               hrvar = "LevelDesignation",
+               return = "plot")
+
+  # Check if the result is a ggplot object
+  expect_s3_class(result, "ggplot")
+})

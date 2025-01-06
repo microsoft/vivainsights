@@ -40,7 +40,7 @@ function.
 \description{
 The function generates an interactive HTML report using
 Standard Person Query data as an input. The report contains checks on
-Workplace Analytics query outputs to provide diagnostic information
+Viva Insights query outputs to provide diagnostic information
 for the Analyst prior to analysis.
 
 An additional Standard Meeting Query can be provided to perform meeting
@@ -99,8 +99,8 @@ Other Data Validation:
 \code{\link{flag_extreme}()},
 \code{\link{flag_outlooktime}()},
 \code{\link{hr_trend}()},
-\code{\link{hrvar_count_all}()},
 \code{\link{hrvar_count}()},
+\code{\link{hrvar_count_all}()},
 \code{\link{hrvar_trend}()},
 \code{\link{identify_churn}()},
 \code{\link{identify_holidayweeks}()},

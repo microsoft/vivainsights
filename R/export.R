@@ -76,7 +76,7 @@ export <- function(x,
 
     newpath <- paste0(newpath, ".csv")
 
-    write.csv(x = x, file = newpath)
+    write.csv(x = x, file = newpath, row.names = FALSE)
 
   ## Export option: any ggsave methods
   } else if(method %in% c("png", "svg", "jpeg", "pdf")){

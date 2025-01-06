@@ -1,7 +1,7 @@
 # vivainsights <img src="https://raw.githubusercontent.com/microsoft/vivainsights/main/man/figures/logo.png" align="right" width=15% />
 
 [![R build status](https://github.com/microsoft/vivainsights/workflows/R-CMD-check/badge.svg)](https://github.com/microsoft/wpa/actions/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit)
 [![CRAN status](https://www.r-pkg.org/badges/version/vivainsights)](https://CRAN.R-project.org/package=vivainsights/)
 [![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/vivainsights?color=green/)](https://cran.r-project.org/package=vivainsights/)
 
@@ -29,6 +29,12 @@ To get started with the package,  please see the following links:
 - [Full function list](https://microsoft.github.io/vivainsights/reference/index.html)
 - [Analyst Guide](https://microsoft.github.io/vivainsights/analyst_guide.html)
 - [FAQ](https://microsoft.github.io/wpa/faq.html)
+
+Also check out our package cheat sheet for a quick glimpse of what **vivainsights** offers:
+
+<a href="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/vivainsights_r.pdf"><img src="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/pngs/vivainsights_r_p1.png" align="center" width=50% /></a>
+
+<a href="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/vivainsights_r.pdf"><img src="https://raw.githubusercontent.com/martinctc/cheatsheets/add-vivainsights-r-and-py/pngs/vivainsights_r_p2.png" align="center" width=50% /></a>
 
 ## Related repositories
 

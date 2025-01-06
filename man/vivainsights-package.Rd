@@ -14,6 +14,7 @@ Provides a versatile range of functions, including exploratory data analysis, ti
 Useful links:
 \itemize{
   \item \url{https://microsoft.github.io/vivainsights/}
+  \item Report bugs at \url{https://github.com/microsoft/vivainsights/issues/}
 }
 
 }
