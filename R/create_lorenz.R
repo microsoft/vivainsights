@@ -19,15 +19,16 @@
 #'  equality (the 45-degree line) to the total area under the line of perfect
 #'  equality. It has a range of 0 to 1, where 0 represents perfect equality and
 #'  1 represents perfect inequality. It can be applied to any Viva Insights
-#'  metric where inequality is of interest.
+#'  metric where inequality is of interest, such as email load or technology
+#'  adoption, e.g. Teams, Copilot.
 #'
 #' @param data Data frame containing a Person Query.
 #' @param metric Character string identifying the metric to be used for the
 #'   Lorenz curve and Gini coefficient calculation.
 #' @param return Character string identifying the return type. Options are:
 #'   - `"gini"` - Numeric value representing the Gini coefficient.
-#'   - `"table"` - Data frame containing a summary table of population share and 
-#'   value share.
+#'   - `"table"` - Data frame containing a summary table of cumulative 
+#'   population share and value share.
 #'   - `"plot"` (default) - `ggplot` object representing a plot of the Lorenz 
 #'   curve.
 #'
