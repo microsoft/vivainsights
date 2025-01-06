@@ -163,7 +163,7 @@ communities and HR attributes.
 Analyse a person-to-person (P2P) network query, with multiple visualisation
 and analysis output options. Pass a data frame containing a person-to-person
 query and return a network visualization. Options are available for community
-detection using either the Louvain or the Leiden algorithms.
+detection using algoriths available from igraph.
 }
 \examples{
 p2p_df <- p2p_data_sim(dim = 1, size = 100)

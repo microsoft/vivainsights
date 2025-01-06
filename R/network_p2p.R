@@ -11,7 +11,7 @@
 #' Analyse a person-to-person (P2P) network query, with multiple visualisation
 #' and analysis output options. Pass a data frame containing a person-to-person
 #' query and return a network visualization. Options are available for community
-#' detection using either the Louvain or the Leiden algorithms.
+#' detection using algoriths available from igraph.
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.

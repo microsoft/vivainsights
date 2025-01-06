@@ -1,0 +1,3 @@
+# About
+
+The **vivainsights** package was released on CRAN on October 4th, 2022 (`v0.1.0`). Its predecessor, the **wpa** package designed for Microsoft Workplace Analytics, was released on CRAN on April 6th, 2021. The package was the result of cumulative efforts from the users of Workplace Analytics, who developed various analytical approaches and visualizations for extracting meaningful, actionable insight from collaboration data. Since most of these users happened to use R as the analysis tool of choice, and given the advantage of the language's readability and versatility, the decision was to develop this as an R package. 
