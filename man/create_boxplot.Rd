@@ -35,10 +35,22 @@ following strings:
 See \code{Value} for more information.}
 }
 \value{
-A different output is returned depending on the value passed to the \code{return} argument:
+A different output is returned depending on the value passed to the \code{return}
+argument:
 \itemize{
 \item \code{"plot"}: 'ggplot' object. A box plot for the metric.
-\item \code{"table"}: data frame. A summary table for the metric.
+\item \code{"table"}: data frame. A summary table for the metric, containing the
+following columns:
+\item \code{group}: The HR variable by which the metric is split.
+\item \code{mean}: The mean of the metric.
+\item \code{p25}: The 25th percentile of the metric.
+\item \code{median}: The median of the metric.
+\item \code{p75}: The 75th percentile of the metric.
+\item \code{sd}: The standard deviation of the metric.
+\item \code{min}: The minimum value of the metric.
+\item \code{max}: The maximum value of the metric.
+\item \code{range}: The range of the metric.
+\item \code{n}: The number of employees in the group.
 }
 }
 \description{

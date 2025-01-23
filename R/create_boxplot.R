@@ -25,9 +25,21 @@
 #' See `Value` for more information.
 #'
 #' @return
-#' A different output is returned depending on the value passed to the `return` argument:
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
 #'   - `"plot"`: 'ggplot' object. A box plot for the metric.
-#'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"table"`: data frame. A summary table for the metric, containing the 
+#'   following columns:
+#'   - `group`: The HR variable by which the metric is split.
+#'   - `mean`: The mean of the metric.
+#'   - `p25`: The 25th percentile of the metric.
+#'   - `median`: The median of the metric.
+#'   - `p75`: The 75th percentile of the metric.
+#'   - `sd`: The standard deviation of the metric.
+#'   - `min`: The minimum value of the metric.
+#'   - `max`: The maximum value of the metric.
+#'   - `range`: The range of the metric.
+#'   - `n`: The number of employees in the group.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -104,7 +116,9 @@ create_boxplot <- function(data,
     select(group, tidyselect::all_of(metric)) %>%
     group_by(group) %>%
     summarise(mean = mean(!!sym(metric)),
+              p25 = quantile(!!sym(metric), 0.25),
               median = median(!!sym(metric)),
+              p75 = quantile(!!sym(metric), 0.75),
               sd = sd(!!sym(metric)),
               min = min(!!sym(metric)),
               max = max(!!sym(metric)),
