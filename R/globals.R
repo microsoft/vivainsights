@@ -120,6 +120,16 @@ utils::globalVariables(
     "labelpos",
     "cum_population",
     "cum_values",
-    "cum_values_prop"
+    "cum_values_prop",
+    "GainedHabit",
+    "HabitCurve",
+    "IsHabit",
+    "LostHabit",
+    "Most recent week - Total persons with habit",
+    "Total Person-weeks",
+    "Total Person-weeks with habit",
+    "cumsum_value",
+    "lagged_cumsum",
+    "sum_last_w"
     )
 )
