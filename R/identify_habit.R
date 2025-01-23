@@ -47,7 +47,6 @@
 #'  
 #' @import dplyr
 #' @import tidyr
-#' @importFrom stringr str_detect
 #' @importFrom glue glue
 #' 
 #' @examples
@@ -146,8 +145,8 @@ identify_habit <- function(
       habit_df |>
       group_by(PersonId) |>
       mutate(
-        LostHabit = str_detect(HabitCurve, "10"),
-        GainedHabit = str_detect(HabitCurve, "01")
+        LostHabit = grepl(x = HabitCurve, pattern = "10"),
+        GainedHabit = grepl(x = HabitCurve, pattern = "01")
       ) |>
       ungroup() |>
       filter(MetricDate == max(MetricDate)) |>

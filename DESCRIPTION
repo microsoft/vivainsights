@@ -39,7 +39,8 @@ Imports:
     igraph,
     tidytext,
     ggwordcloud, 
-    lifecycle
+    lifecycle,
+    glue
 Suggests: 
     flexdashboard,
     testthat (>= 3.0.0)
