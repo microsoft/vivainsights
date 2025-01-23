@@ -58,7 +58,8 @@ input is a 'ggplot' object, the default behaviour is to export a PNG.
 Other Import and Export: 
 \code{\link{copy_df}()},
 \code{\link{create_dt}()},
-\code{\link{import_query}()}
+\code{\link{import_query}()},
+\code{\link{prep_query}()}
 }
 \author{
 Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}
