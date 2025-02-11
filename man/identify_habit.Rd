@@ -42,6 +42,7 @@ Valid options include:
 \item \code{"data"}: Returns the data frame with the habit classification.
 \item \code{"plot"}: Returns a ggplot object of a boxplot, showing the percentage of
 periods with where habitual behaviour occurred.
+\item \code{"summary"}: Returns a summary table of the habit analysis.
 }}
 
 \item{plot_mode}{Character string specifying the type of plot to be returned.

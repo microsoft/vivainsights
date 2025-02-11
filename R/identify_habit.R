@@ -43,6 +43,7 @@
 #'  - `"data"`: Returns the data frame with the habit classification.
 #'  - `"plot"`: Returns a ggplot object of a boxplot, showing the percentage of 
 #'  periods with where habitual behaviour occurred.
+#'  - `"summary"`: Returns a summary table of the habit analysis.
 #' @param plot_mode Character string specifying the type of plot to be returned.
 #' Only applicable when `return = "plot"`. Valid options include:
 #'  - `"time"`: Returns a time series plot with the breakdown of users with 
@@ -159,10 +160,10 @@ identify_habit <- function(
         `Most recent week - Total persons with habit` = sum(IsHabit, na.rm = TRUE),
         `Most recent week - % of pop with habit` =
           `Most recent week - Total persons with habit` / n_distinct(PersonId),
-        `Total Persons who have lost habit` = sum(LostHabit),
-        `% of Persons who have lost habit` = mean(LostHabit),
-        `Total Persons who have gained habit` = sum(GainedHabit),
-        `% of Persons who have gained habit` = mean(GainedHabit)
+        `Total Persons who have lost habit` = sum(LostHabit, na.rm = TRUE),
+        `% of Persons who have lost habit` = mean(LostHabit, na.rm = TRUE),
+        `Total Persons who have gained habit` = sum(GainedHabit, na.rm = TRUE),
+        `% of Persons who have gained habit` = mean(GainedHabit, na.rm = TRUE)
       ) |>
       pivot_longer(
         cols = everything(),
