@@ -51,6 +51,7 @@
 #' @import scales
 #' @importFrom stats median
 #' @importFrom stats sd
+#' @importFrom stats quantile
 #'
 #' @family Visualization
 #' @family Flexible
