@@ -49,7 +49,6 @@
 #' @import ggplot2
 #' @import reshape2
 #' @import scales
-#' @importFrom stats median
 #' @importFrom stats sd
 #' @importFrom stats quantile
 #'
