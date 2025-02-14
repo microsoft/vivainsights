@@ -56,6 +56,7 @@
 #' @importFrom glue glue
 #' 
 #' @examples
+#' # Return a plot
 #' identify_habit(
 #'   pq_data,
 #'   metric = "Meetings_with_manager_1_1",
@@ -63,6 +64,16 @@
 #'   width = 9,
 #'   max_window = 12,
 #'   return = "plot"
+#' )
+#' 
+#' # Return a summary
+#' identify_habit(
+#'   pq_data,
+#'   metric = "Meetings_with_manager_1_1",
+#'   threshold = 1,
+#'   width = 9,
+#'   max_window = 12,
+#'   return = "summary"
 #' )
 #' 
 #' @export
@@ -179,7 +190,7 @@ identify_habit <- function(
       select(-group, -n) |>
       rename(
         `Mean - % of Person-weeks with habit` = "mean",
-        `Median - % of Person-weeks with habit` = "median",
+        `Median - % of Person-weeks with habit` = "p50",
         `Min - % of Person-weeks with habit` = "min",
         `Max - % of Person-weeks with habit` = "max",
         `SD - % of Person-weeks with habit` = "sd",

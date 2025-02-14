@@ -72,6 +72,7 @@ of \code{width} should occur within a \code{max_window} period for it to be cons
 a habit?}
 }
 \examples{
+# Return a plot
 identify_habit(
   pq_data,
   metric = "Meetings_with_manager_1_1",
@@ -79,6 +80,16 @@ identify_habit(
   width = 9,
   max_window = 12,
   return = "plot"
+)
+
+# Return a summary
+identify_habit(
+  pq_data,
+  metric = "Meetings_with_manager_1_1",
+  threshold = 1,
+  width = 9,
+  max_window = 12,
+  return = "summary"
 )
 
 }
