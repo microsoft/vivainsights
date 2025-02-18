@@ -67,13 +67,13 @@ in the package that produce faceted scatter plots.
 # Return plot
 create_period_scatter(pq_data,
                       hrvar = "LevelDesignation",
-                      before_start = "2022-05-01",
-                      before_end = "2022-05-31",
-                      after_start = "2022-06-01",
-                      after_end = "2022-07-03")
+                      before_start = "2024-05-01",
+                      before_end = "2024-05-31",
+                      after_start = "2024-06-01",
+                      after_end = "2024-07-03")
 
 # Return a summary table
-create_period_scatter(pq_data, before_end = "2022-05-31", return = "table")
+create_period_scatter(pq_data, before_end = "2024-05-31", return = "table")
 
 
 }

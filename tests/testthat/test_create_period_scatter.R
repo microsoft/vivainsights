@@ -9,10 +9,10 @@ test_that("create_period_scatter returns a data frame when return = 'table'", {
 
   result<-  create_period_scatter(pq_data,
                         hrvar = "LevelDesignation",
-                        before_start = "2022-05-01",
-                        before_end = "2022-05-31",
-                        after_start = "2022-06-01",
-                        after_end = "2022-07-03",
+                        before_start = "2024-05-01",
+                        before_end = "2024-05-31",
+                        after_start = "2024-06-01",
+                        after_end = "2024-07-03",
                         return = "table"
                         )
 
@@ -24,10 +24,10 @@ test_that("create_period_scatter returns a ggplot when return = 'plot'", {
 
   result<-  create_period_scatter(pq_data,
                         hrvar = "LevelDesignation",
-                        before_start = "2022-05-01",
-                        before_end = "2022-05-31",
-                        after_start = "2022-06-01",
-                        after_end = "2022-07-03",
+                        before_start = "2024-05-01",
+                        before_end = "2024-05-31",
+                        after_start = "2024-06-01",
+                        after_end = "2024-07-03",
                         return = "plot"
                         )
 
