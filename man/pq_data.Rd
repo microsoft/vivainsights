@@ -7,79 +7,79 @@
 \format{
 A data frame with 10500 rows and 73 variables:
 \describe{
-\item{PersonId}{Unique identifier for each person}
-\item{MetricDate}{Date of the metric in YYYY-MM-DD format}
-\item{Collaboration_hours}{Total hours spent in collaboration}
-\item{Copilot_actions_taken_in_Teams}{Number of actions taken using Copilot in Teams}
-\item{Meeting_and_call_hours}{Total hours spent in meetings and calls}
-\item{Internal_network_size}{Size of the internal network}
-\item{Email_hours}{Total hours spent on emails}
-\item{Channel_message_posts}{Number of channel message posts}
-\item{Conflicting_meeting_hours}{Hours spent in conflicting meetings}
-\item{Large_and_long_meeting_hours}{Hours spent in large and long meetings}
-\item{External_collaboration_hours}{Total hours spent in external collaboration}
-\item{Active_connected_hours}{Total hours actively connected}
-\item{Meetings}{Number of meetings}
-\item{After_hours_collaboration_hours}{Hours spent in collaboration after hours}
-\item{Call_hours}{Total hours spent on calls}
-\item{Calls}{Number of calls}
-\item{Channel_message_hours}{Total hours spent on channel messages}
-\item{Chat_hours}{Total hours spent on chats}
-\item{Collaboration_span}{Span of collaboration}
-\item{Emails_read}{Number of emails read}
-\item{Emails_sent}{Number of emails sent}
-\item{External_network_size}{Size of the external network}
-\item{Meeting_and_call_hours_with_manager}{Hours spent in meetings and calls with manager}
-\item{Meeting_and_call_hours_with_manager_1_1}{Hours spent in one-on-one meetings and calls with manager}
-\item{Meeting_and_call_hours_with_skip_level}{Hours spent in meetings and calls with skip-level manager}
-\item{Meeting_hours}{Total hours spent in meetings}
-\item{Multitasking_hours}{Total hours spent multitasking}
-\item{Network_outside_company}{Size of the network outside the company}
-\item{Network_outside_organisation}{Size of the network outside the organization}
-\item{Time_with_leadership}{Time spent with leadership}
-\item{Unscheduled_call_hours}{Hours spent on unscheduled calls}
-\item{Weekend_collaboration_hours}{Hours spent in collaboration during weekends}
-\item{Copilot_actions_taken_in_Copilot_chat__work_}{Number of actions taken using Copilot in work chat}
-\item{Copilot_actions_taken_in_Excel}{Number of actions taken using Copilot in Excel}
-\item{Copilot_actions_taken_in_Outlook}{Number of actions taken using Copilot in Outlook}
-\item{Copilot_actions_taken_in_Powerpoint}{Number of actions taken using Copilot in PowerPoint}
-\item{Copilot_actions_taken_in_Word}{Number of actions taken using Copilot in Word}
-\item{Days_of_active_Copilot_chat__work__usage}{Days of active Copilot chat (work) usage}
-\item{Days_of_active_Copilot_usage_in_Excel}{Days of active Copilot usage in Excel}
-\item{Days_of_active_Copilot_usage_in_Loop}{Days of active Copilot usage in Loop}
-\item{Days_of_active_Copilot_usage_in_OneNote}{Days of active Copilot usage in OneNote}
-\item{Days_of_active_Copilot_usage_in_Outlook}{Days of active Copilot usage in Outlook}
-\item{Days_of_active_Copilot_usage_in_Powerpoint}{Days of active Copilot usage in PowerPoint}
-\item{Days_of_active_Copilot_usage_in_Teams}{Days of active Copilot usage in Teams}
-\item{Days_of_active_Copilot_usage_in_Word}{Days of active Copilot usage in Word}
-\item{Total_Copilot_active_days}{Total days of active Copilot usage}
-\item{Total_Copilot_enabled_days}{Total days Copilot was enabled}
-\item{Barriers_to_Execution}{Barriers to execution metric}
-\item{Change_Adaptation}{Change adaptation metric}
-\item{Collaboration}{Collaboration metric}
-\item{Communication_Flow}{Communication flow metric}
-\item{Continuous_Improvement}{Continuous improvement metric}
-\item{eSat}{Employee satisfaction metric}
-\item{Initiative}{Initiative metric}
-\item{Manager_Recommend}{Manager recommendation metric}
-\item{Resources}{Resources metric}
-\item{Speak_My_Mind}{Speak my mind metric}
-\item{Wellbeing}{Wellbeing metric}
-\item{Work_Life_Balance}{Work-life balance metric}
-\item{Workload}{Workload metric}
-\item{Create_Excel_formula_actions_taken_using_Copilot}{Number of Excel formula actions taken using Copilot}
-\item{Create_presentation_actions_taken_using_Copilot}{Number of presentation actions taken using Copilot}
-\item{Generate_email_draft_actions_taken_using_Copilot_in_Outlook}{Number of email draft actions taken using Copilot in Outlook}
-\item{Summarise_chat_actions_taken_using_Copilot_in_Teams}{Number of chat summary actions taken using Copilot in Teams}
-\item{Summarise_email_thread_actions_taken_using_Copilot_in_Outlook}{Number of email thread summary actions taken using Copilot in Outlook}
-\item{Summarise_meeting_actions_taken_using_Copilot_in_Teams}{Number of meeting summary actions taken using Copilot in Teams}
-\item{Summarise_presentation_actions_taken_using_Copilot_in_PowerPoint}{Number of presentation summary actions taken using Copilot in PowerPoint}
-\item{Summarise_Word_document_actions_taken_using_Copilot_in_Word}{Number of Word document summary actions taken using Copilot in Word}
-\item{FunctionType}{Type of function within the organization}
-\item{SupervisorIndicator}{Indicator if the person is a supervisor}
-\item{Level}{Level within the organization}
-\item{Organization}{Name of the organization}
-\item{LevelDesignation}{Designation level within the organization}
+\item{PersonId}{}
+\item{MetricDate}{}
+\item{Collaboration_hours}{}
+\item{Copilot_actions_taken_in_Teams}{}
+\item{Meeting_and_call_hours}{}
+\item{Internal_network_size}{}
+\item{Email_hours}{}
+\item{Channel_message_posts}{}
+\item{Conflicting_meeting_hours}{}
+\item{Large_and_long_meeting_hours}{}
+\item{External_collaboration_hours}{}
+\item{Active_connected_hours}{}
+\item{Meetings}{}
+\item{After_hours_collaboration_hours}{}
+\item{Call_hours}{}
+\item{Calls}{}
+\item{Channel_message_hours}{}
+\item{Chat_hours}{}
+\item{Collaboration_span}{}
+\item{Emails_read}{}
+\item{Emails_sent}{}
+\item{External_network_size}{}
+\item{Meeting_and_call_hours_with_manager}{}
+\item{Meeting_and_call_hours_with_manager_1_1}{}
+\item{Meeting_and_call_hours_with_skip_level}{}
+\item{Meeting_hours}{}
+\item{Multitasking_hours}{}
+\item{Network_outside_company}{}
+\item{Network_outside_organisation}{}
+\item{Time_with_leadership}{}
+\item{Unscheduled_call_hours}{}
+\item{Weekend_collaboration_hours}{}
+\item{Copilot_actions_taken_in_Copilot_chat__work_}{}
+\item{Copilot_actions_taken_in_Excel}{}
+\item{Copilot_actions_taken_in_Outlook}{}
+\item{Copilot_actions_taken_in_Powerpoint}{}
+\item{Copilot_actions_taken_in_Word}{}
+\item{Days_of_active_Copilot_chat__work__usage}{}
+\item{Days_of_active_Copilot_usage_in_Excel}{}
+\item{Days_of_active_Copilot_usage_in_Loop}{}
+\item{Days_of_active_Copilot_usage_in_OneNote}{}
+\item{Days_of_active_Copilot_usage_in_Outlook}{}
+\item{Days_of_active_Copilot_usage_in_Powerpoint}{}
+\item{Days_of_active_Copilot_usage_in_Teams}{}
+\item{Days_of_active_Copilot_usage_in_Word}{}
+\item{Total_Copilot_active_days}{}
+\item{Total_Copilot_enabled_days}{}
+\item{Barriers_to_Execution}{}
+\item{Change_Adaptation}{}
+\item{Collaboration}{}
+\item{Communication_Flow}{}
+\item{Continuous_Improvement}{}
+\item{eSat}{}
+\item{Initiative}{}
+\item{Manager_Recommend}{}
+\item{Resources}{}
+\item{Speak_My_Mind}{}
+\item{Wellbeing}{}
+\item{Work_Life_Balance}{}
+\item{Workload}{}
+\item{Create_Excel_formula_actions_taken_using_Copilot}{}
+\item{Create_presentation_actions_taken_using_Copilot}{}
+\item{Generate_email_draft_actions_taken_using_Copilot_in_Outlook}{}
+\item{Summarise_chat_actions_taken_using_Copilot_in_Teams}{}
+\item{Summarise_email_thread_actions_taken_using_Copilot_in_Outlook}{}
+\item{Summarise_meeting_actions_taken_using_Copilot_in_Teams}{}
+\item{Summarise_presentation_actions_taken_using_Copilot_in_PowerPoint}{}
+\item{Summarise_Word_document_actions_taken_using_Copilot_in_Word}{}
+\item{FunctionType}{}
+\item{SupervisorIndicator}{}
+\item{Level}{}
+\item{Organization}{}
+\item{LevelDesignation}{}
 }
 }
 \source{
