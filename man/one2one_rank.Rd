@@ -63,7 +63,7 @@ table with a all of groups (across multiple HR attributes) ranked by manager
 1:1 time.
 }
 \details{
-Uses the metric \code{Meeting_hours_with_manager_1_1}.
+Uses the metric \code{Meeting_and_call_hours_with_manager_1_1}.
 See \code{create_rank()} for applying the same analysis to a different metric.
 }
 \examples{

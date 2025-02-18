@@ -12,7 +12,7 @@
 #' 1:1 time.
 #'
 #' @details
-#' Uses the metric `Meeting_hours_with_manager_1_1`.
+#' Uses the metric `Meeting_and_call_hours_with_manager_1_1`.
 #' See `create_rank()` for applying the same analysis to a different metric.
 #'
 #' @inheritParams create_rank
@@ -38,7 +38,7 @@ one2one_rank <- function(data,
                          return = "plot"){
 
   data %>%
-    create_rank(metric = "Meeting_hours_with_manager_1_1",
+    create_rank(metric = "Meeting_and_call_hours_with_manager_1_1",
                 hrvar = hrvar,
                 mingroup = mingroup,
                 mode = mode,

@@ -38,7 +38,7 @@ with a separate panel per value in the HR attribute.
 Additional options available to return a summary table.
 }
 \details{
-Uses the metric \code{Meeting_hours_with_manager_1_1}.
+Uses the metric \code{Meeting_and_call_hours_with_manager_1_1}.
 }
 \examples{
 # Return a line plot

@@ -48,7 +48,7 @@ utils::globalVariables(
     "calculation",
     "variable",
     "value_rescaled",
-    "Meeting_hours_with_manager_1_1",
+    "Meeting_and_call_hours_with_manager_1_1",
     "Meetings_with_manager_1_on_1",
     "Cadence_of_1_on_1_meetings_with_manager",
     "Organization",
