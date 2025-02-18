@@ -58,8 +58,13 @@ hrvar_count_all <- function(data,
 
   summary_table_n <-
     data %>%
-    select(PersonId, extracted_chr) %>%
-    summarise_at(vars(extracted_chr), ~n_distinct(.,na.rm = TRUE)) # Excludes NAs from unique count
+    select(PersonId, tidyselect::all_of(extracted_chr)) %>%
+    summarise(
+      across(
+        .cols = tidyselect::all_of(extracted_chr),
+        .fns = ~n_distinct(., na.rm = TRUE)
+      )
+    )
 
   ## Note: WPA here is used for a matching separator
   results <-
