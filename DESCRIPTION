@@ -15,7 +15,7 @@ Encoding: UTF-8
 LazyData: true
 Language: en-US
 Depends:
-    R (>= 3.1.2)
+    R (>= 3.5)
 Imports: 
     dplyr,
     stats,
