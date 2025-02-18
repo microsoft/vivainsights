@@ -38,7 +38,7 @@ one2one_sum <- function(data,
   create_bar(data = cleaned_data,
              hrvar = hrvar,
              mingroup = mingroup,
-             metric = "Scheduled 1:1 meeting minutes with manager",
+             metric = "Scheduled 1:1 meeting and call minutes with manager",
              return = return,
              bar_colour = "darkblue")
 

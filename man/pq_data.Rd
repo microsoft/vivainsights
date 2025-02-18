@@ -39,7 +39,7 @@ A data frame with 10500 rows and 73 variables:
 \item{Time_with_leadership}{Time spent with leadership}
 \item{Unscheduled_call_hours}{Hours spent on unscheduled calls}
 \item{Weekend_collaboration_hours}{Hours spent in collaboration during weekends}
-\item{Copilot_actions_taken_in_Copilot_chat_(work)}{Number of actions taken using Copilot in work chat}
+\item{Copilot_actions_taken_in_Copilot_chat__work_}{Number of actions taken using Copilot in work chat}
 \item{Copilot_actions_taken_in_Excel}{Number of actions taken using Copilot in Excel}
 \item{Copilot_actions_taken_in_Outlook}{Number of actions taken using Copilot in Outlook}
 \item{Copilot_actions_taken_in_Powerpoint}{Number of actions taken using Copilot in PowerPoint}

@@ -165,7 +165,7 @@ one2one_freq <- function(data,
       expanded_data %>%
       mutate(
         across(
-          .cols = Cadence_of_1_on_1_meetings_with_manager,
+          .cols = Cadence_of_1_on_1_meetings_and_calls_with_manager,
           .fns = ~ifelse(!is.finite(.), arb_const, .)
         )
       )
