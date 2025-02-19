@@ -36,17 +36,17 @@ day to identify work shifts. The relevant variables are
 }
 \examples{
 # Demo with `pq_data` example where Outlook Start and End times are imputed
-spq_df <- pq_data
+# Use a small sample for faster runtime
+pq_data_small <- dplyr::slice_sample(pq_data, prop = 0.1)
 
-spq_df$WorkingStartTimeSetInOutlook <- "6:30"
-
-spq_df$WorkingEndTimeSetInOutlook <- "23:30"
+pq_data_small$WorkingStartTimeSetInOutlook <- "6:30"
+pq_data_small$WorkingEndTimeSetInOutlook <- "23:30"
 
 # Return plot
-spq_df \%>\% identify_shifts()
+pq_data_small \%>\% identify_shifts()
 
 # Return summary table
-spq_df \%>\% identify_shifts(return = "table")
+pq_data_small \%>\% identify_shifts(return = "table")
 
 }
 \seealso{

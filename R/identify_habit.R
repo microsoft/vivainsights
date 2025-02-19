@@ -88,16 +88,16 @@ identify_habit <- function(
     plot_mode = "time"){
   
   habit_df <-
-    data |>
-    group_by(PersonId) |>
-    arrange(MetricDate) |> # Ensure ranked order from low to high
+    data %>%
+    group_by(PersonId) %>%
+    arrange(MetricDate) %>% # Ensure ranked order from low to high
     mutate(
       cumsum_value = cumsum(!!sym(metric) >= threshold),
       lagged_cumsum = lag(cumsum_value, max_window, default = 0),
       sum_last_w = cumsum_value - lagged_cumsum,
       IsHabit = sum_last_w >= width,
       HabitCurve = paste(as.numeric(IsHabit), collapse = "")
-    ) |>
+    ) %>%
     ungroup()
   
   if(return == "data"){
@@ -119,9 +119,9 @@ identify_habit <- function(
     if(plot_mode == "time"){
       
       suppressMessages(
-        habit_df |>
-          group_by(MetricDate, IsHabit) |>
-          summarise(n = n_distinct(PersonId), .groups = "drop") |>
+        habit_df %>%
+          group_by(MetricDate, IsHabit) %>%
+          summarise(n = n_distinct(PersonId), .groups = "drop") %>%
           ggplot(aes(x = MetricDate, y = n, fill = IsHabit)) +
           geom_bar(stat = "identity", position = "fill") +
           scale_y_continuous(labels = scales::percent) +
@@ -138,7 +138,7 @@ identify_habit <- function(
     } else if(plot_mode == "boxplot"){
       
       suppressMessages(
-        habit_df |>
+        habit_df %>%
           create_boxplot(hrvar = hrvar, metric = "IsHabit") +
           labs(
             title = paste("Habitual Behaviour -", us_to_space(metric)),
@@ -159,14 +159,14 @@ identify_habit <- function(
     
     # Latest period / week stats
     recent_tb <-
-      habit_df |>
-      group_by(PersonId) |>
+      habit_df %>%
+      group_by(PersonId) %>%
       mutate(
         LostHabit = grepl(x = HabitCurve, pattern = "10"),
         GainedHabit = grepl(x = HabitCurve, pattern = "01")
-      ) |>
-      ungroup() |>
-      filter(MetricDate == max(MetricDate)) |>
+      ) %>%
+      ungroup() %>%
+      filter(MetricDate == max(MetricDate)) %>%
       summarise(
         `Most recent week - Total persons with habit` = sum(IsHabit, na.rm = TRUE),
         `Most recent week - % of pop with habit` =
@@ -175,7 +175,7 @@ identify_habit <- function(
         `% of Persons who have lost habit` = mean(LostHabit, na.rm = TRUE),
         `Total Persons who have gained habit` = sum(GainedHabit, na.rm = TRUE),
         `% of Persons who have gained habit` = mean(GainedHabit, na.rm = TRUE)
-      ) |>
+      ) %>%
       pivot_longer(
         cols = everything(),
         names_to = "Statistics",
@@ -185,9 +185,9 @@ identify_habit <- function(
     
     # Distribution stats
     dist_tb <-
-      habit_df |>
-      create_boxplot(hrvar = NULL, metric = "IsHabit", return = "table") |>
-      select(-group, -n) |>
+      habit_df %>%
+      create_boxplot(hrvar = NULL, metric = "IsHabit", return = "table") %>%
+      select(-group, -n) %>%
       rename(
         `Mean - % of Person-weeks with habit` = "mean",
         `Median - % of Person-weeks with habit` = "p50",
@@ -195,7 +195,7 @@ identify_habit <- function(
         `Max - % of Person-weeks with habit` = "max",
         `SD - % of Person-weeks with habit` = "sd",
         `Range - % of Person-weeks with habit` = "range"
-      ) |>
+      ) %>%
       pivot_longer(
         cols = everything(),
         names_to = "Statistics",
@@ -204,19 +204,19 @@ identify_habit <- function(
     
     # Person-week analysis
     pw_tb <-
-      habit_df |>
+      habit_df %>%
       summarise(
         `Total Person-weeks with habit` = sum(IsHabit),
         `Total Person-weeks` = n(),
         `% of Person-weeks with habit` = `Total Person-weeks with habit` / `Total Person-weeks`,
         `Total Persons` = n_distinct(PersonId),
         `Total Weeks` = n_distinct(MetricDate)
-      ) |>
+      ) %>%
       pivot_longer(
         cols = everything(),
         names_to = "Statistics",
         values_to = "Value"
-      ) |>
+      ) %>%
       mutate(Value = round(Value, 2))
     
     # Combine summary
