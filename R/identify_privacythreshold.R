@@ -30,12 +30,14 @@
 #'   - `"text"`: string. A diagnostic message.
 #'
 #' @examples
+#' \dontrun{
 #' # Return a summary table
 #' pq_data %>% identify_privacythreshold(return = "table")
 #'
 #' # Return a diagnostic message
 #' pq_data %>% identify_privacythreshold(return = "text")
-#'
+#' }
+#' 
 #' @import dplyr
 #' @import ggplot2
 #' @import reshape2

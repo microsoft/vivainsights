@@ -47,11 +47,13 @@ under the privacy threshold. The method consists in reviewing each individual
 HR attribute, and count the distinct people within each group.
 }
 \examples{
+\dontrun{
 # Return a summary table
 pq_data \%>\% identify_privacythreshold(return = "table")
 
 # Return a diagnostic message
 pq_data \%>\% identify_privacythreshold(return = "text")
+}
 
 }
 \seealso{

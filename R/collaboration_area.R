@@ -43,10 +43,12 @@
 #'
 #' # Return plot with hrvar split
 #' collaboration_area(pq_data, hrvar = "Organization")
-#'
+#' 
+#' \dontrun{
 #' # Return summary table
 #' collaboration_area(pq_data, return = "table")
-#'
+#' }
+#' 
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
 #'   - `"plot"`: 'ggplot' object. A stacked area plot for the metric.
@@ -56,7 +58,7 @@
 
 collaboration_area <- function(data,
                                hrvar = NULL,
-                               mingroup=5,
+                               mingroup = 5,
                                return = "plot"){
 
   ## Handle date name

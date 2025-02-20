@@ -53,8 +53,10 @@ collaboration_area(pq_data)
 # Return plot with hrvar split
 collaboration_area(pq_data, hrvar = "Organization")
 
+\dontrun{
 # Return summary table
 collaboration_area(pq_data, return = "table")
+}
 
 }
 \seealso{

@@ -38,10 +38,12 @@
 #'
 #' # Heatmap plot with custom colours
 #' keymetrics_scan(pq_data, low = "purple", high = "yellow")
-#'
+#' 
+#' \dontrun{
 #' # Return summary table
 #' keymetrics_scan(pq_data, hrvar = "LevelDesignation", return = "table")
-#'
+#' }
+#' 
 #' @export
 
 keymetrics_scan <- function(data,
