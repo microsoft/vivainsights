@@ -11,7 +11,7 @@ to extract HR / organisational attributes from a data frame."><meta property="og
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ to extract HR / organisational attributes from a data frame."><meta property="og
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Extract HR attribute variables</h1>
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/v0.5.5/R/extract_hr.R" class="external-link"><code>R/extract_hr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/main/R/extract_hr.R" class="external-link"><code>R/extract_hr.R</code></a></small>
       <div class="d-none name"><code>extract_hr.Rd</code></div>
     </div>
 
@@ -137,24 +137,24 @@ in the data.</p></li>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"names"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "LevelDesignation"    "SupervisorIndicator" "Organization"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "FunctionType"        "WeekendDays"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "FunctionType"        "SupervisorIndicator" "Level"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "Organization"        "LevelDesignation"   </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">pq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">extract_hr</span><span class="op">(</span>return <span class="op">=</span> <span class="st">"vars"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,000 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    LevelDesignation SupervisorIndicator    Organization FunctionType WeekendDays</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Manager          Manager                Sales and M… G_and_A      [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Support          Individual Contributor Finance      Sales        [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Support          Individual Contributor Product      IT           [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Director         Manager+               Sales and M… Analytics    [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Support          Individual Contributor Sales and M… IT           [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Support          Individual Contributor HR           Engineering  [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Support          Individual Contributor Finance      Engineering  [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Support          Individual Contributor HR           Analytics    [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Senior IC        Individual Contributor Product      Analytics    [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Support          Individual Contributor Finance      Sales        [SUNDAY, S…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 990 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6,900 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    FunctionType SupervisorIndicator Level  Organization LevelDesignation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Specialist   Manager             Level3 IT           Senior IC       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Consultant   Manager             Level2 Legal        Senior Manager  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Advisor      Manager             Level4 Legal        Junior IC       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Consultant   Manager             Level1 HR           Executive       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Technician   Manager             Level1 Finance      Executive       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Advisor      Manager             Level3 Finance      Senior IC       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Specialist   IC                  Level4 Finance      Junior IC       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Advisor      Manager             Level3 IT           Senior IC       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Manager      Manager             Level3 HR           Senior IC       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Advisor      Manager             Level1 IT           Executive       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6,890 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

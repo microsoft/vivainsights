@@ -9,7 +9,7 @@ Additional options available to return a table with distribution elements."><met
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@ Additional options available to return a table with distribution elements."><met
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Box Plot for any metric</h1>
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/v0.5.5/R/create_boxplot.R" class="external-link"><code>R/create_boxplot.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/main/R/create_boxplot.R" class="external-link"><code>R/create_boxplot.R</code></a></small>
       <div class="d-none name"><code>create_boxplot.Rd</code></div>
     </div>
 
@@ -91,13 +91,29 @@ size. Defaults to 5.</p></dd>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
+<li><p><code>"data"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A different output is returned depending on the value passed to the <code>return</code> argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A box plot for the metric.</p></li>
-<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+    <p>A different output is returned depending on the value passed to the <code>return</code>
+argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A box plot for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric, containing the
+following columns:</p><ul><li><p><code>group</code>: The HR variable by which the metric is split.</p></li>
+<li><p><code>mean</code>: The mean of the metric.</p></li>
+<li><p><code>min</code>: The minimum value of the metric.</p></li>
+<li><p><code>p10</code>: The 10th percentile of the metric.</p></li>
+<li><p><code>p25</code>: The 25th percentile of the metric.</p></li>
+<li><p><code>p50</code>: The 50th percentile of the metric.</p></li>
+<li><p><code>p75</code>: The 75th percentile of the metric.</p></li>
+<li><p><code>p90</code>: The 90th percentile of the metric.</p></li>
+<li><p><code>max</code>: The maximum value of the metric.</p></li>
+<li><p><code>sd</code>: The standard deviation of the metric.</p></li>
+<li><p><code>range</code>: The range of the metric.</p></li>
+<li><p><code>n</code>: The number of observations.</p></li>
+</ul></li>
+<li><p><code>"data"</code>: data frame. A data frame containing the metric and group.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -195,13 +211,16 @@ in the package that produce box plots.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create a summary statistics table for Collaboration_hoursby Organization</span></span></span>
 <span class="r-in"><span><span class="fu">create_boxplot</span><span class="op">(</span><span class="va">pq_data</span>, metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>, hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group                mean median    sd   min   max range     n</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance              16.7   13.4 10.4   8.83  54.5  45.7    27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                   17.8   12.3 23.4   8.99 119.  110.     21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product              11.7   10.8  5.03  8.13  32.5  24.4    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing  25.8   13.3 27.8   7.08 119.  112.     31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   group       mean   min   p10   p25   p50   p75   p90   max    sd range     n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance     23.1  20.3  21.3  22.3  23.1  23.9  25.0  25.4  1.24  5.10    68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR          23.1  21.0  22.0  22.4  22.9  24.0  24.4  24.8  1.01  3.78    33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> IT          22.8  20.3  21.0  21.7  22.8  23.8  24.5  26.9  1.43  6.65    68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Legal       22.5  19.7  21.0  21.5  22.6  23.5  24.2  24.8  1.23  5.06    44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Operations  23.5  20.0  21.7  22.6  23.3  24.9  25.5  26.4  1.62  6.39    22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Research    23.3  20.1  21.8  22.5  23.3  24.2  25.0  25.5  1.30  5.39    52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Sales       23.1  21.2  21.6  22.2  23.2  23.9  24.5  24.7  1.13  3.48    13</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -15,7 +15,7 @@ Additional options available to return a summary table."><meta property="og:imag
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@ Additional options available to return a summary table."><meta property="og:imag
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Horizontal stacked bar plot for any metric</h1>
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/v0.5.5/R/create_stacked.R" class="external-link"><code>R/create_stacked.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/main/R/create_stacked.R" class="external-link"><code>R/create_stacked.R</code></a></small>
       <div class="d-none name"><code>create_stacked.Rd</code></div>
     </div>
 
@@ -265,17 +265,14 @@ When 'table' is passed, a summary table is returned as a data frame.</p>
 <span class="r-in"><span>                             <span class="st">"Call_hours"</span>,</span></span>
 <span class="r-in"><span>                             <span class="st">"Chat_hours"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                 return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   group     Meeting_hours Email_hours Call_hours Chat_hours Total Employee_Count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Analytics          17.7        1.09     0       0          18.8             12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Customer…          14.4        1.26     0       0          15.7             12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Engineer…          18.7        1.20     0       0.000<span style="text-decoration: underline;">093</span>1  19.9             20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> G_and_A            16.8        1.23     0       0          18.1              6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> IT                 17.0        1.06     0       0          18.0             11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Marketing          28.2        1.35     0.029<span style="text-decoration: underline;">6</span>  0.008<span style="text-decoration: underline;">84</span>    29.5             12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> R_and_D            11.7        1.05     0       0          12.7             16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Sales              20.4        1.54     0       0          22.0             11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Advisor            18.4        8.73       9.49       3.34  40.0            293</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Consulta…          19.3        8.81      10.2        3.12  41.4            288</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Manager            18.4        8.75      10.3        3.14  40.7            300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Speciali…          19.1        8.75      10.3        2.95  41.1            300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Technici…          18.8        8.88      11.6        2.98  42.2            274</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

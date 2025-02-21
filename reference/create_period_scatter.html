@@ -13,7 +13,7 @@ to return a summary table."><meta property="og:image" content="https://microsoft
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@ to return a summary table."><meta property="og:image" content="https://microsoft
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Period comparison scatter plot for any two metrics</h1>
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/v0.5.5/R/create_period_scatter.R" class="external-link"><code>R/create_period_scatter.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/main/R/create_period_scatter.R" class="external-link"><code>R/create_period_scatter.R</code></a></small>
       <div class="d-none name"><code>create_period_scatter.Rd</code></div>
     </div>
 
@@ -231,25 +231,31 @@ in the package that produce faceted scatter plots.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return plot</span></span></span>
 <span class="r-in"><span><span class="fu">create_period_scatter</span><span class="op">(</span><span class="va">pq_data</span>,</span></span>
 <span class="r-in"><span>                      hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>,</span></span>
-<span class="r-in"><span>                      before_start <span class="op">=</span> <span class="st">"2022-05-01"</span>,</span></span>
-<span class="r-in"><span>                      before_end <span class="op">=</span> <span class="st">"2022-05-31"</span>,</span></span>
-<span class="r-in"><span>                      after_start <span class="op">=</span> <span class="st">"2022-06-01"</span>,</span></span>
-<span class="r-in"><span>                      after_end <span class="op">=</span> <span class="st">"2022-07-03"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                      before_start <span class="op">=</span> <span class="st">"2024-05-01"</span>,</span></span>
+<span class="r-in"><span>                      before_end <span class="op">=</span> <span class="st">"2024-05-31"</span>,</span></span>
+<span class="r-in"><span>                      after_start <span class="op">=</span> <span class="st">"2024-06-01"</span>,</span></span>
+<span class="r-in"><span>                      after_end <span class="op">=</span> <span class="st">"2024-07-03"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_period_scatter-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Return a summary table</span></span></span>
-<span class="r-in"><span><span class="fu">create_period_scatter</span><span class="op">(</span><span class="va">pq_data</span>, before_end <span class="op">=</span> <span class="st">"2022-05-31"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   group               Large_and_long_meeting_hours Meeting_hours Period       n</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Finance                                     8.34          15.6 Period 1    27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> HR                                         10.5           17.8 Period 1    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Product                                     4.96          10.4 Period 1    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Sales and Marketing                        14.8           24.7 Period 1    31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Finance                                     8.94          16.2 Period 2    27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> HR                                          8.84          16.5 Period 2    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Product                                     5.98          11.6 Period 2    21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Sales and Marketing                        13.4           25.4 Period 2    31</span>
+<span class="r-in"><span><span class="fu">create_period_scatter</span><span class="op">(</span><span class="va">pq_data</span>, before_end <span class="op">=</span> <span class="st">"2024-05-31"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    group      Large_and_long_meeting_hours Meeting_hours Period       n</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Finance                            1.09          18.3 Period 1    68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> HR                                 1.08          18.4 Period 1    33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> IT                                 1.02          17.2 Period 1    68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Legal                              1.12          22.3 Period 1    44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Operations                         1.19          20.5 Period 1    22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Research                           1.12          20.6 Period 1    52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Sales                              1.13          19.4 Period 1    13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Finance                            1.16          19.1 Period 2    68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> HR                                 1.17          18.3 Period 2    33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> IT                                 1.11          17.7 Period 2    68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Legal                              1.06          16.9 Period 2    44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Operations                         1.11          19.6 Period 2    22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Research                           1.18          20.1 Period 2    52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Sales                              1.11          18.8 Period 2    13</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

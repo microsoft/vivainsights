@@ -87,6 +87,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/hrvar_trend.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_churn.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_datefreq.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_habit.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_holidayweeks.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_inactiveweeks.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_nkw.html</loc></url>
@@ -125,6 +126,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/pairwise_count.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/pipe.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/pq_data.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/prep_query.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/read_preamble.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/rgb2hex.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/theme_wpa.html</loc></url>
