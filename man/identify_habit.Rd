@@ -12,7 +12,8 @@ identify_habit(
   max_window,
   hrvar = NULL,
   return = "plot",
-  plot_mode = "time"
+  plot_mode = "time",
+  fill_col = c("#E5E5E5", "#0078D4")
 )
 }
 \arguments{
@@ -53,6 +54,9 @@ habitual behaviour.
 \item \code{"boxplot"}: Returns a boxplot of the percentage of periods with habitual
 behaviour.
 }}
+
+\item{fill_col}{Character vector of length 2 specifying the colours to be
+used in the plot. Only applicable when \code{return = "plot"} and \code{plot_mode = "time"}.}
 }
 \description{
 Based on the principle of consistency, this function identifies whether a
