@@ -29,6 +29,13 @@ install.packages("vivainsights")
 pak::pak("microsoft/vivainsights")
 ```
 
+## Usage
+
+To get started with the package, please see the following links:
+* [Installation and Set-up](https://microsoft.github.io/vivainsights/analyst_guide_getting_started.html)
+* [Full function list](https://microsoft.github.io/vivainsights/reference/index.html)
+* [Analyst Guide](https://microsoft.github.io/vivainsights/analyst_guide_intro.html)
+
 ## Cheatsheet
 
 Also check out our package cheat sheet for a quick glimpse of what **vivainsights** offers:
@@ -51,7 +58,6 @@ Also check out our package cheat sheet for a quick glimpse of what **vivainsight
 ## Code of Conduct
 
 We would ask you to please read the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) prior to engaging with this package.
-
 
 **Trademarks** 
 
