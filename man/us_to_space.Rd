@@ -16,7 +16,7 @@ Character vector containing the modified string.
 Convenience function to convert underscores to space
 }
 \examples{
-us_to_space("Meeting_hours_with_manager_1_on_1")
+us_to_space("Meeting_and_call_hours_with_manager_1_on_1")
 
 }
 \seealso{

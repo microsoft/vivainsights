@@ -134,7 +134,7 @@ create_stacked <- function(data,
   myTable <-
     data %>%
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
-    select(PersonId, group, metrics) %>%
+    select(PersonId, group, tidyselect::all_of(metrics)) %>%
     group_by(PersonId, group) %>%
     summarise(across(.cols = all_of(metrics), .fns = ~mean(.)),
       .groups = "drop") %>%

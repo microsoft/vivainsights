@@ -33,38 +33,35 @@
 #' @family Visualization
 #'
 #' @examples
+#' \dontrun{
 #' # Heatmap plot is returned by default
 #' keymetrics_scan(pq_data)
 #'
 #' # Heatmap plot with custom colours
 #' keymetrics_scan(pq_data, low = "purple", high = "yellow")
-#'
+#' 
 #' # Return summary table
 #' keymetrics_scan(pq_data, hrvar = "LevelDesignation", return = "table")
-#'
+#' }
+#' 
 #' @export
 
 keymetrics_scan <- function(data,
                             hrvar = "Organization",
                             mingroup = 5,
-                            metrics = c("Workweek_span",
+                            metrics = c("Collaboration_span",
                                         "Collaboration_hours",
                                         "After_hours_collaboration_hours",
                                         "Meetings",
                                         "Meeting_hours",
                                         "After_hours_meeting_hours",
-                                        "Low_quality_meeting_hours",
-                                        "Meeting_hours_with_manager_1_on_1",
-                                        "Meeting_hours_with_manager",
+                                        "Meeting_and_call_hours_with_manager_1_1",
+                                        "Meeting_and_call_hours_with_manager",
                                         "Emails_sent",
                                         "Email_hours",
                                         "After_hours_email_hours",
-                                        "Generated_workload_email_hours",
-                                        "Total_focus_hours",
                                         "Internal_network_size",
-                                        "Networking_outside_organization",
-                                        "External_network_size",
-                                        "Networking_outside_company"),
+                                        "External_network_size"),
                             return = "plot",
                             low = rgb2hex(7, 111, 161),
                             mid = rgb2hex(241, 204, 158),

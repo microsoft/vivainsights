@@ -37,6 +37,7 @@ create_dt(output)
 Other Import and Export: 
 \code{\link{copy_df}()},
 \code{\link{export}()},
-\code{\link{import_query}()}
+\code{\link{import_query}()},
+\code{\link{prep_query}()}
 }
 \concept{Import and Export}

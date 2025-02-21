@@ -72,12 +72,12 @@ one2one_freq <- function(data,
   expanded_data <-
     data %>%
     mutate(
-      Meetings_with_manager_1_on_1 = Meeting_hours_with_manager_1_1 > 0
+      Meetings_and_calls_with_manager_1_on_1 = Meeting_and_call_hours_with_manager_1_1 > 0
       ) %>%
     group_by(PersonId)  %>%
     mutate(
-      Cadence_of_1_on_1_meetings_with_manager =
-        1 / (sum(Meetings_with_manager_1_on_1) / n())
+      Cadence_of_1_on_1_meetings_and_calls_with_manager =
+        1 / (sum(Meetings_and_calls_with_manager_1_on_1) / n())
       )
 
 
@@ -118,15 +118,15 @@ one2one_freq <- function(data,
     expanded_data %>%
       filter_all(all_vars(!is.infinite(.))) %>%
       create_bar(
-        metric = "Cadence_of_1_on_1_meetings_with_manager",
+        metric = "Cadence_of_1_on_1_meetings_and_calls_with_manager",
         hrvar = hrvar,
         return = "table",
         mingroup = mingroup) %>%
-      ggplot(aes(x = Cadence_of_1_on_1_meetings_with_manager, y = group)) +
+      ggplot(aes(x = Cadence_of_1_on_1_meetings_and_calls_with_manager, y = group)) +
       geom_point(colour = "#FE7F4F") +
       scale_x_continuous("Manager 1:1 -  Frequency in Weeks") +
       labs(
-        title = "Cadence of 1:1 Meetings with manager",
+        title = "Cadence of 1:1 Meetings and Calls with manager",
         subtitle = paste("Averages values, by ", hrvar),
         caption = paste(
           "Excludes individuals with no 1:1 meetings. ",
@@ -153,7 +153,7 @@ one2one_freq <- function(data,
     expanded_data %>%
       filter_all(all_vars(!is.infinite(.))) %>%
       create_bar(
-        metric = "Cadence_of_1_on_1_meetings_with_manager",
+        metric = "Cadence_of_1_on_1_meetings_and_calls_with_manager",
         hrvar = hrvar,
         return = "table",
         mingroup = mingroup
@@ -165,14 +165,14 @@ one2one_freq <- function(data,
       expanded_data %>%
       mutate(
         across(
-          .cols = Cadence_of_1_on_1_meetings_with_manager,
+          .cols = Cadence_of_1_on_1_meetings_and_calls_with_manager,
           .fns = ~ifelse(!is.finite(.), arb_const, .)
         )
       )
 
     create_dist(
       plot_data,
-      metric = "Cadence_of_1_on_1_meetings_with_manager",
+      metric = "Cadence_of_1_on_1_meetings_and_calls_with_manager",
       hrvar = hrvar,
       mingroup = mingroup,
       cut = c(

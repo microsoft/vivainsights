@@ -1,3 +1,9 @@
+# vivainsights 0.6.0
+
+* Add `identify_habits()` for classifying habitual behavior
+* Refactored code to latest dplyr and tidyselect practices
+* Updated metrics in `pq_data` to include Copilot metrics
+
 # vivainsights 0.5.5
 
 * Add new functionality on calculating Chatterjee's coefficient

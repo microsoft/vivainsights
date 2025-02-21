@@ -34,6 +34,7 @@ Based on the original function from
 Other Import and Export: 
 \code{\link{create_dt}()},
 \code{\link{export}()},
-\code{\link{import_query}()}
+\code{\link{import_query}()},
+\code{\link{prep_query}()}
 }
 \concept{Import and Export}

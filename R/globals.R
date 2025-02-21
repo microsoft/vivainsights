@@ -48,9 +48,9 @@ utils::globalVariables(
     "calculation",
     "variable",
     "value_rescaled",
-    "Meeting_hours_with_manager_1_1",
-    "Meetings_with_manager_1_on_1",
-    "Cadence_of_1_on_1_meetings_with_manager",
+    "Meeting_and_call_hours_with_manager_1_1",
+    "Meetings_and_calls_with_manager_1_on_1",
+    "Cadence_of_1_on_1_meetings_and_calls_with_manager",
     "Organization",
     "flag_nkw",
     "holidayweek",
@@ -120,6 +120,16 @@ utils::globalVariables(
     "labelpos",
     "cum_population",
     "cum_values",
-    "cum_values_prop"
+    "cum_values_prop",
+    "GainedHabit",
+    "HabitCurve",
+    "IsHabit",
+    "LostHabit",
+    "Most recent week - Total persons with habit",
+    "Total Person-weeks",
+    "Total Person-weeks with habit",
+    "cumsum_value",
+    "lagged_cumsum",
+    "sum_last_w"
     )
 )

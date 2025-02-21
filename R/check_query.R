@@ -41,6 +41,7 @@
 #'
 #' @family Data Validation
 #' @import dplyr
+#' @importFrom tidyselect all_of
 #'
 #' @export
 check_query <- function(data, return = "message", validation = FALSE){

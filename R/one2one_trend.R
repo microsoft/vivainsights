@@ -11,7 +11,7 @@
 #' activity. Additional options available to return a summary table.
 #'
 #' @details
-#' Uses the metric `Meeting_hours_with_manager_1_1`.
+#' Uses the metric `Meeting_and_call_hours_with_manager_1_1`.
 #'
 #' @inheritParams create_trend
 #' @inherit create_trend return
@@ -35,7 +35,7 @@ one2one_trend <- function(data,
                           return = "plot"){
 
   create_trend(data,
-               metric = "Meeting_hours_with_manager_1_1",
+               metric = "Meeting_and_call_hours_with_manager_1_1",
                hrvar = hrvar,
                mingroup = mingroup,
                return = return)

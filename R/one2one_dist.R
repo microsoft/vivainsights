@@ -36,10 +36,11 @@ one2one_dist <- function(data,
 
   cleaned_data <-
     data %>%
-    mutate(`Scheduled 1:1 meeting minutes with manager` = Meeting_hours_with_manager_1_1 * 60)
+    mutate(`Scheduled 1:1 meeting and call minutes with manager` =
+             Meeting_and_call_hours_with_manager_1_1 * 60)
 
   create_dist(data = cleaned_data,
-              metric = "Scheduled 1:1 meeting minutes with manager",
+              metric = "Scheduled 1:1 meeting and call minutes with manager",
               hrvar = hrvar,
               mingroup = mingroup,
               dist_colours = dist_colours,

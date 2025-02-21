@@ -21,20 +21,36 @@
 #'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
+#'   - `"data"`
 #'
 #' See `Value` for more information.
 #'
 #' @return
-#' A different output is returned depending on the value passed to the `return` argument:
+#' A different output is returned depending on the value passed to the `return`
+#' argument:
 #'   - `"plot"`: 'ggplot' object. A box plot for the metric.
-#'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"table"`: data frame. A summary table for the metric, containing the 
+#'   following columns:
+#'     - `group`: The HR variable by which the metric is split.
+#'     - `mean`: The mean of the metric.
+#'     - `min`: The minimum value of the metric.
+#'     - `p10`: The 10th percentile of the metric.
+#'     - `p25`: The 25th percentile of the metric.
+#'     - `p50`: The 50th percentile of the metric.
+#'     - `p75`: The 75th percentile of the metric.
+#'     - `p90`: The 90th percentile of the metric.
+#'     - `max`: The maximum value of the metric.
+#'     - `sd`: The standard deviation of the metric.
+#'     - `range`: The range of the metric.
+#'     - `n`: The number of observations.
+#'  - `"data"`: data frame. A data frame containing the metric and group.
 #'
 #' @import dplyr
 #' @import ggplot2
 #' @import reshape2
 #' @import scales
-#' @importFrom stats median
 #' @importFrom stats sd
+#' @importFrom stats quantile
 #'
 #' @family Visualization
 #' @family Flexible
@@ -103,13 +119,19 @@ create_boxplot <- function(data,
     plot_data %>%
     select(group, tidyselect::all_of(metric)) %>%
     group_by(group) %>%
-    summarise(mean = mean(!!sym(metric)),
-              median = median(!!sym(metric)),
-              sd = sd(!!sym(metric)),
-              min = min(!!sym(metric)),
-              max = max(!!sym(metric)),
-              range = max - min,
-              n = n())
+    summarise(
+      mean = mean(!!sym(metric)),
+      min = min(!!sym(metric)),
+      p10 = quantile(!!sym(metric), 0.10),
+      p25 = quantile(!!sym(metric), 0.25),
+      p50 = quantile(!!sym(metric), 0.50),
+      p75 = quantile(!!sym(metric), 0.75),
+      p90 = quantile(!!sym(metric), 0.90),
+      max = max(!!sym(metric)),
+      sd = sd(!!sym(metric)),
+      range = max - min,
+      n = n()
+      )
 
   ## group order
   group_ord <-

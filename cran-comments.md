@@ -2,4 +2,4 @@
 
 0 errors | 0 warnings | 0 notes
 
-* This is a patch release to add a minor feature. 
+* This is a minor release to add new features and update datasets.
