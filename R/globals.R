@@ -130,6 +130,9 @@ utils::globalVariables(
     "Total Person-weeks with habit",
     "cumsum_value",
     "lagged_cumsum",
-    "sum_last_w"
+    "sum_last_w",
+    "Period",
+     "Y",
+     "label"
     )
 )
