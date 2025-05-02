@@ -93,7 +93,7 @@ has since been removed and dependent functions \code{Ljungbox()} incorporated in
 the \strong{wpa} package.
 }
 \examples{
-\donttest{
+\dontrun{
 # Returns summary table
 create_itsa(
   data = pq_data,

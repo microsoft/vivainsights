@@ -71,7 +71,7 @@
 #'
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Returns summary table
 #' create_itsa(
 #'   data = pq_data,
