@@ -96,7 +96,7 @@ So far, we have limited our analysis to `collaboration_rank()`, which only perfo
 
 * `one2one_rank()` - for `Meeting_hours_with_manager_1_on_1`
 
-* `workloads_rank()` - for `Workweek_span`
+* `workloads_rank()` - for `Collaboration_span`
 
 
 Additionally, if you want to apply this to any other numeric variable of your choice, you can use the more general version below by specifying the metric as a string with the argument `metric`:
@@ -114,7 +114,7 @@ To answer that question, let's create a new numeric custom metric (i.e. a binary
 
 ```{r message=FALSE, warning=FALSE}
 pq_data %>%
-    mutate(At_risk = ifelse(Collaboration_hours > 20 &  Workweek_span > 60 , 1, 0)) %>%
+    mutate(At_risk = ifelse(Collaboration_hours > 20 &  Collaboration_span > 60 , 1, 0)) %>%
     create_rank(metric = "At_risk", mode = "combine")
 ```
 
