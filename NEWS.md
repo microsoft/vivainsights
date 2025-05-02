@@ -1,3 +1,5 @@
+# vivainsights 0.6.1
+
 # vivainsights 0.6.0
 
 * Add `identify_habits()` for classifying habitual behavior
