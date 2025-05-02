@@ -29,6 +29,8 @@ navbar:
       articles:
         text: Articles
         menu:
+        - text: Introduction to vivainsights
+          href: articles/intro-to-vivainsights.html
         - text: Best Practices when using vivainsights
           href: articles/best-practices.html
         - text: Introduction to Organizational Network Analysis with vivainsights in R
