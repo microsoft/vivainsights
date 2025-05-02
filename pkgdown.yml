@@ -3,9 +3,14 @@ pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   best-practices: best-practices.html
+  custom-network-g2g: custom-network-g2g.html
+  custom-network-p2p: custom-network-p2p.html
+  exploratory-rank: exploratory-rank.html
+  information-value: information-value.html
   intro-to-vivainsights: intro-to-vivainsights.html
   network-analysis: network-analysis.html
-last_built: 2025-05-02T17:00Z
+  pairwise-chisq: pairwise-chisq.html
+last_built: 2025-05-02T21:44Z
 urls:
   reference: https://microsoft.github.io/vivainsights/reference
   article: https://microsoft.github.io/vivainsights/articles
