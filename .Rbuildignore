@@ -18,3 +18,4 @@ man-roxygen
 # Ignore vignettes
 ^vignettes/best-practices.Rmd$
 ^vignettes/network-analysis.Rmd$
+^vignettes/intro-to-vivainsights.Rmd$

@@ -1,0 +1,154 @@
+---
+title: "Introduction to {vivainsights}"
+author: "Martin Chan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro-to-vivainsights}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=8,
+  fig.height=8
+)
+```
+
+## Background
+
+This document walks through the **vivainsights** package, and provides some examples on how to use some of the functions. For our full online documentation for the package, please visit <https://microsoft.github.io/vivainsights/>. For anything else related to Viva Insights, please visit <https://learn.microsoft.com/en-us/viva/insights/>.
+
+### Setting up
+
+To start off using **vivainsights**, you'll have to load it by running `library(vivainsights)`. For the purpose of our examples, let's also load **dplyr** as a component package of **tidyverse** (alternatively, you can just run `library(tidyverse)`):
+
+```{r message=FALSE, warning=FALSE}
+library(vivainsights)
+library(dplyr)
+```
+
+The package ships with a standard Person query dataset `pq_data`:
+
+```{r message=FALSE, warning=FALSE}
+data("pq_data") # Person Query data
+
+# Check what the first ten columns look like
+pq_data %>%
+  .[,1:10] %>%
+  glimpse()
+```
+
+------------------------------------------------------------------------
+
+## Example Analysis
+
+### Collaboration Summary
+
+The `collaboration_summary()` function allows you to generate a stacked bar plot summarising the email and meeting hours by an HR attribute you specify:
+
+```{r}
+pq_data %>% collaboration_summary(hrvar = "LevelDesignation")
+```
+
+By changing the `hrvar()` argument, you can change the data being shown easily:
+
+```{r}
+pq_data %>% collaboration_summary(hrvar = "Organization")
+```
+
+The `collaboration_summary()` function also comes with an option to return summary tables, rather than plots. Just specify "table" in the `return` argument:
+
+```{r}
+pq_data %>% collaboration_summary(hrvar = "LevelDesignation", return = "table")
+```
+
+------------------------------------------------------------------------
+
+### Summary of Key Metrics
+
+The `keymetrics_scan()` function allows you to produce summary metrics from the Person Query data. Similar to most of the functions in this package, you can specify what output to return with the `return` argument. In addition, you have to specify which HR attribute/variable to use as a grouping variable with the `hrvar` argument.
+
+There are two valid return values for `keymetrics_scan()`:
+
+-   Heat map (`return = "plot"`)
+-   Summary table (`return = "table"`)
+
+And here are what the outputs look like.
+
+Heatmap:
+
+```{r}
+pq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
+```
+
+Summary table:
+
+```{r}
+pq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
+```
+
+------------------------------------------------------------------------
+
+## Meeting Habits
+
+The `meeting_summary()` provides a very similar output to the previous functions, but focuses on meeting habit data. Again, the input data is the Person Query, and you will need to specify an HR attribute/variable to use as a grouping variable with the `hrvar` argument.
+
+There are two valid return values for `meeting_summary()`:
+
+-   Heat map (`return = "plot"`)
+-   Summary table (`return = "table"`)
+
+> The idea is that functions in this package will share a consistent design, and the required arguments and outputs will be what users 'expect' as they explore the package. The benefit of this is to improve ease of use and adoption.
+
+And here are what the outputs look like, for `meeting_summary()`.
+
+Heatmap:
+
+```{r}
+pq_data %>% meeting_summary(hrvar = "Organization", return = "plot")
+```
+
+Summary table:
+
+```{r}
+pq_data %>% meeting_summary(hrvar = "Organization", return = "table")
+```
+
+------------------------------------------------------------------------
+
+### Customizing plot outputs
+
+With a few rare exceptions, the majority of plot outputs returned by **vivainsights** functions are ggplot outputs. What this means is that there is a lot of flexibility in adding or overriding visual elements in the plots. For instance, you can take the following 'fizzy drink' (jittered scatter) plot:
+
+```{r}
+pq_data %>%
+  afterhours_fizz(hrvar = "LevelDesignation", return = "plot")
+```
+
+... and add custom titles, subtitles, and flip the axes by adding ggplot layers:
+
+```{r}
+library(ggplot2) # Requires ggplot2 for customizations
+
+pq_data %>%
+  afterhours_fizz(hrvar = "LevelDesignation", return = "plot") +
+  labs(title = "This is a custom title",
+       subtitle = "This is a custom sub-title") +
+  coord_flip() # Flip coordinates
+```
+
+Note that the "pipe" syntax changes from `%>%` to `+` once you are manipulating a ggplot output, which will return an error if not used correctly.
+
+Adding customized elements may 'break' the visualization, so please exercise caution when doing so.
+
+For more information on ggplot, please visit <https://ggplot2.tidyverse.org/>.
+
+------------------------------------------------------------------------
+
+## Feedback
+
+Hope you found this useful! If you have any suggestions or feedback, please log them at <https://github.com/microsoft/vivainsights/issues/>.
