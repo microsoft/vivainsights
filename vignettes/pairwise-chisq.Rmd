@@ -1,0 +1,107 @@
+---
+title: "Running pairwise chi-square tests with the `vivainsights` R library"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    theme: "lumen"
+---
+
+This script shows an example of how to perform pairwise chi-square tests for categorical variables in a dataset.
+
+A pairwise chi-square test helps detect associations between distinct pairs of categorical variables. By running multiple chi-square tests on each pair, it allows you to pinpoint which specific pairs exhibit significant relationships.
+
+## Step 1: load libraries and sample data
+
+In this example, we will use the sample `pq_data` dataset from the **vivainsights** package. We will also use **dplyr** and **purrr** for data manipulation and iteration respectively, and optionally you can just load the **tidyverse** package instead.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(vivainsights)
+library(dplyr)
+library(purrr)
+
+sample_data <- pq_data
+```
+
+## Step 2: simulating a dataset with categorical variables
+
+The next step is to simulate additional categorical variables for the sample data. In this example, we will create three fake categorical variables: `Teams`, `Regions`, and `Functions`. We will then merge these variables with the sample data.
+
+```{r}
+# Set random seed for reproducibility
+set.seed(123)
+
+# Number of unique PersonId in data
+n_personid <- length(unique(sample_data$PersonId))
+
+# Create fake categorical variables for each PersonId
+cat_data <- data.frame(
+  PersonId = unique(sample_data$PersonId),
+  Teams = sample(c('Team 1', 'Team 2', 'Team 3'), size = n_personid, replace = TRUE),
+  Regions = sample(c('East', 'South', 'West', 'North'), size = n_personid, replace = TRUE),
+  Functions = sample(c('HR', 'Finance', 'Operations', 'Sales'), size = n_personid, replace = TRUE)
+)
+
+# Merge the datasets
+sample_data_merged <- merge(sample_data, cat_data, by = "PersonId")
+
+# Assign categorical variables names to `cat_vars`, alongside existing variables
+cat_vars <- c("Teams", "Regions", "Functions", "Organization", "LevelDesignation")
+```
+
+## Step 3: Perform pairwise chi-square tests for all categorical variables
+
+In the following, we first use `combn()` to generate all combinations of variable pairs. `combn()` comes from the **utils** package, and generates all combinations of a vector of elements of a given size. Here, we set `m = 2` to yield pairs.
+
+Next, we use `map_dfr()` from the **purrr** package to loop over each combination and perform a chi-square test. The operation is similar to a for loop, but the results are row-bound (similar to `rbind()` or `bind_rows()`) and returned as a data frame. In R, it is generally more efficient to use `map()` functions from the **purrr** package than to use for loops.
+
+Towards the end of the code, we add a significance level to the results based on the p-value. The significance level is denoted by asterisks, where `***` indicates p < 0.001, `**` indicates p < 0.01, and `*` indicates p < 0.05.
+
+```{r}
+# Generate all combinations of variable pairs
+cat_var_combinations <- combn(x = cat_vars, m = 2, simplify = FALSE)
+
+# Use `map_dfr()` to loop over each combination
+results_df <-
+  map_dfr(cat_var_combinations, ~{
+  var1 <- .x[1]
+  var2 <- .x[2]
+  
+  # Create a contingency table
+  contingency_table <- table(sample_data_merged[[var1]], sample_data_merged[[var2]])
+  
+  # Perform chi-square test
+  chi_test <- chisq.test(contingency_table)
+  
+  # Return data frame with results
+  tibble(
+    var1 = var1,
+    var2 = var2,
+    chi2 = chi_test$statistic,
+    p = chi_test$p.value,
+    n = sum(contingency_table)
+  ) %>%
+    # Add significance level
+    mutate(
+      significance = case_when(
+        p < 0.001 ~ "***",
+        p < 0.01 ~ "**",
+        p < 0.05 ~ "*",
+        TRUE ~ ""
+    ))
+})
+
+print(results_df)
+```
+
+Finally, you can export the results to csv or clipboard using the following code:
+
+```{r eval=FALSE}
+# Copy to clipboard
+results_df %>% export(method = "clipboard")
+
+# Export to csv
+results_df %>% export(method = "csv", path = "chi-square-results", timestamp = FALSE)
+```

@@ -35,6 +35,16 @@ navbar:
           href: articles/best-practices.html
         - text: Introduction to Organizational Network Analysis with vivainsights in R
           href: articles/network-analysis.html
+        - text: Identifying noteworthy groups with rank functions
+          href: articles/exploratory-rank.html
+        - text: Running pairwise chi-square tests with vivainsights
+          href: articles/pairwise-chisq.html
+        - text: Information Value analysis with vivainsights
+          href: articles/information-value.html
+        - text: Plotting a Network Graph using network_p2p
+          href: articles/custom-network-p2p.html
+        - text: Plotting a Network Graph using network_g2g
+          href: articles/custom-network-g2g.html
 
 footer:
   structure:
