@@ -43,7 +43,10 @@ Imports:
     glue
 Suggests: 
     flexdashboard,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    lmtest,
+    sandwich,
+    slider
 URL: https://microsoft.github.io/vivainsights/
 BugReports: https://github.com/microsoft/vivainsights/issues/
 Config/testthat/edition: 3

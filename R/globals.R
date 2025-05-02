@@ -133,6 +133,10 @@ utils::globalVariables(
     "sum_last_w",
     "Period",
      "Y",
-     "label"
+     "label",
+     "IsHabit12w",
+     "IsHabit4w",
+     "prop",
+     "target_metric"
     )
 )
