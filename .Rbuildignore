@@ -18,3 +18,9 @@ man-roxygen
 # Ignore vignettes
 ^vignettes/best-practices.Rmd$
 ^vignettes/network-analysis.Rmd$
+^vignettes/intro-to-vivainsights.Rmd$
+^vignettes/exploratory-rank.Rmd$
+^vignettes/pairwise-chisq.Rmd$
+^vignettes/information-value.Rmd$
+^vignettes/custom-network-p2p.Rmd$
+^vignettes/custom-network-g2g.Rmd$
