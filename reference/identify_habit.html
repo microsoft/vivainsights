@@ -13,7 +13,7 @@ n weeks."><meta property="og:image" content="https://microsoft.github.io/vivains
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,7 @@ n weeks."><meta property="og:image" content="https://microsoft.github.io/vivains
     <li><a class="dropdown-item" href="../articles/custom-network-p2p.html">Plotting a Network Graph using network_p2p</a></li>
     <li><a class="dropdown-item" href="../articles/custom-network-g2g.html">Plotting a Network Graph using network_g2g</a></li>
   </ul></li>
+<li class="nav-item"><a class="nav-link" href="../faq.html">FAQ</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/microsoft/vivainsights/"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -74,7 +75,8 @@ n weeks.</p>
 <span>  <span class="va">max_window</span>,</span>
 <span>  hrvar <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
-<span>  plot_mode <span class="op">=</span> <span class="st">"time"</span></span>
+<span>  plot_mode <span class="op">=</span> <span class="st">"time"</span>,</span>
+<span>  fill_col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#E5E5E5"</span>, <span class="st">"#0078D4"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -130,6 +132,11 @@ habitual behaviour.</p></li>
 <li><p><code>"boxplot"</code>: Returns a boxplot of the percentage of periods with habitual
 behaviour.</p></li>
 </ul></dd>
+
+
+<dt id="arg-fill-col">fill_col<a class="anchor" aria-label="anchor" href="#arg-fill-col"></a></dt>
+<dd><p>Character vector of length 2 specifying the colours to be
+used in the plot. Only applicable when <code>return = "plot"</code> and <code>plot_mode = "time"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

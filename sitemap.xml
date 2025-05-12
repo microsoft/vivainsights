@@ -19,6 +19,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/articles/pairwise-chisq.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/authors.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/contributors.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/faq.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/index.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/news/index.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/IV_report.html</loc></url>
@@ -53,6 +54,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_fizz.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_hist.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_inc.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_itsa.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_line.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_line_asis.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_lorenz.html</loc></url>
@@ -101,6 +103,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_privacythreshold.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_shifts.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/identify_tenure.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/identify_usage_segments.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/import_query.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/index.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/is_date_format.html</loc></url>
@@ -131,6 +134,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/pad2.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/pairwise_count.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/pipe.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/plot_ts_us.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/pq_data.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/prep_query.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/read_preamble.html</loc></url>
