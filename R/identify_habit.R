@@ -50,6 +50,8 @@
 #'  habitual behaviour.
 #'  - `"boxplot"`: Returns a boxplot of the percentage of periods with habitual
 #'  behaviour.
+#' @param fill_col Character vector of length 2 specifying the colours to be
+#' used in the plot. Only applicable when `return = "plot"` and `plot_mode = "time"`.
 #'  
 #' @import dplyr
 #' @import tidyr
@@ -85,7 +87,9 @@ identify_habit <- function(
     max_window,
     hrvar = NULL,
     return = "plot",
-    plot_mode = "time"){
+    plot_mode = "time",
+    fill_col = c("#E5E5E5", "#0078D4")
+    ){
   
   habit_df <-
     data %>%
@@ -125,6 +129,7 @@ identify_habit <- function(
           ggplot(aes(x = MetricDate, y = n, fill = IsHabit)) +
           geom_bar(stat = "identity", position = "fill") +
           scale_y_continuous(labels = scales::percent) +
+          scale_fill_manual(values = fill_col) +
           labs(y = "Percentage", fill = "Is Habit") +
           theme_wpa_basic() +
           labs(

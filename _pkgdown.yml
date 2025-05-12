@@ -6,7 +6,7 @@ template:
 navbar:
   bg: dark
   structure:
-    left:  [home, reference, guide, news, articles]
+    left:  [home, reference, guide, news, articles, faq]
     right: [search, github]
   components:
       home:
@@ -23,6 +23,9 @@ navbar:
            href: analyst_guide_data_validation.html
          - text: Reports
            href: analyst_guide_reports.html
+      faq:
+        text: FAQ
+        href: faq.html
       github:
         icon: fab fa-github fa-lg
         href: https://github.com/microsoft/vivainsights/

@@ -1,8 +1,13 @@
+# vivainsights 0.6.1
+
+* Added `identify_usage_segments()` for classifying usage segments. 
+* Added `create_itsa()` for performing interrupted time-series analysis.
+
 # vivainsights 0.6.0
 
-* Add `identify_habits()` for classifying habitual behavior
-* Refactored code to latest dplyr and tidyselect practices
-* Updated metrics in `pq_data` to include Copilot metrics
+* Add `identify_habits()` for classifying habitual behavior.
+* Refactored code to latest dplyr and tidyselect practices.
+* Updated metrics in `pq_data` to include Copilot metrics.
 
 # vivainsights 0.5.5
 

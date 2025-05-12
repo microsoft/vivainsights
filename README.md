@@ -5,11 +5,11 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/vivainsights)](https://CRAN.R-project.org/package=vivainsights/)
 [![CRAN last month downloads](https://cranlogs.r-pkg.org/badges/last-month/vivainsights?color=green/)](https://cran.r-project.org/package=vivainsights/)
 
-## Analyze and Visualize Viva Leader Insights data
+## Overview
 
 This is an R package for analyzing and visualizing data from [Microsoft Viva Advanced Insights](https://www.microsoft.com/en-gb/microsoft-viva/insights/) (previously Microsoft Workplace Analytics). 
 
-## With the **vivainsights** package, you can...
+### With the **vivainsights** package, you can...
 
 1. **Run prebuilt analysis and visualizations** off advanced insights data with settings for HR variables, privacy threshold, etc.
 
@@ -19,7 +19,24 @@ This is an R package for analyzing and visualizing data from [Microsoft Viva Adv
 
 This library is compatible with the latest implementation of the Viva Insights Analyst Workbench. For the R library compatible with the legacy implementation, please visit the **wpa** package [website](https://microsoft.github.io/wpa/) or [GitHub repository](https://github.com/microsoft/wpa/) . 
 
----
+## Installation
+
+```r
+# Install from CRAN:
+install.packages("vivainsights")
+
+# Install development version from GitHub:
+pak::pak("microsoft/vivainsights")
+```
+
+## Usage
+
+To get started with the package, please see the following links:
+* [Installation and Set-up](https://microsoft.github.io/vivainsights/analyst_guide_getting_started.html)
+* [Full function list](https://microsoft.github.io/vivainsights/reference/index.html)
+* [Analyst Guide](https://microsoft.github.io/vivainsights/analyst_guide_intro.html)
+
+## Cheatsheet
 
 Also check out our package cheat sheet for a quick glimpse of what **vivainsights** offers:
 
@@ -41,7 +58,6 @@ Also check out our package cheat sheet for a quick glimpse of what **vivainsight
 ## Code of Conduct
 
 We would ask you to please read the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) prior to engaging with this package.
-
 
 **Trademarks** 
 
