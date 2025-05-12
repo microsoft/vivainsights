@@ -3,10 +3,10 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Classify Usage Segments based on a metric
+#' @title Identify Usage Segments based on a metric
 #'   
 #' @description 
-#' This function classifies users into usage segments based on their usage
+#' This function identifies users into usage segments based on their usage
 #' volume and consistency. The segments 'Power Users', 'Habitual Users', 'Novice
 #' Users', 'Low Users', and 'Non-users' are created. There are two versions, one
 #' based on a rolling 12-week average (`version = "12w"`) and the other on a
@@ -75,7 +75,7 @@
 #'   
 #' @examples
 #' # Example usage with a single metric column
-#' classify_usage_segments(
+#' identify_usage_segments(
 #'   data = pq_data,
 #'   metric = "Emails_sent",
 #'   version = "12w",
@@ -84,7 +84,7 @@
 #' 
 #' \dontrun{
 #' # Example usage with multiple metric columns
-#' classify_usage_segments(
+#' identify_usage_segments(
 #'   data = my_data,
 #'   metric_str = c(
 #'     "Copilot_actions_taken_in_Teams",
@@ -94,7 +94,7 @@
 #' )
 #' }
 #' @export
-classify_usage_segments <- function(
+identify_usage_segments <- function(
     data,
     metric = NULL,
     metric_str = NULL,
