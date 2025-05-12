@@ -98,15 +98,17 @@ identify_usage_segments(
   return = "plot"
 )
 
-\dontrun{
 # Example usage with multiple metric columns
 identify_usage_segments(
-  data = my_data,
+  data = pq_data,
   metric_str = c(
     "Copilot_actions_taken_in_Teams",
-    "Copilot_actions_in_Outlook"),
+    "Copilot_actions_taken_in_Outlook",
+    "Copilot_actions_taken_in_Excel",
+    "Copilot_actions_taken_in_Word",
+    "Copilot_actions_taken_in_Powerpoint"
+  ),
   version = "4w",
   return = "plot"
 )
-}
 }
