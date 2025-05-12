@@ -42,19 +42,20 @@
 #'   statistically significant results. Defaults to earliest date in dataset. If
 #'   not provided, this defaults to the earliest date in the dataset.
 #' @param before_end String specifying the end date of 'before' time
-#'   period in `%Y-%m-%d` format.
+#'   period in `%Y-%m-%d` format. If `NULL`, an error will be raised, as this
+#'   value is required.
 #' @param after_start String specifying the start date of the 'after'
-#'   time period in `%Y-%m-%d` format. The 'after' time period refers to the
-#'   period after the intervention occurs and is bounded by `after_start` and
-#'   `after_end` parameters. Longer periods increase the likelihood of achieving
-#'   more statistically significant results. Defaults to the date after
-#'   `before_end`.
+#'   time period in `%Y-%m-%d` format. If `NULL`, this will default to the value
+#'   of `before_end`. The 'after' time period refers to the period after the
+#'   intervention occurs and is bounded by `after_start` and `after_end`
+#'   parameters. Longer periods increase the likelihood of achieving more
+#'   statistically significant results.
 #' @param after_end String specifying the end date of the 'after' time
 #'   period in `%Y-%m-%d` format. Defaults to the latest date in the dataset.
 #' @param ac_lags_max Numeric value specifying the maximum lag for the autocorrelation test.
 #'   The Ljung-Box test is used to check for autocorrelation in the model residuals
 #'   up to this specified number of lags. Higher values check for longer-term
-#'   dependencies in the time series data. 
+#'   dependencies in the time series data.
 #' @param return String specifying what output to return. Defaults to "table".
 #' Valid return options include:
 #'   - `'plot'`: return a list of plots.
@@ -76,24 +77,22 @@
 #' create_itsa(
 #'   data = pq_data,
 #'   metrics = c("Collaboration_span", "Internal_network_size"),
-#'   before_start = "2019-12-15",
-#'   before_end = "2019-12-29",
-#'   after_start = "2020-01-05",
-#'   after_end = "2020-01-26",
+#'   before_end = "2024-07-01",
+#'   after_start = "2024-07-01",
 #'   ac_lags_max = 7,
-#'   return = "table")
+#'   return = "table"
+#' )
 #'
 #' # Returns list of plots
 #' plot_list <-
 #'   create_itsa(
 #'     data = pq_data,
 #'     metrics = c("Collaboration_span", "Internal_network_size"),
-#'     before_start = "2019-12-15",
-#'     before_end = "2019-12-29",
-#'     after_start = "2020-01-05",
-#'     after_end = "2020-01-26",
+#'     before_end = "2024-07-01",
+#'     after_start = "2024-07-01",
 #'     ac_lags_max = 7,
-#'     return = 'plot')
+#'     return = "plot"
+#'   )
 #'
 #' # Extract a plot as an example
 #' plot_list$Collaboration_span
@@ -115,8 +114,8 @@ create_itsa <- function(
     data,
     metrics = NULL,
     before_start = NULL,
-    before_end = "2023-06-30",
-    after_start = "2023-07-01",
+    before_end = NULL,
+    after_start = NULL,
     after_end = NULL,
     ac_lags_max = 7,
     return = 'table'
@@ -125,9 +124,9 @@ create_itsa <- function(
   ## Check inputs types
   stopifnot(is.data.frame(data))  # Ensure 'data' is a data frame
   stopifnot(is.character(metrics) | is.null(metrics))  # 'metrics' can be a character vector or NULL
-  stopifnot(is.character(before_start) | inherits(before_start, "Date") | is.null(before_start))  # 'before_start' can be a string, Date, or NULL
-  stopifnot(is.character(before_end) | inherits(before_end, "Date"))  # 'before_end' must be a string or Date
-  stopifnot(is.character(after_start) | inherits(after_start, "Date"))  # 'after_start' must be a string or Date
+  stopifnot(is.character(before_start) | inherits(before_start, "Date") | is.null(before_start))  # 'before_start' can be a string, or Date, or NULL
+  stopifnot(is.character(before_end) | inherits(before_end, "Date") | is.null(before_end))  # 'before_end' must be a string, Date, or NULL
+  stopifnot(is.character(after_start) | inherits(after_start, "Date") | is.null(after_start))  # 'after_start' can be a string, Date, or NULL
   stopifnot(is.character(after_end) | inherits(after_end, "Date") | is.null(after_end))  # 'after_end' can be a string, Date, or NULL
   stopifnot(is.numeric(ac_lags_max))  # 'ac_lags_max' must be numeric
   stopifnot(is.character(return))  # 'return' must be a string
@@ -141,11 +140,20 @@ create_itsa <- function(
     before_start <- min_date
   }
 
+  # Raise an error if `before_end` is NULL
+  if (is.null(before_end)) {
+    stop("The 'before_end' parameter must be provided.")
+  }
+
+  # If `after_start` is NULL, set it to the value of `before_end`
+  if (is.null(after_start)) {
+    after_start <- before_end
+  }
+
   # If `after_end` is not provided, set it to the latest date in the dataset
   if (is.null(after_end)) {
     after_end <- max_date
   }
-  
   
   # Check if dependencies are installed
   check_pkg_installed(pkgname = "sandwich")

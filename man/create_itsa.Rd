@@ -9,8 +9,8 @@ create_itsa(
   data,
   metrics = NULL,
   before_start = NULL,
-  before_end = "2023-06-30",
-  after_start = "2023-07-01",
+  before_end = NULL,
+  after_start = NULL,
   after_end = NULL,
   ac_lags_max = 7,
   return = "table"
@@ -33,14 +33,15 @@ statistically significant results. Defaults to earliest date in dataset. If
 not provided, this defaults to the earliest date in the dataset.}
 
 \item{before_end}{String specifying the end date of 'before' time
-period in \verb{\%Y-\%m-\%d} format.}
+period in \verb{\%Y-\%m-\%d} format. If \code{NULL}, an error will be raised, as this
+value is required.}
 
 \item{after_start}{String specifying the start date of the 'after'
-time period in \verb{\%Y-\%m-\%d} format. The 'after' time period refers to the
-period after the intervention occurs and is bounded by \code{after_start} and
-\code{after_end} parameters. Longer periods increase the likelihood of achieving
-more statistically significant results. Defaults to the date after
-\code{before_end}.}
+time period in \verb{\%Y-\%m-\%d} format. If \code{NULL}, this will default to the value
+of \code{before_end}. The 'after' time period refers to the period after the
+intervention occurs and is bounded by \code{after_start} and \code{after_end}
+parameters. Longer periods increase the likelihood of achieving more
+statistically significant results.}
 
 \item{after_end}{String specifying the end date of the 'after' time
 period in \verb{\%Y-\%m-\%d} format. Defaults to the latest date in the dataset.}
@@ -98,24 +99,22 @@ the \strong{wpa} package.
 create_itsa(
   data = pq_data,
   metrics = c("Collaboration_span", "Internal_network_size"),
-  before_start = "2019-12-15",
-  before_end = "2019-12-29",
-  after_start = "2020-01-05",
-  after_end = "2020-01-26",
+  before_end = "2024-07-01",
+  after_start = "2024-07-01",
   ac_lags_max = 7,
-  return = "table")
+  return = "table"
+)
 
 # Returns list of plots
 plot_list <-
   create_itsa(
     data = pq_data,
     metrics = c("Collaboration_span", "Internal_network_size"),
-    before_start = "2019-12-15",
-    before_end = "2019-12-29",
-    after_start = "2020-01-05",
-    after_end = "2020-01-26",
+    before_end = "2024-07-01",
+    after_start = "2024-07-01",
     ac_lags_max = 7,
-    return = 'plot')
+    return = "plot"
+  )
 
 # Extract a plot as an example
 plot_list$Collaboration_span
