@@ -129,11 +129,27 @@ validation_report <- function(data,
     trackhr_obj2 <- ""
   }
 
-  ## Dynamic: create mock `Call_hours` variable
+  ## Dynamic: check for presence of metrics and create appropriate messages
   callthres_p <- NULL
   callthres <- NULL
+  
+  emailthres_p <- NULL
+  emailthres <- NULL
+  
+  meetingthres_p <- NULL
+  meetingthres <- NULL
+  
+  chatthres_p <- NULL
+  chatthres <- NULL
+  
+  conflictingthres_p <- NULL
+  conflictingthres <- NULL
+  
+  collabthres_p <- NULL
+  collabthres <- NULL
 
 
+  ## Handle Call_hours
   if("Call_hours" %in% names(data)){
     callthres_p <- paste(
       ">",
@@ -162,6 +178,168 @@ validation_report <- function(data,
     callthres_p <-
       "> [Note] Checks for `Call_hours` is not available due to missing variable."
     callthres <- callthres_p
+
+  }
+  
+  ## Handle Email_hours
+  if("Email_hours" %in% names(data)){
+    emailthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Email_hours",
+          threshold = 80,
+          person = TRUE,
+          return = "text"
+        )
+    )
+
+    emailthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Email_hours",
+          threshold = 80,
+          person = FALSE,
+          return = "text"
+        )
+      )
+
+  } else {
+
+    emailthres_p <-
+      "> [Note] Checks for `Email_hours` is not available due to missing variable."
+    emailthres <- emailthres_p
+
+  }
+  
+  ## Handle Meeting_hours
+  if("Meeting_hours" %in% names(data)){
+    meetingthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Meeting_hours",
+          threshold = 80,
+          person = TRUE,
+          return = "text"
+        )
+    )
+
+    meetingthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Meeting_hours",
+          threshold = 80,
+          person = FALSE,
+          return = "text"
+        )
+      )
+
+  } else {
+
+    meetingthres_p <-
+      "> [Note] Checks for `Meeting_hours` is not available due to missing variable."
+    meetingthres <- meetingthres_p
+
+  }
+  
+  ## Handle Chat_hours
+  if("Chat_hours" %in% names(data)){
+    chatthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Chat_hours",
+          threshold = 40,
+          person = TRUE,
+          return = "text"
+        )
+    )
+
+    chatthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Chat_hours",
+          threshold = 40,
+          person = FALSE,
+          return = "text"
+        )
+      )
+
+  } else {
+
+    chatthres_p <-
+      "> [Note] Checks for `Chat_hours` is not available due to missing variable."
+    chatthres <- chatthres_p
+
+  }
+  
+  ## Handle Conflicting_meeting_hours
+  if("Conflicting_meeting_hours" %in% names(data)){
+    conflictingthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Conflicting_meeting_hours",
+          threshold = 70,
+          person = TRUE,
+          return = "text"
+        )
+    )
+
+    conflictingthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Conflicting_meeting_hours",
+          threshold = 70,
+          person = FALSE,
+          return = "text"
+        )
+      )
+
+  } else {
+
+    conflictingthres_p <-
+      "> [Note] Checks for `Conflicting_meeting_hours` is not available due to missing variable."
+    conflictingthres <- conflictingthres_p
+
+  }
+  
+  ## Handle Collaboration_hours
+  if("Collaboration_hours" %in% names(data)){
+    collabthres_p <- paste(
+      ">",
+      data %>%
+        flag_extreme(
+          metric = "Collaboration_hours",
+          threshold = 0,
+          person = TRUE,
+          mode = "equal",
+          return = "text"
+        )
+    )
+
+    collabthres <-
+      paste(
+        ">",
+        data %>% flag_extreme(
+          metric = "Collaboration_hours",
+          threshold = 0,
+          person = FALSE,
+          mode = "equal",
+          return = "text"
+        )
+      )
+
+  } else {
+
+    collabthres_p <-
+      "> [Note] Checks for `Collaboration_hours` is not available due to missing variable."
+    collabthres <- collabthres_p
 
   }
 
@@ -227,23 +405,23 @@ validation_report <- function(data,
          read_preamble("inactive_weeks_2.md"),
 
          read_preamble("extreme_values.md"), #43, Header - 3.5 Extreme values
-         paste(">",data %>% flag_extreme(metric = "Email_hours", threshold = 80, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Email_hours", threshold = 80, person = FALSE, return = "text")),
+         emailthres_p,
+         emailthres,
 
-         paste(">",data %>% flag_extreme(metric = "Meeting_hours", threshold = 80, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Meeting_hours", threshold = 80, person = FALSE, return = "text")),
+         meetingthres_p,
+         meetingthres,
 
          callthres_p,
          callthres,
 
-         paste(">",data %>% flag_extreme(metric = "Chat_hours", threshold = 40, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Chat_hours", threshold = 40, person = FALSE, return = "text")),
+         chatthres_p,
+         chatthres,
 
-         paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = TRUE, return = "text")),
-         paste(">",data %>% flag_extreme(metric = "Conflicting_meeting_hours", threshold = 70, person = FALSE, return = "text")),
+         conflictingthres_p,
+         conflictingthres,
 
-		     paste(">",data %>% flag_extreme(metric = "Collaboration_hours", threshold = 0, person = TRUE, mode = "equal", return = "text")),
-		     paste(">",data %>% flag_extreme(metric = "Collaboration_hours", threshold = 0, person = FALSE, mode = "equal", return = "text"))
+		     collabthres_p,
+		     collabthres
 		     ) %>%
 
     purrr::map_if(is.data.frame, create_dt, rounding = 0) %>%
