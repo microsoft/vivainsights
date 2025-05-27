@@ -12,6 +12,10 @@
 #' and analysis output options. Pass a data frame containing a person-to-person
 #' query and return a network visualization. Options are available for community
 #' detection using either the Louvain or the Leiden algorithms.
+#' 
+#' Note: The data frame must only contain a single `MetricDate` value, as the network
+#' represents a snapshot at a specific point in time. If multiple date values are present,
+#' filter the data frame to a specific date before using this function.
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
