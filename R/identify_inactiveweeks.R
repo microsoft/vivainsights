@@ -22,17 +22,19 @@
 #'   following strings:
 #'   - `"text"`
 #'   - `"data_cleaned"`
+#'   - `"data_clean"`
 #'   - `"data_dirty"`
 #'
 #' See `Value` for more information.
 #'
 #' @import dplyr
+#' @importFrom methods is
 #'
 #' @family Data Validation
 #'
 #' @return
 #' Returns an error message by default, where `'text'` is returned. When
-#' `'data_cleaned'` is passed, a dataset with outlier weeks removed is returned
+#' `'data_cleaned'` or `'data_clean'` is passed, a dataset with outlier weeks removed is returned
 #' as a dataframe. When `'data_dirty'` is passed, a dataset with outlier weeks
 #' is returned as a dataframe.
 #'
@@ -75,8 +77,41 @@ identify_inactiveweeks <- function(data, sd = 2, return = "text"){
       select(-z_score) %>%
       data.frame()
 
-  } else if(return == "data_cleaned"){
-
+  } else if(return %in% c("data_clean", "data_cleaned")){
+    
+    # Create diagnostic message for removed inactive weeks
+    inactive_dates <- init_data %>%
+      filter(z_score <= -sd) %>%
+      pull(MetricDate) %>% 
+      unique()
+    
+    if(length(inactive_dates) > 0) {
+      # Format the dates to ISO format
+      if(methods::is(inactive_dates, "Date")) {
+        formatted_dates <- format(inactive_dates, "%Y-%m-%d")
+      } else {
+        # Attempt to convert to date if possible
+        tryCatch({
+          formatted_dates <- format(as.Date(inactive_dates), "%Y-%m-%d")
+        }, error = function(e) {
+          # If conversion fails, use as is
+          formatted_dates <- as.character(inactive_dates)
+        })
+      }
+      
+      diagnostic_msg <- paste0("The weeks ", paste(formatted_dates, collapse = ", "), 
+                              " have been flagged as inactive weeks and removed from the data. ",
+                              "This is based on a standard deviation of ", sd, 
+                              " below the mean collaboration hours.")
+    } else {
+      diagnostic_msg <- paste0("No inactive weeks were detected based on a standard deviation of ", 
+                              sd, " below the mean collaboration hours.")
+    }
+    
+    # Print the diagnostic message
+    message(diagnostic_msg)
+    
+    # Return the cleaned data
     init_data %>%
       filter(z_score > -sd) %>%
       select(-z_score) %>%

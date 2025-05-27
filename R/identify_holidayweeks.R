@@ -133,7 +133,22 @@ identify_holidayweeks <- function(data, sd = 1, return = "message"){
     message(Message)
 
   } else if(return %in% c("data_clean", "data_cleaned")){
-
+    
+    # Create diagnostic message for removed holiday weeks
+    if(length(Outliers) > 0) {
+      diagnostic_msg <- paste0("The weeks ", paste(format(Outliers, "%Y-%m-%d"), collapse = ", "), 
+                              " have been flagged as holiday weeks and removed from the data. ",
+                              "This is based on a standard deviation of ", sd, 
+                              " below the mean collaboration hours.")
+    } else {
+      diagnostic_msg <- paste0("No holiday weeks were detected based on a standard deviation of ", 
+                              sd, " below the mean collaboration hours.")
+    }
+    
+    # Print the diagnostic message
+    message(diagnostic_msg)
+    
+    # Return the cleaned data
     data %>% filter(!(MetricDate %in% Outliers))
 
   } else if(return == "data_dirty"){
