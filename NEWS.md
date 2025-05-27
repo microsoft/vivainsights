@@ -1,3 +1,7 @@
+# vivainsights (development version)
+
+* Minor bug fixes to `validation_report()`
+
 # vivainsights 0.6.1
 
 * Added `identify_usage_segments()` for classifying usage segments. 
