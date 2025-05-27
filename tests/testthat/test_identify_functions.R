@@ -1,6 +1,10 @@
 context("Test identify functions")
 
 test_that("identify_holidayweeks accepts both data_clean and data_cleaned", {
+  # Skip if pq_data not available
+  skip_if_not_installed("vivainsights")
+  skip_if_not(exists("pq_data"))
+  
   # Suppress messages during testing
   suppressMessages({
     result_clean <- identify_holidayweeks(pq_data, return = "data_clean")
@@ -13,6 +17,10 @@ test_that("identify_holidayweeks accepts both data_clean and data_cleaned", {
 })
 
 test_that("identify_inactiveweeks accepts both data_clean and data_cleaned", {
+  # Skip if pq_data not available
+  skip_if_not_installed("vivainsights")
+  skip_if_not(exists("pq_data"))
+  
   # Suppress messages during testing
   suppressMessages({
     result_clean <- identify_inactiveweeks(pq_data, return = "data_clean")
@@ -25,6 +33,10 @@ test_that("identify_inactiveweeks accepts both data_clean and data_cleaned", {
 })
 
 test_that("identify_nkw accepts both data_clean and data_cleaned", {
+  # Skip if pq_data not available
+  skip_if_not_installed("vivainsights")
+  skip_if_not(exists("pq_data"))
+  
   # Suppress messages during testing
   suppressMessages({
     result_clean <- identify_nkw(pq_data, return = "data_clean")
@@ -37,6 +49,10 @@ test_that("identify_nkw accepts both data_clean and data_cleaned", {
 })
 
 test_that("identify_holidayweeks prints message with data_clean", {
+  # Skip if pq_data not available
+  skip_if_not_installed("vivainsights")
+  skip_if_not(exists("pq_data"))
+  
   # Set up message capture
   messages <- capture.output(
     result <- identify_holidayweeks(pq_data, return = "data_clean"),
@@ -49,6 +65,10 @@ test_that("identify_holidayweeks prints message with data_clean", {
 })
 
 test_that("identify_inactiveweeks prints message with data_clean", {
+  # Skip if pq_data not available
+  skip_if_not_installed("vivainsights")
+  skip_if_not(exists("pq_data"))
+  
   # Set up message capture
   messages <- capture.output(
     result <- identify_inactiveweeks(pq_data, return = "data_clean"),
@@ -61,6 +81,10 @@ test_that("identify_inactiveweeks prints message with data_clean", {
 })
 
 test_that("identify_nkw prints message with data_clean", {
+  # Skip if pq_data not available
+  skip_if_not_installed("vivainsights")
+  skip_if_not(exists("pq_data"))
+  
   # Set up message capture
   messages <- capture.output(
     result <- identify_nkw(pq_data, return = "data_clean"),
