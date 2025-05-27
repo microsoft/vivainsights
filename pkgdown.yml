@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.2
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   best-practices: best-practices.html
@@ -10,7 +10,7 @@ articles:
   intro-to-vivainsights: intro-to-vivainsights.html
   network-analysis: network-analysis.html
   pairwise-chisq: pairwise-chisq.html
-last_built: 2025-05-12T14:11Z
+last_built: 2025-05-27T18:05Z
 urls:
   reference: https://microsoft.github.io/vivainsights/reference
   article: https://microsoft.github.io/vivainsights/articles
