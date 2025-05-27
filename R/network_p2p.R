@@ -198,6 +198,11 @@ network_p2p <-
     if(length(node_sizes) != 2){
       stop("`node_sizes` must be of length 2")
     }
+    
+    ## Check if there are multiple MetricDate values
+    if("MetricDate" %in% names(data) && length(unique(data$MetricDate)) > 1){
+      stop("Multiple `MetricDate` values detected. The network_p2p() function requires a single date as it represents a snapshot. Please filter your data to a single `MetricDate` value.")
+    }
 
     ## Set data frame for edges
     if(is.null(weight)){
