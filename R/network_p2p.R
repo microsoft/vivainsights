@@ -12,6 +12,10 @@
 #' and analysis output options. Pass a data frame containing a person-to-person
 #' query and return a network visualization. Options are available for community
 #' detection using either the Louvain or the Leiden algorithms.
+#' 
+#' Note: The data frame must only contain a single `MetricDate` value, as the network
+#' represents a snapshot at a specific point in time. If multiple date values are present,
+#' filter the data frame to a specific date before using this function.
 #'
 #' @param data Data frame containing a person-to-person query.
 #' @param hrvar String containing the label for the HR attribute.
@@ -197,6 +201,11 @@ network_p2p <-
 
     if(length(node_sizes) != 2){
       stop("`node_sizes` must be of length 2")
+    }
+    
+    ## Check if there are multiple MetricDate values
+    if("MetricDate" %in% names(data) && length(unique(data$MetricDate)) > 1){
+      stop("Multiple `MetricDate` values detected. The network_p2p() function requires a single date as it represents a snapshot. Please filter your data to a single `MetricDate` value.")
     }
 
     ## Set data frame for edges
