@@ -65,7 +65,7 @@ create_line_asis <- function(data,
 
   returnPlot <-
     data %>%
-    mutate_at(vars(date_var), ~as.Date(., format = "%m/%d/%Y")) %>%
+    mutate(across(all_of(date_var), ~as.Date(., format = "%m/%d/%Y"))) %>%
     ggplot(aes(x = !!sym(date_var), y = !!sym(metric))) +
     geom_line(colour = line_colour)
 

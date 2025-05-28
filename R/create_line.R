@@ -121,7 +121,7 @@ create_line <- function(data,
     myTable %>%
     select(MetricDate, group, all_of(metric)) %>%
     group_by(MetricDate, group) %>%
-    summarise_at(vars(all_of(metric)), ~mean(., na.rm = TRUE)) %>%
+    summarise(across(all_of(metric), ~mean(., na.rm = TRUE))) %>%
     ungroup()
 
 
