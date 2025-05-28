@@ -52,7 +52,7 @@ flag_ch_ratio <- function(data, threshold = c(1, 30), return = "message"){
   ch_summary <-
     data %>%
     group_by(PersonId) %>%
-    summarise_at(vars(Collaboration_hours, After_hours_collaboration_hours), ~mean(.)) %>%
+    summarise(across(c(Collaboration_hours, After_hours_collaboration_hours), ~mean(.))) %>%
     mutate(CH_ratio = Collaboration_hours / After_hours_collaboration_hours) %>%
     arrange(desc(CH_ratio)) %>%
     mutate(CH_FlagLow = ifelse(CH_ratio < min_thres, TRUE, FALSE),

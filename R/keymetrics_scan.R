@@ -83,9 +83,9 @@ keymetrics_scan <- function(data,
     data %>%
     rename(group = !!sym(hrvar)) %>% # Rename HRvar to `group`
     group_by(group, PersonId) %>%
-    summarise_at(vars(metrics), ~mean(., na.rm = TRUE)) %>%
+    summarise(across(all_of(metrics), ~mean(., na.rm = TRUE))) %>%
     group_by(group) %>%
-    summarise_at(vars(metrics), ~mean(., na.rm = TRUE)) %>%
+    summarise(across(all_of(metrics), ~mean(., na.rm = TRUE))) %>%
     left_join(hrvar_count(data, hrvar = hrvar, return = "table") %>%
                 rename(Employee_Count = "n"),
               by = c("group" = hrvar)) %>%

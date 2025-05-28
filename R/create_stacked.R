@@ -146,7 +146,7 @@ create_stacked <- function(data,
   myTableReturn <-
     myTable %>%
     group_by(group) %>%
-    summarise_at(vars(metrics, Total), ~mean(.)) %>%
+    summarise(across(c(metrics, Total), ~mean(.))) %>%
     left_join(n_count, by = "group")
 
   plot_table <-
@@ -209,7 +209,7 @@ create_stacked <- function(data,
    filter(Metric != "Total") %>%
    mutate(Metric = factor(Metric, levels = rev(metrics))) %>%
    group_by(group, Metric) %>%
-   summarise_at(vars(Value), ~mean(.)) %>%
+   summarise(across(Value, ~mean(.))) %>%
    # Conditional ranking based on `rank` argument
    { if(is.null(rank)){
      ggplot(., aes(x = group, y = Value, fill = Metric))

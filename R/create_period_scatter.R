@@ -115,10 +115,10 @@ create_period_scatter <- function(data,
     rename(group = hrvar) %>%
     filter(between(Date, daterange_1_start, daterange_1_end)) %>%
     group_by(PersonId, group) %>%
-    summarise_at(vars(!!sym(metric_x), !!sym(metric_y)), ~mean(.)) %>%
+    summarise(across(c(!!sym(metric_x), !!sym(metric_y)), ~mean(.))) %>%
     ungroup() %>%
     group_by(group) %>%
-    summarise_at(vars(!!sym(metric_x), !!sym(metric_y)), ~mean(., na.rm = TRUE)) %>%
+    summarise(across(c(!!sym(metric_x), !!sym(metric_y)), ~mean(., na.rm = TRUE))) %>%
     mutate(Period = before_label) %>%
     left_join(emp_count, by = c(group = hrvar)) %>%
     filter(n >= mingroup)
@@ -128,10 +128,10 @@ create_period_scatter <- function(data,
     rename(group = hrvar) %>%
     filter(between(Date, daterange_2_start, daterange_2_end)) %>%
     group_by(PersonId, group) %>%
-    summarise_at(vars(!!sym(metric_x), !!sym(metric_y)), ~mean(.)) %>%
+    summarise(across(c(!!sym(metric_x), !!sym(metric_y)), ~mean(.))) %>%
     ungroup() %>%
     group_by(group) %>%
-    summarise_at(vars(!!sym(metric_x), !!sym(metric_y)), ~mean(., na.rm = TRUE)) %>%
+    summarise(across(c(!!sym(metric_x), !!sym(metric_y)), ~mean(., na.rm = TRUE))) %>%
     mutate(Period = after_label) %>%
     left_join(emp_count, by = c(group = hrvar)) %>%
     filter(n >= mingroup)

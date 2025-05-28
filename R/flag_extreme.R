@@ -89,7 +89,7 @@ flag_extreme <- function(data,
       data %>%
       rename(metric = !!sym(metric)) %>%
       group_by(PersonId) %>%
-      summarise_at(vars(metric), ~mean(.)) %>%
+      summarise(across(metric, ~mean(.))) %>%
 
       # Begin mode chunk
       {

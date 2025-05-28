@@ -69,12 +69,12 @@ hrvar_count_all <- function(data,
   ## Note: WPA here is used for a matching separator
   results <-
     data %>%
-    select(PersonId, extracted_chr) %>%
-    summarise_at(vars(extracted_chr),
+    select(PersonId, all_of(extracted_chr)) %>%
+    summarise(across(all_of(extracted_chr),
                  list(`WPAn_unique` = ~n_distinct(., na.rm = TRUE), # Excludes NAs from unique count
                       `WPAper_na` = ~(sum(is.na(.))/ nrow(data) * 100),
                       `WPAsum_na` = ~sum(is.na(.)) # Number of missing values
-                      )) %>% # % of missing values
+                      ))) %>% # % of missing values
     tidyr::gather(attribute, values) %>%
     tidyr::separate(col = attribute, into = c("attribute", "calculation"), sep = "_WPA") %>%
     tidyr::spread(calculation, values)

@@ -185,7 +185,7 @@ network_g2g <- function(data,
     group_by(PrimaryOrg, SecondaryOrg) %>%
     filter(PrimaryOrg != "Other_Collaborators" &
              SecondaryOrg!="Other_Collaborators") %>%
-    summarise_at("Metric", ~mean(.)) %>%
+    summarise(across(all_of("Metric"), ~mean(.))) %>%
     group_by(PrimaryOrg) %>%
     mutate(metric_prop = Metric / sum(Metric, na.rm = TRUE)) %>%
     select(PrimaryOrg, SecondaryOrg, metric_prop) %>%

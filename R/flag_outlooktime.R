@@ -105,8 +105,8 @@ flag_outlooktime <- function(data, threshold = c(4, 15), return = "message"){
   flagged_data <-
     data %>%
     # mutate_at(vars(WorkingStartTimeSetInOutlook, WorkingEndTimeSetInOutlook), ~clean_times(.)) %>%
-    mutate_at(vars(WorkingStartTimeSetInOutlook, WorkingEndTimeSetInOutlook), ~gsub(pattern = ":", replacement = "", x = .)) %>%
-    mutate_at(vars(WorkingStartTimeSetInOutlook, WorkingEndTimeSetInOutlook), ~strptime(., format = "%H%M")) %>%
+    mutate(across(c(WorkingStartTimeSetInOutlook, WorkingEndTimeSetInOutlook), ~gsub(pattern = ":", replacement = "", x = .))) %>%
+    mutate(across(c(WorkingStartTimeSetInOutlook, WorkingEndTimeSetInOutlook), ~strptime(., format = "%H%M"))) %>%
     mutate(WorkdayRange = as.numeric(WorkingEndTimeSetInOutlook - WorkingStartTimeSetInOutlook, units = "hours"),
            WorkdayFlag1 = WorkdayRange < threshold[[1]],
            WorkdayFlag2 = WorkdayRange > threshold[[2]],
