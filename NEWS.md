@@ -1,6 +1,7 @@
-# vivainsights (development version)
+# vivainsights 0.6.2
 
 * Minor bug fixes to `validation_report()`
+* Clearer diagnostic messages to `identify_*()` family of functions
 
 # vivainsights 0.6.1
 
