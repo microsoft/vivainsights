@@ -164,6 +164,10 @@ Analyse a person-to-person (P2P) network query, with multiple visualisation
 and analysis output options. Pass a data frame containing a person-to-person
 query and return a network visualization. Options are available for community
 detection using either the Louvain or the Leiden algorithms.
+
+Note: The data frame must only contain a single \code{MetricDate} value, as the network
+represents a snapshot at a specific point in time. If multiple date values are present,
+filter the data frame to a specific date before using this function.
 }
 \examples{
 p2p_df <- p2p_data_sim(dim = 1, size = 100)
