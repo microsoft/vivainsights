@@ -51,8 +51,15 @@
 #'   columns to be aggregated for calculating a target metric, using row sum for
 #'   aggregation. This is used when `metric` is not provided.
 #' @param version A string indicating the version of the classification to be
-#'   used. Valid options are `"12w"` for a 12-week rolling average and `"4w"`
-#'   for a 4-week rolling average. Defaults to `"12w"`.
+#'   used. Valid options are `"12w"` for a 12-week rolling average, `"4w"`
+#'   for a 4-week rolling average, or `NULL` when using custom parameters. Defaults to `"12w"`.
+#' @param threshold Numeric value specifying the minimum number of times the
+#'   metric sum up to in order to be a valid count. A 'greater than or equal to' 
+#'   logic is used. Only used when `version` is `NULL`.
+#' @param width Integer specifying the number of qualifying counts to consider
+#'   for a habit. Only used when `version` is `NULL`.
+#' @param max_window Integer specifying the maximum unit of dates to consider a
+#'   qualifying window for a habit. Only used when `version` is `NULL`.
 #' @param return A string indicating what to return from the function. Valid
 #'   options are: 
 #'   - `"data"`: Returns the data frame with usage segments.
@@ -62,14 +69,20 @@
 #'   segments or a plot visualizing the segments over time. If `"data"` is passed
 #'   to `return`, the following additional columns are appended:
 #'   
-#'   - `IsHabit12w`: Indicates whether the user has a habit based on the 12-week 
-#'   rolling average.
-#'   - `IsHabit4w`: Indicates whether the user has a habit based on the 4-week
-#'   rolling average.
-#'   - `UsageSegments_12w`: The usage segment classification based on the 
-#'   12-week rolling average.
-#'   - `UsageSegments_4w`: The usage segment classification based on the 4-week 
-#'   rolling average.
+#'   - When `version` is `"12w"` or `"4w"`:
+#'     - `IsHabit12w`: Indicates whether the user has a habit based on the 12-week 
+#'     rolling average.
+#'     - `IsHabit4w`: Indicates whether the user has a habit based on the 4-week
+#'     rolling average.
+#'     - `UsageSegments_12w`: The usage segment classification based on the 
+#'     12-week rolling average.
+#'     - `UsageSegments_4w`: The usage segment classification based on the 4-week 
+#'     rolling average.
+#'   - When `version` is `NULL`:
+#'     - `IsHabit`: Indicates whether the user has a habit based on the provided
+#'     parameters.
+#'     - `UsageSegments`: The usage segment classification based on the provided
+#'     parameters.
 #'   
 #'  @import slider slide_dbl  
 #'   
@@ -95,12 +108,26 @@
 #'   version = "4w",
 #'   return = "plot"
 #' )
+#' 
+#' # Example usage with custom parameters
+#' identify_usage_segments(
+#'   data = pq_data,
+#'   metric = "Emails_sent",
+#'   version = NULL,
+#'   threshold = 2,
+#'   width = 5,
+#'   max_window = 8,
+#'   return = "plot"
+#' )
 #' @export
 identify_usage_segments <- function(
     data,
     metric = NULL,
     metric_str = NULL,
     version = "12w",
+    threshold = NULL,
+    width = NULL,
+    max_window = NULL,
     return = "data"
     ) {
   
@@ -108,6 +135,17 @@ identify_usage_segments <- function(
     stop("Please provide either a metric or a metric_str")
   } else if(!is.null(metric) & !is.null(metric_str)){
     stop("Please provide either a metric or a metric_str, not both")
+  }
+  
+  # Validate version and custom parameters
+  if(!is.null(version) && !version %in% c("12w", "4w")){
+    stop("Please provide either `12w`, `4w`, or NULL to `version`")
+  }
+  
+  if(is.null(version)){
+    if(is.null(threshold) || is.null(width) || is.null(max_window)){
+      stop("When `version` is NULL, please provide values for `threshold`, `width`, and `max_window`")
+    }
   }
   
   if(is.null(metric_str)){
@@ -144,71 +182,125 @@ identify_usage_segments <- function(
       )) %>%
     ungroup()
   
-  # Create habits based on 12 weeks
-  habit_df_12w <-
-    prep_df_2 %>%
-    identify_habit(
-      metric = "target_metric",
-      threshold = 1,
-      width = 9,
-      max_window = 12,
-      return = "data"
-    ) %>%
-    rename(IsHabit12w = "IsHabit") %>%
-    select(PersonId, MetricDate, IsHabit12w)
-  
-  # Create habits based on 4 weeks
-  habit_df_4w <-
-    prep_df_2 %>%
-    identify_habit(
-      metric = "target_metric",
-      threshold = 1,
-      width = 4,
-      max_window = 4,
-      return = "data"
-    ) %>%
-    rename(IsHabit4w = "IsHabit") %>%
-    select(PersonId, MetricDate, IsHabit4w)
-  
-  # Main data frame with Usage Segments
-  main_us_df <-
-    prep_df_2 %>%
-    left_join(habit_df_4w, by = c("PersonId", "MetricDate")) %>%
-    left_join(habit_df_12w, by = c("PersonId", "MetricDate")) %>%
-    mutate(
-      UsageSegments_12w = case_when(
-        IsHabit12w == TRUE & target_metric_l12w >= 15 ~ "Power User",
-        IsHabit12w == TRUE ~ "Habitual User",
-        target_metric_l12w >= 1 ~ "Novice User",
-        target_metric_l12w > 0 ~ "Low User",
-        target_metric_l12w == 0 ~ "Non-user",
-        TRUE ~ NA_character_
+  # Create habits based on provided parameters or default versions
+  if(is.null(version)){
+    # Create habits based on custom parameters
+    habit_df <-
+      prep_df_2 %>%
+      identify_habit(
+        metric = "target_metric",
+        threshold = threshold,
+        width = width,
+        max_window = max_window,
+        return = "data"
       ) %>%
-        factor(levels = c(
-          "Power User",
-          "Habitual User",
-          "Novice User",
-          "Low User",
-          "Non-user"
-        ))
-    ) %>%
-    mutate(
-      UsageSegments_4w = case_when(
-        IsHabit4w == TRUE & target_metric_l4w >= 15 ~ "Power User",
-        IsHabit4w == TRUE ~ "Habitual User",
-        target_metric_l4w >= 1 ~ "Novice User",
-        target_metric_l4w > 0 ~ "Low User",
-        target_metric_l4w == 0 ~ "Non-user",
-        TRUE ~ NA_character_
+      select(PersonId, MetricDate, IsHabit)
+    
+    # Calculate the appropriate metric window average based on max_window
+    # Add a new column to prep_df_2 for the custom window average
+    prep_df_custom <- 
+      prep_df_2 %>%
+      group_by(PersonId) %>%
+      # Rolling averages for the custom window
+      mutate(
+        target_metric_custom = slider::slide_dbl(
+          target_metric,
+          mean,
+          na.rm = TRUE,
+          .before = max_window - 1,
+          .after = 0
+        )
       ) %>%
-        factor(levels = c(
-          "Power User",
-          "Habitual User",
-          "Novice User",
-          "Low User",
-          "Non-user"
-        ))
-    )
+      ungroup()
+    
+    # Main data frame with custom Usage Segments
+    main_us_df <-
+      prep_df_custom %>%
+      left_join(habit_df, by = c("PersonId", "MetricDate")) %>%
+      mutate(
+        UsageSegments = case_when(
+          IsHabit == TRUE & target_metric_custom >= 15 ~ "Power User",
+          IsHabit == TRUE ~ "Habitual User",
+          target_metric_custom >= 1 ~ "Novice User",
+          target_metric_custom > 0 ~ "Low User",
+          target_metric_custom == 0 ~ "Non-user",
+          TRUE ~ NA_character_
+        ) %>%
+          factor(levels = c(
+            "Power User",
+            "Habitual User",
+            "Novice User",
+            "Low User",
+            "Non-user"
+          ))
+      )
+  } else {
+    # Create habits based on 12 weeks
+    habit_df_12w <-
+      prep_df_2 %>%
+      identify_habit(
+        metric = "target_metric",
+        threshold = 1,
+        width = 9,
+        max_window = 12,
+        return = "data"
+      ) %>%
+      rename(IsHabit12w = "IsHabit") %>%
+      select(PersonId, MetricDate, IsHabit12w)
+    
+    # Create habits based on 4 weeks
+    habit_df_4w <-
+      prep_df_2 %>%
+      identify_habit(
+        metric = "target_metric",
+        threshold = 1,
+        width = 4,
+        max_window = 4,
+        return = "data"
+      ) %>%
+      rename(IsHabit4w = "IsHabit") %>%
+      select(PersonId, MetricDate, IsHabit4w)
+    
+    # Main data frame with Usage Segments
+    main_us_df <-
+      prep_df_2 %>%
+      left_join(habit_df_4w, by = c("PersonId", "MetricDate")) %>%
+      left_join(habit_df_12w, by = c("PersonId", "MetricDate")) %>%
+      mutate(
+        UsageSegments_12w = case_when(
+          IsHabit12w == TRUE & target_metric_l12w >= 15 ~ "Power User",
+          IsHabit12w == TRUE ~ "Habitual User",
+          target_metric_l12w >= 1 ~ "Novice User",
+          target_metric_l12w > 0 ~ "Low User",
+          target_metric_l12w == 0 ~ "Non-user",
+          TRUE ~ NA_character_
+        ) %>%
+          factor(levels = c(
+            "Power User",
+            "Habitual User",
+            "Novice User",
+            "Low User",
+            "Non-user"
+          ))
+      ) %>%
+      mutate(
+        UsageSegments_4w = case_when(
+          IsHabit4w == TRUE & target_metric_l4w >= 15 ~ "Power User",
+          IsHabit4w == TRUE ~ "Habitual User",
+          target_metric_l4w >= 1 ~ "Novice User",
+          target_metric_l4w > 0 ~ "Low User",
+          target_metric_l4w == 0 ~ "Non-user",
+          TRUE ~ NA_character_
+        ) %>%
+          factor(levels = c(
+            "Power User",
+            "Habitual User",
+            "Novice User",
+            "Low User",
+            "Non-user"
+          ))
+      )
+  }
   
   if(return == "data"){
     
@@ -216,14 +308,21 @@ identify_usage_segments <- function(
     
   } else if(return == "plot"){
     
-    if(version == "12w"){
+    if(is.null(version)){
+      main_us_df %>%
+        plot_ts_us(cus = "UsageSegments", caption = paste0(
+          "Usage Segments - Custom (threshold=", threshold, 
+          ", width=", width, 
+          ", max_window=", max_window, ")"
+        ))
+    } else if(version == "12w"){
       main_us_df %>%
         plot_ts_us(cus = "UsageSegments_12w", caption = "Usage Segments - 12 weeks")
     } else if(version == "4w"){
       main_us_df %>%
         plot_ts_us(cus = "UsageSegments_4w", caption = "Usage Segments - 4 weeks")
     } else {
-      stop("Please provide either `12w` or `4w` to `version`")
+      stop("Please provide either `12w`, `4w`, or NULL to `version`")
     }
   }
 }
