@@ -23,6 +23,7 @@ following strings:
 \item \code{"text"}
 \item \code{"data_with_flag"}
 \item \code{"data_clean"}
+\item \code{"data_cleaned"}
 \item \code{"data_summary"}
 }
 
@@ -35,7 +36,7 @@ argument:
 \item \code{"text"}: string. Returns a diagnostic message.
 \item \code{"data_with_flag"}: data frame. Original input data with an additional
 column containing the \code{kw}/\code{nkw} flag.
-\item \code{"data_clean"}: data frame. Data frame with non-knowledge workers
+\item \code{"data_clean"} or \code{"data_cleaned"}: data frame. Data frame with non-knowledge workers
 excluded.
 \item \code{"data_summary"}: data frame. A summary table by organization listing
 the number and \% of non-knowledge workers.
