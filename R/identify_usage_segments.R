@@ -150,7 +150,7 @@ identify_usage_segments <- function(
   
   if(is.null(metric_str)){
     prep_df <- data %>%
-      rename(target_metric := !!sym(metric))
+      mutate(target_metric = !!sym(metric))
   } else if(is.null(metric)){
     prep_df <- data %>%
       mutate(target_metric =
