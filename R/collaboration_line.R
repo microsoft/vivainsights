@@ -31,14 +31,16 @@
 collaboration_line <- function(data,
                                 hrvar = "Organization",
                                 mingroup = 5,
-                                return = "plot"){
+                                return = "plot",
+                                label = FALSE){
 
   ## Inherit arguments
   create_line(data = data,
               metric = "Collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
-              return = return)
+              return = return,
+              label = label)
 }
 
 #' @rdname collaboration_line
