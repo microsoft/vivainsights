@@ -33,7 +33,8 @@
 external_line <- function(data,
                             hrvar = "Organization",
                             mingroup=5,
-                            return = "plot"){
+                            return = "plot",
+                            label = FALSE){
 
 
   ## Inherit arguments
@@ -41,6 +42,7 @@ external_line <- function(data,
               metric = "External_collaboration_hours",
               hrvar = hrvar,
               mingroup = mingroup,
-              return = return)
+              return = return,
+              label = label)
 
 }
