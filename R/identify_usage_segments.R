@@ -316,14 +316,15 @@ identify_usage_segments <- function(
           caption = "",
           threshold = threshold,
           width = width,
-          max_window = max_window
+          max_window = max_window,
+          version = NULL
         )
     } else if(version == "12w"){
       main_us_df %>%
-        plot_ts_us(cus = "UsageSegments_12w", caption = "Usage Segments - 12 weeks")
+        plot_ts_us(cus = "UsageSegments_12w", caption = "", version = "12w")
     } else if(version == "4w"){
       main_us_df %>%
-        plot_ts_us(cus = "UsageSegments_4w", caption = "Usage Segments - 4 weeks")
+        plot_ts_us(cus = "UsageSegments_4w", caption = "", version = "4w")
     } else {
       stop("Please provide either `12w`, `4w`, or NULL to `version`")
     }
@@ -350,17 +351,21 @@ identify_usage_segments <- function(
 #'   Only used when creating custom parameter captions. Defaults to NULL.
 #' @param max_window Integer specifying the maximum window to consider for a habit.
 #'   Only used when creating custom parameter captions. Defaults to NULL.
+#' @param version A string indicating the version of the classification. Valid options 
+#'   are "12w", "4w", or NULL for custom parameters. Used to determine which definitions 
+#'   to show in the caption.
 #' 
 #' @return A ggplot object representing the stacked bar plot of usage segments.
 
-plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_window = NULL){
+plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_window = NULL, version = NULL){
   
-  # If custom parameters are provided, create a custom caption
+  # Create detailed captions based on version
+  date_text <- extract_date_range(data, return = "text")
+  
   if(!is.null(threshold) && !is.null(width) && !is.null(max_window)){
-    date_text <- extract_date_range(data, return = "text")
-    
+    # Custom parameters caption
     custom_caption <- paste0(
-      "Usage Segments - Custom Definition:\n",
+      "Usage Segments - Definition:\n",
       "• Power User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks, with 15+ average weekly actions\n",
       "• Habitual User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks\n",
       "• Novice User: Average of at least one action over ", max_window, " weeks\n",
@@ -371,7 +376,36 @@ plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_w
     final_caption <- custom_caption
     plot_title <- "Usage Segments - Custom Parameters"
     plot_subtitle <- "Proportion of users in each segment based on custom definition"
+  } else if(version == "12w"){
+    # 12-week version caption
+    caption_12w <- paste0(
+      "Usage Segments - Definition:\n",
+      "• Power User: 15+ average weekly actions and any actions in at least 9 out of past 12 weeks\n",
+      "• Habitual User: Any action in at least 9 out of past 12 weeks\n",
+      "• Novice User: Average of at least one action over the last 12 weeks\n",
+      "• Low User: Any action in the past 12 weeks\n",
+      "\n", date_text
+    )
+    
+    final_caption <- caption_12w
+    plot_title <- "Usage Segments - 12 Weeks"
+    plot_subtitle <- "Proportion of users in each segment based on 12-week rolling average"
+  } else if(version == "4w"){
+    # 4-week version caption
+    caption_4w <- paste0(
+      "Usage Segments - Definition:\n",
+      "• Power User: 15+ average weekly actions and any actions in at least 4 out of past 4 weeks\n",
+      "• Habitual User: Any action in at least 4 out of past 4 weeks\n",
+      "• Novice User: Average of at least one action over the last 4 weeks\n",
+      "• Low User: Any action in the past 4 weeks\n",
+      "\n", date_text
+    )
+    
+    final_caption <- caption_4w
+    plot_title <- "Usage Segments - 4 Weeks"
+    plot_subtitle <- "Proportion of users in each segment based on 4-week rolling average"
   } else {
+    # Fallback to provided caption
     final_caption <- caption
     plot_title <- "Usage Segments"
     plot_subtitle <- "Proportion of users in each segment"
