@@ -57,6 +57,7 @@
 #'   options are: 
 #'   - `"data"`: Returns the data frame with usage segments.
 #'   - `"plot"`: Returns a plot of the usage segments.
+#'   - `"table"`: Returns a summary table with usage segments as columns.
 #'   
 #' @return Depending on the `return` parameter, either a data frame with usage 
 #'   segments or a plot visualizing the segments over time. If `"data"` is passed
@@ -71,7 +72,11 @@
 #'   - `UsageSegments_4w`: The usage segment classification based on the 4-week 
 #'   rolling average.
 #'   
-#'  @import slider slide_dbl  
+#'   If `"table"` is passed to `return`, a summary table is returned with one row
+#'   per `MetricDate` and usage segments as columns containing percentages.
+#'   
+#'  @import slider slide_dbl
+#'  @import tidyr  
 #'   
 #' @examples
 #' # Example usage with a single metric column
@@ -94,6 +99,14 @@
 #'   ),
 #'   version = "4w",
 #'   return = "plot"
+#' )
+#' 
+#' # Return summary table
+#' identify_usage_segments(
+#'   data = pq_data,
+#'   metric = "Emails_sent",
+#'   version = "12w",
+#'   return = "table"
 #' )
 #' @export
 identify_usage_segments <- function(
@@ -225,6 +238,37 @@ identify_usage_segments <- function(
     } else {
       stop("Please provide either `12w` or `4w` to `version`")
     }
+    
+  } else if(return == "table"){
+    
+    # Determine which usage segments column to use based on version
+    if(version == "12w"){
+      segments_col <- "UsageSegments_12w"
+      caption_text <- "Usage segments summary table (12-week version)"
+    } else if(version == "4w"){
+      segments_col <- "UsageSegments_4w"
+      caption_text <- "Usage segments summary table (4-week version)"
+    } else {
+      stop("Please provide either `12w` or `4w` to `version`")
+    }
+    
+    # Print diagnostic message
+    message(caption_text)
+    
+    # Create summary table
+    main_us_df %>%
+      count(MetricDate, !!sym(segments_col)) %>%
+      group_by(MetricDate) %>%
+      mutate(pct = n / sum(n)) %>%
+      mutate(n = sum(n)) %>%
+      pivot_wider(
+        names_from = !!sym(segments_col),
+        values_from = pct,
+        values_fill = 0
+      )
+      
+  } else {
+    stop("Please enter a valid input for `return`. Valid options are 'data', 'plot', or 'table'.")
   }
 }
 
