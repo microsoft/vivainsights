@@ -34,6 +34,7 @@ options are:
 \itemize{
 \item \code{"data"}: Returns the data frame with usage segments.
 \item \code{"plot"}: Returns a plot of the usage segments.
+\item \code{"table"}: Returns a summary table with usage segments as columns.
 }}
 }
 \value{
@@ -51,7 +52,11 @@ rolling average.
 rolling average.
 }
 
+If \code{"table"} is passed to \code{return}, a summary table is returned with one row
+per \code{MetricDate} and usage segments as columns containing percentages.
+
 @import slider slide_dbl
+@import tidyr
 }
 \description{
 This function identifies users into usage segments based on their usage
@@ -110,5 +115,13 @@ identify_usage_segments(
   ),
   version = "4w",
   return = "plot"
+)
+
+# Return summary table
+identify_usage_segments(
+  data = pq_data,
+  metric = "Emails_sent",
+  version = "12w",
+  return = "table"
 )
 }
