@@ -396,7 +396,7 @@ plot_ts_cus <- function(data, cus, threshold, width, max_window){
     "• Habitual User: Active usage in ", width, " out of ", max_window, " periods\n",
     "• Power User: Habitual User with 15+ average weekly actions\n", 
     "• Qualifying period: ", threshold, " or more actions per period\n",
-    date_text
+    "\n", date_text
   )
   
   data %>%
