@@ -25,6 +25,7 @@
 #'   - `"text"`
 #'   - `"data_with_flag"`
 #'   - `"data_clean"`
+#'   - `"data_cleaned"`
 #'   - `"data_summary"`
 #'
 #' See `Value` for more information.
@@ -39,7 +40,7 @@
 #'   - `"text"`: string. Returns a diagnostic message.
 #'   - `"data_with_flag"`: data frame. Original input data with an additional
 #'   column containing the `kw`/`nkw` flag.
-#'   - `"data_clean"`: data frame. Data frame with non-knowledge workers
+#'   - `"data_clean"` or `"data_cleaned"`: data frame. Data frame with non-knowledge workers
 #'   excluded.
 #'   - `"data_summary"`: data frame. A summary table by organization listing
 #'   the number and % of non-knowledge workers.
@@ -92,7 +93,24 @@ identify_nkw <- function(data, collab_threshold = 5, return = "data_summary"){
     return(data_with_flag)
 
   } else if(return %in% c("data_clean", "data_cleaned")){
-
+    
+    # Create diagnostic message for removed non-knowledge workers
+    nkw_count <- sum(data_with_flag$flag_nkw == "nkw", na.rm = TRUE)
+    total_persons <- n_distinct(data$PersonId)
+    
+    if(nkw_count > 0) {
+      diagnostic_msg <- paste0(nkw_count, " employees have been flagged as non-knowledge workers and removed from the data. ",
+                              "This is based on a collaboration hours threshold of ", collab_threshold, 
+                              " hours (employees with less than this threshold on average).")
+    } else {
+      diagnostic_msg <- paste0("No employees were identified as non-knowledge workers based on a collaboration hours threshold of ", 
+                              collab_threshold, " hours.")
+    }
+    
+    # Print the diagnostic message
+    message(diagnostic_msg)
+    
+    # Return the cleaned data
     data_with_flag %>%
       filter(flag_nkw == "kw")
 
