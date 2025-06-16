@@ -59,10 +59,10 @@ extract_hr <- function(data,
 
   hr_var <-
     data %>%
-    dplyr::select_if(~(is.character(.) | is.logical(.) | is.factor(.))) %>%
-    dplyr::select_if(~(dplyr::n_distinct(.) < max_unique)) %>%
-    dplyr::select_if(~(dplyr::n_distinct(.) > min_unique)) %>% # Exc constants
-    dplyr::select_if(~!all(is_date_format(.))) %>%
+    dplyr::select(where(~(is.character(.) | is.logical(.) | is.factor(.)))) %>%
+    dplyr::select(where(~(dplyr::n_distinct(.) < max_unique))) %>%
+    dplyr::select(where(~(dplyr::n_distinct(.) > min_unique))) %>% # Exc constants
+    dplyr::select(where(~!all(is_date_format(.)))) %>%
     names() %>%
     .[.!= "WorkingStartTimeSetInOutlook"] %>%
     .[.!= "WorkingEndTimeSetInOutlook"] %>%
