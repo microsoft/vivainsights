@@ -53,8 +53,8 @@ p2p_data_sim <- function(dim = 1,
            SecondaryCollaborator_LevelDesignation = add_cat(SecondaryCollaborator_PersonId, "LevelDesignation"),
            PrimaryCollaborator_City = add_cat(PrimaryCollaborator_PersonId, "City"),
            SecondaryCollaborator_City = add_cat(SecondaryCollaborator_PersonId, "City")) %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::ends_with("PersonId")),
-                     ~paste0("SIM_ID_", .)) %>%
+    dplyr::mutate(across(ends_with("PersonId"),
+                     ~paste0("SIM_ID_", .))) %>%
     dplyr::mutate(StrongTieScore = 1)
 }
 
