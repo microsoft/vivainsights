@@ -310,9 +310,10 @@ identify_usage_segments <- function(
     
     if(is.null(version)){
       main_us_df %>%
-        plot_ts_cus(
+        plot_ts_us(
           data = ., 
           cus = "UsageSegments", 
+          caption = "",
           threshold = threshold,
           width = width,
           max_window = max_window
@@ -343,61 +344,38 @@ identify_usage_segments <- function(
 #'   segment classifications (e.g., "UsageSegments_12w").
 #' @param caption A string representing the caption for the plot. This is typically 
 #'   used to provide additional context or information about the visualization.
-#' 
-#' @return A ggplot object representing the stacked bar plot of usage segments.
-
-plot_ts_us <- function(data, cus, caption){
-  
-  data %>%
-    count(MetricDate, !!sym(cus)) %>%
-    group_by(MetricDate) %>%
-    mutate(prop = n / sum(n)) %>%
-    ggplot(aes(x = MetricDate, y = prop, fill = !!sym(cus))) +
-    geom_bar(stat = "identity") +
-    scale_y_continuous(labels = scales::percent) +
-    scale_fill_manual(values = c("#0c336e", "#1c66b0", "#80baea", "grey", "#808080")) +
-    labs(
-      title = "Usage Segments",
-      subtitle = "Proportion of users in each segment",
-      x = "Date",
-      y = "Proportion of users",
-      fill = "Usage Segment",
-      caption = caption
-    ) +
-    theme_wpa_basic()
-  
-}
-
-
-#' @title Plot Usage Segments over time with custom parameters
-#' 
-#' @description Returns a vertical stacked bar plot that displays the proportion 
-#'   of the Usage Segments over time when using custom parameters. This function
-#'   creates a more detailed caption that explains the custom parameter definitions
-#'   used for segment classification.
-#' 
-#' @param data A data frame with a column containing the Usage Segments, 
-#'   denoted by `cus`. The data frame must also include a `MetricDate` column.
-#' @param cus A string representing the name of the column containing the usage 
-#'   segment classifications (e.g., "UsageSegments").
 #' @param threshold Numeric value specifying the minimum threshold for a valid count.
+#'   Only used when creating custom parameter captions. Defaults to NULL.
 #' @param width Integer specifying the number of qualifying counts to consider for a habit.
+#'   Only used when creating custom parameter captions. Defaults to NULL.
 #' @param max_window Integer specifying the maximum window to consider for a habit.
+#'   Only used when creating custom parameter captions. Defaults to NULL.
 #' 
 #' @return A ggplot object representing the stacked bar plot of usage segments.
 
-plot_ts_cus <- function(data, cus, threshold, width, max_window){
+plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_window = NULL){
   
-  # Create detailed caption explaining custom parameters
-  date_text <- extract_date_range(data, return = "text")
-  
-  custom_caption <- paste0(
-    "Usage Segments - Custom Definition:\n",
-    "• Habitual User: Active usage in ", width, " out of ", max_window, " periods\n",
-    "• Power User: Habitual User with 15+ average weekly actions\n", 
-    "• Qualifying period: ", threshold, " or more actions per period\n",
-    "\n", date_text
-  )
+  # If custom parameters are provided, create a custom caption
+  if(!is.null(threshold) && !is.null(width) && !is.null(max_window)){
+    date_text <- extract_date_range(data, return = "text")
+    
+    custom_caption <- paste0(
+      "Usage Segments - Custom Definition:\n",
+      "• Power User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks, with 15+ average weekly actions\n",
+      "• Habitual User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks\n",
+      "• Novice User: Average of at least one action over ", max_window, " weeks\n",
+      "• Low User: At least one action in the last ", max_window, " weeks\n",
+      "\n", date_text
+    )
+    
+    final_caption <- custom_caption
+    plot_title <- "Usage Segments - Custom Parameters"
+    plot_subtitle <- "Proportion of users in each segment based on custom definition"
+  } else {
+    final_caption <- caption
+    plot_title <- "Usage Segments"
+    plot_subtitle <- "Proportion of users in each segment"
+  }
   
   data %>%
     count(MetricDate, !!sym(cus)) %>%
@@ -408,14 +386,16 @@ plot_ts_cus <- function(data, cus, threshold, width, max_window){
     scale_y_continuous(labels = scales::percent) +
     scale_fill_manual(values = c("#0c336e", "#1c66b0", "#80baea", "grey", "#808080")) +
     labs(
-      title = "Usage Segments - Custom Parameters",
-      subtitle = "Proportion of users in each segment based on custom definition",
+      title = plot_title,
+      subtitle = plot_subtitle,
       x = "Date",
       y = "Proportion of users",
       fill = "Usage Segment",
-      caption = custom_caption
+      caption = final_caption
     ) +
-    theme_wpa_basic()
+    theme_wpa_basic() +
+    theme(plot.caption = element_text(hjust = 0))
   
 }
+
 
