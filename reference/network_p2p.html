@@ -3,11 +3,17 @@
 Analyse a person-to-person (P2P) network query, with multiple visualisation
 and analysis output options. Pass a data frame containing a person-to-person
 query and return a network visualization. Options are available for community
-detection using either the Louvain or the Leiden algorithms."><meta property="og:description" content="
+detection using either the Louvain or the Leiden algorithms.
+Note: The data frame must only contain a single MetricDate value, as the network
+represents a snapshot at a specific point in time. If multiple date values are present,
+filter the data frame to a specific date before using this function."><meta property="og:description" content="
 Analyse a person-to-person (P2P) network query, with multiple visualisation
 and analysis output options. Pass a data frame containing a person-to-person
 query and return a network visualization. Options are available for community
-detection using either the Louvain or the Leiden algorithms."><meta property="og:image" content="https://microsoft.github.io/vivainsights/logo.png"><!-- dependencies from examples --><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/d3-4.9.1/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4.1/sankeyNetwork.js"></script></head><body>
+detection using either the Louvain or the Leiden algorithms.
+Note: The data frame must only contain a single MetricDate value, as the network
+represents a snapshot at a specific point in time. If multiple date values are present,
+filter the data frame to a specific date before using this function."><meta property="og:image" content="https://microsoft.github.io/vivainsights/logo.png"><!-- dependencies from examples --><script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/d3-4.9.1/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4.1/sankeyNetwork.js"></script></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -66,6 +72,9 @@ detection using either the Louvain or the Leiden algorithms."><meta property="og
 and analysis output options. Pass a data frame containing a person-to-person
 query and return a network visualization. Options are available for community
 detection using either the Louvain or the Leiden algorithms.</p>
+<p>Note: The data frame must only contain a single <code>MetricDate</code> value, as the network
+represents a snapshot at a specific point in time. If multiple date values are present,
+filter the data frame to a specific date before using this function.</p>
     </div>
 
     <div class="section level2">
