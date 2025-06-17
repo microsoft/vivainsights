@@ -78,6 +78,7 @@ metrics, such as 'Chats_sent'.</p>
 <span>  threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_window <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  power_thres <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>  version <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -121,6 +122,11 @@ NULL.</p></dd>
 <dt id="arg-max-window">max_window<a class="anchor" aria-label="anchor" href="#arg-max-window"></a></dt>
 <dd><p>Integer specifying the maximum window to consider for a
 habit. Only used when creating custom parameter captions. Defaults to NULL.</p></dd>
+
+
+<dt id="arg-power-thres">power_thres<a class="anchor" aria-label="anchor" href="#arg-power-thres"></a></dt>
+<dd><p>Numeric value specifying the minimum weekly average
+actions required to be classified as a 'Power User'. Defaults to 15.</p></dd>
 
 
 <dt id="arg-version">version<a class="anchor" aria-label="anchor" href="#arg-version"></a></dt>
