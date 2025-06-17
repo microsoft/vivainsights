@@ -493,10 +493,10 @@ plot_ts_us <- function(data,
     # Custom parameters caption
     custom_caption <- paste0(
       "Usage Segments - Definition:\n",
-      "• Power User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks, with ", power_thres, "+ average weekly actions\n",
-      "• Habitual User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks\n",
-      "• Novice User: Average of at least one action over ", max_window, " weeks\n",
-      "• Low User: At least one action in the last ", max_window, " weeks\n",
+      "Power User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks, with ", power_thres, "+ average weekly actions\n",
+      "Habitual User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks\n",
+      "Novice User: Average of at least one action over ", max_window, " weeks\n",
+      "Low User: At least one action in the last ", max_window, " weeks\n",
       "\n", date_text
     )
     
@@ -507,10 +507,10 @@ plot_ts_us <- function(data,
     # 12-week version caption
     caption_12w <- paste0(
       "Usage Segments - Definition:\n",
-      "• Power User: ", power_thres, "+ average weekly actions and any actions in at least 9 out of past 12 weeks\n",
-      "• Habitual User: Any action in at least 9 out of past 12 weeks\n",
-      "• Novice User: Average of at least one action over the last 12 weeks\n",
-      "• Low User: Any action in the past 12 weeks\n",
+      "Power User: ", power_thres, "+ average weekly actions and any actions in at least 9 out of past 12 weeks\n",
+      "Habitual User: Any action in at least 9 out of past 12 weeks\n",
+      "Novice User: Average of at least one action over the last 12 weeks\n",
+      "Low User: Any action in the past 12 weeks\n",
       "\n", date_text
     )
     
@@ -521,10 +521,10 @@ plot_ts_us <- function(data,
     # 4-week version caption
     caption_4w <- paste0(
       "Usage Segments - Definition:\n",
-      "• Power User: ", power_thres, "+ average weekly actions and any actions in at least 4 out of past 4 weeks\n",
-      "• Habitual User: Any action in at least 4 out of past 4 weeks\n",
-      "• Novice User: Average of at least one action over the last 4 weeks\n",
-      "• Low User: Any action in the past 4 weeks\n",
+      "Power User: ", power_thres, "+ average weekly actions and any actions in at least 4 out of past 4 weeks\n",
+      "Habitual User: Any action in at least 4 out of past 4 weeks\n",
+      "Novice User: Average of at least one action over the last 4 weeks\n",
+      "Low User: Any action in the past 4 weeks\n",
       "\n", date_text
     )
     
