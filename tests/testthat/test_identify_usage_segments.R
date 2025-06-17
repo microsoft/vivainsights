@@ -206,7 +206,22 @@ test_that("identify_usage_segments prints custom parameters message for table re
       max_window = 4,
       return = "table"
     ),
-    "Usage segments summary table \\(custom parameters - threshold: 2, width: 3, max window: 4\\)"
+    "Usage segments summary table \\(custom parameters - threshold: 2, width: 3, max window: 4, power threshold: 15\\)"
+  )
+  
+  # Test that custom parameters message includes custom power_thres
+  expect_message(
+    identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = NULL,
+      threshold = 2,
+      width = 3,
+      max_window = 4,
+      power_thres = 20,
+      return = "table"
+    ),
+    "Usage segments summary table \\(custom parameters - threshold: 2, width: 3, max window: 4, power threshold: 20\\)"
   )
 })
 

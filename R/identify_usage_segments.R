@@ -398,7 +398,7 @@ identify_usage_segments <- function(
       segments_col <- "UsageSegments"
       caption_text <- paste0(
         "Usage segments summary table (custom parameters - ",
-        "threshold: ", threshold, ", width: ", width, ", max window: ", max_window, ")"
+        "threshold: ", threshold, ", width: ", width, ", max window: ", max_window, ", power threshold: ", power_thres, ")"
       )
     } else if(version == "12w"){
       segments_col <- "UsageSegments_12w"
