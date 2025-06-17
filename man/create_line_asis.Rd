@@ -13,7 +13,8 @@ create_line_asis(
   caption = NULL,
   ylab = date_var,
   xlab = metric,
-  line_colour = rgb2hex(0, 120, 212)
+  line_colour = rgb2hex(0, 120, 212),
+  label = FALSE
 )
 }
 \arguments{
@@ -36,6 +37,11 @@ create_line_asis(
 \item{line_colour}{String to specify colour to use for the line.
 Hex codes are accepted. You can also supply
 RGB values via \code{rgb2hex()}.}
+
+\item{label}{Logical value to determine whether to show data point labels on
+the plot. If \code{TRUE}, both \code{geom_point()} and \code{geom_text()} are added to
+display data labels rounded to 1 decimal place above each data point.
+Defaults to \code{FALSE}.}
 }
 \value{
 Returns a 'ggplot' object representing a line plot.
@@ -63,6 +69,17 @@ med_df \%>\%
     title = "Median Emails Sent",
     subtitle = "Person Averaging Not Applied",
     caption = extract_date_range(pq_data, return = "text")
+  )
+
+# Create line plot with data point labels
+med_df \%>\%
+  create_line_asis(
+    date_var = "MetricDate",
+    metric = "Emails_sent_median",
+    title = "Median Emails Sent",
+    subtitle = "Person Averaging Not Applied",
+    caption = extract_date_range(pq_data, return = "text"),
+    label = TRUE
   )
 
 }
