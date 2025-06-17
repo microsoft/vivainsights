@@ -5,7 +5,8 @@
 
 #' @title Identify Usage Segments based on a metric
 #'   
-#' @description 
+#' @description `r lifecycle::badge('experimental')`
+#'
 #' This function identifies users into usage segments based on their usage
 #' volume and consistency. The segments 'Power Users', 'Habitual Users', 'Novice
 #' Users', 'Low Users', and 'Non-users' are created. There are two versions, one
@@ -312,6 +313,7 @@ identify_usage_segments <- function(
       main_us_df %>%
         plot_ts_us(
           data = ., 
+          metric = metric,
           cus = "UsageSegments", 
           caption = "",
           threshold = threshold,
@@ -321,10 +323,20 @@ identify_usage_segments <- function(
         )
     } else if(version == "12w"){
       main_us_df %>%
-        plot_ts_us(cus = "UsageSegments_12w", caption = "", version = "12w")
+        plot_ts_us(
+          metric = metric,
+          cus = "UsageSegments_12w",
+          caption = "",
+          version = "12w"
+        )
     } else if(version == "4w"){
       main_us_df %>%
-        plot_ts_us(cus = "UsageSegments_4w", caption = "", version = "4w")
+        plot_ts_us(
+          metric = metric,
+          cus = "UsageSegments_4w",
+          caption = "",
+          version = "4w"
+        )
     } else {
       stop("Please provide either `12w`, `4w`, or NULL to `version`")
     }
@@ -334,33 +346,58 @@ identify_usage_segments <- function(
 
 #' @title Plot Usage Segments over time
 #' 
-#' @description Returns a vertical stacked bar plot that displays the proportion 
-#'   of the Usage Segments over time. This visualization helps to understand 
-#'   the distribution of user segments across different time periods. While a main use case 
-#'   is for Copilot metrics, this function can be applied to other metrics, such as 'Chats_sent'.
+#' @description Returns a vertical stacked bar plot that displays the proportion
+#'   of the Usage Segments over time. This visualization helps to understand the
+#'   distribution of user segments across different time periods. While a main
+#'   use case is for Copilot metrics, this function can be applied to other
+#'   metrics, such as 'Chats_sent'.
 #' 
-#' @param data A data frame with a column containing the Usage Segments, 
-#'   denoted by `cus`. The data frame must also include a `MetricDate` column.
-#' @param cus A string representing the name of the column containing the usage 
+#' @param data A data frame with a column containing the Usage Segments, denoted
+#'   by `cus`. The data frame must also include a `MetricDate` column.
+#' @param metric A string representing the name of the metric column to be
+#'   classified.
+#' @param cus A string representing the name of the column containing the usage
 #'   segment classifications (e.g., "UsageSegments_12w").
-#' @param caption A string representing the caption for the plot. This is typically 
-#'   used to provide additional context or information about the visualization.
-#' @param threshold Numeric value specifying the minimum threshold for a valid count.
-#'   Only used when creating custom parameter captions. Defaults to NULL.
-#' @param width Integer specifying the number of qualifying counts to consider for a habit.
-#'   Only used when creating custom parameter captions. Defaults to NULL.
-#' @param max_window Integer specifying the maximum window to consider for a habit.
-#'   Only used when creating custom parameter captions. Defaults to NULL.
-#' @param version A string indicating the version of the classification. Valid options 
-#'   are "12w", "4w", or NULL for custom parameters. Used to determine which definitions 
-#'   to show in the caption.
+#' @param caption A string representing the caption for the plot. This is
+#'   typically used to provide additional context or information about the
+#'   visualization.
+#' @param threshold Numeric value specifying the minimum threshold for a valid
+#'   count. Only used when creating custom parameter captions. Defaults to NULL.
+#' @param width Integer specifying the number of qualifying counts to consider
+#'   for a habit. Only used when creating custom parameter captions. Defaults to
+#'   NULL.
+#' @param max_window Integer specifying the maximum window to consider for a
+#'   habit. Only used when creating custom parameter captions. Defaults to NULL.
+#' @param version A string indicating the version of the classification. Valid
+#'   options are "12w", "4w", or NULL for custom parameters. Used to determine
+#'   which definitions to show in the caption.
 #' 
 #' @return A ggplot object representing the stacked bar plot of usage segments.
+#' 
+#' @export
 
-plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_window = NULL, version = NULL){
+plot_ts_us <- function(data,
+                       metric,
+                       cus,
+                       caption,
+                       threshold = NULL,
+                       width = NULL,
+                       max_window = NULL,
+                       version = NULL) {
   
   # Create detailed captions based on version
   date_text <- extract_date_range(data, return = "text")
+  
+  # Usage Segments text
+  if(is.null(metric)){
+    
+    us_text <- "Usage Segments"
+    
+  } else {
+    
+    us_text <- paste("Usage Segments for", us_to_space(metric))
+    
+  }
   
   if(!is.null(threshold) && !is.null(width) && !is.null(max_window)){
     # Custom parameters caption
@@ -374,7 +411,7 @@ plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_w
     )
     
     final_caption <- custom_caption
-    plot_title <- "Usage Segments - Custom Parameters"
+    plot_title <- plot_title <- paste(us_text, "- Custom Parameters")
     plot_subtitle <- "Proportion of users in each segment based on custom definition"
   } else if(version == "12w"){
     # 12-week version caption
@@ -388,7 +425,7 @@ plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_w
     )
     
     final_caption <- caption_12w
-    plot_title <- "Usage Segments - 12 Weeks"
+    plot_title <- paste(us_text, "- 12 Weeks")
     plot_subtitle <- "Proportion of users in each segment based on 12-week rolling average"
   } else if(version == "4w"){
     # 4-week version caption
@@ -402,12 +439,12 @@ plot_ts_us <- function(data, cus, caption, threshold = NULL, width = NULL, max_w
     )
     
     final_caption <- caption_4w
-    plot_title <- "Usage Segments - 4 Weeks"
+    plot_title <- paste(us_text, "- 4 Weeks")
     plot_subtitle <- "Proportion of users in each segment based on 4-week rolling average"
   } else {
     # Fallback to provided caption
     final_caption <- caption
-    plot_title <- "Usage Segments"
+    plot_title <- paste(us_text, "- 12 Weeks")
     plot_subtitle <- "Proportion of users in each segment"
   }
   

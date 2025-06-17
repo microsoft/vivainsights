@@ -77,6 +77,8 @@ parameters.
 @import slider slide_dbl
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 This function identifies users into usage segments based on their usage
 volume and consistency. The segments 'Power Users', 'Habitual Users', 'Novice
 Users', 'Low Users', and 'Non-users' are created. There are two versions, one
