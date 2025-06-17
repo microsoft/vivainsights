@@ -28,7 +28,7 @@
 #' The definitions of the segments as per the 12-week definition are
 #' as follows:
 #' 
-#'   - **Power User**: Averaging 15+ weekly actions and any actions in at least 
+#'   - **Power User**: Averaging 15+ weekly actions (customizable via `power_thres`) and any actions in at least 
 #'   9 out of past 12 weeks
 #'   - **Habitual User**: Any action in at least 9 out of past 12 weeks
 #'   - **Novice User**: Averaging at least one action over the last 12 weeks
@@ -38,7 +38,7 @@
 #' The definitions of the segments as per the 4-week definition are
 #' as follows:
 #' 
-#'  - **Power User**: Averaging 15+ weekly actions and any actions in at least 4
+#'  - **Power User**: Averaging 15+ weekly actions (customizable via `power_thres`) and any actions in at least 4
 #'   out of past 4 weeks
 #'  - **Habitual User**: Any action in at least 4 out of past 4 weeks
 #'  - **Novice User**: Averaging at least one action over the last 4 weeks
@@ -46,10 +46,10 @@
 #'  - **Non-user**: No actions in the past 4 weeks
 #'  
 #' When using custom parameters (`version = NULL`), you must provide values for
-#' `threshold`, `width`, and `max_window`. The segment definitions become:
+#' `threshold`, `width`, `max_window`, and optionally `power_thres`. The segment definitions become:
 #' 
 #'  - **Power User**: Minimum of `threshold` actions per week in at least `width` 
-#'  out of past `max_window` weeks, with 15+ average weekly actions
+#'  out of past `max_window` weeks, with 15+ average weekly actions (customizable via `power_thres`)
 #'  - **Habitual User**: Minimum of `threshold` actions per week in at least 
 #'  `width` out of past `max_window` weeks
 #'  - **Novice User**: Average of at least one action over the last `max_window` weeks
@@ -75,6 +75,8 @@
 #'   for a habit. Only used when `version` is `NULL`.
 #' @param max_window Integer specifying the maximum unit of dates to consider a
 #'   qualifying window for a habit. Only used when `version` is `NULL`.
+#' @param power_thres Numeric value specifying the minimum weekly average 
+#'   actions required to be classified as a 'Power User'. Defaults to 15.
 #' @param return A string indicating what to return from the function. Valid
 #'   options are: 
 #'   - `"data"`: Returns the data frame with usage segments.
@@ -148,6 +150,15 @@
 #'   return = "plot"
 #' )
 #' 
+#' # Example usage with custom power user threshold
+#' identify_usage_segments(
+#'   data = pq_data,
+#'   metric = "Emails_sent",
+#'   version = "12w",
+#'   power_thres = 20,
+#'   return = "plot"
+#' )
+#' 
 #' # Return summary table
 #' identify_usage_segments(
 #'   data = pq_data,
@@ -164,6 +175,7 @@ identify_usage_segments <- function(
     threshold = NULL,
     width = NULL,
     max_window = NULL,
+    power_thres = 15,
     return = "data"
     ) {
   
@@ -255,7 +267,7 @@ identify_usage_segments <- function(
       left_join(habit_df, by = c("PersonId", "MetricDate")) %>%
       mutate(
         UsageSegments = case_when(
-          IsHabit == TRUE & target_metric_custom >= 15 ~ "Power User",
+          IsHabit == TRUE & target_metric_custom >= power_thres ~ "Power User",
           IsHabit == TRUE ~ "Habitual User",
           target_metric_custom >= 1 ~ "Novice User",
           target_metric_custom > 0 ~ "Low User",
@@ -304,7 +316,7 @@ identify_usage_segments <- function(
       left_join(habit_df_12w, by = c("PersonId", "MetricDate")) %>%
       mutate(
         UsageSegments_12w = case_when(
-          IsHabit12w == TRUE & target_metric_l12w >= 15 ~ "Power User",
+          IsHabit12w == TRUE & target_metric_l12w >= power_thres ~ "Power User",
           IsHabit12w == TRUE ~ "Habitual User",
           target_metric_l12w >= 1 ~ "Novice User",
           target_metric_l12w > 0 ~ "Low User",
@@ -321,7 +333,7 @@ identify_usage_segments <- function(
       ) %>%
       mutate(
         UsageSegments_4w = case_when(
-          IsHabit4w == TRUE & target_metric_l4w >= 15 ~ "Power User",
+          IsHabit4w == TRUE & target_metric_l4w >= power_thres ~ "Power User",
           IsHabit4w == TRUE ~ "Habitual User",
           target_metric_l4w >= 1 ~ "Novice User",
           target_metric_l4w > 0 ~ "Low User",
@@ -354,6 +366,7 @@ identify_usage_segments <- function(
           threshold = threshold,
           width = width,
           max_window = max_window,
+          power_thres = power_thres,
           version = NULL
         )
     } else if(version == "12w"){
@@ -362,6 +375,7 @@ identify_usage_segments <- function(
           metric = metric,
           cus = "UsageSegments_12w",
           caption = "",
+          power_thres = power_thres,
           version = "12w"
         )
     } else if(version == "4w"){
@@ -370,6 +384,7 @@ identify_usage_segments <- function(
           metric = metric,
           cus = "UsageSegments_4w",
           caption = "",
+          power_thres = power_thres,
           version = "4w"
         )
     } else {
@@ -383,7 +398,7 @@ identify_usage_segments <- function(
       segments_col <- "UsageSegments"
       caption_text <- paste0(
         "Usage segments summary table (custom parameters - ",
-        "threshold: ", threshold, ", width: ", width, ", max window: ", max_window, ")"
+        "threshold: ", threshold, ", width: ", width, ", max window: ", max_window, ", power threshold: ", power_thres, ")"
       )
     } else if(version == "12w"){
       segments_col <- "UsageSegments_12w"
@@ -440,6 +455,8 @@ identify_usage_segments <- function(
 #'   NULL.
 #' @param max_window Integer specifying the maximum window to consider for a
 #'   habit. Only used when creating custom parameter captions. Defaults to NULL.
+#' @param power_thres Numeric value specifying the minimum weekly average 
+#'   actions required to be classified as a 'Power User'. Defaults to 15.
 #' @param version A string indicating the version of the classification. Valid
 #'   options are "12w", "4w", or NULL for custom parameters. Used to determine
 #'   which definitions to show in the caption.
@@ -455,6 +472,7 @@ plot_ts_us <- function(data,
                        threshold = NULL,
                        width = NULL,
                        max_window = NULL,
+                       power_thres = 15,
                        version = NULL) {
   
   # Create detailed captions based on version
@@ -475,10 +493,10 @@ plot_ts_us <- function(data,
     # Custom parameters caption
     custom_caption <- paste0(
       "Usage Segments - Definition:\n",
-      "• Power User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks, with 15+ average weekly actions\n",
-      "• Habitual User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks\n",
-      "• Novice User: Average of at least one action over ", max_window, " weeks\n",
-      "• Low User: At least one action in the last ", max_window, " weeks\n",
+      "Power User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks, with ", power_thres, "+ average weekly actions\n",
+      "Habitual User: Minimum of ", threshold, " actions per week in at least ", width, " out of ", max_window, " weeks\n",
+      "Novice User: Average of at least one action over ", max_window, " weeks\n",
+      "Low User: At least one action in the last ", max_window, " weeks\n",
       "\n", date_text
     )
     
@@ -489,10 +507,10 @@ plot_ts_us <- function(data,
     # 12-week version caption
     caption_12w <- paste0(
       "Usage Segments - Definition:\n",
-      "• Power User: 15+ average weekly actions and any actions in at least 9 out of past 12 weeks\n",
-      "• Habitual User: Any action in at least 9 out of past 12 weeks\n",
-      "• Novice User: Average of at least one action over the last 12 weeks\n",
-      "• Low User: Any action in the past 12 weeks\n",
+      "Power User: ", power_thres, "+ average weekly actions and any actions in at least 9 out of past 12 weeks\n",
+      "Habitual User: Any action in at least 9 out of past 12 weeks\n",
+      "Novice User: Average of at least one action over the last 12 weeks\n",
+      "Low User: Any action in the past 12 weeks\n",
       "\n", date_text
     )
     
@@ -503,10 +521,10 @@ plot_ts_us <- function(data,
     # 4-week version caption
     caption_4w <- paste0(
       "Usage Segments - Definition:\n",
-      "• Power User: 15+ average weekly actions and any actions in at least 4 out of past 4 weeks\n",
-      "• Habitual User: Any action in at least 4 out of past 4 weeks\n",
-      "• Novice User: Average of at least one action over the last 4 weeks\n",
-      "• Low User: Any action in the past 4 weeks\n",
+      "Power User: ", power_thres, "+ average weekly actions and any actions in at least 4 out of past 4 weeks\n",
+      "Habitual User: Any action in at least 4 out of past 4 weeks\n",
+      "Novice User: Average of at least one action over the last 4 weeks\n",
+      "Low User: Any action in the past 4 weeks\n",
       "\n", date_text
     )
     

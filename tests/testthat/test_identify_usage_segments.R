@@ -120,7 +120,7 @@ test_that("identify_usage_segments validates return parameter", {
       version = "12w",
       return = "invalid"
     ),
-    "Please enter a valid input for `return`\\. Valid options are 'data', 'plot', or 'table'\\."
+    "Please enter a valid input for `return`. Valid options are 'data', 'plot', or 'table'."
   )
 })
 
@@ -206,6 +206,131 @@ test_that("identify_usage_segments prints custom parameters message for table re
       max_window = 4,
       return = "table"
     ),
-    "Usage segments summary table \\(custom parameters - threshold: 2, width: 3, max window: 4\\)"
+    "Usage segments summary table \\(custom parameters - threshold: 2, width: 3, max window: 4, power threshold: 15\\)"
   )
+  
+  # Test that custom parameters message includes custom power_thres
+  expect_message(
+    identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = NULL,
+      threshold = 2,
+      width = 3,
+      max_window = 4,
+      power_thres = 20,
+      return = "table"
+    ),
+    "Usage segments summary table \\(custom parameters - threshold: 2, width: 3, max window: 4, power threshold: 20\\)"
+  )
+})
+
+test_that("identify_usage_segments works with custom power_thres parameter", {
+  # Skip if packages not available
+  skip_if_not_installed("dplyr")
+  skip_if_not_installed("tidyr")
+  skip_if_not_installed("slider")
+  
+  # Load required packages
+  library(dplyr)
+  library(tidyr)
+  library(slider)
+  
+  # Create mock data with high values to test power user classification
+  mock_data <- data.frame(
+    PersonId = rep(c("A", "B", "C"), each = 4),
+    MetricDate = rep(as.Date(c("2024-01-01", "2024-01-08", "2024-01-15", "2024-01-22")), 3),
+    Total_actions = c(20, 25, 30, 35,   # Person A: high usage
+                      10, 12, 8, 6,     # Person B: medium usage  
+                      1, 2, 1, 3),      # Person C: low usage
+    stringsAsFactors = FALSE
+  )
+  
+  # Test with default power_thres (15)
+  suppressMessages({
+    result_default <- identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = "12w",
+      return = "data"
+    )
+  })
+  
+  # Test with higher power_thres (25)
+  suppressMessages({
+    result_high <- identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = "12w",
+      power_thres = 25,
+      return = "data"
+    )
+  })
+  
+  # Test with lower power_thres (10)
+  suppressMessages({
+    result_low <- identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = "12w",
+      power_thres = 10,
+      return = "data"
+    )
+  })
+  
+  # Basic checks - all results should be data frames
+  expect_true(is.data.frame(result_default))
+  expect_true(is.data.frame(result_high))
+  expect_true(is.data.frame(result_low))
+  
+  # Check that the results have the expected columns
+  expect_true("UsageSegments_12w" %in% names(result_default))
+  expect_true("UsageSegments_12w" %in% names(result_high))
+  expect_true("UsageSegments_12w" %in% names(result_low))
+  
+  # All should have the same number of rows (same input data)
+  expect_equal(nrow(result_default), nrow(result_high))
+  expect_equal(nrow(result_high), nrow(result_low))
+})
+
+test_that("identify_usage_segments works with power_thres in custom parameters", {
+  # Skip if packages not available
+  skip_if_not_installed("dplyr")
+  skip_if_not_installed("tidyr")
+  skip_if_not_installed("slider")
+  
+  # Load required packages
+  library(dplyr)
+  library(tidyr)
+  library(slider)
+  
+  # Create mock data
+  mock_data <- data.frame(
+    PersonId = rep(c("A", "B"), each = 6),
+    MetricDate = rep(as.Date(c("2024-01-01", "2024-01-08", "2024-01-15", 
+                               "2024-01-22", "2024-01-29", "2024-02-05")), 2),
+    Total_actions = c(20, 25, 18, 22, 30, 28,  # Person A: consistently high
+                      5, 8, 12, 6, 10, 9),     # Person B: consistently low
+    stringsAsFactors = FALSE
+  )
+  
+  # Test custom parameters with custom power_thres
+  suppressMessages({
+    result_custom <- identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = NULL,
+      threshold = 3,
+      width = 4,
+      max_window = 6,
+      power_thres = 20,
+      return = "data"
+    )
+  })
+  
+  # Basic checks
+  expect_true(is.data.frame(result_custom))
+  expect_true("UsageSegments" %in% names(result_custom))
+  expect_true("PersonId" %in% names(result_custom))
+  expect_true("MetricDate" %in% names(result_custom))
 })
