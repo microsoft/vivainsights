@@ -110,7 +110,7 @@ collaboration_area <- function(data,
            group,
            main_vars) %>%
     group_by(Date, group) %>%
-    summarise_at(vars(main_vars), ~mean(.)) %>%
+    summarise(across(all_of(main_vars), ~mean(.))) %>%
     left_join(hrvar_count(data, hrvar, return = "table"),
               by = c("group" = hrvar)) %>%
     rename(Employee_Count = "n") %>%

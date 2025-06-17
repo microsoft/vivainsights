@@ -9,6 +9,9 @@ identify_usage_segments(
   metric = NULL,
   metric_str = NULL,
   version = "12w",
+  threshold = NULL,
+  width = NULL,
+  max_window = NULL,
   return = "data"
 )
 }
@@ -26,8 +29,18 @@ columns to be aggregated for calculating a target metric, using row sum for
 aggregation. This is used when \code{metric} is not provided.}
 
 \item{version}{A string indicating the version of the classification to be
-used. Valid options are \code{"12w"} for a 12-week rolling average and \code{"4w"}
-for a 4-week rolling average. Defaults to \code{"12w"}.}
+used. Valid options are \code{"12w"} for a 12-week rolling average, \code{"4w"}
+for a 4-week rolling average, or \code{NULL} when using custom parameters. Defaults to \code{"12w"}.}
+
+\item{threshold}{Numeric value specifying the minimum number of times the
+metric sum up to in order to be a valid count. A 'greater than or equal to'
+logic is used. Only used when \code{version} is \code{NULL}.}
+
+\item{width}{Integer specifying the number of qualifying counts to consider
+for a habit. Only used when \code{version} is \code{NULL}.}
+
+\item{max_window}{Integer specifying the maximum unit of dates to consider a
+qualifying window for a habit. Only used when \code{version} is \code{NULL}.}
 
 \item{return}{A string indicating what to return from the function. Valid
 options are:
@@ -41,6 +54,8 @@ Depending on the \code{return} parameter, either a data frame with usage
 segments or a plot visualizing the segments over time. If \code{"data"} is passed
 to \code{return}, the following additional columns are appended:
 \itemize{
+\item When \code{version} is \code{"12w"} or \code{"4w"}:
+\itemize{
 \item \code{IsHabit12w}: Indicates whether the user has a habit based on the 12-week
 rolling average.
 \item \code{IsHabit4w}: Indicates whether the user has a habit based on the 4-week
@@ -50,10 +65,20 @@ rolling average.
 \item \code{UsageSegments_4w}: The usage segment classification based on the 4-week
 rolling average.
 }
+\item When \code{version} is \code{NULL}:
+\itemize{
+\item \code{IsHabit}: Indicates whether the user has a habit based on the provided
+parameters.
+\item \code{UsageSegments}: The usage segment classification based on the provided
+parameters.
+}
+}
 
 @import slider slide_dbl
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 This function identifies users into usage segments based on their usage
 volume and consistency. The segments 'Power Users', 'Habitual Users', 'Novice
 Users', 'Low Users', and 'Non-users' are created. There are two versions, one
@@ -109,6 +134,17 @@ identify_usage_segments(
     "Copilot_actions_taken_in_Powerpoint"
   ),
   version = "4w",
+  return = "plot"
+)
+
+# Example usage with custom parameters
+identify_usage_segments(
+  data = pq_data,
+  metric = "Emails_sent",
+  version = NULL,
+  threshold = 2,
+  width = 5,
+  max_window = 8,
   return = "plot"
 )
 }

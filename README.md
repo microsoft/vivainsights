@@ -32,6 +32,7 @@ pak::pak("microsoft/vivainsights")
 ## Usage
 
 To get started with the package, please see the following links:
+
 * [Installation and Set-up](https://microsoft.github.io/vivainsights/analyst_guide_getting_started.html)
 * [Full function list](https://microsoft.github.io/vivainsights/reference/index.html)
 * [Analyst Guide](https://microsoft.github.io/vivainsights/analyst_guide_intro.html)

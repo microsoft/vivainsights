@@ -52,7 +52,7 @@ prep_query <- function(data, convert_date = TRUE, date_format = "%m/%d/%Y"){
     # Format any date columns
     return_data <-
       return_data %>%
-      dplyr::mutate_at(dplyr::vars(dateCols), ~as.Date(., format = date_format))
+      dplyr::mutate(dplyr::across(dplyr::all_of(dateCols), ~as.Date(., format = date_format)))
     
     if(length(dateCols) >= 1){
       message("Converted the following Date variables:\n",
