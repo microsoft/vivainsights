@@ -94,6 +94,7 @@ standard deviation.</p></dd>
 <dd><p>String specifying what to return. This must be one of the
 following strings:</p><ul><li><p><code>"text"</code></p></li>
 <li><p><code>"data_cleaned"</code></p></li>
+<li><p><code>"data_clean"</code></p></li>
 <li><p><code>"data_dirty"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
 
@@ -101,7 +102,7 @@ following strings:</p><ul><li><p><code>"text"</code></p></li>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>Returns an error message by default, where <code>'text'</code> is returned. When
-<code>'data_cleaned'</code> is passed, a dataset with outlier weeks removed is returned
+<code>'data_cleaned'</code> or <code>'data_clean'</code> is passed, a dataset with outlier weeks removed is returned
 as a dataframe. When <code>'data_dirty'</code> is passed, a dataset with outlier weeks
 is returned as a dataframe.</p>
     </div>
