@@ -139,6 +139,7 @@ qualifying window for a habit. Only used when <code>version</code> is <code>NULL
 <dd><p>A string indicating what to return from the function. Valid
 options are:</p><ul><li><p><code>"data"</code>: Returns the data frame with usage segments.</p></li>
 <li><p><code>"plot"</code>: Returns a plot of the usage segments.</p></li>
+<li><p><code>"table"</code>: Returns a summary table with usage segments as columns.</p></li>
 </ul></dd>
 
 </dl></div>
@@ -160,13 +161,26 @@ parameters.</p></li>
 <li><p><code>UsageSegments</code>: The usage segment classification based on the provided
 parameters.</p></li>
 </ul></li>
-</ul><p>@import slider slide_dbl</p>
+<li><p><code>IsHabit12w</code>: Indicates whether the user has a habit based on the 12-week
+rolling average.</p></li>
+<li><p><code>IsHabit4w</code>: Indicates whether the user has a habit based on the 4-week
+rolling average.</p></li>
+<li><p><code>UsageSegments_12w</code>: The usage segment classification based on the
+12-week rolling average.</p></li>
+<li><p><code>UsageSegments_4w</code>: The usage segment classification based on the 4-week
+rolling average.</p></li>
+</ul><p>If <code>"table"</code> is passed to <code>return</code>, a summary table is returned with one row
+per <code>MetricDate</code> and usage segments as columns containing percentages.</p>
+<p>@import slider slide_dbl
+@import tidyr</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>There are two versions of usage segments, one based on a rolling 12-week
-period (<code>version = "12w"</code>) and the other on a rolling 4-week period (<code>version = "4w"</code>). This function assumes that in the input dataset is grouped at the
-weekly level by the <code>MetricDate</code> column.</p>
+    <p>There are three ways to use this function for usage segments classification:</p><ol><li><p><strong>12-week version</strong> (<code>version = "12w"</code>): Based on a rolling 12-week period</p></li>
+<li><p><strong>4-week version</strong> (<code>version = "4w"</code>): Based on a rolling 4-week period</p></li>
+<li><p><strong>Custom parameters</strong> (<code>version = NULL</code>): Based on user-defined parameters</p></li>
+</ol><p>This function assumes that the input dataset is grouped at the weekly level
+by the <code>MetricDate</code> column.</p>
 <p>The definitions of the segments as per the 12-week definition are
 as follows:</p><ul><li><p><strong>Power User</strong>: Averaging 15+ weekly actions and any actions in at least
 9 out of past 12 weeks</p></li>
@@ -181,6 +195,14 @@ out of past 4 weeks</p></li>
 <li><p><strong>Novice User</strong>: Averaging at least one action over the last 4 weeks</p></li>
 <li><p><strong>Low User</strong>: Any action in the past 4 weeks</p></li>
 <li><p><strong>Non-user</strong>: No actions in the past 4 weeks</p></li>
+</ul><p>When using custom parameters (<code>version = NULL</code>), you must provide values for
+<code>threshold</code>, <code>width</code>, and <code>max_window</code>. The segment definitions become:</p><ul><li><p><strong>Power User</strong>: Minimum of <code>threshold</code> actions per week in at least <code>width</code>
+out of past <code>max_window</code> weeks, with 15+ average weekly actions</p></li>
+<li><p><strong>Habitual User</strong>: Minimum of <code>threshold</code> actions per week in at least
+<code>width</code> out of past <code>max_window</code> weeks</p></li>
+<li><p><strong>Novice User</strong>: Average of at least one action over the last <code>max_window</code> weeks</p></li>
+<li><p><strong>Low User</strong>: Any action in the past <code>max_window</code> weeks</p></li>
+<li><p><strong>Non-user</strong>: No actions in the past <code>max_window</code> weeks</p></li>
 </ul></div>
 
     <div class="section level2">
@@ -220,6 +242,30 @@ out of past 4 weeks</p></li>
 <span class="r-in"><span>  return <span class="op">=</span> <span class="st">"plot"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="identify_usage_segments-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return summary table</span></span></span>
+<span class="r-in"><span><span class="fu">identify_usage_segments</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">pq_data</span>,</span></span>
+<span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Emails_sent"</span>,</span></span>
+<span class="r-in"><span>  version <span class="op">=</span> <span class="st">"12w"</span>,</span></span>
+<span class="r-in"><span>  return <span class="op">=</span> <span class="st">"table"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Usage segments summary table (12-week version)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># Groups:   MetricDate [23]</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    MetricDate     n `Novice User` `Power User`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2024-04-28   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2024-05-05   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2024-05-12   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2024-05-19   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2024-05-26   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2024-06-02   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2024-06-09   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2024-06-16   300             1            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2024-06-23   300             0            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2024-06-30   300             0            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 13 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
