@@ -76,7 +76,8 @@ into the function. The only requirement is that a <code>date_var</code> is provi
 <span>  caption <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="va">date_var</span>,</span>
 <span>  xlab <span class="op">=</span> <span class="va">metric</span>,</span>
-<span>  line_colour <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">212</span><span class="op">)</span></span>
+<span>  line_colour <span class="op">=</span> <span class="fu"><a href="rgb2hex.html">rgb2hex</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">212</span><span class="op">)</span>,</span>
+<span>  label <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -120,6 +121,13 @@ into the function. The only requirement is that a <code>date_var</code> is provi
 <dd><p>String to specify colour to use for the line.
 Hex codes are accepted. You can also supply
 RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
+
+
+<dt id="arg-label">label<a class="anchor" aria-label="anchor" href="#arg-label"></a></dt>
+<dd><p>Logical value to determine whether to show data point labels on
+the plot. If <code>TRUE</code>, both <code>geom_point()</code> and <code>geom_text()</code> are added to
+display data labels rounded to 1 decimal place above each data point.
+Defaults to <code>FALSE</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -229,6 +237,18 @@ RGB values via <code><a href="rgb2hex.html">rgb2hex()</a></code>.</p></dd>
 <span class="r-in"><span>    caption <span class="op">=</span> <span class="fu"><a href="extract_date_range.html">extract_date_range</a></span><span class="op">(</span><span class="va">pq_data</span>, return <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_line_asis-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create line plot with data point labels</span></span></span>
+<span class="r-in"><span><span class="va">med_df</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">create_line_asis</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    date_var <span class="op">=</span> <span class="st">"MetricDate"</span>,</span></span>
+<span class="r-in"><span>    metric <span class="op">=</span> <span class="st">"Emails_sent_median"</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Median Emails Sent"</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Person Averaging Not Applied"</span>,</span></span>
+<span class="r-in"><span>    caption <span class="op">=</span> <span class="fu"><a href="extract_date_range.html">extract_date_range</a></span><span class="op">(</span><span class="va">pq_data</span>, return <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    label <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-plt img"><img src="create_line_asis-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
