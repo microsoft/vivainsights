@@ -16,10 +16,14 @@
 #' other metrics, such as 'Chats_sent'.
 #'
 #' @details
-#' There are two versions of usage segments, one based on a rolling 12-week
-#' period (`version = "12w"`) and the other on a rolling 4-week period (`version
-#' = "4w"`). This function assumes that in the input dataset is grouped at the 
-#' weekly level by the `MetricDate` column. 
+#' There are three ways to use this function for usage segments classification:
+#' 
+#' 1. **12-week version** (`version = "12w"`): Based on a rolling 12-week period
+#' 2. **4-week version** (`version = "4w"`): Based on a rolling 4-week period  
+#' 3. **Custom parameters** (`version = NULL`): Based on user-defined parameters
+#' 
+#' This function assumes that the input dataset is grouped at the weekly level 
+#' by the `MetricDate` column.
 #' 
 #' The definitions of the segments as per the 12-week definition are
 #' as follows:
@@ -41,6 +45,16 @@
 #'  - **Low User**: Any action in the past 4 weeks
 #'  - **Non-user**: No actions in the past 4 weeks
 #'  
+#' When using custom parameters (`version = NULL`), you must provide values for
+#' `threshold`, `width`, and `max_window`. The segment definitions become:
+#' 
+#'  - **Power User**: Minimum of `threshold` actions per week in at least `width` 
+#'  out of past `max_window` weeks, with 15+ average weekly actions
+#'  - **Habitual User**: Minimum of `threshold` actions per week in at least 
+#'  `width` out of past `max_window` weeks
+#'  - **Novice User**: Average of at least one action over the last `max_window` weeks
+#'  - **Low User**: Any action in the past `max_window` weeks
+#'  - **Non-user**: No actions in the past `max_window` weeks
 #'   
 #' @param data A data frame with a Person query containing the metric to be
 #'   classified. The data frame must include a `PersonId` column and a
