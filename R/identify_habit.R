@@ -6,7 +6,8 @@
 #' @title 
 #' Identify whether a habitual behaviour exists over a given interval of time
 #' 
-#' @description
+#' @description `r lifecycle::badge('experimental')`
+#' 
 #' Based on the principle of consistency, this function identifies whether a
 #' habit exists over a given interval of time. A habit is defined as a behaviour
 #' (action taken) that is repeated at least x number of times consistently over

@@ -22,6 +22,10 @@
 #' @param line_colour String to specify colour to use for the line.
 #' Hex codes are accepted. You can also supply
 #' RGB values via `rgb2hex()`.
+#' @param label Logical value to determine whether to show data point labels on
+#'   the plot. If `TRUE`, both `geom_point()` and `geom_text()` are added to
+#'   display data labels rounded to 1 decimal place above each data point.
+#'   Defaults to `FALSE`.
 #'
 #' @import ggplot2
 #' @import dplyr
@@ -52,6 +56,17 @@
 #'     caption = extract_date_range(pq_data, return = "text")
 #'   )
 #'
+#' # Create line plot with data point labels
+#' med_df %>%
+#'   create_line_asis(
+#'     date_var = "MetricDate",
+#'     metric = "Emails_sent_median",
+#'     title = "Median Emails Sent",
+#'     subtitle = "Person Averaging Not Applied",
+#'     caption = extract_date_range(pq_data, return = "text"),
+#'     label = TRUE
+#'   )
+#'
 #' @export
 create_line_asis <- function(data,
                             date_var = "MetricDate",
@@ -61,13 +76,22 @@ create_line_asis <- function(data,
                             caption = NULL,
                             ylab = date_var,
                             xlab = metric,
-                            line_colour = rgb2hex(0, 120, 212)){
+                            line_colour = rgb2hex(0, 120, 212),
+                            label = FALSE){
 
   returnPlot <-
     data %>%
-    mutate_at(vars(date_var), ~as.Date(., format = "%m/%d/%Y")) %>%
+    mutate(across(all_of(date_var), ~as.Date(., format = "%m/%d/%Y"))) %>%
     ggplot(aes(x = !!sym(date_var), y = !!sym(metric))) +
     geom_line(colour = line_colour)
+
+  # Conditionally add points and labels if label = TRUE
+  if(label == TRUE){
+    returnPlot <- returnPlot +
+      geom_point(colour = line_colour, size = 2) +
+      geom_text(aes(label = round(!!sym(metric), 1)), 
+                vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+  }
 
   returnPlot +
     labs(title = title,

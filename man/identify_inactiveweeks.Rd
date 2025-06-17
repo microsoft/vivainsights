@@ -18,6 +18,7 @@ following strings:
 \itemize{
 \item \code{"text"}
 \item \code{"data_cleaned"}
+\item \code{"data_clean"}
 \item \code{"data_dirty"}
 }
 
@@ -25,7 +26,7 @@ See \code{Value} for more information.}
 }
 \value{
 Returns an error message by default, where \code{'text'} is returned. When
-\code{'data_cleaned'} is passed, a dataset with outlier weeks removed is returned
+\code{'data_cleaned'} or \code{'data_clean'} is passed, a dataset with outlier weeks removed is returned
 as a dataframe. When \code{'data_dirty'} is passed, a dataset with outlier weeks
 is returned as a dataframe.
 }

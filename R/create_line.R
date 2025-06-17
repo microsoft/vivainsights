@@ -22,7 +22,13 @@
 #' @param ncol Numeric value setting the number of columns on the plot. Defaults
 #'   to `NULL` (automatic).
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param label Logical value to determine whether to show data point labels on
+#'   the plot. If `TRUE`, both `geom_point()` and `geom_text()` are added to
+#'   display data labels rounded to 1 decimal place above each data point.
+#'   Defaults to `FALSE`.
+#'
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'
@@ -56,6 +62,9 @@
 #' # Return plot of email hours and cut by `LevelDesignation`
 #' pq_data %>% create_line(metric = "Email_hours", hrvar = "LevelDesignation")
 #'
+#' # Return plot with data point labels
+#' pq_data %>% create_line(metric = "Email_hours", label = TRUE)
+#'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
 #'   - `"plot"`: 'ggplot' object. A faceted line plot for the metric.
@@ -67,6 +76,7 @@ create_line <- function(data,
                         hrvar = "Organization",
                         mingroup = 5,
                         ncol = NULL,
+                        label = FALSE,
                         return = "plot"){
 
   ## Check inputs
@@ -121,13 +131,13 @@ create_line <- function(data,
     myTable %>%
     select(MetricDate, group, all_of(metric)) %>%
     group_by(MetricDate, group) %>%
-    summarise_at(vars(all_of(metric)), ~mean(., na.rm = TRUE)) %>%
+    summarise(across(all_of(metric), ~mean(., na.rm = TRUE))) %>%
     ungroup()
 
 
   return_plot <- function(){
 
-    myTable_plot %>%
+    plot_base <- myTable_plot %>%
       ggplot(aes(x = MetricDate, y = !!sym(metric))) +
       geom_line(colour = "#1d627e") +
       facet_wrap(.~group, ncol = ncol) +
@@ -144,6 +154,16 @@ create_line <- function(data,
            y = clean_nm,
            caption = extract_date_range(data, return = "text")) +
       ylim(0, NA) # Set origin to zero
+    
+    # Conditionally add points and labels if label = TRUE
+    if(label == TRUE){
+      plot_base <- plot_base +
+        geom_point(colour = "#1d627e", size = 2) +
+        geom_text(aes(label = round(!!sym(metric), 1)), 
+                  vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+    }
+    
+    plot_base
 
   }
 

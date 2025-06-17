@@ -43,7 +43,7 @@ flag_em_ratio <- function(data, threshold = 1, return = "text"){
   em_summary <-
     data %>%
     group_by(PersonId) %>%
-    summarise_at(vars(Email_hours, Emails_sent), ~mean(.)) %>%
+    summarise(across(c(Email_hours, Emails_sent), ~mean(.))) %>%
     mutate(Email_ratio = Email_hours / Emails_sent) %>%
     arrange(desc(Email_ratio)) %>%
     mutate(Email_Flag = ifelse(Email_ratio > threshold, TRUE, FALSE))

@@ -4,7 +4,13 @@
 \alias{meeting_line}
 \title{Meeting Time Trend - Line Chart}
 \usage{
-meeting_line(data, hrvar = "Organization", mingroup = 5, return = "plot")
+meeting_line(
+  data,
+  hrvar = "Organization",
+  mingroup = 5,
+  return = "plot",
+  label = FALSE
+)
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.}
@@ -16,13 +22,19 @@ instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
 
-\item{return}{String specifying what to return. This must be one of the following strings:
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
 \item \code{"plot"}
 \item \code{"table"}
 }
 
 See \code{Value} for more information.}
+
+\item{label}{Logical value to determine whether to show data point labels on
+the plot. If \code{TRUE}, both \code{geom_point()} and \code{geom_text()} are added to
+display data labels rounded to 1 decimal place above each data point.
+Defaults to \code{FALSE}.}
 }
 \value{
 A different output is returned depending on the value passed to the \code{return} argument:
