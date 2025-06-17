@@ -73,6 +73,14 @@ parameters.
 \item \code{UsageSegments}: The usage segment classification based on the provided
 parameters.
 }
+\item \code{IsHabit12w}: Indicates whether the user has a habit based on the 12-week
+rolling average.
+\item \code{IsHabit4w}: Indicates whether the user has a habit based on the 4-week
+rolling average.
+\item \code{UsageSegments_12w}: The usage segment classification based on the
+12-week rolling average.
+\item \code{UsageSegments_4w}: The usage segment classification based on the 4-week
+rolling average.
 }
 
 If \code{"table"} is passed to \code{return}, a summary table is returned with one row
@@ -151,5 +159,13 @@ identify_usage_segments(
   width = 5,
   max_window = 8,
   return = "plot"
+)
+
+# Return summary table
+identify_usage_segments(
+  data = pq_data,
+  metric = "Emails_sent",
+  version = "12w",
+  return = "table"
 )
 }
