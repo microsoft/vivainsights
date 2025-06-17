@@ -365,14 +365,20 @@ identify_usage_segments <- function(
   } else if(return == "table"){
     
     # Determine which usage segments column to use based on version
-    if(version == "12w"){
+    if(is.null(version)){
+      segments_col <- "UsageSegments"
+      caption_text <- paste0(
+        "Usage segments summary table (custom parameters - ",
+        "threshold: ", threshold, ", width: ", width, ", max window: ", max_window, ")"
+      )
+    } else if(version == "12w"){
       segments_col <- "UsageSegments_12w"
       caption_text <- "Usage segments summary table (12-week version)"
     } else if(version == "4w"){
       segments_col <- "UsageSegments_4w"
       caption_text <- "Usage segments summary table (4-week version)"
     } else {
-      stop("Please provide either `12w` or `4w` to `version`")
+      stop("Please provide either `12w`, `4w`, or NULL to `version`")
     }
     
     # Print diagnostic message
