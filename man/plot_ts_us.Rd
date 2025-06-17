@@ -12,6 +12,7 @@ plot_ts_us(
   threshold = NULL,
   width = NULL,
   max_window = NULL,
+  power_thres = 15,
   version = NULL
 )
 }
@@ -38,6 +39,9 @@ NULL.}
 
 \item{max_window}{Integer specifying the maximum window to consider for a
 habit. Only used when creating custom parameter captions. Defaults to NULL.}
+
+\item{power_thres}{Numeric value specifying the minimum weekly average
+actions required to be classified as a 'Power User'. Defaults to 15.}
 
 \item{version}{A string indicating the version of the classification. Valid
 options are "12w", "4w", or NULL for custom parameters. Used to determine

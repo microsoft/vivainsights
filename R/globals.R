@@ -57,6 +57,7 @@ utils::globalVariables(
     "mean_collab",
     "perc",
     "perc_nkw",
+    "pct",
     "total",
     "ymax",
     "ymin",

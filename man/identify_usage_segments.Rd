@@ -12,6 +12,7 @@ identify_usage_segments(
   threshold = NULL,
   width = NULL,
   max_window = NULL,
+  power_thres = 15,
   return = "data"
 )
 }
@@ -41,6 +42,9 @@ for a habit. Only used when \code{version} is \code{NULL}.}
 
 \item{max_window}{Integer specifying the maximum unit of dates to consider a
 qualifying window for a habit. Only used when \code{version} is \code{NULL}.}
+
+\item{power_thres}{Numeric value specifying the minimum weekly average
+actions required to be classified as a 'Power User'. Defaults to 15.}
 
 \item{return}{A string indicating what to return from the function. Valid
 options are:
@@ -114,7 +118,7 @@ by the \code{MetricDate} column.
 The definitions of the segments as per the 12-week definition are
 as follows:
 \itemize{
-\item \strong{Power User}: Averaging 15+ weekly actions and any actions in at least
+\item \strong{Power User}: Averaging 15+ weekly actions (customizable via \code{power_thres}) and any actions in at least
 9 out of past 12 weeks
 \item \strong{Habitual User}: Any action in at least 9 out of past 12 weeks
 \item \strong{Novice User}: Averaging at least one action over the last 12 weeks
@@ -125,7 +129,7 @@ as follows:
 The definitions of the segments as per the 4-week definition are
 as follows:
 \itemize{
-\item \strong{Power User}: Averaging 15+ weekly actions and any actions in at least 4
+\item \strong{Power User}: Averaging 15+ weekly actions (customizable via \code{power_thres}) and any actions in at least 4
 out of past 4 weeks
 \item \strong{Habitual User}: Any action in at least 4 out of past 4 weeks
 \item \strong{Novice User}: Averaging at least one action over the last 4 weeks
@@ -134,10 +138,10 @@ out of past 4 weeks
 }
 
 When using custom parameters (\code{version = NULL}), you must provide values for
-\code{threshold}, \code{width}, and \code{max_window}. The segment definitions become:
+\code{threshold}, \code{width}, \code{max_window}, and optionally \code{power_thres}. The segment definitions become:
 \itemize{
 \item \strong{Power User}: Minimum of \code{threshold} actions per week in at least \code{width}
-out of past \code{max_window} weeks, with 15+ average weekly actions
+out of past \code{max_window} weeks, with 15+ average weekly actions (customizable via \code{power_thres})
 \item \strong{Habitual User}: Minimum of \code{threshold} actions per week in at least
 \code{width} out of past \code{max_window} weeks
 \item \strong{Novice User}: Average of at least one action over the last \code{max_window} weeks
@@ -176,6 +180,15 @@ identify_usage_segments(
   threshold = 2,
   width = 5,
   max_window = 8,
+  return = "plot"
+)
+
+# Example usage with custom power user threshold
+identify_usage_segments(
+  data = pq_data,
+  metric = "Emails_sent",
+  version = "12w",
+  power_thres = 20,
   return = "plot"
 )
 
