@@ -16,10 +16,14 @@
 #' other metrics, such as 'Chats_sent'.
 #'
 #' @details
-#' There are two versions of usage segments, one based on a rolling 12-week
-#' period (`version = "12w"`) and the other on a rolling 4-week period (`version
-#' = "4w"`). This function assumes that in the input dataset is grouped at the 
-#' weekly level by the `MetricDate` column. 
+#' There are three ways to use this function for usage segments classification:
+#' 
+#' 1. **12-week version** (`version = "12w"`): Based on a rolling 12-week period
+#' 2. **4-week version** (`version = "4w"`): Based on a rolling 4-week period  
+#' 3. **Custom parameters** (`version = NULL`): Based on user-defined parameters
+#' 
+#' This function assumes that the input dataset is grouped at the weekly level 
+#' by the `MetricDate` column.
 #' 
 #' The definitions of the segments as per the 12-week definition are
 #' as follows:
@@ -41,6 +45,16 @@
 #'  - **Low User**: Any action in the past 4 weeks
 #'  - **Non-user**: No actions in the past 4 weeks
 #'  
+#' When using custom parameters (`version = NULL`), you must provide values for
+#' `threshold`, `width`, and `max_window`. The segment definitions become:
+#' 
+#'  - **Power User**: Minimum of `threshold` actions per week in at least `width` 
+#'  out of past `max_window` weeks, with 15+ average weekly actions
+#'  - **Habitual User**: Minimum of `threshold` actions per week in at least 
+#'  `width` out of past `max_window` weeks
+#'  - **Novice User**: Average of at least one action over the last `max_window` weeks
+#'  - **Low User**: Any action in the past `max_window` weeks
+#'  - **Non-user**: No actions in the past `max_window` weeks
 #'   
 #' @param data A data frame with a Person query containing the metric to be
 #'   classified. The data frame must include a `PersonId` column and a
@@ -65,6 +79,7 @@
 #'   options are: 
 #'   - `"data"`: Returns the data frame with usage segments.
 #'   - `"plot"`: Returns a plot of the usage segments.
+#'   - `"table"`: Returns a summary table with usage segments as columns.
 #'   
 #' @return Depending on the `return` parameter, either a data frame with usage 
 #'   segments or a plot visualizing the segments over time. If `"data"` is passed
@@ -84,8 +99,20 @@
 #'     parameters.
 #'     - `UsageSegments`: The usage segment classification based on the provided
 #'     parameters.
+#'   - `IsHabit12w`: Indicates whether the user has a habit based on the 12-week 
+#'   rolling average.
+#'   - `IsHabit4w`: Indicates whether the user has a habit based on the 4-week
+#'   rolling average.
+#'   - `UsageSegments_12w`: The usage segment classification based on the 
+#'   12-week rolling average.
+#'   - `UsageSegments_4w`: The usage segment classification based on the 4-week 
+#'   rolling average.
 #'   
-#'  @import slider slide_dbl  
+#'   If `"table"` is passed to `return`, a summary table is returned with one row
+#'   per `MetricDate` and usage segments as columns containing percentages.
+#'   
+#'  @import slider slide_dbl
+#'  @import tidyr  
 #'   
 #' @examples
 #' # Example usage with a single metric column
@@ -119,6 +146,14 @@
 #'   width = 5,
 #'   max_window = 8,
 #'   return = "plot"
+#' )
+#' 
+#' # Return summary table
+#' identify_usage_segments(
+#'   data = pq_data,
+#'   metric = "Emails_sent",
+#'   version = "12w",
+#'   return = "table"
 #' )
 #' @export
 identify_usage_segments <- function(
@@ -340,6 +375,43 @@ identify_usage_segments <- function(
     } else {
       stop("Please provide either `12w`, `4w`, or NULL to `version`")
     }
+    
+  } else if(return == "table"){
+    
+    # Determine which usage segments column to use based on version
+    if(is.null(version)){
+      segments_col <- "UsageSegments"
+      caption_text <- paste0(
+        "Usage segments summary table (custom parameters - ",
+        "threshold: ", threshold, ", width: ", width, ", max window: ", max_window, ")"
+      )
+    } else if(version == "12w"){
+      segments_col <- "UsageSegments_12w"
+      caption_text <- "Usage segments summary table (12-week version)"
+    } else if(version == "4w"){
+      segments_col <- "UsageSegments_4w"
+      caption_text <- "Usage segments summary table (4-week version)"
+    } else {
+      stop("Please provide either `12w`, `4w`, or NULL to `version`")
+    }
+    
+    # Print diagnostic message
+    message(caption_text)
+    
+    # Create summary table
+    main_us_df %>%
+      count(MetricDate, !!sym(segments_col)) %>%
+      group_by(MetricDate) %>%
+      mutate(pct = n / sum(n)) %>%
+      mutate(n = sum(n)) %>%
+      pivot_wider(
+        names_from = !!sym(segments_col),
+        values_from = pct,
+        values_fill = 0
+      )
+      
+  } else {
+    stop("Please enter a valid input for `return`. Valid options are 'data', 'plot', or 'table'.")
   }
 }
 
