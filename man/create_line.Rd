@@ -10,6 +10,7 @@ create_line(
   hrvar = "Organization",
   mingroup = 5,
   ncol = NULL,
+  label = FALSE,
   return = "plot"
 )
 }
@@ -29,7 +30,13 @@ size. Defaults to 5.}
 \item{ncol}{Numeric value setting the number of columns on the plot. Defaults
 to \code{NULL} (automatic).}
 
-\item{return}{String specifying what to return. This must be one of the following strings:
+\item{label}{Logical value to determine whether to show data point labels on
+the plot. If \code{TRUE}, both \code{geom_point()} and \code{geom_text()} are added to
+display data labels rounded to 1 decimal place above each data point.
+Defaults to \code{FALSE}.}
+
+\item{return}{String specifying what to return. This must be one of the
+following strings:
 \itemize{
 \item \code{"plot"}
 \item \code{"table"}
@@ -71,6 +78,9 @@ pq_data \%>\%
 
 # Return plot of email hours and cut by `LevelDesignation`
 pq_data \%>\% create_line(metric = "Email_hours", hrvar = "LevelDesignation")
+
+# Return plot with data point labels
+pq_data \%>\% create_line(metric = "Email_hours", label = TRUE)
 
 }
 \seealso{

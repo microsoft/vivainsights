@@ -22,11 +22,13 @@
 #' @param ncol Numeric value setting the number of columns on the plot. Defaults
 #'   to `NULL` (automatic).
 #'
-#' @param label Logical value to determine whether to show data point labels on the
-#'   plot. If `TRUE`, both `geom_point()` and `geom_text()` are added to display
-#'   data labels rounded to 1 decimal place above each data point. Defaults to `FALSE`.
+#' @param label Logical value to determine whether to show data point labels on
+#'   the plot. If `TRUE`, both `geom_point()` and `geom_text()` are added to
+#'   display data labels rounded to 1 decimal place above each data point.
+#'   Defaults to `FALSE`.
 #'
-#' @param return String specifying what to return. This must be one of the following strings:
+#' @param return String specifying what to return. This must be one of the
+#'   following strings:
 #'   - `"plot"`
 #'   - `"table"`
 #'
