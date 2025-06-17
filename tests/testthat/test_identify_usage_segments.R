@@ -120,7 +120,7 @@ test_that("identify_usage_segments validates return parameter", {
       version = "12w",
       return = "invalid"
     ),
-    "Please enter a valid input for `return`\\. Valid options are 'data', 'plot', or 'table'\\."
+    "Please enter a valid input for `return`. Valid options are 'data', 'plot', or 'table'."
   )
 })
 
