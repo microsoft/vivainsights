@@ -73,6 +73,7 @@ Additional options available to return a summary table.</p>
 <span>  hrvar <span class="op">=</span> <span class="st">"Organization"</span>,</span>
 <span>  mingroup <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  ncol <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  return <span class="op">=</span> <span class="st">"plot"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -106,8 +107,16 @@ size. Defaults to 5.</p></dd>
 to <code>NULL</code> (automatic).</p></dd>
 
 
+<dt id="arg-label">label<a class="anchor" aria-label="anchor" href="#arg-label"></a></dt>
+<dd><p>Logical value to determine whether to show data point labels on
+the plot. If <code>TRUE</code>, both <code>geom_point()</code> and <code>geom_text()</code> are added to
+display data labels rounded to 1 decimal place above each data point.
+Defaults to <code>FALSE</code>.</p></dd>
+
+
 <dt id="arg-return">return<a class="anchor" aria-label="anchor" href="#arg-return"></a></dt>
-<dd><p>String specifying what to return. This must be one of the following strings:</p><ul><li><p><code>"plot"</code></p></li>
+<dd><p>String specifying what to return. This must be one of the
+following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <li><p><code>"table"</code></p></li>
 </ul><p>See <code>Value</code> for more information.</p></dd>
 
@@ -227,6 +236,10 @@ in the package that produce faceted line plots.</p>
 <span class="r-in"><span><span class="co"># Return plot of email hours and cut by `LevelDesignation`</span></span></span>
 <span class="r-in"><span><span class="va">pq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">create_line</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Email_hours"</span>, hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_line-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return plot with data point labels</span></span></span>
+<span class="r-in"><span><span class="va">pq_data</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu">create_line</span><span class="op">(</span>metric <span class="op">=</span> <span class="st">"Email_hours"</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="create_line-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
