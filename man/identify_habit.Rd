@@ -59,6 +59,8 @@ behaviour.
 used in the plot. Only applicable when \code{return = "plot"} and \code{plot_mode = "time"}.}
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 Based on the principle of consistency, this function identifies whether a
 habit exists over a given interval of time. A habit is defined as a behaviour
 (action taken) that is repeated at least x number of times consistently over

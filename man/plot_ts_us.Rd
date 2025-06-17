@@ -4,24 +4,52 @@
 \alias{plot_ts_us}
 \title{Plot Usage Segments over time}
 \usage{
-plot_ts_us(data, cus, caption)
+plot_ts_us(
+  data,
+  metric,
+  cus,
+  caption,
+  threshold = NULL,
+  width = NULL,
+  max_window = NULL,
+  version = NULL
+)
 }
 \arguments{
-\item{data}{A data frame with a column containing the Usage Segments,
-denoted by \code{cus}. The data frame must also include a \code{MetricDate} column.}
+\item{data}{A data frame with a column containing the Usage Segments, denoted
+by \code{cus}. The data frame must also include a \code{MetricDate} column.}
+
+\item{metric}{A string representing the name of the metric column to be
+classified.}
 
 \item{cus}{A string representing the name of the column containing the usage
 segment classifications (e.g., "UsageSegments_12w").}
 
-\item{caption}{A string representing the caption for the plot. This is typically
-used to provide additional context or information about the visualization.}
+\item{caption}{A string representing the caption for the plot. This is
+typically used to provide additional context or information about the
+visualization.}
+
+\item{threshold}{Numeric value specifying the minimum threshold for a valid
+count. Only used when creating custom parameter captions. Defaults to NULL.}
+
+\item{width}{Integer specifying the number of qualifying counts to consider
+for a habit. Only used when creating custom parameter captions. Defaults to
+NULL.}
+
+\item{max_window}{Integer specifying the maximum window to consider for a
+habit. Only used when creating custom parameter captions. Defaults to NULL.}
+
+\item{version}{A string indicating the version of the classification. Valid
+options are "12w", "4w", or NULL for custom parameters. Used to determine
+which definitions to show in the caption.}
 }
 \value{
 A ggplot object representing the stacked bar plot of usage segments.
 }
 \description{
 Returns a vertical stacked bar plot that displays the proportion
-of the Usage Segments over time. This visualization helps to understand
-the distribution of user segments across different time periods. While a main use case
-is for Copilot metrics, this function can be applied to other metrics, such as 'Chats_sent'.
+of the Usage Segments over time. This visualization helps to understand the
+distribution of user segments across different time periods. While a main
+use case is for Copilot metrics, this function can be applied to other
+metrics, such as 'Chats_sent'.
 }
