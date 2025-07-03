@@ -33,7 +33,20 @@
 #' A different output is returned depending on the value passed to the `return`
 #' argument:
 #'   - `"plot"`: 'ggplot' object. A faceted histogram for the metric.
-#'   - `"table"`: data frame. A summary table for the metric.
+#'   - `"table"`: data frame. A summary table for the metric, containing the 
+#'   following columns:
+#'     - `group`: The HR variable by which the metric is split.
+#'     - `mean`: The mean of the metric.
+#'     - `min`: The minimum value of the metric.
+#'     - `p10`: The 10th percentile of the metric.
+#'     - `p25`: The 25th percentile of the metric.
+#'     - `p50`: The 50th percentile of the metric.
+#'     - `p75`: The 75th percentile of the metric.
+#'     - `p90`: The 90th percentile of the metric.
+#'     - `max`: The maximum value of the metric.
+#'     - `sd`: The standard deviation of the metric.
+#'     - `range`: The range of the metric.
+#'     - `n`: The number of observations.
 #'   - `"data"`: data frame. Data with calculated person averages.
 #'   - `"frequency`: list of data frames. Each data frame contains the
 #'   frequencies used in each panel of the plotted histogram.
