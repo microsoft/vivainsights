@@ -115,23 +115,7 @@ create_boxplot <- function(data,
     mutate(Employee_Count = paste("n=",Employee_Count))
 
   ## summary table
-  summary_table <-
-    plot_data %>%
-    select(group, tidyselect::all_of(metric)) %>%
-    group_by(group) %>%
-    summarise(
-      mean = mean(!!sym(metric)),
-      min = min(!!sym(metric)),
-      p10 = quantile(!!sym(metric), 0.10),
-      p25 = quantile(!!sym(metric), 0.25),
-      p50 = quantile(!!sym(metric), 0.50),
-      p75 = quantile(!!sym(metric), 0.75),
-      p90 = quantile(!!sym(metric), 0.90),
-      max = max(!!sym(metric)),
-      sd = sd(!!sym(metric)),
-      range = max - min,
-      n = n()
-      )
+  summary_table <- calculate_distribution_summary(plot_data, metric)
 
   ## group order
   group_ord <-

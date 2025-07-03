@@ -42,6 +42,7 @@
 #' @importFrom tidyr spread
 #' @importFrom stats median
 #' @importFrom stats sd
+#' @importFrom stats quantile
 #'
 #' @family Flexible
 #'
@@ -114,20 +115,7 @@ create_density <- function(data,
   if(return == "table"){
 
     ## Table to return
-
-    plot_data %>%
-      group_by(group) %>%
-      summarise(
-        mean = mean(!!sym(metric), na.rm = TRUE),
-        median = median(!!sym(metric), na.rm = TRUE),
-        max = max(!!sym(metric), na.rm = TRUE),
-        min = min(!!sym(metric), na.rm = TRUE)
-      ) %>%
-      left_join(data %>%
-                  rename(group = !!sym(hrvar)) %>%
-                  group_by(group) %>%
-                  summarise(Employee_Count = n_distinct(PersonId)),
-                by = "group")
+    calculate_distribution_summary(plot_data, metric)
 
   } else if(return == "plot"){
 

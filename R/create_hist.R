@@ -45,6 +45,7 @@
 #' @importFrom tidyr spread
 #' @importFrom stats median
 #' @importFrom stats sd
+#' @importFrom stats quantile
 #'
 #' @family Flexible
 #'
@@ -131,21 +132,7 @@ create_hist <- function(data,
     labs(caption = extract_date_range(data, return = "text"))
 
   ## Table to return
-  return_table <-
-    plot_data %>%
-    group_by(group) %>%
-    summarise(
-      mean = mean(!!sym(metric), na.rm = TRUE),
-      median = median(!!sym(metric), na.rm = TRUE),
-      max = max(!!sym(metric), na.rm = TRUE),
-      min = min(!!sym(metric), na.rm = TRUE),
-      .groups = "drop"
-    ) %>%
-    left_join(data %>%
-                rename(group = !!sym(hrvar)) %>%
-                group_by(group) %>%
-                summarise(Employee_Count = n_distinct(PersonId)),
-              by = "group")
+  return_table <- calculate_distribution_summary(plot_data, metric)
 
 
   if(return == "table"){
