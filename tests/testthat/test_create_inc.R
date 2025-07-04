@@ -50,7 +50,11 @@ test_that("create_inc works with NULL hrvar", {
   expect_s3_class(result, "data.frame")
   
   # Check if the result contains the expected "group" column from totals_col
+  # The create_bar function renames the hrvar column to "group"
   expect_true("group" %in% names(result))
+  
+  # Check that all values in group column are "Total"
+  expect_true(all(result$group == "Total"))
 })
 
 test_that("create_inc throws error for invalid position", {
