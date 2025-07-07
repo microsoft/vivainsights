@@ -29,12 +29,9 @@
 #'   - `range`: Range of the metric (max - min)
 #'   - `n`: Number of observations
 #'
+#' @import dplyr
 #' @importFrom stats quantile
 #' @importFrom stats sd
-#' @importFrom dplyr group_by
-#' @importFrom dplyr summarise
-#' @importFrom dplyr sym
-#' @importFrom rlang !!
 #'
 #' @keywords internal
 #'
@@ -52,7 +49,7 @@ calculate_distribution_summary <- function(plot_data, metric) {
       max = max(!!sym(metric), na.rm = TRUE),
       sd = sd(!!sym(metric), na.rm = TRUE),
       range = max - min,
-      n = n(),
-      .groups = "drop"
-    )
+      n = n()
+    ) %>%
+    ungroup()
 }
