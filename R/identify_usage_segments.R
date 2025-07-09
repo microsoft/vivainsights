@@ -376,7 +376,8 @@ identify_usage_segments <- function(
           cus = "UsageSegments_12w",
           caption = "",
           power_thres = power_thres,
-          version = "12w"
+          version = "12w",
+          max_window = 12
         )
     } else if(version == "4w"){
       main_us_df %>%
@@ -385,7 +386,8 @@ identify_usage_segments <- function(
           cus = "UsageSegments_4w",
           caption = "",
           power_thres = power_thres,
-          version = "4w"
+          version = "4w",
+          max_window = 4
         )
     } else {
       stop("Please provide either `12w`, `4w`, or NULL to `version`")
@@ -538,7 +540,20 @@ plot_ts_us <- function(data,
     plot_subtitle <- "Proportion of users in each segment"
   }
   
-  data %>%
+  
+  plot_data <- data
+  
+  # Filter out the first max_window periods for plotting if max_window is provided
+  if(!is.null(max_window) && max_window > 0) {
+    unique_dates <- sort(unique(data$MetricDate))
+    if(length(unique_dates) > max_window) {
+      # Keep only dates after the first max_window periods
+      dates_to_keep <- unique_dates[(max_window + 1):length(unique_dates)]
+      plot_data <- data %>% filter(MetricDate %in% dates_to_keep)
+    }
+  }
+  
+  plot_data %>%
     count(MetricDate, !!sym(cus)) %>%
     group_by(MetricDate) %>%
     mutate(prop = n / sum(n)) %>%
