@@ -11,6 +11,17 @@ test_that("create_density returns a data frame when return = 'table'", {
 
   # Check if the result is a data frame
   expect_s3_class(result, "data.frame")
+  
+  # Check that the new enhanced columns are present
+  expected_cols <- c("group", "mean", "min", "p10", "p25", "p50", "p75", "p90", "max", "sd", "range", "n")
+  expect_true(all(expected_cols %in% names(result)))
+  
+  # Check that we have 12 columns (enhanced output)
+  expect_equal(ncol(result), 12)
+  
+  # Check that 'n' column is present (not 'Employee_Count')
+  expect_true("n" %in% names(result))
+  expect_false("Employee_Count" %in% names(result))
 })
 
 test_that("create_density returns a data frame when return = 'data'", {

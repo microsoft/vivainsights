@@ -14,7 +14,8 @@
 #' @param metric Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param hrvar Character vector of at most length 2 containing the name of the
-#'   HR Variable by which to split metrics.
+#'   HR Variable by which to split metrics. Accepts `NULL`, where the total
+#'   population is used for the analysis.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group
 #'   size. Defaults to 5.
 #' @param threshold Numeric value specifying the threshold.
@@ -50,6 +51,15 @@
 #'   position = "above"
 #' )
 #'
+#' # Total population (NULL hrvar)
+#' create_inc(
+#'   data = pq_data,
+#'   metric = "Collaboration_hours",
+#'   hrvar = NULL,
+#'   threshold = 20,
+#'   position = "below"
+#' )
+#'
 #' # Two HR attributes
 #' create_inc(
 #'   data = pq_data,
@@ -70,6 +80,17 @@ create_inc <- function(
   position,
   return = "plot"
 ){
+
+  ## Validate position argument
+  if (!position %in% c("above", "below")) {
+    stop("Invalid value for `position`. Please use either \"above\" or \"below\".")
+  }
+
+  ## Handling NULL values passed to hrvar
+  if(is.null(hrvar)){
+    data <- totals_col(data)
+    hrvar <- "Total"
+  }
 
   if(length(hrvar) == 1){
 
@@ -122,6 +143,11 @@ create_inc_bar <- function(
   position,
   return = "plot"
 ){
+
+  # Validate position argument
+  if (!position %in% c("above", "below")) {
+    stop("Invalid value for `position`. Please use either \"above\" or \"below\".")
+  }
 
   # Transform data so that metrics become proportions
   data_t <-
@@ -179,6 +205,11 @@ create_inc_grid <- function(
   position,
   return = "plot"
 ){
+
+  # Validate position argument
+  if (!position %in% c("above", "below")) {
+    stop("Invalid value for `position`. Please use either \"above\" or \"below\".")
+  }
 
   # Create table of proportions
   myTable <-
