@@ -6,7 +6,7 @@
 \usage{
 create_rogers(
   data,
-  hrvar = "Organization",
+  hrvar = NULL,
   metric,
   width = 9,
   max_window = 12,
@@ -21,8 +21,7 @@ create_rogers(
 contain \code{PersonId}, \code{MetricDate}, and the specified metrics.}
 
 \item{hrvar}{Character string specifying the HR attribute or organizational
-variable to group by. Default is \code{"Organization"}. Can be set to \code{NULL} for
-no grouping.}
+variable to group by. Default is \code{NULL}, for no grouping.}
 
 \item{metric}{Character string containing the name of the metric to analyze
 for habit identification, e.g. "Total_Copilot_actions". This is passed to
@@ -63,14 +62,14 @@ When 'data' is passed, the processed data with habit classifications is returned
 Creates various visualizations based on the Rogers adoption curve theory,
 analyzing the adoption patterns of Copilot usage. The function identifies
 habitual users using the \code{identify_habit()} function and then creates
-adoption curve visualizations based on different time frames and organizational
-groupings.
+adoption curve visualizations based on different time frames and
+organizational groupings.
 }
 \examples{
 # Basic Rogers adoption curve
 create_rogers(
   data = pq_data,
-  metric = "Total_Copilot_actions",
+  metric = "Copilot_actions_taken_in_Teams",
   plot_mode = 1
 )
 
@@ -78,14 +77,14 @@ create_rogers(
 create_rogers(
   data = pq_data,
   hrvar = "Organization",
-  metric = "Total_Copilot_actions",
+  metric = "Copilot_actions_taken_in_Teams",
   plot_mode = 2
 )
 
 # Enablement-based adoption
 create_rogers(
   data = pq_data,
-  metric = "Total_Copilot_actions",
+  metric = "Copilot_actions_taken_in_Teams",
   plot_mode = 3
 )
 

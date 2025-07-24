@@ -9,14 +9,13 @@
 #' Creates various visualizations based on the Rogers adoption curve theory,
 #' analyzing the adoption patterns of Copilot usage. The function identifies
 #' habitual users using the `identify_habit()` function and then creates
-#' adoption curve visualizations based on different time frames and organizational
-#' groupings.
+#' adoption curve visualizations based on different time frames and
+#' organizational groupings.
 #'
 #' @param data Data frame containing Person Query data to be analyzed. Must
 #' contain `PersonId`, `MetricDate`, and the specified metrics.
 #' @param hrvar Character string specifying the HR attribute or organizational
-#' variable to group by. Default is `"Organization"`. Can be set to `NULL` for
-#' no grouping.
+#'   variable to group by. Default is `NULL`, for no grouping.
 #' @param metric Character string containing the name of the metric to analyze
 #' for habit identification, e.g. "Total_Copilot_actions". This is passed to
 #' `identify_habit()`.
@@ -53,7 +52,7 @@
 #' # Basic Rogers adoption curve
 #' create_rogers(
 #'   data = pq_data,
-#'   metric = "Total_Copilot_actions",
+#'   metric = "Copilot_actions_taken_in_Teams",
 #'   plot_mode = 1
 #' )
 #'
@@ -61,14 +60,14 @@
 #' create_rogers(
 #'   data = pq_data,
 #'   hrvar = "Organization",
-#'   metric = "Total_Copilot_actions",
+#'   metric = "Copilot_actions_taken_in_Teams",
 #'   plot_mode = 2
 #' )
 #'
 #' # Enablement-based adoption
 #' create_rogers(
 #'   data = pq_data,
-#'   metric = "Total_Copilot_actions",
+#'   metric = "Copilot_actions_taken_in_Teams",
 #'   plot_mode = 3
 #' )
 #'
@@ -80,7 +79,7 @@
 #' @export
 
 create_rogers <- function(data,
-                         hrvar = "Organization",
+                         hrvar = NULL,
                          metric,
                          width = 9,
                          max_window = 12,

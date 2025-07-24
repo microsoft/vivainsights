@@ -33,7 +33,8 @@ create_incidence(
 e.g. "Collaboration_hours"}
 
 \item{hrvar}{Character vector of at most length 2 containing the name of the
-HR Variable by which to split metrics.}
+HR Variable by which to split metrics. Accepts \code{NULL}, where the total
+population is used for the analysis.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group
 size. Defaults to 5.}
@@ -77,6 +78,15 @@ create_inc(
   hrvar = "Organization",
   threshold = 4,
   position = "above"
+)
+
+# Total population (NULL hrvar)
+create_inc(
+  data = pq_data,
+  metric = "Collaboration_hours",
+  hrvar = NULL,
+  threshold = 20,
+  position = "below"
 )
 
 # Two HR attributes

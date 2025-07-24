@@ -36,17 +36,18 @@ Imports:
     rmarkdown,
     wpa,
     ggraph,
-    igraph,
-    tidytext,
-    ggwordcloud, 
     lifecycle,
-    glue
+    glue,
+    igraph,
+    rlang,
+    tidytext
 Suggests: 
     flexdashboard,
     testthat (>= 3.0.0),
     lmtest,
     sandwich,
-    slider
+    slider,
+    ggwordcloud 
 URL: https://microsoft.github.io/vivainsights/
 BugReports: https://github.com/microsoft/vivainsights/issues/
 Config/testthat/edition: 3
