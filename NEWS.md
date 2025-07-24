@@ -1,3 +1,5 @@
+# vivainsights 0.7.0
+
 # vivainsights 0.6.2
 
 * Minor bug fixes to `validation_report()`
