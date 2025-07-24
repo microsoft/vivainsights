@@ -34,3 +34,55 @@ test_that("create_inc returns a ggplot when return = 'plot'", {
   # Check if the result is a ggplot object
   expect_s3_class(result, "ggplot")
 })
+
+test_that("create_inc works with NULL hrvar", {
+  
+  result <- create_inc(
+                data = pq_data,
+                metric = "Collaboration_hours",
+                hrvar = NULL,
+                threshold = 20,
+                position = "below",
+                return = "table"
+              )
+  
+  # Check if the result is a data frame
+  expect_s3_class(result, "data.frame")
+  
+  # Check if the result contains the expected "group" column from totals_col
+  # The create_bar function renames the hrvar column to "group"
+  expect_true("group" %in% names(result))
+  
+  # Check that all values in group column are "Total"
+  expect_true(all(result$group == "Total"))
+})
+
+test_that("create_inc throws error for invalid position", {
+  
+  expect_error(
+    create_inc(
+      data = pq_data,
+      metric = "Collaboration_hours",
+      hrvar = "Organization",
+      threshold = 20,
+      position = "invalid",
+      return = "table"
+    ),
+    "Invalid value for `position`. Please use either \"above\" or \"below\"."
+  )
+})
+
+test_that("create_inc throws error for invalid position with NULL hrvar", {
+  
+  expect_error(
+    create_inc(
+      data = pq_data,
+      metric = "Collaboration_hours",
+      hrvar = NULL,
+      threshold = 20,
+      position = "invalid",
+      return = "table"
+    ),
+    "Invalid value for `position`. Please use either \"above\" or \"below\"."
+  )
+})
