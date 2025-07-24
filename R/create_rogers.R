@@ -44,6 +44,7 @@
 #' @import ggplot2
 #' @import scales
 #' @importFrom rlang .data
+#' @importFrom stats as.formula
 #'
 #' @family Visualization
 #' @family Adoption Analysis
