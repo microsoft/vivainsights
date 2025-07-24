@@ -94,6 +94,7 @@ Other Visualization:
 \code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
 \code{\link{create_rank}()},
+\code{\link{create_rogers}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
