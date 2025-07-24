@@ -11,7 +11,7 @@ Additional options available to return the underlying frequency table."><meta pr
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,20 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A different output is returned depending on the value passed to the <code>return</code>
 argument:</p><ul><li><p><code>"plot"</code>: 'ggplot' object. A faceted density plot for the metric.</p></li>
-<li><p><code>"table"</code>: data frame. A summary table for the metric.</p></li>
+<li><p><code>"table"</code>: data frame. A summary table for the metric, containing the
+following columns:</p><ul><li><p><code>group</code>: The HR variable by which the metric is split.</p></li>
+<li><p><code>mean</code>: The mean of the metric.</p></li>
+<li><p><code>min</code>: The minimum value of the metric.</p></li>
+<li><p><code>p10</code>: The 10th percentile of the metric.</p></li>
+<li><p><code>p25</code>: The 25th percentile of the metric.</p></li>
+<li><p><code>p50</code>: The 50th percentile of the metric.</p></li>
+<li><p><code>p75</code>: The 75th percentile of the metric.</p></li>
+<li><p><code>p90</code>: The 90th percentile of the metric.</p></li>
+<li><p><code>max</code>: The maximum value of the metric.</p></li>
+<li><p><code>sd</code>: The standard deviation of the metric.</p></li>
+<li><p><code>range</code>: The range of the metric.</p></li>
+<li><p><code>n</code>: The number of observations.</p></li>
+</ul></li>
 <li><p><code>"data"</code>: data frame. Data with calculated person averages.</p></li>
 <li><p><code>"frequency</code>: list of data frames. Each data frame contains the
 frequencies used in each panel of the plotted histogram.</p></li>

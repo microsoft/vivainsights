@@ -31,6 +31,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/afterhours_trend.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/anonymise.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/any_idate.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/calculate_distribution_summary.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/camel_clean.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/check_inputs.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/check_query.html</loc></url>
@@ -61,6 +62,7 @@
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_period_scatter.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_rank.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_rank_combine.html</loc></url>
+<url><loc>https://microsoft.github.io/vivainsights/reference/create_rogers.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_sankey.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_scatter.html</loc></url>
 <url><loc>https://microsoft.github.io/vivainsights/reference/create_stacked.html</loc></url>

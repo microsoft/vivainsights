@@ -15,7 +15,7 @@ which a bar plot is generated, or two hrvar values where an incidence table
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,7 +106,8 @@ e.g. "Collaboration_hours"</p></dd>
 
 <dt id="arg-hrvar">hrvar<a class="anchor" aria-label="anchor" href="#arg-hrvar"></a></dt>
 <dd><p>Character vector of at most length 2 containing the name of the
-HR Variable by which to split metrics.</p></dd>
+HR Variable by which to split metrics. Accepts <code>NULL</code>, where the total
+population is used for the analysis.</p></dd>
 
 
 <dt id="arg-mingroup">mingroup<a class="anchor" aria-label="anchor" href="#arg-mingroup"></a></dt>
@@ -162,6 +163,7 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <code><a href="create_line_asis.html">create_line_asis</a>()</code>,
 <code><a href="create_period_scatter.html">create_period_scatter</a>()</code>,
 <code><a href="create_rank.html">create_rank</a>()</code>,
+<code><a href="create_rogers.html">create_rogers</a>()</code>,
 <code><a href="create_sankey.html">create_sankey</a>()</code>,
 <code><a href="create_scatter.html">create_scatter</a>()</code>,
 <code><a href="create_stacked.html">create_stacked</a>()</code>,
@@ -227,6 +229,16 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_inc-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Total population (NULL hrvar)</span></span></span>
+<span class="r-in"><span><span class="fu">create_inc</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">pq_data</span>,</span></span>
+<span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Collaboration_hours"</span>,</span></span>
+<span class="r-in"><span>  hrvar <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>  threshold <span class="op">=</span> <span class="fl">20</span>,</span></span>
+<span class="r-in"><span>  position <span class="op">=</span> <span class="st">"below"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="create_inc-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Two HR attributes</span></span></span>
 <span class="r-in"><span><span class="fu">create_inc</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">pq_data</span>,</span></span>
@@ -235,7 +247,7 @@ following strings:</p><ul><li><p><code>"plot"</code></p></li>
 <span class="r-in"><span>  threshold <span class="op">=</span> <span class="fl">20</span>,</span></span>
 <span class="r-in"><span>  position <span class="op">=</span> <span class="st">"below"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="create_inc-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="create_inc-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
