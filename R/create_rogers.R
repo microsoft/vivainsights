@@ -27,7 +27,8 @@
 #' metric to be considered a qualifying count. Passed to `identify_habit()`.
 #' Default is 1.
 #' @param start_metric Character string containing the name of the metric used
-#' for determining enablement start date. Default is "Total_Copilot_enabled_days".
+#'   for determining enablement start date. The suggested variable is
+#'   "Total_Copilot_enabled_days".
 #' @param return Character vector specifying what to return. Valid inputs are
 #' "plot", "data", and "table". Default is "plot".
 #' @param plot_mode Integer or character string determining which plot to return.
@@ -85,7 +86,7 @@ create_rogers <- function(data,
                          width = 9,
                          max_window = 12,
                          threshold = 1,
-                         start_metric = "Total_Copilot_enabled_days",
+                         start_metric,
                          return = "plot",
                          plot_mode = 1) {
   
@@ -166,10 +167,12 @@ create_rogers <- function(data,
         facet_wrap(as.formula(paste("~", hrvar)), scales = "free_y") +
         scale_y_continuous(labels = scales::percent_format()) +
         labs(
-          title = "Rogers Adoption Curve by Organization",
+          title = paste("Rogers Adoption Curve by", hrvar),
+          subtitle = paste("Cumulative adoption of", us_to_space(metric)),
           x = "Week of Habitual Adoption",
           y = "Cumulative % of Habitual Users",
-          color = hrvar
+          color = hrvar,
+          caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
     } else {
@@ -186,9 +189,10 @@ create_rogers <- function(data,
         geom_line(size = 1.2, color = "#1c66b0") +
         scale_y_continuous(labels = scales::percent_format()) +
         labs(
-          title = "Rogers Adoption Curve for Copilot",
+          title = paste("Rogers Adoption Curve for", us_to_space(metric)),
           x = "Week of Adoption",
-          y = "Cumulative % of Habitual Users"
+          y = "Cumulative % of Habitual Users",
+          caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
     }
@@ -212,10 +216,11 @@ create_rogers <- function(data,
         geom_line(aes(y = .data$moving_avg), color = "#0c336e", size = 1) +
         facet_wrap(as.formula(paste("~", hrvar)), scales = "free_y") +
         labs(
-          title = paste("Weekly Rate of Copilot Adoption by", hrvar),
+          title = paste("Weekly Rate of", us_to_space(metric), "Adoption by", hrvar),
           subtitle = "New habitual users each week",
           x = "Week",
-          y = "New Habitual Users"
+          y = "New Habitual Users",
+          caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
     } else {
@@ -232,10 +237,11 @@ create_rogers <- function(data,
         geom_col(fill = "#1c66b0") +
         geom_line(aes(y = .data$moving_avg), color = "#0c336e", size = 1.2) +
         labs(
-          title = "Weekly Rate of Copilot Adoption",
+          title = paste("Weekly Rate of", us_to_space(metric), "Adoption"),
           subtitle = "New habitual users identified each week",
           x = "Week",
-          y = "New Habitual Users"
+          y = "New Habitual Users",
+          caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
     }
@@ -278,11 +284,12 @@ create_rogers <- function(data,
         )
       ) +
       labs(
-        title = "Enablement-Based Copilot Adoption Rate",
+        title = paste("Enablement-Based", us_to_space(metric), "Adoption Rate"),
         subtitle = "Weekly new habitual users, segmented by Rogers category (delay from enablement)",
         x = "Week of Adoption",
         y = "Number of New Habitual Users",
-        fill = "Rogers Segment"
+        fill = "Rogers Segment",
+        caption = extract_date_range(data, return = "text")
       ) +
       theme_wpa_basic()
     
@@ -309,9 +316,10 @@ create_rogers <- function(data,
       geom_line(size = 1.2, color = "#1c66b0") +
       scale_y_continuous(labels = scales::percent) +
       labs(
-        title = "Cumulative Habitual Adoption Over Time (Adjusted for Enablement)",
+        title = paste("Cumulative", us_to_space(metric), "Adoption Over Time (Adjusted for Enablement)"),
         x = "Adoption Week",
-        y = "Cumulative % of Users"
+        y = "Cumulative % of Users",
+        caption = extract_date_range(data, return = "text")
       ) +
       theme_wpa_basic()
     
