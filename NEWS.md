@@ -1,3 +1,10 @@
+# vivainsights 0.7.0
+
+* Added `create_rogers()` function for analyzing technology adoption patterns using Rogers adoption curve theory
+* Feature improvements to `create_hist()`, `create_density()`, `identify_usage_segments()`, `create_line()`
+* Refactor superseded dplyr syntax to current best practices
+* Optimized dependencies using base R functions where appropriate
+
 # vivainsights 0.6.2
 
 * Minor bug fixes to `validation_report()`

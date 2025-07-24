@@ -45,7 +45,22 @@ A different output is returned depending on the value passed to the \code{return
 argument:
 \itemize{
 \item \code{"plot"}: 'ggplot' object. A faceted density plot for the metric.
-\item \code{"table"}: data frame. A summary table for the metric.
+\item \code{"table"}: data frame. A summary table for the metric, containing the
+following columns:
+\itemize{
+\item \code{group}: The HR variable by which the metric is split.
+\item \code{mean}: The mean of the metric.
+\item \code{min}: The minimum value of the metric.
+\item \code{p10}: The 10th percentile of the metric.
+\item \code{p25}: The 25th percentile of the metric.
+\item \code{p50}: The 50th percentile of the metric.
+\item \code{p75}: The 75th percentile of the metric.
+\item \code{p90}: The 90th percentile of the metric.
+\item \code{max}: The maximum value of the metric.
+\item \code{sd}: The standard deviation of the metric.
+\item \code{range}: The range of the metric.
+\item \code{n}: The number of observations.
+}
 \item \code{"data"}: data frame. Data with calculated person averages.
 \item \verb{"frequency}: list of data frames. Each data frame contains the
 frequencies used in each panel of the plotted histogram.

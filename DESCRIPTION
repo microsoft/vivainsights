@@ -1,7 +1,7 @@
 Package: vivainsights
 Type: Package
 Title: Analyze and Visualize Data from 'Microsoft Viva Insights'
-Version: 0.6.2
+Version: 0.7.0
 Authors@R: c(
     person(given = "Martin", family = "Chan", role = c("aut", "cre"), email = "martin.chan@microsoft.com"),
     person(given = "Carlos", family = "Morales", role = "aut", email = "carlos.morales@microsoft.com")
@@ -36,17 +36,18 @@ Imports:
     rmarkdown,
     wpa,
     ggraph,
-    igraph,
-    tidytext,
-    ggwordcloud, 
     lifecycle,
-    glue
+    glue,
+    igraph,
+    rlang,
+    tidytext
 Suggests: 
     flexdashboard,
     testthat (>= 3.0.0),
     lmtest,
     sandwich,
-    slider
+    slider,
+    ggwordcloud 
 URL: https://microsoft.github.io/vivainsights/
 BugReports: https://github.com/microsoft/vivainsights/issues/
 Config/testthat/edition: 3

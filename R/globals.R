@@ -132,12 +132,26 @@ utils::globalVariables(
     "cumsum_value",
     "lagged_cumsum",
     "sum_last_w",
-    "Period",
+     "Period",
      "Y",
      "label",
      "IsHabit12w",
      "IsHabit4w",
      "prop",
-     "target_metric"
+     "target_metric",
+     "adoption_week",
+     "cumulative_adopters",
+     "cumulative_percent",
+     "new_adopters",
+     "moving_avg",
+     "enable_week",
+     "weeks_to_adopt",
+     "adoption_delay_percent",
+     "RogersSegment_delay",
+     "cumulative",
+     "earliest_adoption",
+     "latest_adoption",
+     "median_adoption_week",
+     "total_adopters"
     )
 )
