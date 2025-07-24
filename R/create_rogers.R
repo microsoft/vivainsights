@@ -12,6 +12,42 @@
 #' adoption curve visualizations based on different time frames and
 #' organizational groupings.
 #'
+#' @details
+#' This function provides four distinct plot modes to analyze adoption patterns:
+#'
+#' \strong{Plot Mode 1 - Cumulative Adoption Curve:}
+#' Shows the classic Rogers adoption curve with cumulative percentage of habitual
+#' users over time. This S-shaped curve helps identify the pace of adoption and
+#' when saturation begins. Steep sections indicate rapid adoption periods, while
+#' flat sections suggest slower uptake or natural limits.
+#'
+#' \strong{Plot Mode 2 - Weekly Adoption Rate:}
+#' Displays the number of new habitual users identified each week, with a
+#' 3-week moving average line to smooth volatility. This view helps identify
+#' adoption spikes, seasonal patterns, and the natural ebb and flow of user
+#' onboarding. High bars indicate successful onboarding periods.
+#'
+#' \strong{Plot Mode 3 - Enablement-Based Adoption:}
+#' Analyzes adoption relative to when users were first enabled (had access).
+#' Users are classified into Rogers segments (Innovators, Early Adopters,
+#' Early/Late Majority, Laggards) based on how quickly they adopted after
+#' enablement. This helps understand the natural distribution of adoption
+#' speed within your organization.
+#'
+#' \strong{Plot Mode 4 - Cumulative Enablement-Adjusted:}
+#' Similar to Mode 1 but only includes users who had enablement data, providing
+#' a more accurate view of adoption among those who actually had access to the
+#' technology. This removes noise from users who may not have been properly
+#' enabled.
+#'
+#' \strong{Interpretation Guidelines:}
+#' \itemize{
+#'   \item Early steep curves suggest strong product-market fit
+#'   \item Plateaus may indicate training needs or feature limitations
+#'   \item Seasonal patterns often reflect organizational training cycles
+#'   \item Rogers segments help identify user personas for targeted interventions
+#' }
+#'
 #' @param data Data frame containing Person Query data to be analyzed. Must
 #' contain `PersonId`, `MetricDate`, and the specified metrics.
 #' @param hrvar Character string specifying the HR attribute or organizational
