@@ -38,8 +38,13 @@ metric to be considered a qualifying count. Passed to \code{identify_habit()}.
 Default is 1.}
 
 \item{start_metric}{Character string containing the name of the metric used
-for determining enablement start date. The suggested variable is
-"Total_Copilot_enabled_days".}
+for determining enablement start date. This metric should track when users
+first gained access to the technology being analyzed. The function identifies
+the earliest date where this metric is greater than 0 for each user as their
+"enablement date". This is then used in plot modes 3 and 4 to calculate
+time-to-adoption and Rogers segment classifications. The suggested variable
+is "Total_Copilot_enabled_days", but any metric that indicates access or
+licensing status can be used (e.g., "License_assigned_days", "Access_granted").}
 
 \item{return}{Character vector specifying what to return. Valid inputs are
 "plot", "data", and "table". Default is "plot".}

@@ -5,6 +5,8 @@
 
 #' @title Generate Rogers Adoption Curve plots for Copilot usage
 #'
+#' @author Chris Gideon <chris.gideon@@microsoft.com>
+#' 
 #' @description
 #' Creates various visualizations based on the Rogers adoption curve theory,
 #' analyzing the adoption patterns of Copilot usage. The function identifies
@@ -63,8 +65,13 @@
 #' metric to be considered a qualifying count. Passed to `identify_habit()`.
 #' Default is 1.
 #' @param start_metric Character string containing the name of the metric used
-#'   for determining enablement start date. The suggested variable is
-#'   "Total_Copilot_enabled_days".
+#'   for determining enablement start date. This metric should track when users
+#'   first gained access to the technology being analyzed. The function identifies
+#'   the earliest date where this metric is greater than 0 for each user as their
+#'   "enablement date". This is then used in plot modes 3 and 4 to calculate
+#'   time-to-adoption and Rogers segment classifications. The suggested variable
+#'   is "Total_Copilot_enabled_days", but any metric that indicates access or
+#'   licensing status can be used (e.g., "License_assigned_days", "Access_granted").
 #' @param return Character vector specifying what to return. Valid inputs are
 #' "plot", "data", and "table". Default is "plot".
 #' @param plot_mode Integer or character string determining which plot to return.
@@ -223,6 +230,7 @@ create_rogers <- function(data,
       
       plot_object <- ggplot(rogers_curve, aes(x = .data$adoption_week, y = .data$cumulative_percent)) +
         geom_line(size = 1.2, color = "#1c66b0") +
+        geom_point() +
         scale_y_continuous(labels = scales::percent_format()) +
         labs(
           title = paste("Rogers Adoption Curve for", us_to_space(metric)),
@@ -350,6 +358,7 @@ create_rogers <- function(data,
     
     plot_object <- ggplot(cumulative_df, aes(x = .data$adoption_week, y = .data$cumulative_percent)) +
       geom_line(size = 1.2, color = "#1c66b0") +
+      geom_point() +
       scale_y_continuous(labels = scales::percent) +
       labs(
         title = paste("Cumulative", us_to_space(metric), "Adoption Over Time (Adjusted for Enablement)"),
