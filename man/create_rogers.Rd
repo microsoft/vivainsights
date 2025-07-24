@@ -127,6 +127,7 @@ create_rogers(
 create_rogers(
   data = pq_data,
   metric = "Copilot_actions_taken_in_Teams",
+  start_metric = "Total_Copilot_enabled_days",
   plot_mode = 3
 )
 
@@ -190,6 +191,9 @@ Other Visualization:
 \code{\link{one2one_rank}()},
 \code{\link{one2one_sum}()},
 \code{\link{one2one_trend}()}
+}
+\author{
+Chris Gideon \href{mailto:chris.gideon@microsoft.com}{chris.gideon@microsoft.com}
 }
 \concept{Adoption Analysis}
 \concept{Visualization}

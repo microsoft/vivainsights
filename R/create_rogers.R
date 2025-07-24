@@ -113,6 +113,7 @@
 #' create_rogers(
 #'   data = pq_data,
 #'   metric = "Copilot_actions_taken_in_Teams",
+#'   start_metric = "Total_Copilot_enabled_days",
 #'   plot_mode = 3
 #' )
 #'
