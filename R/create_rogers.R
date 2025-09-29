@@ -121,6 +121,14 @@
 #'   plot_mode = 3
 #' )
 #'
+#' # Rogers adoption curve with data point labels
+#' create_rogers(
+#'   data = pq_data,
+#'   metric = "Copilot_actions_taken_in_Teams",
+#'   plot_mode = 1,
+#'   label = TRUE
+#' )
+#'
 #' @return
 #' Returns a 'ggplot' object by default when 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
