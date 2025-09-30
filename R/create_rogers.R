@@ -120,6 +120,14 @@
 #'   plot_mode = 3
 #' )
 #'
+#' # Return data with Rogers segments
+#' rogers_data <- create_rogers(
+#'   data = pq_data,
+#'   metric = "Copilot_actions_taken_in_Teams",
+#'   start_metric = "Total_Copilot_enabled_days",
+#'   return = "data"
+#' )
+#'
 #' @return
 #' Returns a 'ggplot' object by default when 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
