@@ -121,6 +121,13 @@ plot_list$Collaboration_span
 }
 
 }
+\seealso{
+Other Flexible Input: 
+\code{\link{create_citsa}()}
+
+Other Interrupted Time-Series Analysis: 
+\code{\link{create_citsa}()}
+}
 \author{
 Aleksey Ashikhmin \href{mailto:alashi@microsoft.com}{alashi@microsoft.com}
 }
