@@ -40,6 +40,7 @@ Imports:
     glue,
     igraph,
     rlang,
+    cowplot,
     tidytext
 Suggests: 
     flexdashboard,
