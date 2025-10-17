@@ -28,7 +28,7 @@ create_survival(
   return_type = c("plot", "table"),
   figsize = c(8, 6),
   title = "Survival Curve by Segment",
-  subtitle = "Kaplanu2013Meier estimate",
+  subtitle = "Kaplan-Meier estimate",
   caption_from_date_range = TRUE,
   caption_text = NULL,
   legend_loc = "upper right",

@@ -178,9 +178,11 @@ ensure_required_segments <- function(df, segment_col, metrics, required_segments
   present <- unique(as.character(df[[segment_col]]))
   missing <- setdiff(required_segments, present)
   if (length(missing) == 0) return(df)
-  filler <- as.data.frame(matrix(NA_real_, nrow = length(missing), ncol = length(metrics)))
-  names(filler) <- metrics
-  filler[[segment_col]] <- missing
+  filler <- data.frame(
+    setNames(list(missing), segment_col),
+    setNames(as.list(rep(NA_real_, length(metrics))), metrics),
+    check.names = FALSE
+  )
   dplyr::bind_rows(df, filler)
 }
 
@@ -298,7 +300,9 @@ create_radar_calc <- function(data,
     }
     ref_row <- segment_level %>% dplyr::filter(.data[[segment_col]] == index_ref_group) %>% dplyr::slice(1)
     ref <- as.numeric(ref_row[, metrics, drop = FALSE]); names(ref) <- metrics
-    for (m in metrics) seg_idx[[m]] <- (seg_idx[[m]] / ref[[m]]) * 100
+    for (m in metrics) {
+      seg_idx[[m]] <- if (ref[[m]] == 0) NA_real_ else (seg_idx[[m]] / ref[[m]]) * 100
+    }
   } else if (index_mode == "minmax") {
     mins <- vapply(metrics, function(m) min(segment_level[[m]], na.rm = TRUE), numeric(1))
     maxs <- vapply(metrics, function(m) max(segment_level[[m]], na.rm = TRUE), numeric(1))
@@ -587,7 +591,7 @@ create_radar <- function(data,
   base_title <- if (index_mode %in% c("total","ref_group")) {
     paste0(title %||% "Behavioral Profiles by Segment", " (Indexed)")
   } else if (index_mode == "minmax") {
-    paste0(title %||% "Behavioral Profiles by Segment", " (Minu2013Max Scaled)")
+    paste0(title %||% "Behavioral Profiles by Segment", " (Min-Max Scaled)")
   } else {
     title %||% "Behavioral Profiles by Segment"
   }

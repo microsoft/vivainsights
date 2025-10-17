@@ -82,8 +82,8 @@ DEFAULT_COPILOT_METRICS <- c(
   "Copilot_actions_taken_in_Powerpoint"
 )
 
-`%||%` <- function(a,b) if (!is.null(a)) a else b
-
+# Infix helpers
+source("R/utils-infix.R")
 # ---------- Helpers ----------
 ##' Canonicalize segment labels
 ##'
@@ -321,6 +321,8 @@ create_survival_viz <- function(survival_long,
   } else {
     groups_present
   }
+  # Relevel the grouping column to match the computed groups order
+  survival_long[[group_col]] <- factor(survival_long[[group_col]], levels = groups)
 
   p <- ggplot(survival_long,
               aes(x = .data$time, y = .data$survival,
