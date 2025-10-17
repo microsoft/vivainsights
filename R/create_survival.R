@@ -3,12 +3,12 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Kaplanu2013Meier Survival Utilities and Workflow
+#' @title 'Kaplan-Meier Survival Utilities and Workflow
 #'
 #' @description
 #' A small collection of utilities and a high-level wrapper to compute and
-#' render Kaplanu2013Meier survival curves per segment. The module provides:
-#' - A lightweight pure-R Kaplanu2013Meier implementation (.km_curve) used as a
+#' render 'Kaplan-Meier survival curves per segment. The module provides:
+#' - A lightweight pure-R 'Kaplan-Meier implementation (.km_curve) used as a
 #'   fallback for environments where a survival dependency is not desired.
 #' - Calculation routines to aggregate data, enforce minimum group sizes, and
 #'   return long-format survival tables per segment.
@@ -43,7 +43,7 @@
 #' # Plot survival curves
 #' p <- create_survival(pq, time_col = "Days_active", event_col = "Churned")
 #' }
-#' create_survival: Kaplanu2013Meier survival workflow (calc + viz + wrapper)
+#' create_survival: 'Kaplan-Meier survival workflow (calc + viz + wrapper)
 #'
 #' Reuses identify_usage_segments when needed; returns plot or table.
 #'
@@ -122,9 +122,9 @@ legend_position_from_loc <- function(loc, bbox_to_anchor = c(1.3, 1.1)) {
 }
 
 .km_curve <- function(durations, events, timeline = NULL) {
-  ##' Pure-R Kaplanu2013Meier curve calculator (lightweight fallback)
+  ##' Pure-R 'Kaplan-Meier curve calculator (lightweight fallback)
   ##'
-  ##' Compute Kaplanu2013Meier survival estimates at each timepoint in `timeline`.
+  ##' Compute 'Kaplan-Meier survival estimates at each timepoint in `timeline`.
   ##' This is a small, dependency-free implementation used as a fallback when
   ##' a dedicated survival package is not desired.
   ##'
@@ -174,10 +174,10 @@ legend_position_from_loc <- function(loc, bbox_to_anchor = c(1.3, 1.1)) {
 # =========================
 # 1) CALC (unchanged logic)
 # =========================
-#' @title Compute Kaplanu2013Meier survival curves per group
+#' @title Compute 'Kaplan-Meier survival curves per group
 #'
 #' @description
-#' Compute Kaplanu2013Meier survival curves for one or more groups (segments).
+#' Compute 'Kaplan-Meier survival curves for one or more groups (segments).
 #' Returns a list with a long-format survival table (group, time, survival, at_risk, events)
 #' and a counts table used for applying minimum-group filters.
 #'
@@ -284,10 +284,10 @@ create_survival_calc <- function(data,
 # =========================
 # 2) VIZ (bar-style formatting; no orange line/box)
 # =========================
-#' @title Render Kaplanu2013Meier survival plot
+#' @title Render 'Kaplan-Meier survival plot
 #'
 #' @description
-#' Render Kaplanu2013Meier step curves for each group using ggplot2. The plot
+#' Render 'Kaplan-Meier step curves for each group using ggplot2. The plot
 #' includes standard title/subtitle/caption handling and optional legend placement.
 #'
 #' @param survival_long Data frame returned by create_survival_calc (long format).
@@ -385,7 +385,7 @@ create_survival_viz <- function(survival_long,
 #' @title High-level survival wrapper
 #'
 #' @description
-#' Compute and return Kaplanu2013Meier survival estimates either as a long-format
+#' Compute and return 'Kaplan-Meier survival estimates either as a long-format
 #' table or as a ggplot object. Supports optional auto-segmentation via
 #' vivainsights::identify_usage_segments(), canonicalization of segment labels,
 #' and enforcement of required segment ordering for plotting.
@@ -416,7 +416,7 @@ create_survival_viz <- function(survival_long,
 #' @param linewidth Numeric line width for plot curves.
 #' @param missing_draw Character. How to draw requested-but-missing groups ("nan" or "one").
 #' @return If `return_type = "table"`: data.frame with columns (group, time, survival, at_risk, events).
-#' If `return_type = "plot"`: ggplot2 object with Kaplanu2013Meier curves.
+#' If `return_type = "plot"`: ggplot2 object with 'Kaplan-Meier curves.
 #' @examples
 #' \dontrun{
 #' pq <- load_pq_data()
@@ -450,7 +450,7 @@ create_survival <- function(data,
                             # viz
                             figsize = c(8, 6),
                             title = "Survival Curve by Segment",
-                            subtitle = "Kaplanu2013Meier estimate",
+                            subtitle = "'Kaplan-Meier estimate",
                             caption_from_date_range = TRUE,
                             caption_text = NULL,
                             legend_loc = "upper right",

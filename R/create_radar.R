@@ -131,6 +131,7 @@ DEFAULT_SYNONYMS <- c(
 # small helper: infix to safely default NULL
 `%||%` <- function(a,b) if (!is.null(a)) a else b
 
+
 # ---- Helpers -----------------------------------------------------------------
 
 # Canonicalize segment labels using a synonyms map
