@@ -590,7 +590,7 @@ create_radar <- function(data,
   base_title <- if (index_mode %in% c("total","ref_group")) {
     paste0(title %||% "Behavioral Profiles by Segment", " (Indexed)")
   } else if (index_mode == "minmax") {
-    paste0(title %||% "Behavioral Profiles by Segment", " (Minu2013Max Scaled)")
+    paste0(title %||% "Behavioral Profiles by Segment", " (Min-Max Scaled)")
   } else {
     title %||% "Behavioral Profiles by Segment"
   }
