@@ -297,7 +297,9 @@ create_radar_calc <- function(data,
     }
     ref_row <- segment_level %>% dplyr::filter(.data[[segment_col]] == index_ref_group) %>% dplyr::slice(1)
     ref <- as.numeric(ref_row[, metrics, drop = FALSE]); names(ref) <- metrics
-    for (m in metrics) seg_idx[[m]] <- (seg_idx[[m]] / ref[[m]]) * 100
+    for (m in metrics) {
+      seg_idx[[m]] <- if (ref[[m]] == 0) NA_real_ else (seg_idx[[m]] / ref[[m]]) * 100
+    }
   } else if (index_mode == "minmax") {
     mins <- vapply(metrics, function(m) min(segment_level[[m]], na.rm = TRUE), numeric(1))
     maxs <- vapply(metrics, function(m) max(segment_level[[m]], na.rm = TRUE), numeric(1))
