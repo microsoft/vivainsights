@@ -178,11 +178,9 @@ ensure_required_segments <- function(df, segment_col, metrics, required_segments
   present <- unique(as.character(df[[segment_col]]))
   missing <- setdiff(required_segments, present)
   if (length(missing) == 0) return(df)
-  filler <- data.frame(
-    setNames(list(missing), segment_col),
-    setNames(as.list(rep(NA_real_, length(metrics))), metrics),
-    check.names = FALSE
-  )
+  filler <- as.data.frame(matrix(NA_real_, nrow = length(missing), ncol = length(metrics)))
+  names(filler) <- metrics
+  filler[[segment_col]] <- missing
   dplyr::bind_rows(df, filler)
 }
 
