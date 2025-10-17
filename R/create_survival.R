@@ -82,8 +82,8 @@ DEFAULT_COPILOT_METRICS <- c(
   "Copilot_actions_taken_in_Powerpoint"
 )
 
-# Infix helpers
-source("R/utils-infix.R")
+`%||%` <- function(a,b) if (!is.null(a)) a else b
+
 # ---------- Helpers ----------
 ##' Canonicalize segment labels
 ##'
