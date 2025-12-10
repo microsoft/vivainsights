@@ -1,0 +1,437 @@
+# Package index
+
+## All functions
+
+- [`IV_report()`](https://microsoft.github.io/vivainsights/reference/IV_report.md)
+  : Generate a Information Value HTML Report
+
+- [`afterhours_dist()`](https://microsoft.github.io/vivainsights/reference/afterhours_dist.md)
+  : Distribution of After-hours Collaboration Hours as a 100% stacked
+  bar
+
+- [`afterhours_fizz()`](https://microsoft.github.io/vivainsights/reference/afterhours_fizz.md)
+  : Distribution of After-hours Collaboration Hours (Fizzy Drink plot)
+
+- [`afterhours_line()`](https://microsoft.github.io/vivainsights/reference/afterhours_line.md)
+  : After-hours Collaboration Time Trend - Line Chart
+
+- [`afterhours_rank()`](https://microsoft.github.io/vivainsights/reference/afterhours_rank.md)
+  : Rank groups with high After-Hours Collaboration Hours
+
+- [`afterhours_summary()`](https://microsoft.github.io/vivainsights/reference/afterhours_summary.md)
+  [`afterhours_sum()`](https://microsoft.github.io/vivainsights/reference/afterhours_summary.md)
+  : Summary of After-Hours Collaboration Hours
+
+- [`afterhours_trend()`](https://microsoft.github.io/vivainsights/reference/afterhours_trend.md)
+  : After-Hours Time Trend
+
+- [`anonymise()`](https://microsoft.github.io/vivainsights/reference/anonymise.md)
+  [`anonymize()`](https://microsoft.github.io/vivainsights/reference/anonymise.md)
+  : Anonymise a categorical variable by replacing values
+
+- [`any_idate()`](https://microsoft.github.io/vivainsights/reference/any_idate.md)
+  : Identify whether variable is an IDate class.
+
+- [`camel_clean()`](https://microsoft.github.io/vivainsights/reference/camel_clean.md)
+  : Convert "CamelCase" to "Camel Case"
+
+- [`check_inputs()`](https://microsoft.github.io/vivainsights/reference/check_inputs.md)
+  : Check whether a data frame contains all the required variable
+
+- [`check_query()`](https://microsoft.github.io/vivainsights/reference/check_query.md)
+  : Check a query to ensure that it is suitable for analysis
+
+- [`collaboration_area()`](https://microsoft.github.io/vivainsights/reference/collaboration_area.md)
+  [`collab_area()`](https://microsoft.github.io/vivainsights/reference/collaboration_area.md)
+  : Collaboration - Stacked Area Plot
+
+- [`collaboration_dist()`](https://microsoft.github.io/vivainsights/reference/collaboration_dist.md)
+  [`collab_dist()`](https://microsoft.github.io/vivainsights/reference/collaboration_dist.md)
+  : Distribution of Collaboration Hours as a 100% stacked bar
+
+- [`collaboration_fizz()`](https://microsoft.github.io/vivainsights/reference/collaboration_fizz.md)
+  [`collab_fizz()`](https://microsoft.github.io/vivainsights/reference/collaboration_fizz.md)
+  : Distribution of Collaboration Hours (Fizzy Drink plot)
+
+- [`collaboration_line()`](https://microsoft.github.io/vivainsights/reference/collaboration_line.md)
+  [`collab_line()`](https://microsoft.github.io/vivainsights/reference/collaboration_line.md)
+  : Collaboration Time Trend - Line Chart
+
+- [`collaboration_rank()`](https://microsoft.github.io/vivainsights/reference/collaboration_rank.md)
+  [`collab_rank()`](https://microsoft.github.io/vivainsights/reference/collaboration_rank.md)
+  : Collaboration Ranking
+
+- [`collaboration_sum()`](https://microsoft.github.io/vivainsights/reference/collaboration_sum.md)
+  [`collab_sum()`](https://microsoft.github.io/vivainsights/reference/collaboration_sum.md)
+  [`collaboration_summary()`](https://microsoft.github.io/vivainsights/reference/collaboration_sum.md)
+  [`collab_summary()`](https://microsoft.github.io/vivainsights/reference/collaboration_sum.md)
+  : Collaboration Summary
+
+- [`collaboration_trend()`](https://microsoft.github.io/vivainsights/reference/collaboration_trend.md)
+  : Collaboration Time Trend
+
+- [`comma()`](https://microsoft.github.io/vivainsights/reference/comma.md)
+  : Add comma separator for thousands
+
+- [`copy_df()`](https://microsoft.github.io/vivainsights/reference/copy_df.md)
+  : Copy a data frame to clipboard for pasting in Excel
+
+- [`create_IV()`](https://microsoft.github.io/vivainsights/reference/create_IV.md)
+  : Compute Information Value for Predictive Variables
+
+- [`create_bar()`](https://microsoft.github.io/vivainsights/reference/create_bar.md)
+  : Mean Bar Plot for any metric
+
+- [`create_bar_asis()`](https://microsoft.github.io/vivainsights/reference/create_bar_asis.md)
+  : Create a bar chart without aggregation for any metric
+
+- [`create_boxplot()`](https://microsoft.github.io/vivainsights/reference/create_boxplot.md)
+  : Box Plot for any metric
+
+- [`create_bubble()`](https://microsoft.github.io/vivainsights/reference/create_bubble.md)
+  : Create a bubble plot with two selected Viva Insights metrics
+  (General Purpose), with size representing the number of employees in
+  the group.
+
+- [`create_density()`](https://microsoft.github.io/vivainsights/reference/create_density.md)
+  : Create a density plot for any metric
+
+- [`create_dist()`](https://microsoft.github.io/vivainsights/reference/create_dist.md)
+  : Horizontal 100 percent stacked bar plot for any metric
+
+- [`create_dt()`](https://microsoft.github.io/vivainsights/reference/create_dt.md)
+  : Create interactive tables in HTML with 'download' buttons.
+
+- [`create_fizz()`](https://microsoft.github.io/vivainsights/reference/create_fizz.md)
+  : Fizzy Drink / Jittered Scatter Plot for any metric
+
+- [`create_hist()`](https://microsoft.github.io/vivainsights/reference/create_hist.md)
+  : Create a histogram plot for any metric
+
+- [`create_inc()`](https://microsoft.github.io/vivainsights/reference/create_inc.md)
+  [`create_incidence()`](https://microsoft.github.io/vivainsights/reference/create_inc.md)
+  : Create an incidence analysis reflecting proportion of population
+  scoring above or below a threshold for a metric
+
+- [`create_itsa()`](https://microsoft.github.io/vivainsights/reference/create_itsa.md)
+  : Estimate an effect of intervention on every Viva Insights metric in
+  input file by applying single-group Interrupted Time-Series Analysis
+  (ITSA)
+
+- [`create_line()`](https://microsoft.github.io/vivainsights/reference/create_line.md)
+  : Time Trend - Line Chart for any metric
+
+- [`create_line_asis()`](https://microsoft.github.io/vivainsights/reference/create_line_asis.md)
+  : Create a line chart without aggregation for any metric
+
+- [`create_lorenz()`](https://microsoft.github.io/vivainsights/reference/create_lorenz.md)
+  : Calculate the Lorenz Curve and Gini Coefficient in a Person Query
+
+- [`create_period_scatter()`](https://microsoft.github.io/vivainsights/reference/create_period_scatter.md)
+  : Period comparison scatter plot for any two metrics
+
+- [`create_rank()`](https://microsoft.github.io/vivainsights/reference/create_rank.md)
+  : Rank all groups across HR attributes on a selected Viva Insights
+  metric
+
+- [`create_rank_combine()`](https://microsoft.github.io/vivainsights/reference/create_rank_combine.md)
+  : Create combination pairs of HR variables and run 'create_rank()'
+
+- [`create_rogers()`](https://microsoft.github.io/vivainsights/reference/create_rogers.md)
+  : Generate Rogers Adoption Curve plots for Copilot usage
+
+- [`create_sankey()`](https://microsoft.github.io/vivainsights/reference/create_sankey.md)
+  : Create a sankey chart from a two-column count table
+
+- [`create_scatter()`](https://microsoft.github.io/vivainsights/reference/create_scatter.md)
+  : Create a Scatter plot with two selected Viva Insights metrics
+  (General Purpose)
+
+- [`create_stacked()`](https://microsoft.github.io/vivainsights/reference/create_stacked.md)
+  : Horizontal stacked bar plot for any metric
+
+- [`create_tracking()`](https://microsoft.github.io/vivainsights/reference/create_tracking.md)
+  **\[experimental\]** : Create a line chart that tracks metrics over
+  time with a 4-week rolling average
+
+- [`create_trend()`](https://microsoft.github.io/vivainsights/reference/create_trend.md)
+  : Heat mapped horizontal bar plot over time for any metric
+
+- [`cut_hour()`](https://microsoft.github.io/vivainsights/reference/cut_hour.md)
+  : Convert a numeric variable for hours into categorical
+
+- [`email_dist()`](https://microsoft.github.io/vivainsights/reference/email_dist.md)
+  : Distribution of Email Hours as a 100% stacked bar
+
+- [`email_fizz()`](https://microsoft.github.io/vivainsights/reference/email_fizz.md)
+  : Distribution of Email Hours (Fizzy Drink plot)
+
+- [`email_line()`](https://microsoft.github.io/vivainsights/reference/email_line.md)
+  : Email Time Trend - Line Chart
+
+- [`email_rank()`](https://microsoft.github.io/vivainsights/reference/email_rank.md)
+  : Email Hours Ranking
+
+- [`email_summary()`](https://microsoft.github.io/vivainsights/reference/email_summary.md)
+  [`email_sum()`](https://microsoft.github.io/vivainsights/reference/email_summary.md)
+  : Email Summary
+
+- [`email_trend()`](https://microsoft.github.io/vivainsights/reference/email_trend.md)
+  : Email Hours Time Trend
+
+- [`export()`](https://microsoft.github.io/vivainsights/reference/export.md)
+  : Export 'vivainsights' outputs to CSV, clipboard, or save as images
+
+- [`external_dist()`](https://microsoft.github.io/vivainsights/reference/external_dist.md)
+  : Distribution of External Collaboration Hours as a 100% stacked bar
+
+- [`external_fizz()`](https://microsoft.github.io/vivainsights/reference/external_fizz.md)
+  : Distribution of External Collaboration Hours (Fizzy Drink plot)
+
+- [`external_line()`](https://microsoft.github.io/vivainsights/reference/external_line.md)
+  : External Collaboration Hours Time Trend - Line Chart
+
+- [`external_rank()`](https://microsoft.github.io/vivainsights/reference/external_rank.md)
+  : Rank groups with high External Collaboration Hours
+
+- [`external_sum()`](https://microsoft.github.io/vivainsights/reference/external_sum.md)
+  [`external_summary()`](https://microsoft.github.io/vivainsights/reference/external_sum.md)
+  : External Collaboration Summary
+
+- [`extract_date_range()`](https://microsoft.github.io/vivainsights/reference/extract_date_range.md)
+  : Extract date period
+
+- [`extract_hr()`](https://microsoft.github.io/vivainsights/reference/extract_hr.md)
+  : Extract HR attribute variables
+
+- [`flag_ch_ratio()`](https://microsoft.github.io/vivainsights/reference/flag_ch_ratio.md)
+  : Flag unusual high collaboration hours to after-hours collaboration
+  hours ratio
+
+- [`flag_em_ratio()`](https://microsoft.github.io/vivainsights/reference/flag_em_ratio.md)
+  : Flag Persons with unusually high Email Hours to Emails Sent ratio
+
+- [`flag_extreme()`](https://microsoft.github.io/vivainsights/reference/flag_extreme.md)
+  : Warn for extreme values by checking against a threshold
+
+- [`flag_outlooktime()`](https://microsoft.github.io/vivainsights/reference/flag_outlooktime.md)
+  : Flag unusual outlook time settings for work day start and end time
+
+- [`g2g_data`](https://microsoft.github.io/vivainsights/reference/g2g_data.md)
+  : Sample Group-to-Group dataset
+
+- [`generate_report()`](https://microsoft.github.io/vivainsights/reference/generate_report.md)
+  : Generate HTML report with list inputs
+
+- [`generate_report2()`](https://microsoft.github.io/vivainsights/reference/generate_report2.md)
+  : Generate HTML report based on existing RMarkdown documents
+
+- [`heat_colours()`](https://microsoft.github.io/vivainsights/reference/heat_colours.md)
+  [`heat_colors()`](https://microsoft.github.io/vivainsights/reference/heat_colours.md)
+  :
+
+  Generate a vector of `n` contiguous colours, as a red-yellow-green
+  palette.
+
+- [`hr_trend()`](https://microsoft.github.io/vivainsights/reference/hr_trend.md)
+  : Employee count over time
+
+- [`hrvar_count()`](https://microsoft.github.io/vivainsights/reference/hrvar_count.md)
+  [`analysis_scope()`](https://microsoft.github.io/vivainsights/reference/hrvar_count.md)
+  : Create a count of distinct people in a specified HR variable
+
+- [`hrvar_count_all()`](https://microsoft.github.io/vivainsights/reference/hrvar_count_all.md)
+  **\[experimental\]** : Create count of distinct fields and percentage
+  of employees with missing values for all HR variables
+
+- [`hrvar_trend()`](https://microsoft.github.io/vivainsights/reference/hrvar_trend.md)
+  : Track count of distinct people over time in a specified HR variable
+
+- [`identify_churn()`](https://microsoft.github.io/vivainsights/reference/identify_churn.md)
+  : Identify employees who have churned from the dataset
+
+- [`identify_datefreq()`](https://microsoft.github.io/vivainsights/reference/identify_datefreq.md)
+  **\[experimental\]** : Identify date frequency based on a series of
+  dates
+
+- [`identify_habit()`](https://microsoft.github.io/vivainsights/reference/identify_habit.md)
+  **\[experimental\]** : Identify whether a habitual behaviour exists
+  over a given interval of time
+
+- [`identify_holidayweeks()`](https://microsoft.github.io/vivainsights/reference/identify_holidayweeks.md)
+  : Identify Holiday Weeks based on outliers
+
+- [`identify_inactiveweeks()`](https://microsoft.github.io/vivainsights/reference/identify_inactiveweeks.md)
+  : Identify Inactive Weeks
+
+- [`identify_nkw()`](https://microsoft.github.io/vivainsights/reference/identify_nkw.md)
+  : Identify Non-Knowledge workers in a Person Query using Collaboration
+  Hours
+
+- [`identify_outlier()`](https://microsoft.github.io/vivainsights/reference/identify_outlier.md)
+  : Identify metric outliers over a date interval
+
+- [`identify_privacythreshold()`](https://microsoft.github.io/vivainsights/reference/identify_privacythreshold.md)
+  : Identify groups under privacy threshold
+
+- [`identify_shifts()`](https://microsoft.github.io/vivainsights/reference/identify_shifts.md)
+  : Identify shifts based on outlook time settings for work day start
+  and end time
+
+- [`identify_tenure()`](https://microsoft.github.io/vivainsights/reference/identify_tenure.md)
+  : Tenure calculation based on different input dates, returns data
+  summary table or histogram
+
+- [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md)
+  **\[experimental\]** : Identify Usage Segments based on a metric
+
+- [`import_query()`](https://microsoft.github.io/vivainsights/reference/import_query.md)
+  : Import a query from Viva Insights Analyst Experience
+
+- [`is_date_format()`](https://microsoft.github.io/vivainsights/reference/is_date_format.md)
+  : Identify whether string is a date format
+
+- [`jitter_metrics()`](https://microsoft.github.io/vivainsights/reference/jitter_metrics.md)
+  : Jitter metrics in a data frame
+
+- [`keymetrics_scan()`](https://microsoft.github.io/vivainsights/reference/keymetrics_scan.md)
+  : Run a summary of Key Metrics from the Standard Person Query data
+
+- [`keymetrics_scan_asis()`](https://microsoft.github.io/vivainsights/reference/keymetrics_scan_asis.md)
+  : Run a summary of Key Metrics without aggregation
+
+- [`maxmin()`](https://microsoft.github.io/vivainsights/reference/maxmin.md)
+  : Max-Min Scaling Function
+
+- [`meeting_dist()`](https://microsoft.github.io/vivainsights/reference/meeting_dist.md)
+  : Distribution of Meeting Hours as a 100% stacked bar
+
+- [`meeting_fizz()`](https://microsoft.github.io/vivainsights/reference/meeting_fizz.md)
+  : Distribution of Meeting Hours (Fizzy Drink plot)
+
+- [`meeting_line()`](https://microsoft.github.io/vivainsights/reference/meeting_line.md)
+  : Meeting Time Trend - Line Chart
+
+- [`meeting_rank()`](https://microsoft.github.io/vivainsights/reference/meeting_rank.md)
+  : Meeting Hours Ranking
+
+- [`meeting_summary()`](https://microsoft.github.io/vivainsights/reference/meeting_summary.md)
+  [`meeting_sum()`](https://microsoft.github.io/vivainsights/reference/meeting_summary.md)
+  : Meeting Summary
+
+- [`meeting_tm_report()`](https://microsoft.github.io/vivainsights/reference/meeting_tm_report.md)
+  : Generate a Meeting Text Mining report in HTML
+
+- [`meeting_trend()`](https://microsoft.github.io/vivainsights/reference/meeting_trend.md)
+  : Meeting Hours Time Trend
+
+- [`mt_data`](https://microsoft.github.io/vivainsights/reference/mt_data.md)
+  : Sample Meeting Query dataset
+
+- [`network_g2g()`](https://microsoft.github.io/vivainsights/reference/network_g2g.md)
+  : Create a network plot with the group-to-group query
+
+- [`network_p2p()`](https://microsoft.github.io/vivainsights/reference/network_p2p.md)
+  **\[experimental\]** : Perform network analysis with the
+  person-to-person query
+
+- [`network_summary()`](https://microsoft.github.io/vivainsights/reference/network_summary.md)
+  : Summarise node centrality statistics with an igraph object
+
+- [`one2one_dist()`](https://microsoft.github.io/vivainsights/reference/one2one_dist.md)
+  : Distribution of Manager 1:1 Time as a 100% stacked bar
+
+- [`one2one_fizz()`](https://microsoft.github.io/vivainsights/reference/one2one_fizz.md)
+  : Distribution of Manager 1:1 Time (Fizzy Drink plot)
+
+- [`one2one_freq()`](https://microsoft.github.io/vivainsights/reference/one2one_freq.md)
+  **\[experimental\]** : Frequency of Manager 1:1 Meetings as bar or
+  100% stacked bar chart
+
+- [`one2one_line()`](https://microsoft.github.io/vivainsights/reference/one2one_line.md)
+  : Manager 1:1 Time Trend - Line Chart
+
+- [`one2one_rank()`](https://microsoft.github.io/vivainsights/reference/one2one_rank.md)
+  : Manager 1:1 Time Ranking
+
+- [`one2one_sum()`](https://microsoft.github.io/vivainsights/reference/one2one_sum.md)
+  [`one2one_summary()`](https://microsoft.github.io/vivainsights/reference/one2one_sum.md)
+  : Manager 1:1 Time Summary
+
+- [`one2one_trend()`](https://microsoft.github.io/vivainsights/reference/one2one_trend.md)
+  : Manager 1:1 Time Trend
+
+- [`p2p_data`](https://microsoft.github.io/vivainsights/reference/p2p_data.md)
+  : Sample person-to-person dataset
+
+- [`p2p_data_sim()`](https://microsoft.github.io/vivainsights/reference/p2p_data_sim.md)
+  : Simulate a person-to-person query using a Watts-Strogatz model
+
+- [`pad2()`](https://microsoft.github.io/vivainsights/reference/pad2.md)
+  : Create the two-digit zero-padded format
+
+- [`pairwise_count()`](https://microsoft.github.io/vivainsights/reference/pairwise_count.md)
+  : Perform a pairwise count of words by id
+
+- [`plot_ts_us()`](https://microsoft.github.io/vivainsights/reference/plot_ts_us.md)
+  : Plot Usage Segments over time
+
+- [`pq_data`](https://microsoft.github.io/vivainsights/reference/pq_data.md)
+  : Sample Person Query dataset
+
+- [`prep_query()`](https://microsoft.github.io/vivainsights/reference/prep_query.md)
+  : Prepare variable names and types in query data frame for analysis
+
+- [`read_preamble()`](https://microsoft.github.io/vivainsights/reference/read_preamble.md)
+  : Read preamble
+
+- [`rgb2hex()`](https://microsoft.github.io/vivainsights/reference/rgb2hex.md)
+  : Convert rgb to HEX code
+
+- [`theme_wpa()`](https://microsoft.github.io/vivainsights/reference/theme_wpa.md)
+  : Main theme for 'vivainsights' visualisations
+
+- [`theme_wpa_basic()`](https://microsoft.github.io/vivainsights/reference/theme_wpa_basic.md)
+  : Basic theme for 'vivainsights' visualisations
+
+- [`tm_clean()`](https://microsoft.github.io/vivainsights/reference/tm_clean.md)
+  : Clean subject line text prior to analysis
+
+- [`tm_cooc()`](https://microsoft.github.io/vivainsights/reference/tm_cooc.md)
+  : Analyse word co-occurrence in subject lines and return a network
+  plot
+
+- [`tm_freq()`](https://microsoft.github.io/vivainsights/reference/tm_freq.md)
+  : Perform a Word or Ngram Frequency Analysis and return a Circular Bar
+  Plot
+
+- [`tm_wordcloud()`](https://microsoft.github.io/vivainsights/reference/tm_wordcloud.md)
+  : Generate a wordcloud with meeting subject lines
+
+- [`totals_bind()`](https://microsoft.github.io/vivainsights/reference/totals_bind.md)
+  : Row-bind an identical data frame for computing grouped totals
+
+- [`totals_col()`](https://microsoft.github.io/vivainsights/reference/totals_col.md)
+  : Fabricate a 'Total' HR variable
+
+- [`track_HR_change()`](https://microsoft.github.io/vivainsights/reference/track_HR_change.md)
+  : Sankey chart of organizational movement between HR attributes and
+  missing values (outside company move) (Data Overview)
+
+- [`tstamp()`](https://microsoft.github.io/vivainsights/reference/tstamp.md)
+  : Generate a time stamp
+
+- [`us_to_space()`](https://microsoft.github.io/vivainsights/reference/us_to_space.md)
+  : Replace underscore with space
+
+- [`validation_report()`](https://microsoft.github.io/vivainsights/reference/validation_report.md)
+  : Generate a Data Validation report in HTML
+
+- [`wrap()`](https://microsoft.github.io/vivainsights/reference/wrap.md)
+  : Add a character at the start and end of a character string
+
+- [`wrap_text()`](https://microsoft.github.io/vivainsights/reference/wrap_text.md)
+  : Wrap text based on character threshold
+
+- [`xicor()`](https://microsoft.github.io/vivainsights/reference/xicor.md)
+  : Calculate Chatterjee's Rank Correlation Coefficient

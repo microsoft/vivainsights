@@ -15,7 +15,7 @@ organizational groupings."><meta property="og:image" content="https://microsoft.
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,8 @@ organizational groupings.</p>
 <span>  threshold <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  <span class="va">start_metric</span>,</span>
 <span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
-<span>  plot_mode <span class="op">=</span> <span class="fl">1</span></span>
+<span>  plot_mode <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  label <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -143,6 +144,13 @@ Valid inputs are:</p><ul><li><p>1 or "cumulative": Rogers Adoption Curve showing
 <li><p>4 or "cumulative_enablement": Cumulative adoption adjusted for enablement</p></li>
 </ul><p>Default is 1.</p></dd>
 
+
+<dt id="arg-label">label<a class="anchor" aria-label="anchor" href="#arg-label"></a></dt>
+<dd><p>Logical value to determine whether to show data point labels on
+the plot for cumulative adoption curves (plot modes 1 and 4). If <code>TRUE</code>,
+both <code>geom_point()</code> and <code>geom_text()</code> are added to display data labels
+rounded to 1 decimal place above each data point. Defaults to <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -182,63 +190,63 @@ enabled.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Visualization:
-<code><a href="afterhours_dist.html">afterhours_dist</a>()</code>,
-<code><a href="afterhours_fizz.html">afterhours_fizz</a>()</code>,
-<code><a href="afterhours_line.html">afterhours_line</a>()</code>,
-<code><a href="afterhours_rank.html">afterhours_rank</a>()</code>,
-<code><a href="afterhours_summary.html">afterhours_summary</a>()</code>,
-<code><a href="afterhours_trend.html">afterhours_trend</a>()</code>,
-<code><a href="collaboration_area.html">collaboration_area</a>()</code>,
-<code><a href="collaboration_dist.html">collaboration_dist</a>()</code>,
-<code><a href="collaboration_fizz.html">collaboration_fizz</a>()</code>,
-<code><a href="collaboration_line.html">collaboration_line</a>()</code>,
-<code><a href="collaboration_rank.html">collaboration_rank</a>()</code>,
-<code><a href="collaboration_sum.html">collaboration_sum</a>()</code>,
-<code><a href="collaboration_trend.html">collaboration_trend</a>()</code>,
-<code><a href="create_bar.html">create_bar</a>()</code>,
-<code><a href="create_bar_asis.html">create_bar_asis</a>()</code>,
-<code><a href="create_boxplot.html">create_boxplot</a>()</code>,
-<code><a href="create_bubble.html">create_bubble</a>()</code>,
-<code><a href="create_dist.html">create_dist</a>()</code>,
-<code><a href="create_fizz.html">create_fizz</a>()</code>,
-<code><a href="create_inc.html">create_inc</a>()</code>,
-<code><a href="create_line.html">create_line</a>()</code>,
-<code><a href="create_line_asis.html">create_line_asis</a>()</code>,
-<code><a href="create_period_scatter.html">create_period_scatter</a>()</code>,
-<code><a href="create_rank.html">create_rank</a>()</code>,
-<code><a href="create_sankey.html">create_sankey</a>()</code>,
-<code><a href="create_scatter.html">create_scatter</a>()</code>,
-<code><a href="create_stacked.html">create_stacked</a>()</code>,
-<code><a href="create_tracking.html">create_tracking</a>()</code>,
-<code><a href="create_trend.html">create_trend</a>()</code>,
-<code><a href="email_dist.html">email_dist</a>()</code>,
-<code><a href="email_fizz.html">email_fizz</a>()</code>,
-<code><a href="email_line.html">email_line</a>()</code>,
-<code><a href="email_rank.html">email_rank</a>()</code>,
-<code><a href="email_summary.html">email_summary</a>()</code>,
-<code><a href="email_trend.html">email_trend</a>()</code>,
-<code><a href="external_dist.html">external_dist</a>()</code>,
-<code><a href="external_fizz.html">external_fizz</a>()</code>,
-<code><a href="external_line.html">external_line</a>()</code>,
-<code><a href="external_rank.html">external_rank</a>()</code>,
-<code><a href="external_sum.html">external_sum</a>()</code>,
-<code><a href="hr_trend.html">hr_trend</a>()</code>,
-<code><a href="hrvar_count.html">hrvar_count</a>()</code>,
-<code><a href="hrvar_trend.html">hrvar_trend</a>()</code>,
-<code><a href="keymetrics_scan.html">keymetrics_scan</a>()</code>,
-<code><a href="meeting_dist.html">meeting_dist</a>()</code>,
-<code><a href="meeting_fizz.html">meeting_fizz</a>()</code>,
-<code><a href="meeting_line.html">meeting_line</a>()</code>,
-<code><a href="meeting_rank.html">meeting_rank</a>()</code>,
-<code><a href="meeting_summary.html">meeting_summary</a>()</code>,
-<code><a href="meeting_trend.html">meeting_trend</a>()</code>,
-<code><a href="one2one_dist.html">one2one_dist</a>()</code>,
-<code><a href="one2one_fizz.html">one2one_fizz</a>()</code>,
-<code><a href="one2one_freq.html">one2one_freq</a>()</code>,
-<code><a href="one2one_line.html">one2one_line</a>()</code>,
-<code><a href="one2one_rank.html">one2one_rank</a>()</code>,
-<code><a href="one2one_sum.html">one2one_sum</a>()</code>,
-<code><a href="one2one_trend.html">one2one_trend</a>()</code></p></div>
+<code><a href="afterhours_dist.html">afterhours_dist()</a></code>,
+<code><a href="afterhours_fizz.html">afterhours_fizz()</a></code>,
+<code><a href="afterhours_line.html">afterhours_line()</a></code>,
+<code><a href="afterhours_rank.html">afterhours_rank()</a></code>,
+<code><a href="afterhours_summary.html">afterhours_summary()</a></code>,
+<code><a href="afterhours_trend.html">afterhours_trend()</a></code>,
+<code><a href="collaboration_area.html">collaboration_area()</a></code>,
+<code><a href="collaboration_dist.html">collaboration_dist()</a></code>,
+<code><a href="collaboration_fizz.html">collaboration_fizz()</a></code>,
+<code><a href="collaboration_line.html">collaboration_line()</a></code>,
+<code><a href="collaboration_rank.html">collaboration_rank()</a></code>,
+<code><a href="collaboration_sum.html">collaboration_sum()</a></code>,
+<code><a href="collaboration_trend.html">collaboration_trend()</a></code>,
+<code><a href="create_bar.html">create_bar()</a></code>,
+<code><a href="create_bar_asis.html">create_bar_asis()</a></code>,
+<code><a href="create_boxplot.html">create_boxplot()</a></code>,
+<code><a href="create_bubble.html">create_bubble()</a></code>,
+<code><a href="create_dist.html">create_dist()</a></code>,
+<code><a href="create_fizz.html">create_fizz()</a></code>,
+<code><a href="create_inc.html">create_inc()</a></code>,
+<code><a href="create_line.html">create_line()</a></code>,
+<code><a href="create_line_asis.html">create_line_asis()</a></code>,
+<code><a href="create_period_scatter.html">create_period_scatter()</a></code>,
+<code><a href="create_rank.html">create_rank()</a></code>,
+<code><a href="create_sankey.html">create_sankey()</a></code>,
+<code><a href="create_scatter.html">create_scatter()</a></code>,
+<code><a href="create_stacked.html">create_stacked()</a></code>,
+<code><a href="create_tracking.html">create_tracking()</a></code>,
+<code><a href="create_trend.html">create_trend()</a></code>,
+<code><a href="email_dist.html">email_dist()</a></code>,
+<code><a href="email_fizz.html">email_fizz()</a></code>,
+<code><a href="email_line.html">email_line()</a></code>,
+<code><a href="email_rank.html">email_rank()</a></code>,
+<code><a href="email_summary.html">email_summary()</a></code>,
+<code><a href="email_trend.html">email_trend()</a></code>,
+<code><a href="external_dist.html">external_dist()</a></code>,
+<code><a href="external_fizz.html">external_fizz()</a></code>,
+<code><a href="external_line.html">external_line()</a></code>,
+<code><a href="external_rank.html">external_rank()</a></code>,
+<code><a href="external_sum.html">external_sum()</a></code>,
+<code><a href="hr_trend.html">hr_trend()</a></code>,
+<code><a href="hrvar_count.html">hrvar_count()</a></code>,
+<code><a href="hrvar_trend.html">hrvar_trend()</a></code>,
+<code><a href="keymetrics_scan.html">keymetrics_scan()</a></code>,
+<code><a href="meeting_dist.html">meeting_dist()</a></code>,
+<code><a href="meeting_fizz.html">meeting_fizz()</a></code>,
+<code><a href="meeting_line.html">meeting_line()</a></code>,
+<code><a href="meeting_rank.html">meeting_rank()</a></code>,
+<code><a href="meeting_summary.html">meeting_summary()</a></code>,
+<code><a href="meeting_trend.html">meeting_trend()</a></code>,
+<code><a href="one2one_dist.html">one2one_dist()</a></code>,
+<code><a href="one2one_fizz.html">one2one_fizz()</a></code>,
+<code><a href="one2one_freq.html">one2one_freq()</a></code>,
+<code><a href="one2one_line.html">one2one_line()</a></code>,
+<code><a href="one2one_rank.html">one2one_rank()</a></code>,
+<code><a href="one2one_sum.html">one2one_sum()</a></code>,
+<code><a href="one2one_trend.html">one2one_trend()</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -253,6 +261,11 @@ enabled.</p>
 <span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Copilot_actions_taken_in_Teams"</span>,</span></span>
 <span class="r-in"><span>  plot_mode <span class="op">=</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">vivainsights</span> package.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/microsoft/vivainsights/issues/&gt;</span>.</span>
 <span class="r-plt img"><img src="create_rogers-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Weekly adoption rate by organization</span></span></span>
@@ -277,6 +290,15 @@ enabled.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_rogers-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Rogers adoption curve with data point labels</span></span></span>
+<span class="r-in"><span><span class="fu">create_rogers</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">pq_data</span>,</span></span>
+<span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Copilot_actions_taken_in_Teams"</span>,</span></span>
+<span class="r-in"><span>  plot_mode <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  label <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="create_rogers-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -288,7 +310,7 @@ enabled.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>NULL Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>NULL Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
