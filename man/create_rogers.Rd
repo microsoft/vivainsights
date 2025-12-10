@@ -163,6 +163,7 @@ rogers_data <- create_rogers(
   metric = "Copilot_actions_taken_in_Teams",
   start_metric = "Total_Copilot_enabled_days",
   return = "data"
+)
 
 # Rogers adoption curve with data point labels
 create_rogers(
