@@ -290,6 +290,7 @@ create_rogers <- function(data,
       
       plot_object <- ggplot(adoption_rate, aes(x = .data$adoption_week, y = .data$new_adopters)) +
         geom_col(fill = "#1c66b0") +
+        geom_text(aes(label = .data$new_adopters), vjust = -0.5, hjust = 0.5, size = 3, colour = "black") +
         geom_line(aes(y = .data$moving_avg), color = "#0c336e", size = 1) +
         facet_wrap(as.formula(paste("~", hrvar)), scales = "free_y") +
         labs(
@@ -312,6 +313,7 @@ create_rogers <- function(data,
       
       plot_object <- ggplot(adoption_rate, aes(x = .data$adoption_week, y = .data$new_adopters)) +
         geom_col(fill = "#1c66b0") +
+        geom_text(aes(label = .data$new_adopters), vjust = -0.5, hjust = 0.5, size = 3, colour = "black") +
         geom_line(aes(y = .data$moving_avg), color = "#0c336e", size = 1.2) +
         labs(
           title = paste("Weekly Rate of", us_to_space(metric), "Adoption"),

@@ -128,19 +128,19 @@ test_that("create_rogers plot mode 3 caption includes segment proportions", {
   expect_match(result$labels$caption, "%")
 })
 
-test_that("create_rogers label parameter doesn't affect non-cumulative plots", {
-  # Plot mode 2 should not be affected by label parameter
+test_that("create_rogers plot mode 2 always has data labels", {
+  # Plot mode 2 should always have data labels regardless of label parameter
   result <- create_rogers(
     data = test_data,
     metric = "Copilot_actions_taken_in_Teams",
     plot_mode = 2,
-    label = TRUE
+    label = FALSE
   )
   
   # Check if the result is a ggplot object
   expect_s3_class(result, "ggplot")
   
-  # Should not contain geom_text layer for plot mode 2
+  # Should always contain geom_text layer for plot mode 2
   layer_classes <- sapply(result$layers, function(x) class(x$geom)[1])
-  expect_false("GeomText" %in% layer_classes)
+  expect_true("GeomText" %in% layer_classes)
 })
