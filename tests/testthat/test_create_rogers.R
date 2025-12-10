@@ -128,19 +128,62 @@ test_that("create_rogers plot mode 3 caption includes segment proportions", {
   expect_match(result$labels$caption, "%")
 })
 
-test_that("create_rogers plot mode 2 always has data labels", {
-  # Plot mode 2 should always have data labels regardless of label parameter
-  result <- create_rogers(
+test_that("create_rogers plot mode 2 respects label parameter", {
+  # Plot mode 2 labels should be controlled by label parameter
+  result_no_label <- create_rogers(
     data = test_data,
     metric = "Copilot_actions_taken_in_Teams",
     plot_mode = 2,
     label = FALSE
   )
   
-  # Check if the result is a ggplot object
-  expect_s3_class(result, "ggplot")
+  result_with_label <- create_rogers(
+    data = test_data,
+    metric = "Copilot_actions_taken_in_Teams",
+    plot_mode = 2,
+    label = TRUE
+  )
   
-  # Should always contain geom_text layer for plot mode 2
-  layer_classes <- sapply(result$layers, function(x) class(x$geom)[1])
-  expect_true("GeomText" %in% layer_classes)
+  # Check if the results are ggplot objects
+  expect_s3_class(result_no_label, "ggplot")
+  expect_s3_class(result_with_label, "ggplot")
+  
+  # Should NOT contain geom_text layer when label = FALSE
+  layer_classes_no_label <- sapply(result_no_label$layers, function(x) class(x$geom)[1])
+  expect_false("GeomText" %in% layer_classes_no_label)
+  
+  # Should contain geom_text layer when label = TRUE
+  layer_classes_with_label <- sapply(result_with_label$layers, function(x) class(x$geom)[1])
+  expect_true("GeomText" %in% layer_classes_with_label)
+})
+
+test_that("create_rogers plot mode 3 respects label parameter", {
+  # Plot mode 3 labels should be controlled by label parameter
+  result_no_label <- create_rogers(
+    data = test_data,
+    metric = "Copilot_actions_taken_in_Teams",
+    start_metric = "Total_Copilot_enabled_days",
+    plot_mode = 3,
+    label = FALSE
+  )
+  
+  result_with_label <- create_rogers(
+    data = test_data,
+    metric = "Copilot_actions_taken_in_Teams",
+    start_metric = "Total_Copilot_enabled_days",
+    plot_mode = 3,
+    label = TRUE
+  )
+  
+  # Check if the results are ggplot objects
+  expect_s3_class(result_no_label, "ggplot")
+  expect_s3_class(result_with_label, "ggplot")
+  
+  # Should NOT contain geom_text layer when label = FALSE
+  layer_classes_no_label <- sapply(result_no_label$layers, function(x) class(x$geom)[1])
+  expect_false("GeomText" %in% layer_classes_no_label)
+  
+  # Should contain geom_text layer when label = TRUE
+  layer_classes_with_label <- sapply(result_with_label$layers, function(x) class(x$geom)[1])
+  expect_true("GeomText" %in% layer_classes_with_label)
 })
