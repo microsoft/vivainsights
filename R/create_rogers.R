@@ -83,6 +83,10 @@
 #'   \item 4 or "cumulative_enablement": Cumulative adoption adjusted for enablement
 #' }
 #' Default is 1.
+#' @param label Logical value to determine whether to show data point labels on
+#'   the plot for cumulative adoption curves (plot modes 1 and 4). If `TRUE`, 
+#'   both `geom_point()` and `geom_text()` are added to display data labels 
+#'   rounded to 1 decimal place above each data point. Defaults to `FALSE`.
 #'
 #' @import dplyr
 #' @import ggplot2
@@ -117,6 +121,14 @@
 #'   plot_mode = 3
 #' )
 #'
+#' # Rogers adoption curve with data point labels
+#' create_rogers(
+#'   data = pq_data,
+#'   metric = "Copilot_actions_taken_in_Teams",
+#'   plot_mode = 1,
+#'   label = TRUE
+#' )
+#'
 #' @return
 #' Returns a 'ggplot' object by default when 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
@@ -132,7 +144,8 @@ create_rogers <- function(data,
                          threshold = 1,
                          start_metric,
                          return = "plot",
-                         plot_mode = 1) {
+                         plot_mode = 1,
+                         label = FALSE) {
   
   ## Check inputs
   required_variables <- c("MetricDate", metric, "PersonId")
@@ -211,14 +224,22 @@ create_rogers <- function(data,
         facet_wrap(as.formula(paste("~", hrvar)), scales = "free_y") +
         scale_y_continuous(labels = scales::percent_format()) +
         labs(
-          title = paste("Rogers Adoption Curve by", hrvar),
-          subtitle = paste("Cumulative adoption of", us_to_space(metric)),
+          title = "Rogers cumulative adoption curve",
+          subtitle = paste("Based on", us_to_space(metric)),
           x = "Week of Habitual Adoption",
           y = "Cumulative % of Habitual Users",
           color = hrvar,
           caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
+      
+      # Conditionally add points and labels if label = TRUE
+      if(label == TRUE){
+        plot_object <- plot_object +
+          geom_point(size = 2) +
+          geom_text(aes(label = scales::percent(round(.data$cumulative_percent, 3))), 
+                    vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+      }
     } else {
       # Overall
       rogers_curve <- adoption_week_df %>%
@@ -231,15 +252,26 @@ create_rogers <- function(data,
       
       plot_object <- ggplot(rogers_curve, aes(x = .data$adoption_week, y = .data$cumulative_percent)) +
         geom_line(size = 1.2, color = "#1c66b0") +
-        geom_point() +
         scale_y_continuous(labels = scales::percent_format()) +
         labs(
-          title = paste("Rogers Adoption Curve for", us_to_space(metric)),
+          title = "Rogers cumulative adoption curve",
+          subtitle = paste("Based on", us_to_space(metric)),
           x = "Week of Adoption",
           y = "Cumulative % of Habitual Users",
           caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
+      
+      # Conditionally add points and labels if label = TRUE
+      if(label == TRUE){
+        plot_object <- plot_object +
+          geom_point(color = "#1c66b0", size = 2) +
+          geom_text(aes(label = scales::percent(round(.data$cumulative_percent, 3))), 
+                    vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+      } else {
+        plot_object <- plot_object +
+          geom_point()
+      }
     }
     
   } else if (plot_mode == 2) {
@@ -262,12 +294,18 @@ create_rogers <- function(data,
         facet_wrap(as.formula(paste("~", hrvar)), scales = "free_y") +
         labs(
           title = paste("Weekly Rate of", us_to_space(metric), "Adoption by", hrvar),
-          subtitle = "New habitual users each week",
+          subtitle = "New habitual users each week; line indicating moving average",
           x = "Week",
           y = "New Habitual Users",
           caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
+      
+      # Conditionally add data labels if label = TRUE
+      if(label == TRUE){
+        plot_object <- plot_object +
+          geom_text(aes(label = .data$new_adopters), vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+      }
     } else {
       # Overall
       adoption_rate <- adoption_week_df %>%
@@ -283,12 +321,18 @@ create_rogers <- function(data,
         geom_line(aes(y = .data$moving_avg), color = "#0c336e", size = 1.2) +
         labs(
           title = paste("Weekly Rate of", us_to_space(metric), "Adoption"),
-          subtitle = "New habitual users identified each week",
+          subtitle = "New habitual users identified each week; line indicating moving average",
           x = "Week",
           y = "New Habitual Users",
           caption = extract_date_range(data, return = "text")
         ) +
         theme_wpa_basic()
+      
+      # Conditionally add data labels if label = TRUE
+      if(label == TRUE){
+        plot_object <- plot_object +
+          geom_text(aes(label = .data$new_adopters), vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+      }
     }
     
   } else if (plot_mode == 3) {
@@ -317,6 +361,24 @@ create_rogers <- function(data,
       count(.data$adoption_week, .data$RogersSegment_delay) %>%
       rename(new_adopters = .data$n)
     
+    # Calculate segment proportions for caption
+    segment_proportions <- adoption_week_df2 %>%
+      count(.data$RogersSegment_delay) %>%
+      mutate(
+        total = sum(.data$n),
+        percentage = round((.data$n / .data$total) * 100, 0)
+      ) %>%
+      arrange(factor(.data$RogersSegment_delay, 
+                    levels = c("Innovators", "Early Adopters", "Early Majority", "Late Majority", "Laggards")))
+    
+    # Create caption with proportions
+    proportions_text <- paste(
+      paste(segment_proportions$RogersSegment_delay, ": ", segment_proportions$percentage, "%", sep = ""),
+      collapse = "; "
+    )
+    
+    full_caption <- paste(extract_date_range(data, return = "text"), "\n", proportions_text, sep = "")
+    
     plot_object <- ggplot(weekly_segment_counts, aes(x = .data$adoption_week, y = .data$new_adopters, fill = .data$RogersSegment_delay)) +
       geom_col(position = "stack") +
       scale_fill_manual(
@@ -334,9 +396,15 @@ create_rogers <- function(data,
         x = "Week of Adoption",
         y = "Number of New Habitual Users",
         fill = "Rogers Segment",
-        caption = extract_date_range(data, return = "text")
+        caption = full_caption
       ) +
       theme_wpa_basic()
+    
+    # Conditionally add data labels if label = TRUE
+    if(label == TRUE){
+      plot_object <- plot_object +
+        geom_text(aes(label = .data$new_adopters), position = position_stack(vjust = 0.5), size = 3, colour = "white")
+    }
     
   } else if (plot_mode == 4) {
     # Cumulative Enablement-based Adoption
@@ -359,15 +427,26 @@ create_rogers <- function(data,
     
     plot_object <- ggplot(cumulative_df, aes(x = .data$adoption_week, y = .data$cumulative_percent)) +
       geom_line(size = 1.2, color = "#1c66b0") +
-      geom_point() +
       scale_y_continuous(labels = scales::percent) +
       labs(
-        title = paste("Cumulative", us_to_space(metric), "Adoption Over Time (Adjusted for Enablement)"),
+        title = "Enablement-adjusted cumulative adoption curve",
+        subtitle = paste("Based on", us_to_space(metric)),
         x = "Adoption Week",
         y = "Cumulative % of Users",
         caption = extract_date_range(data, return = "text")
       ) +
       theme_wpa_basic()
+    
+    # Conditionally add points and labels if label = TRUE
+    if(label == TRUE){
+      plot_object <- plot_object +
+        geom_point(color = "#1c66b0", size = 2) +
+        geom_text(aes(label = scales::percent(round(.data$cumulative_percent, 3))), 
+                  vjust = -0.5, hjust = 0.5, size = 3, colour = "black")
+    } else {
+      plot_object <- plot_object +
+        geom_point()
+    }
     
   } else {
     stop("Invalid plot_mode. Use 1-4 or 'cumulative', 'weekly', 'enablement', 'cumulative_enablement'.")
