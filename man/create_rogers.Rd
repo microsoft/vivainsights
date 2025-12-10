@@ -13,7 +13,8 @@ create_rogers(
   threshold = 1,
   start_metric,
   return = "plot",
-  plot_mode = 1
+  plot_mode = 1,
+  label = FALSE
 )
 }
 \arguments{
@@ -58,6 +59,11 @@ Valid inputs are:
 \item 4 or "cumulative_enablement": Cumulative adoption adjusted for enablement
 }
 Default is 1.}
+
+\item{label}{Logical value to determine whether to show data point labels on
+the plot for cumulative adoption curves (plot modes 1 and 4). If \code{TRUE},
+both \code{geom_point()} and \code{geom_text()} are added to display data labels
+rounded to 1 decimal place above each data point. Defaults to \code{FALSE}.}
 }
 \value{
 Returns a 'ggplot' object by default when 'plot' is passed in \code{return}.
@@ -129,6 +135,14 @@ create_rogers(
   metric = "Copilot_actions_taken_in_Teams",
   start_metric = "Total_Copilot_enabled_days",
   plot_mode = 3
+)
+
+# Rogers adoption curve with data point labels
+create_rogers(
+  data = pq_data,
+  metric = "Copilot_actions_taken_in_Teams",
+  plot_mode = 1,
+  label = TRUE
 )
 
 }
