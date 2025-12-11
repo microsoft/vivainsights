@@ -77,7 +77,7 @@ organizational groupings.</p>
 <span>  width <span class="op">=</span> <span class="fl">9</span>,</span>
 <span>  max_window <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>  threshold <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  <span class="va">start_metric</span>,</span>
+<span>  start_metric <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  return <span class="op">=</span> <span class="st">"plot"</span>,</span>
 <span>  plot_mode <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  label <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -128,7 +128,10 @@ the earliest date where this metric is greater than 0 for each user as their
 "enablement date". This is then used in plot modes 3 and 4 to calculate
 time-to-adoption and Rogers segment classifications. The suggested variable
 is "Total_Copilot_enabled_days", but any metric that indicates access or
-licensing status can be used (e.g., "License_assigned_days", "Access_granted").</p></dd>
+licensing status can be used (e.g., "License_assigned_days", "Access_granted").
+This parameter is optional for plot modes 1 and 2, but required for plot modes
+3 and 4. When <code>return = "data"</code> and <code>start_metric</code> is provided, Rogers segment
+classifications will be included in the returned data frame. Default is <code>NULL</code>.</p></dd>
 
 
 <dt id="arg-return">return<a class="anchor" aria-label="anchor" href="#arg-return"></a></dt>
@@ -157,7 +160,18 @@ rounded to 1 decimal place above each data point. Defaults to <code>FALSE</code>
     <p>Returns a 'ggplot' object by default when 'plot' is passed in <code>return</code>.
 When 'table' is passed, a summary table is returned as a data frame.
 When 'data' is passed, the processed data with habit classifications is returned.</p>
-    </div>
+<p>When <code>return = "data"</code>, the returned data frame includes:</p><ul><li><p>All original columns from the input data</p></li>
+<li><p><code>IsHabit</code>: Binary indicator of whether the user has developed a habit</p></li>
+<li><p><code>adoption_week</code>: The week when the user first exhibited habitual behavior</p></li>
+<li><p><code>enable_week</code>: (if <code>start_metric</code> provided) The week when the user was first enabled</p></li>
+<li><p><code>weeks_to_adopt</code>: (if <code>start_metric</code> provided) Number of weeks from enablement to adoption</p></li>
+<li><p><code>RogersSegment</code>: (if <code>start_metric</code> provided) Rogers adoption segment classification:</p><ul><li><p>"Innovators" (fastest 2.5\<!-- %) --></p></li>
+<li><p>"Early Adopters" (next 13.5\<!-- %) --></p></li>
+<li><p>"Early Majority" (next 34\<!-- %) --></p></li>
+<li><p>"Late Majority" (next 34\<!-- %) --></p></li>
+<li><p>"Laggards" (slowest 16\<!-- %) --></p></li>
+</ul></li>
+</ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function provides four distinct plot modes to analyze adoption patterns:</p>
@@ -289,6 +303,16 @@ enabled.</p>
 <span class="r-in"><span>  plot_mode <span class="op">=</span> <span class="fl">3</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="create_rogers-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Return data with Rogers segments</span></span></span>
+<span class="r-in"><span><span class="va">rogers_data</span> <span class="op">&lt;-</span> <span class="fu">create_rogers</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">pq_data</span>,</span></span>
+<span class="r-in"><span>  metric <span class="op">=</span> <span class="st">"Copilot_actions_taken_in_Teams"</span>,</span></span>
+<span class="r-in"><span>  start_metric <span class="op">=</span> <span class="st">"Total_Copilot_enabled_days"</span>,</span></span>
+<span class="r-in"><span>  return <span class="op">=</span> <span class="st">"data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Rogers segments calculated based on Total_Copilot_enabled_days</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Total users with Rogers segments: 300</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Rogers adoption curve with data point labels</span></span></span>
 <span class="r-in"><span><span class="fu">create_rogers</span><span class="op">(</span></span></span>

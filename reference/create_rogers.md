@@ -17,7 +17,7 @@ create_rogers(
   width = 9,
   max_window = 12,
   threshold = 1,
-  start_metric,
+  start_metric = NULL,
   return = "plot",
   plot_mode = 1,
   label = FALSE
@@ -74,7 +74,10 @@ create_rogers(
   classifications. The suggested variable is
   "Total_Copilot_enabled_days", but any metric that indicates access or
   licensing status can be used (e.g., "License_assigned_days",
-  "Access_granted").
+  "Access_granted"). This parameter is optional for plot modes 1 and 2,
+  but required for plot modes 3 and 4. When `return = "data"` and
+  `start_metric` is provided, Rogers segment classifications will be
+  included in the returned data frame. Default is `NULL`.
 
 - return:
 
@@ -111,6 +114,34 @@ Returns a 'ggplot' object by default when 'plot' is passed in `return`.
 When 'table' is passed, a summary table is returned as a data frame.
 When 'data' is passed, the processed data with habit classifications is
 returned.
+
+When `return = "data"`, the returned data frame includes:
+
+- All original columns from the input data
+
+- `IsHabit`: Binary indicator of whether the user has developed a habit
+
+- `adoption_week`: The week when the user first exhibited habitual
+  behavior
+
+- `enable_week`: (if `start_metric` provided) The week when the user was
+  first enabled
+
+- `weeks_to_adopt`: (if `start_metric` provided) Number of weeks from
+  enablement to adoption
+
+- `RogersSegment`: (if `start_metric` provided) Rogers adoption segment
+  classification:
+
+  - "Innovators" (fastest 2.5\\
+
+  - "Early Adopters" (next 13.5\\
+
+  - "Early Majority" (next 34\\
+
+  - "Late Majority" (next 34\\
+
+  - "Laggards" (slowest 16\\
 
 ## Details
 
@@ -253,6 +284,16 @@ create_rogers(
   plot_mode = 3
 )
 
+
+# Return data with Rogers segments
+rogers_data <- create_rogers(
+  data = pq_data,
+  metric = "Copilot_actions_taken_in_Teams",
+  start_metric = "Total_Copilot_enabled_days",
+  return = "data"
+)
+#> Rogers segments calculated based on Total_Copilot_enabled_days
+#> Total users with Rogers segments: 300
 
 # Rogers adoption curve with data point labels
 create_rogers(
