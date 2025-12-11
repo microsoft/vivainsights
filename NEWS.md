@@ -1,3 +1,7 @@
+# vivainsights (development version)
+
+* Aesthetic improvements to `create_rogers()`
+
 # vivainsights 0.7.0
 
 * Added `create_rogers()` function for analyzing technology adoption patterns using Rogers adoption curve theory

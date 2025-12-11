@@ -148,6 +148,7 @@ utils::globalVariables(
      "weeks_to_adopt",
      "adoption_delay_percent",
      "RogersSegment_delay",
+     "RogersSegment",
      "cumulative",
      "earliest_adoption",
      "latest_adoption",

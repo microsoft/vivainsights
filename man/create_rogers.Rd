@@ -11,9 +11,10 @@ create_rogers(
   width = 9,
   max_window = 12,
   threshold = 1,
-  start_metric,
+  start_metric = NULL,
   return = "plot",
-  plot_mode = 1
+  plot_mode = 1,
+  label = FALSE
 )
 }
 \arguments{
@@ -44,7 +45,10 @@ the earliest date where this metric is greater than 0 for each user as their
 "enablement date". This is then used in plot modes 3 and 4 to calculate
 time-to-adoption and Rogers segment classifications. The suggested variable
 is "Total_Copilot_enabled_days", but any metric that indicates access or
-licensing status can be used (e.g., "License_assigned_days", "Access_granted").}
+licensing status can be used (e.g., "License_assigned_days", "Access_granted").
+This parameter is optional for plot modes 1 and 2, but required for plot modes
+3 and 4. When \code{return = "data"} and \code{start_metric} is provided, Rogers segment
+classifications will be included in the returned data frame. Default is \code{NULL}.}
 
 \item{return}{Character vector specifying what to return. Valid inputs are
 "plot", "data", and "table". Default is "plot".}
@@ -58,11 +62,33 @@ Valid inputs are:
 \item 4 or "cumulative_enablement": Cumulative adoption adjusted for enablement
 }
 Default is 1.}
+
+\item{label}{Logical value to determine whether to show data point labels on
+the plot for cumulative adoption curves (plot modes 1 and 4). If \code{TRUE},
+both \code{geom_point()} and \code{geom_text()} are added to display data labels
+rounded to 1 decimal place above each data point. Defaults to \code{FALSE}.}
 }
 \value{
 Returns a 'ggplot' object by default when 'plot' is passed in \code{return}.
 When 'table' is passed, a summary table is returned as a data frame.
 When 'data' is passed, the processed data with habit classifications is returned.
+
+When \code{return = "data"}, the returned data frame includes:
+\itemize{
+\item All original columns from the input data
+\item \code{IsHabit}: Binary indicator of whether the user has developed a habit
+\item \code{adoption_week}: The week when the user first exhibited habitual behavior
+\item \code{enable_week}: (if \code{start_metric} provided) The week when the user was first enabled
+\item \code{weeks_to_adopt}: (if \code{start_metric} provided) Number of weeks from enablement to adoption
+\item \code{RogersSegment}: (if \code{start_metric} provided) Rogers adoption segment classification:
+\itemize{
+\item "Innovators" (fastest 2.5\\%)
+\item "Early Adopters" (next 13.5\\%)
+\item "Early Majority" (next 34\\%)
+\item "Late Majority" (next 34\\%)
+\item "Laggards" (slowest 16\\%)
+}
+}
 }
 \description{
 Creates various visualizations based on the Rogers adoption curve theory,
@@ -129,6 +155,22 @@ create_rogers(
   metric = "Copilot_actions_taken_in_Teams",
   start_metric = "Total_Copilot_enabled_days",
   plot_mode = 3
+)
+
+# Return data with Rogers segments
+rogers_data <- create_rogers(
+  data = pq_data,
+  metric = "Copilot_actions_taken_in_Teams",
+  start_metric = "Total_Copilot_enabled_days",
+  return = "data"
+)
+
+# Rogers adoption curve with data point labels
+create_rogers(
+  data = pq_data,
+  metric = "Copilot_actions_taken_in_Teams",
+  plot_mode = 1,
+  label = TRUE
 )
 
 }
