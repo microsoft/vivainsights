@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_survival.R
 \name{create_survival_viz}
 \alias{create_survival_viz}
-\title{Render Kaplanu2013Meier survival plot}
+\title{Render 'Kaplan-Meier survival plot}
 \usage{
 create_survival_viz(
   survival_long,
@@ -41,6 +41,6 @@ create_survival_viz(
 ggplot object.
 }
 \description{
-Render Kaplanu2013Meier step curves for each group using ggplot2. The plot
+Render 'Kaplan-Meier step curves for each group using ggplot2. The plot
 includes standard title/subtitle/caption handling and optional legend placement.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_survival.R
 \name{create_survival_calc}
 \alias{create_survival_calc}
-\title{Compute Kaplanu2013Meier survival curves per group}
+\title{Compute 'Kaplan-Meier survival curves per group}
 \usage{
 create_survival_calc(
   data,
@@ -39,7 +39,7 @@ create_survival_calc(
 A list with elements \code{survival_long} (data.frame) and \code{counts} (data.frame).
 }
 \description{
-Compute Kaplanu2013Meier survival curves for one or more groups (segments).
+Compute 'Kaplan-Meier survival curves for one or more groups (segments).
 Returns a list with a long-format survival table (group, time, survival, at_risk, events)
 and a counts table used for applying minimum-group filters.
 }

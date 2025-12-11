@@ -28,7 +28,7 @@ create_survival(
   return_type = c("plot", "table"),
   figsize = c(8, 6),
   title = "Survival Curve by Segment",
-  subtitle = "Kaplanu2013Meier estimate",
+  subtitle = "'Kaplan-Meier estimate",
   caption_from_date_range = TRUE,
   caption_text = NULL,
   legend_loc = "upper right",
@@ -90,10 +90,10 @@ create_survival(
 }
 \value{
 If \code{return_type = "table"}: data.frame with columns (group, time, survival, at_risk, events).
-If \code{return_type = "plot"}: ggplot2 object with Kaplanu2013Meier curves.
+If \code{return_type = "plot"}: ggplot2 object with 'Kaplan-Meier curves.
 }
 \description{
-Compute and return Kaplanu2013Meier survival estimates either as a long-format
+Compute and return 'Kaplan-Meier survival estimates either as a long-format
 table or as a ggplot object. Supports optional auto-segmentation via
 vivainsights::identify_usage_segments(), canonicalization of segment labels,
 and enforcement of required segment ordering for plotting.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_survival.R
 \name{.km_curve}
 \alias{.km_curve}
-\title{Pure-R Kaplanu2013Meier curve calculator (lightweight fallback)}
+\title{Pure-R 'Kaplan-Meier curve calculator (lightweight fallback)}
 \usage{
 .km_curve(durations, events, timeline = NULL)
 }
@@ -17,7 +17,7 @@
 data.frame with columns: time, at_risk, events, survival.
 }
 \description{
-Compute Kaplanu2013Meier survival estimates at each timepoint in \code{timeline}.
+Compute 'Kaplan-Meier survival estimates at each timepoint in \code{timeline}.
 This is a small, dependency-free implementation used as a fallback when
 a dedicated survival package is not desired.
 }

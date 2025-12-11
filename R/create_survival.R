@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title 'Kaplan-Meier Survival Utilities and Workflow
+#' @title Kaplan-Meier Survival Utilities and Workflow
 #'
 #' @description
 #' A small collection of utilities and a high-level wrapper to compute and
@@ -15,8 +15,6 @@
 #' - Plotting utilities that render step-function survival curves using ggplot2.
 #' - A wrapper (`create_survival`) that returns either a ggplot object or a
 #'   long-format survival table depending on `return_type`.
-#' @author Carlos Morales Torrado <carlos.morales@@microsoft.com>
-#' @author Martin Chan <martin.chan@@microsoft.com>
 #'
 #' @template spq-params
 #' @param metric Character string containing the name of the metric,
@@ -24,12 +22,8 @@
 #'
 #' @section Features:
 #' * Supports grouped survival computation with minimum-group filtering.
-#' * Optional auto-segmentation via vivainsights::identify_usage_segments().
+#' * Optional auto-segmentation via `vivainsights::identify_usage_segments()`.
 #' * Preserves canonical segment ordering and label synonyms for consistent plotting.
-#'
-#' @section Dependencies:
-#' - Required: dplyr, tidyr, ggplot2, cowplot
-#' - Optional: vivainsights (for auto-segmentation and optional date-range captions)
 #'
 #' @family Survival
 #' @family Visualization
@@ -43,9 +37,6 @@
 #' # Plot survival curves
 #' p <- create_survival(pq, time_col = "Days_active", event_col = "Churned")
 #' }
-#' create_survival: 'Kaplan-Meier survival workflow (calc + viz + wrapper)
-#'
-#' Reuses identify_usage_segments when needed; returns plot or table.
 #'
 #' @name create_survival_overview
 #' @noRd
