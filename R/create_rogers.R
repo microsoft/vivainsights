@@ -72,6 +72,9 @@
 #'   time-to-adoption and Rogers segment classifications. The suggested variable
 #'   is "Total_Copilot_enabled_days", but any metric that indicates access or
 #'   licensing status can be used (e.g., "License_assigned_days", "Access_granted").
+#'   This parameter is optional for plot modes 1 and 2, but required for plot modes
+#'   3 and 4. When `return = "data"` and `start_metric` is provided, Rogers segment
+#'   classifications will be included in the returned data frame. Default is `NULL`.
 #' @param return Character vector specifying what to return. Valid inputs are
 #' "plot", "data", and "table". Default is "plot".
 #' @param plot_mode Integer or character string determining which plot to return.
@@ -121,6 +124,14 @@
 #'   plot_mode = 3
 #' )
 #'
+#' # Return data with Rogers segments
+#' rogers_data <- create_rogers(
+#'   data = pq_data,
+#'   metric = "Copilot_actions_taken_in_Teams",
+#'   start_metric = "Total_Copilot_enabled_days",
+#'   return = "data"
+#' )
+#' 
 #' # Rogers adoption curve with data point labels
 #' create_rogers(
 #'   data = pq_data,
@@ -133,6 +144,23 @@
 #' Returns a 'ggplot' object by default when 'plot' is passed in `return`.
 #' When 'table' is passed, a summary table is returned as a data frame.
 #' When 'data' is passed, the processed data with habit classifications is returned.
+#' 
+#' When `return = "data"`, the returned data frame includes:
+#' \itemize{
+#'   \item All original columns from the input data
+#'   \item `IsHabit`: Binary indicator of whether the user has developed a habit
+#'   \item `adoption_week`: The week when the user first exhibited habitual behavior
+#'   \item `enable_week`: (if `start_metric` provided) The week when the user was first enabled
+#'   \item `weeks_to_adopt`: (if `start_metric` provided) Number of weeks from enablement to adoption
+#'   \item `RogersSegment`: (if `start_metric` provided) Rogers adoption segment classification:
+#'     \itemize{
+#'       \item "Innovators" (fastest 2.5\%)
+#'       \item "Early Adopters" (next 13.5\%)
+#'       \item "Early Majority" (next 34\%)
+#'       \item "Late Majority" (next 34\%)
+#'       \item "Laggards" (slowest 16\%)
+#'     }
+#' }
 #'
 #' @export
 
@@ -142,7 +170,7 @@ create_rogers <- function(data,
                          width = 9,
                          max_window = 12,
                          threshold = 1,
-                         start_metric,
+                         start_metric = NULL,
                          return = "plot",
                          plot_mode = 1,
                          label = FALSE) {
@@ -156,6 +184,10 @@ create_rogers <- function(data,
   
   ## Check if start_metric exists for enablement-based plots
   if (plot_mode %in% c(3, 4, "enablement", "cumulative_enablement")) {
+    if (is.null(start_metric)) {
+      stop(paste("The 'start_metric' parameter is required for plot mode", plot_mode, 
+                 "(enablement-based analysis). Please provide a metric that indicates when users gained access to the technology."))
+    }
     if (!start_metric %in% names(data)) {
       stop(paste("Column", start_metric, "not found in data for enablement-based analysis."))
     }
@@ -190,7 +222,50 @@ create_rogers <- function(data,
   
   ## Return data if requested
   if (return == "data") {
-    return(data_with_habit)
+    # Add adoption week information to the data
+    data_with_adoption <- data_with_habit %>%
+      left_join(
+        adoption_week_df %>% select(.data$PersonId, adoption_week),
+        by = "PersonId"
+      )
+    
+    # Calculate Rogers segment if start_metric is provided
+    if (!is.null(start_metric) && start_metric %in% names(data)) {
+      # Calculate enable week (first date where start_metric > 0)
+      enable_week_df <- data_with_habit %>%
+        filter(!!sym(start_metric) > 0) %>%
+        group_by(.data$PersonId) %>%
+        summarise(enable_week = min(.data$MetricDate, na.rm = TRUE), .groups = "drop")
+      
+      # Calculate Rogers segments based on time to adoption
+      rogers_segments <- adoption_week_df %>%
+        left_join(enable_week_df, by = "PersonId") %>%
+        filter(!is.na(.data$enable_week)) %>%
+        mutate(
+          weeks_to_adopt = as.numeric(difftime(.data$adoption_week, .data$enable_week, units = "weeks")),
+          adoption_delay_percent = percent_rank(.data$weeks_to_adopt),
+          RogersSegment = case_when(
+            .data$adoption_delay_percent <= 0.025 ~ "Innovators",
+            .data$adoption_delay_percent <= 0.16  ~ "Early Adopters",
+            .data$adoption_delay_percent <= 0.50  ~ "Early Majority",
+            .data$adoption_delay_percent <= 0.84  ~ "Late Majority",
+            TRUE                                  ~ "Laggards"
+          )
+        ) %>%
+        select(.data$PersonId, .data$enable_week, .data$weeks_to_adopt, .data$RogersSegment)
+      
+      # Join Rogers segments back to the data
+      data_with_adoption <- data_with_adoption %>%
+        left_join(rogers_segments, by = "PersonId")
+      
+      message(paste("Rogers segments calculated based on", start_metric))
+      message(paste("Total users with Rogers segments:", sum(!is.na(rogers_segments$RogersSegment))))
+    } else {
+      message("Note: 'start_metric' not provided. Rogers segment classification not included.")
+      message("To include Rogers segments, provide 'start_metric' parameter indicating when users gained access.")
+    }
+    
+    return(data_with_adoption)
   }
   
   ## Convert plot_mode to numeric for easier handling
