@@ -1,6 +1,7 @@
 # vivainsights (development version)
 
 * Aesthetic improvements to `create_rogers()`
+* Added warning message to `identify_usage_segments()` when NA values are detected in the metric variable
 
 # vivainsights 0.7.0
 
