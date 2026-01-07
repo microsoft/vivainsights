@@ -196,22 +196,21 @@ identify_usage_segments <- function(
     }
   }
   
+  # Define warning message
+  na_warning_msg <- "NAs detected in the metric variable. Consider filtering or imputing the missing values before running."
+  
   if(is.null(metric_str)){
     prep_df <- data %>%
       mutate(target_metric = !!sym(metric))
     
     # Check for NA values in the single metric column
     if(any(is.na(prep_df$target_metric))){
-      warning("NAs detected in the metric variable. Consider filtering or imputing the missing values before running.")
+      warning(na_warning_msg)
     }
   } else if(is.null(metric)){
     # Check for NA values in any of the metric_str columns before aggregation
-    na_check <- data %>%
-      select(all_of(metric_str)) %>%
-      apply(1, function(x) any(is.na(x)))
-    
-    if(any(na_check)){
-      warning("NAs detected in the metric variable. Consider filtering or imputing the missing values before running.")
+    if(any(is.na(data[metric_str]))){
+      warning(na_warning_msg)
     }
     
     prep_df <- data %>%
