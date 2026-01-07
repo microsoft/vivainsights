@@ -199,16 +199,25 @@ identify_usage_segments <- function(
   if(is.null(metric_str)){
     prep_df <- data %>%
       mutate(target_metric = !!sym(metric))
+    
+    # Check for NA values in the single metric column
+    if(any(is.na(prep_df$target_metric))){
+      warning("NAs detected in the metric variable. Consider filtering or imputing the missing values before running.")
+    }
   } else if(is.null(metric)){
+    # Check for NA values in any of the metric_str columns before aggregation
+    na_check <- data %>%
+      select(all_of(metric_str)) %>%
+      apply(1, function(x) any(is.na(x)))
+    
+    if(any(na_check)){
+      warning("NAs detected in the metric variable. Consider filtering or imputing the missing values before running.")
+    }
+    
     prep_df <- data %>%
       mutate(target_metric =
                select(., all_of(metric_str)) %>%
                rowSums(., na.rm = TRUE))
-  }
-  
-  # Check for NA values in target_metric
-  if(any(is.na(prep_df$target_metric))){
-    warning("NAs detected in the metric variable. Consider filtering or imputing the missing values before running.")
   }
   
   # Create rolling averages

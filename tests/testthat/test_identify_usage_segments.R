@@ -397,3 +397,35 @@ test_that("identify_usage_segments does not warn when no NA values are present",
     )
   )
 })
+
+test_that("identify_usage_segments warns when NA values are present in metric_str", {
+  # Skip if packages not available
+  skip_if_not_installed("dplyr")
+  skip_if_not_installed("tidyr")
+  skip_if_not_installed("slider")
+  
+  # Load required packages
+  library(dplyr)
+  library(tidyr)
+  library(slider)
+  
+  # Create mock data with NA values in multiple metric columns
+  mock_data <- data.frame(
+    PersonId = rep(c("A", "B", "C"), each = 4),
+    MetricDate = rep(as.Date(c("2024-01-01", "2024-01-08", "2024-01-15", "2024-01-22")), 3),
+    Metric1 = c(5, 10, NA, 15, 3, NA, 5, 8, 1, 2, 3, NA),
+    Metric2 = c(5, 5, 5, 5, 2, 2, NA, 7, 1, 1, 1, 1),
+    stringsAsFactors = FALSE
+  )
+  
+  # Test that warning is displayed when NAs are present in metric_str columns
+  expect_warning(
+    identify_usage_segments(
+      data = mock_data,
+      metric_str = c("Metric1", "Metric2"),
+      version = "12w",
+      return = "data"
+    ),
+    "NAs detected in the metric variable. Consider filtering or imputing the missing values before running."
+  )
+})
