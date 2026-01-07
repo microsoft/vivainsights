@@ -206,6 +206,11 @@ identify_usage_segments <- function(
                rowSums(., na.rm = TRUE))
   }
   
+  # Check for NA values in target_metric
+  if(any(is.na(prep_df$target_metric))){
+    warning("NAs detected in the metric variable. Consider filtering or imputing the missing values before running.")
+  }
+  
   # Create rolling averages
   prep_df_2 <-
     prep_df %>%
