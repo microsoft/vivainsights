@@ -209,7 +209,7 @@ identify_usage_segments <- function(
     }
   } else if(is.null(metric)){
     # Check for NA values in any of the metric_str columns before aggregation
-    if(any(is.na(data[metric_str]))){
+    if(any(is.na(data[, metric_str, drop = FALSE]))){
       warning(na_warning_msg)
     }
     
