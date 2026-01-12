@@ -416,16 +416,29 @@ identify_usage_segments <- function(
     message(caption_text)
     
     # Create summary table
-    main_us_df %>%
-      count(MetricDate, !!sym(segments_col)) %>%
+    # Define the desired column order for segments
+    segment_order <- c("Non-user", "Low User", "Novice User", "Habitual User", "Power User")
+    
+    summary_table <- main_us_df %>%
+      group_by(MetricDate, !!sym(segments_col)) %>%
+      summarise(n = n_distinct(PersonId), .groups = "drop") %>%
       group_by(MetricDate) %>%
       mutate(pct = n / sum(n)) %>%
       mutate(n = sum(n)) %>%
+      ungroup() %>%
       pivot_wider(
         names_from = !!sym(segments_col),
         values_from = pct,
         values_fill = 0
       )
+    
+    # Reorder columns: MetricDate, then segments in logical order, then n
+    # Only include segments that are actually present in the data
+    available_segments <- intersect(segment_order, names(summary_table))
+    column_order <- c("MetricDate", available_segments, "n")
+    
+    summary_table %>%
+      select(all_of(column_order))
       
   } else {
     stop("Please enter a valid input for `return`. Valid options are 'data', 'plot', or 'table'.")

@@ -334,3 +334,95 @@ test_that("identify_usage_segments works with power_thres in custom parameters",
   expect_true("PersonId" %in% names(result_custom))
   expect_true("MetricDate" %in% names(result_custom))
 })
+
+test_that("identify_usage_segments table returns correct n count and column order", {
+  # Skip if packages not available
+  skip_if_not_installed("dplyr")
+  skip_if_not_installed("tidyr")
+  skip_if_not_installed("slider")
+  
+  # Load required packages
+  library(dplyr)
+  library(tidyr)
+  library(slider)
+  
+  # Create mock data with multiple rows per person per date
+  # to test that n_distinct(PersonId) is used instead of count()
+  mock_data <- data.frame(
+    PersonId = c("A", "A", "B", "B", "C"),
+    MetricDate = as.Date(rep("2024-01-01", 5)),
+    Total_actions = c(10, 10, 15, 15, 5),
+    stringsAsFactors = FALSE
+  )
+  
+  # Test table return
+  suppressMessages({
+    result <- identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = "12w",
+      return = "table"
+    )
+  })
+  
+  # Check that n equals the number of distinct PersonIds (3), not the number of rows (5)
+  expect_equal(result$n[1], 3)
+  
+  # Check column order: MetricDate should be first, n should be last
+  expect_equal(names(result)[1], "MetricDate")
+  expect_equal(names(result)[length(names(result))], "n")
+  
+  # Check that segment columns are in the middle and in logical order
+  segment_cols <- names(result)[2:(length(names(result)) - 1)]
+  expected_order <- c("Non-user", "Low User", "Novice User", "Habitual User", "Power User")
+  # Filter to only segments that are present
+  expected_present <- expected_order[expected_order %in% segment_cols]
+  actual_order <- segment_cols[segment_cols %in% expected_order]
+  expect_equal(actual_order, expected_present)
+})
+
+test_that("identify_usage_segments table handles missing segments gracefully", {
+  # Skip if packages not available
+  skip_if_not_installed("dplyr")
+  skip_if_not_installed("tidyr")
+  skip_if_not_installed("slider")
+  
+  # Load required packages
+  library(dplyr)
+  library(tidyr)
+  library(slider)
+  
+  # Create mock data where all users are non-users (no actions)
+  mock_data <- data.frame(
+    PersonId = c("A", "B", "C"),
+    MetricDate = as.Date(rep("2024-01-01", 3)),
+    Total_actions = c(0, 0, 0),
+    stringsAsFactors = FALSE
+  )
+  
+  # Test table return - should not error even when only one segment is present
+  suppressMessages({
+    result <- identify_usage_segments(
+      data = mock_data,
+      metric = "Total_actions",
+      version = "12w",
+      return = "table"
+    )
+  })
+  
+  # Basic checks
+  expect_true(is.data.frame(result))
+  expect_true("MetricDate" %in% names(result))
+  expect_true("n" %in% names(result))
+  
+  # Check that "Non-user" column exists and has value 1 (100%)
+  expect_true("Non-user" %in% names(result))
+  expect_equal(result$`Non-user`[1], 1)
+  
+  # Check that n equals 3
+  expect_equal(result$n[1], 3)
+  
+  # Check column order is maintained
+  expect_equal(names(result)[1], "MetricDate")
+  expect_equal(names(result)[length(names(result))], "n")
+})
