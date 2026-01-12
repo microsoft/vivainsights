@@ -111,7 +111,12 @@
 #'   rolling average.
 #'   
 #'   If `"table"` is passed to `return`, a summary table is returned with one row
-#'   per `MetricDate` and usage segments as columns containing percentages.
+#'   per `MetricDate` and usage segments as columns containing percentages. The 
+#'   table includes:
+#'   - `MetricDate`: The date of the metric
+#'   - Segment columns (in order): `Non-user`, `Low User`, `Novice User`, 
+#'     `Habitual User`, `Power User` (only segments present in the data are included)
+#'   - `n`: The total number of distinct persons for that date
 #'   
 #'  @import slider slide_dbl
 #'  @import tidyr  
