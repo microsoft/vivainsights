@@ -426,11 +426,14 @@ identify_usage_segments <- function(
     
     summary_table <- main_us_df %>%
       group_by(MetricDate, !!sym(segments_col)) %>%
-      summarise(n = n_distinct(PersonId), .groups = "drop") %>%
+      summarise(segment_count = n_distinct(PersonId), .groups = "drop") %>%
       group_by(MetricDate) %>%
-      mutate(pct = n / sum(n)) %>%
-      mutate(n = sum(n)) %>%
+      mutate(
+        pct = segment_count / sum(segment_count),
+        n = sum(segment_count)
+      ) %>%
       ungroup() %>%
+      select(-segment_count) %>%
       pivot_wider(
         names_from = !!sym(segments_col),
         values_from = pct,

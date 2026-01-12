@@ -375,10 +375,8 @@ test_that("identify_usage_segments table returns correct n count and column orde
   # Check that segment columns are in the middle and in logical order
   segment_cols <- names(result)[2:(length(names(result)) - 1)]
   expected_order <- c("Non-user", "Low User", "Novice User", "Habitual User", "Power User")
-  # Filter to only segments that are present
-  expected_present <- expected_order[expected_order %in% segment_cols]
-  actual_order <- segment_cols[segment_cols %in% expected_order]
-  expect_equal(actual_order, expected_present)
+  # Segments should appear in the expected order (intersect preserves order from first argument)
+  expect_equal(segment_cols, intersect(expected_order, segment_cols))
 })
 
 test_that("identify_usage_segments table handles missing segments gracefully", {
