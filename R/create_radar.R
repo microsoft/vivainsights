@@ -3,608 +3,540 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Multi-Segment Radar Chart Utilities and Workflow
+#' @title Radar Chart for multiple metrics
 #'
 #' @description
-#' A set of utilities and a high-level wrapper to compute and render
-#' multi-segment radar (spider) charts. The module provides:
-#' - Helpers for canonicalizing segment labels and ensuring required segments.
-#' - Calculation routines that aggregate per-person and per-segment metrics
-#'   and support multiple indexing modes (total, reference-group, min-max).
-#' - A plotting routine that renders radar charts using ggplot2 + coord_polar.
-#' - A wrapper (`create_radar`) that returns either a ggplot object or a
-#'   summary table depending on the `return_type` parameter.
-#' @author Carlos Morales Torrado <carlos.morales@@microsoft.com>
-#' @author Martin Chan <martin.chan@@microsoft.com>
+#' Creates a multi-group radar (spider) chart across a set of metrics.
+#'
+#' Core pipeline (kept intact):
+#' 1) Person-level aggregation within group
+#' 2) Group-level aggregation
+#' 3) Privacy filtering via `mingroup`
+#' 4) Optional indexing modes: "total", "none", "ref_group", "minmax"
+#'
+#' Optional auto-segmentation:
+#' - If `segment_col` is not supplied, the function will call
+#'   `identify_usage_segments()` and infer the resulting segment column (no
+#'   hardcoded segment labels or RL12 ordering).
 #'
 #' @template spq-params
-#' @param metric Character string containing the name of the metric,
-#' e.g. "Collaboration_hours"
+#' @param metrics Character vector of metric column names.
+#' @param segment_col Character string specifying the grouping column.
+#'   If `NULL`, usage segments will be derived via `identify_usage_segments()`.
+#' @param id_col Character string containing the person identifier column name.
+#'   Defaults to `"PersonId"`.
+#' @param date_col Character string containing the date column name required for
+#'   auto-segmentation. Defaults to `"MetricDate"`.
+#' @param mingroup Numeric value setting the privacy threshold / minimum group size.
+#'   Defaults to 5.
+#' @param agg String specifying aggregation method. Either `"mean"` (default) or `"median"`.
+#' @param index_mode String specifying indexing mode. One of:
+#'   - `"total"` (default): Total = 100 for each metric
+#'   - `"none"`: no indexing (raw group values)
+#'   - `"ref_group"`: reference group = 100 (requires `index_ref_group`)
+#'   - `"minmax"`: scale to [0,100] within observed group ranges per metric
+#' @param index_ref_group Character string specifying reference group name when
+#'   `index_mode = "ref_group"`.
+#' @param dropna Logical value indicating whether NA rows in required columns are removed
+#'   prior to aggregation. Defaults to `FALSE`.
+#' @param return String specifying what to return. One of:
+#'   - `"plot"` (default)
+#'   - `"table"`
 #'
-#' @section Features:
-#' * Accepts dynamic metric lists, customizable segment and person ID columns,
-#'   and optional auto-segmentation via vivainsights::identify_usage_segments().
-#' * Indexing modes: "total" (indexed to overall average = 100),
-#'   "ref_group" (index to a reference segment), "minmax" (scale each metric to [0,100]),
-#'   and "none" (no indexing).
-#' * Enforces required segments (adds NA rows for missing segments), supports
-#'   synonyms mapping for labels, and can auto-relax minimum group size to
-#'   preserve canonical segment ordering for plotting.
+#' @return
+#' A different output is returned depending on the value passed to `return`:
+#'   - `"plot"`: ggplot object (radar chart)
+#'   - `"table"`: data frame (group-level indexed table)
 #'
-#' @section Dependencies:
-#' - Required packages: dplyr, tidyr, ggplot2.
-#' - Optional: vivainsights (used only for auto-segmentation and date-range caption).
-#'
-#' @family Radar
-#' @family Visualization
-#' @keywords radar visualization indexing polar segments
-#' @examples
-#' \dontrun{
-#' library(vivainsights)
-#' pq <- load_pq_data()
-#'
-#' # Basic radar (indexed to Total = 100)
-#' p <- create_radar(
-#'   data = pq,
-#'   metrics = c("Copilot_actions_taken_in_Teams", "Collaboration_hours",
-#'               "After_hours_collaboration_hours", "Internal_network_size")
-#' )
-#'
-#' # Return the indexed table instead of a plot
-#' tbl <- create_radar(
-#'   data = pq,
-#'   metrics = c("Copilot_actions_taken_in_Teams", "Collaboration_hours"),
-#'   return_type = "table"
-#' )
-#'
-#' # Reference-group indexing (e.g., Power User = 100)
-#' p2 <- create_radar(
-#'   data = pq,
-#'   metrics = c("Collaboration_hours", "Meetings_count"),
-#'   index_mode = "ref_group",
-#'   index_ref_group = "Power User"
-#' )
-#'
-#' # Minu2013max scaling to [0, 100] per metric
-#' p3 <- create_radar(
-#'   data = pq,
-#'   metrics = c("Collaboration_hours", "Meetings_count", "Focus_hours"),
-#'   index_mode = "minmax"
-#' )
-#'
-#' # Extended example (auto-segmentation + caption)
-#' p4 <- create_radar(
-#'   data = pq,
-#'   metrics = c("Copilot_actions_taken_in_Excel","Copilot_actions_taken_in_Outlook",
-#'               "Copilot_actions_taken_in_Word","Copilot_actions_taken_in_Powerpoint",
-#'               "Copilot_actions_taken_in_Copilot_chat_(work)"),
-#'   segment_col = "UsageSegments_12w",
-#'   person_id_col = "PersonId",
-#'   auto_segment_if_missing = TRUE,
-#'   identify_metric = "Copilot_actions_taken_in_Teams",
-#'   identify_version = "4w",
-#'   mingroup = 5,
-#'   agg = "mean",
-#'   index_mode = "total",
-#'   return_type = "plot",
-#'   title = "Behavioral Profiles by Segment",
-#'   caption_from_date_range = TRUE,
-#'   caption_text = "Indexed to overall average (Total = 100)",
-#'   alpha_fill = 0.01,
-#'   linewidth = 1.5
-#' )
-#' }
-#' create_radar utilities and workflow for segment-based radar charts (R)
-#'
-#' End-to-end parity with the Python version:
-#' - Helpers: canonicalize segment labels; ensure required segments; figure header styling
-#' - Calc: person- and segment-level aggregation with 4 indexing modes
-#' - Viz: multi-segment radar chart (coord_polar)
-#' - Wrapper: high-level function returning either a plot or a table
-#'
-#' @name create_radar_overview
-#' @noRd
-NULL
-# ---- Imports -----------------------------------------------------------
 #' @import dplyr
 #' @import tidyr
 #' @import ggplot2
-#' @importFrom cowplot ggdraw draw_plot draw_label
 #' @importFrom rlang .data
-#' @importFrom stats setNames
-
-# ---- Constants / defaults -----------------------------------------------------
-CANONICAL_ORDER <- c("Power User", "Habitual User", "Novice User", "Low User", "Non-user")
-DEFAULT_SYNONYMS <- c(
-  "Power Users"  = "Power User",
-  "Power user"   = "Power User",
-  "Habitual Users" = "Habitual User",
-  "Novice Users" = "Novice User",
-  "Novice user"  = "Novice User",
-  "Low Users"    = "Low User",
-  "Low users"    = "Low User",
-  "Non-users"    = "Non-user",
-  "Non user"     = "Non-user",
-  "Non Users"    = "Non-user"
-)
-
-# small helper: infix to safely default NULL
-`%||%` <- function(a,b) if (!is.null(a)) a else b
-
-
-# ---- Helpers -----------------------------------------------------------------
-
-# Canonicalize segment labels using a synonyms map
-##' Canonicalize segment labels
-##'
-##' Map variant segment labels to canonical names using a named synonyms map.
-##' This is a light-weight helper used to keep segment labels consistent
-##' across calculations and plotting.
-##'
-##' @param df Data frame containing the segment column.
-##' @param segment_col Character. Name of the segment column in `df`.
-##' @param synonyms_map Named character vector mapping variant -> canonical label.
-##' @return Data frame with canonicalized segment column as character.
-##' @keywords internal
-canonicalize_segments <- function(df, segment_col, synonyms_map) {
-  if (!segment_col %in% names(df)) return(df)
-  out <- df
-  out[[segment_col]] <- as.character(out[[segment_col]])
-  if (!is.null(synonyms_map) && length(synonyms_map) > 0) {
-    keys <- names(synonyms_map)
-    m <- match(out[[segment_col]], keys, nomatch = 0)
-    repl <- m > 0
-    out[[segment_col]][repl] <- unname(synonyms_map[m[repl]])
+#'
+#' @family Visualization
+#' @family Flexible
+#'
+#' @examples
+#' # \dontrun{
+#' # library(vivainsights)
+#' # data("pq_data", package = "vivainsights")
+#' #
+#' # # Pre-computed grouping column
+#' # create_radar(
+#' #   data = pq_data,
+#' #   metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+#' #   segment_col = "Organization",
+#' #   mingroup = 1
+#' # )
+#' #
+#' # # Auto usage segmentation (segment_col omitted)
+#' # create_radar(
+#' #   data = pq_data,
+#' #   metrics = c("Copilot_actions_taken_in_Teams", "Copilot_actions_taken_in_Outlook"),
+#' #   mingroup = 1
+#' # )
+#' # }
+#' @export
+create_radar <- function(data,
+                         metrics,
+                         segment_col = NULL,
+                         id_col = "PersonId",
+                         date_col = "MetricDate",
+                         mingroup = 5,
+                         agg = "mean",
+                         index_mode = "total",
+                         index_ref_group = NULL,
+                         dropna = FALSE,
+                         return = "plot") {
+  
+  ## Check inputs
+  if (!is.character(metrics) || length(metrics) < 1) {
+    stop("Please enter a valid input for `metrics` (non-empty character vector).")
   }
-  out
+  
+  required_variables <- c(id_col, metrics)
+  
+  # Auto-segmentation requires date_col
+  if (is.null(segment_col)) {
+    required_variables <- c(required_variables, date_col)
+  } else {
+    required_variables <- c(required_variables, segment_col)
+  }
+  
+  required_variables <- unique(required_variables)
+  
+  data %>%
+    .check_inputs_safe(requirements = required_variables)
+  
+  if (!is.numeric(mingroup) || length(mingroup) != 1 || mingroup < 1) {
+    stop("Please enter a valid input for `mingroup` (single numeric >= 1).")
+  }
+  
+  if (!agg %in% c("mean", "median")) {
+    stop("Please enter a valid input for `agg`: 'mean' or 'median'.")
+  }
+  
+  if (!index_mode %in% c("total", "none", "ref_group", "minmax")) {
+    stop("Please enter a valid input for `index_mode`.")
+  }
+  
+  if (!is.logical(dropna) || length(dropna) != 1) {
+    stop("Please enter a valid input for `dropna` (TRUE/FALSE).")
+  }
+  
+  if (!is.character(return) || length(return) != 1) {
+    stop("Please enter a valid input for `return`.")
+  }
+  
+  df <- data
+  seg_col_for_calc <- segment_col
+  
+  ## Auto-segmentation if segment_col is NULL
+  if (is.null(seg_col_for_calc)) {
+    seg_out <- .auto_segment_using_identify_usage(
+      data = df,
+      metrics = metrics,
+      id_col = id_col,
+      date_col = date_col
+    )
+    df <- seg_out$data
+    seg_col_for_calc <- seg_out$segment_col
+  }
+  
+  out <-
+    create_radar_calc(
+      data = df,
+      metrics = metrics,
+      segment_col = seg_col_for_calc,
+      id_col = id_col,
+      mingroup = mingroup,
+      agg = agg,
+      index_mode = index_mode,
+      index_ref_group = index_ref_group,
+      dropna = dropna
+    )
+  
+  if (return == "table") {
+    
+    return(out$table)
+    
+  } else if (return == "plot") {
+    
+    return(
+      create_radar_viz(
+        data = out$table,
+        metrics = metrics,
+        segment_col = seg_col_for_calc
+      )
+    )
+    
+  } else {
+    
+    stop("Please enter a valid input for `return`.")
+    
+  }
 }
 
-# Ensure required segments exist as rows; add NA metric values where missing
-##' Ensure required segments exist
-##'
-##' Add rows for canonical `required_segments` that are missing from the
-##' provided `df`. The added rows contain NA values for the supplied
-##' `metrics` so downstream code can preserve ordering and plotting.
-##'
-##' @param df Data frame containing a segment column and metric columns.
-##' @param segment_col Character. Name of the segment column.
-##' @param metrics Character vector of metric column names to create with NA.
-##' @param required_segments Character vector of segments that should be present.
-##' @return Data frame that includes rows for each required segment (with NA
-##'   metric values) if they were originally missing.
-##' @keywords internal
-ensure_required_segments <- function(df, segment_col, metrics, required_segments) {
-  if (is.null(required_segments) || length(required_segments) == 0) return(df)
-  present <- unique(as.character(df[[segment_col]]))
-  missing <- setdiff(required_segments, present)
-  if (length(missing) == 0) return(df)
-  filler <- as.data.frame(matrix(NA_real_, nrow = length(missing), ncol = length(metrics)))
-  names(filler) <- metrics
-  filler[[segment_col]] <- missing
-  dplyr::bind_rows(df, filler)
-}
 
-# Map matplotlib-like legend loc to ggplot positions
-legend_position_from_loc <- function(loc, bbox_to_anchor = c(1.3, 1.1)) {
-  switch(tolower(loc),
-         "upper right" = c(0.90, 0.90),
-         "upper left"  = c(0.10, 0.90),
-         "lower right" = c(0.90, 0.10),
-         "lower left"  = c(0.10, 0.10),
-         "right"       = "right",
-         "left"        = "left",
-         "top"         = "top",
-         "bottom"      = "bottom",
-         c(0.90, 0.90))
-}
-
-# ---- Calc --------------------------------------------------------------------
-
-#' create_radar_calc
+#' @title Radar Chart (Calculation)
 #'
-#' Compute segment-level metric values and (optionally) index them for radar plotting.
-#' Pipeline:
-#' 1) person-level aggregation within segment (mean/median)
-#' 2) segment-level aggregation across people
-#' 3) enforce minimum group size
-#' 4) apply indexing mode
+#' @description
+#' Computes group-level metric values and applies optional indexing.
 #'
-#' @param data data.frame with metrics, segment_col, person_id_col
-#' @param metrics character vector of numeric metric column names
-#' @param segment_col segment label column
-#' @param person_id_col unique person identifier column
-#' @param mingroup minimum unique people per segment to retain
-#' @param agg "mean" or "median"
-#' @param index_mode one of "total","none","ref_group","minmax"
-#' @param index_ref_group required if index_mode == "ref_group"
-#' @param dropna drop NAs in required columns before aggregation
-#' @return list(table = segment_level_indexed, ref = reference used)
+#' @param data data.frame.
+#' @param metrics character vector of metric column names.
+#' @param segment_col character string specifying grouping column.
+#' @param id_col character string specifying person id column.
+#' @param mingroup numeric minimum unique people per group.
+#' @param agg "mean" or "median".
+#' @param index_mode "total","none","ref_group","minmax".
+#' @param index_ref_group reference group name when index_mode="ref_group".
+#' @param dropna logical.
+#'
+#' @return list(table=group_level_table, ref=reference_used)
+#'
 #' @export
 create_radar_calc <- function(data,
                               metrics,
-                              segment_col = "UsageSegments_12w",
-                              person_id_col = "PersonId",
+                              segment_col,
+                              id_col = "PersonId",
                               mingroup = 5,
-                              agg = c("mean", "median"),
-                              index_mode = c("total", "none", "ref_group", "minmax"),
+                              agg = "mean",
+                              index_mode = "total",
                               index_ref_group = NULL,
-                              dropna = TRUE) {
-  agg <- match.arg(agg)
-  index_mode <- match.arg(index_mode)
+                              dropna = FALSE) {
   
-  df <- data
-  required_cols <- c(person_id_col, segment_col, metrics)
-  missing_cols <- setdiff(required_cols, names(df))
-  if (length(missing_cols) > 0) {
-    stop("Missing required columns: ", paste(missing_cols, collapse = ", "))
-  }
+  ## Check inputs
+  required_variables <- c(id_col, segment_col, metrics) %>% unique()
   
-  # --- pandas parity: ALWAYS drop NA group keys ---
-  df <- df %>%
-    dplyr::filter(!is.na(.data[[person_id_col]]),
-                  !is.na(.data[[segment_col]]))
+  data %>%
+    .check_inputs_safe(requirements = required_variables)
   
-  # Only drop metric NA when requested (pandas mean/median skip NaN anyway)
+  df <- data %>%
+    dplyr::select(dplyr::all_of(required_variables)) %>%
+    dplyr::filter(!is.na(.data[[id_col]]), !is.na(.data[[segment_col]]))
+  
   if (isTRUE(dropna)) {
-    df <- tidyr::drop_na(df, dplyr::all_of(metrics))
+    df <- df %>% tidyr::drop_na(dplyr::all_of(metrics))
   }
-  # ------------------------------------------------
   
-  pid <- rlang::sym(person_id_col)
-  seg <- rlang::sym(segment_col)
+  # Ensure stable type for grouping key
+  df[[segment_col]] <- as.character(df[[segment_col]])
   
+  ## Person-level aggregation within segment
   if (agg == "mean") {
-    person_level <- df %>%
-      dplyr::group_by(!!pid, !!seg) %>%
-      dplyr::summarise(dplyr::across(dplyr::all_of(metrics), \(x) mean(x, na.rm = TRUE)), .groups = "drop")
+    person_level <-
+      df %>%
+      dplyr::group_by(.data[[id_col]], .data[[segment_col]]) %>%
+      dplyr::summarise(
+        dplyr::across(dplyr::all_of(metrics), \(x) mean(x, na.rm = TRUE)),
+        .groups = "drop"
+      )
   } else {
-    person_level <- df %>%
-      dplyr::group_by(!!pid, !!seg) %>%
-      dplyr::summarise(dplyr::across(dplyr::all_of(metrics), \(x) stats::median(x, na.rm = TRUE)), .groups = "drop")
+    person_level <-
+      df %>%
+      dplyr::group_by(.data[[id_col]], .data[[segment_col]]) %>%
+      dplyr::summarise(
+        dplyr::across(dplyr::all_of(metrics), \(x) stats::median(x, na.rm = TRUE)),
+        .groups = "drop"
+      )
   }
   
+  ## Group-level aggregation across people
   if (agg == "mean") {
-    segment_level <- person_level %>%
-      dplyr::group_by(!!seg) %>%
-      dplyr::summarise(dplyr::across(dplyr::all_of(metrics), \(x) mean(x, na.rm = TRUE)), .groups = "drop")
+    group_level <-
+      person_level %>%
+      dplyr::group_by(.data[[segment_col]]) %>%
+      dplyr::summarise(
+        dplyr::across(dplyr::all_of(metrics), \(x) mean(x, na.rm = TRUE)),
+        .groups = "drop"
+      )
   } else {
-    segment_level <- person_level %>%
-      dplyr::group_by(!!seg) %>%
-      dplyr::summarise(dplyr::across(dplyr::all_of(metrics), \(x) stats::median(x, na.rm = TRUE)), .groups = "drop")
+    group_level <-
+      person_level %>%
+      dplyr::group_by(.data[[segment_col]]) %>%
+      dplyr::summarise(
+        dplyr::across(dplyr::all_of(metrics), \(x) stats::median(x, na.rm = TRUE)),
+        .groups = "drop"
+      )
   }
   
-  counts <- person_level %>%
-    dplyr::group_by(!!seg) %>%
-    dplyr::summarise(n = dplyr::n_distinct(!!pid), .groups = "drop")
+  ## Enforce mingroup (distinct people per segment)
+  counts <-
+    person_level %>%
+    dplyr::group_by(.data[[segment_col]]) %>%
+    dplyr::summarise(n = dplyr::n_distinct(.data[[id_col]]), .groups = "drop")
   
-  segment_level <- segment_level %>%
+  group_level <-
+    group_level %>%
     dplyr::left_join(counts, by = segment_col) %>%
-    dplyr::filter(n >= mingroup) %>%
-    dplyr::select(-n)
+    dplyr::filter(.data$n >= mingroup)
   
+  if (nrow(group_level) == 0) {
+    out_tbl <- group_level
+    ref <- numeric(0)
+    return(list(table = out_tbl, ref = ref))
+  }
+  
+  ## Reference + indexing
   ref <- numeric(0)
-  seg_idx <- segment_level
+  out_tbl <- group_level
   
   if (index_mode == "total") {
+    
     ref <- if (agg == "mean") {
       colMeans(person_level[, metrics, drop = FALSE], na.rm = TRUE)
     } else {
       apply(person_level[, metrics, drop = FALSE], 2, stats::median, na.rm = TRUE)
     }
-    for (m in metrics) seg_idx[[m]] <- (seg_idx[[m]] / ref[[m]]) * 100
-  } else if (index_mode == "ref_group") {
-    if (is.null(index_ref_group) || !index_ref_group %in% segment_level[[segment_col]]) {
-      stop("index_ref_group must be provided and present in segment_col when index_mode='ref_group'.")
-    }
-    ref_row <- segment_level %>% dplyr::filter(.data[[segment_col]] == index_ref_group) %>% dplyr::slice(1)
-    ref <- as.numeric(ref_row[, metrics, drop = FALSE]); names(ref) <- metrics
-    for (m in metrics) seg_idx[[m]] <- (seg_idx[[m]] / ref[[m]]) * 100
-  } else if (index_mode == "minmax") {
-    mins <- vapply(metrics, function(m) min(segment_level[[m]], na.rm = TRUE), numeric(1))
-    maxs <- vapply(metrics, function(m) max(segment_level[[m]], na.rm = TRUE), numeric(1))
-    ref <- cbind(min = mins, max = maxs)
+    
     for (m in metrics) {
-      den <- (maxs[[m]] - mins[[m]]); if (den == 0) den <- 1
-      seg_idx[[m]] <- 100 * (seg_idx[[m]] - mins[[m]]) / den
+      den <- ref[[m]]
+      out_tbl[[m]] <- (out_tbl[[m]] / den) * 100
     }
+    
+  } else if (index_mode == "ref_group") {
+    
+    if (is.null(index_ref_group) || !index_ref_group %in% out_tbl[[segment_col]]) {
+      stop("index_ref_group must be provided and present in `segment_col` when index_mode = 'ref_group'.")
+    }
+    
+    ref_row <- out_tbl %>%
+      dplyr::filter(.data[[segment_col]] == index_ref_group) %>%
+      dplyr::slice(1)
+    
+    ref <- as.numeric(ref_row[, metrics, drop = FALSE])
+    names(ref) <- metrics
+    
+    for (m in metrics) {
+      den <- ref[[m]]
+      out_tbl[[m]] <- (out_tbl[[m]] / den) * 100
+    }
+    
+  } else if (index_mode == "minmax") {
+    
+    mins <- vapply(metrics, function(m) min(out_tbl[[m]], na.rm = TRUE), numeric(1))
+    maxs <- vapply(metrics, function(m) max(out_tbl[[m]], na.rm = TRUE), numeric(1))
+    ref <- cbind(min = mins, max = maxs)
+    
+    for (m in metrics) {
+      den <- (maxs[[m]] - mins[[m]])
+      if (den == 0) den <- 1
+      out_tbl[[m]] <- 100 * (out_tbl[[m]] - mins[[m]]) / den
+    }
+    
+  } else {
+    # "none": return raw group values
   }
   
-  list(table = seg_idx, ref = ref)
+  list(table = out_tbl, ref = ref)
 }
 
 
-# ---- Viz (bar-style formatting; no orange line/box) --------------------------
-
-#' create_radar_viz
+#' @title Radar Chart (Visualization)
 #'
-#' Render a radar (spider) chart from the wide, segment-level table produced by
-#' create_radar_calc(). Each row is plotted as a polygon across the supplied metrics.
-#' Formatting is aligned with create_bar: standard ggplot title/subtitle/caption,
-#' no custom header decorations.
+#' @description
+#' Renders a multi-group radar chart using `ggplot2` + `coord_polar()`.
 #'
-#' @param segment_level_indexed data.frame with one row per segment; includes segment_col and metrics
-#' @param metrics ordered character vector of metric columns to plot around the radar
-#' @param segment_col character; segment label column (default "UsageSegments_12w")
-#' @param figsize numeric length-2; used when saving (ggplot objects are size-less)
-#' @param title,subtitle,caption character strings for standard ggplot annotations
-#' @param legend_loc e.g., "upper right","upper left","right","top", etc.
-#' @param legend_bbox_to_anchor kept for API parity; ignored for inside placement
-#' @param alpha_fill numeric fill alpha (default 0.10)
-#' @param linewidth numeric line width for outlines (default 1.5)
-#' @param order optional character vector of segment order
-#' @param fill_missing_with_plot "zero" (default) or "nan" (leave NA) for polygon closure
-#' @return ggplot object
+#' @param data Output table from `create_radar_calc()`.
+#' @param metrics Character vector of metric column names.
+#' @param segment_col Character string of grouping column name.
+#' @param fill_missing Character. If "zero" (default), fill NA values as 0 for plotting.
+#'
+#' @return ggplot object.
+#'
 #' @export
-create_radar_viz <- function(segment_level_indexed,
+create_radar_viz <- function(data,
                              metrics,
-                             segment_col = "UsageSegments_12w",
-                             figsize = c(8, 6),
-                             title = NULL,
-                             subtitle = NULL,
-                             caption = NULL,
-                             legend_loc = "upper right",
-                             legend_bbox_to_anchor = c(1.3, 1.1),
-                             alpha_fill = 0.10,
-                             linewidth = 1.5,
-                             order = NULL,
-                             fill_missing_with_plot = c("zero","nan")) {
-  fill_missing_with_plot <- match.arg(fill_missing_with_plot)
+                             segment_col,
+                             fill_missing = "zero") {
   
-  # Determine desired segment order
-  segs_in_data <- unique(as.character(segment_level_indexed[[segment_col]]))
-  segs <- if (!is.null(order)) intersect(order, segs_in_data) else segs_in_data
-  
-  # Long format (one row per segment-metric)
-  df_long <- segment_level_indexed %>%
+  # Long format
+  plot_df <-
+    data %>%
     dplyr::select(dplyr::all_of(c(segment_col, metrics))) %>%
-    dplyr::mutate(!!segment_col := as.character(.data[[segment_col]])) %>%
-    dplyr::filter(.data[[segment_col]] %in% segs) %>%
-    tidyr::pivot_longer(cols = dplyr::all_of(metrics), names_to = "metric", values_to = "value") %>%
+    tidyr::pivot_longer(
+      cols = dplyr::all_of(metrics),
+      names_to = "metric",
+      values_to = "value"
+    ) %>%
     dplyr::mutate(
-      metric = factor(metric, levels = metrics),
-      seg    = factor(.data[[segment_col]], levels = segs, ordered = TRUE)
+      metric = factor(.data$metric, levels = metrics),
+      seg = as.character(.data[[segment_col]]),
+      metric_idx = as.integer(.data$metric) - 1L
     )
   
-  # Plot-only NA handling
-  if (fill_missing_with_plot == "zero") df_long$value[is.na(df_long$value)] <- 0
-  
-  # Circle positions, clockwise from top
-  df_long <- df_long %>% dplyr::mutate(metric_idx = as.integer(metric) - 1L)
+  if (fill_missing == "zero") {
+    plot_df$value[is.na(plot_df$value)] <- 0
+  }
   
   # Close polygons
-  first_points <- df_long %>%
-    dplyr::group_by(seg) %>%
-    dplyr::arrange(metric_idx, .by_group = TRUE) %>%
+  first_points <-
+    plot_df %>%
+    dplyr::group_by(.data$seg) %>%
+    dplyr::arrange(.data$metric_idx, .by_group = TRUE) %>%
     dplyr::slice(1) %>%
     dplyr::ungroup()
   
-  max_idx <- if (nrow(df_long) > 0) max(df_long$metric_idx, na.rm = TRUE) else 0L
+  max_idx <- if (nrow(plot_df) > 0) max(plot_df$metric_idx, na.rm = TRUE) else 0L
   
-  df_poly <- dplyr::bind_rows(
-    df_long %>% dplyr::arrange(seg, metric_idx),
-    first_points %>% dplyr::mutate(metric_idx = max_idx + 1L)
-  ) %>%
-    dplyr::mutate(seg = factor(seg, levels = segs, ordered = TRUE)) %>%
-    dplyr::arrange(seg, metric_idx)
+  poly_df <-
+    dplyr::bind_rows(
+      plot_df %>% dplyr::arrange(.data$seg, .data$metric_idx),
+      first_points %>% dplyr::mutate(metric_idx = max_idx + 1L)
+    ) %>%
+    dplyr::arrange(.data$seg, .data$metric_idx)
   
-  # Legend placement
-  leg_pos <- legend_position_from_loc(legend_loc)
-  ggver <- tryCatch(utils::packageVersion("ggplot2"), error = function(e) "0.0.0")
-  use_inside <- is.numeric(leg_pos)
-  use_new_inside <- use_inside && (!inherits(ggver, "character")) && ggver >= "3.5.0"
+  # Friendly labels if available
+  axis_labs <- .pretty_metric_names(metrics)
   
-  # Base plot (bar-style formatting via labs + theme)
-  p <- ggplot(df_poly, aes(x = .data$metric_idx, y = .data$value, group = .data$seg)) +
-    geom_polygon(aes(fill = .data$seg), alpha = alpha_fill, colour = NA) +
-    geom_path(aes(colour = .data$seg), linewidth = linewidth, lineend = "round") +
-    coord_polar(theta = "x", start = pi/2, direction = -1) +
-    scale_x_continuous(
+  ggplot2::ggplot(poly_df, ggplot2::aes(x = .data$metric_idx, y = .data$value, group = .data$seg)) +
+    ggplot2::geom_polygon(ggplot2::aes(fill = .data$seg), alpha = 0.10, colour = NA) +
+    ggplot2::geom_path(ggplot2::aes(colour = .data$seg), linewidth = 1.2, lineend = "round") +
+    ggplot2::coord_polar(theta = "x", start = pi/2, direction = -1) +
+    ggplot2::scale_x_continuous(
       breaks = seq(0, length(metrics) - 1),
-      labels = metrics,
-      expand = expansion(mult = c(0, 0))
+      labels = axis_labs,
+      expand = ggplot2::expansion(mult = c(0, 0))
     ) +
-    guides(fill = guide_legend(title = NULL), colour = guide_legend(title = NULL)) +
-    labs(
-      title = title %||% NULL,
-      subtitle = subtitle %||% NULL,
-      caption = caption %||% NULL
-    ) +
-    theme_minimal(base_size = 11)
-  
-  # Theme consistent with create_bar
-  p <- p + theme(
-    plot.title = element_text(face = "bold"),
-    plot.title.position = "plot",
-    plot.subtitle = element_text(),
-    plot.caption.position = "plot",
-    axis.title = element_blank(),
-    panel.grid.major = element_line(linewidth = 0.3),
-    panel.grid.minor = element_blank(),
-    legend.box.margin = margin(0, 0, 0, 0),
-    legend.margin = margin(0, 0, 0, 0)
-  )
-  
-  # Legend theme (version-aware)
-  if (is.character(leg_pos)) {
-    p <- p + theme(legend.position = leg_pos)
-  } else if (use_new_inside) {
-    p <- p + theme(legend.position = "inside", legend.position.inside = leg_pos)
-  } else {
-    p <- p + theme(legend.position = leg_pos)
-  }
-  
-  p
+    ggplot2::guides(fill = ggplot2::guide_legend(title = NULL), colour = ggplot2::guide_legend(title = NULL)) +
+    ggplot2::labs(title = "Radar chart", subtitle = paste("By", segment_col)) +
+    .theme_wpa_safe() +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(face = "bold"),
+      plot.title.position = "plot",
+      axis.title = ggplot2::element_blank(),
+      panel.grid.major = ggplot2::element_line(linewidth = 0.3),
+      panel.grid.minor = ggplot2::element_blank(),
+      legend.position = "right"
+    )
 }
 
-# ---- Wrapper -----------------------------------------------------------------
+# =========================
+# Internal helpers
+# =========================
 
-#' create_radar
-#'
-#' High-level wrapper: compute segment-level metrics and either
-#' (a) return the indexed table (return_type="table"), or
-#' (b) render a radar chart (return_type="plot").
-#'
-#' @param data data.frame with metrics, person_id_col, and either segment_col or enough data for auto-segmentation
-#' @param metrics character vector of numeric metric columns (order is the radar axis order)
-#' @param segment_col character; segment label column (default "UsageSegments_12w")
-#' @param person_id_col character; unique person ID column (default "PersonId")
-#' @param auto_segment_if_missing logical; if TRUE and segment_col missing, uses vivainsights::identify_usage_segments()
-#' @param identify_metric metric used by vivainsights::identify_usage_segments()
-#' @param identify_version optional version for identify_usage_segments()
-#' @param mingroup minimum unique people per segment (default 5)
-#' @param agg "mean" or "median"
-#' @param index_mode "total","none","ref_group","minmax"
-#' @param index_ref_group required if index_mode == "ref_group"
-#' @param dropna logical; drop NAs prior to aggregation (default FALSE)
-#' @param required_segments ensure these segments exist (default = canonical order)
-#' @param synonyms_map named vector mapping variants -> canonical
-#' @param enforce_required_segments logical; add NA rows for missing segments
-#' @param auto_relax_mingroup logical; if missing segments, recompute with mingroup=1
-#' @param fill_missing_with_plot "zero" or "nan" for polygon closure only
-#' @param return_type "plot" (default) or "table"
-#' @param figsize numeric length-2 (width,height) in inches; used when saving
-#' @param title,subtitle character strings
-#' @param caption_from_date_range logical; if TRUE and vivainsights available, appends extract_date_range()
-#' @param caption_text extra caption text; concatenated with date-range if present
-#' @param legend_loc legend location keyword
-#' @param legend_bbox_to_anchor kept for API parity
-#' @param alpha_fill numeric fill alpha
-#' @param linewidth numeric outline width
-#' @return ggplot object (plot) or data.frame (table)
-#' @export
-create_radar <- function(data,
-                         metrics,
-                         # segmentation
-                         segment_col = "UsageSegments_12w",
-                         person_id_col = "PersonId",
-                         auto_segment_if_missing = TRUE,
-                         identify_metric = "Copilot_actions_taken_in_Teams",
-                         identify_version = "4w",
-                         # calc params
-                         mingroup = 5,
-                         agg = c("mean","median"),
-                         index_mode = c("total","none","ref_group","minmax"),
-                         index_ref_group = NULL,
-                         dropna = FALSE,
-                         # segment controls
-                         required_segments = NULL,
-                         synonyms_map = NULL,
-                         enforce_required_segments = TRUE,
-                         auto_relax_mingroup = TRUE,
-                         fill_missing_with_plot = c("zero","nan"),
-                         # output
-                         return_type = c("plot","table"),
-                         # viz params
-                         figsize = c(8, 6),
-                         title = "Behavioral Profiles by Segment",
-                         subtitle = "Copilot usage radar chart",
-                         caption_from_date_range = TRUE,
-                         caption_text = NULL,
-                         legend_loc = "upper right",
-                         legend_bbox_to_anchor = c(1.3, 1.1),
-                         alpha_fill = 0.10,
-                         linewidth = 1.5) {
+.check_inputs_safe <- function(data, requirements) {
   
-  agg <- match.arg(agg)
-  index_mode <- match.arg(index_mode)
-  fill_missing_with_plot <- match.arg(fill_missing_with_plot)
-  return_type <- match.arg(return_type)
+  if (exists("check_inputs", mode = "function")) {
+    data %>% check_inputs(requirements = requirements)
+    return(invisible(TRUE))
+  }
   
+  missing <- setdiff(requirements, names(data))
+  if (length(missing) > 0) {
+    stop("Missing required column(s): ", paste(missing, collapse = ", "))
+  }
+  
+  invisible(TRUE)
+}
+
+.pretty_metric_names <- function(metrics) {
+  
+  if (exists("us_to_space", mode = "function")) {
+    return(vapply(metrics, us_to_space, character(1)))
+  }
+  
+  gsub("_", " ", metrics, fixed = TRUE)
+}
+
+.theme_wpa_safe <- function() {
+  
+  if (exists("theme_wpa", mode = "function")) return(theme_wpa())
+  
+  if ("vivainsights" %in% loadedNamespaces() &&
+      exists("theme_wpa", envir = asNamespace("vivainsights"), mode = "function")) {
+    return(get("theme_wpa", envir = asNamespace("vivainsights"))())
+  }
+  
+  ggplot2::theme_minimal()
+}
+
+.auto_segment_using_identify_usage <- function(data,
+                                               metrics,
+                                               id_col = "PersonId",
+                                               date_col = "MetricDate",
+                                               usage_version = "12w") {
+  
+  # identify_usage_segments() prefers PersonId + MetricDate naming
   df <- data
-  if (is.null(required_segments)) required_segments <- CANONICAL_ORDER
-  if (is.null(synonyms_map))       synonyms_map <- DEFAULT_SYNONYMS
   
-  # Auto-identify segments if needed
-  if (!segment_col %in% names(df) && isTRUE(auto_segment_if_missing)) {
-    if (!requireNamespace("vivainsights", quietly = TRUE)) {
-      stop("vivainsights is required for auto-segmentation but is not installed.")
-    }
-    df <- vivainsights::identify_usage_segments(
-      data    = df,
-      metric  = identify_metric,
-      version = identify_version
-    )
+  if (!id_col %in% names(df)) stop("`id_col` not found in data: ", id_col)
+  if (!date_col %in% names(df)) stop("`date_col` not found in data: ", date_col)
+  
+  # Guard against conflicts when renaming
+  if (id_col != "PersonId") {
+    if ("PersonId" %in% names(df)) stop("Cannot map `", id_col, "` to PersonId because PersonId already exists.")
+    df <- dplyr::rename(df, PersonId = !!rlang::sym(id_col))
+  }
+  if (date_col != "MetricDate") {
+    if ("MetricDate" %in% names(df)) stop("Cannot map `", date_col, "` to MetricDate because MetricDate already exists.")
+    df <- dplyr::rename(df, MetricDate = !!rlang::sym(date_col))
   }
   
-  # Canonicalize before calc
-  df <- canonicalize_segments(df, segment_col, synonyms_map)
-  
-  # Caption (if requested)
-  caption <- ""
-  if (isTRUE(caption_from_date_range) && requireNamespace("vivainsights", quietly = TRUE)) {
-    caption <- tryCatch(vivainsights::extract_date_range(df, return_type = "text"),
-                        error = function(e) "")
-  }
-  if (!is.null(caption_text) && nzchar(caption_text)) {
-    caption <- if (nzchar(caption)) paste0(caption, " | ", caption_text) else caption_text
-  }
-  
-  # Compute (first pass)
-  res1 <- create_radar_calc(
-    data = df, metrics = metrics, segment_col = segment_col,
-    person_id_col = person_id_col, mingroup = mingroup, agg = agg,
-    index_mode = index_mode, index_ref_group = index_ref_group, dropna = dropna
-  )
-  table <- res1$table
-  
-  # Canonicalize again (post-calc)
-  table <- canonicalize_segments(table, segment_col, synonyms_map)
-  
-  # If required segments missing, optionally relax mingroup and recompute
-  have <- unique(as.character(table[[segment_col]]))
-  need <- required_segments
-  missing_first <- setdiff(need, have)
-  
-  if (isTRUE(enforce_required_segments) && length(missing_first) > 0 &&
-      isTRUE(auto_relax_mingroup) && mingroup > 1) {
-    res_relax <- create_radar_calc(
-      data = df, metrics = metrics, segment_col = segment_col,
-      person_id_col = person_id_col, mingroup = 1, agg = agg,
-      index_mode = index_mode, index_ref_group = index_ref_group, dropna = dropna
-    )
-    table <- canonicalize_segments(res_relax$table, segment_col, synonyms_map)
-  }
-  
-  # Ensure required segments exist (add NA rows for truly absent)
-  if (isTRUE(enforce_required_segments)) {
-    table <- ensure_required_segments(table, segment_col, metrics, required_segments)
-  }
-  
-  # Order rows
-  table[[segment_col]] <- factor(table[[segment_col]], levels = required_segments, ordered = TRUE)
-  table <- table %>% dplyr::arrange(.data[[segment_col]])
-  
-  # ---- Return type handling (Python parity) ----
-  if (identical(return_type, "table")) {
-    table_out <- table %>%
-      dplyr::select(dplyr::all_of(c(segment_col, metrics))) %>%
-      dplyr::mutate(!!segment_col := as.character(.data[[segment_col]]))
-    rownames(table_out) <- NULL
-    return(as.data.frame(table_out, stringsAsFactors = FALSE))
-  }
-  
-  # Title suffix mirrored from Python
-  base_title <- if (index_mode %in% c("total","ref_group")) {
-    paste0(title %||% "Behavioral Profiles by Segment", " (Indexed)")
-  } else if (index_mode == "minmax") {
-    paste0(title %||% "Behavioral Profiles by Segment", " (Minu2013Max Scaled)")
+  # Locate identify_usage_segments()
+  ident_fun <- NULL
+  if ("vivainsights" %in% loadedNamespaces() &&
+      exists("identify_usage_segments", envir = asNamespace("vivainsights"), mode = "function")) {
+    ident_fun <- get("identify_usage_segments", envir = asNamespace("vivainsights"))
+  } else if (exists("identify_usage_segments", mode = "function")) {
+    ident_fun <- identify_usage_segments
   } else {
-    title %||% "Behavioral Profiles by Segment"
+    stop("`identify_usage_segments()` not found. Load `vivainsights` first.")
   }
   
-  create_radar_viz(
-    segment_level_indexed = table,
-    metrics               = metrics,
-    segment_col           = segment_col,
-    figsize               = figsize,
-    title                 = base_title,
-    subtitle              = subtitle,
-    caption               = caption,
-    legend_loc            = legend_loc,
-    legend_bbox_to_anchor = legend_bbox_to_anchor,
-    alpha_fill            = alpha_fill,
-    linewidth             = linewidth,
-    order                 = required_segments,
-    fill_missing_with_plot = fill_missing_with_plot
-  )
+  original_cols <- names(df)
+  
+  # Call identify_usage_segments using the same metric list
+  if (length(metrics) == 1) {
+    seg_data <- ident_fun(
+      data = df,
+      metric = metrics[[1]],
+      metric_str = NULL,
+      version = usage_version,
+      return = "data"
+    )
+  } else {
+    seg_data <- ident_fun(
+      data = df,
+      metric = NULL,
+      metric_str = metrics,
+      version = usage_version,
+      return = "data"
+    )
+  }
+  
+  # Infer segment column from newly-added columns
+  new_cols <- setdiff(names(seg_data), original_cols)
+  
+  candidates <- Filter(function(cn) {
+    x <- seg_data[[cn]]
+    (is.factor(x) || is.character(x)) &&
+      dplyr::n_distinct(x, na.rm = TRUE) > 1 &&
+      dplyr::n_distinct(x, na.rm = TRUE) <= 10
+  }, new_cols)
+  
+  if (length(candidates) == 0) {
+    stop("No suitable segment column detected after running `identify_usage_segments()`.")
+  }
+  
+  # Prefer a version-matching column name if uniquely available
+  if (!is.null(usage_version) && is.character(usage_version) && length(usage_version) == 1) {
+    vmatch <- candidates[grepl(usage_version, candidates, fixed = TRUE)]
+    if (length(vmatch) == 1) {
+      segment_col <- vmatch[[1]]
+    } else {
+      nunique <- vapply(candidates, function(cn) dplyr::n_distinct(seg_data[[cn]], na.rm = TRUE), numeric(1))
+      segment_col <- candidates[[which.min(nunique)]]
+    }
+  } else {
+    nunique <- vapply(candidates, function(cn) dplyr::n_distinct(seg_data[[cn]], na.rm = TRUE), numeric(1))
+    segment_col <- candidates[[which.min(nunique)]]
+  }
+  
+  # Map columns back to caller schema if renamed
+  if (id_col != "PersonId") seg_data <- dplyr::rename(seg_data, !!rlang::sym(id_col) := .data$PersonId)
+  if (date_col != "MetricDate") seg_data <- dplyr::rename(seg_data, !!rlang::sym(date_col) := .data$MetricDate)
+  
+  list(data = seg_data, segment_col = segment_col)
 }
