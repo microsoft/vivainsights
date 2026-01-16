@@ -242,7 +242,7 @@ the <code>g2g_data</code> data frame, with the <code>return</code>
 parameter set to <code>"plot"</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/network_g2g.html">network_g2g</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">g2g_data</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="network-analysis_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" width="768"></p>
+<p><img src="network-analysis_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="" width="768"></p>
 <ul>
 <li>You can specify the metric being used for this visualization
 (Default: metric = “Group_collaboration_time_invested”)</li>
@@ -263,7 +263,7 @@ groups.</em></p>
 can run:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/network_g2g.html">network_g2g</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">g2g_data</span>, exc_threshold <span class="op">=</span> <span class="fl">0</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="network-analysis_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" width="768"></p>
+<p><img src="network-analysis_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="768"></p>
 <p>To better understand the data, you can also run the following code to
 return a table of the data:</p>
 <p>To validate hypotheses and better understand the data, it is also
@@ -297,7 +297,7 @@ the <code><a href="../reference/network_p2p.html">network_p2p()</a></code> funct
 <code class="sourceCode R"><span><span class="va">p2p_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/p2p_data_sim.html">p2p_data_sim</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p2p_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/network_p2p.html">network_p2p</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">'Organization'</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="network-analysis_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" width="768"></p>
+<p><img src="network-analysis_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="768"></p>
 <p>Each node represents an individual, and the colour of the nodes
 correspond to the HR attribute specified in the arguments
 (‘Organization’). An edge represents there being a reciprocal
@@ -391,7 +391,7 @@ Here is an example where we also specify the function to use the
 <span>   style <span class="op">=</span> <span class="st">"ggraph"</span>,</span>
 <span>   comm_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"resolution"</span> <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span>   <span class="op">)</span></span></code></pre></div>
-<p><img src="network-analysis_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" width="768"></p>
+<p><img src="network-analysis_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="768"></p>
 <p>Here, we are using the <a href="https://igraph.org/r/doc/cluster_leiden.html" class="external-link">Leiden algorithm</a>
 to detect communities. The <code>resolution</code> parameter is a tuning
 parameter that controls the size of the communities. A higher value of
@@ -444,7 +444,7 @@ algorithm:</p>
 <span>  community <span class="op">=</span> <span class="st">"fluid_communities"</span>,</span>
 <span>  comm_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"no.of.communities"</span> <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="network-analysis_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" width="768"></p>
+<p><img src="network-analysis_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="768"></p>
 <p>Please see the <a href="https://igraph.org/r/doc/" class="external-link">original igraph
 documentation</a> for more details on the community detection parameters
 to pass into <code>comm_args</code>.</p>

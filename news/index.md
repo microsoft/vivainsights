@@ -4,6 +4,9 @@
 
 - Aesthetic improvements to
   [`create_rogers()`](https://microsoft.github.io/vivainsights/reference/create_rogers.md)
+- Added warning message to
+  [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md)
+  when NA values are detected in the metric variable
 
 ## vivainsights 0.7.0
 

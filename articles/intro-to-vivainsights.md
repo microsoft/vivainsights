@@ -116,7 +116,7 @@ pq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
 #> ℹ The deprecated feature was likely used in the vivainsights package.
 #>   Please report the issue at
 #>   <https://github.com/microsoft/vivainsights/issues/>.
-#> This warning is displayed once every 8 hours.
+#> This warning is displayed once per session.
 #> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 #> generated.
 ```
