@@ -154,6 +154,7 @@ utils::globalVariables(
      "latest_adoption",
      "median_adoption_week",
      "total_adopters",
-     "id"
+     "id",
+     "segment_count"
     )
 )

@@ -34,5 +34,5 @@
 #'
 #'   ...
 #' }
-#' @source \url{https://analysis.insights.viva.office.com/analyst/analysis/}
+#' @source \url{https://analysis.insights.cloud.microsoft/analyst/analysis/}
 "p2p_data"
