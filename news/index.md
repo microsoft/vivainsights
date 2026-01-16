@@ -1,6 +1,6 @@
 # Changelog
 
-## vivainsights (development version)
+## vivainsights 0.7.1
 
 - Bug fix to
   [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md):
