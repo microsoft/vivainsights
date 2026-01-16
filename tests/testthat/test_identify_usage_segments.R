@@ -313,12 +313,12 @@ test_that("identify_usage_segments table returns correct n count and column orde
   # Check that n equals the number of distinct PersonIds (3)
   expect_equal(result$n[1], 3)
   
-  # Check column order: MetricDate should be first, followed by n, then segments
+  # Check column order: MetricDate should be first, n should be last
   expect_equal(names(result)[1], "MetricDate")
-  expect_equal(names(result)[2], "n")
+  expect_equal(names(result)[length(names(result))], "n")
   
-  # Check that segment columns exist after MetricDate and n
-  segment_cols <- names(result)[3:length(names(result))]
+  # Check that segment columns are in the middle (between MetricDate and n)
+  segment_cols <- names(result)[2:(length(names(result)) - 1)]
   expected_segments <- c("Non-user", "Low User", "Novice User", "Habitual User", "Power User")
   expect_true(all(segment_cols %in% expected_segments))
 })
@@ -393,9 +393,9 @@ test_that("identify_usage_segments table handles missing segments gracefully", {
   # Check that n equals 3
   expect_equal(result$n[1], 3)
   
-  # Check column order is maintained: MetricDate first, n second
+  # Check column order is maintained: MetricDate first, n last
   expect_equal(names(result)[1], "MetricDate")
-  expect_equal(names(result)[2], "n")
+  expect_equal(names(result)[length(names(result))], "n")
 })
 
 test_that("identify_usage_segments does not warn when no NA values are present", {
