@@ -153,7 +153,6 @@ utils::globalVariables(
      "earliest_adoption",
      "latest_adoption",
      "median_adoption_week",
-     "total_adopters",
-     "id"
+     "total_adopters"
     )
 )

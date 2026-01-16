@@ -1,4 +1,4 @@
-# vivainsights 0.7.1
+# vivainsights (development version)
 
 * Bug fix to `identify_usage_segments()`: Fixed incorrect `n` count in table output to use distinct PersonIds instead of row count
 * Improvement to `identify_usage_segments()`: Reordered table output columns to follow logical segment progression (Non-user, Low User, Novice User, Habitual User, Power User)
