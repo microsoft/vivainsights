@@ -2,6 +2,14 @@
 
 ## vivainsights (development version)
 
+- Bug fix to
+  [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md):
+  Fixed incorrect `n` count in table output to use distinct PersonIds
+  instead of row count
+- Improvement to
+  [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md):
+  Reordered table output columns to follow logical segment progression
+  (Non-user, Low User, Novice User, Habitual User, Power User)
 - Aesthetic improvements to
   [`create_rogers()`](https://microsoft.github.io/vivainsights/reference/create_rogers.md)
 - Added warning message to

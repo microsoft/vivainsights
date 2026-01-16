@@ -126,7 +126,15 @@ passed to `return`, the following additional columns are appended:
 
 If `"table"` is passed to `return`, a summary table is returned with one
 row per `MetricDate` and usage segments as columns containing
-percentages.
+percentages. The table includes:
+
+- `MetricDate`: The date of the metric
+
+- Segment columns (in order): `Non-user`, `Low User`, `Novice User`,
+  `Habitual User`, `Power User` (only segments present in the data are
+  included)
+
+- `n`: The total number of distinct persons for that date
 
 @import slider slide_dbl @import tidyr
 
@@ -251,18 +259,17 @@ identify_usage_segments(
 )
 #> Usage segments summary table (12-week version)
 #> # A tibble: 23 × 4
-#> # Groups:   MetricDate [23]
-#>    MetricDate     n `Novice User` `Power User`
-#>    <date>     <int>         <dbl>        <dbl>
-#>  1 2024-04-28   300             1            0
-#>  2 2024-05-05   300             1            0
-#>  3 2024-05-12   300             1            0
-#>  4 2024-05-19   300             1            0
-#>  5 2024-05-26   300             1            0
-#>  6 2024-06-02   300             1            0
-#>  7 2024-06-09   300             1            0
-#>  8 2024-06-16   300             1            0
-#>  9 2024-06-23   300             0            1
-#> 10 2024-06-30   300             0            1
+#>    MetricDate `Novice User` `Power User`     n
+#>    <date>             <dbl>        <dbl> <int>
+#>  1 2024-04-28             1            0   300
+#>  2 2024-05-05             1            0   300
+#>  3 2024-05-12             1            0   300
+#>  4 2024-05-19             1            0   300
+#>  5 2024-05-26             1            0   300
+#>  6 2024-06-02             1            0   300
+#>  7 2024-06-09             1            0   300
+#>  8 2024-06-16             1            0   300
+#>  9 2024-06-23             0            1   300
+#> 10 2024-06-30             0            1   300
 #> # ℹ 13 more rows
 ```
