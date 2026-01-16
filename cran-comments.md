@@ -4,13 +4,14 @@
 
 ## Release summary
 
-This is a minor release (0.7.0) that adds new functionality for Rogers adoption curve analysis.
+This is a minor release (0.7.1) that implements a few enhancements for the newer functions.
 
 ## What's new in this version
 
-* Added `create_rogers()` function for analyzing technology adoption patterns using Rogers adoption curve theory
-* Feature improvements to `create_hist()`, `create_density()`, `identify_usage_segments()`, `create_line()`
-* Refactor superseded dplyr syntax to current best practices
+* Bug fix to `identify_usage_segments()`: Fixed incorrect `n` count in table output to use distinct PersonIds instead of row count
+* Improvement to `identify_usage_segments()`: Reordered table output columns to follow logical segment progression (Non-user, Low User, Novice User, Habitual User, Power User)
+* Aesthetic improvements to `create_rogers()`
+* Added warning message to `identify_usage_segments()` when NA values are detected in the metric variable
 
 ## Reverse dependencies
 
