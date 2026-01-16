@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/microsoft/vivainsights/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/microsoft/vivainsights/blob/v0.7.1/DESCRIPTION)
 
 Chan M, Morales C (2026). *vivainsights: Analyze and Visualize Data from
 'Microsoft Viva Insights'*. R package version 0.7.1,
