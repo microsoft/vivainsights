@@ -2,6 +2,8 @@
 
 ## vivainsights 0.7.1
 
+CRAN release: 2026-01-16
+
 - Bug fix to
   [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md):
   Fixed incorrect `n` count in table output to use distinct PersonIds

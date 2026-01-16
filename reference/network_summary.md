@@ -97,11 +97,11 @@ network_summary(graph = g, return = "table")
 
 # Return network with node centrality statistics
 network_summary(graph = g, return = "network")
-#> IGRAPH 658914f DNW- 100 500 -- 
+#> IGRAPH f0ef7b2 DNW- 100 500 -- 
 #> + attr: weight (g/n), name (v/c), Organization (v/c), node_size (v/n),
 #> | betweenness (v/n), closeness (v/n), degree (v/n), eigenvector (v/n),
 #> | pagerank (v/n), weight (e/n)
-#> + edges from 658914f (vertex names):
+#> + edges from f0ef7b2 (vertex names):
 #>  [1] SIM_ID_1->SIM_ID_4   SIM_ID_1->SIM_ID_5   SIM_ID_1->SIM_ID_6  
 #>  [4] SIM_ID_1->SIM_ID_66  SIM_ID_1->SIM_ID_96  SIM_ID_1->SIM_ID_97 
 #>  [7] SIM_ID_1->SIM_ID_98  SIM_ID_1->SIM_ID_2   SIM_ID_1->SIM_ID_100
