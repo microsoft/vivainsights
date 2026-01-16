@@ -111,7 +111,12 @@
 #'   rolling average.
 #'   
 #'   If `"table"` is passed to `return`, a summary table is returned with one row
-#'   per `MetricDate` and usage segments as columns containing percentages.
+#'   per `MetricDate` and usage segments as columns containing percentages. The 
+#'   table includes:
+#'   - `MetricDate`: The date of the metric
+#'   - Segment columns (in order): `Non-user`, `Low User`, `Novice User`, 
+#'     `Habitual User`, `Power User` (only segments present in the data are included)
+#'   - `n`: The total number of distinct persons for that date
 #'   
 #'  @import slider slide_dbl
 #'  @import tidyr  
@@ -196,10 +201,23 @@ identify_usage_segments <- function(
     }
   }
   
+  # Define warning message
+  na_warning_msg <- "NAs detected in the metric variable. Consider filtering or imputing the missing values before running."
+  
   if(is.null(metric_str)){
+    # Check for NA values in the single metric column before creating prep_df
+    if(any(is.na(data[[metric]]))){
+      warning(na_warning_msg)
+    }
+    
     prep_df <- data %>%
       mutate(target_metric = !!sym(metric))
   } else if(is.null(metric)){
+    # Check for NA values in any of the metric_str columns before aggregation
+    if(any(is.na(data[, metric_str, drop = FALSE]))){
+      warning(na_warning_msg)
+    }
+    
     prep_df <- data %>%
       mutate(target_metric =
                select(., all_of(metric_str)) %>%
@@ -416,16 +434,32 @@ identify_usage_segments <- function(
     message(caption_text)
     
     # Create summary table
-    main_us_df %>%
-      count(MetricDate, !!sym(segments_col)) %>%
+    # Define the desired column order for segments
+    segment_order <- c("Non-user", "Low User", "Novice User", "Habitual User", "Power User")
+    
+    summary_table <- main_us_df %>%
+      group_by(MetricDate, !!sym(segments_col)) %>%
+      summarise(segment_count = n_distinct(PersonId), .groups = "drop") %>%
       group_by(MetricDate) %>%
-      mutate(pct = n / sum(n)) %>%
-      mutate(n = sum(n)) %>%
+      mutate(
+        pct = segment_count / sum(segment_count),
+        n = sum(segment_count)
+      ) %>%
+      ungroup() %>%
+      select(-segment_count) %>%
       pivot_wider(
         names_from = !!sym(segments_col),
         values_from = pct,
         values_fill = 0
       )
+    
+    # Reorder columns: MetricDate, then segments in logical order, then n
+    # Only include segments that are actually present in the data
+    available_segments <- intersect(segment_order, names(summary_table))
+    column_order <- c("MetricDate", available_segments, "n")
+    
+    summary_table %>%
+      select(all_of(column_order))
       
   } else {
     stop("Please enter a valid input for `return`. Valid options are 'data', 'plot', or 'table'.")
