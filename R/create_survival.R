@@ -15,7 +15,7 @@
 #'   and `usage_metrics` are supplied
 #' - Privacy filtering via `mingroup`
 #'
-#' @template spq-params
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param time_col Character string containing the name of the time-to-event column.
 #' @param event_col Character string containing the name of the event indicator column.
 #'   Accepted forms:
@@ -259,6 +259,9 @@ create_survival_calc <- function(data,
   ## Ensure join key is stable
   df[[group_col]] <- as.character(df[[group_col]])
   
+  # Track original row count for warning
+  n_before <- nrow(df)
+  
   df <-
     df %>%
     dplyr::mutate(
@@ -266,6 +269,15 @@ create_survival_calc <- function(data,
       .event = .coerce_event(.data[[event_col]])
     ) %>%
     dplyr::filter(!is.na(.data$.time), !is.na(.data$.event))
+  
+  n_after <- nrow(df)
+  n_dropped <- n_before - n_after
+  
+  # Warn if coercion dropped rows
+  if (n_dropped > 0) {
+    warning(n_dropped, " row(s) dropped due to NA values in time or event columns after coercion. ",
+            "Original rows: ", n_before, ", remaining: ", n_after, ".")
+  }
   
   ## Group counts for mingroup (unique ids if possible, else row counts)
   if(!is.null(id_col) && is.character(id_col) && id_col %in% names(df)){
