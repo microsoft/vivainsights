@@ -2,53 +2,22 @@
 % Please edit documentation in R/create_radar.R
 \name{create_radar_viz}
 \alias{create_radar_viz}
-\title{create_radar_viz}
+\title{Radar Chart (Visualization)}
 \usage{
-create_radar_viz(
-  segment_level_indexed,
-  metrics,
-  segment_col = "UsageSegments_12w",
-  figsize = c(8, 6),
-  title = NULL,
-  subtitle = NULL,
-  caption = NULL,
-  legend_loc = "upper right",
-  legend_bbox_to_anchor = c(1.3, 1.1),
-  alpha_fill = 0.1,
-  linewidth = 1.5,
-  order = NULL,
-  fill_missing_with_plot = c("zero", "nan")
-)
+create_radar_viz(data, metrics, segment_col, fill_missing = "zero")
 }
 \arguments{
-\item{segment_level_indexed}{data.frame with one row per segment; includes segment_col and metrics}
+\item{data}{Output table from \code{create_radar_calc()}.}
 
-\item{metrics}{ordered character vector of metric columns to plot around the radar}
+\item{metrics}{Character vector of metric column names.}
 
-\item{segment_col}{character; segment label column (default "UsageSegments_12w")}
+\item{segment_col}{Character string of grouping column name.}
 
-\item{figsize}{numeric length-2; used when saving (ggplot objects are size-less)}
-
-\item{title, subtitle, caption}{character strings for standard ggplot annotations}
-
-\item{legend_loc}{e.g., "upper right","upper left","right","top", etc.}
-
-\item{legend_bbox_to_anchor}{kept for API parity; ignored for inside placement}
-
-\item{alpha_fill}{numeric fill alpha (default 0.10)}
-
-\item{linewidth}{numeric line width for outlines (default 1.5)}
-
-\item{order}{optional character vector of segment order}
-
-\item{fill_missing_with_plot}{"zero" (default) or "nan" (leave NA) for polygon closure}
+\item{fill_missing}{Character. If "zero" (default), fill NA values as 0 for plotting.}
 }
 \value{
-ggplot object
+ggplot object.
 }
 \description{
-Render a radar (spider) chart from the wide, segment-level table produced by
-create_radar_calc(). Each row is plotted as a polygon across the supplied metrics.
-Formatting is aligned with create_bar: standard ggplot title/subtitle/caption,
-no custom header decorations.
+Renders a multi-group radar chart using \code{ggplot2} + \code{coord_polar()}.
 }

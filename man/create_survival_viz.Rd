@@ -2,45 +2,25 @@
 % Please edit documentation in R/create_survival.R
 \name{create_survival_viz}
 \alias{create_survival_viz}
-\title{Render 'Kaplan-Meier survival plot}
+\title{Kaplan–Meier Survival Curve (Visualization)}
 \usage{
 create_survival_viz(
-  survival_long,
-  group_col = "UsageSegments_12w",
-  figsize = c(8, 6),
-  title = NULL,
-  subtitle = NULL,
-  caption = NULL,
-  legend_loc = "upper right",
-  legend_bbox_to_anchor = c(1.3, 1.1),
-  order = NULL,
-  linewidth = 2,
-  missing_draw = c("nan", "one")
+  data,
+  group_col = "group",
+  title = "Survival Curve",
+  subtitle = "Kaplan–Meier estimate"
 )
 }
 \arguments{
-\item{survival_long}{Data frame returned by create_survival_calc (long format).}
+\item{data}{Long survival table produced by \code{create_survival_calc()}.}
 
-\item{group_col}{Character. Name of the group/segment column in \code{survival_long}.}
+\item{group_col}{Character. Group column name in \code{data}.}
 
-\item{figsize}{Numeric length-2; used for saving (ggplot objects are size-less).}
-
-\item{title, subtitle, caption}{Character strings for ggplot annotations.}
-
-\item{legend_loc}{Legend placement keyword (e.g., "upper right").}
-
-\item{legend_bbox_to_anchor}{Numeric length-2; kept for API parity.}
-
-\item{order}{Optional character vector specifying group order to display.}
-
-\item{linewidth}{Numeric; line width for step curves.}
-
-\item{missing_draw}{Character; how to render requested-but-missing groups ("nan" or "one").}
+\item{title, subtitle}{Character. Plot annotations.}
 }
 \value{
 ggplot object.
 }
 \description{
-Render 'Kaplan-Meier step curves for each group using ggplot2. The plot
-includes standard title/subtitle/caption handling and optional legend placement.
+Renders a Kaplan–Meier step curve by group from a long-format survival table.
 }

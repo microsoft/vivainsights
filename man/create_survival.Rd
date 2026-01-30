@@ -2,108 +2,195 @@
 % Please edit documentation in R/create_survival.R
 \name{create_survival}
 \alias{create_survival}
-\title{High-level survival wrapper}
+\title{Kaplan–Meier Survival Curve}
 \usage{
 create_survival(
   data,
   time_col,
   event_col,
-  group_col = "UsageSegments_12w",
-  auto_segment_if_missing = TRUE,
-  identify_metric = NULL,
-  identify_metric_str = NULL,
-  identify_version = "12w",
-  threshold = NULL,
-  width = NULL,
-  max_window = NULL,
-  power_thres = NULL,
+  group_col = NULL,
+  usage_metrics = NULL,
+  usage_version = "12w",
   id_col = "PersonId",
-  required_segments = NULL,
-  synonyms_map = NULL,
-  enforce_required_segments = TRUE,
   mingroup = 5,
-  timeline = NULL,
   dropna = TRUE,
-  use_survival = TRUE,
-  return_type = c("plot", "table"),
-  figsize = c(8, 6),
-  title = "Survival Curve by Segment",
-  subtitle = "'Kaplan-Meier estimate",
-  caption_from_date_range = TRUE,
-  caption_text = NULL,
-  legend_loc = "upper right",
-  legend_bbox_to_anchor = c(1.3, 1.1),
-  linewidth = 2,
-  missing_draw = c("nan", "one")
+  return = "plot"
 )
 }
 \arguments{
-\item{data}{Data frame with time, event, and optional segmentation columns.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{time_col}{Character. Column name for time-to-event.}
+\item{time_col}{Character string containing the name of the time-to-event column.}
 
-\item{event_col}{Character. Column name for event indicator (1=event, 0=censored).}
+\item{event_col}{Character string containing the name of the event indicator column.
+Accepted forms:
+\itemize{
+\item Logical (TRUE/FALSE)
+\item Numeric 0/1
+\item Numeric event-like (>=0): values >0 treated as event, 0 as censored
+\item Character tokens ("true"/"false", "yes"/"no", "1"/"0")
+}}
 
-\item{group_col}{Character or NULL. Group/segment column name (default: "UsageSegments_12w").}
+\item{group_col}{Character string containing the name of the grouping column.
+Supply \code{NULL} (without quotes) to compute an overall curve. If \code{group_col = NULL}
+and \code{usage_metrics} are supplied, grouping is inferred from \code{identify_usage_segments()}.}
 
-\item{auto_segment_if_missing}{Logical; if TRUE, tries vivainsights::identify_usage_segments() when group_col missing.}
+\item{usage_metrics}{Character vector of metric column name(s) to be used in
+\code{identify_usage_segments()} when \code{group_col = NULL}.}
 
-\item{identify_metric}{Single metric name used for auto-segmentation.}
+\item{usage_version}{String passed to \code{identify_usage_segments(version = ...)}, e.g. \code{"12w"} or \code{"4w"}.}
 
-\item{identify_metric_str}{Character vector of metric names to sum for segmentation.}
+\item{id_col}{Character string containing the name of the person identifier column used for
+distinct counts in privacy filtering (\code{mingroup}). Defaults to \code{"PersonId"}.}
 
-\item{identify_version}{Version string passed to identify_usage_segments (default "12w").}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
-\item{threshold, width, max_window, power_thres}{Reserved / passed to identify (optional tuning args).}
+\item{dropna}{A logical value indicating whether \code{NA} should be stripped before computation proceeds.
+Defaults to \code{TRUE}.}
 
-\item{id_col}{Character. Person ID column (default: "PersonId").}
+\item{return}{String specifying what to return. This must be one of:
+\itemize{
+\item \code{"plot"} (default)
+\item \code{"table"}
+}}
 
-\item{required_segments}{Character vector of canonical segments to enforce.}
-
-\item{synonyms_map}{Named vector mapping variants -> canonical labels.}
-
-\item{enforce_required_segments}{Logical; if TRUE, force required segment ordering.}
-
-\item{mingroup}{Minimum unique people to retain a group (default: 5).}
-
-\item{timeline}{Numeric or NULL. Time points for survival evaluation.}
-
-\item{dropna}{Logical. Drop NA time/event rows when TRUE (default TRUE).}
-
-\item{use_survival}{Logical. Reserved for future extension.}
-
-\item{return_type}{"plot" or "table" (default: "plot").}
-
-\item{figsize}{Numeric length-2 for saved figure size.}
-
-\item{title, subtitle, caption_text}{Plot annotation strings.}
-
-\item{caption_from_date_range}{Logical; if TRUE and vivainsights available, append date-range to caption.}
-
-\item{legend_loc}{Legend placement keyword.}
-
-\item{legend_bbox_to_anchor}{Kept for API parity.}
-
-\item{linewidth}{Numeric line width for plot curves.}
-
-\item{missing_draw}{Character. How to draw requested-but-missing groups ("nan" or "one").}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 }
 \value{
-If \code{return_type = "table"}: data.frame with columns (group, time, survival, at_risk, events).
-If \code{return_type = "plot"}: ggplot2 object with 'Kaplan-Meier curves.
+A different output is returned depending on the value passed to the \code{return} argument:
+\itemize{
+\item \code{"plot"}: 'ggplot' object. A Kaplan–Meier survival curve by group.
+\item \code{"table"}: data frame. A long-format survival table by group.
+}
 }
 \description{
-Compute and return 'Kaplan-Meier survival estimates either as a long-format
-table or as a ggplot object. Supports optional auto-segmentation via
-vivainsights::identify_usage_segments(), canonicalization of segment labels,
-and enforcement of required segment ordering for plotting.
+Computes Kaplan–Meier survival curves and returns a step-function survival plot by default,
+with an option to return the underlying long-format survival table.
+
+Supports:
+\itemize{
+\item Flexible grouping via \code{group_col}
+\item Optional usage segmentation via \code{identify_usage_segments()} when \code{group_col = NULL}
+and \code{usage_metrics} are supplied
+\item Privacy filtering via \code{mingroup}
+}
 }
 \examples{
-\dontrun{
-pq <- load_pq_data()
-# Table output
-tbl <- create_survival(pq, time_col = "Days_active", event_col = "Churned", return_type = "table")
-# Plot output
-p <- create_survival(pq, time_col = "Days_active", event_col = "Churned")
+# \dontrun{
+# library(vivainsights)
+# data("pq_data", package = "vivainsights")
+#
+# # Overall curve (no grouping)
+# create_survival(pq_data,
+#   time_col  = "Active_connected_hours",
+#   event_col = "Days_of_active_Copilot_chat__work__usage",
+#   group_col = NULL,
+#   mingroup = 1
+# )
+#
+# # Grouping by an existing column
+# create_survival(pq_data,
+#   time_col  = "Active_connected_hours",
+#   event_col = "Days_of_active_Copilot_chat__work__usage",
+#   group_col = "Organization",
+#   mingroup = 1
+# )
+#
+# # Derive usage segments (grouping inferred from identify_usage_segments)
+# create_survival(pq_data,
+#   time_col  = "Active_connected_hours",
+#   event_col = "Days_of_active_Copilot_chat__work__usage",
+#   group_col = NULL,
+#   usage_metrics = c("Copilot_actions_taken_in_Teams", "Copilot_actions_taken_in_Outlook"),
+#   usage_version = "12w",
+#   mingroup = 1
+# )
+# }
 }
+\seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_inc}()},
+\code{\link{create_line}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
+\code{\link{create_rank}()},
+\code{\link{create_rogers}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_tracking}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_dist}()},
+\code{\link{external_fizz}()},
+\code{\link{external_line}()},
+\code{\link{external_rank}()},
+\code{\link{external_sum}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()}
+
+Other Flexible: 
+\code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_density}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_hist}()},
+\code{\link{create_inc}()},
+\code{\link{create_line}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_tracking}()},
+\code{\link{create_trend}()}
 }
+\concept{Flexible}
+\concept{Visualization}

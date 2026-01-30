@@ -2,96 +2,193 @@
 % Please edit documentation in R/create_radar.R
 \name{create_radar}
 \alias{create_radar}
-\title{create_radar}
+\title{Radar Chart for multiple metrics}
 \usage{
 create_radar(
   data,
   metrics,
-  segment_col = "UsageSegments_12w",
-  person_id_col = "PersonId",
-  auto_segment_if_missing = TRUE,
-  identify_metric = "Copilot_actions_taken_in_Teams",
-  identify_version = "4w",
+  segment_col = NULL,
+  id_col = "PersonId",
+  date_col = "MetricDate",
   mingroup = 5,
-  agg = c("mean", "median"),
-  index_mode = c("total", "none", "ref_group", "minmax"),
+  agg = "mean",
+  index_mode = "total",
   index_ref_group = NULL,
   dropna = FALSE,
-  required_segments = NULL,
-  synonyms_map = NULL,
-  enforce_required_segments = TRUE,
-  auto_relax_mingroup = TRUE,
-  fill_missing_with_plot = c("zero", "nan"),
-  return_type = c("plot", "table"),
-  figsize = c(8, 6),
-  title = "Behavioral Profiles by Segment",
-  subtitle = "Copilot usage radar chart",
-  caption_from_date_range = TRUE,
-  caption_text = NULL,
-  legend_loc = "upper right",
-  legend_bbox_to_anchor = c(1.3, 1.1),
-  alpha_fill = 0.1,
-  linewidth = 1.5
+  return = "plot"
 )
 }
 \arguments{
-\item{data}{data.frame with metrics, person_id_col, and either segment_col or enough data for auto-segmentation}
+\item{data}{A Standard Person Query dataset in the form of a data frame.}
 
-\item{metrics}{character vector of numeric metric columns (order is the radar axis order)}
+\item{metrics}{Character vector of metric column names.}
 
-\item{segment_col}{character; segment label column (default "UsageSegments_12w")}
+\item{segment_col}{Character string specifying the grouping column.
+If \code{NULL}, usage segments will be derived via \code{identify_usage_segments()}.}
 
-\item{person_id_col}{character; unique person ID column (default "PersonId")}
+\item{id_col}{Character string containing the person identifier column name.
+Defaults to \code{"PersonId"}.}
 
-\item{auto_segment_if_missing}{logical; if TRUE and segment_col missing, uses vivainsights::identify_usage_segments()}
+\item{date_col}{Character string containing the date column name required for
+auto-segmentation. Defaults to \code{"MetricDate"}.}
 
-\item{identify_metric}{metric used by vivainsights::identify_usage_segments()}
+\item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
+Defaults to 5.}
 
-\item{identify_version}{optional version for identify_usage_segments()}
+\item{agg}{String specifying aggregation method. Either \code{"mean"} (default) or \code{"median"}.}
 
-\item{mingroup}{minimum unique people per segment (default 5)}
+\item{index_mode}{String specifying indexing mode. One of:
+\itemize{
+\item \code{"total"} (default): Total = 100 for each metric
+\item \code{"none"}: no indexing (raw group values)
+\item \code{"ref_group"}: reference group = 100 (requires \code{index_ref_group})
+\item \code{"minmax"}: scale to \link{0,100} within observed group ranges per metric
+}}
 
-\item{agg}{"mean" or "median"}
+\item{index_ref_group}{Character string specifying reference group name when
+\code{index_mode = "ref_group"}.}
 
-\item{index_mode}{"total","none","ref_group","minmax"}
+\item{dropna}{Logical value indicating whether NA rows in required columns are removed
+prior to aggregation. Defaults to \code{FALSE}.}
 
-\item{index_ref_group}{required if index_mode == "ref_group"}
+\item{return}{String specifying what to return. One of:
+\itemize{
+\item \code{"plot"} (default)
+\item \code{"table"}
+}}
 
-\item{dropna}{logical; drop NAs prior to aggregation (default FALSE)}
-
-\item{required_segments}{ensure these segments exist (default = canonical order)}
-
-\item{synonyms_map}{named vector mapping variants -> canonical}
-
-\item{enforce_required_segments}{logical; add NA rows for missing segments}
-
-\item{auto_relax_mingroup}{logical; if missing segments, recompute with mingroup=1}
-
-\item{fill_missing_with_plot}{"zero" or "nan" for polygon closure only}
-
-\item{return_type}{"plot" (default) or "table"}
-
-\item{figsize}{numeric length-2 (width,height) in inches; used when saving}
-
-\item{title, subtitle}{character strings}
-
-\item{caption_from_date_range}{logical; if TRUE and vivainsights available, appends extract_date_range()}
-
-\item{caption_text}{extra caption text; concatenated with date-range if present}
-
-\item{legend_loc}{legend location keyword}
-
-\item{legend_bbox_to_anchor}{kept for API parity}
-
-\item{alpha_fill}{numeric fill alpha}
-
-\item{linewidth}{numeric outline width}
+\item{hrvar}{String containing the name of the HR Variable by which to split
+metrics. Defaults to \code{"Organization"}. To run the analysis on the total
+instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 }
 \value{
-ggplot object (plot) or data.frame (table)
+A different output is returned depending on the value passed to \code{return}:
+\itemize{
+\item \code{"plot"}: ggplot object (radar chart)
+\item \code{"table"}: data frame (group-level indexed table)
+}
 }
 \description{
-High-level wrapper: compute segment-level metrics and either
-(a) return the indexed table (return_type="table"), or
-(b) render a radar chart (return_type="plot").
+Creates a multi-group radar (spider) chart across a set of metrics.
+
+Core pipeline (kept intact):
+\enumerate{
+\item Person-level aggregation within group
+\item Group-level aggregation
+\item Privacy filtering via \code{mingroup}
+\item Optional indexing modes: "total", "none", "ref_group", "minmax"
 }
+
+Optional auto-segmentation:
+\itemize{
+\item If \code{segment_col} is not supplied, the function will call
+\code{identify_usage_segments()} and infer the resulting segment column (no
+hardcoded segment labels or RL12 ordering).
+}
+}
+\examples{
+# \dontrun{
+# library(vivainsights)
+# data("pq_data", package = "vivainsights")
+#
+# # Pre-computed grouping column
+# create_radar(
+#   data = pq_data,
+#   metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+#   segment_col = "Organization",
+#   mingroup = 1
+# )
+#
+# # Auto usage segmentation (segment_col omitted)
+# create_radar(
+#   data = pq_data,
+#   metrics = c("Copilot_actions_taken_in_Teams", "Copilot_actions_taken_in_Outlook"),
+#   mingroup = 1
+# )
+# }
+}
+\seealso{
+Other Visualization: 
+\code{\link{afterhours_dist}()},
+\code{\link{afterhours_fizz}()},
+\code{\link{afterhours_line}()},
+\code{\link{afterhours_rank}()},
+\code{\link{afterhours_summary}()},
+\code{\link{afterhours_trend}()},
+\code{\link{collaboration_area}()},
+\code{\link{collaboration_dist}()},
+\code{\link{collaboration_fizz}()},
+\code{\link{collaboration_line}()},
+\code{\link{collaboration_rank}()},
+\code{\link{collaboration_sum}()},
+\code{\link{collaboration_trend}()},
+\code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_inc}()},
+\code{\link{create_line}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_rogers}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_survival}()},
+\code{\link{create_tracking}()},
+\code{\link{create_trend}()},
+\code{\link{email_dist}()},
+\code{\link{email_fizz}()},
+\code{\link{email_line}()},
+\code{\link{email_rank}()},
+\code{\link{email_summary}()},
+\code{\link{email_trend}()},
+\code{\link{external_dist}()},
+\code{\link{external_fizz}()},
+\code{\link{external_line}()},
+\code{\link{external_rank}()},
+\code{\link{external_sum}()},
+\code{\link{hr_trend}()},
+\code{\link{hrvar_count}()},
+\code{\link{hrvar_trend}()},
+\code{\link{keymetrics_scan}()},
+\code{\link{meeting_dist}()},
+\code{\link{meeting_fizz}()},
+\code{\link{meeting_line}()},
+\code{\link{meeting_rank}()},
+\code{\link{meeting_summary}()},
+\code{\link{meeting_trend}()},
+\code{\link{one2one_dist}()},
+\code{\link{one2one_fizz}()},
+\code{\link{one2one_freq}()},
+\code{\link{one2one_line}()},
+\code{\link{one2one_rank}()},
+\code{\link{one2one_sum}()},
+\code{\link{one2one_trend}()}
+
+Other Flexible: 
+\code{\link{create_bar}()},
+\code{\link{create_bar_asis}()},
+\code{\link{create_boxplot}()},
+\code{\link{create_bubble}()},
+\code{\link{create_density}()},
+\code{\link{create_dist}()},
+\code{\link{create_fizz}()},
+\code{\link{create_hist}()},
+\code{\link{create_inc}()},
+\code{\link{create_line}()},
+\code{\link{create_line_asis}()},
+\code{\link{create_period_scatter}()},
+\code{\link{create_rank}()},
+\code{\link{create_sankey}()},
+\code{\link{create_scatter}()},
+\code{\link{create_stacked}()},
+\code{\link{create_survival}()},
+\code{\link{create_tracking}()},
+\code{\link{create_trend}()}
+}
+\concept{Flexible}
+\concept{Visualization}

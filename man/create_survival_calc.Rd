@@ -2,44 +2,41 @@
 % Please edit documentation in R/create_survival.R
 \name{create_survival_calc}
 \alias{create_survival_calc}
-\title{Compute 'Kaplan-Meier survival curves per group}
+\title{Kaplan–Meier Survival Curve (Calculation)}
 \usage{
 create_survival_calc(
   data,
   time_col,
   event_col,
-  group_col = "UsageSegments_12w",
+  group_col = NULL,
   id_col = "PersonId",
   mingroup = 5,
-  timeline = NULL,
-  dropna = TRUE,
-  use_survival = TRUE
+  dropna = TRUE
 )
 }
 \arguments{
-\item{data}{Data frame containing time, event and optional group columns.}
+\item{data}{data.frame.}
 
-\item{time_col}{Character. Name of the time-to-event column.}
+\item{time_col}{Character. Time-to-event column name.}
 
-\item{event_col}{Character. Name of the event indicator column (1=event, 0=censored).}
+\item{event_col}{Character. Event indicator column name.}
 
-\item{group_col}{Character or NULL. Group/segment column name (default: "UsageSegments_12w").}
+\item{group_col}{Character or NULL. Grouping column name.}
 
-\item{id_col}{Character. Person identifier column for distinct counts (default: "PersonId").}
+\item{id_col}{Character. Optional id column name for distinct counts.}
 
-\item{mingroup}{Integer. Minimum unique people required to keep a group (default: 5).}
+\item{mingroup}{Numeric. Minimum group size.}
 
-\item{timeline}{Numeric or NULL. Time points where survival is evaluated (default uses unique times).}
-
-\item{dropna}{Logical. Drop rows with NA in time/event when TRUE (default TRUE).}
-
-\item{use_survival}{Logical. Reserved for future use; currently ignored in this implementation.}
+\item{dropna}{Logical. Drop missing values in required columns.}
 }
 \value{
-A list with elements \code{survival_long} (data.frame) and \code{counts} (data.frame).
+A list with elements:
+\itemize{
+\item \code{table}: long survival table with columns (group, time, survival, at_risk, events, n)
+\item \code{counts}: group size table
+}
 }
 \description{
-Compute 'Kaplan-Meier survival curves for one or more groups (segments).
-Returns a list with a long-format survival table (group, time, survival, at_risk, events)
-and a counts table used for applying minimum-group filters.
+Computes a long-format Kaplan–Meier survival table by group and applies a minimum group
+size threshold (\code{mingroup}).
 }

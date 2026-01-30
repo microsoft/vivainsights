@@ -2,49 +2,42 @@
 % Please edit documentation in R/create_radar.R
 \name{create_radar_calc}
 \alias{create_radar_calc}
-\title{create_radar_calc}
+\title{Radar Chart (Calculation)}
 \usage{
 create_radar_calc(
   data,
   metrics,
-  segment_col = "UsageSegments_12w",
-  person_id_col = "PersonId",
+  segment_col,
+  id_col = "PersonId",
   mingroup = 5,
-  agg = c("mean", "median"),
-  index_mode = c("total", "none", "ref_group", "minmax"),
+  agg = "mean",
+  index_mode = "total",
   index_ref_group = NULL,
-  dropna = TRUE
+  dropna = FALSE
 )
 }
 \arguments{
-\item{data}{data.frame with metrics, segment_col, person_id_col}
+\item{data}{data.frame.}
 
-\item{metrics}{character vector of numeric metric column names}
+\item{metrics}{character vector of metric column names.}
 
-\item{segment_col}{segment label column}
+\item{segment_col}{character string specifying grouping column.}
 
-\item{person_id_col}{unique person identifier column}
+\item{id_col}{character string specifying person id column.}
 
-\item{mingroup}{minimum unique people per segment to retain}
+\item{mingroup}{numeric minimum unique people per group.}
 
-\item{agg}{"mean" or "median"}
+\item{agg}{"mean" or "median".}
 
-\item{index_mode}{one of "total","none","ref_group","minmax"}
+\item{index_mode}{"total","none","ref_group","minmax".}
 
-\item{index_ref_group}{required if index_mode == "ref_group"}
+\item{index_ref_group}{reference group name when index_mode="ref_group".}
 
-\item{dropna}{drop NAs in required columns before aggregation}
+\item{dropna}{logical.}
 }
 \value{
-list(table = segment_level_indexed, ref = reference used)
+list(table=group_level_table, ref=reference_used)
 }
 \description{
-Compute segment-level metric values and (optionally) index them for radar plotting.
-Pipeline:
-\enumerate{
-\item person-level aggregation within segment (mean/median)
-\item segment-level aggregation across people
-\item enforce minimum group size
-\item apply indexing mode
-}
+Computes group-level metric values and applies optional indexing.
 }
