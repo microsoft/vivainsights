@@ -3,10 +3,10 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-#' @title Kaplan–Meier Survival Curve
+#' @title Kaplanâ€“Meier Survival Curve
 #'
 #' @description
-#' Computes Kaplan–Meier survival curves and returns a step-function survival plot by default,
+#' Computes Kaplanâ€“Meier survival curves and returns a step-function survival plot by default,
 #' with an option to return the underlying long-format survival table.
 #'
 #' Supports:
@@ -40,7 +40,7 @@
 #'
 #' @return
 #' A different output is returned depending on the value passed to the `return` argument:
-#'   - `"plot"`: 'ggplot' object. A Kaplan–Meier survival curve by group.
+#'   - `"plot"`: 'ggplot' object. A Kaplanâ€“Meier survival curve by group.
 #'   - `"table"`: data frame. A long-format survival table by group.
 #'
 #' @import dplyr
@@ -168,11 +168,11 @@ create_survival <- function(data,
     ## Titles
     if(is.null(group_col_for_calc)){
       ttl <- "Survival Curve"
-      sub <- "Kaplan–Meier estimate"
+      sub <- "Kaplan-Meier estimate"
       gcol <- "group"
     } else {
       ttl <- "Survival Curve by Group"
-      sub <- paste("Kaplan–Meier estimate by", group_col_for_calc)
+      sub <- paste("Kaplan-Meier estimate by", group_col_for_calc)
       gcol <- group_col_for_calc
     }
     
@@ -193,10 +193,10 @@ create_survival <- function(data,
 }
 
 
-#' @title Kaplan–Meier Survival Curve (Calculation)
+#' @title Kaplanâ€“Meier Survival Curve (Calculation)
 #'
 #' @description
-#' Computes a long-format Kaplan–Meier survival table by group and applies a minimum group
+#' Computes a long-format Kaplanâ€“Meier survival table by group and applies a minimum group
 #' size threshold (`mingroup`).
 #'
 #' @param data data.frame.
@@ -338,10 +338,10 @@ create_survival_calc <- function(data,
 }
 
 
-#' @title Kaplan–Meier Survival Curve (Visualization)
+#' @title Kaplanâ€“Meier Survival Curve (Visualization)
 #'
 #' @description
-#' Renders a Kaplan–Meier step curve by group from a long-format survival table.
+#' Renders a Kaplanâ€“Meier step curve by group from a long-format survival table.
 #'
 #' @param data Long survival table produced by `create_survival_calc()`.
 #' @param group_col Character. Group column name in `data`.
@@ -353,7 +353,7 @@ create_survival_calc <- function(data,
 create_survival_viz <- function(data,
                                 group_col = "group",
                                 title = "Survival Curve",
-                                subtitle = "Kaplan–Meier estimate"){
+                                subtitle = "Kaplanâ€“Meier estimate"){
   
   ggplot2::ggplot(
     data,
