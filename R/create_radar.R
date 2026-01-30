@@ -290,9 +290,21 @@ create_radar_calc <- function(data,
       apply(person_level[, metrics, drop = FALSE], 2, stats::median, na.rm = TRUE)
     }
     
+    # Check for zero denominators
+    zero_metrics <- names(ref)[ref == 0 | is.na(ref)]
+    if (length(zero_metrics) > 0) {
+      warning("Metric(s) with zero or NA reference values detected in 'total' mode: ",
+              paste(zero_metrics, collapse = ", "),
+              ". Setting indexed values to 100 (neutral baseline).")
+    }
+    
     for (m in metrics) {
       den <- ref[[m]]
-      out_tbl[[m]] <- (out_tbl[[m]] / den) * 100
+      if (is.na(den) || den == 0) {
+        out_tbl[[m]] <- 100  # Set to neutral baseline
+      } else {
+        out_tbl[[m]] <- (out_tbl[[m]] / den) * 100
+      }
     }
     
   } else if (index_mode == "ref_group") {
@@ -308,9 +320,21 @@ create_radar_calc <- function(data,
     ref <- as.numeric(ref_row[, metrics, drop = FALSE])
     names(ref) <- metrics
     
+    # Check for zero denominators
+    zero_metrics <- names(ref)[ref == 0 | is.na(ref)]
+    if (length(zero_metrics) > 0) {
+      warning("Metric(s) with zero or NA values in reference group '", index_ref_group, "': ",
+              paste(zero_metrics, collapse = ", "),
+              ". Setting indexed values to 100 (neutral baseline).")
+    }
+    
     for (m in metrics) {
       den <- ref[[m]]
-      out_tbl[[m]] <- (out_tbl[[m]] / den) * 100
+      if (is.na(den) || den == 0) {
+        out_tbl[[m]] <- 100  # Set to neutral baseline
+      } else {
+        out_tbl[[m]] <- (out_tbl[[m]] / den) * 100
+      }
     }
     
   } else if (index_mode == "minmax") {

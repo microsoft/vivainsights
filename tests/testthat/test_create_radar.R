@@ -425,3 +425,101 @@ test_that("create_radar works with many metrics", {
   
   expect_s3_class(result, "ggplot")
 })
+
+# Zero denominator handling tests ---------------------------------------------------------
+
+test_that("create_radar handles zero denominator in 'total' mode with warning", {
+  
+  test_data <- pq_data
+  test_data[["Zero_Metric"]] <- 0
+  
+  expect_warning(
+    result <- create_radar(
+      data = test_data,
+      metrics = c("Collaboration_hours", "Zero_Metric"),
+      segment_col = "Organization",
+      mingroup = 1,
+      index_mode = "total",
+      return = "table"
+    ),
+    "zero or NA reference values"
+  )
+  
+  # Check that zero metric is set to 100 (neutral baseline)
+  expect_true(all(result$Zero_Metric == 100, na.rm = TRUE))
+  
+  # Check that other metric is still indexed normally
+  expect_true(any(result$Collaboration_hours != 100))
+  
+  # Check no NaN values
+  expect_false(any(is.nan(result$Zero_Metric)))
+})
+
+test_that("create_radar handles zero denominator in 'ref_group' mode with warning", {
+  
+  test_data <- pq_data
+  test_data[["Zero_Metric"]] <- 0
+  
+  expect_warning(
+    result <- create_radar(
+      data = test_data,
+      metrics = c("Collaboration_hours", "Zero_Metric"),
+      segment_col = "Organization",
+      mingroup = 1,
+      index_mode = "ref_group",
+      index_ref_group = "Finance",
+      return = "table"
+    ),
+    "zero or NA values in reference group"
+  )
+  
+  # Check that zero metric is set to 100 (neutral baseline)
+  expect_true(all(result$Zero_Metric == 100, na.rm = TRUE))
+  
+  # Check no NaN values
+  expect_false(any(is.nan(result$Zero_Metric)))
+})
+
+test_that("create_radar handles multiple zero metrics", {
+  
+  test_data <- pq_data
+  test_data[["Zero_Metric_1"]] <- 0
+  test_data[["Zero_Metric_2"]] <- 0
+  
+  expect_warning(
+    result <- create_radar(
+      data = test_data,
+      metrics = c("Collaboration_hours", "Zero_Metric_1", "Zero_Metric_2"),
+      segment_col = "Organization",
+      mingroup = 1,
+      index_mode = "total",
+      return = "table"
+    ),
+    "Zero_Metric_1, Zero_Metric_2"
+  )
+  
+  # Both zero metrics should be set to 100
+  expect_true(all(result$Zero_Metric_1 == 100, na.rm = TRUE))
+  expect_true(all(result$Zero_Metric_2 == 100, na.rm = TRUE))
+})
+
+test_that("create_radar handles NA denominator gracefully", {
+  
+  test_data <- pq_data
+  test_data[["NA_Metric"]] <- NA_real_
+  
+  expect_warning(
+    result <- create_radar(
+      data = test_data,
+      metrics = c("Collaboration_hours", "NA_Metric"),
+      segment_col = "Organization",
+      mingroup = 1,
+      index_mode = "total",
+      return = "table"
+    ),
+    "zero or NA reference values"
+  )
+  
+  # NA metric should be set to 100
+  expect_true(all(result$NA_Metric == 100, na.rm = TRUE))
+})
