@@ -19,7 +19,7 @@
 #'   `identify_usage_segments()` and infer the resulting segment column (no
 #'   hardcoded segment labels or RL12 ordering).
 #'
-#' @template spq-params
+#' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metrics Character vector of metric column names.
 #' @param segment_col Character string specifying the grouping column.
 #'   If `NULL`, usage segments will be derived via `identify_usage_segments()`.
@@ -341,7 +341,9 @@ create_radar_calc <- function(data,
 #' @param data Output table from `create_radar_calc()`.
 #' @param metrics Character vector of metric column names.
 #' @param segment_col Character string of grouping column name.
-#' @param fill_missing Character. If "zero" (default), fill NA values as 0 for plotting.
+#' @param fill_missing Character string specifying how to handle missing values.
+#'   If `"zero"` (default), fill NA values as 0 for plotting. This ensures
+#'   polygons close properly in the radar visualization.
 #'
 #' @return ggplot object.
 #'
@@ -350,6 +352,12 @@ create_radar_viz <- function(data,
                              metrics,
                              segment_col,
                              fill_missing = "zero") {
+  
+  # Warn if too few metrics for effective radar chart
+  if (length(metrics) < 3) {
+    warning("Radar charts work best with 3 or more metrics. ",
+            "Consider using a different visualization for ", length(metrics), " metric(s).")
+  }
   
   # Long format
   plot_df <-

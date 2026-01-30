@@ -13,7 +13,9 @@ create_radar_viz(data, metrics, segment_col, fill_missing = "zero")
 
 \item{segment_col}{Character string of grouping column name.}
 
-\item{fill_missing}{Character. If "zero" (default), fill NA values as 0 for plotting.}
+\item{fill_missing}{Character string specifying how to handle missing values.
+If \code{"zero"} (default), fill NA values as 0 for plotting. This ensures
+polygons close properly in the radar visualization.}
 }
 \value{
 ggplot object.

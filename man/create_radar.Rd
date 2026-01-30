@@ -56,10 +56,6 @@ prior to aggregation. Defaults to \code{FALSE}.}
 \item \code{"plot"} (default)
 \item \code{"table"}
 }}
-
-\item{hrvar}{String containing the name of the HR Variable by which to split
-metrics. Defaults to \code{"Organization"}. To run the analysis on the total
-instead of splitting by an HR attribute, supply \code{NULL} (without quotes).}
 }
 \value{
 A different output is returned depending on the value passed to \code{return}:
