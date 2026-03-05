@@ -15,6 +15,8 @@
 #' collaboration weeks from your dataset.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param sd The standard deviation below the mean for collaboration hours that
 #'   should define an outlier week. Enter a positive number. Default is 1
 #'   standard deviation.

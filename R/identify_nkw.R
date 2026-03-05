@@ -14,6 +14,8 @@
 #' added.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param collab_threshold Positive numeric value representing the collaboration
 #'   hours threshold that should be exceeded as an average for the entire
 #'   analysis period for the employee to be categorized as a knowledge worker

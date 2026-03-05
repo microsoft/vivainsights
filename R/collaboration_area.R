@@ -15,6 +15,8 @@
 #' and `Instant_Message_hours`.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' A Ways of Working assessment dataset may also be provided, in which
 #' Unscheduled call hours would be included in the output.
 #' @param hrvar HR Variable by which to split metrics, defaults to `NULL`, but

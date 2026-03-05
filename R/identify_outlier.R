@@ -13,6 +13,8 @@
 #' argument.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param group_var A string with the name of the grouping variable.
 #' Defaults to `Date`.
 #' @param metric Character string containing the name of the metric,
