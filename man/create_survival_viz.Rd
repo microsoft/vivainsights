@@ -6,7 +6,7 @@
 \usage{
 create_survival_viz(
   data,
-  group_col = "group",
+  hrvar = "group",
   title = "Survival Curve",
   subtitle = "Kaplan–Meier estimate"
 )
@@ -14,7 +14,7 @@ create_survival_viz(
 \arguments{
 \item{data}{Long survival table produced by \code{create_survival_calc()}.}
 
-\item{group_col}{Character. Group column name in \code{data}.}
+\item{hrvar}{Character. Group column name in \code{data}.}
 
 \item{title, subtitle}{Character. Plot annotations.}
 }

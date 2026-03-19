@@ -8,10 +8,10 @@ create_survival_calc(
   data,
   time_col,
   event_col,
-  group_col = NULL,
+  hrvar = NULL,
   id_col = "PersonId",
   mingroup = 5,
-  dropna = TRUE
+  na.rm = TRUE
 )
 }
 \arguments{
@@ -21,13 +21,13 @@ create_survival_calc(
 
 \item{event_col}{Character. Event indicator column name.}
 
-\item{group_col}{Character or NULL. Grouping column name.}
+\item{hrvar}{Character or NULL. Grouping column name.}
 
 \item{id_col}{Character. Optional id column name for distinct counts.}
 
 \item{mingroup}{Numeric. Minimum group size.}
 
-\item{dropna}{Logical. Drop missing values in required columns.}
+\item{na.rm}{Logical. Drop missing values in required columns.}
 }
 \value{
 A list with elements:

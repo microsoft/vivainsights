@@ -8,17 +8,17 @@ create_survival(
   data,
   time_col,
   event_col,
-  group_col = NULL,
+  hrvar = NULL,
   usage_metrics = NULL,
   usage_version = "12w",
-  id_col = "PersonId",
   mingroup = 5,
-  dropna = TRUE,
+  na.rm = TRUE,
   return = "plot"
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A person-level data frame with one row per person, as produced by
+\code{\link{create_survival_prep}}.}
 
 \item{time_col}{Character string containing the name of the time-to-event column.}
 
@@ -31,21 +31,18 @@ Accepted forms:
 \item Character tokens ("true"/"false", "yes"/"no", "1"/"0")
 }}
 
-\item{group_col}{Character string containing the name of the grouping column.
-Supply \code{NULL} (without quotes) to compute an overall curve. If \code{group_col = NULL}
+\item{hrvar}{Character string containing the name of the grouping column.
+Supply \code{NULL} (without quotes) to compute an overall curve. If \code{hrvar = NULL}
 and \code{usage_metrics} are supplied, grouping is inferred from \code{identify_usage_segments()}.}
 
 \item{usage_metrics}{Character vector of metric column name(s) to be used in
-\code{identify_usage_segments()} when \code{group_col = NULL}.}
+\code{identify_usage_segments()} when \code{hrvar = NULL}.}
 
 \item{usage_version}{String passed to \code{identify_usage_segments(version = ...)}, e.g. \code{"12w"} or \code{"4w"}.}
 
-\item{id_col}{Character string containing the name of the person identifier column used for
-distinct counts in privacy filtering (\code{mingroup}). Defaults to \code{"PersonId"}.}
-
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
-\item{dropna}{A logical value indicating whether \code{NA} should be stripped before computation proceeds.
+\item{na.rm}{A logical value indicating whether \code{NA} should be stripped before computation proceeds.
 Defaults to \code{TRUE}.}
 
 \item{return}{String specifying what to return. This must be one of:
@@ -67,43 +64,44 @@ with an option to return the underlying long-format survival table.
 
 Supports:
 \itemize{
-\item Flexible grouping via \code{group_col}
-\item Optional usage segmentation via \code{identify_usage_segments()} when \code{group_col = NULL}
+\item Flexible grouping via \code{hrvar}
+\item Optional usage segmentation via \code{identify_usage_segments()} when \code{hrvar = NULL}
 and \code{usage_metrics} are supplied
 \item Privacy filtering via \code{mingroup}
 }
+
+This function expects one row per person with a pre-computed time-to-event column
+and an event indicator. Use \code{\link{create_survival_prep}} to derive these
+from a Standard Person Query panel dataset.
 }
 \examples{
-# \dontrun{
-# library(vivainsights)
-# data("pq_data", package = "vivainsights")
-#
-# # Overall curve (no grouping)
-# create_survival(pq_data,
-#   time_col  = "Active_connected_hours",
-#   event_col = "Days_of_active_Copilot_chat__work__usage",
-#   group_col = NULL,
-#   mingroup = 1
-# )
-#
-# # Grouping by an existing column
-# create_survival(pq_data,
-#   time_col  = "Active_connected_hours",
-#   event_col = "Days_of_active_Copilot_chat__work__usage",
-#   group_col = "Organization",
-#   mingroup = 1
-# )
-#
-# # Derive usage segments (grouping inferred from identify_usage_segments)
-# create_survival(pq_data,
-#   time_col  = "Active_connected_hours",
-#   event_col = "Days_of_active_Copilot_chat__work__usage",
-#   group_col = NULL,
-#   usage_metrics = c("Copilot_actions_taken_in_Teams", "Copilot_actions_taken_in_Outlook"),
-#   usage_version = "12w",
-#   mingroup = 1
-# )
-# }
+\dontrun{
+library(vivainsights)
+data("pq_data", package = "vivainsights")
+
+# Step 1: convert panel data to person-level survival format
+surv_data <- create_survival_prep(
+  data = pq_data,
+  metric = "Copilot_actions_taken_in_Teams"
+)
+
+# Step 2: plot Kaplan-Meier curves by organisation
+create_survival(
+  data = surv_data,
+  time_col = "time",
+  event_col = "event",
+  hrvar = "Organization"
+)
+
+# Return the survival table instead
+create_survival(
+  data = surv_data,
+  time_col = "time",
+  event_col = "event",
+  hrvar = "Organization",
+  return = "table"
+)
+}
 }
 \seealso{
 Other Visualization: 
