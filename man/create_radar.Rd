@@ -7,14 +7,12 @@
 create_radar(
   data,
   metrics,
-  segment_col = NULL,
-  id_col = "PersonId",
-  date_col = "MetricDate",
+  hrvar = "Organization",
   mingroup = 5,
   agg = "mean",
   index_mode = "total",
   index_ref_group = NULL,
-  dropna = FALSE,
+  na.rm = FALSE,
   return = "plot"
 )
 }
@@ -23,14 +21,9 @@ create_radar(
 
 \item{metrics}{Character vector of metric column names.}
 
-\item{segment_col}{Character string specifying the grouping column.
-If \code{NULL}, usage segments will be derived via \code{identify_usage_segments()}.}
-
-\item{id_col}{Character string containing the person identifier column name.
-Defaults to \code{"PersonId"}.}
-
-\item{date_col}{Character string containing the date column name required for
-auto-segmentation. Defaults to \code{"MetricDate"}.}
+\item{hrvar}{Character string specifying the grouping column.
+Defaults to \code{"Organization"}. If \code{NULL}, usage segments will be derived
+via \code{identify_usage_segments()}.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size.
 Defaults to 5.}
@@ -42,13 +35,13 @@ Defaults to 5.}
 \item \code{"total"} (default): Total = 100 for each metric
 \item \code{"none"}: no indexing (raw group values)
 \item \code{"ref_group"}: reference group = 100 (requires \code{index_ref_group})
-\item \code{"minmax"}: scale to \link{0,100} within observed group ranges per metric
+\item \code{"minmax"}: scale to [0, 100] within observed group ranges per metric
 }}
 
 \item{index_ref_group}{Character string specifying reference group name when
 \code{index_mode = "ref_group"}.}
 
-\item{dropna}{Logical value indicating whether NA rows in required columns are removed
+\item{na.rm}{Logical value indicating whether NA rows in required columns are removed
 prior to aggregation. Defaults to \code{FALSE}.}
 
 \item{return}{String specifying what to return. One of:
@@ -67,7 +60,7 @@ A different output is returned depending on the value passed to \code{return}:
 \description{
 Creates a multi-group radar (spider) chart across a set of metrics.
 
-Core pipeline (kept intact):
+Core pipeline:
 \enumerate{
 \item Person-level aggregation within group
 \item Group-level aggregation
@@ -77,31 +70,26 @@ Core pipeline (kept intact):
 
 Optional auto-segmentation:
 \itemize{
-\item If \code{segment_col} is not supplied, the function will call
-\code{identify_usage_segments()} and infer the resulting segment column (no
-hardcoded segment labels or RL12 ordering).
+\item If \code{hrvar} is not supplied, the function will call
+\code{identify_usage_segments()} and infer the resulting segment column.
 }
 }
 \examples{
-# \dontrun{
-# library(vivainsights)
-# data("pq_data", package = "vivainsights")
-#
-# # Pre-computed grouping column
-# create_radar(
-#   data = pq_data,
-#   metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
-#   segment_col = "Organization",
-#   mingroup = 1
-# )
-#
-# # Auto usage segmentation (segment_col omitted)
-# create_radar(
-#   data = pq_data,
-#   metrics = c("Copilot_actions_taken_in_Teams", "Copilot_actions_taken_in_Outlook"),
-#   mingroup = 1
-# )
-# }
+create_radar(
+  data = pq_data,
+  metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar = "Organization",
+  mingroup = 1
+)
+
+# Return the indexed table instead of a plot
+create_radar(
+  data = pq_data,
+  metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar = "LevelDesignation",
+  mingroup = 1,
+  return = "table"
+)
 }
 \seealso{
 Other Visualization: 

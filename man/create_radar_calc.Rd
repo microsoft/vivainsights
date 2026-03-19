@@ -7,13 +7,13 @@
 create_radar_calc(
   data,
   metrics,
-  segment_col,
+  hrvar,
   id_col = "PersonId",
   mingroup = 5,
   agg = "mean",
   index_mode = "total",
   index_ref_group = NULL,
-  dropna = FALSE
+  na.rm = FALSE
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ create_radar_calc(
 
 \item{metrics}{character vector of metric column names.}
 
-\item{segment_col}{character string specifying grouping column.}
+\item{hrvar}{character string specifying grouping column.}
 
 \item{id_col}{character string specifying person id column.}
 
@@ -33,7 +33,7 @@ create_radar_calc(
 
 \item{index_ref_group}{reference group name when index_mode="ref_group".}
 
-\item{dropna}{logical.}
+\item{na.rm}{logical.}
 }
 \value{
 list(table=group_level_table, ref=reference_used)
