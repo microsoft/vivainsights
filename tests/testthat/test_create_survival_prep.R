@@ -211,3 +211,17 @@ test_that("create_survival_prep errors when event_condition returns non-logical"
     "`event_condition` must return a logical vector"
   )
 })
+
+test_that("create_survival_prep errors when event_condition returns wrong length", {
+  expect_error(
+    create_survival_prep(make_test_panel(), metric = "metric",
+                         event_condition = function(x) TRUE),
+    "one element per row"
+  )
+
+  expect_error(
+    create_survival_prep(make_test_panel(), metric = "metric",
+                         event_condition = function(x) c(TRUE, FALSE)),
+    "one element per row"
+  )
+})

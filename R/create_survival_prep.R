@@ -99,6 +99,13 @@ create_survival_prep <- function(data,
     stop("`event_condition` must return a logical vector.")
   }
 
+  if (length(flags) != nrow(df)) {
+    stop(
+      "`event_condition` must return a vector with one element per row of `data` (",
+      nrow(df), "), but returned ", length(flags), " element(s)."
+    )
+  }
+
   df$.event_flag <- flags
 
   hrvar_cols <- if (!is.null(hrvar)) hrvar else character(0)
