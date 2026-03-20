@@ -1,6 +1,8 @@
 # vivainsights (development version)
 
 * Aesthetic improvements to `create_rogers()`
+* Added `create_radar()` and `create_radar_viz()` for spider/radar chart visualisation, with support for flexible indexing modes (`total`, `ref_group`, `minmax`, `none`), privacy filtering, and group comparisons
+* Added `create_survival()`, `create_survival_prep()`, `create_survival_calc()`, and `create_survival_viz()` for Kaplan–Meier survival (time-to-adoption) curve analysis, supporting flexible event definitions and group comparisons
 
 # vivainsights 0.7.0
 
