@@ -426,7 +426,8 @@ create_radar_viz <- function(data,
   axis_labs <- .pretty_metric_names(metrics)
 
   ggplot2::ggplot(poly_df, ggplot2::aes(x = .data$metric_idx, y = .data$value, group = .data$seg)) +
-    ggplot2::geom_polygon(ggplot2::aes(fill = .data$seg), alpha = 0.10, colour = NA) +
+    ggplot2::geom_polygon(ggplot2::aes(fill = .data$seg), alpha = 0.10, colour = NA,
+                          show.legend = FALSE) +
     ggplot2::geom_path(ggplot2::aes(colour = .data$seg), linewidth = 1.2, lineend = "round") +
     ggplot2::coord_polar(theta = "x", start = pi/2, direction = -1) +
     ggplot2::scale_x_continuous(
@@ -434,7 +435,7 @@ create_radar_viz <- function(data,
       labels = axis_labs,
       expand = ggplot2::expansion(mult = c(0, 0))
     ) +
-    ggplot2::guides(fill = ggplot2::guide_legend(title = NULL), colour = ggplot2::guide_legend(title = NULL)) +
+    ggplot2::guides(colour = ggplot2::guide_legend(title = NULL)) +
     ggplot2::labs(title = "Radar chart", subtitle = paste("By", .pretty_hrvar_name(hrvar))) +
     .theme_wpa_safe() +
     ggplot2::theme(
