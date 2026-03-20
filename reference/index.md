@@ -130,6 +130,15 @@
 - [`create_period_scatter()`](https://microsoft.github.io/vivainsights/reference/create_period_scatter.md)
   : Period comparison scatter plot for any two metrics
 
+- [`create_radar()`](https://microsoft.github.io/vivainsights/reference/create_radar.md)
+  : Radar Chart for multiple metrics
+
+- [`create_radar_calc()`](https://microsoft.github.io/vivainsights/reference/create_radar_calc.md)
+  : Radar Chart (Calculation)
+
+- [`create_radar_viz()`](https://microsoft.github.io/vivainsights/reference/create_radar_viz.md)
+  : Radar Chart (Visualization)
+
 - [`create_rank()`](https://microsoft.github.io/vivainsights/reference/create_rank.md)
   : Rank all groups across HR attributes on a selected Viva Insights
   metric
@@ -149,6 +158,18 @@
 
 - [`create_stacked()`](https://microsoft.github.io/vivainsights/reference/create_stacked.md)
   : Horizontal stacked bar plot for any metric
+
+- [`create_survival()`](https://microsoft.github.io/vivainsights/reference/create_survival.md)
+  : Kaplan–Meier Survival Curve
+
+- [`create_survival_calc()`](https://microsoft.github.io/vivainsights/reference/create_survival_calc.md)
+  : Kaplan–Meier Survival Curve (Calculation)
+
+- [`create_survival_prep()`](https://microsoft.github.io/vivainsights/reference/create_survival_prep.md)
+  : Prepare Survival Data from a Panel Dataset
+
+- [`create_survival_viz()`](https://microsoft.github.io/vivainsights/reference/create_survival_viz.md)
+  : Kaplan–Meier Survival Curve (Visualization)
 
 - [`create_tracking()`](https://microsoft.github.io/vivainsights/reference/create_tracking.md)
   **\[experimental\]** : Create a line chart that tracks metrics over

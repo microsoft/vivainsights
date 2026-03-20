@@ -18,3 +18,7 @@
   R](https://microsoft.github.io/vivainsights/articles/network-analysis.md):
 - [Running pairwise chi-square tests with the \`vivainsights\` R
   library](https://microsoft.github.io/vivainsights/articles/pairwise-chisq.md):
+- [Radar Charts with
+  create_radar()](https://microsoft.github.io/vivainsights/articles/radar-charts.md):
+- [Survival Curves with
+  create_survival()](https://microsoft.github.io/vivainsights/articles/survival-curves.md):

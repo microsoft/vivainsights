@@ -269,15 +269,15 @@ network_p2p(data = p2p_df, community = "leiden", return = "table")
 #> # A tibble: 100 × 3
 #>    Organization cluster     n
 #>    <chr>        <chr>   <int>
-#>  1 Org A        13          1
+#>  1 Org A        14          1
 #>  2 Org A        20          1
-#>  3 Org A        27          1
-#>  4 Org A        34          1
-#>  5 Org A        41          1
-#>  6 Org A        48          1
-#>  7 Org A        55          1
-#>  8 Org A        61          1
-#>  9 Org A        68          1
+#>  3 Org A        26          1
+#>  4 Org A        32          1
+#>  5 Org A        38          1
+#>  6 Org A        45          1
+#>  7 Org A        52          1
+#>  8 Org A        58          1
+#>  9 Org A        64          1
 #> 10 Org A        7           1
 #> # ℹ 90 more rows
 
@@ -303,7 +303,7 @@ network_p2p(
   comm_args = list("resolution" = 0.1)
 )
 
-{"x":{"links":{"source":[0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5],"target":[6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11],"value":[3,2,2,2,3,2,3,2,3,2,3,1,3,3,2,3,1,3,3,1,1,2,2,2,3,1,3,1,2,2,5,5,7,5,8,4]},"nodes":{"name":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 ","4 ","5 ","6 "],"group":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 ","4 ","5 ","6 "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"count","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}
+{"x":{"links":{"source":[0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5],"target":[6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11,6,7,8,9,10,11],"value":[3,2,2,2,3,2,2,3,2,2,2,3,4,2,2,2,2,3,2,2,1,1,3,2,3,1,2,2,1,3,5,7,7,5,4,6]},"nodes":{"name":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 ","4 ","5 ","6 "],"group":["Org A","Org B","Org C","Org D","Org E","Org F","1 ","2 ","3 ","4 ","5 ","6 "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"count","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}
 # using `fluid_communities` algorithm with custom parameters
 network_p2p(
   data = p2p_df,
@@ -326,10 +326,10 @@ network_p2p(
 #> $ name         <chr> "SIM_ID_1", "SIM_ID_2", "SIM_ID_3", "SIM_ID_4", "SIM_ID_5…
 #> $ Organization <chr> "Org F", "Org F", "Org E", "Org D", "Org C", "Org B", "Or…
 #> $ cluster      <chr> "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", …
-#> $ betweenness  <dbl> 27.97309, 28.96728, 79.89006, 220.83009, 27.17325, 138.45…
-#> $ closeness    <dbl> 0.3548387, 0.3535714, 0.3944223, 0.4074074, 0.3574007, 0.…
-#> $ degree       <dbl> 10, 10, 10, 11, 9, 11, 11, 13, 10, 11, 10, 10, 10, 11, 10…
-#> $ eigenvector  <dbl> 0.6625989, 0.6856068, 0.7269334, 0.7900731, 0.7046276, 0.…
-#> $ pagerank     <dbl> 0.010006126, 0.009982815, 0.009927551, 0.010816666, 0.009…
+#> $ betweenness  <dbl> 31.70997, 80.40350, 21.97703, 25.58863, 53.26509, 74.4817…
+#> $ closeness    <dbl> 0.3586957, 0.3750000, 0.3473684, 0.3653137, 0.3626374, 0.…
+#> $ degree       <dbl> 10, 11, 9, 10, 8, 11, 10, 10, 13, 9, 10, 10, 10, 10, 11, …
+#> $ eigenvector  <dbl> 0.6708420, 0.7454902, 0.6302869, 0.7313461, 0.6229251, 0.…
+#> $ pagerank     <dbl> 0.010015083, 0.010871475, 0.009130504, 0.009943895, 0.008…
 # }
 ```

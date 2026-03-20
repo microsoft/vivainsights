@@ -14,6 +14,24 @@ CRAN release: 2026-01-16
   (Non-user, Low User, Novice User, Habitual User, Power User)
 - Aesthetic improvements to
   [`create_rogers()`](https://microsoft.github.io/vivainsights/reference/create_rogers.md)
+- Added
+  [`create_radar()`](https://microsoft.github.io/vivainsights/reference/create_radar.md)
+  and
+  [`create_radar_viz()`](https://microsoft.github.io/vivainsights/reference/create_radar_viz.md)
+  for spider/radar chart visualisation, with support for flexible
+  indexing modes (`total`, `ref_group`, `minmax`, `none`), privacy
+  filtering, and group comparisons
+- Added
+  [`create_survival()`](https://microsoft.github.io/vivainsights/reference/create_survival.md),
+  [`create_survival_prep()`](https://microsoft.github.io/vivainsights/reference/create_survival_prep.md),
+  [`create_survival_calc()`](https://microsoft.github.io/vivainsights/reference/create_survival_calc.md),
+  and
+  [`create_survival_viz()`](https://microsoft.github.io/vivainsights/reference/create_survival_viz.md)
+  for Kaplan–Meier survival (time-to-adoption) curve analysis,
+  supporting flexible event definitions and group comparisons
+- Bumped minimum R version to 4.1.0 (required for native pipe-style
+  lambda syntax `\(x)` used in
+  [`create_radar()`](https://microsoft.github.io/vivainsights/reference/create_radar.md))
 - Added warning message to
   [`identify_usage_segments()`](https://microsoft.github.io/vivainsights/reference/identify_usage_segments.md)
   when NA values are detected in the metric variable

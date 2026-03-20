@@ -67,15 +67,15 @@ Other Network:
 p2p_data_sim(size = 200, nei = 4)
 #>     PrimaryCollaborator_PersonId SecondaryCollaborator_PersonId
 #> 1                       SIM_ID_1                       SIM_ID_2
-#> 2                       SIM_ID_2                       SIM_ID_3
+#> 2                       SIM_ID_2                      SIM_ID_54
 #> 3                       SIM_ID_3                       SIM_ID_4
-#> 4                       SIM_ID_4                       SIM_ID_5
+#> 4                       SIM_ID_5                      SIM_ID_95
 #> 5                       SIM_ID_5                       SIM_ID_6
 #> 6                       SIM_ID_6                       SIM_ID_7
 #> 7                       SIM_ID_7                       SIM_ID_8
 #> 8                       SIM_ID_8                       SIM_ID_9
 #> 9                       SIM_ID_9                      SIM_ID_10
-#> 10                     SIM_ID_11                      SIM_ID_55
+#> 10                     SIM_ID_10                      SIM_ID_11
 #> 11                     SIM_ID_11                      SIM_ID_12
 #> 12                     SIM_ID_12                      SIM_ID_13
 #> 13                     SIM_ID_13                      SIM_ID_14
@@ -99,7 +99,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 31                     SIM_ID_31                      SIM_ID_32
 #> 32                     SIM_ID_32                      SIM_ID_33
 #> 33                     SIM_ID_33                      SIM_ID_34
-#> 34                     SIM_ID_35                      SIM_ID_82
+#> 34                     SIM_ID_34                      SIM_ID_35
 #> 35                     SIM_ID_35                      SIM_ID_36
 #> 36                     SIM_ID_36                      SIM_ID_37
 #> 37                     SIM_ID_37                      SIM_ID_38
@@ -107,26 +107,26 @@ p2p_data_sim(size = 200, nei = 4)
 #> 39                     SIM_ID_39                      SIM_ID_40
 #> 40                     SIM_ID_40                      SIM_ID_41
 #> 41                     SIM_ID_41                      SIM_ID_42
-#> 42                     SIM_ID_43                     SIM_ID_153
+#> 42                     SIM_ID_42                      SIM_ID_43
 #> 43                     SIM_ID_43                      SIM_ID_44
 #> 44                     SIM_ID_44                      SIM_ID_45
 #> 45                     SIM_ID_45                      SIM_ID_46
 #> 46                     SIM_ID_46                      SIM_ID_47
-#> 47                     SIM_ID_47                      SIM_ID_48
-#> 48                     SIM_ID_48                      SIM_ID_49
+#> 47                     SIM_ID_48                     SIM_ID_127
+#> 48                     SIM_ID_49                     SIM_ID_176
 #> 49                     SIM_ID_49                      SIM_ID_50
 #> 50                     SIM_ID_50                      SIM_ID_51
 #> 51                     SIM_ID_51                      SIM_ID_52
 #> 52                     SIM_ID_52                      SIM_ID_53
 #> 53                     SIM_ID_53                      SIM_ID_54
 #> 54                     SIM_ID_54                      SIM_ID_55
-#> 55                     SIM_ID_55                     SIM_ID_183
+#> 55                     SIM_ID_55                      SIM_ID_56
 #> 56                     SIM_ID_56                      SIM_ID_57
 #> 57                     SIM_ID_57                      SIM_ID_58
-#> 58                     SIM_ID_58                      SIM_ID_59
+#> 58                     SIM_ID_58                     SIM_ID_183
 #> 59                     SIM_ID_59                      SIM_ID_60
 #> 60                     SIM_ID_60                      SIM_ID_61
-#> 61                     SIM_ID_51                      SIM_ID_62
+#> 61                     SIM_ID_61                      SIM_ID_62
 #> 62                     SIM_ID_62                      SIM_ID_63
 #> 63                     SIM_ID_63                      SIM_ID_64
 #> 64                     SIM_ID_64                      SIM_ID_65
@@ -136,11 +136,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 68                     SIM_ID_68                      SIM_ID_69
 #> 69                     SIM_ID_69                      SIM_ID_70
 #> 70                     SIM_ID_70                      SIM_ID_71
-#> 71                     SIM_ID_71                      SIM_ID_72
-#> 72                     SIM_ID_72                      SIM_ID_91
+#> 71                     SIM_ID_72                      SIM_ID_80
+#> 72                     SIM_ID_72                      SIM_ID_73
 #> 73                     SIM_ID_73                      SIM_ID_74
 #> 74                     SIM_ID_74                      SIM_ID_75
-#> 75                     SIM_ID_75                      SIM_ID_76
+#> 75                     SIM_ID_75                      SIM_ID_91
 #> 76                     SIM_ID_76                      SIM_ID_77
 #> 77                     SIM_ID_77                      SIM_ID_78
 #> 78                     SIM_ID_78                      SIM_ID_79
@@ -159,12 +159,12 @@ p2p_data_sim(size = 200, nei = 4)
 #> 91                     SIM_ID_91                      SIM_ID_92
 #> 92                     SIM_ID_92                      SIM_ID_93
 #> 93                     SIM_ID_93                      SIM_ID_94
-#> 94                     SIM_ID_41                      SIM_ID_95
-#> 95                     SIM_ID_95                     SIM_ID_189
+#> 94                     SIM_ID_94                      SIM_ID_95
+#> 95                     SIM_ID_95                      SIM_ID_96
 #> 96                     SIM_ID_96                      SIM_ID_97
 #> 97                     SIM_ID_97                      SIM_ID_98
-#> 98                     SIM_ID_98                      SIM_ID_99
-#> 99                     SIM_ID_39                     SIM_ID_100
+#> 98                     SIM_ID_98                     SIM_ID_189
+#> 99                     SIM_ID_99                     SIM_ID_100
 #> 100                   SIM_ID_100                     SIM_ID_101
 #> 101                   SIM_ID_101                     SIM_ID_102
 #> 102                   SIM_ID_102                     SIM_ID_103
@@ -175,11 +175,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 107                   SIM_ID_107                     SIM_ID_108
 #> 108                   SIM_ID_108                     SIM_ID_109
 #> 109                   SIM_ID_109                     SIM_ID_110
-#> 110                   SIM_ID_110                     SIM_ID_179
-#> 111                   SIM_ID_112                     SIM_ID_173
+#> 110                   SIM_ID_110                     SIM_ID_111
+#> 111                   SIM_ID_111                     SIM_ID_112
 #> 112                   SIM_ID_112                     SIM_ID_113
-#> 113                   SIM_ID_113                     SIM_ID_114
-#> 114                   SIM_ID_114                     SIM_ID_115
+#> 113                   SIM_ID_113                     SIM_ID_179
+#> 114                   SIM_ID_115                     SIM_ID_181
 #> 115                   SIM_ID_115                     SIM_ID_116
 #> 116                   SIM_ID_116                     SIM_ID_117
 #> 117                   SIM_ID_117                     SIM_ID_118
@@ -224,36 +224,36 @@ p2p_data_sim(size = 200, nei = 4)
 #> 156                   SIM_ID_156                     SIM_ID_157
 #> 157                   SIM_ID_157                     SIM_ID_158
 #> 158                   SIM_ID_158                     SIM_ID_159
-#> 159                   SIM_ID_159                     SIM_ID_160
-#> 160                   SIM_ID_160                     SIM_ID_161
-#> 161                    SIM_ID_69                     SIM_ID_161
+#> 159                   SIM_ID_110                     SIM_ID_160
+#> 160                    SIM_ID_99                     SIM_ID_161
+#> 161                   SIM_ID_161                     SIM_ID_162
 #> 162                   SIM_ID_162                     SIM_ID_163
-#> 163                    SIM_ID_39                     SIM_ID_164
-#> 164                   SIM_ID_164                     SIM_ID_165
+#> 163                   SIM_ID_163                     SIM_ID_164
+#> 164                    SIM_ID_69                     SIM_ID_164
 #> 165                   SIM_ID_165                     SIM_ID_166
 #> 166                   SIM_ID_166                     SIM_ID_167
 #> 167                   SIM_ID_167                     SIM_ID_168
 #> 168                   SIM_ID_168                     SIM_ID_169
 #> 169                   SIM_ID_169                     SIM_ID_170
-#> 170                    SIM_ID_91                     SIM_ID_170
+#> 170                   SIM_ID_170                     SIM_ID_171
 #> 171                   SIM_ID_171                     SIM_ID_172
-#> 172                    SIM_ID_99                     SIM_ID_172
-#> 173                   SIM_ID_173                     SIM_ID_174
-#> 174                   SIM_ID_123                     SIM_ID_175
-#> 175                   SIM_ID_175                     SIM_ID_176
-#> 176                   SIM_ID_177                     SIM_ID_195
+#> 172                   SIM_ID_172                     SIM_ID_173
+#> 173                    SIM_ID_91                     SIM_ID_173
+#> 174                   SIM_ID_174                     SIM_ID_175
+#> 175                    SIM_ID_99                     SIM_ID_175
+#> 176                   SIM_ID_176                     SIM_ID_177
 #> 177                   SIM_ID_177                     SIM_ID_178
 #> 178                   SIM_ID_178                     SIM_ID_179
 #> 179                   SIM_ID_179                     SIM_ID_180
 #> 180                   SIM_ID_180                     SIM_ID_181
 #> 181                   SIM_ID_181                     SIM_ID_182
 #> 182                   SIM_ID_182                     SIM_ID_183
-#> 183                   SIM_ID_115                     SIM_ID_183
+#> 183                   SIM_ID_183                     SIM_ID_184
 #> 184                   SIM_ID_184                     SIM_ID_185
 #> 185                   SIM_ID_185                     SIM_ID_186
-#> 186                   SIM_ID_186                     SIM_ID_187
+#> 186                   SIM_ID_115                     SIM_ID_186
 #> 187                   SIM_ID_187                     SIM_ID_188
-#> 188                   SIM_ID_188                     SIM_ID_189
+#> 188                   SIM_ID_123                     SIM_ID_189
 #> 189                   SIM_ID_189                     SIM_ID_190
 #> 190                   SIM_ID_190                     SIM_ID_191
 #> 191                   SIM_ID_191                     SIM_ID_192
@@ -264,38 +264,38 @@ p2p_data_sim(size = 200, nei = 4)
 #> 196                   SIM_ID_196                     SIM_ID_197
 #> 197                   SIM_ID_197                     SIM_ID_198
 #> 198                   SIM_ID_198                     SIM_ID_199
-#> 199                   SIM_ID_182                     SIM_ID_199
+#> 199                    SIM_ID_77                     SIM_ID_199
 #> 200                     SIM_ID_1                     SIM_ID_200
 #> 201                     SIM_ID_1                       SIM_ID_3
 #> 202                     SIM_ID_1                     SIM_ID_199
 #> 203                     SIM_ID_1                       SIM_ID_4
 #> 204                     SIM_ID_1                     SIM_ID_198
-#> 205                     SIM_ID_1                       SIM_ID_5
-#> 206                     SIM_ID_1                     SIM_ID_197
+#> 205                     SIM_ID_5                     SIM_ID_157
+#> 206                     SIM_ID_1                     SIM_ID_168
 #> 207                     SIM_ID_2                     SIM_ID_200
 #> 208                     SIM_ID_2                       SIM_ID_4
 #> 209                     SIM_ID_2                     SIM_ID_199
 #> 210                     SIM_ID_2                       SIM_ID_5
-#> 211                    SIM_ID_40                     SIM_ID_116
+#> 211                     SIM_ID_2                     SIM_ID_198
 #> 212                     SIM_ID_2                       SIM_ID_6
 #> 213                     SIM_ID_3                       SIM_ID_5
 #> 214                     SIM_ID_3                     SIM_ID_200
-#> 215                     SIM_ID_6                     SIM_ID_128
+#> 215                     SIM_ID_3                       SIM_ID_6
 #> 216                     SIM_ID_3                     SIM_ID_199
 #> 217                     SIM_ID_3                       SIM_ID_7
 #> 218                     SIM_ID_4                       SIM_ID_6
 #> 219                     SIM_ID_4                       SIM_ID_7
-#> 220                   SIM_ID_114                     SIM_ID_200
-#> 221                     SIM_ID_4                       SIM_ID_8
+#> 220                     SIM_ID_4                     SIM_ID_200
+#> 221                     SIM_ID_4                     SIM_ID_116
 #> 222                     SIM_ID_5                       SIM_ID_7
-#> 223                     SIM_ID_5                       SIM_ID_8
+#> 223                     SIM_ID_8                     SIM_ID_152
 #> 224                     SIM_ID_5                       SIM_ID_9
 #> 225                     SIM_ID_6                       SIM_ID_8
 #> 226                     SIM_ID_6                       SIM_ID_9
 #> 227                     SIM_ID_6                      SIM_ID_10
-#> 228                     SIM_ID_7                       SIM_ID_9
+#> 228                     SIM_ID_9                     SIM_ID_170
 #> 229                     SIM_ID_7                      SIM_ID_10
-#> 230                     SIM_ID_7                     SIM_ID_145
+#> 230                     SIM_ID_7                      SIM_ID_11
 #> 231                     SIM_ID_8                      SIM_ID_10
 #> 232                     SIM_ID_8                      SIM_ID_11
 #> 233                     SIM_ID_8                      SIM_ID_12
@@ -303,8 +303,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 235                     SIM_ID_9                      SIM_ID_12
 #> 236                     SIM_ID_9                      SIM_ID_13
 #> 237                    SIM_ID_10                      SIM_ID_12
-#> 238                    SIM_ID_13                     SIM_ID_170
-#> 239                    SIM_ID_10                      SIM_ID_14
+#> 238                    SIM_ID_10                      SIM_ID_13
+#> 239                    SIM_ID_10                     SIM_ID_145
 #> 240                    SIM_ID_11                      SIM_ID_13
 #> 241                    SIM_ID_11                      SIM_ID_14
 #> 242                    SIM_ID_11                      SIM_ID_15
@@ -327,7 +327,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 259                    SIM_ID_17                      SIM_ID_20
 #> 260                    SIM_ID_17                      SIM_ID_21
 #> 261                    SIM_ID_18                      SIM_ID_20
-#> 262                    SIM_ID_18                      SIM_ID_21
+#> 262                    SIM_ID_21                     SIM_ID_169
 #> 263                    SIM_ID_18                      SIM_ID_22
 #> 264                    SIM_ID_19                      SIM_ID_21
 #> 265                    SIM_ID_19                      SIM_ID_22
@@ -339,9 +339,9 @@ p2p_data_sim(size = 200, nei = 4)
 #> 271                    SIM_ID_21                      SIM_ID_24
 #> 272                    SIM_ID_21                      SIM_ID_25
 #> 273                    SIM_ID_22                      SIM_ID_24
-#> 274                    SIM_ID_25                     SIM_ID_169
+#> 274                    SIM_ID_22                      SIM_ID_25
 #> 275                    SIM_ID_22                      SIM_ID_26
-#> 276                    SIM_ID_23                      SIM_ID_25
+#> 276                    SIM_ID_25                     SIM_ID_185
 #> 277                    SIM_ID_23                      SIM_ID_26
 #> 278                    SIM_ID_23                      SIM_ID_27
 #> 279                    SIM_ID_24                      SIM_ID_26
@@ -353,52 +353,52 @@ p2p_data_sim(size = 200, nei = 4)
 #> 285                    SIM_ID_26                      SIM_ID_28
 #> 286                    SIM_ID_26                      SIM_ID_29
 #> 287                    SIM_ID_26                      SIM_ID_30
-#> 288                    SIM_ID_29                     SIM_ID_185
+#> 288                    SIM_ID_27                      SIM_ID_29
 #> 289                    SIM_ID_27                      SIM_ID_30
-#> 290                    SIM_ID_27                      SIM_ID_31
+#> 290                    SIM_ID_31                      SIM_ID_82
 #> 291                    SIM_ID_28                      SIM_ID_30
 #> 292                    SIM_ID_28                      SIM_ID_31
 #> 293                    SIM_ID_28                      SIM_ID_32
-#> 294                    SIM_ID_29                      SIM_ID_31
+#> 294                    SIM_ID_31                      SIM_ID_49
 #> 295                    SIM_ID_29                      SIM_ID_32
 #> 296                    SIM_ID_29                      SIM_ID_33
-#> 297                    SIM_ID_30                      SIM_ID_32
+#> 297                    SIM_ID_32                     SIM_ID_120
 #> 298                    SIM_ID_30                      SIM_ID_33
 #> 299                    SIM_ID_30                      SIM_ID_34
 #> 300                    SIM_ID_31                      SIM_ID_33
 #> 301                    SIM_ID_31                      SIM_ID_34
 #> 302                    SIM_ID_31                      SIM_ID_35
 #> 303                    SIM_ID_32                      SIM_ID_34
-#> 304                    SIM_ID_32                     SIM_ID_146
+#> 304                    SIM_ID_32                      SIM_ID_35
 #> 305                    SIM_ID_32                      SIM_ID_36
-#> 306                    SIM_ID_35                      SIM_ID_49
-#> 307                    SIM_ID_36                     SIM_ID_120
+#> 306                    SIM_ID_33                      SIM_ID_35
+#> 307                    SIM_ID_33                      SIM_ID_36
 #> 308                    SIM_ID_33                      SIM_ID_37
 #> 309                    SIM_ID_34                      SIM_ID_36
 #> 310                    SIM_ID_34                      SIM_ID_37
 #> 311                    SIM_ID_34                      SIM_ID_38
 #> 312                    SIM_ID_35                      SIM_ID_37
-#> 313                    SIM_ID_35                      SIM_ID_38
-#> 314                    SIM_ID_35                      SIM_ID_39
+#> 313                    SIM_ID_35                     SIM_ID_146
+#> 314                    SIM_ID_39                     SIM_ID_153
 #> 315                    SIM_ID_36                      SIM_ID_38
 #> 316                    SIM_ID_36                      SIM_ID_39
 #> 317                    SIM_ID_36                      SIM_ID_40
-#> 318                    SIM_ID_37                     SIM_ID_125
+#> 318                    SIM_ID_37                      SIM_ID_39
 #> 319                    SIM_ID_37                      SIM_ID_40
 #> 320                    SIM_ID_37                      SIM_ID_41
 #> 321                    SIM_ID_38                      SIM_ID_40
 #> 322                    SIM_ID_38                      SIM_ID_41
-#> 323                    SIM_ID_38                     SIM_ID_166
+#> 323                    SIM_ID_38                      SIM_ID_42
 #> 324                    SIM_ID_39                      SIM_ID_41
 #> 325                    SIM_ID_39                      SIM_ID_42
 #> 326                    SIM_ID_39                      SIM_ID_43
-#> 327                    SIM_ID_40                      SIM_ID_42
+#> 327                    SIM_ID_40                     SIM_ID_125
 #> 328                    SIM_ID_40                      SIM_ID_43
 #> 329                    SIM_ID_40                      SIM_ID_44
 #> 330                    SIM_ID_41                      SIM_ID_43
 #> 331                    SIM_ID_41                      SIM_ID_44
-#> 332                    SIM_ID_41                      SIM_ID_45
-#> 333                    SIM_ID_42                     SIM_ID_104
+#> 332                    SIM_ID_41                     SIM_ID_166
+#> 333                    SIM_ID_42                      SIM_ID_44
 #> 334                    SIM_ID_42                      SIM_ID_45
 #> 335                    SIM_ID_42                      SIM_ID_46
 #> 336                    SIM_ID_43                      SIM_ID_45
@@ -407,7 +407,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 339                    SIM_ID_44                      SIM_ID_46
 #> 340                    SIM_ID_44                      SIM_ID_47
 #> 341                    SIM_ID_44                      SIM_ID_48
-#> 342                    SIM_ID_45                      SIM_ID_47
+#> 342                    SIM_ID_45                     SIM_ID_104
 #> 343                    SIM_ID_45                      SIM_ID_48
 #> 344                    SIM_ID_45                      SIM_ID_49
 #> 345                    SIM_ID_46                      SIM_ID_48
@@ -420,32 +420,32 @@ p2p_data_sim(size = 200, nei = 4)
 #> 352                    SIM_ID_48                      SIM_ID_51
 #> 353                    SIM_ID_48                      SIM_ID_52
 #> 354                    SIM_ID_49                      SIM_ID_51
-#> 355                    SIM_ID_52                     SIM_ID_127
-#> 356                    SIM_ID_49                      SIM_ID_53
+#> 355                    SIM_ID_49                      SIM_ID_52
+#> 356                    SIM_ID_53                     SIM_ID_154
 #> 357                    SIM_ID_50                      SIM_ID_52
-#> 358                    SIM_ID_53                     SIM_ID_176
+#> 358                    SIM_ID_53                      SIM_ID_66
 #> 359                    SIM_ID_50                      SIM_ID_54
 #> 360                    SIM_ID_51                      SIM_ID_53
 #> 361                    SIM_ID_51                      SIM_ID_54
 #> 362                    SIM_ID_51                      SIM_ID_55
-#> 363                    SIM_ID_52                     SIM_ID_156
+#> 363                    SIM_ID_52                      SIM_ID_54
 #> 364                    SIM_ID_52                      SIM_ID_55
-#> 365                    SIM_ID_52                      SIM_ID_56
+#> 365                    SIM_ID_56                     SIM_ID_163
 #> 366                    SIM_ID_53                      SIM_ID_55
 #> 367                    SIM_ID_53                      SIM_ID_56
 #> 368                    SIM_ID_53                      SIM_ID_57
-#> 369                    SIM_ID_54                     SIM_ID_141
+#> 369                    SIM_ID_54                      SIM_ID_56
 #> 370                    SIM_ID_54                      SIM_ID_57
 #> 371                    SIM_ID_54                      SIM_ID_58
-#> 372                    SIM_ID_55                      SIM_ID_57
-#> 373                    SIM_ID_58                     SIM_ID_154
+#> 372                    SIM_ID_71                     SIM_ID_156
+#> 373                    SIM_ID_55                      SIM_ID_58
 #> 374                    SIM_ID_55                      SIM_ID_59
-#> 375                    SIM_ID_58                      SIM_ID_66
+#> 375                    SIM_ID_51                      SIM_ID_58
 #> 376                    SIM_ID_56                      SIM_ID_59
 #> 377                    SIM_ID_56                      SIM_ID_60
-#> 378                    SIM_ID_57                      SIM_ID_59
+#> 378                    SIM_ID_57                     SIM_ID_141
 #> 379                    SIM_ID_57                      SIM_ID_60
-#> 380                    SIM_ID_61                     SIM_ID_163
+#> 380                    SIM_ID_57                      SIM_ID_61
 #> 381                    SIM_ID_58                      SIM_ID_60
 #> 382                    SIM_ID_58                      SIM_ID_61
 #> 383                    SIM_ID_58                      SIM_ID_62
@@ -455,7 +455,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 387                    SIM_ID_60                      SIM_ID_62
 #> 388                    SIM_ID_60                      SIM_ID_63
 #> 389                    SIM_ID_60                      SIM_ID_64
-#> 390                    SIM_ID_61                      SIM_ID_63
+#> 390                    SIM_ID_63                      SIM_ID_85
 #> 391                    SIM_ID_61                      SIM_ID_64
 #> 392                    SIM_ID_61                      SIM_ID_65
 #> 393                    SIM_ID_62                      SIM_ID_64
@@ -465,7 +465,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 397                    SIM_ID_63                      SIM_ID_66
 #> 398                    SIM_ID_63                      SIM_ID_67
 #> 399                    SIM_ID_64                      SIM_ID_66
-#> 400                    SIM_ID_67                      SIM_ID_85
+#> 400                    SIM_ID_64                      SIM_ID_67
 #> 401                    SIM_ID_64                      SIM_ID_68
 #> 402                    SIM_ID_65                      SIM_ID_67
 #> 403                    SIM_ID_65                      SIM_ID_68
@@ -480,7 +480,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 412                    SIM_ID_68                      SIM_ID_71
 #> 413                    SIM_ID_68                      SIM_ID_72
 #> 414                    SIM_ID_69                      SIM_ID_71
-#> 415                    SIM_ID_69                     SIM_ID_195
+#> 415                    SIM_ID_69                      SIM_ID_72
 #> 416                    SIM_ID_69                      SIM_ID_73
 #> 417                    SIM_ID_70                      SIM_ID_72
 #> 418                    SIM_ID_70                      SIM_ID_73
@@ -489,15 +489,15 @@ p2p_data_sim(size = 200, nei = 4)
 #> 421                    SIM_ID_71                      SIM_ID_74
 #> 422                    SIM_ID_71                      SIM_ID_75
 #> 423                    SIM_ID_72                      SIM_ID_74
-#> 424                    SIM_ID_72                      SIM_ID_75
+#> 424                    SIM_ID_72                     SIM_ID_195
 #> 425                    SIM_ID_72                      SIM_ID_76
 #> 426                    SIM_ID_73                      SIM_ID_75
 #> 427                    SIM_ID_73                      SIM_ID_76
 #> 428                    SIM_ID_73                      SIM_ID_77
-#> 429                    SIM_ID_74                      SIM_ID_76
+#> 429                    SIM_ID_62                      SIM_ID_76
 #> 430                    SIM_ID_74                      SIM_ID_77
 #> 431                    SIM_ID_74                      SIM_ID_78
-#> 432                    SIM_ID_77                     SIM_ID_168
+#> 432                    SIM_ID_75                      SIM_ID_77
 #> 433                    SIM_ID_75                      SIM_ID_78
 #> 434                    SIM_ID_75                      SIM_ID_79
 #> 435                    SIM_ID_76                      SIM_ID_78
@@ -509,17 +509,17 @@ p2p_data_sim(size = 200, nei = 4)
 #> 441                    SIM_ID_78                      SIM_ID_80
 #> 442                    SIM_ID_78                      SIM_ID_81
 #> 443                    SIM_ID_78                      SIM_ID_82
-#> 444                    SIM_ID_79                     SIM_ID_100
+#> 444                    SIM_ID_79                      SIM_ID_81
 #> 445                    SIM_ID_79                      SIM_ID_82
 #> 446                    SIM_ID_79                      SIM_ID_83
-#> 447                    SIM_ID_82                     SIM_ID_143
+#> 447                    SIM_ID_80                      SIM_ID_82
 #> 448                    SIM_ID_80                      SIM_ID_83
 #> 449                    SIM_ID_80                      SIM_ID_84
-#> 450                    SIM_ID_81                      SIM_ID_83
+#> 450                    SIM_ID_83                     SIM_ID_113
 #> 451                    SIM_ID_81                      SIM_ID_84
 #> 452                    SIM_ID_81                      SIM_ID_85
-#> 453                    SIM_ID_82                      SIM_ID_84
-#> 454                    SIM_ID_19                      SIM_ID_85
+#> 453                    SIM_ID_82                     SIM_ID_100
+#> 454                    SIM_ID_82                      SIM_ID_85
 #> 455                    SIM_ID_82                      SIM_ID_86
 #> 456                    SIM_ID_83                      SIM_ID_85
 #> 457                    SIM_ID_83                      SIM_ID_86
@@ -533,7 +533,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 465                    SIM_ID_86                      SIM_ID_88
 #> 466                    SIM_ID_86                      SIM_ID_89
 #> 467                    SIM_ID_86                      SIM_ID_90
-#> 468                    SIM_ID_87                      SIM_ID_95
+#> 468                    SIM_ID_87                      SIM_ID_89
 #> 469                    SIM_ID_87                      SIM_ID_90
 #> 470                    SIM_ID_87                      SIM_ID_91
 #> 471                    SIM_ID_88                      SIM_ID_90
@@ -542,18 +542,18 @@ p2p_data_sim(size = 200, nei = 4)
 #> 474                    SIM_ID_89                      SIM_ID_91
 #> 475                    SIM_ID_89                      SIM_ID_92
 #> 476                    SIM_ID_89                      SIM_ID_93
-#> 477                    SIM_ID_90                     SIM_ID_121
+#> 477                    SIM_ID_90                      SIM_ID_95
 #> 478                    SIM_ID_90                      SIM_ID_93
 #> 479                    SIM_ID_90                      SIM_ID_94
 #> 480                    SIM_ID_91                      SIM_ID_93
-#> 481                    SIM_ID_25                      SIM_ID_94
+#> 481                    SIM_ID_91                      SIM_ID_94
 #> 482                    SIM_ID_91                      SIM_ID_95
 #> 483                    SIM_ID_92                      SIM_ID_94
 #> 484                    SIM_ID_92                      SIM_ID_95
 #> 485                    SIM_ID_92                      SIM_ID_96
-#> 486                    SIM_ID_95                     SIM_ID_124
+#> 486                    SIM_ID_93                     SIM_ID_121
 #> 487                    SIM_ID_93                      SIM_ID_96
-#> 488                    SIM_ID_75                      SIM_ID_93
+#> 488                    SIM_ID_93                      SIM_ID_97
 #> 489                    SIM_ID_94                      SIM_ID_96
 #> 490                    SIM_ID_94                      SIM_ID_97
 #> 491                    SIM_ID_94                      SIM_ID_98
@@ -561,8 +561,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 493                    SIM_ID_95                      SIM_ID_98
 #> 494                    SIM_ID_95                      SIM_ID_99
 #> 495                    SIM_ID_96                      SIM_ID_98
-#> 496                    SIM_ID_96                      SIM_ID_99
-#> 497                    SIM_ID_96                     SIM_ID_100
+#> 496                    SIM_ID_99                     SIM_ID_140
+#> 497                    SIM_ID_75                      SIM_ID_96
 #> 498                    SIM_ID_97                      SIM_ID_99
 #> 499                    SIM_ID_97                     SIM_ID_100
 #> 500                    SIM_ID_97                     SIM_ID_101
@@ -572,7 +572,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 504                    SIM_ID_99                     SIM_ID_101
 #> 505                    SIM_ID_99                     SIM_ID_102
 #> 506                    SIM_ID_99                     SIM_ID_103
-#> 507                   SIM_ID_102                     SIM_ID_181
+#> 507                   SIM_ID_100                     SIM_ID_102
 #> 508                   SIM_ID_100                     SIM_ID_103
 #> 509                   SIM_ID_100                     SIM_ID_104
 #> 510                   SIM_ID_101                     SIM_ID_103
@@ -580,20 +580,20 @@ p2p_data_sim(size = 200, nei = 4)
 #> 512                   SIM_ID_101                     SIM_ID_105
 #> 513                   SIM_ID_102                     SIM_ID_104
 #> 514                   SIM_ID_102                     SIM_ID_105
-#> 515                     SIM_ID_3                     SIM_ID_106
+#> 515                   SIM_ID_102                     SIM_ID_106
 #> 516                   SIM_ID_103                     SIM_ID_105
 #> 517                   SIM_ID_103                     SIM_ID_106
 #> 518                   SIM_ID_103                     SIM_ID_107
 #> 519                   SIM_ID_104                     SIM_ID_106
-#> 520                   SIM_ID_104                     SIM_ID_107
+#> 520                    SIM_ID_25                     SIM_ID_107
 #> 521                   SIM_ID_104                     SIM_ID_108
 #> 522                   SIM_ID_105                     SIM_ID_107
 #> 523                   SIM_ID_105                     SIM_ID_108
 #> 524                   SIM_ID_105                     SIM_ID_109
-#> 525                   SIM_ID_106                     SIM_ID_108
+#> 525                   SIM_ID_108                     SIM_ID_124
 #> 526                   SIM_ID_106                     SIM_ID_109
 #> 527                   SIM_ID_106                     SIM_ID_110
-#> 528                   SIM_ID_107                     SIM_ID_109
+#> 528                    SIM_ID_41                     SIM_ID_109
 #> 529                   SIM_ID_107                     SIM_ID_110
 #> 530                   SIM_ID_107                     SIM_ID_111
 #> 531                   SIM_ID_108                     SIM_ID_110
@@ -603,8 +603,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 535                   SIM_ID_109                     SIM_ID_112
 #> 536                   SIM_ID_109                     SIM_ID_113
 #> 537                   SIM_ID_110                     SIM_ID_112
-#> 538                   SIM_ID_110                     SIM_ID_113
-#> 539                   SIM_ID_110                     SIM_ID_114
+#> 538                   SIM_ID_110                     SIM_ID_200
+#> 539                    SIM_ID_39                     SIM_ID_114
 #> 540                   SIM_ID_111                     SIM_ID_113
 #> 541                   SIM_ID_111                     SIM_ID_114
 #> 542                   SIM_ID_111                     SIM_ID_115
@@ -622,7 +622,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 554                   SIM_ID_115                     SIM_ID_119
 #> 555                   SIM_ID_116                     SIM_ID_118
 #> 556                   SIM_ID_116                     SIM_ID_119
-#> 557                   SIM_ID_116                     SIM_ID_120
+#> 557                     SIM_ID_3                     SIM_ID_120
 #> 558                   SIM_ID_117                     SIM_ID_119
 #> 559                   SIM_ID_117                     SIM_ID_120
 #> 560                   SIM_ID_117                     SIM_ID_121
@@ -644,7 +644,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 576                   SIM_ID_123                     SIM_ID_125
 #> 577                   SIM_ID_123                     SIM_ID_126
 #> 578                   SIM_ID_123                     SIM_ID_127
-#> 579                   SIM_ID_124                     SIM_ID_126
+#> 579                   SIM_ID_126                     SIM_ID_173
 #> 580                   SIM_ID_124                     SIM_ID_127
 #> 581                   SIM_ID_124                     SIM_ID_128
 #> 582                   SIM_ID_125                     SIM_ID_127
@@ -654,7 +654,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 586                   SIM_ID_126                     SIM_ID_129
 #> 587                   SIM_ID_126                     SIM_ID_130
 #> 588                   SIM_ID_127                     SIM_ID_129
-#> 589                   SIM_ID_127                     SIM_ID_130
+#> 589                    SIM_ID_40                     SIM_ID_130
 #> 590                   SIM_ID_127                     SIM_ID_131
 #> 591                   SIM_ID_128                     SIM_ID_130
 #> 592                   SIM_ID_128                     SIM_ID_131
@@ -676,14 +676,14 @@ p2p_data_sim(size = 200, nei = 4)
 #> 608                   SIM_ID_133                     SIM_ID_137
 #> 609                   SIM_ID_134                     SIM_ID_136
 #> 610                   SIM_ID_134                     SIM_ID_137
-#> 611                    SIM_ID_21                     SIM_ID_138
+#> 611                   SIM_ID_134                     SIM_ID_138
 #> 612                   SIM_ID_135                     SIM_ID_137
 #> 613                   SIM_ID_135                     SIM_ID_138
 #> 614                   SIM_ID_135                     SIM_ID_139
 #> 615                   SIM_ID_136                     SIM_ID_138
 #> 616                   SIM_ID_136                     SIM_ID_139
 #> 617                   SIM_ID_136                     SIM_ID_140
-#> 618                    SIM_ID_98                     SIM_ID_137
+#> 618                   SIM_ID_137                     SIM_ID_139
 #> 619                   SIM_ID_137                     SIM_ID_140
 #> 620                   SIM_ID_137                     SIM_ID_141
 #> 621                   SIM_ID_138                     SIM_ID_140
@@ -692,51 +692,51 @@ p2p_data_sim(size = 200, nei = 4)
 #> 624                   SIM_ID_139                     SIM_ID_141
 #> 625                   SIM_ID_139                     SIM_ID_142
 #> 626                   SIM_ID_139                     SIM_ID_143
-#> 627                    SIM_ID_71                     SIM_ID_142
+#> 627                    SIM_ID_98                     SIM_ID_140
 #> 628                   SIM_ID_140                     SIM_ID_143
 #> 629                   SIM_ID_140                     SIM_ID_144
-#> 630                    SIM_ID_64                     SIM_ID_143
-#> 631                    SIM_ID_49                     SIM_ID_141
+#> 630                   SIM_ID_141                     SIM_ID_143
+#> 631                   SIM_ID_141                     SIM_ID_144
 #> 632                   SIM_ID_141                     SIM_ID_145
-#> 633                    SIM_ID_12                     SIM_ID_144
+#> 633                   SIM_ID_142                     SIM_ID_144
 #> 634                   SIM_ID_142                     SIM_ID_145
 #> 635                   SIM_ID_142                     SIM_ID_146
 #> 636                   SIM_ID_143                     SIM_ID_145
-#> 637                   SIM_ID_110                     SIM_ID_146
+#> 637                   SIM_ID_143                     SIM_ID_146
 #> 638                   SIM_ID_143                     SIM_ID_147
 #> 639                   SIM_ID_144                     SIM_ID_146
-#> 640                   SIM_ID_105                     SIM_ID_144
+#> 640                    SIM_ID_49                     SIM_ID_144
 #> 641                   SIM_ID_144                     SIM_ID_148
-#> 642                    SIM_ID_99                     SIM_ID_147
+#> 642                   SIM_ID_145                     SIM_ID_147
 #> 643                   SIM_ID_145                     SIM_ID_148
 #> 644                   SIM_ID_145                     SIM_ID_149
 #> 645                   SIM_ID_146                     SIM_ID_148
-#> 646                   SIM_ID_146                     SIM_ID_182
-#> 647                    SIM_ID_12                     SIM_ID_150
+#> 646                   SIM_ID_146                     SIM_ID_149
+#> 647                   SIM_ID_146                     SIM_ID_150
 #> 648                   SIM_ID_147                     SIM_ID_149
-#> 649                   SIM_ID_147                     SIM_ID_150
+#> 649                   SIM_ID_105                     SIM_ID_147
 #> 650                   SIM_ID_147                     SIM_ID_151
 #> 651                   SIM_ID_148                     SIM_ID_150
 #> 652                   SIM_ID_148                     SIM_ID_151
 #> 653                   SIM_ID_148                     SIM_ID_152
 #> 654                   SIM_ID_149                     SIM_ID_151
-#> 655                    SIM_ID_42                     SIM_ID_149
+#> 655                   SIM_ID_149                     SIM_ID_182
 #> 656                   SIM_ID_149                     SIM_ID_153
 #> 657                   SIM_ID_150                     SIM_ID_152
 #> 658                   SIM_ID_150                     SIM_ID_153
 #> 659                   SIM_ID_150                     SIM_ID_154
-#> 660                   SIM_ID_151                     SIM_ID_153
+#> 660                    SIM_ID_21                     SIM_ID_153
 #> 661                   SIM_ID_151                     SIM_ID_154
 #> 662                   SIM_ID_151                     SIM_ID_155
 #> 663                   SIM_ID_152                     SIM_ID_154
-#> 664                   SIM_ID_152                     SIM_ID_155
+#> 664                    SIM_ID_42                     SIM_ID_152
 #> 665                   SIM_ID_152                     SIM_ID_156
 #> 666                   SIM_ID_153                     SIM_ID_155
 #> 667                   SIM_ID_153                     SIM_ID_156
-#> 668                   SIM_ID_153                     SIM_ID_157
+#> 668                    SIM_ID_64                     SIM_ID_157
 #> 669                   SIM_ID_154                     SIM_ID_156
 #> 670                   SIM_ID_154                     SIM_ID_157
-#> 671                   SIM_ID_154                     SIM_ID_158
+#> 671                    SIM_ID_12                     SIM_ID_158
 #> 672                   SIM_ID_155                     SIM_ID_157
 #> 673                   SIM_ID_155                     SIM_ID_158
 #> 674                   SIM_ID_155                     SIM_ID_159
@@ -744,24 +744,24 @@ p2p_data_sim(size = 200, nei = 4)
 #> 676                   SIM_ID_156                     SIM_ID_159
 #> 677                   SIM_ID_156                     SIM_ID_160
 #> 678                   SIM_ID_157                     SIM_ID_159
-#> 679                    SIM_ID_50                     SIM_ID_157
-#> 680                   SIM_ID_161                     SIM_ID_176
+#> 679                   SIM_ID_157                     SIM_ID_160
+#> 680                   SIM_ID_157                     SIM_ID_161
 #> 681                   SIM_ID_158                     SIM_ID_160
 #> 682                   SIM_ID_158                     SIM_ID_161
 #> 683                   SIM_ID_158                     SIM_ID_162
 #> 684                   SIM_ID_159                     SIM_ID_161
 #> 685                   SIM_ID_159                     SIM_ID_162
 #> 686                   SIM_ID_159                     SIM_ID_163
-#> 687                    SIM_ID_21                     SIM_ID_160
-#> 688                   SIM_ID_160                     SIM_ID_163
-#> 689                    SIM_ID_54                     SIM_ID_164
+#> 687                   SIM_ID_160                     SIM_ID_162
+#> 688                    SIM_ID_50                     SIM_ID_160
+#> 689                   SIM_ID_160                     SIM_ID_164
 #> 690                   SIM_ID_161                     SIM_ID_163
 #> 691                   SIM_ID_161                     SIM_ID_164
 #> 692                   SIM_ID_161                     SIM_ID_165
 #> 693                   SIM_ID_162                     SIM_ID_164
-#> 694                   SIM_ID_162                     SIM_ID_165
+#> 694                    SIM_ID_12                     SIM_ID_165
 #> 695                   SIM_ID_162                     SIM_ID_166
-#> 696                   SIM_ID_163                     SIM_ID_165
+#> 696                    SIM_ID_21                     SIM_ID_163
 #> 697                   SIM_ID_163                     SIM_ID_166
 #> 698                   SIM_ID_163                     SIM_ID_167
 #> 699                   SIM_ID_164                     SIM_ID_166
@@ -774,7 +774,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 706                   SIM_ID_166                     SIM_ID_169
 #> 707                   SIM_ID_166                     SIM_ID_170
 #> 708                   SIM_ID_167                     SIM_ID_169
-#> 709                    SIM_ID_53                     SIM_ID_167
+#> 709                   SIM_ID_167                     SIM_ID_170
 #> 710                   SIM_ID_167                     SIM_ID_171
 #> 711                   SIM_ID_168                     SIM_ID_170
 #> 712                   SIM_ID_168                     SIM_ID_171
@@ -783,7 +783,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 715                   SIM_ID_169                     SIM_ID_172
 #> 716                   SIM_ID_169                     SIM_ID_173
 #> 717                   SIM_ID_170                     SIM_ID_172
-#> 718                   SIM_ID_173                     SIM_ID_180
+#> 718                    SIM_ID_53                     SIM_ID_170
 #> 719                   SIM_ID_170                     SIM_ID_174
 #> 720                   SIM_ID_171                     SIM_ID_173
 #> 721                   SIM_ID_171                     SIM_ID_174
@@ -792,20 +792,20 @@ p2p_data_sim(size = 200, nei = 4)
 #> 724                   SIM_ID_172                     SIM_ID_175
 #> 725                   SIM_ID_172                     SIM_ID_176
 #> 726                   SIM_ID_173                     SIM_ID_175
-#> 727                    SIM_ID_88                     SIM_ID_177
+#> 727                   SIM_ID_176                     SIM_ID_200
 #> 728                   SIM_ID_173                     SIM_ID_177
 #> 729                   SIM_ID_174                     SIM_ID_176
 #> 730                   SIM_ID_174                     SIM_ID_177
 #> 731                   SIM_ID_174                     SIM_ID_178
 #> 732                   SIM_ID_175                     SIM_ID_177
 #> 733                   SIM_ID_175                     SIM_ID_178
-#> 734                   SIM_ID_175                     SIM_ID_179
+#> 734                    SIM_ID_39                     SIM_ID_179
 #> 735                   SIM_ID_176                     SIM_ID_178
-#> 736                   SIM_ID_176                     SIM_ID_179
+#> 736                    SIM_ID_88                     SIM_ID_176
 #> 737                   SIM_ID_176                     SIM_ID_180
-#> 738                   SIM_ID_177                     SIM_ID_179
+#> 738                    SIM_ID_54                     SIM_ID_179
 #> 739                   SIM_ID_177                     SIM_ID_180
-#> 740                   SIM_ID_132                     SIM_ID_181
+#> 740                   SIM_ID_177                     SIM_ID_181
 #> 741                   SIM_ID_178                     SIM_ID_180
 #> 742                   SIM_ID_178                     SIM_ID_181
 #> 743                   SIM_ID_178                     SIM_ID_182
@@ -817,27 +817,27 @@ p2p_data_sim(size = 200, nei = 4)
 #> 749                   SIM_ID_180                     SIM_ID_184
 #> 750                   SIM_ID_181                     SIM_ID_183
 #> 751                   SIM_ID_181                     SIM_ID_184
-#> 752                   SIM_ID_121                     SIM_ID_185
+#> 752                   SIM_ID_181                     SIM_ID_185
 #> 753                   SIM_ID_182                     SIM_ID_184
 #> 754                   SIM_ID_182                     SIM_ID_185
 #> 755                   SIM_ID_182                     SIM_ID_186
 #> 756                   SIM_ID_183                     SIM_ID_185
-#> 757                    SIM_ID_16                     SIM_ID_183
+#> 757                   SIM_ID_183                     SIM_ID_186
 #> 758                   SIM_ID_183                     SIM_ID_187
 #> 759                   SIM_ID_184                     SIM_ID_186
 #> 760                   SIM_ID_184                     SIM_ID_187
 #> 761                   SIM_ID_184                     SIM_ID_188
-#> 762                   SIM_ID_185                     SIM_ID_187
+#> 762                   SIM_ID_180                     SIM_ID_187
 #> 763                   SIM_ID_185                     SIM_ID_188
 #> 764                   SIM_ID_185                     SIM_ID_189
 #> 765                   SIM_ID_186                     SIM_ID_188
-#> 766                   SIM_ID_186                     SIM_ID_189
+#> 766                    SIM_ID_16                     SIM_ID_186
 #> 767                   SIM_ID_186                     SIM_ID_190
 #> 768                   SIM_ID_187                     SIM_ID_189
 #> 769                   SIM_ID_187                     SIM_ID_190
 #> 770                   SIM_ID_187                     SIM_ID_191
 #> 771                   SIM_ID_188                     SIM_ID_190
-#> 772                   SIM_ID_188                     SIM_ID_191
+#> 772                    SIM_ID_66                     SIM_ID_191
 #> 773                   SIM_ID_188                     SIM_ID_192
 #> 774                   SIM_ID_189                     SIM_ID_191
 #> 775                   SIM_ID_189                     SIM_ID_192
@@ -858,25 +858,25 @@ p2p_data_sim(size = 200, nei = 4)
 #> 790                   SIM_ID_194                     SIM_ID_197
 #> 791                   SIM_ID_194                     SIM_ID_198
 #> 792                   SIM_ID_195                     SIM_ID_197
-#> 793                    SIM_ID_77                     SIM_ID_195
+#> 793                   SIM_ID_195                     SIM_ID_198
 #> 794                   SIM_ID_195                     SIM_ID_199
 #> 795                   SIM_ID_196                     SIM_ID_198
 #> 796                   SIM_ID_196                     SIM_ID_199
-#> 797                   SIM_ID_194                     SIM_ID_200
-#> 798                   SIM_ID_197                     SIM_ID_199
+#> 797                   SIM_ID_196                     SIM_ID_200
+#> 798                   SIM_ID_121                     SIM_ID_199
 #> 799                   SIM_ID_197                     SIM_ID_200
 #> 800                   SIM_ID_198                     SIM_ID_200
 #>     PrimaryCollaborator_Organization SecondaryCollaborator_Organization
 #> 1                              Org F                              Org F
-#> 2                              Org F                              Org E
+#> 2                              Org F                              Org B
 #> 3                              Org E                              Org D
-#> 4                              Org D                              Org C
+#> 4                              Org C                              Org C
 #> 5                              Org C                              Org B
 #> 6                              Org B                              Org A
 #> 7                              Org A                              Org D
 #> 8                              Org D                              Org E
 #> 9                              Org E                              Org C
-#> 10                             Org F                              Org C
+#> 10                             Org C                              Org F
 #> 11                             Org F                              Org B
 #> 12                             Org B                              Org F
 #> 13                             Org F                              Org A
@@ -900,7 +900,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 31                             Org F                              Org D
 #> 32                             Org D                              Org E
 #> 33                             Org E                              Org F
-#> 34                             Org A                              Org F
+#> 34                             Org F                              Org A
 #> 35                             Org A                              Org B
 #> 36                             Org B                              Org F
 #> 37                             Org F                              Org F
@@ -908,26 +908,26 @@ p2p_data_sim(size = 200, nei = 4)
 #> 39                             Org E                              Org C
 #> 40                             Org C                              Org F
 #> 41                             Org F                              Org A
-#> 42                             Org F                              Org E
+#> 42                             Org A                              Org F
 #> 43                             Org F                              Org D
 #> 44                             Org D                              Org C
 #> 45                             Org C                              Org F
 #> 46                             Org F                              Org F
-#> 47                             Org F                              Org B
-#> 48                             Org B                              Org A
+#> 47                             Org B                              Org H
+#> 48                             Org A                              Org D
 #> 49                             Org A                              Org C
 #> 50                             Org C                              Org E
 #> 51                             Org E                              Org D
 #> 52                             Org D                              Org F
 #> 53                             Org F                              Org B
 #> 54                             Org B                              Org C
-#> 55                             Org C                              Org E
+#> 55                             Org C                              Org A
 #> 56                             Org A                              Org E
 #> 57                             Org E                              Org F
-#> 58                             Org F                              Org F
+#> 58                             Org F                              Org E
 #> 59                             Org F                              Org B
 #> 60                             Org B                              Org F
-#> 61                             Org E                              Org F
+#> 61                             Org F                              Org F
 #> 62                             Org F                              Org A
 #> 63                             Org A                              Org D
 #> 64                             Org D                              Org C
@@ -937,11 +937,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 68                             Org D                              Org E
 #> 69                             Org E                              Org A
 #> 70                             Org A                              Org F
-#> 71                             Org F                              Org B
-#> 72                             Org B                              Org A
+#> 71                             Org B                              Org C
+#> 72                             Org B                              Org F
 #> 73                             Org F                              Org F
 #> 74                             Org F                              Org C
-#> 75                             Org C                              Org D
+#> 75                             Org C                              Org A
 #> 76                             Org D                              Org A
 #> 77                             Org A                              Org B
 #> 78                             Org B                              Org F
@@ -961,10 +961,10 @@ p2p_data_sim(size = 200, nei = 4)
 #> 92                             Org D                              Org E
 #> 93                             Org E                              Org F
 #> 94                             Org F                              Org C
-#> 95                             Org C                              Org A
+#> 95                             Org C                              Org B
 #> 96                             Org B                              Org F
 #> 97                             Org F                              Org A
-#> 98                             Org A                              Org E
+#> 98                             Org A                              Org A
 #> 99                             Org E                              Org C
 #> 100                            Org C                              Org H
 #> 101                            Org H                              Org B
@@ -976,11 +976,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 107                            Org H                              Org B
 #> 108                            Org B                              Org H
 #> 109                            Org H                              Org C
-#> 110                            Org C                              Org H
-#> 111                            Org A                              Org H
+#> 110                            Org C                              Org E
+#> 111                            Org E                              Org A
 #> 112                            Org A                              Org H
-#> 113                            Org H                              Org B
-#> 114                            Org B                              Org C
+#> 113                            Org H                              Org H
+#> 114                            Org C                              Org H
 #> 115                            Org C                              Org D
 #> 116                            Org D                              Org E
 #> 117                            Org E                              Org G
@@ -1025,36 +1025,36 @@ p2p_data_sim(size = 200, nei = 4)
 #> 156                            Org B                              Org H
 #> 157                            Org H                              Org G
 #> 158                            Org G                              Org E
-#> 159                            Org E                              Org C
-#> 160                            Org C                              Org A
-#> 161                            Org E                              Org A
+#> 159                            Org C                              Org C
+#> 160                            Org E                              Org A
+#> 161                            Org A                              Org B
 #> 162                            Org B                              Org H
-#> 163                            Org E                              Org D
-#> 164                            Org D                              Org C
+#> 163                            Org H                              Org D
+#> 164                            Org E                              Org D
 #> 165                            Org C                              Org G
 #> 166                            Org G                              Org H
 #> 167                            Org H                              Org A
 #> 168                            Org A                              Org H
 #> 169                            Org H                              Org C
-#> 170                            Org A                              Org C
+#> 170                            Org C                              Org E
 #> 171                            Org E                              Org D
-#> 172                            Org E                              Org D
-#> 173                            Org H                              Org B
-#> 174                            Org E                              Org A
-#> 175                            Org A                              Org D
-#> 176                            Org E                              Org C
+#> 172                            Org D                              Org H
+#> 173                            Org A                              Org H
+#> 174                            Org B                              Org A
+#> 175                            Org E                              Org A
+#> 176                            Org D                              Org E
 #> 177                            Org E                              Org G
 #> 178                            Org G                              Org H
 #> 179                            Org H                              Org B
 #> 180                            Org B                              Org H
 #> 181                            Org H                              Org A
 #> 182                            Org A                              Org E
-#> 183                            Org C                              Org E
+#> 183                            Org E                              Org D
 #> 184                            Org D                              Org C
 #> 185                            Org C                              Org B
-#> 186                            Org B                              Org H
+#> 186                            Org C                              Org B
 #> 187                            Org H                              Org D
-#> 188                            Org D                              Org A
+#> 188                            Org E                              Org A
 #> 189                            Org A                              Org C
 #> 190                            Org C                              Org H
 #> 191                            Org H                              Org B
@@ -1071,32 +1071,32 @@ p2p_data_sim(size = 200, nei = 4)
 #> 202                            Org F                              Org H
 #> 203                            Org F                              Org D
 #> 204                            Org F                              Org B
-#> 205                            Org F                              Org C
-#> 206                            Org F                              Org H
+#> 205                            Org C                              Org H
+#> 206                            Org F                              Org A
 #> 207                            Org F                              Org C
 #> 208                            Org F                              Org D
 #> 209                            Org F                              Org H
 #> 210                            Org F                              Org C
-#> 211                            Org C                              Org D
+#> 211                            Org F                              Org B
 #> 212                            Org F                              Org B
 #> 213                            Org E                              Org C
 #> 214                            Org E                              Org C
-#> 215                            Org B                              Org D
+#> 215                            Org E                              Org B
 #> 216                            Org E                              Org H
 #> 217                            Org E                              Org A
 #> 218                            Org D                              Org B
 #> 219                            Org D                              Org A
-#> 220                            Org B                              Org C
+#> 220                            Org D                              Org C
 #> 221                            Org D                              Org D
 #> 222                            Org C                              Org A
-#> 223                            Org C                              Org D
+#> 223                            Org D                              Org D
 #> 224                            Org C                              Org E
 #> 225                            Org B                              Org D
 #> 226                            Org B                              Org E
 #> 227                            Org B                              Org C
-#> 228                            Org A                              Org E
+#> 228                            Org E                              Org C
 #> 229                            Org A                              Org C
-#> 230                            Org A                              Org C
+#> 230                            Org A                              Org F
 #> 231                            Org D                              Org C
 #> 232                            Org D                              Org F
 #> 233                            Org D                              Org B
@@ -1104,8 +1104,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 235                            Org E                              Org B
 #> 236                            Org E                              Org F
 #> 237                            Org C                              Org B
-#> 238                            Org F                              Org C
-#> 239                            Org C                              Org A
+#> 238                            Org C                              Org F
+#> 239                            Org C                              Org C
 #> 240                            Org F                              Org F
 #> 241                            Org F                              Org A
 #> 242                            Org F                              Org C
@@ -1128,7 +1128,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 259                            Org F                              Org C
 #> 260                            Org F                              Org A
 #> 261                            Org B                              Org C
-#> 262                            Org B                              Org A
+#> 262                            Org A                              Org H
 #> 263                            Org B                              Org F
 #> 264                            Org F                              Org A
 #> 265                            Org F                              Org F
@@ -1140,9 +1140,9 @@ p2p_data_sim(size = 200, nei = 4)
 #> 271                            Org A                              Org B
 #> 272                            Org A                              Org C
 #> 273                            Org F                              Org B
-#> 274                            Org C                              Org H
+#> 274                            Org F                              Org C
 #> 275                            Org F                              Org F
-#> 276                            Org F                              Org C
+#> 276                            Org C                              Org C
 #> 277                            Org F                              Org F
 #> 278                            Org F                              Org E
 #> 279                            Org B                              Org F
@@ -1154,51 +1154,51 @@ p2p_data_sim(size = 200, nei = 4)
 #> 285                            Org F                              Org A
 #> 286                            Org F                              Org F
 #> 287                            Org F                              Org B
-#> 288                            Org F                              Org C
+#> 288                            Org E                              Org F
 #> 289                            Org E                              Org B
-#> 290                            Org E                              Org F
+#> 290                            Org F                              Org F
 #> 291                            Org A                              Org B
 #> 292                            Org A                              Org F
 #> 293                            Org A                              Org D
-#> 294                            Org F                              Org F
+#> 294                            Org F                              Org A
 #> 295                            Org F                              Org D
 #> 296                            Org F                              Org E
-#> 297                            Org B                              Org D
+#> 297                            Org D                              Org B
 #> 298                            Org B                              Org E
 #> 299                            Org B                              Org F
 #> 300                            Org F                              Org E
 #> 301                            Org F                              Org F
 #> 302                            Org F                              Org A
 #> 303                            Org D                              Org F
-#> 304                            Org D                              Org G
+#> 304                            Org D                              Org A
 #> 305                            Org D                              Org B
-#> 306                            Org A                              Org A
-#> 307                            Org B                              Org B
+#> 306                            Org E                              Org A
+#> 307                            Org E                              Org B
 #> 308                            Org E                              Org F
 #> 309                            Org F                              Org B
 #> 310                            Org F                              Org F
 #> 311                            Org F                              Org F
 #> 312                            Org A                              Org F
-#> 313                            Org A                              Org F
-#> 314                            Org A                              Org E
+#> 313                            Org A                              Org G
+#> 314                            Org E                              Org E
 #> 315                            Org B                              Org F
 #> 316                            Org B                              Org E
 #> 317                            Org B                              Org C
-#> 318                            Org F                              Org C
+#> 318                            Org F                              Org E
 #> 319                            Org F                              Org C
 #> 320                            Org F                              Org F
 #> 321                            Org F                              Org C
 #> 322                            Org F                              Org F
-#> 323                            Org F                              Org G
+#> 323                            Org F                              Org A
 #> 324                            Org E                              Org F
 #> 325                            Org E                              Org A
 #> 326                            Org E                              Org F
-#> 327                            Org C                              Org A
+#> 327                            Org C                              Org C
 #> 328                            Org C                              Org F
 #> 329                            Org C                              Org D
 #> 330                            Org F                              Org F
 #> 331                            Org F                              Org D
-#> 332                            Org F                              Org C
+#> 332                            Org F                              Org G
 #> 333                            Org A                              Org D
 #> 334                            Org A                              Org C
 #> 335                            Org A                              Org F
@@ -1208,7 +1208,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 339                            Org D                              Org F
 #> 340                            Org D                              Org F
 #> 341                            Org D                              Org B
-#> 342                            Org C                              Org F
+#> 342                            Org C                              Org D
 #> 343                            Org C                              Org B
 #> 344                            Org C                              Org A
 #> 345                            Org F                              Org B
@@ -1221,32 +1221,32 @@ p2p_data_sim(size = 200, nei = 4)
 #> 352                            Org B                              Org E
 #> 353                            Org B                              Org D
 #> 354                            Org A                              Org E
-#> 355                            Org D                              Org H
-#> 356                            Org A                              Org F
+#> 355                            Org A                              Org D
+#> 356                            Org F                              Org A
 #> 357                            Org C                              Org D
-#> 358                            Org F                              Org D
+#> 358                            Org F                              Org B
 #> 359                            Org C                              Org B
 #> 360                            Org E                              Org F
 #> 361                            Org E                              Org B
 #> 362                            Org E                              Org C
 #> 363                            Org D                              Org B
 #> 364                            Org D                              Org C
-#> 365                            Org D                              Org A
+#> 365                            Org A                              Org H
 #> 366                            Org F                              Org C
 #> 367                            Org F                              Org A
 #> 368                            Org F                              Org E
-#> 369                            Org B                              Org E
+#> 369                            Org B                              Org A
 #> 370                            Org B                              Org E
 #> 371                            Org B                              Org F
-#> 372                            Org C                              Org E
-#> 373                            Org F                              Org A
+#> 372                            Org F                              Org B
+#> 373                            Org C                              Org F
 #> 374                            Org C                              Org F
-#> 375                            Org F                              Org B
+#> 375                            Org E                              Org F
 #> 376                            Org A                              Org F
 #> 377                            Org A                              Org B
-#> 378                            Org E                              Org F
+#> 378                            Org E                              Org E
 #> 379                            Org E                              Org B
-#> 380                            Org F                              Org H
+#> 380                            Org E                              Org F
 #> 381                            Org F                              Org B
 #> 382                            Org F                              Org F
 #> 383                            Org F                              Org F
@@ -1256,7 +1256,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 387                            Org B                              Org F
 #> 388                            Org B                              Org A
 #> 389                            Org B                              Org D
-#> 390                            Org F                              Org A
+#> 390                            Org A                              Org C
 #> 391                            Org F                              Org D
 #> 392                            Org F                              Org C
 #> 393                            Org F                              Org D
@@ -1266,7 +1266,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 397                            Org A                              Org B
 #> 398                            Org A                              Org F
 #> 399                            Org D                              Org B
-#> 400                            Org F                              Org C
+#> 400                            Org D                              Org F
 #> 401                            Org D                              Org D
 #> 402                            Org C                              Org F
 #> 403                            Org C                              Org D
@@ -1281,7 +1281,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 412                            Org D                              Org F
 #> 413                            Org D                              Org B
 #> 414                            Org E                              Org F
-#> 415                            Org E                              Org C
+#> 415                            Org E                              Org B
 #> 416                            Org E                              Org F
 #> 417                            Org A                              Org B
 #> 418                            Org A                              Org F
@@ -1298,7 +1298,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 429                            Org F                              Org D
 #> 430                            Org F                              Org A
 #> 431                            Org F                              Org B
-#> 432                            Org A                              Org A
+#> 432                            Org C                              Org A
 #> 433                            Org C                              Org B
 #> 434                            Org C                              Org F
 #> 435                            Org D                              Org B
@@ -1310,16 +1310,16 @@ p2p_data_sim(size = 200, nei = 4)
 #> 441                            Org B                              Org C
 #> 442                            Org B                              Org E
 #> 443                            Org B                              Org F
-#> 444                            Org F                              Org C
+#> 444                            Org F                              Org E
 #> 445                            Org F                              Org F
 #> 446                            Org F                              Org F
-#> 447                            Org F                              Org H
+#> 447                            Org C                              Org F
 #> 448                            Org C                              Org F
 #> 449                            Org C                              Org A
-#> 450                            Org E                              Org F
+#> 450                            Org F                              Org H
 #> 451                            Org E                              Org A
 #> 452                            Org E                              Org C
-#> 453                            Org F                              Org A
+#> 453                            Org F                              Org C
 #> 454                            Org F                              Org C
 #> 455                            Org F                              Org F
 #> 456                            Org F                              Org C
@@ -1334,7 +1334,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 465                            Org F                              Org D
 #> 466                            Org F                              Org F
 #> 467                            Org F                              Org B
-#> 468                            Org E                              Org C
+#> 468                            Org E                              Org F
 #> 469                            Org E                              Org B
 #> 470                            Org E                              Org A
 #> 471                            Org D                              Org B
@@ -1343,18 +1343,18 @@ p2p_data_sim(size = 200, nei = 4)
 #> 474                            Org F                              Org A
 #> 475                            Org F                              Org D
 #> 476                            Org F                              Org E
-#> 477                            Org B                              Org H
+#> 477                            Org B                              Org C
 #> 478                            Org B                              Org E
 #> 479                            Org B                              Org F
 #> 480                            Org A                              Org E
-#> 481                            Org C                              Org F
+#> 481                            Org A                              Org F
 #> 482                            Org A                              Org C
 #> 483                            Org D                              Org F
 #> 484                            Org D                              Org C
 #> 485                            Org D                              Org B
-#> 486                            Org C                              Org D
+#> 486                            Org E                              Org H
 #> 487                            Org E                              Org B
-#> 488                            Org C                              Org E
+#> 488                            Org E                              Org F
 #> 489                            Org F                              Org B
 #> 490                            Org F                              Org F
 #> 491                            Org F                              Org A
@@ -1362,8 +1362,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 493                            Org C                              Org A
 #> 494                            Org C                              Org E
 #> 495                            Org B                              Org A
-#> 496                            Org B                              Org E
-#> 497                            Org B                              Org C
+#> 496                            Org E                              Org A
+#> 497                            Org C                              Org B
 #> 498                            Org F                              Org E
 #> 499                            Org F                              Org C
 #> 500                            Org F                              Org H
@@ -1373,7 +1373,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 504                            Org E                              Org H
 #> 505                            Org E                              Org B
 #> 506                            Org E                              Org H
-#> 507                            Org B                              Org H
+#> 507                            Org C                              Org B
 #> 508                            Org C                              Org H
 #> 509                            Org C                              Org D
 #> 510                            Org H                              Org H
@@ -1381,20 +1381,20 @@ p2p_data_sim(size = 200, nei = 4)
 #> 512                            Org H                              Org A
 #> 513                            Org B                              Org D
 #> 514                            Org B                              Org A
-#> 515                            Org E                              Org G
+#> 515                            Org B                              Org G
 #> 516                            Org H                              Org A
 #> 517                            Org H                              Org G
 #> 518                            Org H                              Org H
 #> 519                            Org D                              Org G
-#> 520                            Org D                              Org H
+#> 520                            Org C                              Org H
 #> 521                            Org D                              Org B
 #> 522                            Org A                              Org H
 #> 523                            Org A                              Org B
 #> 524                            Org A                              Org H
-#> 525                            Org G                              Org B
+#> 525                            Org B                              Org D
 #> 526                            Org G                              Org H
 #> 527                            Org G                              Org C
-#> 528                            Org H                              Org H
+#> 528                            Org F                              Org H
 #> 529                            Org H                              Org C
 #> 530                            Org H                              Org E
 #> 531                            Org B                              Org C
@@ -1404,8 +1404,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 535                            Org H                              Org A
 #> 536                            Org H                              Org H
 #> 537                            Org C                              Org A
-#> 538                            Org C                              Org H
-#> 539                            Org C                              Org B
+#> 538                            Org C                              Org C
+#> 539                            Org E                              Org B
 #> 540                            Org E                              Org H
 #> 541                            Org E                              Org B
 #> 542                            Org E                              Org C
@@ -1423,7 +1423,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 554                            Org C                              Org A
 #> 555                            Org D                              Org G
 #> 556                            Org D                              Org A
-#> 557                            Org D                              Org B
+#> 557                            Org E                              Org B
 #> 558                            Org E                              Org A
 #> 559                            Org E                              Org B
 #> 560                            Org E                              Org H
@@ -1445,7 +1445,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 576                            Org E                              Org C
 #> 577                            Org E                              Org A
 #> 578                            Org E                              Org H
-#> 579                            Org D                              Org A
+#> 579                            Org A                              Org H
 #> 580                            Org D                              Org H
 #> 581                            Org D                              Org D
 #> 582                            Org C                              Org H
@@ -1455,7 +1455,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 586                            Org A                              Org E
 #> 587                            Org A                              Org C
 #> 588                            Org H                              Org E
-#> 589                            Org H                              Org C
+#> 589                            Org C                              Org C
 #> 590                            Org H                              Org H
 #> 591                            Org D                              Org C
 #> 592                            Org D                              Org H
@@ -1477,14 +1477,14 @@ p2p_data_sim(size = 200, nei = 4)
 #> 608                            Org A                              Org H
 #> 609                            Org G                              Org D
 #> 610                            Org G                              Org H
-#> 611                            Org A                              Org B
+#> 611                            Org G                              Org B
 #> 612                            Org C                              Org H
 #> 613                            Org C                              Org B
 #> 614                            Org C                              Org H
 #> 615                            Org D                              Org B
 #> 616                            Org D                              Org H
 #> 617                            Org D                              Org A
-#> 618                            Org A                              Org H
+#> 618                            Org H                              Org H
 #> 619                            Org H                              Org A
 #> 620                            Org H                              Org E
 #> 621                            Org B                              Org A
@@ -1493,51 +1493,51 @@ p2p_data_sim(size = 200, nei = 4)
 #> 624                            Org H                              Org E
 #> 625                            Org H                              Org G
 #> 626                            Org H                              Org H
-#> 627                            Org F                              Org G
+#> 627                            Org A                              Org A
 #> 628                            Org A                              Org H
 #> 629                            Org A                              Org B
-#> 630                            Org D                              Org H
-#> 631                            Org A                              Org E
+#> 630                            Org E                              Org H
+#> 631                            Org E                              Org B
 #> 632                            Org E                              Org C
-#> 633                            Org B                              Org B
+#> 633                            Org G                              Org B
 #> 634                            Org G                              Org C
 #> 635                            Org G                              Org G
 #> 636                            Org H                              Org C
-#> 637                            Org C                              Org G
+#> 637                            Org H                              Org G
 #> 638                            Org H                              Org A
 #> 639                            Org B                              Org G
 #> 640                            Org A                              Org B
 #> 641                            Org B                              Org D
-#> 642                            Org E                              Org A
+#> 642                            Org C                              Org A
 #> 643                            Org C                              Org D
 #> 644                            Org C                              Org H
 #> 645                            Org G                              Org D
-#> 646                            Org G                              Org A
-#> 647                            Org B                              Org B
+#> 646                            Org G                              Org H
+#> 647                            Org G                              Org B
 #> 648                            Org A                              Org H
-#> 649                            Org A                              Org B
+#> 649                            Org A                              Org A
 #> 650                            Org A                              Org H
 #> 651                            Org D                              Org B
 #> 652                            Org D                              Org H
 #> 653                            Org D                              Org D
 #> 654                            Org H                              Org H
-#> 655                            Org A                              Org H
+#> 655                            Org H                              Org A
 #> 656                            Org H                              Org E
 #> 657                            Org B                              Org D
 #> 658                            Org B                              Org E
 #> 659                            Org B                              Org A
-#> 660                            Org H                              Org E
+#> 660                            Org A                              Org E
 #> 661                            Org H                              Org A
 #> 662                            Org H                              Org C
 #> 663                            Org D                              Org A
-#> 664                            Org D                              Org C
+#> 664                            Org A                              Org D
 #> 665                            Org D                              Org B
 #> 666                            Org E                              Org C
 #> 667                            Org E                              Org B
-#> 668                            Org E                              Org H
+#> 668                            Org D                              Org H
 #> 669                            Org A                              Org B
 #> 670                            Org A                              Org H
-#> 671                            Org A                              Org G
+#> 671                            Org B                              Org G
 #> 672                            Org C                              Org H
 #> 673                            Org C                              Org G
 #> 674                            Org C                              Org E
@@ -1545,24 +1545,24 @@ p2p_data_sim(size = 200, nei = 4)
 #> 676                            Org B                              Org E
 #> 677                            Org B                              Org C
 #> 678                            Org H                              Org E
-#> 679                            Org C                              Org H
-#> 680                            Org A                              Org D
+#> 679                            Org H                              Org C
+#> 680                            Org H                              Org A
 #> 681                            Org G                              Org C
 #> 682                            Org G                              Org A
 #> 683                            Org G                              Org B
 #> 684                            Org E                              Org A
 #> 685                            Org E                              Org B
 #> 686                            Org E                              Org H
-#> 687                            Org A                              Org C
-#> 688                            Org C                              Org H
-#> 689                            Org B                              Org D
+#> 687                            Org C                              Org B
+#> 688                            Org C                              Org C
+#> 689                            Org C                              Org D
 #> 690                            Org A                              Org H
 #> 691                            Org A                              Org D
 #> 692                            Org A                              Org C
 #> 693                            Org B                              Org D
 #> 694                            Org B                              Org C
 #> 695                            Org B                              Org G
-#> 696                            Org H                              Org C
+#> 696                            Org A                              Org H
 #> 697                            Org H                              Org G
 #> 698                            Org H                              Org H
 #> 699                            Org D                              Org G
@@ -1575,7 +1575,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 706                            Org G                              Org H
 #> 707                            Org G                              Org C
 #> 708                            Org H                              Org H
-#> 709                            Org F                              Org H
+#> 709                            Org H                              Org C
 #> 710                            Org H                              Org E
 #> 711                            Org A                              Org C
 #> 712                            Org A                              Org E
@@ -1584,7 +1584,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 715                            Org H                              Org D
 #> 716                            Org H                              Org H
 #> 717                            Org C                              Org D
-#> 718                            Org H                              Org B
+#> 718                            Org F                              Org C
 #> 719                            Org C                              Org B
 #> 720                            Org E                              Org H
 #> 721                            Org E                              Org B
@@ -1593,20 +1593,20 @@ p2p_data_sim(size = 200, nei = 4)
 #> 724                            Org D                              Org A
 #> 725                            Org D                              Org D
 #> 726                            Org H                              Org A
-#> 727                            Org D                              Org E
+#> 727                            Org D                              Org C
 #> 728                            Org H                              Org E
 #> 729                            Org B                              Org D
 #> 730                            Org B                              Org E
 #> 731                            Org B                              Org G
 #> 732                            Org A                              Org E
 #> 733                            Org A                              Org G
-#> 734                            Org A                              Org H
+#> 734                            Org E                              Org H
 #> 735                            Org D                              Org G
-#> 736                            Org D                              Org H
+#> 736                            Org D                              Org D
 #> 737                            Org D                              Org B
-#> 738                            Org E                              Org H
+#> 738                            Org B                              Org H
 #> 739                            Org E                              Org B
-#> 740                            Org B                              Org H
+#> 740                            Org E                              Org H
 #> 741                            Org G                              Org B
 #> 742                            Org G                              Org H
 #> 743                            Org G                              Org A
@@ -1623,22 +1623,22 @@ p2p_data_sim(size = 200, nei = 4)
 #> 754                            Org A                              Org C
 #> 755                            Org A                              Org B
 #> 756                            Org E                              Org C
-#> 757                            Org D                              Org E
+#> 757                            Org E                              Org B
 #> 758                            Org E                              Org H
 #> 759                            Org D                              Org B
 #> 760                            Org D                              Org H
 #> 761                            Org D                              Org D
-#> 762                            Org C                              Org H
+#> 762                            Org B                              Org H
 #> 763                            Org C                              Org D
 #> 764                            Org C                              Org A
 #> 765                            Org B                              Org D
-#> 766                            Org B                              Org A
+#> 766                            Org D                              Org B
 #> 767                            Org B                              Org C
 #> 768                            Org H                              Org A
 #> 769                            Org H                              Org C
 #> 770                            Org H                              Org H
 #> 771                            Org D                              Org C
-#> 772                            Org D                              Org H
+#> 772                            Org B                              Org H
 #> 773                            Org D                              Org B
 #> 774                            Org A                              Org H
 #> 775                            Org A                              Org B
@@ -1659,25 +1659,25 @@ p2p_data_sim(size = 200, nei = 4)
 #> 790                            Org G                              Org H
 #> 791                            Org G                              Org B
 #> 792                            Org C                              Org H
-#> 793                            Org A                              Org C
+#> 793                            Org C                              Org B
 #> 794                            Org C                              Org H
 #> 795                            Org A                              Org B
 #> 796                            Org A                              Org H
-#> 797                            Org G                              Org C
+#> 797                            Org A                              Org C
 #> 798                            Org H                              Org H
 #> 799                            Org H                              Org C
 #> 800                            Org B                              Org C
 #>     PrimaryCollaborator_LevelDesignation SecondaryCollaborator_LevelDesignation
 #> 1                                Level 1                                Level 2
-#> 2                                Level 2                                Level 3
+#> 2                                Level 2                                Level 5
 #> 3                                Level 3                                Level 4
-#> 4                                Level 4                                Level 5
+#> 4                                Level 5                                Level 9
 #> 5                                Level 5                                Level 6
 #> 6                                Level 6                                Level 7
 #> 7                                Level 7                                Level 8
 #> 8                                Level 8                                Level 9
 #> 9                                Level 9                                Level 1
-#> 10                               Level 1                                Level 5
+#> 10                               Level 1                                Level 1
 #> 11                               Level 1                                Level 1
 #> 12                               Level 1                                Level 1
 #> 13                               Level 1                                Level 1
@@ -1701,7 +1701,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 31                               Level 3                                Level 3
 #> 32                               Level 3                                Level 3
 #> 33                               Level 3                                Level 3
-#> 34                               Level 3                                Level 8
+#> 34                               Level 3                                Level 3
 #> 35                               Level 3                                Level 3
 #> 36                               Level 3                                Level 3
 #> 37                               Level 3                                Level 3
@@ -1709,26 +1709,26 @@ p2p_data_sim(size = 200, nei = 4)
 #> 39                               Level 3                                Level 4
 #> 40                               Level 4                                Level 4
 #> 41                               Level 4                                Level 4
-#> 42                               Level 4                                Level 1
+#> 42                               Level 4                                Level 4
 #> 43                               Level 4                                Level 4
 #> 44                               Level 4                                Level 4
 #> 45                               Level 4                                Level 4
 #> 46                               Level 4                                Level 4
-#> 47                               Level 4                                Level 4
-#> 48                               Level 4                                Level 4
+#> 47                               Level 4                                Level 1
+#> 48                               Level 4                                Level 1
 #> 49                               Level 4                                Level 5
 #> 50                               Level 5                                Level 5
 #> 51                               Level 5                                Level 5
 #> 52                               Level 5                                Level 5
 #> 53                               Level 5                                Level 5
 #> 54                               Level 5                                Level 5
-#> 55                               Level 5                                Level 1
+#> 55                               Level 5                                Level 5
 #> 56                               Level 5                                Level 5
 #> 57                               Level 5                                Level 5
-#> 58                               Level 5                                Level 5
+#> 58                               Level 5                                Level 1
 #> 59                               Level 5                                Level 6
 #> 60                               Level 6                                Level 6
-#> 61                               Level 5                                Level 6
+#> 61                               Level 6                                Level 6
 #> 62                               Level 6                                Level 6
 #> 63                               Level 6                                Level 6
 #> 64                               Level 6                                Level 6
@@ -1738,11 +1738,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 68                               Level 6                                Level 6
 #> 69                               Level 6                                Level 7
 #> 70                               Level 7                                Level 7
-#> 71                               Level 7                                Level 7
-#> 72                               Level 7                                Level 9
+#> 71                               Level 7                                Level 8
+#> 72                               Level 7                                Level 7
 #> 73                               Level 7                                Level 7
 #> 74                               Level 7                                Level 7
-#> 75                               Level 7                                Level 7
+#> 75                               Level 7                                Level 9
 #> 76                               Level 7                                Level 7
 #> 77                               Level 7                                Level 7
 #> 78                               Level 7                                Level 7
@@ -1761,12 +1761,12 @@ p2p_data_sim(size = 200, nei = 4)
 #> 91                               Level 9                                Level 9
 #> 92                               Level 9                                Level 9
 #> 93                               Level 9                                Level 9
-#> 94                               Level 4                                Level 9
-#> 95                               Level 9                                Level 1
+#> 94                               Level 9                                Level 9
+#> 95                               Level 9                                Level 9
 #> 96                               Level 9                                Level 9
 #> 97                               Level 9                                Level 9
-#> 98                               Level 9                                Level 9
-#> 99                               Level 3                                Level 1
+#> 98                               Level 9                                Level 1
+#> 99                               Level 9                                Level 1
 #> 100                              Level 1                                Level 1
 #> 101                              Level 1                                Level 1
 #> 102                              Level 1                                Level 1
@@ -1827,22 +1827,22 @@ p2p_data_sim(size = 200, nei = 4)
 #> 157                              Level 1                                Level 1
 #> 158                              Level 1                                Level 1
 #> 159                              Level 1                                Level 1
-#> 160                              Level 1                                Level 1
-#> 161                              Level 6                                Level 1
+#> 160                              Level 9                                Level 1
+#> 161                              Level 1                                Level 1
 #> 162                              Level 1                                Level 1
-#> 163                              Level 3                                Level 1
-#> 164                              Level 1                                Level 1
+#> 163                              Level 1                                Level 1
+#> 164                              Level 6                                Level 1
 #> 165                              Level 1                                Level 1
 #> 166                              Level 1                                Level 1
 #> 167                              Level 1                                Level 1
 #> 168                              Level 1                                Level 1
 #> 169                              Level 1                                Level 1
-#> 170                              Level 9                                Level 1
+#> 170                              Level 1                                Level 1
 #> 171                              Level 1                                Level 1
-#> 172                              Level 9                                Level 1
-#> 173                              Level 1                                Level 1
+#> 172                              Level 1                                Level 1
+#> 173                              Level 9                                Level 1
 #> 174                              Level 1                                Level 1
-#> 175                              Level 1                                Level 1
+#> 175                              Level 9                                Level 1
 #> 176                              Level 1                                Level 1
 #> 177                              Level 1                                Level 1
 #> 178                              Level 1                                Level 1
@@ -1866,36 +1866,36 @@ p2p_data_sim(size = 200, nei = 4)
 #> 196                              Level 1                                Level 1
 #> 197                              Level 1                                Level 1
 #> 198                              Level 1                                Level 1
-#> 199                              Level 1                                Level 1
+#> 199                              Level 7                                Level 1
 #> 200                              Level 1                                Level 2
 #> 201                              Level 1                                Level 3
 #> 202                              Level 1                                Level 1
 #> 203                              Level 1                                Level 4
 #> 204                              Level 1                                Level 1
-#> 205                              Level 1                                Level 5
+#> 205                              Level 5                                Level 1
 #> 206                              Level 1                                Level 1
 #> 207                              Level 2                                Level 2
 #> 208                              Level 2                                Level 4
 #> 209                              Level 2                                Level 1
 #> 210                              Level 2                                Level 5
-#> 211                              Level 4                                Level 1
+#> 211                              Level 2                                Level 1
 #> 212                              Level 2                                Level 6
 #> 213                              Level 3                                Level 5
 #> 214                              Level 3                                Level 2
-#> 215                              Level 6                                Level 1
+#> 215                              Level 3                                Level 6
 #> 216                              Level 3                                Level 1
 #> 217                              Level 3                                Level 7
 #> 218                              Level 4                                Level 6
 #> 219                              Level 4                                Level 7
-#> 220                              Level 1                                Level 2
-#> 221                              Level 4                                Level 8
+#> 220                              Level 4                                Level 2
+#> 221                              Level 4                                Level 1
 #> 222                              Level 5                                Level 7
-#> 223                              Level 5                                Level 8
+#> 223                              Level 8                                Level 1
 #> 224                              Level 5                                Level 9
 #> 225                              Level 6                                Level 8
 #> 226                              Level 6                                Level 9
 #> 227                              Level 6                                Level 1
-#> 228                              Level 7                                Level 9
+#> 228                              Level 9                                Level 1
 #> 229                              Level 7                                Level 1
 #> 230                              Level 7                                Level 1
 #> 231                              Level 8                                Level 1
@@ -1929,7 +1929,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 259                              Level 1                                Level 2
 #> 260                              Level 1                                Level 2
 #> 261                              Level 1                                Level 2
-#> 262                              Level 1                                Level 2
+#> 262                              Level 2                                Level 1
 #> 263                              Level 1                                Level 2
 #> 264                              Level 1                                Level 2
 #> 265                              Level 1                                Level 2
@@ -1941,9 +1941,9 @@ p2p_data_sim(size = 200, nei = 4)
 #> 271                              Level 2                                Level 2
 #> 272                              Level 2                                Level 2
 #> 273                              Level 2                                Level 2
-#> 274                              Level 2                                Level 1
+#> 274                              Level 2                                Level 2
 #> 275                              Level 2                                Level 2
-#> 276                              Level 2                                Level 2
+#> 276                              Level 2                                Level 1
 #> 277                              Level 2                                Level 2
 #> 278                              Level 2                                Level 2
 #> 279                              Level 2                                Level 2
@@ -1955,52 +1955,52 @@ p2p_data_sim(size = 200, nei = 4)
 #> 285                              Level 2                                Level 2
 #> 286                              Level 2                                Level 2
 #> 287                              Level 2                                Level 3
-#> 288                              Level 2                                Level 1
+#> 288                              Level 2                                Level 2
 #> 289                              Level 2                                Level 3
-#> 290                              Level 2                                Level 3
+#> 290                              Level 3                                Level 8
 #> 291                              Level 2                                Level 3
 #> 292                              Level 2                                Level 3
 #> 293                              Level 2                                Level 3
-#> 294                              Level 2                                Level 3
+#> 294                              Level 3                                Level 4
 #> 295                              Level 2                                Level 3
 #> 296                              Level 2                                Level 3
-#> 297                              Level 3                                Level 3
+#> 297                              Level 3                                Level 1
 #> 298                              Level 3                                Level 3
 #> 299                              Level 3                                Level 3
 #> 300                              Level 3                                Level 3
 #> 301                              Level 3                                Level 3
 #> 302                              Level 3                                Level 3
 #> 303                              Level 3                                Level 3
-#> 304                              Level 3                                Level 1
+#> 304                              Level 3                                Level 3
 #> 305                              Level 3                                Level 3
-#> 306                              Level 3                                Level 4
-#> 307                              Level 3                                Level 1
+#> 306                              Level 3                                Level 3
+#> 307                              Level 3                                Level 3
 #> 308                              Level 3                                Level 3
 #> 309                              Level 3                                Level 3
 #> 310                              Level 3                                Level 3
 #> 311                              Level 3                                Level 3
 #> 312                              Level 3                                Level 3
-#> 313                              Level 3                                Level 3
-#> 314                              Level 3                                Level 3
+#> 313                              Level 3                                Level 1
+#> 314                              Level 3                                Level 1
 #> 315                              Level 3                                Level 3
 #> 316                              Level 3                                Level 3
 #> 317                              Level 3                                Level 4
-#> 318                              Level 3                                Level 1
+#> 318                              Level 3                                Level 3
 #> 319                              Level 3                                Level 4
 #> 320                              Level 3                                Level 4
 #> 321                              Level 3                                Level 4
 #> 322                              Level 3                                Level 4
-#> 323                              Level 3                                Level 1
+#> 323                              Level 3                                Level 4
 #> 324                              Level 3                                Level 4
 #> 325                              Level 3                                Level 4
 #> 326                              Level 3                                Level 4
-#> 327                              Level 4                                Level 4
+#> 327                              Level 4                                Level 1
 #> 328                              Level 4                                Level 4
 #> 329                              Level 4                                Level 4
 #> 330                              Level 4                                Level 4
 #> 331                              Level 4                                Level 4
-#> 332                              Level 4                                Level 4
-#> 333                              Level 4                                Level 1
+#> 332                              Level 4                                Level 1
+#> 333                              Level 4                                Level 4
 #> 334                              Level 4                                Level 4
 #> 335                              Level 4                                Level 4
 #> 336                              Level 4                                Level 4
@@ -2009,7 +2009,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 339                              Level 4                                Level 4
 #> 340                              Level 4                                Level 4
 #> 341                              Level 4                                Level 4
-#> 342                              Level 4                                Level 4
+#> 342                              Level 4                                Level 1
 #> 343                              Level 4                                Level 4
 #> 344                              Level 4                                Level 4
 #> 345                              Level 4                                Level 4
@@ -2022,32 +2022,32 @@ p2p_data_sim(size = 200, nei = 4)
 #> 352                              Level 4                                Level 5
 #> 353                              Level 4                                Level 5
 #> 354                              Level 4                                Level 5
-#> 355                              Level 5                                Level 1
-#> 356                              Level 4                                Level 5
+#> 355                              Level 4                                Level 5
+#> 356                              Level 5                                Level 1
 #> 357                              Level 5                                Level 5
-#> 358                              Level 5                                Level 1
+#> 358                              Level 5                                Level 6
 #> 359                              Level 5                                Level 5
 #> 360                              Level 5                                Level 5
 #> 361                              Level 5                                Level 5
 #> 362                              Level 5                                Level 5
-#> 363                              Level 5                                Level 1
+#> 363                              Level 5                                Level 5
 #> 364                              Level 5                                Level 5
-#> 365                              Level 5                                Level 5
+#> 365                              Level 5                                Level 1
 #> 366                              Level 5                                Level 5
 #> 367                              Level 5                                Level 5
 #> 368                              Level 5                                Level 5
-#> 369                              Level 5                                Level 1
+#> 369                              Level 5                                Level 5
 #> 370                              Level 5                                Level 5
 #> 371                              Level 5                                Level 5
-#> 372                              Level 5                                Level 5
-#> 373                              Level 5                                Level 1
+#> 372                              Level 7                                Level 1
+#> 373                              Level 5                                Level 5
 #> 374                              Level 5                                Level 5
-#> 375                              Level 5                                Level 6
+#> 375                              Level 5                                Level 5
 #> 376                              Level 5                                Level 5
 #> 377                              Level 5                                Level 6
-#> 378                              Level 5                                Level 5
+#> 378                              Level 5                                Level 1
 #> 379                              Level 5                                Level 6
-#> 380                              Level 6                                Level 1
+#> 380                              Level 5                                Level 6
 #> 381                              Level 5                                Level 6
 #> 382                              Level 5                                Level 6
 #> 383                              Level 5                                Level 6
@@ -2057,7 +2057,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 387                              Level 6                                Level 6
 #> 388                              Level 6                                Level 6
 #> 389                              Level 6                                Level 6
-#> 390                              Level 6                                Level 6
+#> 390                              Level 6                                Level 8
 #> 391                              Level 6                                Level 6
 #> 392                              Level 6                                Level 6
 #> 393                              Level 6                                Level 6
@@ -2067,7 +2067,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 397                              Level 6                                Level 6
 #> 398                              Level 6                                Level 6
 #> 399                              Level 6                                Level 6
-#> 400                              Level 6                                Level 8
+#> 400                              Level 6                                Level 6
 #> 401                              Level 6                                Level 6
 #> 402                              Level 6                                Level 6
 #> 403                              Level 6                                Level 6
@@ -2082,7 +2082,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 412                              Level 6                                Level 7
 #> 413                              Level 6                                Level 7
 #> 414                              Level 6                                Level 7
-#> 415                              Level 6                                Level 1
+#> 415                              Level 6                                Level 7
 #> 416                              Level 6                                Level 7
 #> 417                              Level 7                                Level 7
 #> 418                              Level 7                                Level 7
@@ -2091,15 +2091,15 @@ p2p_data_sim(size = 200, nei = 4)
 #> 421                              Level 7                                Level 7
 #> 422                              Level 7                                Level 7
 #> 423                              Level 7                                Level 7
-#> 424                              Level 7                                Level 7
+#> 424                              Level 7                                Level 1
 #> 425                              Level 7                                Level 7
 #> 426                              Level 7                                Level 7
 #> 427                              Level 7                                Level 7
 #> 428                              Level 7                                Level 7
-#> 429                              Level 7                                Level 7
+#> 429                              Level 6                                Level 7
 #> 430                              Level 7                                Level 7
 #> 431                              Level 7                                Level 7
-#> 432                              Level 7                                Level 1
+#> 432                              Level 7                                Level 7
 #> 433                              Level 7                                Level 7
 #> 434                              Level 7                                Level 7
 #> 435                              Level 7                                Level 7
@@ -2111,17 +2111,17 @@ p2p_data_sim(size = 200, nei = 4)
 #> 441                              Level 7                                Level 8
 #> 442                              Level 7                                Level 8
 #> 443                              Level 7                                Level 8
-#> 444                              Level 7                                Level 1
+#> 444                              Level 7                                Level 8
 #> 445                              Level 7                                Level 8
 #> 446                              Level 7                                Level 8
-#> 447                              Level 8                                Level 1
+#> 447                              Level 8                                Level 8
 #> 448                              Level 8                                Level 8
 #> 449                              Level 8                                Level 8
-#> 450                              Level 8                                Level 8
+#> 450                              Level 8                                Level 1
 #> 451                              Level 8                                Level 8
 #> 452                              Level 8                                Level 8
-#> 453                              Level 8                                Level 8
-#> 454                              Level 1                                Level 8
+#> 453                              Level 8                                Level 1
+#> 454                              Level 8                                Level 8
 #> 455                              Level 8                                Level 8
 #> 456                              Level 8                                Level 8
 #> 457                              Level 8                                Level 8
@@ -2135,7 +2135,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 465                              Level 8                                Level 8
 #> 466                              Level 8                                Level 8
 #> 467                              Level 8                                Level 9
-#> 468                              Level 8                                Level 9
+#> 468                              Level 8                                Level 8
 #> 469                              Level 8                                Level 9
 #> 470                              Level 8                                Level 9
 #> 471                              Level 8                                Level 9
@@ -2144,18 +2144,18 @@ p2p_data_sim(size = 200, nei = 4)
 #> 474                              Level 8                                Level 9
 #> 475                              Level 8                                Level 9
 #> 476                              Level 8                                Level 9
-#> 477                              Level 9                                Level 1
+#> 477                              Level 9                                Level 9
 #> 478                              Level 9                                Level 9
 #> 479                              Level 9                                Level 9
 #> 480                              Level 9                                Level 9
-#> 481                              Level 2                                Level 9
+#> 481                              Level 9                                Level 9
 #> 482                              Level 9                                Level 9
 #> 483                              Level 9                                Level 9
 #> 484                              Level 9                                Level 9
 #> 485                              Level 9                                Level 9
 #> 486                              Level 9                                Level 1
 #> 487                              Level 9                                Level 9
-#> 488                              Level 7                                Level 9
+#> 488                              Level 9                                Level 9
 #> 489                              Level 9                                Level 9
 #> 490                              Level 9                                Level 9
 #> 491                              Level 9                                Level 9
@@ -2163,8 +2163,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 493                              Level 9                                Level 9
 #> 494                              Level 9                                Level 9
 #> 495                              Level 9                                Level 9
-#> 496                              Level 9                                Level 9
-#> 497                              Level 9                                Level 1
+#> 496                              Level 9                                Level 1
+#> 497                              Level 7                                Level 9
 #> 498                              Level 9                                Level 9
 #> 499                              Level 9                                Level 1
 #> 500                              Level 9                                Level 1
@@ -2182,12 +2182,12 @@ p2p_data_sim(size = 200, nei = 4)
 #> 512                              Level 1                                Level 1
 #> 513                              Level 1                                Level 1
 #> 514                              Level 1                                Level 1
-#> 515                              Level 3                                Level 1
+#> 515                              Level 1                                Level 1
 #> 516                              Level 1                                Level 1
 #> 517                              Level 1                                Level 1
 #> 518                              Level 1                                Level 1
 #> 519                              Level 1                                Level 1
-#> 520                              Level 1                                Level 1
+#> 520                              Level 2                                Level 1
 #> 521                              Level 1                                Level 1
 #> 522                              Level 1                                Level 1
 #> 523                              Level 1                                Level 1
@@ -2195,7 +2195,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 525                              Level 1                                Level 1
 #> 526                              Level 1                                Level 1
 #> 527                              Level 1                                Level 1
-#> 528                              Level 1                                Level 1
+#> 528                              Level 4                                Level 1
 #> 529                              Level 1                                Level 1
 #> 530                              Level 1                                Level 1
 #> 531                              Level 1                                Level 1
@@ -2205,8 +2205,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 535                              Level 1                                Level 1
 #> 536                              Level 1                                Level 1
 #> 537                              Level 1                                Level 1
-#> 538                              Level 1                                Level 1
-#> 539                              Level 1                                Level 1
+#> 538                              Level 1                                Level 2
+#> 539                              Level 3                                Level 1
 #> 540                              Level 1                                Level 1
 #> 541                              Level 1                                Level 1
 #> 542                              Level 1                                Level 1
@@ -2224,7 +2224,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 554                              Level 1                                Level 1
 #> 555                              Level 1                                Level 1
 #> 556                              Level 1                                Level 1
-#> 557                              Level 1                                Level 1
+#> 557                              Level 3                                Level 1
 #> 558                              Level 1                                Level 1
 #> 559                              Level 1                                Level 1
 #> 560                              Level 1                                Level 1
@@ -2256,7 +2256,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 586                              Level 1                                Level 1
 #> 587                              Level 1                                Level 1
 #> 588                              Level 1                                Level 1
-#> 589                              Level 1                                Level 1
+#> 589                              Level 4                                Level 1
 #> 590                              Level 1                                Level 1
 #> 591                              Level 1                                Level 1
 #> 592                              Level 1                                Level 1
@@ -2278,14 +2278,14 @@ p2p_data_sim(size = 200, nei = 4)
 #> 608                              Level 1                                Level 1
 #> 609                              Level 1                                Level 1
 #> 610                              Level 1                                Level 1
-#> 611                              Level 2                                Level 1
+#> 611                              Level 1                                Level 1
 #> 612                              Level 1                                Level 1
 #> 613                              Level 1                                Level 1
 #> 614                              Level 1                                Level 1
 #> 615                              Level 1                                Level 1
 #> 616                              Level 1                                Level 1
 #> 617                              Level 1                                Level 1
-#> 618                              Level 9                                Level 1
+#> 618                              Level 1                                Level 1
 #> 619                              Level 1                                Level 1
 #> 620                              Level 1                                Level 1
 #> 621                              Level 1                                Level 1
@@ -2294,11 +2294,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 624                              Level 1                                Level 1
 #> 625                              Level 1                                Level 1
 #> 626                              Level 1                                Level 1
-#> 627                              Level 7                                Level 1
+#> 627                              Level 9                                Level 1
 #> 628                              Level 1                                Level 1
 #> 629                              Level 1                                Level 1
-#> 630                              Level 6                                Level 1
-#> 631                              Level 4                                Level 1
+#> 630                              Level 1                                Level 1
+#> 631                              Level 1                                Level 1
 #> 632                              Level 1                                Level 1
 #> 633                              Level 1                                Level 1
 #> 634                              Level 1                                Level 1
@@ -2307,9 +2307,9 @@ p2p_data_sim(size = 200, nei = 4)
 #> 637                              Level 1                                Level 1
 #> 638                              Level 1                                Level 1
 #> 639                              Level 1                                Level 1
-#> 640                              Level 1                                Level 1
+#> 640                              Level 4                                Level 1
 #> 641                              Level 1                                Level 1
-#> 642                              Level 9                                Level 1
+#> 642                              Level 1                                Level 1
 #> 643                              Level 1                                Level 1
 #> 644                              Level 1                                Level 1
 #> 645                              Level 1                                Level 1
@@ -2322,20 +2322,20 @@ p2p_data_sim(size = 200, nei = 4)
 #> 652                              Level 1                                Level 1
 #> 653                              Level 1                                Level 1
 #> 654                              Level 1                                Level 1
-#> 655                              Level 4                                Level 1
+#> 655                              Level 1                                Level 1
 #> 656                              Level 1                                Level 1
 #> 657                              Level 1                                Level 1
 #> 658                              Level 1                                Level 1
 #> 659                              Level 1                                Level 1
-#> 660                              Level 1                                Level 1
+#> 660                              Level 2                                Level 1
 #> 661                              Level 1                                Level 1
 #> 662                              Level 1                                Level 1
 #> 663                              Level 1                                Level 1
-#> 664                              Level 1                                Level 1
+#> 664                              Level 4                                Level 1
 #> 665                              Level 1                                Level 1
 #> 666                              Level 1                                Level 1
 #> 667                              Level 1                                Level 1
-#> 668                              Level 1                                Level 1
+#> 668                              Level 6                                Level 1
 #> 669                              Level 1                                Level 1
 #> 670                              Level 1                                Level 1
 #> 671                              Level 1                                Level 1
@@ -2346,7 +2346,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 676                              Level 1                                Level 1
 #> 677                              Level 1                                Level 1
 #> 678                              Level 1                                Level 1
-#> 679                              Level 5                                Level 1
+#> 679                              Level 1                                Level 1
 #> 680                              Level 1                                Level 1
 #> 681                              Level 1                                Level 1
 #> 682                              Level 1                                Level 1
@@ -2354,16 +2354,16 @@ p2p_data_sim(size = 200, nei = 4)
 #> 684                              Level 1                                Level 1
 #> 685                              Level 1                                Level 1
 #> 686                              Level 1                                Level 1
-#> 687                              Level 2                                Level 1
-#> 688                              Level 1                                Level 1
-#> 689                              Level 5                                Level 1
+#> 687                              Level 1                                Level 1
+#> 688                              Level 5                                Level 1
+#> 689                              Level 1                                Level 1
 #> 690                              Level 1                                Level 1
 #> 691                              Level 1                                Level 1
 #> 692                              Level 1                                Level 1
 #> 693                              Level 1                                Level 1
 #> 694                              Level 1                                Level 1
 #> 695                              Level 1                                Level 1
-#> 696                              Level 1                                Level 1
+#> 696                              Level 2                                Level 1
 #> 697                              Level 1                                Level 1
 #> 698                              Level 1                                Level 1
 #> 699                              Level 1                                Level 1
@@ -2376,7 +2376,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 706                              Level 1                                Level 1
 #> 707                              Level 1                                Level 1
 #> 708                              Level 1                                Level 1
-#> 709                              Level 5                                Level 1
+#> 709                              Level 1                                Level 1
 #> 710                              Level 1                                Level 1
 #> 711                              Level 1                                Level 1
 #> 712                              Level 1                                Level 1
@@ -2385,7 +2385,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 715                              Level 1                                Level 1
 #> 716                              Level 1                                Level 1
 #> 717                              Level 1                                Level 1
-#> 718                              Level 1                                Level 1
+#> 718                              Level 5                                Level 1
 #> 719                              Level 1                                Level 1
 #> 720                              Level 1                                Level 1
 #> 721                              Level 1                                Level 1
@@ -2394,18 +2394,18 @@ p2p_data_sim(size = 200, nei = 4)
 #> 724                              Level 1                                Level 1
 #> 725                              Level 1                                Level 1
 #> 726                              Level 1                                Level 1
-#> 727                              Level 8                                Level 1
+#> 727                              Level 1                                Level 2
 #> 728                              Level 1                                Level 1
 #> 729                              Level 1                                Level 1
 #> 730                              Level 1                                Level 1
 #> 731                              Level 1                                Level 1
 #> 732                              Level 1                                Level 1
 #> 733                              Level 1                                Level 1
-#> 734                              Level 1                                Level 1
+#> 734                              Level 3                                Level 1
 #> 735                              Level 1                                Level 1
-#> 736                              Level 1                                Level 1
+#> 736                              Level 8                                Level 1
 #> 737                              Level 1                                Level 1
-#> 738                              Level 1                                Level 1
+#> 738                              Level 5                                Level 1
 #> 739                              Level 1                                Level 1
 #> 740                              Level 1                                Level 1
 #> 741                              Level 1                                Level 1
@@ -2439,7 +2439,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 769                              Level 1                                Level 1
 #> 770                              Level 1                                Level 1
 #> 771                              Level 1                                Level 1
-#> 772                              Level 1                                Level 1
+#> 772                              Level 6                                Level 1
 #> 773                              Level 1                                Level 1
 #> 774                              Level 1                                Level 1
 #> 775                              Level 1                                Level 1
@@ -2460,7 +2460,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 790                              Level 1                                Level 1
 #> 791                              Level 1                                Level 1
 #> 792                              Level 1                                Level 1
-#> 793                              Level 7                                Level 1
+#> 793                              Level 1                                Level 1
 #> 794                              Level 1                                Level 1
 #> 795                              Level 1                                Level 1
 #> 796                              Level 1                                Level 1
@@ -2472,13 +2472,13 @@ p2p_data_sim(size = 200, nei = 4)
 #> 1                     City C                     City B              1
 #> 2                     City B                     City A              1
 #> 3                     City A                     City B              1
-#> 4                     City B                     City C              1
+#> 4                     City C                     City C              1
 #> 5                     City C                     City A              1
 #> 6                     City A                     City C              1
 #> 7                     City C                     City B              1
 #> 8                     City B                     City A              1
 #> 9                     City A                     City B              1
-#> 10                    City C                     City C              1
+#> 10                    City B                     City C              1
 #> 11                    City C                     City A              1
 #> 12                    City A                     City C              1
 #> 13                    City C                     City B              1
@@ -2502,7 +2502,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 31                    City C                     City B              1
 #> 32                    City B                     City A              1
 #> 33                    City A                     City B              1
-#> 34                    City C                     City B              1
+#> 34                    City B                     City C              1
 #> 35                    City C                     City A              1
 #> 36                    City A                     City C              1
 #> 37                    City C                     City B              1
@@ -2510,26 +2510,26 @@ p2p_data_sim(size = 200, nei = 4)
 #> 39                    City A                     City B              1
 #> 40                    City B                     City C              1
 #> 41                    City C                     City A              1
-#> 42                    City C                     City A              1
+#> 42                    City A                     City C              1
 #> 43                    City C                     City B              1
 #> 44                    City B                     City A              1
 #> 45                    City A                     City B              1
 #> 46                    City B                     City C              1
-#> 47                    City C                     City A              1
-#> 48                    City A                     City C              1
+#> 47                    City A                     City C              1
+#> 48                    City C                     City B              1
 #> 49                    City C                     City B              1
 #> 50                    City B                     City A              1
 #> 51                    City A                     City B              1
 #> 52                    City B                     City C              1
 #> 53                    City C                     City A              1
 #> 54                    City A                     City C              1
-#> 55                    City C                     City A              1
+#> 55                    City C                     City B              1
 #> 56                    City B                     City A              1
 #> 57                    City A                     City B              1
-#> 58                    City B                     City C              1
+#> 58                    City B                     City A              1
 #> 59                    City C                     City A              1
 #> 60                    City A                     City C              1
-#> 61                    City A                     City B              1
+#> 61                    City C                     City B              1
 #> 62                    City B                     City A              1
 #> 63                    City A                     City B              1
 #> 64                    City B                     City C              1
@@ -2539,11 +2539,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 68                    City B                     City A              1
 #> 69                    City A                     City B              1
 #> 70                    City B                     City C              1
-#> 71                    City C                     City A              1
+#> 71                    City A                     City B              1
 #> 72                    City A                     City C              1
 #> 73                    City C                     City B              1
 #> 74                    City B                     City A              1
-#> 75                    City A                     City B              1
+#> 75                    City A                     City C              1
 #> 76                    City B                     City C              1
 #> 77                    City C                     City A              1
 #> 78                    City A                     City C              1
@@ -2562,7 +2562,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 91                    City C                     City B              1
 #> 92                    City B                     City A              1
 #> 93                    City A                     City B              1
-#> 94                    City C                     City C              1
+#> 94                    City B                     City C              1
 #> 95                    City C                     City A              1
 #> 96                    City A                     City C              1
 #> 97                    City C                     City B              1
@@ -2578,11 +2578,11 @@ p2p_data_sim(size = 200, nei = 4)
 #> 107                   City C                     City A              1
 #> 108                   City A                     City C              1
 #> 109                   City C                     City B              1
-#> 110                   City B                     City C              1
-#> 111                   City B                     City C              1
+#> 110                   City B                     City A              1
+#> 111                   City A                     City B              1
 #> 112                   City B                     City C              1
-#> 113                   City C                     City A              1
-#> 114                   City A                     City C              1
+#> 113                   City C                     City C              1
+#> 114                   City C                     City C              1
 #> 115                   City C                     City B              1
 #> 116                   City B                     City A              1
 #> 117                   City A                     City B              1
@@ -2627,36 +2627,36 @@ p2p_data_sim(size = 200, nei = 4)
 #> 156                   City A                     City C              1
 #> 157                   City C                     City B              1
 #> 158                   City B                     City A              1
-#> 159                   City A                     City B              1
-#> 160                   City B                     City C              1
-#> 161                   City A                     City C              1
+#> 159                   City B                     City B              1
+#> 160                   City A                     City C              1
+#> 161                   City C                     City A              1
 #> 162                   City A                     City C              1
-#> 163                   City A                     City B              1
-#> 164                   City B                     City A              1
+#> 163                   City C                     City B              1
+#> 164                   City A                     City B              1
 #> 165                   City A                     City B              1
 #> 166                   City B                     City C              1
 #> 167                   City C                     City A              1
 #> 168                   City A                     City C              1
 #> 169                   City C                     City B              1
-#> 170                   City C                     City B              1
+#> 170                   City B                     City A              1
 #> 171                   City A                     City B              1
-#> 172                   City A                     City B              1
-#> 173                   City C                     City A              1
+#> 172                   City B                     City C              1
+#> 173                   City C                     City C              1
 #> 174                   City A                     City C              1
-#> 175                   City C                     City B              1
-#> 176                   City A                     City A              1
+#> 175                   City A                     City C              1
+#> 176                   City B                     City A              1
 #> 177                   City A                     City B              1
 #> 178                   City B                     City C              1
 #> 179                   City C                     City A              1
 #> 180                   City A                     City C              1
 #> 181                   City C                     City B              1
 #> 182                   City B                     City A              1
-#> 183                   City C                     City A              1
+#> 183                   City A                     City B              1
 #> 184                   City B                     City C              1
 #> 185                   City C                     City A              1
-#> 186                   City A                     City C              1
+#> 186                   City C                     City A              1
 #> 187                   City C                     City B              1
-#> 188                   City B                     City A              1
+#> 188                   City A                     City A              1
 #> 189                   City A                     City B              1
 #> 190                   City B                     City C              1
 #> 191                   City C                     City A              1
@@ -2667,36 +2667,36 @@ p2p_data_sim(size = 200, nei = 4)
 #> 196                   City B                     City C              1
 #> 197                   City C                     City A              1
 #> 198                   City A                     City C              1
-#> 199                   City B                     City C              1
+#> 199                   City C                     City C              1
 #> 200                   City C                     City B              1
 #> 201                   City C                     City A              1
 #> 202                   City C                     City C              1
 #> 203                   City C                     City B              1
 #> 204                   City C                     City A              1
 #> 205                   City C                     City C              1
-#> 206                   City C                     City C              1
+#> 206                   City C                     City A              1
 #> 207                   City B                     City B              1
 #> 208                   City B                     City B              1
 #> 209                   City B                     City C              1
 #> 210                   City B                     City C              1
-#> 211                   City B                     City B              1
+#> 211                   City B                     City A              1
 #> 212                   City B                     City A              1
 #> 213                   City A                     City C              1
 #> 214                   City A                     City B              1
-#> 215                   City A                     City B              1
+#> 215                   City A                     City A              1
 #> 216                   City A                     City C              1
 #> 217                   City A                     City C              1
 #> 218                   City B                     City A              1
 #> 219                   City B                     City C              1
-#> 220                   City A                     City B              1
+#> 220                   City B                     City B              1
 #> 221                   City B                     City B              1
 #> 222                   City C                     City C              1
-#> 223                   City C                     City B              1
+#> 223                   City B                     City B              1
 #> 224                   City C                     City A              1
 #> 225                   City A                     City B              1
 #> 226                   City A                     City A              1
 #> 227                   City A                     City B              1
-#> 228                   City C                     City A              1
+#> 228                   City A                     City B              1
 #> 229                   City C                     City B              1
 #> 230                   City C                     City C              1
 #> 231                   City B                     City B              1
@@ -2706,8 +2706,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 235                   City A                     City A              1
 #> 236                   City A                     City C              1
 #> 237                   City B                     City A              1
-#> 238                   City C                     City B              1
-#> 239                   City B                     City B              1
+#> 238                   City B                     City C              1
+#> 239                   City B                     City C              1
 #> 240                   City C                     City C              1
 #> 241                   City C                     City B              1
 #> 242                   City C                     City A              1
@@ -2730,7 +2730,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 259                   City C                     City B              1
 #> 260                   City C                     City A              1
 #> 261                   City A                     City B              1
-#> 262                   City A                     City A              1
+#> 262                   City A                     City C              1
 #> 263                   City A                     City B              1
 #> 264                   City C                     City A              1
 #> 265                   City C                     City B              1
@@ -2742,7 +2742,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 271                   City A                     City A              1
 #> 272                   City A                     City C              1
 #> 273                   City B                     City A              1
-#> 274                   City C                     City C              1
+#> 274                   City B                     City C              1
 #> 275                   City B                     City B              1
 #> 276                   City C                     City C              1
 #> 277                   City C                     City B              1
@@ -2756,25 +2756,25 @@ p2p_data_sim(size = 200, nei = 4)
 #> 285                   City B                     City B              1
 #> 286                   City B                     City C              1
 #> 287                   City B                     City A              1
-#> 288                   City C                     City C              1
+#> 288                   City A                     City C              1
 #> 289                   City A                     City A              1
-#> 290                   City A                     City C              1
+#> 290                   City C                     City B              1
 #> 291                   City B                     City A              1
 #> 292                   City B                     City C              1
 #> 293                   City B                     City B              1
 #> 294                   City C                     City C              1
 #> 295                   City C                     City B              1
 #> 296                   City C                     City A              1
-#> 297                   City A                     City B              1
+#> 297                   City B                     City A              1
 #> 298                   City A                     City A              1
 #> 299                   City A                     City B              1
 #> 300                   City C                     City A              1
 #> 301                   City C                     City B              1
 #> 302                   City C                     City C              1
 #> 303                   City B                     City B              1
-#> 304                   City B                     City B              1
+#> 304                   City B                     City C              1
 #> 305                   City B                     City A              1
-#> 306                   City C                     City C              1
+#> 306                   City A                     City C              1
 #> 307                   City A                     City A              1
 #> 308                   City A                     City C              1
 #> 309                   City B                     City A              1
@@ -2782,25 +2782,25 @@ p2p_data_sim(size = 200, nei = 4)
 #> 311                   City B                     City B              1
 #> 312                   City C                     City C              1
 #> 313                   City C                     City B              1
-#> 314                   City C                     City A              1
+#> 314                   City A                     City A              1
 #> 315                   City A                     City B              1
 #> 316                   City A                     City A              1
 #> 317                   City A                     City B              1
-#> 318                   City C                     City C              1
+#> 318                   City C                     City A              1
 #> 319                   City C                     City B              1
 #> 320                   City C                     City C              1
 #> 321                   City B                     City B              1
 #> 322                   City B                     City C              1
-#> 323                   City B                     City B              1
+#> 323                   City B                     City A              1
 #> 324                   City A                     City C              1
 #> 325                   City A                     City A              1
 #> 326                   City A                     City C              1
-#> 327                   City B                     City A              1
+#> 327                   City B                     City C              1
 #> 328                   City B                     City C              1
 #> 329                   City B                     City B              1
 #> 330                   City C                     City C              1
 #> 331                   City C                     City B              1
-#> 332                   City C                     City A              1
+#> 332                   City C                     City B              1
 #> 333                   City A                     City B              1
 #> 334                   City A                     City A              1
 #> 335                   City A                     City B              1
@@ -2810,7 +2810,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 339                   City B                     City B              1
 #> 340                   City B                     City C              1
 #> 341                   City B                     City A              1
-#> 342                   City A                     City C              1
+#> 342                   City A                     City B              1
 #> 343                   City A                     City A              1
 #> 344                   City A                     City C              1
 #> 345                   City B                     City A              1
@@ -2823,32 +2823,32 @@ p2p_data_sim(size = 200, nei = 4)
 #> 352                   City A                     City A              1
 #> 353                   City A                     City B              1
 #> 354                   City C                     City A              1
-#> 355                   City B                     City C              1
-#> 356                   City C                     City C              1
+#> 355                   City C                     City B              1
+#> 356                   City C                     City B              1
 #> 357                   City B                     City B              1
-#> 358                   City C                     City B              1
+#> 358                   City C                     City A              1
 #> 359                   City B                     City A              1
 #> 360                   City A                     City C              1
 #> 361                   City A                     City A              1
 #> 362                   City A                     City C              1
 #> 363                   City B                     City A              1
 #> 364                   City B                     City C              1
-#> 365                   City B                     City B              1
+#> 365                   City B                     City C              1
 #> 366                   City C                     City C              1
 #> 367                   City C                     City B              1
 #> 368                   City C                     City A              1
-#> 369                   City A                     City A              1
+#> 369                   City A                     City B              1
 #> 370                   City A                     City A              1
 #> 371                   City A                     City B              1
 #> 372                   City C                     City A              1
-#> 373                   City B                     City B              1
+#> 373                   City C                     City B              1
 #> 374                   City C                     City C              1
-#> 375                   City B                     City A              1
+#> 375                   City A                     City B              1
 #> 376                   City B                     City C              1
 #> 377                   City B                     City A              1
-#> 378                   City A                     City C              1
+#> 378                   City A                     City A              1
 #> 379                   City A                     City A              1
-#> 380                   City C                     City C              1
+#> 380                   City A                     City C              1
 #> 381                   City B                     City A              1
 #> 382                   City B                     City C              1
 #> 383                   City B                     City B              1
@@ -2858,7 +2858,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 387                   City A                     City B              1
 #> 388                   City A                     City A              1
 #> 389                   City A                     City B              1
-#> 390                   City C                     City A              1
+#> 390                   City A                     City C              1
 #> 391                   City C                     City B              1
 #> 392                   City C                     City C              1
 #> 393                   City B                     City B              1
@@ -2868,7 +2868,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 397                   City A                     City A              1
 #> 398                   City A                     City C              1
 #> 399                   City B                     City A              1
-#> 400                   City C                     City C              1
+#> 400                   City B                     City C              1
 #> 401                   City B                     City B              1
 #> 402                   City C                     City C              1
 #> 403                   City C                     City B              1
@@ -2900,7 +2900,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 429                   City B                     City B              1
 #> 430                   City B                     City C              1
 #> 431                   City B                     City A              1
-#> 432                   City C                     City A              1
+#> 432                   City A                     City C              1
 #> 433                   City A                     City A              1
 #> 434                   City A                     City C              1
 #> 435                   City B                     City A              1
@@ -2912,17 +2912,17 @@ p2p_data_sim(size = 200, nei = 4)
 #> 441                   City A                     City B              1
 #> 442                   City A                     City A              1
 #> 443                   City A                     City B              1
-#> 444                   City C                     City B              1
+#> 444                   City C                     City A              1
 #> 445                   City C                     City B              1
 #> 446                   City C                     City C              1
-#> 447                   City B                     City C              1
+#> 447                   City B                     City B              1
 #> 448                   City B                     City C              1
 #> 449                   City B                     City A              1
-#> 450                   City A                     City C              1
+#> 450                   City C                     City C              1
 #> 451                   City A                     City A              1
 #> 452                   City A                     City C              1
-#> 453                   City B                     City A              1
-#> 454                   City C                     City C              1
+#> 453                   City B                     City B              1
+#> 454                   City B                     City C              1
 #> 455                   City B                     City B              1
 #> 456                   City C                     City C              1
 #> 457                   City C                     City B              1
@@ -2954,9 +2954,9 @@ p2p_data_sim(size = 200, nei = 4)
 #> 483                   City B                     City B              1
 #> 484                   City B                     City C              1
 #> 485                   City B                     City A              1
-#> 486                   City C                     City B              1
+#> 486                   City A                     City C              1
 #> 487                   City A                     City A              1
-#> 488                   City A                     City A              1
+#> 488                   City A                     City C              1
 #> 489                   City B                     City A              1
 #> 490                   City B                     City C              1
 #> 491                   City B                     City B              1
@@ -2964,8 +2964,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 493                   City C                     City B              1
 #> 494                   City C                     City A              1
 #> 495                   City A                     City B              1
-#> 496                   City A                     City A              1
-#> 497                   City A                     City B              1
+#> 496                   City A                     City B              1
+#> 497                   City A                     City A              1
 #> 498                   City C                     City A              1
 #> 499                   City C                     City B              1
 #> 500                   City C                     City C              1
@@ -2975,7 +2975,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 504                   City A                     City C              1
 #> 505                   City A                     City A              1
 #> 506                   City A                     City C              1
-#> 507                   City A                     City C              1
+#> 507                   City B                     City A              1
 #> 508                   City B                     City C              1
 #> 509                   City B                     City B              1
 #> 510                   City C                     City C              1
@@ -2988,12 +2988,12 @@ p2p_data_sim(size = 200, nei = 4)
 #> 517                   City C                     City B              1
 #> 518                   City C                     City C              1
 #> 519                   City B                     City B              1
-#> 520                   City B                     City C              1
+#> 520                   City C                     City C              1
 #> 521                   City B                     City A              1
 #> 522                   City A                     City C              1
 #> 523                   City A                     City A              1
 #> 524                   City A                     City C              1
-#> 525                   City B                     City A              1
+#> 525                   City A                     City B              1
 #> 526                   City B                     City C              1
 #> 527                   City B                     City B              1
 #> 528                   City C                     City C              1
@@ -3006,8 +3006,8 @@ p2p_data_sim(size = 200, nei = 4)
 #> 535                   City C                     City B              1
 #> 536                   City C                     City C              1
 #> 537                   City B                     City B              1
-#> 538                   City B                     City C              1
-#> 539                   City B                     City A              1
+#> 538                   City B                     City B              1
+#> 539                   City A                     City A              1
 #> 540                   City A                     City C              1
 #> 541                   City A                     City A              1
 #> 542                   City A                     City C              1
@@ -3025,7 +3025,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 554                   City C                     City C              1
 #> 555                   City B                     City B              1
 #> 556                   City B                     City C              1
-#> 557                   City B                     City A              1
+#> 557                   City A                     City A              1
 #> 558                   City A                     City C              1
 #> 559                   City A                     City A              1
 #> 560                   City A                     City C              1
@@ -3047,7 +3047,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 576                   City A                     City C              1
 #> 577                   City A                     City A              1
 #> 578                   City A                     City C              1
-#> 579                   City B                     City A              1
+#> 579                   City A                     City C              1
 #> 580                   City B                     City C              1
 #> 581                   City B                     City B              1
 #> 582                   City C                     City C              1
@@ -3057,7 +3057,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 586                   City A                     City A              1
 #> 587                   City A                     City B              1
 #> 588                   City C                     City A              1
-#> 589                   City C                     City B              1
+#> 589                   City B                     City B              1
 #> 590                   City C                     City C              1
 #> 591                   City B                     City B              1
 #> 592                   City B                     City C              1
@@ -3079,14 +3079,14 @@ p2p_data_sim(size = 200, nei = 4)
 #> 608                   City C                     City C              1
 #> 609                   City B                     City B              1
 #> 610                   City B                     City C              1
-#> 611                   City A                     City A              1
+#> 611                   City B                     City A              1
 #> 612                   City A                     City C              1
 #> 613                   City A                     City A              1
 #> 614                   City A                     City C              1
 #> 615                   City B                     City A              1
 #> 616                   City B                     City C              1
 #> 617                   City B                     City B              1
-#> 618                   City B                     City C              1
+#> 618                   City C                     City C              1
 #> 619                   City C                     City B              1
 #> 620                   City C                     City A              1
 #> 621                   City A                     City B              1
@@ -3095,27 +3095,27 @@ p2p_data_sim(size = 200, nei = 4)
 #> 624                   City C                     City A              1
 #> 625                   City C                     City B              1
 #> 626                   City C                     City C              1
-#> 627                   City C                     City B              1
+#> 627                   City B                     City B              1
 #> 628                   City B                     City C              1
 #> 629                   City B                     City A              1
-#> 630                   City B                     City C              1
-#> 631                   City C                     City A              1
+#> 630                   City A                     City C              1
+#> 631                   City A                     City A              1
 #> 632                   City A                     City C              1
-#> 633                   City A                     City A              1
+#> 633                   City B                     City A              1
 #> 634                   City B                     City C              1
 #> 635                   City B                     City B              1
 #> 636                   City C                     City C              1
-#> 637                   City B                     City B              1
+#> 637                   City C                     City B              1
 #> 638                   City C                     City A              1
 #> 639                   City A                     City B              1
-#> 640                   City A                     City A              1
+#> 640                   City C                     City A              1
 #> 641                   City A                     City B              1
-#> 642                   City A                     City A              1
+#> 642                   City C                     City A              1
 #> 643                   City C                     City B              1
 #> 644                   City C                     City C              1
 #> 645                   City B                     City B              1
-#> 646                   City B                     City B              1
-#> 647                   City A                     City A              1
+#> 646                   City B                     City C              1
+#> 647                   City B                     City A              1
 #> 648                   City A                     City C              1
 #> 649                   City A                     City A              1
 #> 650                   City A                     City C              1
@@ -3123,23 +3123,23 @@ p2p_data_sim(size = 200, nei = 4)
 #> 652                   City B                     City C              1
 #> 653                   City B                     City B              1
 #> 654                   City C                     City C              1
-#> 655                   City A                     City C              1
+#> 655                   City C                     City B              1
 #> 656                   City C                     City A              1
 #> 657                   City A                     City B              1
 #> 658                   City A                     City A              1
 #> 659                   City A                     City B              1
-#> 660                   City C                     City A              1
+#> 660                   City A                     City A              1
 #> 661                   City C                     City B              1
 #> 662                   City C                     City C              1
 #> 663                   City B                     City B              1
-#> 664                   City B                     City C              1
+#> 664                   City A                     City B              1
 #> 665                   City B                     City A              1
 #> 666                   City A                     City C              1
 #> 667                   City A                     City A              1
-#> 668                   City A                     City C              1
+#> 668                   City B                     City C              1
 #> 669                   City B                     City A              1
 #> 670                   City B                     City C              1
-#> 671                   City B                     City B              1
+#> 671                   City A                     City B              1
 #> 672                   City C                     City C              1
 #> 673                   City C                     City B              1
 #> 674                   City C                     City A              1
@@ -3147,24 +3147,24 @@ p2p_data_sim(size = 200, nei = 4)
 #> 676                   City A                     City A              1
 #> 677                   City A                     City B              1
 #> 678                   City C                     City A              1
-#> 679                   City B                     City C              1
-#> 680                   City C                     City B              1
+#> 679                   City C                     City B              1
+#> 680                   City C                     City C              1
 #> 681                   City B                     City B              1
 #> 682                   City B                     City C              1
 #> 683                   City B                     City A              1
 #> 684                   City A                     City C              1
 #> 685                   City A                     City A              1
 #> 686                   City A                     City C              1
-#> 687                   City A                     City B              1
-#> 688                   City B                     City C              1
-#> 689                   City A                     City B              1
+#> 687                   City B                     City A              1
+#> 688                   City B                     City B              1
+#> 689                   City B                     City B              1
 #> 690                   City C                     City C              1
 #> 691                   City C                     City B              1
 #> 692                   City C                     City A              1
 #> 693                   City A                     City B              1
 #> 694                   City A                     City A              1
 #> 695                   City A                     City B              1
-#> 696                   City C                     City A              1
+#> 696                   City A                     City C              1
 #> 697                   City C                     City B              1
 #> 698                   City C                     City C              1
 #> 699                   City B                     City B              1
@@ -3177,7 +3177,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 706                   City B                     City C              1
 #> 707                   City B                     City B              1
 #> 708                   City C                     City C              1
-#> 709                   City C                     City C              1
+#> 709                   City C                     City B              1
 #> 710                   City C                     City A              1
 #> 711                   City A                     City B              1
 #> 712                   City A                     City A              1
@@ -3186,7 +3186,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 715                   City C                     City B              1
 #> 716                   City C                     City C              1
 #> 717                   City B                     City B              1
-#> 718                   City C                     City A              1
+#> 718                   City C                     City B              1
 #> 719                   City B                     City A              1
 #> 720                   City A                     City C              1
 #> 721                   City A                     City A              1
@@ -3195,16 +3195,16 @@ p2p_data_sim(size = 200, nei = 4)
 #> 724                   City B                     City C              1
 #> 725                   City B                     City B              1
 #> 726                   City C                     City C              1
-#> 727                   City B                     City A              1
+#> 727                   City B                     City B              1
 #> 728                   City C                     City A              1
 #> 729                   City A                     City B              1
 #> 730                   City A                     City A              1
 #> 731                   City A                     City B              1
 #> 732                   City C                     City A              1
 #> 733                   City C                     City B              1
-#> 734                   City C                     City C              1
+#> 734                   City A                     City C              1
 #> 735                   City B                     City B              1
-#> 736                   City B                     City C              1
+#> 736                   City B                     City B              1
 #> 737                   City B                     City A              1
 #> 738                   City A                     City C              1
 #> 739                   City A                     City A              1
@@ -3225,22 +3225,22 @@ p2p_data_sim(size = 200, nei = 4)
 #> 754                   City B                     City C              1
 #> 755                   City B                     City A              1
 #> 756                   City A                     City C              1
-#> 757                   City B                     City A              1
+#> 757                   City A                     City A              1
 #> 758                   City A                     City C              1
 #> 759                   City B                     City A              1
 #> 760                   City B                     City C              1
 #> 761                   City B                     City B              1
-#> 762                   City C                     City C              1
+#> 762                   City A                     City C              1
 #> 763                   City C                     City B              1
 #> 764                   City C                     City A              1
 #> 765                   City A                     City B              1
-#> 766                   City A                     City A              1
+#> 766                   City B                     City A              1
 #> 767                   City A                     City B              1
 #> 768                   City C                     City A              1
 #> 769                   City C                     City B              1
 #> 770                   City C                     City C              1
 #> 771                   City B                     City B              1
-#> 772                   City B                     City C              1
+#> 772                   City A                     City C              1
 #> 773                   City B                     City A              1
 #> 774                   City A                     City C              1
 #> 775                   City A                     City A              1
@@ -3261,7 +3261,7 @@ p2p_data_sim(size = 200, nei = 4)
 #> 790                   City B                     City C              1
 #> 791                   City B                     City A              1
 #> 792                   City A                     City C              1
-#> 793                   City C                     City A              1
+#> 793                   City A                     City A              1
 #> 794                   City A                     City C              1
 #> 795                   City B                     City A              1
 #> 796                   City B                     City C              1

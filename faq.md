@@ -185,7 +185,7 @@ Here is an example of how to create a categorical variable
 of direct reports, using
 [`dplyr::mutate()`](https://dplyr.tidyverse.org/reference/mutate.html)
 and
-[`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case_when.html)
+[`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)
 .
 
 ``` r
@@ -206,7 +206,7 @@ clean_pq_with_new_var <-
 
 [`dplyr::mutate()`](https://dplyr.tidyverse.org/reference/mutate.html)
 creates a new column, whereas
-[`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case_when.html)
+[`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)
 runs an if-else operation to classify numeric ranges to the right hand
 side of the `~` symbol. When the expression on the left hand side
 evaluates to `TRUE`, the value on the right hand side is assigned to the
@@ -214,7 +214,7 @@ new column. At the end of the code, you will see that anything that
 doesn’t get classified gets an ‘error handling’ value. If a value ends
 up as “Not classified”, you should check whether there may be gaps in
 your
-[`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case_when.html)
+[`dplyr::case_when()`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html)
 chunk that is not capturing all the values.
 
 Once you have created this new variable and checked that the

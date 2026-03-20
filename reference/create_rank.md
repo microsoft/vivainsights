@@ -110,10 +110,12 @@ Other Visualization:
 [`create_line()`](https://microsoft.github.io/vivainsights/reference/create_line.md),
 [`create_line_asis()`](https://microsoft.github.io/vivainsights/reference/create_line_asis.md),
 [`create_period_scatter()`](https://microsoft.github.io/vivainsights/reference/create_period_scatter.md),
+[`create_radar()`](https://microsoft.github.io/vivainsights/reference/create_radar.md),
 [`create_rogers()`](https://microsoft.github.io/vivainsights/reference/create_rogers.md),
 [`create_sankey()`](https://microsoft.github.io/vivainsights/reference/create_sankey.md),
 [`create_scatter()`](https://microsoft.github.io/vivainsights/reference/create_scatter.md),
 [`create_stacked()`](https://microsoft.github.io/vivainsights/reference/create_stacked.md),
+[`create_survival()`](https://microsoft.github.io/vivainsights/reference/create_survival.md),
 [`create_tracking()`](https://microsoft.github.io/vivainsights/reference/create_tracking.md),
 [`create_trend()`](https://microsoft.github.io/vivainsights/reference/create_trend.md),
 [`email_dist()`](https://microsoft.github.io/vivainsights/reference/email_dist.md),
@@ -158,9 +160,11 @@ Other Flexible:
 [`create_line()`](https://microsoft.github.io/vivainsights/reference/create_line.md),
 [`create_line_asis()`](https://microsoft.github.io/vivainsights/reference/create_line_asis.md),
 [`create_period_scatter()`](https://microsoft.github.io/vivainsights/reference/create_period_scatter.md),
+[`create_radar()`](https://microsoft.github.io/vivainsights/reference/create_radar.md),
 [`create_sankey()`](https://microsoft.github.io/vivainsights/reference/create_sankey.md),
 [`create_scatter()`](https://microsoft.github.io/vivainsights/reference/create_scatter.md),
 [`create_stacked()`](https://microsoft.github.io/vivainsights/reference/create_stacked.md),
+[`create_survival()`](https://microsoft.github.io/vivainsights/reference/create_survival.md),
 [`create_tracking()`](https://microsoft.github.io/vivainsights/reference/create_tracking.md),
 [`create_trend()`](https://microsoft.github.io/vivainsights/reference/create_trend.md)
 
@@ -202,18 +206,18 @@ create_rank(
   return = "table"
 )
 #> # A tibble: 22 × 4
-#>    hrvar            group      Emails_sent     n
-#>    <chr>            <chr>            <dbl> <int>
-#>  1 FunctionType     Advisor           45.5    80
-#>  2 Organization     Finance           45.2    65
-#>  3 Organization     IT                44.5    60
-#>  4 Level            Level1            44.4    34
-#>  5 LevelDesignation Executive         44.4    34
-#>  6 Level            Level4            44.1   125
-#>  7 LevelDesignation Junior IC         44.1   125
-#>  8 FunctionType     Manager           44.0   152
-#>  9 Organization     Research          43.8    47
-#> 10 FunctionType     Consultant        43.6    85
+#>    hrvar               group     Emails_sent     n
+#>    <chr>               <chr>           <dbl> <int>
+#>  1 FunctionType        Advisor          45.8    83
+#>  2 Organization        IT               45.3    61
+#>  3 Organization        Research         44.7    46
+#>  4 FunctionType        Manager          44.5   140
+#>  5 Level               Level4           44.3   126
+#>  6 LevelDesignation    Junior IC        44.3   126
+#>  7 SupervisorIndicator IC               44.3    32
+#>  8 Organization        Finance          44.0    65
+#>  9 SupervisorIndicator Manager          43.7   247
+#> 10 Level               Level3           43.7    84
 #> # ℹ 12 more rows
 
 # \donttest{
@@ -224,19 +228,19 @@ create_rank(
   mode = "combine",
   return = "table"
 )
-#> # A tibble: 298 × 4
+#> # A tibble: 296 × 4
 #>    hrvar    group                                              Emails_sent     n
 #>    <chr>    <chr>                                                    <dbl> <int>
-#>  1 Combined [FunctionType] Advisor [SupervisorIndicator] IC           49.7     9
-#>  2 Combined [FunctionType] Manager [SupervisorIndicator] IC           47.2    24
-#>  3 Combined [FunctionType] Advisor [SupervisorIndicator] Mana…        45.0    71
-#>  4 Combined [FunctionType] Technician [SupervisorIndicator] M…        44.4    44
-#>  5 Combined [FunctionType] Consultant [SupervisorIndicator] IC        43.7     9
-#>  6 Combined [FunctionType] Consultant [SupervisorIndicator] M…        43.6    76
-#>  7 Combined [FunctionType] Specialist [SupervisorIndicator] M…        43.4   141
-#>  8 Combined [FunctionType] Manager [SupervisorIndicator] Mana…        43.4   128
-#>  9 Combined [FunctionType] Specialist [SupervisorIndicator] IC        38.1    23
-#> 10 Combined [FunctionType] Technician [SupervisorIndicator] IC        38       7
-#> # ℹ 288 more rows
+#>  1 Combined [FunctionType] Advisor [SupervisorIndicator] IC           52.3     8
+#>  2 Combined [FunctionType] Manager [SupervisorIndicator] IC           49.5    19
+#>  3 Combined [FunctionType] Advisor [SupervisorIndicator] Mana…        45.1    75
+#>  4 Combined [FunctionType] Specialist [SupervisorIndicator] M…        43.8   146
+#>  5 Combined [FunctionType] Manager [SupervisorIndicator] Mana…        43.7   121
+#>  6 Combined [FunctionType] Consultant [SupervisorIndicator] M…        43.4    77
+#>  7 Combined [FunctionType] Technician [SupervisorIndicator] M…        43.0    45
+#>  8 Combined [FunctionType] Technician [SupervisorIndicator] IC        42.7     6
+#>  9 Combined [FunctionType] Consultant [SupervisorIndicator] IC        40      11
+#> 10 Combined [FunctionType] Specialist [SupervisorIndicator] IC        39.2    23
+#> # ℹ 286 more rows
 # }
 ```

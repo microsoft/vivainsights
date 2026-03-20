@@ -62,18 +62,18 @@ create_rank_combine(
   metric = "Email_hours",
   hrvar = c("Organization", "FunctionType", "LevelDesignation")
 )
-#> # A tibble: 136 × 4
-#>    hrvar    group                                             Email_hours     n
-#>    <chr>    <chr>                                                   <dbl> <int>
-#>  1 Combined [Organization] HR [FunctionType] Advisor                10.4      8
-#>  2 Combined [Organization] HR [FunctionType] Specialist              9.99    16
-#>  3 Combined [Organization] Sales [FunctionType] Specialist           9.91     7
-#>  4 Combined [Organization] Operations [FunctionType] Advisor         9.84     9
-#>  5 Combined [Organization] Research [FunctionType] Consultant        9.84    14
-#>  6 Combined [Organization] HR [FunctionType] Technician              9.74    10
-#>  7 Combined [Organization] Operations [FunctionType] Manager         9.55     9
-#>  8 Combined [Organization] Research [FunctionType] Technician        9.39    13
-#>  9 Combined [Organization] IT [FunctionType] Specialist              9.14    36
-#> 10 Combined [Organization] IT [FunctionType] Advisor                 9.07    19
-#> # ℹ 126 more rows
+#> # A tibble: 140 × 4
+#>    hrvar    group                                              Email_hours     n
+#>    <chr>    <chr>                                                    <dbl> <int>
+#>  1 Combined [Organization] Sales [FunctionType] Specialist           10.2      6
+#>  2 Combined [Organization] Operations [FunctionType] Advisor         10.2      8
+#>  3 Combined [Organization] HR [FunctionType] Technician               9.94    12
+#>  4 Combined [Organization] Research [FunctionType] Consultant         9.84    11
+#>  5 Combined [Organization] HR [FunctionType] Advisor                  9.75     7
+#>  6 Combined [Organization] HR [FunctionType] Specialist               9.74    19
+#>  7 Combined [Organization] Operations [FunctionType] Manager          9.63     8
+#>  8 Combined [Organization] Operations [FunctionType] Speciali…        9.49     9
+#>  9 Combined [Organization] Research [FunctionType] Technician         9.43    12
+#> 10 Combined [Organization] Finance [FunctionType] Technician          9.39    17
+#> # ℹ 130 more rows
 ```

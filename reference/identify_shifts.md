@@ -82,5 +82,5 @@ pq_data_small %>% identify_shifts(return = "table")
 #> # A tibble: 1 × 3
 #>   Shifts     WeekCount PersonCount
 #>   <chr>          <int>       <int>
-#> 1 6:30-23:30       690         279
+#> 1 6:30-23:30       690         285
 ```

@@ -15,7 +15,7 @@ based on what is expected from the Viva Insights data. In effect,
 is a substitute for
 [`read.csv()`](https://rdrr.io/r/utils/read.table.html),
 `readr::read_csv()`, or
-[`data.table::fread()`](https://rdatatable.gitlab.io/data.table/reference/fread.html),
+[`data.table::fread()`](https://rdrr.io/pkg/data.table/man/fread.html),
 whichever is your usual go-to CSV reader.
 
 ## 2. Validate your data!

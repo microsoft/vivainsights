@@ -83,31 +83,31 @@ network_summary(graph = g, return = "table")
 #> # A tibble: 100 × 6
 #>    node_id   betweenness closeness degree eigenvector pagerank
 #>    <chr>           <dbl>     <dbl>  <dbl>       <dbl>    <dbl>
-#>  1 SIM_ID_1          0       0.339      9       0.652  0.00198
-#>  2 SIM_ID_3          0       0.366     10       0.743  0.00198
-#>  3 SIM_ID_4         66.8     0.337     11       0.816  0.00260
-#>  4 SIM_ID_5         81.6     0.343     12       0.863  0.00261
-#>  5 SIM_ID_6         66.8     0.295     12       0.877  0.00312
-#>  6 SIM_ID_7         68.1     0.335     10       0.792  0.00277
-#>  7 SIM_ID_8         49.4     0.304     12       0.892  0.00339
-#>  8 SIM_ID_9         24.7     0.274     10       0.747  0.00363
-#>  9 SIM_ID_10        49.4     0.289     12       0.853  0.00397
-#> 10 SIM_ID_11        92.4     0.278      9       0.630  0.00387
+#>  1 SIM_ID_1         0        0.293      9       0.715  0.00198
+#>  2 SIM_ID_2        23.2      0.321     11       0.837  0.00217
+#>  3 SIM_ID_3        11.1      0.314     11       0.829  0.00236
+#>  4 SIM_ID_4         9.14     0.294      9       0.692  0.00258
+#>  5 SIM_ID_5        87.5      0.331     11       0.805  0.00294
+#>  6 SIM_ID_6        37.1      0.294      9       0.653  0.00312
+#>  7 SIM_ID_7        53.6      0.305     10       0.731  0.00364
+#>  8 SIM_ID_8       191.       0.354     13       0.943  0.00408
+#>  9 SIM_ID_10      129.       0.333     11       0.775  0.00339
+#> 10 SIM_ID_11       35.5      0.258     10       0.659  0.00484
 #> # ℹ 90 more rows
 
 # Return network with node centrality statistics
 network_summary(graph = g, return = "network")
-#> IGRAPH 9f86836 DNW- 100 500 -- 
+#> IGRAPH a227b58 DNW- 100 500 -- 
 #> + attr: weight (g/n), name (v/c), Organization (v/c), node_size (v/n),
 #> | betweenness (v/n), closeness (v/n), degree (v/n), eigenvector (v/n),
 #> | pagerank (v/n), weight (e/n)
-#> + edges from 9f86836 (vertex names):
-#>  [1] SIM_ID_1->SIM_ID_4   SIM_ID_1->SIM_ID_5   SIM_ID_1->SIM_ID_6  
-#>  [4] SIM_ID_1->SIM_ID_66  SIM_ID_1->SIM_ID_96  SIM_ID_1->SIM_ID_97 
-#>  [7] SIM_ID_1->SIM_ID_98  SIM_ID_1->SIM_ID_2   SIM_ID_1->SIM_ID_100
-#> [10] SIM_ID_3->SIM_ID_4   SIM_ID_3->SIM_ID_5   SIM_ID_3->SIM_ID_6  
-#> [13] SIM_ID_3->SIM_ID_7   SIM_ID_3->SIM_ID_8   SIM_ID_3->SIM_ID_32 
-#> [16] SIM_ID_3->SIM_ID_62  SIM_ID_3->SIM_ID_98  SIM_ID_3->SIM_ID_99 
+#> + edges from a227b58 (vertex names):
+#>  [1] SIM_ID_1->SIM_ID_2   SIM_ID_1->SIM_ID_3   SIM_ID_1->SIM_ID_4  
+#>  [4] SIM_ID_1->SIM_ID_5   SIM_ID_1->SIM_ID_6   SIM_ID_1->SIM_ID_96 
+#>  [7] SIM_ID_1->SIM_ID_97  SIM_ID_1->SIM_ID_99  SIM_ID_1->SIM_ID_100
+#> [10] SIM_ID_2->SIM_ID_3   SIM_ID_2->SIM_ID_4   SIM_ID_2->SIM_ID_5  
+#> [13] SIM_ID_2->SIM_ID_7   SIM_ID_2->SIM_ID_28  SIM_ID_2->SIM_ID_66 
+#> [16] SIM_ID_2->SIM_ID_97  SIM_ID_2->SIM_ID_99  SIM_ID_2->SIM_ID_98 
 #> + ... omitted several edges
 
 # Return summary plot

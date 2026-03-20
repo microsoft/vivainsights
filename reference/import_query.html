@@ -50,7 +50,7 @@ classifications optimised for other functions in the package."><meta property="o
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Import a query from Viva Insights Analyst Experience</h1>
-      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/v0.7.1/R/import_query.R" class="external-link"><code>R/import_query.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/main/R/import_query.R" class="external-link"><code>R/import_query.R</code></a></small>
       <div class="d-none name"><code>import_query.Rd</code></div>
     </div>
 
@@ -107,7 +107,7 @@ variable. When set to <code>FALSE</code>, this step is skipped.</p></dd>
 
 <dt id="arg-encoding">encoding<a class="anchor" aria-label="anchor" href="#arg-encoding"></a></dt>
 <dd><p>String to specify encoding to be used within
-<code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code>. See <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code> documentation for more
+<code><a href="https://rdrr.io/pkg/data.table/man/fread.html" class="external-link">data.table::fread()</a></code>. See <code><a href="https://rdrr.io/pkg/data.table/man/fread.html" class="external-link">data.table::fread()</a></code> documentation for more
 information. Defaults to <code>'UTF-8'</code>.</p></dd>
 
 </dl></div>
@@ -117,7 +117,7 @@ information. Defaults to <code>'UTF-8'</code>.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>import_query()</code> uses <code><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html" class="external-link">data.table::fread()</a></code> to import .csv files for
+    <p><code>import_query()</code> uses <code><a href="https://rdrr.io/pkg/data.table/man/fread.html" class="external-link">data.table::fread()</a></code> to import .csv files for
 speed, and by default <code>stringsAsFactors</code> is set to FALSE. A data frame is
 returned by the function (not a <code>data.table</code>). Column names are automatically
 cleaned, replacing spaces and special characters with underscores.</p>

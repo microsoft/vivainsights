@@ -53,9 +53,9 @@ import_query(
 - encoding:
 
   String to specify encoding to be used within
-  [`data.table::fread()`](https://rdatatable.gitlab.io/data.table/reference/fread.html).
+  [`data.table::fread()`](https://rdrr.io/pkg/data.table/man/fread.html).
   See
-  [`data.table::fread()`](https://rdatatable.gitlab.io/data.table/reference/fread.html)
+  [`data.table::fread()`](https://rdrr.io/pkg/data.table/man/fread.html)
   documentation for more information. Defaults to `'UTF-8'`.
 
 ## Value
@@ -65,7 +65,7 @@ A `tibble` is returned.
 ## Details
 
 `import_query()` uses
-[`data.table::fread()`](https://rdatatable.gitlab.io/data.table/reference/fread.html)
+[`data.table::fread()`](https://rdrr.io/pkg/data.table/man/fread.html)
 to import .csv files for speed, and by default `stringsAsFactors` is set
 to FALSE. A data frame is returned by the function (not a `data.table`).
 Column names are automatically cleaned, replacing spaces and special
