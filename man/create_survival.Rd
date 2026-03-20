@@ -9,8 +9,6 @@ create_survival(
   time_col,
   event_col,
   hrvar = NULL,
-  usage_metrics = NULL,
-  usage_version = "12w",
   mingroup = 5,
   na.rm = TRUE,
   return = "plot"
@@ -18,7 +16,8 @@ create_survival(
 }
 \arguments{
 \item{data}{A person-level data frame with one row per person, as produced by
-\code{\link{create_survival_prep}}.}
+\code{\link{create_survival_prep}}. Must contain \code{time_col}, \code{event_col}, and
+(when \code{hrvar} is not \code{NULL}) the grouping column.}
 
 \item{time_col}{Character string containing the name of the time-to-event column.}
 
@@ -32,13 +31,7 @@ Accepted forms:
 }}
 
 \item{hrvar}{Character string containing the name of the grouping column.
-Supply \code{NULL} (without quotes) to compute an overall curve. If \code{hrvar = NULL}
-and \code{usage_metrics} are supplied, grouping is inferred from \code{identify_usage_segments()}.}
-
-\item{usage_metrics}{Character vector of metric column name(s) to be used in
-\code{identify_usage_segments()} when \code{hrvar = NULL}.}
-
-\item{usage_version}{String passed to \code{identify_usage_segments(version = ...)}, e.g. \code{"12w"} or \code{"4w"}.}
+Supply \code{NULL} (without quotes) to compute a single overall curve.}
 
 \item{mingroup}{Numeric value setting the privacy threshold / minimum group size. Defaults to 5.}
 
@@ -65,12 +58,10 @@ with an option to return the underlying long-format survival table.
 Supports:
 \itemize{
 \item Flexible grouping via \code{hrvar}
-\item Optional usage segmentation via \code{identify_usage_segments()} when \code{hrvar = NULL}
-and \code{usage_metrics} are supplied
 \item Privacy filtering via \code{mingroup}
 }
 
-This function expects one row per person with a pre-computed time-to-event column
+This function expects \strong{one row per person} with a pre-computed time-to-event column
 and an event indicator. Use \code{\link{create_survival_prep}} to derive these
 from a Standard Person Query panel dataset.
 }

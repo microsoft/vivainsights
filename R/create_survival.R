@@ -11,16 +11,15 @@
 #'
 #' Supports:
 #' - Flexible grouping via `hrvar`
-#' - Optional usage segmentation via `identify_usage_segments()` when `hrvar = NULL`
-#'   and `usage_metrics` are supplied
 #' - Privacy filtering via `mingroup`
 #'
-#' This function expects one row per person with a pre-computed time-to-event column
+#' This function expects **one row per person** with a pre-computed time-to-event column
 #' and an event indicator. Use \code{\link{create_survival_prep}} to derive these
 #' from a Standard Person Query panel dataset.
 #'
 #' @param data A person-level data frame with one row per person, as produced by
-#'   \code{\link{create_survival_prep}}.
+#'   \code{\link{create_survival_prep}}. Must contain `time_col`, `event_col`, and
+#'   (when `hrvar` is not `NULL`) the grouping column.
 #' @param time_col Character string containing the name of the time-to-event column.
 #' @param event_col Character string containing the name of the event indicator column.
 #'   Accepted forms:
@@ -29,11 +28,7 @@
 #'   - Numeric event-like (>=0): values >0 treated as event, 0 as censored
 #'   - Character tokens ("true"/"false", "yes"/"no", "1"/"0")
 #' @param hrvar Character string containing the name of the grouping column.
-#'   Supply `NULL` (without quotes) to compute an overall curve. If `hrvar = NULL`
-#'   and `usage_metrics` are supplied, grouping is inferred from `identify_usage_segments()`.
-#' @param usage_metrics Character vector of metric column name(s) to be used in
-#'   `identify_usage_segments()` when `hrvar = NULL`.
-#' @param usage_version String passed to `identify_usage_segments(version = ...)`, e.g. `"12w"` or `"4w"`.
+#'   Supply `NULL` (without quotes) to compute a single overall curve.
 #' @param mingroup Numeric value setting the privacy threshold / minimum group size. Defaults to 5.
 #' @param na.rm A logical value indicating whether `NA` should be stripped before computation proceeds.
 #'   Defaults to `TRUE`.
@@ -86,8 +81,6 @@ create_survival <- function(data,
                             time_col,
                             event_col,
                             hrvar = NULL,
-                            usage_metrics = NULL,
-                            usage_version = "12w",
                             mingroup = 5,
                             na.rm = TRUE,
                             return = "plot"){
@@ -97,11 +90,6 @@ create_survival <- function(data,
 
   if(!is.null(hrvar)){
     required_variables <- c(required_variables, hrvar)
-  }
-
-  # Only required if we are deriving segments
-  if(is.null(hrvar) && !is.null(usage_metrics)){
-    required_variables <- c(required_variables, usage_metrics, "PersonId", "MetricDate")
   }
 
   required_variables <- unique(required_variables)
@@ -124,19 +112,7 @@ create_survival <- function(data,
   df <- data
   hrvar_for_calc <- hrvar
 
-  ## Optional: derive usage segments when no grouping column supplied
-  if(is.null(hrvar_for_calc) && !is.null(usage_metrics)){
-
-    seg_out <- .auto_segment_using_identify_usage(
-      data = df,
-      metrics = usage_metrics,
-      usage_version = usage_version
-    )
-
-    df <- seg_out$data
-    hrvar_for_calc <- seg_out$segment_col
-
-  } else if(!is.null(hrvar_for_calc)){
+  if(!is.null(hrvar_for_calc)){
 
     if(!is.character(hrvar_for_calc) || length(hrvar_for_calc) != 1){
       stop("Please enter a valid input for `hrvar` (single character or NULL).")
