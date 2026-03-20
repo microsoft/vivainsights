@@ -422,8 +422,8 @@ create_radar_viz <- function(data,
     ) %>%
     dplyr::arrange(.data$seg, .data$metric_idx)
 
-  # Friendly labels if available
-  axis_labs <- .pretty_metric_names(metrics)
+  # Friendly labels: underscores -> spaces, then wrap at 15 chars
+  axis_labs <- wrap_text(.pretty_metric_names(metrics))
 
   ggplot2::ggplot(poly_df, ggplot2::aes(x = .data$metric_idx, y = .data$value, group = .data$seg)) +
     ggplot2::geom_polygon(ggplot2::aes(fill = .data$seg), alpha = 0.10, colour = NA,
