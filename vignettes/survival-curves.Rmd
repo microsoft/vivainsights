@@ -33,6 +33,18 @@ library(dplyr)
 
 The function expects **one row per person** with a pre-computed `time` (weeks until event or end of observation) and `event` (1 = event occurred, 0 = censored) column. Use `create_survival_prep()` to derive these from a Standard Person Query panel dataset.
 
+### Reframing "survival" for workforce contexts
+
+In classical survival analysis the *event* is typically something negative — death, equipment failure — and the y-axis probability represents "still alive / still working". In workforce analytics the event is usually **a positive milestone**: first adoption of a tool, first week as a power user, first time a network or collaboration metric crosses a meaningful threshold.
+
+The terminology inverts: "surviving" means *not yet having reached the milestone*, and the event ("death") means *success — the person converted*. It can therefore be more intuitive to read the chart as a **time-to-adoption curve**, a **conversion curve**, or a **graduation curve**:
+
+- **A curve that drops steeply early** → most people reached the milestone quickly.
+- **A curve that stays high** → many people had not yet converted by the end of the observation window.
+- **The y-axis** → the share of people who have *not yet* experienced the milestone.
+
+The curve answers: *"By week N, what fraction of the population had not yet crossed the threshold?"*
+
 ---
 
 ## Step 1 — Prepare person-level survival data
@@ -87,11 +99,11 @@ create_survival(
 
 **Reading the chart:**
 
-- **Y-axis** — probability of *not yet* having experienced the event (survival probability).
+- **Y-axis** — probability of *not yet* having reached the milestone (the "survival" probability, or equivalently, the share yet to convert).
 - **X-axis** — week number (time since the start of observation).
-- **Each step down** marks one or more events in that group at that week.
-- **Curves that drop quickly** indicate groups where the event occurs early.
-- **Curves that stay high** indicate groups where many people never experience the event (or experience it late).
+- **Each step down** marks one or more conversions (events) in that group at that week.
+- **Curves that drop quickly** indicate groups where most people reached the milestone early (fast adoption).
+- **Curves that stay high** indicate groups where many people had not yet converted by the end of the window (slow or incomplete adoption).
 
 ---
 

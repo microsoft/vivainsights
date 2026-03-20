@@ -18,6 +18,13 @@
 #'     observation window, \code{0} if the person was censored (never met it).
 #' }
 #'
+#' Although rooted in survival analysis, the \code{event_condition} is typically
+#' a **positive milestone** in a workforce context — first use of a tool, first
+#' week as a power user, first week crossing a collaboration threshold.
+#' The resulting curve is therefore often better described as a
+#' **time-to-adoption**, **conversion**, or **graduation** curve.
+#' See \code{\link{create_survival}} for further framing guidance.
+#'
 #' @param data A Standard Person Query dataset in the form of a data frame.
 #' @param metric Character string containing the name of the metric column to
 #'   evaluate the event condition on.

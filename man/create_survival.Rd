@@ -52,8 +52,22 @@ A different output is returned depending on the value passed to the \code{return
 }
 }
 \description{
-Computes Kaplan–Meier survival curves and returns a step-function survival plot by default,
+Computes Kaplan–Meier survival curves and returns a step-function plot by default,
 with an option to return the underlying long-format survival table.
+
+Although this function is built on \strong{survival analysis}, the framing applies
+equally to positive milestones in a workforce context. In classical survival
+analysis the "event" is typically something negative (death, failure); here it
+is often a positive outcome — first use of a tool, first week as a power user,
+first week crossing a collaboration threshold. The curve is therefore better
+read as a \strong{time-to-adoption}, \strong{conversion}, or \strong{graduation} curve:
+\itemize{
+\item The y-axis ("survival probability") represents the share of people who have
+\emph{not yet} reached the milestone.
+\item A curve that drops steeply early means most people converted quickly.
+\item A curve that stays high means many people had not yet converted by the end
+of the observation window.
+}
 
 Supports:
 \itemize{
@@ -61,9 +75,9 @@ Supports:
 \item Privacy filtering via \code{mingroup}
 }
 
-This function expects \strong{one row per person} with a pre-computed time-to-event column
-and an event indicator. Use \code{\link{create_survival_prep}} to derive these
-from a Standard Person Query panel dataset.
+This function expects \strong{one row per person} with a pre-computed time-to-event
+column and an event indicator. Use \code{\link{create_survival_prep}} to derive
+these from a Standard Person Query panel dataset.
 }
 \examples{
 \dontrun{

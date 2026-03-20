@@ -49,6 +49,13 @@ the event condition is first met. If the condition is never met,
 \item \code{event}: \code{1} if the condition was met at any point in the
 observation window, \code{0} if the person was censored (never met it).
 }
+
+Although rooted in survival analysis, the \code{event_condition} is typically
+a \strong{positive milestone} in a workforce context — first use of a tool, first
+week as a power user, first week crossing a collaboration threshold.
+The resulting curve is therefore often better described as a
+\strong{time-to-adoption}, \strong{conversion}, or \strong{graduation} curve.
+See \code{\link{create_survival}} for further framing guidance.
 }
 \examples{
 # \dontrun{
