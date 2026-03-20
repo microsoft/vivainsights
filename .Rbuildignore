@@ -24,3 +24,6 @@ man-roxygen
 ^vignettes/information-value.Rmd$
 ^vignettes/custom-network-p2p.Rmd$
 ^vignettes/custom-network-g2g.Rmd$
+^vignettes/radar-charts.Rmd$
+^vignettes/survival-curves.Rmd$
+^\.claude$
