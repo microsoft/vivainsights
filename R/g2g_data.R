@@ -31,5 +31,5 @@
 #'   \item{Group_meeting_time_invested}{ }
 #'   ...
 #' }
-#' @source \url{https://analysis.insights.viva.office.com/analyst/analysis/}
+#' @source \url{https://analysis.insights.cloud.microsoft/analyst/analysis/}
 "g2g_data"

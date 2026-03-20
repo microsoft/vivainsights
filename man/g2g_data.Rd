@@ -22,7 +22,7 @@ A data frame with 150 rows and 11 variables:
 }
 }
 \source{
-\url{https://analysis.insights.viva.office.com/analyst/analysis/}
+\url{https://analysis.insights.cloud.microsoft/analyst/analysis/}
 }
 \usage{
 g2g_data

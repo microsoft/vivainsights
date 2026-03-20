@@ -88,7 +88,14 @@ rolling average.
 }
 
 If \code{"table"} is passed to \code{return}, a summary table is returned with one row
-per \code{MetricDate} and usage segments as columns containing percentages.
+per \code{MetricDate} and usage segments as columns containing percentages. The
+table includes:
+\itemize{
+\item \code{MetricDate}: The date of the metric
+\item Segment columns (in order): \code{Non-user}, \verb{Low User}, \verb{Novice User},
+\verb{Habitual User}, \verb{Power User} (only segments present in the data are included)
+\item \code{n}: The total number of distinct persons for that date
+}
 
 @import slider slide_dbl
 @import tidyr
