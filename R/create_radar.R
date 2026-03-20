@@ -154,11 +154,32 @@ create_radar <- function(data,
 
   } else if (return == "plot") {
 
+    ## Build caption: date range + index mode label
+    date_caption <- tryCatch(
+      extract_date_range(data, return = "text"),
+      error = function(e) NULL
+    )
+
+    index_label <- switch(
+      index_mode,
+      "total"     = "Index: population average = 100",
+      "ref_group" = paste0("Index: ", index_ref_group, " = 100"),
+      "minmax"    = "Index: min\u2013max scaled [0, 100]",
+      "none"      = "Raw values (no indexing)"
+    )
+
+    caption_text <- if (is.null(date_caption)) {
+      index_label
+    } else {
+      paste0(date_caption, " | ", index_label)
+    }
+
     return(
       create_radar_viz(
-        data = out$table,
+        data    = out$table,
         metrics = metrics,
-        hrvar = hrvar_for_calc
+        hrvar   = hrvar_for_calc,
+        caption = caption_text
       )
     )
 
@@ -371,6 +392,9 @@ create_radar_calc <- function(data,
 #' @param fill_missing Character string specifying how to handle missing values.
 #'   If `"zero"` (default), fill NA values as 0 for plotting. This ensures
 #'   polygons close properly in the radar visualization.
+#' @param caption Character string for the plot caption. Typically the output
+#'   of `extract_date_range(data, return = "text")` plus an index-mode label,
+#'   as constructed by `create_radar()`. Defaults to `NULL` (no caption).
 #'
 #' @return ggplot object.
 #'
@@ -378,7 +402,8 @@ create_radar_calc <- function(data,
 create_radar_viz <- function(data,
                              metrics,
                              hrvar,
-                             fill_missing = "zero") {
+                             fill_missing = "zero",
+                             caption = NULL) {
 
   # Warn if too few metrics for effective radar chart
   if (length(metrics) < 3) {
@@ -436,7 +461,8 @@ create_radar_viz <- function(data,
       expand = ggplot2::expansion(mult = c(0, 0))
     ) +
     ggplot2::guides(colour = ggplot2::guide_legend(title = NULL)) +
-    ggplot2::labs(title = "Radar chart", subtitle = paste("By", .pretty_hrvar_name(hrvar))) +
+    ggplot2::labs(title = "Radar chart", subtitle = paste("By", .pretty_hrvar_name(hrvar)),
+                  caption = caption) +
     .theme_wpa_safe() +
     ggplot2::theme(
       plot.title = ggplot2::element_text(face = "bold"),

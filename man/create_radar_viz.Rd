@@ -4,7 +4,7 @@
 \alias{create_radar_viz}
 \title{Radar Chart (Visualization)}
 \usage{
-create_radar_viz(data, metrics, hrvar, fill_missing = "zero")
+create_radar_viz(data, metrics, hrvar, fill_missing = "zero", caption = NULL)
 }
 \arguments{
 \item{data}{Output table from \code{create_radar_calc()}.}
@@ -16,6 +16,10 @@ create_radar_viz(data, metrics, hrvar, fill_missing = "zero")
 \item{fill_missing}{Character string specifying how to handle missing values.
 If \code{"zero"} (default), fill NA values as 0 for plotting. This ensures
 polygons close properly in the radar visualization.}
+
+\item{caption}{Character string for the plot caption. Typically the output
+of \code{extract_date_range(data, return = "text")} plus an index-mode label,
+as constructed by \code{create_radar()}. Defaults to \code{NULL} (no caption).}
 }
 \value{
 ggplot object.

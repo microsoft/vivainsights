@@ -8,7 +8,8 @@ create_survival_viz(
   data,
   hrvar = "group",
   title = "Survival Curve",
-  subtitle = "Kaplan–Meier estimate"
+  subtitle = "Kaplan–Meier estimate",
+  caption = NULL
 )
 }
 \arguments{
@@ -17,6 +18,10 @@ create_survival_viz(
 \item{hrvar}{Character. Group column name in \code{data}.}
 
 \item{title, subtitle}{Character. Plot annotations.}
+
+\item{caption}{Character string for the plot caption. Typically the output
+of \code{extract_date_range(data, return = "text")}, as constructed by
+\code{create_survival()}. Defaults to \code{NULL} (no caption).}
 }
 \value{
 ggplot object.

@@ -141,21 +141,28 @@ create_survival <- function(data,
 
     ## Titles
     if(is.null(hrvar_for_calc)){
-      ttl <- "Survival Curve"
-      sub <- "Kaplan\u2013Meier estimate"
+      ttl  <- "Survival Curve"
+      sub  <- "Kaplan\u2013Meier estimate"
       gcol <- "group"
     } else {
-      ttl <- "Survival Curve by Group"
-      sub <- paste("Kaplan\u2013Meier estimate by", hrvar_for_calc)
+      ttl  <- "Survival Curve by Group"
+      sub  <- paste("Kaplan\u2013Meier estimate by", hrvar_for_calc)
       gcol <- hrvar_for_calc
     }
 
+    ## Caption: date range (person-level data may not carry MetricDate)
+    caption_text <- tryCatch(
+      extract_date_range(data, return = "text"),
+      error = function(e) NULL
+    )
+
     return(
       create_survival_viz(
-        data = out$table,
-        hrvar = gcol,
-        title = ttl,
-        subtitle = sub
+        data     = out$table,
+        hrvar    = gcol,
+        title    = ttl,
+        subtitle = sub,
+        caption  = caption_text
       )
     )
 
@@ -332,6 +339,9 @@ create_survival_calc <- function(data,
 #' @param data Long survival table produced by `create_survival_calc()`.
 #' @param hrvar Character. Group column name in `data`.
 #' @param title,subtitle Character. Plot annotations.
+#' @param caption Character string for the plot caption. Typically the output
+#'   of `extract_date_range(data, return = "text")`, as constructed by
+#'   `create_survival()`. Defaults to `NULL` (no caption).
 #'
 #' @return ggplot object.
 #'
@@ -339,7 +349,8 @@ create_survival_calc <- function(data,
 create_survival_viz <- function(data,
                                 hrvar = "group",
                                 title = "Survival Curve",
-                                subtitle = "Kaplan\u2013Meier estimate"){
+                                subtitle = "Kaplan\u2013Meier estimate",
+                                caption = NULL){
 
   ggplot2::ggplot(
     data,
@@ -357,7 +368,8 @@ create_survival_viz <- function(data,
       y = "Survival probability",
       colour = NULL,
       title = title,
-      subtitle = subtitle
+      subtitle = subtitle,
+      caption = caption
     ) +
     .theme_wpa_safe()
 }
