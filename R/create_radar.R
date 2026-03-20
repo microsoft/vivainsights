@@ -367,10 +367,28 @@ create_radar_calc <- function(data,
     maxs <- vapply(metrics, function(m) max(out_tbl[[m]], na.rm = TRUE), numeric(1))
     ref <- cbind(min = mins, max = maxs)
 
+    # Identify metrics where scaling cannot be computed:
+    #   - non-finite min/max (e.g. all-NA column -> Inf/-Inf from min/max)
+    #   - max == min (all groups have identical values; range is zero)
+    #   - max < min  (degenerate; should not occur but guard defensively)
+    bad_metrics <- metrics[
+      !is.finite(mins) | !is.finite(maxs) | maxs <= mins
+    ]
+
+    if (length(bad_metrics) > 0) {
+      warning(
+        "Metric(s) with non-finite or zero range in 'minmax' mode: ",
+        paste(bad_metrics, collapse = ", "),
+        ". Indexed values set to NA_real_."
+      )
+    }
+
     for (m in metrics) {
-      den <- (maxs[[m]] - mins[[m]])
-      if (den == 0) den <- 1
-      out_tbl[[m]] <- 100 * (out_tbl[[m]] - mins[[m]]) / den
+      if (!is.finite(mins[[m]]) || !is.finite(maxs[[m]]) || maxs[[m]] <= mins[[m]]) {
+        out_tbl[[m]] <- NA_real_
+      } else {
+        out_tbl[[m]] <- 100 * (out_tbl[[m]] - mins[[m]]) / (maxs[[m]] - mins[[m]])
+      }
     }
 
   } else {

@@ -523,3 +523,85 @@ test_that("create_radar handles NA denominator gracefully", {
   # NA metric should be set to 100
   expect_true(all(result$NA_Metric == 100, na.rm = TRUE))
 })
+
+# minmax edge-case guard tests ------------------------------------------------------------
+
+test_that("create_radar_calc minmax: all-NA metric yields NA_real_ with warning", {
+
+  test_data <- data.frame(
+    PersonId     = paste0("p", 1:10),
+    Organization = rep(c("A", "B"), each = 5),
+    Good_Metric  = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+    All_NA       = rep(NA_real_, 10),
+    stringsAsFactors = FALSE
+  )
+
+  expect_warning(
+    result <- create_radar_calc(
+      data       = test_data,
+      metrics    = c("Good_Metric", "All_NA"),
+      hrvar      = "Organization",
+      mingroup   = 1,
+      index_mode = "minmax"
+    ),
+    "non-finite or zero range"
+  )
+
+  # All-NA metric must produce NA_real_ output, not NaN or Inf
+  expect_true(all(is.na(result$table$All_NA)))
+  # Normal metric still scaled to [0, 100]
+  expect_true(all(result$table$Good_Metric >= 0 & result$table$Good_Metric <= 100))
+})
+
+test_that("create_radar_calc minmax: constant metric (min == max) yields NA_real_ with warning", {
+
+  test_data <- data.frame(
+    PersonId     = paste0("p", 1:10),
+    Organization = rep(c("A", "B"), each = 5),
+    Normal       = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+    Constant     = rep(5, 10),
+    stringsAsFactors = FALSE
+  )
+
+  expect_warning(
+    result <- create_radar_calc(
+      data       = test_data,
+      metrics    = c("Normal", "Constant"),
+      hrvar      = "Organization",
+      mingroup   = 1,
+      index_mode = "minmax"
+    ),
+    "non-finite or zero range"
+  )
+
+  # Constant metric: all groups identical -> cannot distinguish -> NA
+  expect_true(all(is.na(result$table$Constant)))
+  # Normal metric still scaled correctly
+  expect_true(all(result$table$Normal >= 0 & result$table$Normal <= 100, na.rm = TRUE))
+})
+
+test_that("create_radar_calc minmax: valid metrics produce no warning and finite output", {
+
+  test_data <- data.frame(
+    PersonId     = paste0("p", 1:10),
+    Organization = rep(c("A", "B"), each = 5),
+    MetricA      = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+    MetricB      = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100),
+    stringsAsFactors = FALSE
+  )
+
+  expect_no_warning(
+    result <- create_radar_calc(
+      data       = test_data,
+      metrics    = c("MetricA", "MetricB"),
+      hrvar      = "Organization",
+      mingroup   = 1,
+      index_mode = "minmax"
+    )
+  )
+
+  expect_true(all(is.finite(result$table$MetricA)))
+  expect_true(all(is.finite(result$table$MetricB)))
+  expect_true(all(result$table$MetricA >= 0 & result$table$MetricA <= 100))
+  expect_true(all(result$table$MetricB >= 0 & result$table$MetricB <= 100))
+})
