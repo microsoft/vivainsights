@@ -398,7 +398,9 @@ create_survival_viz <- function(data,
   d <- d[ok]
   e <- e[ok]
 
-  if(length(d) == 0){
+  n <- length(d)
+
+  if(n == 0){
     return(data.frame(
       time = numeric(0),
       at_risk = integer(0),
@@ -409,30 +411,33 @@ create_survival_viz <- function(data,
   }
 
   timeline <- sort(unique(d))
+  k        <- length(timeline)
 
-  S <- 1.0
-  surv <- numeric(length(timeline))
-  at_risk_seq <- integer(length(timeline))
-  events_seq <- integer(length(timeline))
+  # Map each observation to its position in the sorted timeline — O(n).
+  # tabulate() then counts in a single pass — O(n).
+  # This replaces the previous O(n * k) loop that called sum(d >= t) and
+  # sum(d == t & e == 1L) for every unique time point.
+  idx          <- match(d, timeline)
+  all_counts   <- tabulate(idx, nbins = k)          # total obs (events + censorings) per time
+  event_counts <- tabulate(idx[e == 1L], nbins = k) # events only per time
 
-  for(i in seq_along(timeline)){
+  # at_risk[i] = n minus all observations that occurred strictly before t_i.
+  # Equivalent to n - cumsum(all_counts)[i-1], with a leading zero for i=1.
+  at_risk_seq <- as.integer(n - c(0L, cumsum(all_counts)[-k]))
 
-    t <- timeline[i]
-    at_risk <- sum(d >= t)
-    d_t <- sum(d == t & e == 1L)
-
-    at_risk_seq[i] <- at_risk
-    events_seq[i] <- d_t
-
-    if(at_risk > 0) S <- S * (1 - d_t / at_risk)
+  # Kaplan–Meier product-limit: O(k) loop, purely arithmetic.
+  S    <- 1.0
+  surv <- numeric(k)
+  for(i in seq_len(k)){
+    if(at_risk_seq[i] > 0L) S <- S * (1 - event_counts[i] / at_risk_seq[i])
     surv[i] <- S
   }
 
   # Prepend t = 0 anchor: everyone is at risk, survival = 1
   data.frame(
     time     = c(0, timeline),
-    at_risk  = c(as.integer(length(d)), at_risk_seq),
-    events   = c(0L, events_seq),
+    at_risk  = c(as.integer(n), at_risk_seq),
+    events   = c(0L, as.integer(event_counts)),
     survival = c(1.0, surv),
     check.names = FALSE
   )
