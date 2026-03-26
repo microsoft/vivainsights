@@ -29,8 +29,9 @@
 #' has since been removed and dependent functions `Ljungbox()` incorporated into
 #' the **wpa** package.
 #'
-#' @param data Person Query as a dataframe including date column named
-#'   `MetricDate`. This function assumes the data format is `%Y-%m-%d` as is
+#' @param data Person Query as a dataframe in **panel format** (one row per
+#'   employee per time period), with the columns `PersonId` and `MetricDate`
+#'   present. This function assumes the date format is `%Y-%m-%d` as is
 #'   standard in a Viva Insights query output.
 #' @param metrics A character vector containing the variable names to perform
 #'   the interrupted time series analysis for.

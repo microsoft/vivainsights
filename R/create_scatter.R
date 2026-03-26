@@ -17,6 +17,8 @@
 #' in the package that produce scatter plots.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param metric_x Character string containing the name of the metric,
 #' e.g. "Collaboration_hours"
 #' @param metric_y Character string containing the name of the metric,
