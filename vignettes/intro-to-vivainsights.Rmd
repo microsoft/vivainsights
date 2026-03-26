@@ -42,6 +42,29 @@ pq_data %>%
   glimpse()
 ```
 
+### Choosing HR attributes and setting `mingroup`
+
+Most analysis and plotting functions in **vivainsights** support a `mingroup`
+argument (defaults to `5`). This suppresses very small groups, which helps with
+both privacy and readability.
+
+Before selecting an HR attribute for grouping, you can quickly review how many
+distinct values each HR variable has with `hrvar_count_all()`:
+
+```{r}
+pq_data %>%
+  hrvar_count_all(return = "table") %>%
+  dplyr::arrange(desc(n_distinct))
+```
+
+Once you have selected an attribute, you can set a higher privacy threshold as
+needed in your plotting calls:
+
+```{r}
+pq_data %>%
+  meeting_trend(hrvar = "Organization", mingroup = 10, return = "plot")
+```
+
 ------------------------------------------------------------------------
 
 ## Example Analysis
