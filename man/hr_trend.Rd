@@ -7,7 +7,9 @@
 hr_trend(data, return = "plot")
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{return}{String specifying what to return. This must be one of the
 following strings:

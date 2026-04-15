@@ -20,7 +20,9 @@ create_period_scatter(
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{hrvar}{HR Variable by which to split metrics. Accepts a character vector,
 defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"}

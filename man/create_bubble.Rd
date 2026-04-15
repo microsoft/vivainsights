@@ -16,7 +16,9 @@ create_bubble(
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{metric_x}{Character string containing the name of the metric, e.g.
 "Collaboration_hours"}

@@ -18,7 +18,10 @@ create_line_asis(
 )
 }
 \arguments{
-\item{data}{Plotting data as a data frame.}
+\item{data}{Aggregated or summarised data as a data frame. Unlike
+\code{create_line()}, this function does \strong{not} require panel data and can
+accept any pre-aggregated data frame (i.e. \code{PersonId} and \code{MetricDate} are
+not required).}
 
 \item{date_var}{String containing name of variable for the horizontal axis.}
 

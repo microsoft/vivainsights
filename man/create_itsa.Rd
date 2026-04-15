@@ -17,8 +17,9 @@ create_itsa(
 )
 }
 \arguments{
-\item{data}{Person Query as a dataframe including date column named
-\code{MetricDate}. This function assumes the data format is \verb{\%Y-\%m-\%d} as is
+\item{data}{Person Query as a dataframe in \strong{panel format} (one row per
+employee per time period), with the columns \code{PersonId} and \code{MetricDate}
+present. This function assumes the date format is \verb{\%Y-\%m-\%d} as is
 standard in a Viva Insights query output.}
 
 \item{metrics}{A character vector containing the variable names to perform
