@@ -19,7 +19,9 @@ extract_hr(data, max_unique = 50, exclude_constants = TRUE, return = "names")
 - max_unique:
 
   A numeric value representing the maximum number of unique values to
-  accept for an HR attribute. Defaults to 50.
+  accept for an HR attribute. Defaults to 50. Any column with
+  `max_unique` or more unique values is excluded, and a message is
+  displayed listing those columns and their unique-value counts.
 
 - exclude_constants:
 
@@ -93,10 +95,14 @@ Other Data Validation:
 
 ``` r
 pq_data %>% extract_hr(return = "names")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> [1] "FunctionType"        "SupervisorIndicator" "Level"              
 #> [4] "Organization"        "LevelDesignation"   
 
 pq_data %>% extract_hr(return = "vars")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 6,900 × 5
 #>    FunctionType SupervisorIndicator Level  Organization LevelDesignation
 #>    <chr>        <chr>               <chr>  <chr>        <chr>           

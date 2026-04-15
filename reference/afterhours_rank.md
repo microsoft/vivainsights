@@ -157,6 +157,8 @@ Other After-hours Collaboration:
 ``` r
 # Return plot
 afterhours_rank(pq_data, return = "plot")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
 #> ℹ Please use the `linewidth` argument instead.
 #> ℹ The deprecated feature was likely used in the vivainsights package.
@@ -166,6 +168,8 @@ afterhours_rank(pq_data, return = "plot")
 
 # Return summary table
 afterhours_rank(pq_data, return = "table")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 22 × 4
 #>    hrvar            group          After_hours_collaboration_hours     n
 #>    <chr>            <chr>                                    <dbl> <int>

@@ -150,6 +150,8 @@ beyond the specified thresholds.</p></li>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Return a summary table of all HR attributes</span></span></span>
 <span class="r-in"><span><span class="fu">hrvar_count_all</span><span class="op">(</span><span class="va">pq_data</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1 column(s) excluded due to max_unique = 100: PersonId (300).</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Adjust the `max_unique` argument if you wish to include these columns.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Attributes          `Unique values` `Total missing values` `% missing values`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>

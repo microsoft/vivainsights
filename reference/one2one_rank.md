@@ -164,6 +164,8 @@ Other Managerial Relations:
 ``` r
 # Return rank table
 one2one_rank(data = pq_data, return = "table")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 22 × 4
 #>    hrvar               group      Meeting_and_call_hours_with_manager_1_1     n
 #>    <chr>               <chr>                                        <dbl> <int>
@@ -181,5 +183,7 @@ one2one_rank(data = pq_data, return = "table")
 
 # Return plot
 one2one_rank(data = pq_data, return = "plot")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 
 ```

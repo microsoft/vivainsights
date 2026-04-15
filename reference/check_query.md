@@ -85,6 +85,10 @@ Other Data Validation:
 
 ``` r
 check_query(pq_data)
+#> 1 column(s) excluded due to max_unique = 100: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
+#> 1 column(s) excluded due to max_unique = 200: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> 
 #> 
 #> 

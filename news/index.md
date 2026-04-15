@@ -3,7 +3,9 @@
 ## vivainsights 0.7.2
 
 - Enhanced documentation for clearer function usage and discovery for
-  agents
+  agents and users
+- Improved diagnostic messages for
+  [`extract_hr()`](https://microsoft.github.io/vivainsights/reference/extract_hr.md)
 
 ## vivainsights 0.7.1
 

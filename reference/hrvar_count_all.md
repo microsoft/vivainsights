@@ -85,6 +85,8 @@ Other Data Validation:
 ``` r
 # Return a summary table of all HR attributes
 hrvar_count_all(pq_data, return = "table")
+#> 1 column(s) excluded due to max_unique = 100: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 5 × 4
 #>   Attributes          `Unique values` `Total missing values` `% missing values`
 #>   <chr>                         <dbl>                  <dbl>              <dbl>

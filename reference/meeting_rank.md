@@ -164,6 +164,8 @@ Other Meetings:
 ``` r
 # Return rank table
 meeting_rank(data = pq_data, return = "table")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 22 × 4
 #>    hrvar               group          Meeting_hours     n
 #>    <chr>               <chr>                  <dbl> <int>
@@ -181,5 +183,7 @@ meeting_rank(data = pq_data, return = "table")
 
 # Return plot
 meeting_rank(data = pq_data, return = "plot")
+#> 1 column(s) excluded due to max_unique = 50: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 
 ```

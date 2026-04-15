@@ -209,6 +209,8 @@ create_rank(
   metric = "Emails_sent",
   return = "table"
 )
+#> 1 column(s) excluded due to max_unique = 50: PersonId (279).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 22 × 4
 #>    hrvar               group     Emails_sent     n
 #>    <chr>               <chr>           <dbl> <int>
@@ -232,6 +234,8 @@ create_rank(
   mode = "combine",
   return = "table"
 )
+#> 1 column(s) excluded due to max_unique = 50: PersonId (279).
+#> Adjust the `max_unique` argument if you wish to include these columns.
 #> # A tibble: 296 × 4
 #>    hrvar    group                                              Emails_sent     n
 #>    <chr>    <chr>                                                    <dbl> <int>
