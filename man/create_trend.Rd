@@ -94,11 +94,13 @@ Other Visualization:
 \code{\link{create_line}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
 \code{\link{create_rank}()},
 \code{\link{create_rogers}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_survival}()},
 \code{\link{create_tracking}()},
 \code{\link{email_dist}()},
 \code{\link{email_fizz}()},
@@ -142,10 +144,12 @@ Other Flexible:
 \code{\link{create_line}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
 \code{\link{create_rank}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_survival}()},
 \code{\link{create_tracking}()}
 
 Other Time-series: 

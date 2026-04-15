@@ -3,6 +3,9 @@
 * Bug fix to `identify_usage_segments()`: Fixed incorrect `n` count in table output to use distinct PersonIds instead of row count
 * Improvement to `identify_usage_segments()`: Reordered table output columns to follow logical segment progression (Non-user, Low User, Novice User, Habitual User, Power User)
 * Aesthetic improvements to `create_rogers()`
+* Added `create_radar()` and `create_radar_viz()` for spider/radar chart visualisation, with support for flexible indexing modes (`total`, `ref_group`, `minmax`, `none`), privacy filtering, and group comparisons
+* Added `create_survival()`, `create_survival_prep()`, `create_survival_calc()`, and `create_survival_viz()` for Kaplan–Meier survival (time-to-adoption) curve analysis, supporting flexible event definitions and group comparisons
+* Bumped minimum R version to 4.1.0 (required for native pipe-style lambda syntax `\(x)` used in `create_radar()`)
 * Added warning message to `identify_usage_segments()` when NA values are detected in the metric variable
 
 # vivainsights 0.7.0
