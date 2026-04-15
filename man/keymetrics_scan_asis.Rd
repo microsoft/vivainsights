@@ -23,7 +23,9 @@ keymetrics_scan_asis(
 )
 }
 \arguments{
-\item{data}{data frame containing data to plot. It is recommended to provide
+\item{data}{Aggregated or summarised data frame to plot. Unlike
+\code{keymetrics_scan()}, this function does \strong{not} require panel data (i.e.
+\code{PersonId} and \code{MetricDate} are not required). It is recommended to provide
 data in a 'long' table format where one grouping column forms the rows, a
 second column forms the columns, and a third numeric columns forms the}
 

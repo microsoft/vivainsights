@@ -55,6 +55,21 @@ check_inputs <- function(input, requirements, return = "stop"){
     paste("The following variables are not included in the input data frame:\n",
           not_in_p)
 
+  ## Add a hint when PersonId or MetricDate are missing, as this typically
+  ## means an aggregated dataset has been passed to a function that requires
+  ## panel (person-level) data.
+  panel_vars_missing <- intersect(not_in, c("PersonId", "MetricDate"))
+  if(length(panel_vars_missing) > 0){
+    warning_string <- paste0(
+      warning_string,
+      "\nNote: `PersonId` and `MetricDate` are required for this function.",
+      " Please supply a Standard Person Query dataset in panel format",
+      " (one row per person per time period).",
+      " If your data is already aggregated, consider using the",
+      " equivalent `*_asis()` variant of this function."
+    )
+  }
+
   if(length(not_in) > 0){
 
     if(return == "names"){

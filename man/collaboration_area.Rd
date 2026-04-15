@@ -11,6 +11,8 @@ collab_area(data, hrvar = NULL, mingroup = 5, return = "plot")
 }
 \arguments{
 \item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.
 A Ways of Working assessment dataset may also be provided, in which
 Unscheduled call hours would be included in the output.}
 

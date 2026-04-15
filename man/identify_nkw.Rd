@@ -8,7 +8,9 @@ Hours}
 identify_nkw(data, collab_threshold = 5, return = "data_summary")
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{collab_threshold}{Positive numeric value representing the collaboration
 hours threshold that should be exceeded as an average for the entire

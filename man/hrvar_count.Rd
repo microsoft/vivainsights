@@ -10,7 +10,9 @@ hrvar_count(data, hrvar = "Organization", return = "plot")
 analysis_scope(data, hrvar = "Organization", return = "plot")
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{hrvar}{HR Variable by which to split metrics, defaults to
 "Organization" but accepts any character vector, e.g. "LevelDesignation".

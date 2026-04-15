@@ -39,6 +39,8 @@
 #' You can browse each individual function for details on calculations.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param meeting_data An optional Meeting Query dataset in the form of a data
 #'   frame.
 #' @param hrvar HR Variable by which to split metrics, defaults to "Organization"
