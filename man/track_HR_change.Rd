@@ -16,7 +16,9 @@ track_HR_change(
 )
 }
 \arguments{
-\item{data}{A Person Query dataset in the form of a data frame.}
+\item{data}{A Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{start_date}{A start date to compare changes. See \code{end_date}.}
 

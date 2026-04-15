@@ -18,7 +18,10 @@ create_line_asis(
 )
 }
 \arguments{
-\item{data}{Plotting data as a data frame.}
+\item{data}{Aggregated or summarised data as a data frame. Unlike
+\code{create_line()}, this function does \strong{not} require panel data and can
+accept any pre-aggregated data frame (i.e. \code{PersonId} and \code{MetricDate} are
+not required).}
 
 \item{date_var}{String containing name of variable for the horizontal axis.}
 
@@ -107,11 +110,13 @@ Other Visualization:
 \code{\link{create_inc}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
 \code{\link{create_rank}()},
 \code{\link{create_rogers}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_survival}()},
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()},
 \code{\link{email_dist}()},
@@ -155,10 +160,12 @@ Other Flexible:
 \code{\link{create_inc}()},
 \code{\link{create_line}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
 \code{\link{create_rank}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_survival}()},
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()}
 

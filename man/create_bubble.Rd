@@ -16,7 +16,9 @@ create_bubble(
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{metric_x}{Character string containing the name of the metric, e.g.
 "Collaboration_hours"}
@@ -81,11 +83,13 @@ Other Visualization:
 \code{\link{create_line}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
 \code{\link{create_rank}()},
 \code{\link{create_rogers}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_survival}()},
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()},
 \code{\link{email_dist}()},
@@ -129,10 +133,12 @@ Other Flexible:
 \code{\link{create_line}()},
 \code{\link{create_line_asis}()},
 \code{\link{create_period_scatter}()},
+\code{\link{create_radar}()},
 \code{\link{create_rank}()},
 \code{\link{create_sankey}()},
 \code{\link{create_scatter}()},
 \code{\link{create_stacked}()},
+\code{\link{create_survival}()},
 \code{\link{create_tracking}()},
 \code{\link{create_trend}()}
 }
