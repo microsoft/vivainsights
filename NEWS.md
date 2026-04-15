@@ -1,6 +1,7 @@
 # vivainsights 0.7.2
 
-* Enhanced documentation for clearer function usage and discovery for agents
+* Enhanced documentation for clearer function usage and discovery for agents and users
+* Improved diagnostic messages for `extract_hr()`
 
 # vivainsights 0.7.1
 
