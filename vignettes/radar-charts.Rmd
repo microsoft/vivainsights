@@ -1,0 +1,234 @@
+---
+title: "Radar Charts with create_radar()"
+author: "vivainsights"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Radar Charts with create_radar()}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 8,
+  fig.height = 6
+)
+```
+
+```{r load, message = FALSE}
+library(vivainsights)
+library(dplyr)
+```
+
+## Overview
+
+`create_radar()` produces a multi-group radar (spider) chart that compares several metrics simultaneously across different segments of your workforce. The key steps inside the function are:
+
+1. **Person-level aggregation** — averages (or medians) each metric per person per group.
+2. **Group-level aggregation** — summarises person-level values to one row per group.
+3. **Privacy filtering** — drops groups below `mingroup` unique persons.
+4. **Optional indexing** — rescales values so groups are easy to compare.
+
+---
+
+## Basic usage
+
+Pass a data frame, a character vector of metric columns, and a grouping column. By default the chart indexes each metric so that the overall population mean equals 100.
+
+```{r basic-plot}
+create_radar(
+  data    = pq_data,
+  metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar   = "Organization",
+  mingroup = 5
+)
+```
+
+Each polygon represents one group. A value of 100 on any axis means that group sits exactly at the population average for that metric; values above 100 indicate above-average activity and values below 100 indicate below-average activity.
+
+### Returning the underlying table
+
+Set `return = "table"` to get the indexed values as a data frame instead:
+
+```{r basic-table}
+radar_tbl <- create_radar(
+  data    = pq_data,
+  metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar   = "Organization",
+  mingroup = 5,
+  return  = "table"
+)
+
+radar_tbl
+```
+
+The `n` column records the number of unique persons in each group — useful for checking which groups are close to the privacy threshold.
+
+---
+
+## Indexing modes
+
+The `index_mode` parameter controls how metric values are rescaled before plotting.
+
+### `"total"` (default)
+
+Each metric is divided by the overall population mean and multiplied by 100. A group at 100 matches the average.
+
+```{r index-total}
+create_radar(
+  data       = pq_data,
+  metrics    = c("Collaboration_hours", "Email_hours",
+                 "Meeting_hours", "After_hours_collaboration_hours"),
+  hrvar      = "Organization",
+  mingroup   = 5,
+  index_mode = "total"
+)
+```
+
+### `"ref_group"` — benchmark against one group
+
+Set `index_ref_group` to the name of the group that should equal 100 on every axis. All other groups are expressed relative to it.
+
+```{r index-ref-group}
+create_radar(
+  data            = pq_data,
+  metrics         = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar           = "Organization",
+  mingroup        = 5,
+  index_mode      = "ref_group",
+  index_ref_group = "Finance"
+)
+```
+
+### `"minmax"` — relative spread within observed groups
+
+Each metric is scaled so the lowest group maps to 0 and the highest to 100. This maximises visual contrast and is useful when absolute levels matter less than which group is highest or lowest.
+
+```{r index-minmax}
+create_radar(
+  data       = pq_data,
+  metrics    = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar      = "Organization",
+  mingroup   = 5,
+  index_mode = "minmax"
+)
+```
+
+### `"none"` — raw group values
+
+No rescaling is applied. The axes carry the original units, which makes cross-metric comparison harder but preserves the absolute magnitude.
+
+```{r index-none}
+create_radar(
+  data       = pq_data,
+  metrics    = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar      = "Organization",
+  mingroup   = 5,
+  index_mode = "none",
+  return     = "table"
+)
+```
+
+---
+
+## Aggregation method
+
+The default two-step aggregation uses the **mean** at both the person level and the group level. Switch to `agg = "median"` for robustness against outliers.
+
+```{r agg-median}
+create_radar(
+  data     = pq_data,
+  metrics  = c("Collaboration_hours", "Email_hours",
+               "Meeting_hours", "After_hours_collaboration_hours"),
+  hrvar    = "Organization",
+  mingroup = 5,
+  agg      = "median"
+)
+```
+
+---
+
+## Grouping by a different HR variable
+
+Any character column can serve as the grouping variable. Here we compare collaboration profiles by `LevelDesignation`:
+
+```{r hrvar-level}
+create_radar(
+  data     = pq_data,
+  metrics  = c("Collaboration_hours", "Email_hours",
+               "Meeting_hours", "Internal_network_size"),
+  hrvar    = "LevelDesignation",
+  mingroup = 5
+)
+```
+
+---
+
+## Privacy filtering with `mingroup`
+
+Groups with fewer than `mingroup` unique persons are silently dropped before plotting. Raise the threshold to be more conservative:
+
+```{r mingroup}
+# Only show groups with 20 or more unique persons
+create_radar(
+  data     = pq_data,
+  metrics  = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar    = "Organization",
+  mingroup = 20,
+  return   = "table"
+)
+```
+
+---
+
+## Handling missing values
+
+By default (`na.rm = FALSE`) the function retains rows with `NA` metric values and lets the aggregation handle them. Set `na.rm = TRUE` to drop any row containing an `NA` in any of the requested metrics before aggregation — this is equivalent to a complete-cases analysis.
+
+```{r na-rm}
+create_radar(
+  data     = pq_data,
+  metrics  = c("Collaboration_hours", "Email_hours"),
+  hrvar    = "Organization",
+  mingroup = 5,
+  na.rm    = TRUE,
+  return   = "table"
+)
+```
+
+---
+
+## Using the lower-level helpers directly
+
+`create_radar()` is built from two exported helpers that you can call independently:
+
+- **`create_radar_calc()`** — returns a list with `$table` (the indexed group-level data frame) and `$ref` (the reference values used for indexing).
+- **`create_radar_viz()`** — accepts the `$table` output and returns a `ggplot` object.
+
+This is useful when you want to post-process the table before plotting, or when you want to apply a custom theme on top of the default:
+
+```{r low-level}
+library(ggplot2)
+
+calc <- create_radar_calc(
+  data       = pq_data,
+  metrics    = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar      = "Organization",
+  mingroup   = 5,
+  index_mode = "total"
+)
+
+# Inspect the reference values used for indexing
+calc$ref
+
+# Render with an extra annotation layer
+create_radar_viz(
+  data    = calc$table,
+  metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
+  hrvar   = "Organization"
+) +
+  labs(caption = "Index: 100 = population average")
+```
