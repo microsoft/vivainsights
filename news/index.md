@@ -1,5 +1,10 @@
 # Changelog
 
+## vivainsights 0.7.2
+
+- Enhanced documentation for clearer function usage and discovery for
+  agents
+
 ## vivainsights 0.7.1
 
 CRAN release: 2026-01-16

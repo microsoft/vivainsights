@@ -16,7 +16,9 @@ analysis_scope(data, hrvar = "Organization", return = "plot")
 
 - data:
 
-  A Standard Person Query dataset in the form of a data frame.
+  A Standard Person Query dataset in the form of a data frame. This must
+  be a **panel dataset** where each row represents one employee per time
+  period, with the columns `PersonId` and `MetricDate` present.
 
 - hrvar:
 

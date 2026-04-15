@@ -29,7 +29,11 @@ create_bar_asis(
 
 - data:
 
-  Plotting data as a data frame.
+  Aggregated or summarised data as a data frame. Unlike
+  [`create_bar()`](https://microsoft.github.io/vivainsights/reference/create_bar.md),
+  this function does **not** require panel data and can accept any
+  pre-aggregated data frame (i.e. `PersonId` and `MetricDate` are not
+  required).
 
 - group_var:
 

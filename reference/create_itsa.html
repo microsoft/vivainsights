@@ -19,7 +19,7 @@ install.packages()."><meta property="og:image" content="https://microsoft.github
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,8 +95,9 @@ order to work. These packages can be installed from CRAN using
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>Person Query as a dataframe including date column named
-<code>MetricDate</code>. This function assumes the data format is <code>%Y-%m-%d</code> as is
+<dd><p>Person Query as a dataframe in <strong>panel format</strong> (one row per
+employee per time period), with the columns <code>PersonId</code> and <code>MetricDate</code>
+present. This function assumes the date format is <code>%Y-%m-%d</code> as is
 standard in a Viva Insights query output.</p></dd>
 
 

@@ -13,7 +13,7 @@ into the function. The only requirement is that a date_var is provided for the x
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,10 @@ into the function. The only requirement is that a <code>date_var</code> is provi
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>Plotting data as a data frame.</p></dd>
+<dd><p>Aggregated or summarised data as a data frame. Unlike
+<code><a href="create_line.html">create_line()</a></code>, this function does <strong>not</strong> require panel data and can
+accept any pre-aggregated data frame (i.e. <code>PersonId</code> and <code>MetricDate</code> are
+not required).</p></dd>
 
 
 <dt id="arg-date-var">date_var<a class="anchor" aria-label="anchor" href="#arg-date-var"></a></dt>

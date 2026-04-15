@@ -33,9 +33,12 @@ keymetrics_scan_asis(
 
 - data:
 
-  data frame containing data to plot. It is recommended to provide data
-  in a 'long' table format where one grouping column forms the rows, a
-  second column forms the columns, and a third numeric columns forms the
+  Aggregated or summarised data frame to plot. Unlike
+  [`keymetrics_scan()`](https://microsoft.github.io/vivainsights/reference/keymetrics_scan.md),
+  this function does **not** require panel data (i.e. `PersonId` and
+  `MetricDate` are not required). It is recommended to provide data in a
+  'long' table format where one grouping column forms the rows, a second
+  column forms the columns, and a third numeric columns forms the
 
 - row_var:
 

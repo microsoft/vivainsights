@@ -15,7 +15,7 @@ added."><meta property="og:image" content="https://microsoft.github.io/vivainsig
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +80,9 @@ added.</p>
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>A Standard Person Query dataset in the form of a data frame.</p></dd>
+<dd><p>A Standard Person Query dataset in the form of a data frame.
+This must be a <strong>panel dataset</strong> where each row represents one employee
+per time period, with the columns <code>PersonId</code> and <code>MetricDate</code> present.</p></dd>
 
 
 <dt id="arg-collab-threshold">collab_threshold<a class="anchor" aria-label="anchor" href="#arg-collab-threshold"></a></dt>

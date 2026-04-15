@@ -16,9 +16,11 @@ collab_area(data, hrvar = NULL, mingroup = 5, return = "plot")
 
 - data:
 
-  A Standard Person Query dataset in the form of a data frame. A Ways of
-  Working assessment dataset may also be provided, in which Unscheduled
-  call hours would be included in the output.
+  A Standard Person Query dataset in the form of a data frame. This must
+  be a **panel dataset** where each row represents one employee per time
+  period, with the columns `PersonId` and `MetricDate` present. A Ways
+  of Working assessment dataset may also be provided, in which
+  Unscheduled call hours would be included in the output.
 
 - hrvar:
 

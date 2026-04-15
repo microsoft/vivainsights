@@ -13,7 +13,7 @@ they are passed into the function."><meta property="og:image" content="https://m
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,9 @@ they are passed into the function.</p>
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>data frame containing data to plot. It is recommended to provide
+<dd><p>Aggregated or summarised data frame to plot. Unlike
+<code><a href="keymetrics_scan.html">keymetrics_scan()</a></code>, this function does <strong>not</strong> require panel data (i.e.
+<code>PersonId</code> and <code>MetricDate</code> are not required). It is recommended to provide
 data in a 'long' table format where one grouping column forms the rows, a
 second column forms the columns, and a third numeric columns forms the</p></dd>
 

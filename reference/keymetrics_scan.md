@@ -26,7 +26,11 @@ keymetrics_scan(
 
 - data:
 
-  A Standard Person Query dataset in the form of a data frame.
+  A Standard Person Query dataset in the form of a data frame. This must
+  be a **panel dataset** where each row represents one employee per time
+  period, with the columns `PersonId` and `MetricDate` present. If your
+  data is already aggregated (e.g. one row per group), use the
+  equivalent `*_asis()` variant of this function instead.
 
 - hrvar:
 

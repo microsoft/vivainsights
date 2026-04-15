@@ -31,9 +31,10 @@ create_itsa(
 
 - data:
 
-  Person Query as a dataframe including date column named `MetricDate`.
-  This function assumes the data format is `%Y-%m-%d` as is standard in
-  a Viva Insights query output.
+  Person Query as a dataframe in **panel format** (one row per employee
+  per time period), with the columns `PersonId` and `MetricDate`
+  present. This function assumes the date format is `%Y-%m-%d` as is
+  standard in a Viva Insights query output.
 
 - metrics:
 
