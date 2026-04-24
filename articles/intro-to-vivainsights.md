@@ -45,6 +45,42 @@ pq_data %>%
 #> $ Large_and_long_meeting_hours   <dbl> 0.00000000, 0.00000000, 1.85827223, 1.5…
 ```
 
+### Choosing HR attributes and setting `mingroup`
+
+Most analysis and plotting functions in **vivainsights** support a
+`mingroup` argument (defaults to `5`). This suppresses very small
+groups, which helps with both privacy and readability.
+
+Before selecting an HR attribute for grouping, you can quickly review
+how many distinct values each HR variable has with
+[`hrvar_count_all()`](https://microsoft.github.io/vivainsights/reference/hrvar_count_all.md):
+
+``` r
+pq_data %>%
+  hrvar_count_all(return = "table") %>%
+  dplyr::arrange(desc(`Unique values`))
+#> 1 column(s) excluded due to max_unique = 100: PersonId (300).
+#> Adjust the `max_unique` argument if you wish to include these columns.
+#> # A tibble: 5 × 4
+#>   Attributes          `Unique values` `Total missing values` `% missing values`
+#>   <chr>                         <dbl>                  <dbl>              <dbl>
+#> 1 Organization                      7                      0                  0
+#> 2 FunctionType                      5                      0                  0
+#> 3 Level                             4                      0                  0
+#> 4 LevelDesignation                  4                      0                  0
+#> 5 SupervisorIndicator               2                      0                  0
+```
+
+Once you have selected an attribute, you can set a higher privacy
+threshold as needed in your plotting calls:
+
+``` r
+pq_data %>%
+  meeting_trend(hrvar = "Organization", mingroup = 10, return = "plot")
+```
+
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-4-1.png)
+
 ------------------------------------------------------------------------
 
 ## Example Analysis
@@ -60,7 +96,7 @@ and meeting hours by an HR attribute you specify:
 pq_data %>% collaboration_summary(hrvar = "LevelDesignation")
 ```
 
-![](intro-to-vivainsights_files/figure-html/unnamed-chunk-3-1.png)
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-5-1.png)
 
 By changing the `hrvar()` argument, you can change the data being shown
 easily:
@@ -69,7 +105,7 @@ easily:
 pq_data %>% collaboration_summary(hrvar = "Organization")
 ```
 
-![](intro-to-vivainsights_files/figure-html/unnamed-chunk-4-1.png)
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-6-1.png)
 
 The
 [`collaboration_summary()`](https://microsoft.github.io/vivainsights/reference/collaboration_sum.md)
@@ -121,7 +157,7 @@ pq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
 #> generated.
 ```
 
-![](intro-to-vivainsights_files/figure-html/unnamed-chunk-6-1.png)
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-8-1.png)
 
 Summary table:
 
@@ -175,7 +211,7 @@ Heatmap:
 pq_data %>% meeting_summary(hrvar = "Organization", return = "plot")
 ```
 
-![](intro-to-vivainsights_files/figure-html/unnamed-chunk-8-1.png)
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-10-1.png)
 
 Summary table:
 
@@ -208,7 +244,7 @@ pq_data %>%
   afterhours_fizz(hrvar = "LevelDesignation", return = "plot")
 ```
 
-![](intro-to-vivainsights_files/figure-html/unnamed-chunk-10-1.png)
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-12-1.png)
 
 … and add custom titles, subtitles, and flip the axes by adding ggplot
 layers:
@@ -225,7 +261,7 @@ pq_data %>%
 #> ℹ Adding new coordinate system, which will replace the existing one.
 ```
 
-![](intro-to-vivainsights_files/figure-html/unnamed-chunk-11-1.png)
+![](intro-to-vivainsights_files/figure-html/unnamed-chunk-13-1.png)
 
 Note that the “pipe” syntax changes from `%>%` to `+` once you are
 manipulating a ggplot output, which will return an error if not used

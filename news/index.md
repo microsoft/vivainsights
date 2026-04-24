@@ -6,6 +6,7 @@
   agents and users
 - Improved diagnostic messages for
   [`extract_hr()`](https://microsoft.github.io/vivainsights/reference/extract_hr.md)
+- Improved documentation for `mingroup` in vignette and README
 
 ## vivainsights 0.7.1
 

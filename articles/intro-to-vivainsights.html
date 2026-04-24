@@ -79,7 +79,7 @@
                         <h4 data-toc-skip class="author">Martin
 Chan</h4>
             
-            <h4 data-toc-skip class="date">2026-04-15</h4>
+            <h4 data-toc-skip class="date">2026-04-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/microsoft/vivainsights/blob/main/vignettes/intro-to-vivainsights.Rmd" class="external-link"><code>vignettes/intro-to-vivainsights.Rmd</code></a></small>
       <div class="d-none name"><code>intro-to-vivainsights.Rmd</code></div>
@@ -126,6 +126,37 @@ of <strong>tidyverse</strong> (alternatively, you can just run
 <span><span class="co">#&gt; $ Channel_message_posts          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.9268549<span style="color: #949494;">, </span>0.2193999<span style="color: #949494;">, </span>0.4485522<span style="color: #949494;">, </span>1.7859…</span></span>
 <span><span class="co">#&gt; $ Conflicting_meeting_hours      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.5896529<span style="color: #949494;">, </span>4.6029578<span style="color: #949494;">, </span>5.0193866<span style="color: #949494;">, </span>1.1122…</span></span>
 <span><span class="co">#&gt; $ Large_and_long_meeting_hours   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.00000000<span style="color: #949494;">, </span>0.00000000<span style="color: #949494;">, </span>1.85827223<span style="color: #949494;">, </span>1.5…</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="choosing-hr-attributes-and-setting-mingroup">Choosing HR attributes and setting <code>mingroup</code><a class="anchor" aria-label="anchor" href="#choosing-hr-attributes-and-setting-mingroup"></a>
+</h3>
+<p>Most analysis and plotting functions in <strong>vivainsights</strong>
+support a <code>mingroup</code> argument (defaults to <code>5</code>).
+This suppresses very small groups, which helps with both privacy and
+readability.</p>
+<p>Before selecting an HR attribute for grouping, you can quickly review
+how many distinct values each HR variable has with
+<code><a href="../reference/hrvar_count_all.html">hrvar_count_all()</a></code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/hrvar_count_all.html">hrvar_count_all</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">`Unique values`</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 1 column(s) excluded due to max_unique = 100: PersonId (300).</span></span>
+<span><span class="co">#&gt; Adjust the `max_unique` argument if you wish to include these columns.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
+<span><span class="co">#&gt;   Attributes          `Unique values` `Total missing values` `% missing values`</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Organization                      7                      0                  0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> FunctionType                      5                      0                  0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Level                             4                      0                  0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> LevelDesignation                  4                      0                  0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> SupervisorIndicator               2                      0                  0</span></span></code></pre></div>
+<p>Once you have selected an attribute, you can set a higher privacy
+threshold as needed in your plotting calls:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/meeting_trend.html">meeting_trend</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, mingroup <span class="op">=</span> <span class="fl">10</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="768"></p>
 <hr>
 </div>
 </div>
@@ -138,18 +169,18 @@ of <strong>tidyverse</strong> (alternatively, you can just run
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function allows you to
 generate a stacked bar plot summarising the email and meeting hours by
 an HR attribute you specify:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="768"></p>
 <p>By changing the <code>hrvar()</code> argument, you can change the
 data being shown easily:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="768"></p>
 <p>The <code><a href="../reference/collaboration_sum.html">collaboration_summary()</a></code> function also comes with an
 option to return summary tables, rather than plots. Just specify “table”
 in the <code>return</code> argument:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/collaboration_sum.html">collaboration_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 5</span></span></span>
 <span><span class="co">#&gt;   group          Meeting_hours Email_hours Total Employee_Count</span></span>
@@ -177,7 +208,7 @@ HR attribute/variable to use as a grouping variable with the
 </ul>
 <p>And here are what the outputs look like.</p>
 <p>Heatmap:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
@@ -187,9 +218,9 @@ HR attribute/variable to use as a grouping variable with the
 <span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
-<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="768"></p>
 <p>Summary table:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/keymetrics_scan.html">keymetrics_scan</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 8</span></span></span>
 <span><span class="co">#&gt;    variable          Finance      HR      IT   Legal Operations Research   Sales</span></span>
@@ -232,11 +263,11 @@ ease of use and adoption.</p>
 <p>And here are what the outputs look like, for
 <code><a href="../reference/meeting_summary.html">meeting_summary()</a></code>.</p>
 <p>Heatmap:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="768"></p>
 <p>Summary table:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/meeting_summary.html">meeting_summary</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 3</span></span></span>
 <span><span class="co">#&gt;   group      Meeting_hours     n</span></span>
@@ -257,13 +288,13 @@ ease of use and adoption.</p>
 means is that there is a lot of flexibility in adding or overriding
 visual elements in the plots. For instance, you can take the following
 ‘fizzy drink’ (jittered scatter) plot:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/afterhours_fizz.html">afterhours_fizz</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"LevelDesignation"</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="768"></p>
 <p>… and add custom titles, subtitles, and flip the axes by adding
 ggplot layers:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># Requires ggplot2 for customizations</span></span>
 <span></span>
 <span><span class="va">pq_data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
@@ -273,7 +304,7 @@ ggplot layers:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Flip coordinates</span></span>
 <span><span class="co">#&gt; Coordinate system already present.</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Adding new coordinate system, which will replace the existing one.</span></span></code></pre></div>
-<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="intro-to-vivainsights_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="768"></p>
 <p>Note that the “pipe” syntax changes from <code>%&gt;%</code> to
 <code>+</code> once you are manipulating a ggplot output, which will
 return an error if not used correctly.</p>

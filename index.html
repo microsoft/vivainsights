@@ -113,6 +113,22 @@
 <li><a href="https://microsoft.github.io/vivainsights/reference/index.html">Full function list</a></li>
 <li><a href="https://microsoft.github.io/vivainsights/analyst_guide_intro.html">Analyst Guide</a></li>
 </ul>
+<div class="section level3">
+<h3 id="privacy-threshold-with-mingroup">Privacy threshold with <code>mingroup</code>
+<a class="anchor" aria-label="anchor" href="#privacy-threshold-with-mingroup"></a>
+</h3>
+<p>Most plotting and analysis functions support the <code>mingroup</code> argument (default: <code>5</code>) to suppress very small groups for privacy and readability.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"pq_data"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check available HR variables and how many groups they have</span></span>
+<span><span class="va">pq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/hrvar_count_all.html">hrvar_count_all</a></span><span class="op">(</span>return <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set a higher threshold when plotting</span></span>
+<span><span class="va">pq_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/meeting_trend.html">meeting_trend</a></span><span class="op">(</span>hrvar <span class="op">=</span> <span class="st">"Organization"</span>, mingroup <span class="op">=</span> <span class="fl">10</span>, return <span class="op">=</span> <span class="st">"plot"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="cheatsheet">Cheatsheet<a class="anchor" aria-label="anchor" href="#cheatsheet"></a>
