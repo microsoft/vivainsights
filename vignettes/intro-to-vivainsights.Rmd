@@ -54,7 +54,7 @@ distinct values each HR variable has with `hrvar_count_all()`:
 ```{r}
 pq_data %>%
   hrvar_count_all(return = "table") %>%
-  dplyr::arrange(desc(n_distinct))
+  dplyr::arrange(desc(`Unique values`))
 ```
 
 Once you have selected an attribute, you can set a higher privacy threshold as
