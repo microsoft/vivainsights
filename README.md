@@ -37,6 +37,23 @@ To get started with the package, please see the following links:
 * [Full function list](https://microsoft.github.io/vivainsights/reference/index.html)
 * [Analyst Guide](https://microsoft.github.io/vivainsights/analyst_guide_intro.html)
 
+### Privacy threshold with `mingroup`
+
+Most plotting and analysis functions support the `mingroup` argument (default:
+`5`) to suppress very small groups for privacy and readability.
+
+```r
+data("pq_data")
+
+# Check available HR variables and how many groups they have
+pq_data %>%
+  hrvar_count_all(return = "table")
+
+# Set a higher threshold when plotting
+pq_data %>%
+  meeting_trend(hrvar = "Organization", mingroup = 10, return = "plot")
+```
+
 ## Cheatsheet
 
 Also check out our package cheat sheet for a quick glimpse of what **vivainsights** offers:
