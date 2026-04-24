@@ -14,6 +14,8 @@
 #' @family Data Validation
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param end_date A string specifying the name of the date variable
 #'   representing the latest date. Defaults to "MetricDate".
 #' @param beg_date A string specifying the name of the date variable

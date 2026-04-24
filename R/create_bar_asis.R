@@ -11,7 +11,10 @@
 #' is no calculation for `create_bar_asis()` and the values are rendered as they
 #' are passed into the function.
 #'
-#' @param data Plotting data as a data frame.
+#' @param data Aggregated or summarised data as a data frame. Unlike
+#'   `create_bar()`, this function does **not** require panel data and can
+#'   accept any pre-aggregated data frame (i.e. `PersonId` and `MetricDate` are
+#'   not required).
 #' @param group_var String containing name of variable for the group.
 #' @param bar_var String containing name of variable representing the value of
 #'   the bars.

@@ -11,7 +11,9 @@
 #' is no calculation for `keymetrics_scan_asis()` and the values are rendered as
 #' they are passed into the function.
 #'
-#' @param data data frame containing data to plot. It is recommended to provide
+#' @param data Aggregated or summarised data frame to plot. Unlike
+#'   `keymetrics_scan()`, this function does **not** require panel data (i.e.
+#'   `PersonId` and `MetricDate` are not required). It is recommended to provide
 #'   data in a 'long' table format where one grouping column forms the rows, a
 #'   second column forms the columns, and a third numeric columns forms the
 #' @param row_var String containing name of the grouping variable that will form

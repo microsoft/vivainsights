@@ -48,6 +48,10 @@ navbar:
           href: articles/custom-network-p2p.html
         - text: Plotting a Network Graph using network_g2g
           href: articles/custom-network-g2g.html
+        - text: Radar charts with vivainsights
+          href: articles/radar-charts.html
+        - text: Survival curves with vivainsights
+          href: articles/survival-curves.html
 
 footer:
   structure:
