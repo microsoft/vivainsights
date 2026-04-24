@@ -14,7 +14,9 @@ identify_tenure(
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{end_date}{A string specifying the name of the date variable
 representing the latest date. Defaults to "MetricDate".}

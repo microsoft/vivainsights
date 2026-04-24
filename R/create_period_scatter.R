@@ -16,6 +16,8 @@
 #' in the package that produce faceted scatter plots.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param hrvar HR Variable by which to split metrics. Accepts a character vector,
 #' defaults to "Organization" but accepts any character vector, e.g. "LevelDesignation"
 #' @param metric_x Character string containing the name of the metric,

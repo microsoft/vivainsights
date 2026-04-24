@@ -10,7 +10,9 @@ extract_hr(data, max_unique = 50, exclude_constants = TRUE, return = "names")
 \item{data}{A data frame to be passed through.}
 
 \item{max_unique}{A numeric value representing the maximum
-number of unique values to accept for an HR attribute. Defaults to 50.}
+number of unique values to accept for an HR attribute. Defaults to 50.
+Any column with \code{max_unique} or more unique values is excluded, and a
+message is displayed listing those columns and their unique-value counts.}
 
 \item{exclude_constants}{Logical value to specify whether single-value HR
 attributes are to be excluded. Defaults to \code{TRUE}.}
