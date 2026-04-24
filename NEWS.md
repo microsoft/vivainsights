@@ -2,6 +2,7 @@
 
 * Enhanced documentation for clearer function usage and discovery for agents and users
 * Improved diagnostic messages for `extract_hr()`
+* Improved documentation for `mingroup` in vignette and README
 
 # vivainsights 0.7.1
 
