@@ -1,6 +1,9 @@
 # vivainsights 0.7.2
 
 * Added `identify_retention()` for calculating the retention rate of individuals between two time periods based on a category condition
+* Enhanced documentation for clearer function usage and discovery for agents and users
+* Improved diagnostic messages for `extract_hr()`
+* Improved documentation for `mingroup` in vignette and README
 
 # vivainsights 0.7.1
 
