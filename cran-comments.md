@@ -4,14 +4,14 @@
 
 ## Release summary
 
-This is a minor release (0.7.1) that implements a few enhancements for the newer functions.
+This is a minor release (0.7.2) that adds a new function and improves documentation.
 
 ## What's new in this version
 
-* Bug fix to `identify_usage_segments()`: Fixed incorrect `n` count in table output to use distinct PersonIds instead of row count
-* Improvement to `identify_usage_segments()`: Reordered table output columns to follow logical segment progression (Non-user, Low User, Novice User, Habitual User, Power User)
-* Aesthetic improvements to `create_rogers()`
-* Added warning message to `identify_usage_segments()` when NA values are detected in the metric variable
+* Added `identify_retention()` for calculating the retention rate of individuals between two time periods based on a category condition
+* Enhanced documentation for clearer function usage and discovery for agents and users
+* Improved diagnostic messages for `extract_hr()`
+* Improved documentation for `mingroup` in vignette and README
 
 ## Reverse dependencies
 
