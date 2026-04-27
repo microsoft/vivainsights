@@ -1,3 +1,7 @@
+# vivainsights 0.7.2
+
+* Added `identify_retention()` for calculating the retention rate of individuals between two time periods based on a category condition
+
 # vivainsights 0.7.1
 
 * Bug fix to `identify_usage_segments()`: Fixed incorrect `n` count in table output to use distinct PersonIds instead of row count
