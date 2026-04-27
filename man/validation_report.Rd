@@ -14,7 +14,9 @@ validation_report(
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.}
 
 \item{meeting_data}{An optional Meeting Query dataset in the form of a data
 frame.}

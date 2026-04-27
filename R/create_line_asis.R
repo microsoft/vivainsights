@@ -11,7 +11,10 @@
 #' calculation for `create_line_asis()` and the values are rendered as they are passed
 #' into the function. The only requirement is that a `date_var` is provided for the x-axis.
 #'
-#' @param data Plotting data as a data frame.
+#' @param data Aggregated or summarised data as a data frame. Unlike
+#'   `create_line()`, this function does **not** require panel data and can
+#'   accept any pre-aggregated data frame (i.e. `PersonId` and `MetricDate` are
+#'   not required).
 #' @param date_var String containing name of variable for the horizontal axis.
 #' @param metric String containing name of variable representing the line.
 #' @param title Title of the plot.

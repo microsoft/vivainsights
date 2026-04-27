@@ -5,6 +5,12 @@
 * Improved diagnostic messages for `extract_hr()`
 * Improved documentation for `mingroup` in vignette and README
 
+# vivainsights 0.7.2
+
+* Enhanced documentation for clearer function usage and discovery for agents and users
+* Improved diagnostic messages for `extract_hr()`
+* Improved documentation for `mingroup` in vignette and README
+
 # vivainsights 0.7.1
 
 * Bug fix to `identify_usage_segments()`: Fixed incorrect `n` count in table output to use distinct PersonIds instead of row count

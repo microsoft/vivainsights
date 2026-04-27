@@ -20,6 +20,8 @@
 #' @author Tannaz Sattari Tabrizi <Tannaz.Sattari@@microsoft.com>
 #'
 #' @param data A Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param start_date A start date to compare changes. See `end_date`.
 #' @param end_date An end date to compare changes. See `start_date`.
 #' @param hrvar HR Variable by which to compare changes between, defaults to

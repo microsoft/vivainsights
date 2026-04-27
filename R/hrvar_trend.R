@@ -11,6 +11,8 @@
 #' week by week heatmap bar plot.
 #'
 #' @param data A Standard Person Query dataset in the form of a data frame.
+#'   This must be a **panel dataset** where each row represents one employee
+#'   per time period, with the columns `PersonId` and `MetricDate` present.
 #' @param hrvar HR Variable by which to split metrics, defaults to
 #'   "Organization" but accepts any character vector, e.g. "LevelDesignation".
 #'   If a vector with more than one value is provided, the HR attributes are

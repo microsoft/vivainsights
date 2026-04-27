@@ -15,7 +15,11 @@ create_line(
 )
 }
 \arguments{
-\item{data}{A Standard Person Query dataset in the form of a data frame.}
+\item{data}{A Standard Person Query dataset in the form of a data frame.
+This must be a \strong{panel dataset} where each row represents one employee
+per time period, with the columns \code{PersonId} and \code{MetricDate} present.
+If your data is already aggregated (e.g. one row per group), use the
+equivalent \verb{*_asis()} variant of this function instead.}
 
 \item{metric}{Character string containing the name of the metric,
 e.g. "Collaboration_hours"}
