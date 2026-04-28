@@ -8,3 +8,4 @@ pkgdown
 .Rhistory
 docs
 *.html
+.claude/settings.local.json
