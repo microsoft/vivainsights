@@ -21,6 +21,7 @@ Imports:
     stats,
     utils,
     tidyr,
+    tibble,
     tidyselect (>= 1.0.0),
     magrittr,
     ggplot2,

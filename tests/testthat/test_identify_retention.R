@@ -7,10 +7,8 @@ library(testthat)
 library(vivainsights)
 
 skip_if_not_installed("dplyr")
-skip_if_not_installed("tibble")
 
 library(dplyr)
-library(tibble)
 
 # Helper: create simple person-level time series data with a categorical column
 make_retention_data <- function() {

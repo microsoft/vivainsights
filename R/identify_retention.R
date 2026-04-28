@@ -150,12 +150,13 @@ identify_retention <- function(
   if (is.logical(category_values) && isTRUE(category_values)) {
     period_y_status <- period_y_status %>%
       dplyr::mutate(
-        StillPositive = LatestCategory == TRUE | LatestCategory == 1
+        StillPositive = .data[["LatestCategory"]] == TRUE |
+          .data[["LatestCategory"]] == 1
       )
   } else {
     period_y_status <- period_y_status %>%
       dplyr::mutate(
-        StillPositive = LatestCategory %in% category_values
+        StillPositive = .data[["LatestCategory"]] %in% category_values
       )
   }
 
@@ -191,7 +192,7 @@ identify_retention <- function(
 
   # Breakdown by latest category
   breakdown <- period_y_status %>%
-    dplyr::count(LatestCategory) %>%
+    dplyr::count(!!rlang::sym("LatestCategory")) %>%
     dplyr::mutate(Pct = round(n / sum(n) * 100, 1)) %>%
     dplyr::arrange(dplyr::desc(n))
 
