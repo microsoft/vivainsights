@@ -2,6 +2,12 @@
 
 ## vivainsights 0.7.2
 
+CRAN release: 2026-04-28
+
+- Added
+  [`identify_retention()`](https://microsoft.github.io/vivainsights/reference/identify_retention.md)
+  for calculating the retention rate of individuals between two time
+  periods based on a category condition
 - Enhanced documentation for clearer function usage and discovery for
   agents and users
 - Improved diagnostic messages for

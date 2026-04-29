@@ -417,6 +417,10 @@ policies.
 - [`identify_privacythreshold()`](https://microsoft.github.io/vivainsights/reference/identify_privacythreshold.md)
   : Identify groups under privacy threshold
 
+- [`identify_retention()`](https://microsoft.github.io/vivainsights/reference/identify_retention.md)
+  **\[experimental\]** : Identify Retention Rate Between Two Time
+  Periods
+
 - [`identify_shifts()`](https://microsoft.github.io/vivainsights/reference/identify_shifts.md)
   : Identify shifts based on outlook time settings for work day start
   and end time
