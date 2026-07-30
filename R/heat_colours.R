@@ -7,7 +7,7 @@
 #'
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param alpha an alpha-transparency level in the range of 0 to 1
-#' (0 means transparent and 1 means opaque)
+#' (0 means transparent and 1 means opaque). Defaults to 1.
 #' @param rev logical indicating whether the ordering of the colors should be
 #'   reversed.
 #'
@@ -24,7 +24,7 @@
 #' returned.
 #'
 #' @export
-heat_colours <- function (n, alpha, rev = FALSE) {
+heat_colours <- function (n, alpha = 1, rev = FALSE) {
 
   ## Move from red to green
   h <- seq(from = 0, to = 0.3, length.out = n)
@@ -51,4 +51,3 @@ heat_colours <- function (n, alpha, rev = FALSE) {
 #' @rdname heat_colours
 #' @export
 heat_colors <- heat_colours
-

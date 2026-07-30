@@ -1,3 +1,9 @@
+# vivainsights (development version)
+
+* Replaced dynamic string evaluation in `network_p2p()` with allowlisted community, layout, and palette dispatch.
+* Added support for passing a palette function directly to `network_p2p()`.
+* Fixed `heat_colors()` and `heat_colours()` so their documented default usage no longer requires an explicit `alpha` value.
+
 # vivainsights 0.7.2
 
 * Added `identify_retention()` for calculating the retention rate of individuals between two time periods based on a category condition
