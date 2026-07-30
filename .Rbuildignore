@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.git$
 ^.github$
 ^CODE_OF_CONDUCT.md$
 ^LICENSE.txt$
