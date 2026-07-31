@@ -48,7 +48,8 @@ Suggests:
     lmtest,
     sandwich,
     slider,
-    ggwordcloud 
+    ggwordcloud,
+    yaml
 URL: https://microsoft.github.io/vivainsights/
 BugReports: https://github.com/microsoft/vivainsights/issues/
 Config/testthat/edition: 3

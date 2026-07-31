@@ -1,0 +1,285 @@
+schema_version: 1
+package: vivainsights
+python:
+  package: vivainsights
+  version: 0.4.2
+  commit: fa5dffefa96ef5b1e8d0ba5918c2ed1148dd41c7
+parity_vocabulary:
+  - aligned
+  - partial
+  - r_only
+  - python_only
+  - planned
+  - language_native
+workflows:
+  - id: import-query
+    task: Import and prepare a Viva Insights query
+    intents:
+      - read a Viva Insights CSV
+      - import a person query
+      - prepare query data
+    r_function: import_query
+    input_grain: Viva Insights CSV export
+    required_columns: []
+    privacy: Import does not apply disclosure thresholds; validate and aggregate before sharing results.
+    returns: data frame
+    example: import_query("Person Query.csv")
+    documentation: https://microsoft.github.io/vivainsights/reference/import_query.html
+    related: [check_query, prep_query, validation_report]
+    python_function: import_query
+    parity: partial
+
+  - id: validate-query
+    task: Validate query structure and data quality
+    intents:
+      - validate a query
+      - check data quality
+      - diagnose missing Viva Insights fields
+    r_function: validation_report
+    input_grain: Person or meeting query
+    required_columns: []
+    privacy: Validation reports may describe small groups; review output before sharing.
+    returns: HTML validation report
+    example: validation_report(pq_data)
+    documentation: https://microsoft.github.io/vivainsights/reference/validation_report.html
+    related: [check_query, extract_hr, hrvar_count_all]
+    python_function: null
+    parity: r_only
+
+  - id: inspect-hr-attributes
+    task: Inspect available HR attributes
+    intents:
+      - find grouping variables
+      - count HR attribute levels
+      - choose an HR variable
+    r_function: hrvar_count_all
+    input_grain: Person query
+    required_columns: [PersonId]
+    privacy: Use the counts to avoid selecting attributes that create groups below the disclosure threshold.
+    returns: message or table
+    example: hrvar_count_all(pq_data, return = "table")
+    documentation: https://microsoft.github.io/vivainsights/reference/hrvar_count_all.html
+    related: [extract_hr, identify_privacythreshold]
+    python_function: hrvar_count_all
+    parity: partial
+
+  - id: compare-groups
+    task: Compare a metric across groups
+    intents:
+      - compare organizations
+      - plot a metric by HR attribute
+      - summarize group averages
+    r_function: create_bar
+    input_grain: Person-period query
+    required_columns: [PersonId]
+    privacy: Groups with fewer than mingroup distinct people are excluded.
+    returns: ggplot or summary table
+    example: create_bar(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/create_bar.html
+    related: [create_boxplot, create_rank, create_bar_asis]
+    python_function: create_bar
+    parity: partial
+
+  - id: plot-trend
+    task: Plot a metric over time
+    intents:
+      - create a time trend
+      - compare weekly metrics
+      - plot change over time
+    r_function: create_line
+    input_grain: Person-period query
+    required_columns: [PersonId, MetricDate]
+    privacy: Groups with fewer than mingroup distinct people are excluded.
+    returns: ggplot or summary table
+    example: create_line(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/create_line.html
+    related: [create_trend, hr_trend, collaboration_trend]
+    python_function: create_line
+    parity: partial
+
+  - id: inspect-distribution
+    task: Inspect a metric distribution
+    intents:
+      - plot a distribution
+      - inspect metric spread
+      - compare distributions by group
+    r_function: create_dist
+    input_grain: Person-period query
+    required_columns: [PersonId]
+    privacy: Groups with fewer than mingroup distinct people are excluded.
+    returns: ggplot or summary table
+    example: create_dist(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/create_dist.html
+    related: [create_density, create_hist, create_boxplot]
+    python_function: null
+    parity: r_only
+
+  - id: rank-groups
+    task: Rank groups by a metric
+    intents:
+      - rank organizations
+      - identify high and low groups
+      - compare group performance
+    r_function: create_rank
+    input_grain: Person-period query
+    required_columns: [PersonId]
+    privacy: Groups with fewer than mingroup distinct people are excluded.
+    returns: ggplot or ranking table
+    example: create_rank(pq_data, metric = "Collaboration_hours", hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/create_rank.html
+    related: [create_bar, create_rank_combine]
+    python_function: create_rank
+    parity: partial
+
+  - id: summarize-collaboration
+    task: Summarize collaboration workload
+    intents:
+      - analyze collaboration hours
+      - summarize meetings and email
+      - compare collaboration patterns
+    r_function: collaboration_summary
+    input_grain: Person-period query
+    required_columns: [PersonId]
+    privacy: Groups with fewer than mingroup distinct people are excluded.
+    returns: ggplot or summary table
+    example: collaboration_summary(pq_data, hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/collaboration_summary.html
+    related: [collaboration_area, collaboration_dist, collaboration_rank]
+    python_function: null
+    parity: r_only
+
+  - id: segment-usage
+    task: Segment people by product usage
+    intents:
+      - classify usage segments
+      - find power users
+      - analyze adoption maturity
+    r_function: identify_usage_segments
+    input_grain: Person-period query
+    required_columns: [PersonId, MetricDate]
+    privacy: Review segment counts before sharing; downstream summaries should apply disclosure thresholds.
+    returns: person-level data, table, or plot
+    example: identify_usage_segments(pq_data, metric = "Copilot_Chat_active_days")
+    documentation: https://microsoft.github.io/vivainsights/reference/identify_usage_segments.html
+    related: [identify_habit, create_rogers, identify_retention]
+    python_function: identify_usage_segments
+    parity: partial
+
+  - id: measure-retention
+    task: Measure retention between periods
+    intents:
+      - calculate retention
+      - track retained power users
+      - compare category membership over time
+    r_function: identify_retention
+    input_grain: Person-period data with a category column
+    required_columns: [PersonId, MetricDate]
+    privacy: Review returned counts and suppress small categories before sharing.
+    returns: message, table, or detailed data
+    example: identify_retention(data, start_x = "2026-01-01", end_x = "2026-02-01", start_y = "2026-02-01", end_y = "2026-03-01", category = "Segment", category_values = "Power User")
+    documentation: https://microsoft.github.io/vivainsights/reference/identify_retention.html
+    related: [identify_usage_segments, identify_churn]
+    python_function: null
+    parity: r_only
+
+  - id: compare-metric-profile
+    task: Compare a profile of several metrics
+    intents:
+      - create a radar chart
+      - compare groups across metrics
+      - normalize a metric profile
+    r_function: create_radar
+    input_grain: Person-period query
+    required_columns: [PersonId]
+    privacy: Groups with fewer than mingroup distinct people are excluded.
+    returns: ggplot or indexed data
+    example: create_radar(pq_data, metrics = c("Email_hours", "Meeting_hours"), hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/create_radar.html
+    related: [create_radar_calc, create_radar_viz]
+    python_function: create_radar
+    parity: partial
+
+  - id: analyze-time-to-event
+    task: Analyze time to adoption or another event
+    intents:
+      - create a survival curve
+      - analyze time to adoption
+      - compare event timing by group
+    r_function: create_survival
+    input_grain: Person-period event data
+    required_columns: [PersonId, MetricDate]
+    privacy: Apply an appropriate mingroup threshold to group comparisons.
+    returns: ggplot or survival calculation data
+    example: create_survival(surv_data, time_col = "time", event_col = "event", hrvar = "Organization")
+    documentation: https://microsoft.github.io/vivainsights/reference/create_survival.html
+    related: [create_survival_prep, create_survival_calc, create_survival_viz]
+    python_function: create_survival
+    parity: partial
+
+  - id: analyze-person-network
+    task: Analyze a person-to-person collaboration network
+    intents:
+      - create a person network
+      - find network communities
+      - calculate network centrality
+    r_function: network_p2p
+    input_grain: Single-date person-to-person query
+    required_columns: [PrimaryCollaborator_PersonId, SecondaryCollaborator_PersonId]
+    privacy: Network outputs can identify individuals; apply organizational privacy and disclosure policy.
+    returns: plot, table, node data, Sankey chart, or igraph object
+    example: network_p2p(p2p_data, return = "network")
+    documentation: https://microsoft.github.io/vivainsights/reference/network_p2p.html
+    related: [network_summary, p2p_data_sim, create_sankey]
+    python_function: network_p2p
+    parity: partial
+
+  - id: analyze-group-network
+    task: Analyze a group-to-group collaboration network
+    intents:
+      - create an organization network
+      - compare group connections
+      - analyze collaboration between teams
+    r_function: network_g2g
+    input_grain: Group-to-group query
+    required_columns: []
+    privacy: Confirm source query groups meet disclosure requirements.
+    returns: plot or igraph object
+    example: network_g2g(g2g_data)
+    documentation: https://microsoft.github.io/vivainsights/reference/network_g2g.html
+    related: [network_p2p, network_summary]
+    python_function: network_g2g
+    parity: partial
+
+  - id: anonymize-data
+    task: Anonymize identifiers and HR attributes
+    intents:
+      - anonymize employee data
+      - remove identifying information
+      - prepare sample data safely
+    r_function: anonymise
+    input_grain: Viva Insights query
+    required_columns: []
+    privacy: Anonymization reduces direct identifiers but does not replace disclosure review.
+    returns: anonymized data frame
+    example: anonymise(pq_data)
+    documentation: https://microsoft.github.io/vivainsights/reference/anonymise.html
+    related: [anonymize, jitter_metrics, identify_privacythreshold]
+    python_function: null
+    parity: r_only
+
+  - id: generate-report
+    task: Generate a reusable analysis report
+    intents:
+      - create an HTML report
+      - generate a wellbeing report
+      - automate analysis output
+    r_function: generate_report
+    input_grain: Person query
+    required_columns: [PersonId]
+    privacy: Review the generated report and its grouping thresholds before distribution.
+    returns: rendered report files
+    example: generate_report(title = "Viva Insights report", filename = "report", outputs = output_list, titles = title_list, subheaders = rep("", length(output_list)), echos = rep(FALSE, length(output_list)), levels = rep(2, length(output_list)))
+    documentation: https://microsoft.github.io/vivainsights/reference/generate_report.html
+    related: [generate_report2, validation_report]
+    python_function: null
+    parity: r_only

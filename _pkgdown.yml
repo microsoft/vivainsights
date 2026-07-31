@@ -32,6 +32,8 @@ navbar:
       articles:
         text: Articles
         menu:
+        - text: Find the right vivainsights function
+          href: articles/function-discovery.html
         - text: Introduction to vivainsights
           href: articles/intro-to-vivainsights.html
         - text: Best Practices when using vivainsights
