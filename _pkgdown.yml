@@ -2,6 +2,16 @@ url: https://microsoft.github.io/vivainsights/
 template:
   bootstrap: 5
   bootswatch: cosmo
+  includes:
+    in_header: |
+      <script
+        defer
+        src="https://ca-umami-prod.lemonglacier-6a5930b7.uksouth.azurecontainerapps.io/script.js"
+        data-website-id="5a55d303-7f7a-4196-9946-c0567da0b5ef"
+        data-domains="microsoft.github.io"
+        data-do-not-track="true"
+        data-exclude-search="true"
+        data-exclude-hash="true"></script>
 
 navbar:
   bg: dark
