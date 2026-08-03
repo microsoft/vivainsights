@@ -8,6 +8,7 @@ first overview on how functions work in the **vivainsights** package.
 To install the development version from GitHub, you can also run:
 
 ``` r
+
 # Check if remotes is installed, if not then install it
 if(!"remotes" %in% installed.packages()){
   install.packages("remotes")
@@ -46,6 +47,7 @@ recommended troubleshooting flow below. Note that this process can take
 Once the installation is complete, you can load the package with:
 
 ``` r
+
 library(vivainsights)
 ```
 
@@ -57,6 +59,7 @@ Science R packages from [tidyverse](https://www.tidyverse.org/). We
 generally recommend to load that package too:
 
 ``` r
+
 library(tidyverse)
 ```
 
@@ -71,6 +74,7 @@ Assuming you have a file called *myquery.csv* on your desktop, you can
 import it into R using:
 
 ``` r
+
 setwd("C:/Users/myuser/Desktop/")
 person_data <- import_query("myquery.csv") 
 ```
@@ -115,6 +119,7 @@ For example, if we want to know the number of individuals in `pq_data`
 per organization, we can use:
 
 ``` r
+
 analysis_scope(pq_data, hrvar = "Organization")
 ```
 
@@ -129,12 +134,14 @@ feed our query into the funciton. The notation is common in R data
 science applications, and is the one we will use moving forward.
 
 ``` r
+
 pq_data %>% analysis_scope(hrvar = "Organization") 
 ```
 
 Let’s now use this function to explore of other groups. For example:
 
 ``` r
+
 pq_data %>% analysis_scope(hrvar = "LevelDesignation")
 pq_data %>% analysis_scope(hrvar = "TimeZone")
 ```
@@ -147,6 +154,7 @@ become very useful, as we can write a single line that takes the
 original data, applies a filter, and then creates the plot:
 
 ``` r
+
 pq_data %>%
     filter(LevelDesignation == "Support") %>%
   analysis_scope(hrvar = "Organization")
@@ -158,6 +166,7 @@ change their behaviour by adding a `return` argument. If you add
 count of the distinct individuals by group.
 
 ``` r
+
 pq_data %>% analysis_scope(hrvar = "LevelDesignation", return = "table")
 ```
 
@@ -191,6 +200,7 @@ local drive.
 One again, adding an additional forward-Pipe operator we can write:
 
 ``` r
+
 pq_data %>%
     analysis_scope(hrvar = "Organization") %>%
     export()
@@ -204,6 +214,7 @@ functions and export results. The script below illustrates this
 functionality:
 
 ``` r
+
 # Step 1
 library(vivainsights) 
 

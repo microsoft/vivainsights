@@ -18,6 +18,7 @@ component package of **tidyverse** (alternatively, you can just run
 [`library(tidyverse)`](https://tidyverse.tidyverse.org)):
 
 ``` r
+
 library(vivainsights)
 library(dplyr)
 ```
@@ -25,6 +26,7 @@ library(dplyr)
 The package ships with a standard Person query dataset `pq_data`:
 
 ``` r
+
 data("pq_data") # Person Query data
 
 # Check what the first ten columns look like
@@ -56,6 +58,7 @@ how many distinct values each HR variable has with
 [`hrvar_count_all()`](https://microsoft.github.io/vivainsights/reference/hrvar_count_all.md):
 
 ``` r
+
 pq_data %>%
   hrvar_count_all(return = "table") %>%
   dplyr::arrange(desc(`Unique values`))
@@ -75,6 +78,7 @@ Once you have selected an attribute, you can set a higher privacy
 threshold as needed in your plotting calls:
 
 ``` r
+
 pq_data %>%
   meeting_trend(hrvar = "Organization", mingroup = 10, return = "plot")
 ```
@@ -93,6 +97,7 @@ function allows you to generate a stacked bar plot summarising the email
 and meeting hours by an HR attribute you specify:
 
 ``` r
+
 pq_data %>% collaboration_summary(hrvar = "LevelDesignation")
 ```
 
@@ -102,6 +107,7 @@ By changing the `hrvar()` argument, you can change the data being shown
 easily:
 
 ``` r
+
 pq_data %>% collaboration_summary(hrvar = "Organization")
 ```
 
@@ -113,6 +119,7 @@ function also comes with an option to return summary tables, rather than
 plots. Just specify “table” in the `return` argument:
 
 ``` r
+
 pq_data %>% collaboration_summary(hrvar = "LevelDesignation", return = "table")
 #> # A tibble: 4 × 5
 #>   group          Meeting_hours Email_hours Total Employee_Count
@@ -146,6 +153,7 @@ And here are what the outputs look like.
 Heatmap:
 
 ``` r
+
 pq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
@@ -162,6 +170,7 @@ pq_data %>% keymetrics_scan(hrvar = "Organization", return = "plot")
 Summary table:
 
 ``` r
+
 pq_data %>% keymetrics_scan(hrvar = "Organization", return = "table")
 #> # A tibble: 12 × 8
 #>    variable          Finance      HR      IT   Legal Operations Research   Sales
@@ -208,6 +217,7 @@ And here are what the outputs look like, for
 Heatmap:
 
 ``` r
+
 pq_data %>% meeting_summary(hrvar = "Organization", return = "plot")
 ```
 
@@ -216,6 +226,7 @@ pq_data %>% meeting_summary(hrvar = "Organization", return = "plot")
 Summary table:
 
 ``` r
+
 pq_data %>% meeting_summary(hrvar = "Organization", return = "table")
 #> # A tibble: 7 × 3
 #>   group      Meeting_hours     n
@@ -240,6 +251,7 @@ the plots. For instance, you can take the following ‘fizzy drink’
 (jittered scatter) plot:
 
 ``` r
+
 pq_data %>%
   afterhours_fizz(hrvar = "LevelDesignation", return = "plot")
 ```
@@ -250,6 +262,7 @@ pq_data %>%
 layers:
 
 ``` r
+
 library(ggplot2) # Requires ggplot2 for customizations
 
 pq_data %>%

@@ -113,6 +113,7 @@ ggplot object for a heatmap table.
 ## Examples
 
 ``` r
+
 library(dplyr)
 
 # Compute summary table

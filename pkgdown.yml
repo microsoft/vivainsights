@@ -1,5 +1,5 @@
-pandoc: 3.1.11
-pkgdown: 2.2.0
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   best-practices: best-practices.html
@@ -12,7 +12,7 @@ articles:
   pairwise-chisq: pairwise-chisq.html
   radar-charts: radar-charts.html
   survival-curves: survival-curves.html
-last_built: 2026-04-29T07:57Z
+last_built: 2026-08-03T10:27Z
 urls:
   reference: https://microsoft.github.io/vivainsights/reference
   article: https://microsoft.github.io/vivainsights/articles

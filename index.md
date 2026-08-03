@@ -36,6 +36,7 @@ repository](https://github.com/microsoft/wpa/) .
 ## Installation
 
 ``` r
+
 # Install from CRAN:
 install.packages("vivainsights")
 
@@ -61,6 +62,7 @@ Most plotting and analysis functions support the `mingroup` argument
 readability.
 
 ``` r
+
 data("pq_data")
 
 # Check available HR variables and how many groups they have

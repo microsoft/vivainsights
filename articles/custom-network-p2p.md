@@ -15,6 +15,7 @@ for data manipulation, **igraph** for network graph creation,
 plotting.
 
 ``` r
+
 library(igraph)
 library(ggplot2)
 library(RColorBrewer)
@@ -69,6 +70,7 @@ function constructs a network graph based on collaboration data. We set:
 - `return = "network"` to get an igraph object
 
 ``` r
+
 g <- network_p2p(
   data = p2p_data_sim(), 
   hrvar = hrvar_text, 
@@ -90,6 +92,7 @@ Before plotting, we refine the graph by:
 - Assigning colors and scaling node sizes
 
 ``` r
+
 # Simplify the graph (remove redundant edges and self-loops)
 g <- simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
 
@@ -116,6 +119,7 @@ We use `ggraph` to create a visually appealing graph with:
 - `Theme` adjustments for a dark background and enhanced readability
 
 ``` r
+
 ggraph(g, layout = "mds") +
   geom_edge_link(aes(edge_alpha = 0.3), color = "#1f78b4") +
   geom_node_point(aes(size = V(g)$node_size, color = factor(V(g)$Organization))) +  

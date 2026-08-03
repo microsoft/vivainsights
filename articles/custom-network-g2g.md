@@ -13,6 +13,7 @@ data manipulation and iteration respectively, as well as the **igraph**
 package for network graph creation and visualization.
 
 ``` r
+
 library(vivainsights)
 library(dplyr)
 library(igraph)
@@ -52,6 +53,7 @@ function constructs a network graph based on collaboration data. We set:
 - `return = "network"` to get an igraph object
 
 ``` r
+
 g <- network_g2g(
     data = g2g_data,
     primary = "PrimaryCollaborator_Organization",
@@ -71,6 +73,7 @@ Before plotting, we refine the graph by:
 - Defining a layout using `Multidimensional Scaling (MDS)`
 
 ``` r
+
 # Simplify the graph (remove redundant edges and self-loops)
 g <- simplify(g, remove.multiple = TRUE, remove.loops = TRUE)
 
@@ -92,6 +95,7 @@ We set vertex and edge properties for better readability:
 - `Transparency (alpha)` for edges (adjusted manually)
 
 ``` r
+
 # Example: Assign colors based on an attribute (assuming 'group' exists in V(g))
 unique_groups <- unique(V(g)$group)  
 color_palette <- rainbow(length(unique_groups))  # Generate distinct colors
@@ -136,6 +140,7 @@ Instead of using the base plot() function, we can leverage `ggplot2`
 along with `ggraph` for a more refined and customizable visualization.
 
 ``` r
+
 # Convert the igraph object into a dataframe for plotting
 edges_df <- as_data_frame(g, what = "edges")
 vertices_df <- as_data_frame(g, what = "vertices")

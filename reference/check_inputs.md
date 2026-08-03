@@ -54,6 +54,7 @@ Other Support:
 ## Examples
 
 ``` r
+
 # Return error message
 if (FALSE) { # \dontrun{
 check_inputs(iris, c("Sepal.Length", "mpg"))

@@ -39,6 +39,7 @@ To get started, let’s open a new session in R and load the
 We will also use **dplyr** to facilitate data manipulation:
 
 ``` r
+
 library(vivainsights)
 library(dplyr)
 ```
@@ -49,6 +50,7 @@ query output, and apply the
 function:
 
 ``` r
+
 pq_data %>% 
     collaboration_rank(return = "table")
 #> # A tibble: 22 × 4
@@ -79,6 +81,7 @@ To view the entire table, we can add the function `print` to the command
 above.
 
 ``` r
+
 pq_data %>% 
     collaboration_rank(return = "table") %>%  
     print(n = 30)
@@ -126,6 +129,7 @@ information in visual form. We can get that by changing the `return`
 argument from `"table"` to `"plot"`:
 
 ``` r
+
 pq_data %>% 
     collaboration_rank(return = "plot")
 ```
@@ -156,6 +160,7 @@ allows us to take our analysis one step further by performing on two HR
 variables the same analysis in a combinatorial manner:
 
 ``` r
+
 pq_data %>% 
     collaboration_rank(return = "table", mode = "combine")
 #> # A tibble: 308 × 4
@@ -229,6 +234,7 @@ To answer that question, let’s create a new numeric custom metric
 function:
 
 ``` r
+
 pq_data %>%
     mutate(At_risk = ifelse(Collaboration_hours > 20 &  Collaboration_span > 60 , 1, 0)) %>%
     create_rank(metric = "At_risk", mode = "combine")

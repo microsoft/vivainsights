@@ -84,6 +84,7 @@ results skew the data. In R, this can be replicated by grouping and
 summarising the data twice:
 
 ``` r
+
 library(vivasights)
 pq_df %>%
   group_by(PersonId, Organization) %>%
@@ -98,6 +99,7 @@ functions directly where possible. The above example is replicated by
 the following functions from the package:
 
 ``` r
+
 pq_df %>% collaboration_sum(hrvar = "Organization", return = "table")
 
 # Or
@@ -138,6 +140,7 @@ applied to **everywhere** in your script where that function is used.
 Just consider the following example:
 
 ``` r
+
 # Filter Organization by Sales and extract number of distinct people
 pq_df %>% filter(Organization == "Sales") %>% pull(PersonId) %>% n_distinct()
 
@@ -151,6 +154,7 @@ pq_df %>% filter(Organization == "Engineering") %>% pull(PersonId) %>% n_distinc
 versus the following:
 
 ``` r
+
 filt_org <- function(filter_string){
   pq_df %>% filter(Organization == filter_string) %>% pull(PersonId) %>% n_distinct()
 }

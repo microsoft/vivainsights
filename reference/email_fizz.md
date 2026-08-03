@@ -125,6 +125,7 @@ Other Emails:
 ## Examples
 
 ``` r
+
 # Return plot
 email_fizz(pq_data, hrvar = "Organization", return = "plot")
 

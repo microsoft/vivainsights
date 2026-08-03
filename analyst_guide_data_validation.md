@@ -47,6 +47,7 @@ This can all be done with
 [`check_query()`](https://microsoft.github.io/vivainsights/reference/check_query.md):
 
 ``` r
+
 library(vivainsights)
 check_query(pq_data)
 ```
@@ -97,6 +98,7 @@ An easy way to perform data validation with the **vivainsights** package
 is to run the data validation report:
 
 ``` r
+
  # `pq_data` is your Person Query data
 validation_report(pq_data)
 ```
@@ -118,6 +120,7 @@ meeting query to include checks against meeting subject lines. To do so,
 you should run:
 
 ``` r
+
 # Assuming:
 # `pq_data` is your Person Query data
 # `mt_data` is your Meeting Query data
@@ -161,6 +164,7 @@ message about the data query to the R console, with information such as
 date range, number of employees, HR attributes identified, etc.
 
 ``` r
+
 check_query(pq_data)
 ```
 
@@ -169,6 +173,7 @@ enables you to create a count of the distinct people by the specified HR
 attribute:
 
 ``` r
+
 hrvar_count(pq_data, hrvar = "LevelDesignation")
 ```
 
@@ -226,6 +231,7 @@ Below is an example of one might create a ‘clean’ dataset using the
 functions above:
 
 ``` r
+
 library(vivainsights)
 library(tidyverse) # You may also just load dplyr
 

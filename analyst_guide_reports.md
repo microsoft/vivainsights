@@ -28,6 +28,7 @@ You can generate a report on collaboration by running the following
 code:
 
 ``` r
+
 library(vivainsights)
 pq_data %>% validation_report()
 ```

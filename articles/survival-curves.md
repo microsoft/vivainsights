@@ -1,6 +1,7 @@
 # Survival Curves with create_survival()
 
 ``` r
+
 library(vivainsights)
 library(dplyr)
 ```
@@ -64,6 +65,7 @@ Here we define the event as a person’s **first week with any after-hours
 collaboration** (`After_hours_collaboration_hours > 0`):
 
 ``` r
+
 surv_data <- create_survival_prep(
   data            = pq_data,
   metric          = "After_hours_collaboration_hours",
@@ -81,6 +83,7 @@ glimpse(surv_data)
 ```
 
 ``` r
+
 # Event rate and time distribution
 cat("Total persons:  ", nrow(surv_data), "\n")
 #> Total persons:   300
@@ -112,6 +115,7 @@ Pass the person-level data to
 specifying the time and event columns and the grouping variable:
 
 ``` r
+
 create_survival(
   data      = surv_data,
   time_col  = "time",
@@ -144,6 +148,7 @@ Set `hrvar = NULL` to estimate a single curve across the whole
 population:
 
 ``` r
+
 create_survival(
   data      = surv_data,
   time_col  = "time",
@@ -163,6 +168,7 @@ Set `return = "table"` to get the underlying long-format data frame.
 Each row represents one event time within one group:
 
 ``` r
+
 surv_tbl <- create_survival(
   data      = surv_data,
   time_col  = "time",
@@ -205,6 +211,7 @@ The **median survival time** is the week at which 50 % of the group has
 experienced the event:
 
 ``` r
+
 surv_tbl %>%
   group_by(Organization) %>%
   filter(survival <= 0.5) %>%
@@ -235,6 +242,7 @@ Any character column can be used as the grouping variable. Here we
 compare after-hours adoption by `LevelDesignation`:
 
 ``` r
+
 surv_level <- create_survival_prep(
   data            = pq_data,
   metric          = "After_hours_collaboration_hours",
@@ -265,6 +273,7 @@ to explore different thresholds without modifying your data.
 ### Higher after-hours threshold
 
 ``` r
+
 # Event: first week with more than 2 hours of after-hours collaboration
 surv_high <- create_survival_prep(
   data            = pq_data,
@@ -290,6 +299,7 @@ create_survival(
 ### Network growth milestone
 
 ``` r
+
 # Event: first week where internal network size exceeds 10 contacts
 surv_net <- create_survival_prep(
   data            = pq_data,
@@ -320,6 +330,7 @@ Groups below `mingroup` unique persons are removed before the curve is
 estimated. Increase the threshold to be more conservative:
 
 ``` r
+
 surv_strict <- create_survival(
   data      = surv_data,
   time_col  = "time",
@@ -366,6 +377,7 @@ the survival family exposes its building blocks as exported functions:
   — accepts the `$table` output and returns a `ggplot` object.
 
 ``` r
+
 library(ggplot2)
 
 calc <- create_survival_calc(

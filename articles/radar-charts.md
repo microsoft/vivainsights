@@ -1,6 +1,7 @@
 # Radar Charts with create_radar()
 
 ``` r
+
 library(vivainsights)
 library(dplyr)
 ```
@@ -30,6 +31,7 @@ column. By default the chart indexes each metric so that the overall
 population mean equals 100.
 
 ``` r
+
 create_radar(
   data    = pq_data,
   metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
@@ -51,6 +53,7 @@ Set `return = "table"` to get the indexed values as a data frame
 instead:
 
 ``` r
+
 radar_tbl <- create_radar(
   data    = pq_data,
   metrics = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
@@ -88,6 +91,7 @@ Each metric is divided by the overall population mean and multiplied by
 100. A group at 100 matches the average.
 
 ``` r
+
 create_radar(
   data       = pq_data,
   metrics    = c("Collaboration_hours", "Email_hours",
@@ -106,6 +110,7 @@ Set `index_ref_group` to the name of the group that should equal 100 on
 every axis. All other groups are expressed relative to it.
 
 ``` r
+
 create_radar(
   data            = pq_data,
   metrics         = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
@@ -125,6 +130,7 @@ Each metric is scaled so the lowest group maps to 0 and the highest to
 matter less than which group is highest or lowest.
 
 ``` r
+
 create_radar(
   data       = pq_data,
   metrics    = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
@@ -142,6 +148,7 @@ No rescaling is applied. The axes carry the original units, which makes
 cross-metric comparison harder but preserves the absolute magnitude.
 
 ``` r
+
 create_radar(
   data       = pq_data,
   metrics    = c("Collaboration_hours", "Email_hours", "Meeting_hours"),
@@ -171,6 +178,7 @@ level and the group level. Switch to `agg = "median"` for robustness
 against outliers.
 
 ``` r
+
 create_radar(
   data     = pq_data,
   metrics  = c("Collaboration_hours", "Email_hours",
@@ -191,6 +199,7 @@ Any character column can serve as the grouping variable. Here we compare
 collaboration profiles by `LevelDesignation`:
 
 ``` r
+
 create_radar(
   data     = pq_data,
   metrics  = c("Collaboration_hours", "Email_hours",
@@ -210,6 +219,7 @@ Groups with fewer than `mingroup` unique persons are silently dropped
 before plotting. Raise the threshold to be more conservative:
 
 ``` r
+
 # Only show groups with 20 or more unique persons
 create_radar(
   data     = pq_data,
@@ -239,6 +249,7 @@ any row containing an `NA` in any of the requested metrics before
 aggregation — this is equivalent to a complete-cases analysis.
 
 ``` r
+
 create_radar(
   data     = pq_data,
   metrics  = c("Collaboration_hours", "Email_hours"),
@@ -276,6 +287,7 @@ This is useful when you want to post-process the table before plotting,
 or when you want to apply a custom theme on top of the default:
 
 ``` r
+
 library(ggplot2)
 
 calc <- create_radar_calc(

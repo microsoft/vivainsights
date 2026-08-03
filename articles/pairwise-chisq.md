@@ -16,6 +16,7 @@ data manipulation and iteration respectively, and optionally you can
 just load the **tidyverse** package instead.
 
 ``` r
+
 library(vivainsights)
 library(dplyr)
 library(purrr)
@@ -31,6 +32,7 @@ variables: `Teams`, `Regions`, and `Functions`. We will then merge these
 variables with the sample data.
 
 ``` r
+
 # Set random seed for reproducibility
 set.seed(123)
 
@@ -78,6 +80,7 @@ where `***` indicates p \< 0.001, `**` indicates p \< 0.01, and `*`
 indicates p \< 0.05.
 
 ``` r
+
 # Generate all combinations of variable pairs
 cat_var_combinations <- combn(x = cat_vars, m = 2, simplify = FALSE)
 
@@ -132,6 +135,7 @@ Finally, you can export the results to csv or clipboard using the
 following code:
 
 ``` r
+
 # Copy to clipboard
 results_df %>% export(method = "clipboard")
 

@@ -38,6 +38,7 @@ If you wish to install a version of the package from any branch **other
 than the main branch**, you can run the following code:
 
 ``` r
+
 devtools::install_git(url = "https://github.com/microsoft/vivainsights.git",
                       branch = "<BRANCH-NAME>", # Replace
                       build_vignettes = TRUE)
@@ -101,6 +102,7 @@ You should then be able to install the **vivainsights** library by
 opening RStudio and running the following code:
 
 ``` r
+
 # Check if remotes is installed, if not then install it
 if(!"remotes" %in% installed.packages()){
   install.packages("remotes")
@@ -139,6 +141,7 @@ We recommend using **dplyr** (which is loaded in as part of
 range in a Person Query, you can run:
 
 ``` r
+
 library(vivainsights)
 library(tidyverse) # Or load dplyr separately
 
@@ -164,6 +167,7 @@ In some scenarios, you may also want to exclude a particular week from
 the data. You can use a similar approach:
 
 ``` r
+
 clean_pq2 <-
     clean_pq %>%
     filter(Date != as.Date("11/22/2024", "%m/%d/%Y"))
@@ -189,6 +193,7 @@ and
 .
 
 ``` r
+
 library(vivainsights)
 library(tidyverse) # Or load dplyr
 
@@ -222,6 +227,7 @@ classifications are correct, you can further your analysis by using it
 as an HR attribute, such as:
 
 ``` r
+
 clean_pq_with_new_var %>%
     keymetrics_scan(hrvar = "N_DirectReports_NET")
 ```

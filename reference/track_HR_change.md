@@ -100,6 +100,7 @@ Tannaz Sattari Tabrizi <Tannaz.Sattari@microsoft.com>
 ## Examples
 
 ``` r
+
 pq_data %>% track_HR_change()
 
 {"x":{"links":{"source":[0,1,2,3,4,5,6],"target":[7,8,9,10,11,12,13],"value":[68,68,52,44,33,22,13]},"nodes":{"name":["Finance","IT","Research","Legal","HR","Operations","Sales","Finance ","IT ","Research ","Legal ","HR ","Operations ","Sales "],"group":["Finance","IT","Research","Legal","HR","Operations","Sales","Finance ","IT ","Research ","Legal ","HR ","Operations ","Sales "]},"options":{"NodeID":"name","NodeGroup":"name","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":7,"fontFamily":null,"nodeWidth":15,"nodePadding":10,"units":"count","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":false}},"evals":[],"jsHooks":[]}

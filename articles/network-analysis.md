@@ -146,6 +146,7 @@ function run on the `g2g_data` data frame, with the `return` parameter
 set to `"plot"`.
 
 ``` r
+
 network_g2g(data = g2g_data, return = "plot")
 ```
 
@@ -171,6 +172,7 @@ To display all the edges without setting an exclusion threshold, you can
 run:
 
 ``` r
+
 network_g2g(data = g2g_data, exc_threshold = 0, return = "plot")
 ```
 
@@ -186,6 +188,7 @@ collaboration between all groups against each other, in the scope of the
 generated query.
 
 ``` r
+
 network_g2g(data = g2g_data, exc_threshold = 0, return = "table")
 #> # A tibble: 5 × 7
 #>   PrimaryOrg          Finance    HR Product `Sales and Marketing`      CEO
@@ -212,6 +215,7 @@ function. Next, we run the
 function and specify the `return` parameter to be `"plot"`.
 
 ``` r
+
 p2p_data <- p2p_data_sim(size = 50)
 
 p2p_data %>% network_p2p(hrvar = 'Organization', return = "plot")
@@ -236,6 +240,7 @@ in a network. The following code generates a centrality table, which is
 a table of centrality statistics for each node in the network.
 
 ``` r
+
 tb_centrality <- p2p_data %>%
    network_p2p(
       hrvar = 'Organization',
@@ -259,6 +264,7 @@ It is also possible to run the above, averaged by an attribute specified
 with the `hrvar` argument:
 
 ``` r
+
 p2p_data %>% network_p2p(hrvar = 'Organization', centrality = 'degree', return = "table")
 #> # A tibble: 6 × 7
 #>   Organization     n betweenness closeness degree eigenvector pagerank
@@ -305,6 +311,7 @@ to perform community detection. Here is an example where we also specify
 the function to use the “ggraph” style:
 
 ``` r
+
 network_p2p(
    data = p2p_data,
    community = "leiden",
@@ -358,6 +365,7 @@ Here is another example of how to use a different community detection
 algorithm:
 
 ``` r
+
 network_p2p(
   data = p2p_data,
   style = "ggraph",
@@ -377,6 +385,7 @@ options available in `return`. For instance, you can return a sankey
 visual:
 
 ``` r
+
 network_p2p(
   data = p2p_data,
   community = "leiden",
@@ -389,6 +398,7 @@ Or a table of the communities, and how they group together with the HR
 attribute specified in `hrvar`:
 
 ``` r
+
 network_p2p(
   data = p2p_data,
   community = "leiden",

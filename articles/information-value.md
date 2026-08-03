@@ -45,6 +45,7 @@ the outcome, which can improve model performance and interpretability.
 We start with loading the **vivainsights** package:
 
 ``` r
+
 library(vivainsights)
 ```
 
@@ -59,6 +60,7 @@ library(vivainsights)
     ##  Happy coding!
 
 ``` r
+
 library(dplyr)
 ```
 
@@ -76,6 +78,7 @@ library(dplyr)
 The following shows a preview of the Person Query demo dataset:
 
 ``` r
+
 head(pq_data)
 ```
 
@@ -104,6 +107,7 @@ We can simulate such a variable by the following, and in this example we
 can name the variable `IsLargeNetwork`:
 
 ``` r
+
 pq_data$IsLargeNetwork <- ifelse(pq_data$Internal_network_size > 40, 1, 0)
 ```
 
@@ -120,6 +124,7 @@ use as the dependent variable.
 In `return`, we specify a plot to be returned:
 
 ``` r
+
 predictor_list <- c(
   "Email_hours",
   "Chat_hours",
@@ -168,6 +173,7 @@ via `return`:
   associated IV:
 
 ``` r
+
 create_IV(
   pq_data,
   predictors = predictor_list,
@@ -193,6 +199,7 @@ outcome given the value of the independent variable.
 Here is the output for `return = 'plot-WOE'`:
 
 ``` r
+
 create_IV(
   pq_data,
   predictors = predictor_list,
@@ -236,6 +243,7 @@ calculations for `return = 'plot-WOE'`.
 When `return = 'IV'`, a list of three items is returned.
 
 ``` r
+
 result_iv <- create_IV(
                 pq_data,
                 predictors = predictor_list,
@@ -253,6 +261,7 @@ log odds.
 You can extract them as follows:
 
 ``` r
+
 result_iv[[1]]$Email_hours
 ```
 
@@ -266,6 +275,7 @@ result_iv[[1]]$Email_hours
     ## 5 [10.8,19.3]  1381   0.200  0     1.29
 
 ``` r
+
 result_iv[[2]]
 ```
 
@@ -278,6 +288,7 @@ result_iv[[2]]
     ## 6 Meeting_and_call_hours_with_manager_1_1 1.289015
 
 ``` r
+
 result_iv[[3]]
 ```
 
@@ -304,6 +315,7 @@ To return only this dictionary of DataFrames, you can also run
 `return = 'list'`, which returns the identical dictionary:
 
 ``` r
+
 result_iv_full = create_IV(
                     pq_data,
                     predictors = predictor_list,
@@ -313,6 +325,7 @@ result_iv_full = create_IV(
 ```
 
 ``` r
+
 result_iv_full$Email_hours
 ```
 
