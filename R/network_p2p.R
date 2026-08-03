@@ -413,6 +413,7 @@ network_p2p <-
       colour_tb <-
         tibble(!!sym(v_attr) := unique(igraph::get.vertex.attribute(g, name = v_attr))) %>%
         mutate(colour = palette_values)
+      colour_scale <- stats::setNames(colour_tb$colour, colour_tb[[v_attr]])
 
       ## Colour vector
       colour_v <-
@@ -531,7 +532,7 @@ network_p2p <-
                                   alpha = node_alpha,
                                   pch = 16) +
           scale_size_continuous(range = node_sizes) +
-          scale_color_manual(values = unique(colour_v)) +
+          scale_color_manual(values = colour_scale) +
           theme_void() +
           theme(
             legend.position = legend_pos,

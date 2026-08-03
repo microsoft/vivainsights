@@ -81,6 +81,23 @@ test_that("network_p2p supports documented palette names and functions", {
     )
 })
 
+test_that("network_p2p maps palette colours by vertex attribute", {
+    set.seed(1)
+    sim_data <- p2p_data_sim(size = 30, nei = 2)
+    plot <- network_p2p(
+        sim_data,
+        style = "ggraph",
+        palette = function(n) grDevices::hcl.colors(n, "Set 2")
+    )
+
+    colour_scale <- plot$scales$get_scales("colour")
+    scale_values <- colour_scale$palette(
+        length(unique(plot$data$Organization))
+    )
+
+    expect_setequal(names(scale_values), unique(plot$data$Organization))
+})
+
 test_that("network_p2p rejects executable palette strings", {
     set.seed(1)
     sim_data <- p2p_data_sim(size = 30, nei = 2)
