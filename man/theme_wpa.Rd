@@ -25,7 +25,7 @@ A theme function applied to 'ggplot' visualisations in 'vivainsights'.
 Install and load 'extrafont' to use custom fonts for plotting.
 }
 \seealso{
-Other Themes: 
-\code{\link{theme_wpa_basic}()}
+Other Themes:
+\code{\link[=theme_wpa_basic]{theme_wpa_basic()}}
 }
 \concept{Themes}

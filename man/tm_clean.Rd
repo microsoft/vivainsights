@@ -41,11 +41,11 @@ tm_clean(mt_data, token = "ngrams")
 
 }
 \seealso{
-Other Text-mining: 
-\code{\link{meeting_tm_report}()},
-\code{\link{pairwise_count}()},
-\code{\link{tm_cooc}()},
-\code{\link{tm_freq}()},
-\code{\link{tm_wordcloud}()}
+Other Text-mining:
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=pairwise_count]{pairwise_count()}},
+\code{\link[=tm_cooc]{tm_cooc()}},
+\code{\link[=tm_freq]{tm_freq()}},
+\code{\link[=tm_wordcloud]{tm_wordcloud()}}
 }
 \concept{Text-mining}

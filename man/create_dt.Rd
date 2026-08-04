@@ -34,10 +34,10 @@ create_dt(output)
 
 }
 \seealso{
-Other Import and Export: 
-\code{\link{copy_df}()},
-\code{\link{export}()},
-\code{\link{import_query}()},
-\code{\link{prep_query}()}
+Other Import and Export:
+\code{\link[=copy_df]{copy_df()}},
+\code{\link[=export]{export()}},
+\code{\link[=import_query]{import_query()}},
+\code{\link[=prep_query]{prep_query()}}
 }
 \concept{Import and Export}

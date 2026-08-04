@@ -63,17 +63,17 @@ pq_data \%>\%
 }
 
 \seealso{
-Other Reports: 
-\code{\link{generate_report}()},
-\code{\link{meeting_tm_report}()},
-\code{\link{read_preamble}()},
-\code{\link{validation_report}()}
+Other Reports:
+\code{\link[=generate_report]{generate_report()}},
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=read_preamble]{read_preamble()}},
+\code{\link[=validation_report]{validation_report()}}
 
-Other Variable Association: 
-\code{\link{create_IV}()}
+Other Variable Association:
+\code{\link[=create_IV]{create_IV()}}
 
-Other Information Value: 
-\code{\link{create_IV}()}
+Other Information Value:
+\code{\link[=create_IV]{create_IV()}}
 }
 \concept{Information Value}
 \concept{Reports}

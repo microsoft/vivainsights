@@ -87,32 +87,32 @@ Below is an example on how to run the report.
 }
 
 \seealso{
-Other Reports: 
-\code{\link{IV_report}()},
-\code{\link{generate_report}()},
-\code{\link{meeting_tm_report}()},
-\code{\link{read_preamble}()}
+Other Reports:
+\code{\link[=IV_report]{IV_report()}},
+\code{\link[=generate_report]{generate_report()}},
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=read_preamble]{read_preamble()}}
 
-Other Data Validation: 
-\code{\link{check_query}()},
-\code{\link{extract_hr}()},
-\code{\link{flag_ch_ratio}()},
-\code{\link{flag_em_ratio}()},
-\code{\link{flag_extreme}()},
-\code{\link{flag_outlooktime}()},
-\code{\link{hr_trend}()},
-\code{\link{hrvar_count}()},
-\code{\link{hrvar_count_all}()},
-\code{\link{hrvar_trend}()},
-\code{\link{identify_churn}()},
-\code{\link{identify_holidayweeks}()},
-\code{\link{identify_inactiveweeks}()},
-\code{\link{identify_nkw}()},
-\code{\link{identify_outlier}()},
-\code{\link{identify_privacythreshold}()},
-\code{\link{identify_shifts}()},
-\code{\link{identify_tenure}()},
-\code{\link{track_HR_change}()}
+Other Data Validation:
+\code{\link[=check_query]{check_query()}},
+\code{\link[=extract_hr]{extract_hr()}},
+\code{\link[=flag_ch_ratio]{flag_ch_ratio()}},
+\code{\link[=flag_em_ratio]{flag_em_ratio()}},
+\code{\link[=flag_extreme]{flag_extreme()}},
+\code{\link[=flag_outlooktime]{flag_outlooktime()}},
+\code{\link[=hr_trend]{hr_trend()}},
+\code{\link[=hrvar_count]{hrvar_count()}},
+\code{\link[=hrvar_count_all]{hrvar_count_all()}},
+\code{\link[=hrvar_trend]{hrvar_trend()}},
+\code{\link[=identify_churn]{identify_churn()}},
+\code{\link[=identify_holidayweeks]{identify_holidayweeks()}},
+\code{\link[=identify_inactiveweeks]{identify_inactiveweeks()}},
+\code{\link[=identify_nkw]{identify_nkw()}},
+\code{\link[=identify_outlier]{identify_outlier()}},
+\code{\link[=identify_privacythreshold]{identify_privacythreshold()}},
+\code{\link[=identify_shifts]{identify_shifts()}},
+\code{\link[=identify_tenure]{identify_tenure()}},
+\code{\link[=track_HR_change]{track_HR_change()}}
 }
 \concept{Data Validation}
 \concept{Reports}

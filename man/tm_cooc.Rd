@@ -56,12 +56,12 @@ The function can be run with subject lines from \code{mt_data}, as per below.
 # Demo using a subset of `mt_data`
 }
 \seealso{
-Other Text-mining: 
-\code{\link{meeting_tm_report}()},
-\code{\link{pairwise_count}()},
-\code{\link{tm_clean}()},
-\code{\link{tm_freq}()},
-\code{\link{tm_wordcloud}()}
+Other Text-mining:
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=pairwise_count]{pairwise_count()}},
+\code{\link[=tm_clean]{tm_clean()}},
+\code{\link[=tm_freq]{tm_freq()}},
+\code{\link[=tm_wordcloud]{tm_wordcloud()}}
 }
 \author{
 Carlos Morales \href{mailto:carlos.morales@microsoft.com}{carlos.morales@microsoft.com}

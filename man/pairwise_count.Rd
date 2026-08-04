@@ -34,30 +34,30 @@ pairwise_count(td, id = "line", word = "word")
 
 }
 \seealso{
-Other Support: 
-\code{\link{any_idate}()},
-\code{\link{camel_clean}()},
-\code{\link{check_inputs}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_date_range}()},
-\code{\link{extract_hr}()},
-\code{\link{heat_colours}()},
-\code{\link{is_date_format}()},
-\code{\link{maxmin}()},
-\code{\link{read_preamble}()},
-\code{\link{rgb2hex}()},
-\code{\link{totals_bind}()},
-\code{\link{totals_col}()},
-\code{\link{tstamp}()},
-\code{\link{us_to_space}()},
-\code{\link{wrap}()}
+Other Support:
+\code{\link[=any_idate]{any_idate()}},
+\code{\link[=camel_clean]{camel_clean()}},
+\code{\link[=check_inputs]{check_inputs()}},
+\code{\link[=cut_hour]{cut_hour()}},
+\code{\link[=extract_date_range]{extract_date_range()}},
+\code{\link[=extract_hr]{extract_hr()}},
+\code{\link[=heat_colours]{heat_colours()}},
+\code{\link[=is_date_format]{is_date_format()}},
+\code{\link[=maxmin]{maxmin()}},
+\code{\link[=read_preamble]{read_preamble()}},
+\code{\link[=rgb2hex]{rgb2hex()}},
+\code{\link[=totals_bind]{totals_bind()}},
+\code{\link[=totals_col]{totals_col()}},
+\code{\link[=tstamp]{tstamp()}},
+\code{\link[=us_to_space]{us_to_space()}},
+\code{\link[=wrap]{wrap()}}
 
-Other Text-mining: 
-\code{\link{meeting_tm_report}()},
-\code{\link{tm_clean}()},
-\code{\link{tm_cooc}()},
-\code{\link{tm_freq}()},
-\code{\link{tm_wordcloud}()}
+Other Text-mining:
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=tm_clean]{tm_clean()}},
+\code{\link[=tm_cooc]{tm_cooc()}},
+\code{\link[=tm_freq]{tm_freq()}},
+\code{\link[=tm_wordcloud]{tm_wordcloud()}}
 }
 \concept{Support}
 \concept{Text-mining}

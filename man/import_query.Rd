@@ -52,10 +52,10 @@ returned by the function (not a \code{data.table}). Column names are automatical
 cleaned, replacing spaces and special characters with underscores.
 }
 \seealso{
-Other Import and Export: 
-\code{\link{copy_df}()},
-\code{\link{create_dt}()},
-\code{\link{export}()},
-\code{\link{prep_query}()}
+Other Import and Export:
+\code{\link[=copy_df]{copy_df()}},
+\code{\link[=create_dt]{create_dt()}},
+\code{\link[=export]{export()}},
+\code{\link[=prep_query]{prep_query()}}
 }
 \concept{Import and Export}

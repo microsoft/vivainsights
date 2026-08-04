@@ -56,11 +56,11 @@ tm_freq(mt_data, token = "words", return = "table")
 
 }
 \seealso{
-Other Text-mining: 
-\code{\link{meeting_tm_report}()},
-\code{\link{pairwise_count}()},
-\code{\link{tm_clean}()},
-\code{\link{tm_cooc}()},
-\code{\link{tm_wordcloud}()}
+Other Text-mining:
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=pairwise_count]{pairwise_count()}},
+\code{\link[=tm_clean]{tm_clean()}},
+\code{\link[=tm_cooc]{tm_cooc()}},
+\code{\link[=tm_wordcloud]{tm_wordcloud()}}
 }
 \concept{Text-mining}

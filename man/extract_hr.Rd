@@ -48,44 +48,44 @@ pq_data \%>\% extract_hr(return = "vars")
 
 }
 \seealso{
-Other Support: 
-\code{\link{any_idate}()},
-\code{\link{camel_clean}()},
-\code{\link{check_inputs}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_date_range}()},
-\code{\link{heat_colours}()},
-\code{\link{is_date_format}()},
-\code{\link{maxmin}()},
-\code{\link{pairwise_count}()},
-\code{\link{read_preamble}()},
-\code{\link{rgb2hex}()},
-\code{\link{totals_bind}()},
-\code{\link{totals_col}()},
-\code{\link{tstamp}()},
-\code{\link{us_to_space}()},
-\code{\link{wrap}()}
+Other Support:
+\code{\link[=any_idate]{any_idate()}},
+\code{\link[=camel_clean]{camel_clean()}},
+\code{\link[=check_inputs]{check_inputs()}},
+\code{\link[=cut_hour]{cut_hour()}},
+\code{\link[=extract_date_range]{extract_date_range()}},
+\code{\link[=heat_colours]{heat_colours()}},
+\code{\link[=is_date_format]{is_date_format()}},
+\code{\link[=maxmin]{maxmin()}},
+\code{\link[=pairwise_count]{pairwise_count()}},
+\code{\link[=read_preamble]{read_preamble()}},
+\code{\link[=rgb2hex]{rgb2hex()}},
+\code{\link[=totals_bind]{totals_bind()}},
+\code{\link[=totals_col]{totals_col()}},
+\code{\link[=tstamp]{tstamp()}},
+\code{\link[=us_to_space]{us_to_space()}},
+\code{\link[=wrap]{wrap()}}
 
-Other Data Validation: 
-\code{\link{check_query}()},
-\code{\link{flag_ch_ratio}()},
-\code{\link{flag_em_ratio}()},
-\code{\link{flag_extreme}()},
-\code{\link{flag_outlooktime}()},
-\code{\link{hr_trend}()},
-\code{\link{hrvar_count}()},
-\code{\link{hrvar_count_all}()},
-\code{\link{hrvar_trend}()},
-\code{\link{identify_churn}()},
-\code{\link{identify_holidayweeks}()},
-\code{\link{identify_inactiveweeks}()},
-\code{\link{identify_nkw}()},
-\code{\link{identify_outlier}()},
-\code{\link{identify_privacythreshold}()},
-\code{\link{identify_shifts}()},
-\code{\link{identify_tenure}()},
-\code{\link{track_HR_change}()},
-\code{\link{validation_report}()}
+Other Data Validation:
+\code{\link[=check_query]{check_query()}},
+\code{\link[=flag_ch_ratio]{flag_ch_ratio()}},
+\code{\link[=flag_em_ratio]{flag_em_ratio()}},
+\code{\link[=flag_extreme]{flag_extreme()}},
+\code{\link[=flag_outlooktime]{flag_outlooktime()}},
+\code{\link[=hr_trend]{hr_trend()}},
+\code{\link[=hrvar_count]{hrvar_count()}},
+\code{\link[=hrvar_count_all]{hrvar_count_all()}},
+\code{\link[=hrvar_trend]{hrvar_trend()}},
+\code{\link[=identify_churn]{identify_churn()}},
+\code{\link[=identify_holidayweeks]{identify_holidayweeks()}},
+\code{\link[=identify_inactiveweeks]{identify_inactiveweeks()}},
+\code{\link[=identify_nkw]{identify_nkw()}},
+\code{\link[=identify_outlier]{identify_outlier()}},
+\code{\link[=identify_privacythreshold]{identify_privacythreshold()}},
+\code{\link[=identify_shifts]{identify_shifts()}},
+\code{\link[=identify_tenure]{identify_tenure()}},
+\code{\link[=track_HR_change]{track_HR_change()}},
+\code{\link[=validation_report]{validation_report()}}
 }
 \concept{Data Validation}
 \concept{Support}

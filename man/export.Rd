@@ -55,11 +55,11 @@ images. By default, \code{export()} copies a data frame to the clipboard. If the
 input is a 'ggplot' object, the default behaviour is to export a PNG.
 }
 \seealso{
-Other Import and Export: 
-\code{\link{copy_df}()},
-\code{\link{create_dt}()},
-\code{\link{import_query}()},
-\code{\link{prep_query}()}
+Other Import and Export:
+\code{\link[=copy_df]{copy_df()}},
+\code{\link[=create_dt]{create_dt()}},
+\code{\link[=import_query]{import_query()}},
+\code{\link[=prep_query]{prep_query()}}
 }
 \author{
 Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}

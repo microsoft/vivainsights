@@ -19,7 +19,7 @@ A theme function applied to 'ggplot' visualisations in 'vivainsights'.
 Based on \code{theme_wpa()} but has no font requirements.
 }
 \seealso{
-Other Themes: 
-\code{\link{theme_wpa}()}
+Other Themes:
+\code{\link[=theme_wpa]{theme_wpa()}}
 }
 \concept{Themes}

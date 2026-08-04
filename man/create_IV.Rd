@@ -89,11 +89,11 @@ pq_data \%>\%
 
 }
 \seealso{
-Other Variable Association: 
-\code{\link{IV_report}()}
+Other Variable Association:
+\code{\link[=IV_report]{IV_report()}}
 
-Other Information Value: 
-\code{\link{IV_report}()}
+Other Information Value:
+\code{\link[=IV_report]{IV_report()}}
 }
 \concept{Information Value}
 \concept{Variable Association}
