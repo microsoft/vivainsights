@@ -20,4 +20,6 @@ Useful links:
 
 Authors:
 
+- Martin Chan <martin.chan@microsoft.com>
+
 - Carlos Morales <carlos.morales@microsoft.com>
