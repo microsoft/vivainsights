@@ -1,4 +1,4 @@
-# vivainsights (development version)
+# vivainsights 0.7.3
 
 * Replaced dynamic string evaluation in `network_p2p()` with allowlisted community, layout, and palette dispatch.
 * Added support for passing a palette function directly to `network_p2p()`.
