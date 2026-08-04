@@ -38,17 +38,17 @@ p2p_data_sim(size = 200, nei = 4)
 
 }
 \seealso{
-Other Data: 
+Other Data:
 \code{\link{g2g_data}},
 \code{\link{mt_data}},
 \code{\link{p2p_data}},
 \code{\link{pq_data}}
 
-Other Network: 
+Other Network:
 \code{\link{g2g_data}},
-\code{\link{network_g2g}()},
-\code{\link{network_p2p}()},
-\code{\link{network_summary}()},
+\code{\link[=network_g2g]{network_g2g()}},
+\code{\link[=network_p2p]{network_p2p()}},
+\code{\link[=network_summary]{network_summary()}},
 \code{\link{p2p_data}}
 }
 \concept{Data}

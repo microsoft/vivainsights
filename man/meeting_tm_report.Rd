@@ -51,26 +51,26 @@ This will generate a HTML report as specified in \code{path}.
 }
 
 \seealso{
-Other Reports: 
-\code{\link{IV_report}()},
-\code{\link{generate_report}()},
-\code{\link{read_preamble}()},
-\code{\link{validation_report}()}
+Other Reports:
+\code{\link[=IV_report]{IV_report()}},
+\code{\link[=generate_report]{generate_report()}},
+\code{\link[=read_preamble]{read_preamble()}},
+\code{\link[=validation_report]{validation_report()}}
 
-Other Meetings: 
-\code{\link{meeting_dist}()},
-\code{\link{meeting_fizz}()},
-\code{\link{meeting_line}()},
-\code{\link{meeting_rank}()},
-\code{\link{meeting_summary}()},
-\code{\link{meeting_trend}()}
+Other Meetings:
+\code{\link[=meeting_dist]{meeting_dist()}},
+\code{\link[=meeting_fizz]{meeting_fizz()}},
+\code{\link[=meeting_line]{meeting_line()}},
+\code{\link[=meeting_rank]{meeting_rank()}},
+\code{\link[=meeting_summary]{meeting_summary()}},
+\code{\link[=meeting_trend]{meeting_trend()}}
 
-Other Text-mining: 
-\code{\link{pairwise_count}()},
-\code{\link{tm_clean}()},
-\code{\link{tm_cooc}()},
-\code{\link{tm_freq}()},
-\code{\link{tm_wordcloud}()}
+Other Text-mining:
+\code{\link[=pairwise_count]{pairwise_count()}},
+\code{\link[=tm_clean]{tm_clean()}},
+\code{\link[=tm_cooc]{tm_cooc()}},
+\code{\link[=tm_freq]{tm_freq()}},
+\code{\link[=tm_wordcloud]{tm_wordcloud()}}
 }
 \concept{Meetings}
 \concept{Reports}

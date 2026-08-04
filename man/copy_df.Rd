@@ -31,10 +31,10 @@ Based on the original function from
 \url{https://github.com/martinctc/surveytoolbox}.
 }
 \seealso{
-Other Import and Export: 
-\code{\link{create_dt}()},
-\code{\link{export}()},
-\code{\link{import_query}()},
-\code{\link{prep_query}()}
+Other Import and Export:
+\code{\link[=create_dt]{create_dt()}},
+\code{\link[=export]{export()}},
+\code{\link[=import_query]{import_query()}},
+\code{\link[=prep_query]{prep_query()}}
 }
 \concept{Import and Export}

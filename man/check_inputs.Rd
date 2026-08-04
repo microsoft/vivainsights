@@ -39,22 +39,22 @@ check_inputs(iris, c("Sepal.Length", "Sepal.Width", "RandomVariable"), return = 
 
 }
 \seealso{
-Other Support: 
-\code{\link{any_idate}()},
-\code{\link{camel_clean}()},
-\code{\link{cut_hour}()},
-\code{\link{extract_date_range}()},
-\code{\link{extract_hr}()},
-\code{\link{heat_colours}()},
-\code{\link{is_date_format}()},
-\code{\link{maxmin}()},
-\code{\link{pairwise_count}()},
-\code{\link{read_preamble}()},
-\code{\link{rgb2hex}()},
-\code{\link{totals_bind}()},
-\code{\link{totals_col}()},
-\code{\link{tstamp}()},
-\code{\link{us_to_space}()},
-\code{\link{wrap}()}
+Other Support:
+\code{\link[=any_idate]{any_idate()}},
+\code{\link[=camel_clean]{camel_clean()}},
+\code{\link[=cut_hour]{cut_hour()}},
+\code{\link[=extract_date_range]{extract_date_range()}},
+\code{\link[=extract_hr]{extract_hr()}},
+\code{\link[=heat_colours]{heat_colours()}},
+\code{\link[=is_date_format]{is_date_format()}},
+\code{\link[=maxmin]{maxmin()}},
+\code{\link[=pairwise_count]{pairwise_count()}},
+\code{\link[=read_preamble]{read_preamble()}},
+\code{\link[=rgb2hex]{rgb2hex()}},
+\code{\link[=totals_bind]{totals_bind()}},
+\code{\link[=totals_col]{totals_col()}},
+\code{\link[=tstamp]{tstamp()}},
+\code{\link[=us_to_space]{us_to_space()}},
+\code{\link[=wrap]{wrap()}}
 }
 \concept{Support}

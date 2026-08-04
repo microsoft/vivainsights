@@ -88,11 +88,11 @@ generate_report(title = "My First Report",
 }
 
 \seealso{
-Other Reports: 
-\code{\link{IV_report}()},
-\code{\link{meeting_tm_report}()},
-\code{\link{read_preamble}()},
-\code{\link{validation_report}()}
+Other Reports:
+\code{\link[=IV_report]{IV_report()}},
+\code{\link[=meeting_tm_report]{meeting_tm_report()}},
+\code{\link[=read_preamble]{read_preamble()}},
+\code{\link[=validation_report]{validation_report()}}
 }
 \author{
 Martin Chan \href{mailto:martin.chan@microsoft.com}{martin.chan@microsoft.com}

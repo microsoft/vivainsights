@@ -89,25 +89,25 @@ create_density(pq_data, metric = "Collaboration_hours", hrvar = "Organization", 
 create_density(pq_data, metric = "Collaboration_hours", hrvar = "Organization", return = "table")
 }
 \seealso{
-Other Flexible: 
-\code{\link{create_bar}()},
-\code{\link{create_bar_asis}()},
-\code{\link{create_boxplot}()},
-\code{\link{create_bubble}()},
-\code{\link{create_dist}()},
-\code{\link{create_fizz}()},
-\code{\link{create_hist}()},
-\code{\link{create_inc}()},
-\code{\link{create_line}()},
-\code{\link{create_line_asis}()},
-\code{\link{create_period_scatter}()},
-\code{\link{create_radar}()},
-\code{\link{create_rank}()},
-\code{\link{create_sankey}()},
-\code{\link{create_scatter}()},
-\code{\link{create_stacked}()},
-\code{\link{create_survival}()},
-\code{\link{create_tracking}()},
-\code{\link{create_trend}()}
+Other Flexible:
+\code{\link[=create_bar]{create_bar()}},
+\code{\link[=create_bar_asis]{create_bar_asis()}},
+\code{\link[=create_boxplot]{create_boxplot()}},
+\code{\link[=create_bubble]{create_bubble()}},
+\code{\link[=create_dist]{create_dist()}},
+\code{\link[=create_fizz]{create_fizz()}},
+\code{\link[=create_hist]{create_hist()}},
+\code{\link[=create_inc]{create_inc()}},
+\code{\link[=create_line]{create_line()}},
+\code{\link[=create_line_asis]{create_line_asis()}},
+\code{\link[=create_period_scatter]{create_period_scatter()}},
+\code{\link[=create_radar]{create_radar()}},
+\code{\link[=create_rank]{create_rank()}},
+\code{\link[=create_sankey]{create_sankey()}},
+\code{\link[=create_scatter]{create_scatter()}},
+\code{\link[=create_stacked]{create_stacked()}},
+\code{\link[=create_survival]{create_survival()}},
+\code{\link[=create_tracking]{create_tracking()}},
+\code{\link[=create_trend]{create_trend()}}
 }
 \concept{Flexible}

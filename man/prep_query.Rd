@@ -45,10 +45,10 @@ You can then run checks to see that the variables are of the correct type:
 }
 
 \seealso{
-Other Import and Export: 
-\code{\link{copy_df}()},
-\code{\link{create_dt}()},
-\code{\link{export}()},
-\code{\link{import_query}()}
+Other Import and Export:
+\code{\link[=copy_df]{copy_df()}},
+\code{\link[=create_dt]{create_dt()}},
+\code{\link[=export]{export()}},
+\code{\link[=import_query]{import_query()}}
 }
 \concept{Import and Export}

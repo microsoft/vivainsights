@@ -23,6 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Martin Chan \email{martin.chan@microsoft.com}
   \item Carlos Morales \email{carlos.morales@microsoft.com}
 }
 
