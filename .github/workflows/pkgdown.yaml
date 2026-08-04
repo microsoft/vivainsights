@@ -32,12 +32,21 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::., RColorBrewer, viridis, knitr
+          extra-packages: any::pkgdown, any::yaml, local::., RColorBrewer, viridis, knitr
           needs: website
+
+      - name: Generate discovery guides
+        run: Rscript tools/generate-discovery.R
+
+      - name: Check generated discovery guides
+        run: git diff --exit-code -- inst/discovery/llms.txt vignettes/function-discovery.Rmd
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
+
+      - name: Publish agent discovery guide
+        run: cp inst/discovery/llms.txt docs/llms.txt
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'

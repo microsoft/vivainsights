@@ -91,9 +91,10 @@ section on how to supply arguments in a named list.}
 
 \item{layout}{String to specify the node placement algorithm to be used.
 Defaults to \code{"mds"} for the deterministic multi-dimensional scaling of
-nodes. See
-\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for a full
-list of options.}
+nodes. The \code{"igraph"} style supports \code{"dh"}, \code{"drl"}, \code{"fr"}, \code{"gem"},
+\code{"graphopt"}, \code{"kk"}, \code{"lgl"}, \code{"mds"}, and \code{"sugiyama"}. See
+\url{https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html} for options
+supported by the \code{"ggraph"} style.}
 
 \item{path}{File path for saving the PDF output. Defaults to a timestamped
 path based on current parameters.}
@@ -119,8 +120,9 @@ plot. Valid values include:
 -\code{"right"}
 }}
 
-\item{palette}{String specifying the function to generate a colour palette
-with a single argument \code{n}. Uses \code{"rainbow"} by default.}
+\item{palette}{A palette function accepting a single argument \code{n}, or one of
+\code{"rainbow"}, \code{"heat_colors"}, or \code{"heat_colours"}. Uses \code{"rainbow"} by
+default.}
 
 \item{node_alpha}{A numeric value between 0 and 1 to specify the transparency
 of the nodes. Defaults to 0.7.}

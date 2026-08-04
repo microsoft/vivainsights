@@ -3,6 +3,55 @@
 # Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
+.network_p2p_community_functions <- c(
+  leiden = "cluster_leiden",
+  louvain = "cluster_louvain",
+  edge_betweenness = "cluster_edge_betweenness",
+  fast_greedy = "cluster_fast_greedy",
+  fluid_communities = "cluster_fluid_communities",
+  infomap = "cluster_infomap",
+  label_prop = "cluster_label_prop",
+  leading_eigen = "cluster_leading_eigen",
+  optimal = "cluster_optimal",
+  spinglass = "cluster_spinglass",
+  walk_trap = "cluster_walktrap"
+)
+
+.network_p2p_layout_functions <- c(
+  dh = "layout_with_dh",
+  drl = "layout_with_drl",
+  fr = "layout_with_fr",
+  gem = "layout_with_gem",
+  graphopt = "layout_with_graphopt",
+  kk = "layout_with_kk",
+  lgl = "layout_with_lgl",
+  mds = "layout_with_mds",
+  sugiyama = "layout_with_sugiyama"
+)
+
+.network_p2p_palette <- function(palette) {
+  if (is.function(palette)) {
+    return(palette)
+  }
+
+  palette_functions <- list(
+    rainbow = grDevices::rainbow,
+    heat_colors = heat_colors,
+    heat_colours = heat_colours
+  )
+
+  if (!is.character(palette) || length(palette) != 1 ||
+      is.na(palette) || is.null(palette_functions[[palette]])) {
+    stop(
+      "`palette` must be a palette function or one of: ",
+      paste(names(palette_functions), collapse = ", "),
+      "."
+    )
+  }
+
+  palette_functions[[palette]]
+}
+
 #' @title Perform network analysis with the person-to-person query
 #'
 #' @description
@@ -70,9 +119,10 @@
 #'   section on how to supply arguments in a named list.
 #' @param layout String to specify the node placement algorithm to be used.
 #'   Defaults to `"mds"` for the deterministic multi-dimensional scaling of
-#'   nodes. See
-#'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a full
-#'   list of options.
+#'   nodes. The `"igraph"` style supports `"dh"`, `"drl"`, `"fr"`, `"gem"`,
+#'   `"graphopt"`, `"kk"`, `"lgl"`, `"mds"`, and `"sugiyama"`. See
+#'   <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for options
+#'   supported by the `"ggraph"` style.
 #' @param path File path for saving the PDF output. Defaults to a timestamped
 #'   path based on current parameters.
 #' @param style String to specify which plotting style to use for the network
@@ -89,8 +139,9 @@
 #'   - `"left"`
 #'   -`"right"`
 #'
-#' @param palette String specifying the function to generate a colour palette
-#'   with a single argument `n`. Uses `"rainbow"` by default.
+#' @param palette A palette function accepting a single argument `n`, or one of
+#'   `"rainbow"`, `"heat_colors"`, or `"heat_colours"`. Uses `"rainbow"` by
+#'   default.
 #' @param node_alpha A numeric value between 0 and 1 to specify the transparency
 #'   of the nodes. Defaults to 0.7.
 #' @param edge_alpha A numeric value between 0 and 1 to specify the transparency
@@ -266,19 +317,7 @@ network_p2p <-
     g_raw$weight <- edges$weight
 
     ## allowed `community` values
-    valid_comm <- c(
-      "leiden",
-      "louvain",
-      "edge_betweenness",
-      "fast_greedy",
-      "fluid_communities",
-      "infomap",
-      "label_prop",
-      "leading_eigen",
-      "optimal",
-      "spinglass",
-      "walk_trap"
-    )
+    valid_comm <- names(.network_p2p_community_functions)
 
     ## Finalise `g` object
     ## If community detection is selected, this is where the communities are appended
@@ -292,13 +331,15 @@ network_p2p <-
       set.seed(seed = seed)
       g_ud <- igraph::as.undirected(g_raw) # Convert to undirected
 
-      alg_label <- paste0("igraph::cluster_", community)
-
       # combine arguments to clustering algorithm
       c_comm_args <- c(list("graph" = g_ud), comm_args)
 
       # output `communities` object
-      comm_out <- do.call(eval(parse(text = alg_label)), c_comm_args)
+      community_fn <- getExportedValue(
+        "igraph",
+        .network_p2p_community_functions[[community]]
+      )
+      comm_out <- do.call(community_fn, c_comm_args)
 
       ## Add cluster
       g <-
@@ -355,11 +396,6 @@ network_p2p <-
       as_tibble() %>%
       select(-node_size) # never show `node_size` in data output
 
-    ## Set layout for graph
-    g_layout <-
-      g %>%
-      ggraph::ggraph(layout = "igraph", algorithm = layout)
-
     ## Timestamped File Path
     out_path <- paste0(path, "_", tstamp(), ".pdf")
 
@@ -369,9 +405,15 @@ network_p2p <-
     if(return %in% c("plot", "plot-pdf")){
 
       ## Set colours
+      palette_fn <- .network_p2p_palette(palette)
+      palette_values <- palette_fn(
+        length(unique(igraph::get.vertex.attribute(g, name = v_attr)))
+      )
+
       colour_tb <-
         tibble(!!sym(v_attr) := unique(igraph::get.vertex.attribute(g, name = v_attr))) %>%
-        mutate(colour = eval(parse(text = paste0(palette,"(nrow(.))")))) # palette choice
+        mutate(colour = palette_values)
+      colour_scale <- stats::setNames(colour_tb$colour, colour_tb[[v_attr]])
 
       ## Colour vector
       colour_v <-
@@ -396,7 +438,15 @@ network_p2p <-
 
           graphics::par(bg = bg_fill)
 
-          layout_text <- paste0("igraph::layout_with_", layout)
+          layout_fn_name <- unname(.network_p2p_layout_functions[layout])
+          if (length(layout_fn_name) == 0 || is.na(layout_fn_name)) {
+            stop(
+              "For `style = \"igraph\"`, `layout` must be one of: ",
+              paste(names(.network_p2p_layout_functions), collapse = ", "),
+              "."
+            )
+          }
+          layout_fn <- getExportedValue("igraph", layout_fn_name)
 
           ## Legend position
 
@@ -428,7 +478,7 @@ network_p2p <-
 
           graphics::plot(
             g,
-            layout = eval(parse(text = layout_text)),
+            layout = layout_fn,
             vertex.label = NA,
             # vertex.size = 3,
             vertex.size = igraph::V(g)$node_size,
@@ -468,6 +518,10 @@ network_p2p <-
 
       } else if(style == "ggraph"){
 
+        g_layout <-
+          g %>%
+          ggraph::ggraph(layout = "igraph", algorithm = layout)
+
         plot_output <-
           g_layout +
           ggraph::geom_edge_link(colour = edge_col,
@@ -478,7 +532,7 @@ network_p2p <-
                                   alpha = node_alpha,
                                   pch = 16) +
           scale_size_continuous(range = node_sizes) +
-          scale_color_manual(values = unique(colour_v)) +
+          scale_color_manual(values = colour_scale) +
           theme_void() +
           theme(
             legend.position = legend_pos,

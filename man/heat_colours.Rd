@@ -5,15 +5,15 @@
 \alias{heat_colors}
 \title{Generate a vector of \code{n} contiguous colours, as a red-yellow-green palette.}
 \usage{
-heat_colours(n, alpha, rev = FALSE)
+heat_colours(n, alpha = 1, rev = FALSE)
 
-heat_colors(n, alpha, rev = FALSE)
+heat_colors(n, alpha = 1, rev = FALSE)
 }
 \arguments{
 \item{n}{the number of colors (>= 1) to be in the palette.}
 
 \item{alpha}{an alpha-transparency level in the range of 0 to 1
-(0 means transparent and 1 means opaque)}
+(0 means transparent and 1 means opaque). Defaults to 1.}
 
 \item{rev}{logical indicating whether the ordering of the colors should be
 reversed.}

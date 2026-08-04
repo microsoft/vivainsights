@@ -1,0 +1,32 @@
+# vivainsights
+
+> R package for analyzing and visualizing Microsoft Viva Insights data.
+
+Use an existing vivainsights function before writing custom aggregation or visualization code.
+Most grouped functions expose `mingroup`; preserve this privacy threshold unless the user explicitly chooses another valid threshold.
+
+## Primary workflows
+
+- Import and prepare a Viva Insights query: `import_query()`; input: Viva Insights CSV export; returns: data frame; privacy: Import does not apply disclosure thresholds; validate and aggregate before sharing results.; docs: https://microsoft.github.io/vivainsights/reference/import_query.html
+- Validate query structure and data quality: `validation_report()`; input: Person or meeting query; returns: HTML validation report; privacy: Validation reports may describe small groups; review output before sharing.; docs: https://microsoft.github.io/vivainsights/reference/validation_report.html
+- Inspect available HR attributes: `hrvar_count_all()`; input: Person query; returns: message or table; privacy: Use the counts to avoid selecting attributes that create groups below the disclosure threshold.; docs: https://microsoft.github.io/vivainsights/reference/hrvar_count_all.html
+- Compare a metric across groups: `create_bar()`; input: Person-period query; returns: ggplot or summary table; privacy: Groups with fewer than mingroup distinct people are excluded.; docs: https://microsoft.github.io/vivainsights/reference/create_bar.html
+- Plot a metric over time: `create_line()`; input: Person-period query; returns: ggplot or summary table; privacy: Groups with fewer than mingroup distinct people are excluded.; docs: https://microsoft.github.io/vivainsights/reference/create_line.html
+- Inspect a metric distribution: `create_dist()`; input: Person-period query; returns: ggplot or summary table; privacy: Groups with fewer than mingroup distinct people are excluded.; docs: https://microsoft.github.io/vivainsights/reference/create_dist.html
+- Rank groups by a metric: `create_rank()`; input: Person-period query; returns: ggplot or ranking table; privacy: Groups with fewer than mingroup distinct people are excluded.; docs: https://microsoft.github.io/vivainsights/reference/create_rank.html
+- Summarize collaboration workload: `collaboration_summary()`; input: Person-period query; returns: ggplot or summary table; privacy: Groups with fewer than mingroup distinct people are excluded.; docs: https://microsoft.github.io/vivainsights/reference/collaboration_summary.html
+- Segment people by product usage: `identify_usage_segments()`; input: Person-period query; returns: person-level data, table, or plot; privacy: Review segment counts before sharing; downstream summaries should apply disclosure thresholds.; docs: https://microsoft.github.io/vivainsights/reference/identify_usage_segments.html
+- Measure retention between periods: `identify_retention()`; input: Person-period data with a category column; returns: message, table, or detailed data; privacy: Review returned counts and suppress small categories before sharing.; docs: https://microsoft.github.io/vivainsights/reference/identify_retention.html
+- Compare a profile of several metrics: `create_radar()`; input: Person-period query; returns: ggplot or indexed data; privacy: Groups with fewer than mingroup distinct people are excluded.; docs: https://microsoft.github.io/vivainsights/reference/create_radar.html
+- Analyze time to adoption or another event: `create_survival()`; input: Person-period event data; returns: ggplot or survival calculation data; privacy: Apply an appropriate mingroup threshold to group comparisons.; docs: https://microsoft.github.io/vivainsights/reference/create_survival.html
+- Analyze a person-to-person collaboration network: `network_p2p()`; input: Single-date person-to-person query; returns: plot, table, node data, Sankey chart, or igraph object; privacy: Network outputs can identify individuals; apply organizational privacy and disclosure policy.; docs: https://microsoft.github.io/vivainsights/reference/network_p2p.html
+- Analyze a group-to-group collaboration network: `network_g2g()`; input: Group-to-group query; returns: plot or igraph object; privacy: Confirm source query groups meet disclosure requirements.; docs: https://microsoft.github.io/vivainsights/reference/network_g2g.html
+- Anonymize identifiers and HR attributes: `anonymise()`; input: Viva Insights query; returns: anonymized data frame; privacy: Anonymization reduces direct identifiers but does not replace disclosure review.; docs: https://microsoft.github.io/vivainsights/reference/anonymise.html
+- Generate a reusable analysis report: `generate_report()`; input: Person query; returns: rendered report files; privacy: Review the generated report and its grouping thresholds before distribution.; docs: https://microsoft.github.io/vivainsights/reference/generate_report.html
+
+## Documentation
+
+- Task guide: https://microsoft.github.io/vivainsights/articles/function-discovery.html
+- Function reference: https://microsoft.github.io/vivainsights/reference/index.html
+- Analyst guide: https://microsoft.github.io/vivainsights/analyst_guide_intro.html
+- Python parity baseline: vivainsights 0.4.2 at commit fa5dffefa96ef5b1e8d0ba5918c2ed1148dd41c7

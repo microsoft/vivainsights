@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.git$
 ^.github$
 ^CODE_OF_CONDUCT.md$
 ^LICENSE.txt$
@@ -14,6 +15,7 @@ man-roxygen
 ^\.github$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^tools$
 
 # Ignore vignettes
 ^vignettes/best-practices.Rmd$
@@ -26,4 +28,5 @@ man-roxygen
 ^vignettes/custom-network-g2g.Rmd$
 ^vignettes/radar-charts.Rmd$
 ^vignettes/survival-curves.Rmd$
+^vignettes/function-discovery.Rmd$
 ^\.claude$
