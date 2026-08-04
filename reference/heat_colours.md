@@ -6,9 +6,9 @@ codes corresponding to the heat map palette.
 ## Usage
 
 ``` r
-heat_colours(n, alpha, rev = FALSE)
+heat_colours(n, alpha = 1, rev = FALSE)
 
-heat_colors(n, alpha, rev = FALSE)
+heat_colors(n, alpha = 1, rev = FALSE)
 ```
 
 ## Arguments
@@ -20,7 +20,7 @@ heat_colors(n, alpha, rev = FALSE)
 - alpha:
 
   an alpha-transparency level in the range of 0 to 1 (0 means
-  transparent and 1 means opaque)
+  transparent and 1 means opaque). Defaults to 1.
 
 - rev:
 

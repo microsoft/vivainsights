@@ -1,5 +1,26 @@
 # Changelog
 
+## vivainsights 0.7.3
+
+- Replaced dynamic string evaluation in
+  [`network_p2p()`](https://microsoft.github.io/vivainsights/reference/network_p2p.md)
+  with allowlisted community, layout, and palette dispatch.
+- Added support for passing a palette function directly to
+  [`network_p2p()`](https://microsoft.github.io/vivainsights/reference/network_p2p.md).
+- Fixed
+  [`network_p2p()`](https://microsoft.github.io/vivainsights/reference/network_p2p.md)
+  ggraph colours so palettes are matched to group or cluster labels
+  rather than vertex order.
+- Fixed
+  [`heat_colors()`](https://microsoft.github.io/vivainsights/reference/heat_colours.md)
+  and
+  [`heat_colours()`](https://microsoft.github.io/vivainsights/reference/heat_colours.md)
+  so their documented default usage no longer requires an explicit
+  `alpha` value.
+- Added a task-oriented function catalogue and agent discovery guide
+  covering primary Viva Insights workflows and R/Python capability
+  parity.
+
 ## vivainsights 0.7.2
 
 CRAN release: 2026-04-28

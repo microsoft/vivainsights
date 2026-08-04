@@ -21,7 +21,7 @@ filter the data frame to a specific date before using this function."><meta prop
 
     <a class="navbar-brand me-2" href="../index.html">vivainsights</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,8 @@ filter the data frame to a specific date before using this function."><meta prop
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/intro-to-vivainsights.html">Introduction to vivainsights</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/function-discovery.html">Find the right vivainsights function</a></li>
+    <li><a class="dropdown-item" href="../articles/intro-to-vivainsights.html">Introduction to vivainsights</a></li>
     <li><a class="dropdown-item" href="../articles/best-practices.html">Best Practices when using vivainsights</a></li>
     <li><a class="dropdown-item" href="../articles/network-analysis.html">Introduction to Organizational Network Analysis with vivainsights in R</a></li>
     <li><a class="dropdown-item" href="../articles/exploratory-rank.html">Identifying noteworthy groups with rank functions</a></li>
@@ -177,9 +178,10 @@ section on how to supply arguments in a named list.</p></dd>
 <dt id="arg-layout">layout<a class="anchor" aria-label="anchor" href="#arg-layout"></a></dt>
 <dd><p>String to specify the node placement algorithm to be used.
 Defaults to <code>"mds"</code> for the deterministic multi-dimensional scaling of
-nodes. See
-<a href="https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html" class="external-link">https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for a full
-list of options.</p></dd>
+nodes. The <code>"igraph"</code> style supports <code>"dh"</code>, <code>"drl"</code>, <code>"fr"</code>, <code>"gem"</code>,
+<code>"graphopt"</code>, <code>"kk"</code>, <code>"lgl"</code>, <code>"mds"</code>, and <code>"sugiyama"</code>. See
+<a href="https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html" class="external-link">https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html</a> for options
+supported by the <code>"ggraph"</code> style.</p></dd>
 
 
 <dt id="arg-path">path<a class="anchor" aria-label="anchor" href="#arg-path"></a></dt>
@@ -213,8 +215,9 @@ plot. Valid values include:</p><ul><li><p><code>"igraph"</code></p></li>
 
 
 <dt id="arg-palette">palette<a class="anchor" aria-label="anchor" href="#arg-palette"></a></dt>
-<dd><p>String specifying the function to generate a colour palette
-with a single argument <code>n</code>. Uses <code>"rainbow"</code> by default.</p></dd>
+<dd><p>A palette function accepting a single argument <code>n</code>, or one of
+<code>"rainbow"</code>, <code>"heat_colors"</code>, or <code>"heat_colours"</code>. Uses <code>"rainbow"</code> by
+default.</p></dd>
 
 
 <dt id="arg-node-alpha">node_alpha<a class="anchor" aria-label="anchor" href="#arg-node-alpha"></a></dt>

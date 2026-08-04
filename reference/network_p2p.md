@@ -137,9 +137,11 @@ network_p2p(
 - layout:
 
   String to specify the node placement algorithm to be used. Defaults to
-  `"mds"` for the deterministic multi-dimensional scaling of nodes. See
-  <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for a
-  full list of options.
+  `"mds"` for the deterministic multi-dimensional scaling of nodes. The
+  `"igraph"` style supports `"dh"`, `"drl"`, `"fr"`, `"gem"`,
+  `"graphopt"`, `"kk"`, `"lgl"`, `"mds"`, and `"sugiyama"`. See
+  <https://rdrr.io/cran/ggraph/man/layout_tbl_graph_igraph.html> for
+  options supported by the `"ggraph"` style.
 
 - path:
 
@@ -178,8 +180,9 @@ network_p2p(
 
 - palette:
 
-  String specifying the function to generate a colour palette with a
-  single argument `n`. Uses `"rainbow"` by default.
+  A palette function accepting a single argument `n`, or one of
+  `"rainbow"`, `"heat_colors"`, or `"heat_colours"`. Uses `"rainbow"` by
+  default.
 
 - node_alpha:
 
