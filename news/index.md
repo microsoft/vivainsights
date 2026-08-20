@@ -2,6 +2,8 @@
 
 ## vivainsights 0.7.3
 
+CRAN release: 2026-08-04
+
 - Replaced dynamic string evaluation in
   [`network_p2p()`](https://microsoft.github.io/vivainsights/reference/network_p2p.md)
   with allowlisted community, layout, and palette dispatch.
